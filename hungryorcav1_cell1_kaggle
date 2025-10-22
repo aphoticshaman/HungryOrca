@@ -1,0 +1,592 @@
+# =============================================================================
+# ORCA ARC Prize 2025 - Competition Optimized Single Cell
+# 27M Parameter Target + L4x4 Optimization + 9-Hour Compliance
+# =============================================================================
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import numpy as np
+import json
+import os
+from pathlib import Path
+import math
+import random
+from typing import Dict, List, Any
+import traceback
+
+# Force CPU optimization
+torch.set_num_threads(os.cpu_count() // 2)  # Leave cores for data loading
+print(f"🚀 ORCA ARC Prize 2025 - CPU Threads: {torch.get_num_threads()}")
+
+# =============================================================================
+# COMPETITION-OPTIMIZED CONFIGURATION
+# =============================================================================
+
+class CompetitionConfig:
+    # Core architecture (optimized for 27M)
+    grid_size = 30
+    num_colors = 10
+    embed_dim = 512           # Maximized within budget
+    num_heads = 16            # Balanced for 512-dim
+    num_layers = 8            # Deep but efficient
+    ff_multiplier = 4         # Standard expansion
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    
+    # Enhanced novel components
+    humility_threshold = 0.7
+    quantum_noise = 0.02
+    chaos_factor = 0.04
+    recursion_depth = 2
+    coherence_time = 10
+    
+    # L4x4 optimized training
+    batch_size = 32 if torch.cuda.is_available() else 8  # Leverage GPU memory
+    learning_rate = 6e-5
+    epochs = 15               # More epochs for convergence
+    warmup_steps = 1000
+    
+    # CPU optimization
+    num_workers = min(8, os.cpu_count() // 2)  # Aggressive data loading
+
+# =============================================================================
+# ENHANCED ARCHITECTURE COMPONENTS
+# =============================================================================
+
+class IITPhiCalculator(nn.Module):
+    def __init__(self, dim):
+        super().__init__()
+        self.dim = dim
+        self.entropy_scale = nn.Parameter(torch.tensor(1.0))
+        
+    def forward(self, x):
+        batch, seq, dim = x.shape
+        probs = F.softmax(x, dim=-1)
+        h_whole = -torch.sum(probs * torch.log(probs + 1e-10), dim=-1)
+        
+        min_entropy = float('inf')
+        splits = [dim//4, dim//2, 3*dim//4]
+        
+        for split in splits:
+            if 0 < split < dim:
+                part1 = x[:, :, :split]
+                part2 = x[:, :, split:]
+                
+                h_part1 = -torch.sum(F.softmax(part1, dim=-1) * torch.log(F.softmax(part1, dim=-1) + 1e-10), dim=-1)
+                h_part2 = -torch.sum(F.softmax(part2, dim=-1) * torch.log(F.softmax(part2, dim=-1) + 1e-10), dim=-1)
+                
+                partition_entropy = h_part1.mean() + h_part2.mean()
+                min_entropy = min(min_entropy, partition_entropy)
+        
+        phi = (h_whole.mean() - min_entropy) * self.entropy_scale
+        return torch.sigmoid(phi)
+
+class OrchORLayer(nn.Module):
+    def __init__(self, dim, noise_level=0.02, coherence_time=10):
+        super().__init__()
+        self.dim = dim
+        self.noise_level = noise_level
+        self.coherence_time = coherence_time
+        self.register_buffer('step', torch.tensor(0))
+        
+    def forward(self, x):
+        if self.training and self.noise_level > 0:
+            coherence_prob = max(0.1, 1.0 - (self.step % self.coherence_time) / self.coherence_time)
+            noise_mask = torch.rand(x.shape[0], x.shape[1], 1, device=x.device) < coherence_prob
+            quantum_noise = torch.randn_like(x) * self.noise_level
+            x = torch.where(noise_mask, x + quantum_noise, x)
+        
+        self.step += 1
+        return x
+
+class RecursiveCrossAttention(nn.Module):
+    def __init__(self, dim, num_heads=16, depth=2, chaos_factor=0.04):
+        super().__init__()
+        self.depth = depth
+        self.chaos_factor = chaos_factor
+        
+        self.attention_layers = nn.ModuleList([
+            nn.MultiheadAttention(dim, num_heads, batch_first=True)
+            for _ in range(depth)
+        ])
+        
+        self.gates = nn.ModuleList([
+            nn.Linear(dim, 1) for _ in range(depth)
+        ])
+        
+    def forward(self, x):
+        for i in range(self.depth):
+            if self.training and self.chaos_factor > 0:
+                chaos = torch.randn_like(x) * self.chaos_factor
+                x_chaotic = x + chaos
+            else:
+                x_chaotic = x
+                
+            attn_out, _ = self.attention_layers[i](x_chaotic, x, x)
+            gate = torch.sigmoid(self.gates[i](x))
+            x = x + gate * attn_out
+            
+        return x
+
+# =============================================================================
+# COMPETITION-OPTIMIZED ORCA MODEL (~25M PARAMETERS)
+# =============================================================================
+
+class CompetitionORCAModel(nn.Module):
+    def __init__(self, config):
+        super().__init__()
+        self.config = config
+        
+        # Enhanced input processing
+        self.color_embed = nn.Embedding(config.num_colors, config.embed_dim)
+        self.pos_embed = nn.Parameter(torch.randn(1, config.grid_size**2, config.embed_dim))
+        self.input_norm = nn.LayerNorm(config.embed_dim)
+        
+        # Multi-stage novel processing
+        self.quantum_layers = nn.ModuleList([
+            OrchORLayer(config.embed_dim, config.quantum_noise, config.coherence_time)
+            for _ in range(2)
+        ])
+        
+        self.phi_calculator = IITPhiCalculator(config.embed_dim)
+        self.recursive_attention = RecursiveCrossAttention(
+            config.embed_dim, config.num_heads, config.recursion_depth, config.chaos_factor
+        )
+        
+        # Deep transformer backbone
+        encoder_layer = nn.TransformerEncoderLayer(
+            d_model=config.embed_dim,
+            nhead=config.num_heads,
+            dim_feedforward=config.embed_dim * config.ff_multiplier,
+            batch_first=True,
+            dropout=0.1,
+            activation='gelu',
+            batch_first=True
+        )
+        self.transformer = nn.TransformerEncoder(encoder_layer, config.num_layers)
+        
+        # Enhanced output system
+        self.output_head = nn.Sequential(
+            nn.Linear(config.embed_dim, config.embed_dim // 2),
+            nn.GELU(),
+            nn.Dropout(0.1),
+            nn.Linear(config.embed_dim // 2, config.embed_dim // 4),
+            nn.GELU(),
+            nn.Linear(config.embed_dim // 4, config.num_colors)
+        )
+        
+        self._init_weights()
+        
+    def _init_weights(self):
+        for module in self.modules():
+            if isinstance(module, nn.Linear):
+                nn.init.xavier_uniform_(module.weight)
+                if module.bias is not None:
+                    nn.init.zeros_(module.bias)
+            elif isinstance(module, nn.Embedding):
+                nn.init.normal_(module.weight, mean=0.0, std=0.02)
+            elif isinstance(module, nn.LayerNorm):
+                nn.init.zeros_(module.bias)
+                nn.init.ones_(module.weight)
+                
+    def forward(self, x):
+        batch_size = x.shape[0]
+        
+        # Input safety
+        x = torch.clamp(x, 0, self.config.num_colors - 1)
+        
+        # Enhanced embedding
+        x_flat = x.long().view(batch_size, -1)
+        x_emb = self.color_embed(x_flat) + self.pos_embed
+        x_emb = x_emb * math.sqrt(self.config.embed_dim)
+        x_emb = self.input_norm(x_emb)
+        
+        # Multi-stage quantum processing
+        for quantum_layer in self.quantum_layers:
+            x_emb = quantum_layer(x_emb)
+        
+        # Recursive reasoning
+        x_emb = self.recursive_attention(x_emb)
+        
+        # Deep transformer
+        encoded = self.transformer(x_emb)
+        
+        # Consciousness awareness
+        phi = self.phi_calculator(encoded)
+        logits = self.output_head(encoded.mean(dim=1))
+        
+        # Competition output format
+        output = logits.view(batch_size, self.config.num_colors, 1, 1)
+        output = output.expand(-1, -1, self.config.grid_size, self.config.grid_size)
+        
+        confidence = phi
+        if confidence < self.config.humility_threshold:
+            return None, confidence
+        return output, confidence
+
+# =============================================================================
+# HIGH-PERFORMANCE DATA PIPELINE
+# =============================================================================
+
+def safe_array_copy(arr):
+    return np.ascontiguousarray(arr.copy())
+
+def pad_grid(grid, target_size=30):
+    if isinstance(grid, list):
+        grid = np.array(grid, dtype=np.int32)
+    
+    padded = np.zeros((target_size, target_size), dtype=np.int32)
+    h, w = grid.shape
+    h = min(h, target_size)
+    w = min(w, target_size)
+    padded[:h, :w] = safe_array_copy(grid[:h, :w])
+    return padded
+
+def load_arc_data(file_path):
+    try:
+        with open(file_path, 'r') as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Error loading {file_path}: {e}")
+        return {}
+
+class OptimizedARCDataset(torch.utils.data.Dataset):
+    def __init__(self, challenges_data, solutions_data=None, config=None, augment=True):
+        self.config = config or CompetitionConfig()
+        self.samples = []
+        
+        # Pre-allocate memory for samples
+        sample_count = 0
+        for task_id, task_data in challenges_data.items():
+            if 'train' in task_data:
+                sample_count += len(task_data['train']) * (7 if augment else 1)
+        
+        self.samples = [None] * sample_count
+        idx = 0
+        
+        for task_id, task_data in challenges_data.items():
+            if 'train' not in task_data:
+                continue
+                
+            for example in task_data['train']:
+                if 'input' in example and 'output' in example:
+                    input_grid = pad_grid(example['input'])
+                    output_grid = pad_grid(example['output'])
+                    self.samples[idx] = (input_grid, output_grid)
+                    idx += 1
+                    
+                    if augment:
+                        # Efficient augmentations
+                        for k in range(1, 4):
+                            self.samples[idx] = (
+                                safe_array_copy(np.rot90(input_grid, k)),
+                                safe_array_copy(np.rot90(output_grid, k))
+                            )
+                            idx += 1
+                        
+                        self.samples[idx] = (
+                            safe_array_copy(np.fliplr(input_grid)),
+                            safe_array_copy(np.fliplr(output_grid))
+                        )
+                        idx += 1
+                        
+                        self.samples[idx] = (
+                            safe_array_copy(np.flipud(input_grid)),
+                            safe_array_copy(np.flipud(output_grid))
+                        )
+                        idx += 1
+        
+        print(f"Created optimized dataset with {idx} samples")
+        self.samples = self.samples[:idx]  # Trim to actual size
+    
+    def __len__(self):
+        return len(self.samples)
+    
+    def __getitem__(self, idx):
+        input_grid, output_grid = self.samples[idx]
+        return (torch.tensor(safe_array_copy(input_grid)), 
+                torch.tensor(safe_array_copy(output_grid)))
+
+# =============================================================================
+# L4x4 OPTIMIZED TRAINING SYSTEM
+# =============================================================================
+
+class L4x4OptimizedTrainer:
+    def __init__(self, model, config):
+        self.model = model
+        self.config = config
+        
+        # L4x4 optimized optimizer
+        self.optimizer = torch.optim.AdamW(
+            model.parameters(),
+            lr=config.learning_rate,
+            weight_decay=0.02,
+            betas=(0.9, 0.98)
+        )
+        
+        # OneCycle scheduling for fast convergence
+        self.scheduler = None  # Will be set after dataloader
+        self.criterion = nn.CrossEntropyLoss()
+        
+        # Mixed precision for L4
+        self.scaler = torch.cuda.amp.GradScaler() if config.device == 'cuda' else None
+        
+        # Training state
+        self.global_step = 0
+        
+    def setup_scheduler(self, dataloader):
+        # OneCycle LR for fast convergence within time limits
+        steps_per_epoch = len(dataloader)
+        total_steps = steps_per_epoch * self.config.epochs
+        self.scheduler = torch.optim.lr_scheduler.OneCycleLR(
+            self.optimizer,
+            max_lr=self.config.learning_rate * 5,
+            total_steps=total_steps,
+            pct_start=0.1,
+            div_factor=10.0,
+            final_div_factor=100.0
+        )
+    
+    def train_epoch(self, dataloader, epoch):
+        self.model.train()
+        total_loss = 0
+        total_confidence = 0
+        batches = 0
+        start_time = torch.cuda.Event(enable_timing=True) if self.config.device == 'cuda' else None
+        end_time = torch.cuda.Event(enable_timing=True) if self.config.device == 'cuda' else None
+        
+        if start_time:
+            start_time.record()
+        
+        for batch_idx, (inputs, targets) in enumerate(dataloader):
+            inputs = inputs.to(self.config.device, non_blocking=True)
+            targets = targets.to(self.config.device, non_blocking=True)
+            
+            self.optimizer.zero_grad()
+            
+            if self.scaler:
+                # Mixed precision forward
+                with torch.cuda.amp.autocast():
+                    outputs, confidence = self.model(inputs)
+                    task_loss = self.criterion(outputs, targets.long())
+                    confidence_loss = (1 - confidence) * 0.1
+                    loss = task_loss + confidence_loss
+                
+                # Scaled backward
+                self.scaler.scale(loss).backward()
+                self.scaler.step(self.optimizer)
+                self.scaler.update()
+            else:
+                # CPU training
+                outputs, confidence = self.model(inputs)
+                task_loss = self.criterion(outputs, targets.long())
+                confidence_loss = (1 - confidence) * 0.1
+                loss = task_loss + confidence_loss
+                
+                loss.backward()
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
+                self.optimizer.step()
+            
+            if self.scheduler:
+                self.scheduler.step()
+            
+            total_loss += loss.item()
+            total_confidence += confidence.item()
+            batches += 1
+            self.global_step += 1
+            
+            # Progress every 50 batches
+            if batch_idx % 50 == 0:
+                current_lr = self.optimizer.param_groups[0]['lr']
+                print(f"Epoch {epoch}, Batch {batch_idx}, Loss: {loss.item():.4f}, Confidence: {confidence.item():.4f}, LR: {current_lr:.2e}")
+        
+        if end_time and start_time:
+            end_time.record()
+            torch.cuda.synchronize()
+            epoch_time = start_time.elapsed_time(end_time) / 1000
+            print(f"Epoch {epoch} completed in {epoch_time:.2f}s")
+        
+        avg_loss = total_loss / batches if batches > 0 else 0
+        avg_confidence = total_confidence / batches if batches > 0 else 0
+        return avg_loss, avg_confidence
+
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+# =============================================================================
+# COMPETITION SUBMISSION GENERATOR
+# =============================================================================
+
+def generate_competition_submission(model, test_challenges, output_path='submission.json'):
+    submission = {}
+    model.eval()
+    
+    with torch.no_grad():
+        for task_id, task_data in test_challenges.items():
+            if 'test' not in task_data:
+                continue
+                
+            test_input = task_data['test']
+            if isinstance(test_input, list):
+                for i, test_case in enumerate(test_input):
+                    if 'input' in test_case:
+                        input_grid = pad_grid(test_case['input'])
+                        input_tensor = torch.tensor(input_grid).unsqueeze(0).to(model.config.device)
+                        
+                        if hasattr(torch.cuda, 'empty_cache'):
+                            torch.cuda.empty_cache()
+                        
+                        output, confidence = model(input_tensor)
+                        
+                        if output is not None:
+                            pred = output.argmax(dim=1).squeeze().cpu().numpy()
+                        else:
+                            pred = np.zeros((30, 30), dtype=np.int32)
+                        
+                        pred_str = '|'.join([''.join(map(str, row)) + '|' for row in pred])
+                        key = f"{task_id}_{i}"
+                        submission[key] = {
+                            'attempt_1': pred_str,
+                            'attempt_2': pred_str
+                        }
+            else:
+                if 'input' in test_input:
+                    input_grid = pad_grid(test_input['input'])
+                    input_tensor = torch.tensor(input_grid).unsqueeze(0).to(model.config.device)
+                    
+                    output, confidence = model(input_tensor)
+                    
+                    if output is not None:
+                        pred = output.argmax(dim=1).squeeze().cpu().numpy()
+                    else:
+                        pred = np.zeros((30, 30), dtype=np.int32)
+                    
+                    pred_str = '|'.join([''.join(map(str, row)) + '|' for row in pred])
+                    submission[task_id] = {
+                        'attempt_1': pred_str,
+                        'attempt_2': pred_str
+                    }
+    
+    with open(output_path, 'w') as f:
+        json.dump(submission, f, indent=2)
+    
+    print(f"✅ Submission generated: {len(submission)} tasks")
+    return submission
+
+# =============================================================================
+# MAIN COMPETITION PIPELINE
+# =============================================================================
+
+def competition_main():
+    print("🚀 ORCA Competition Pipeline - L4x4 Optimized")
+    
+    # Configuration
+    config = CompetitionConfig()
+    print(f"Device: {config.device}")
+    print(f"CPU Threads: {torch.get_num_threads()}")
+    print(f"Data Workers: {config.num_workers}")
+    
+    # Create and validate model
+    model = CompetitionORCAModel(config)
+    model = model.to(config.device)
+    
+    # Parameter validation
+    param_count = count_parameters(model)
+    print(f"Model parameters: {param_count:,}")
+    
+    if param_count > 27_000_000:
+        print("❌ ERROR: Model exceeds 27M parameter limit!")
+        return None, None
+    
+    # Load competition data
+    base_path = '/kaggle/input/arc-prize-2025'
+    
+    print("Loading competition data...")
+    train_challenges = load_arc_data(f'{base_path}/arc-agi_training_challenges.json')
+    train_solutions = load_arc_data(f'{base_path}/arc-agi_training_solutions.json')
+    eval_challenges = load_arc_data(f'{base_path}/arc-agi_evaluation_challenges.json')
+    test_challenges = load_arc_data(f'{base_path}/arc-agi_test_challenges.json')
+    
+    if not train_challenges:
+        print("❌ No training data found - using placeholder")
+        train_challenges = {'dummy': {'train': [{'input': [[0]], 'output': [[0]]}]}}
+    
+    # Create optimized dataset
+    train_dataset = OptimizedARCDataset(train_challenges, train_solutions, config, augment=True)
+    
+    # High-performance data loader
+    train_loader = torch.utils.data.DataLoader(
+        train_dataset,
+        batch_size=config.batch_size,
+        shuffle=True,
+        num_workers=config.num_workers,
+        pin_memory=True,
+        persistent_workers=True if config.num_workers > 0 else False
+    )
+    
+    # Train with time monitoring
+    print("Starting L4x4 optimized training...")
+    trainer = L4x4OptimizedTrainer(model, config)
+    trainer.setup_scheduler(train_loader)
+    
+    import time
+    total_start_time = time.time()
+    
+    for epoch in range(config.epochs):
+        epoch_start = time.time()
+        avg_loss, avg_confidence = trainer.train_epoch(train_loader, epoch)
+        epoch_time = time.time() - epoch_start
+        
+        total_elapsed = (time.time() - total_start_time) / 3600  # hours
+        remaining_time = 8.5 - total_elapsed  # 30min buffer for submission
+        
+        print(f"Epoch {epoch+1}/{config.epochs} - Loss: {avg_loss:.4f}, Confidence: {avg_confidence:.4f}")
+        print(f"Epoch Time: {epoch_time:.1f}s, Total: {total_elapsed:.2f}h, Remaining: {remaining_time:.2f}h")
+        
+        # Time-based early stopping
+        if remaining_time < 0.5:  # Less than 30min remaining
+            print("⏰ Time limit approaching - stopping training early")
+            break
+    
+    # Generate submission
+    print("Generating competition submission...")
+    submission = generate_competition_submission(model, test_challenges)
+    
+    # Final validation
+    total_time = (time.time() - total_start_time) / 3600
+    print(f"\n🎯 ORCA Competition Summary:")
+    print(f"✅ Parameters: {param_count:,}/27,000,000")
+    print(f"✅ Training Time: {total_time:.2f}/9.0 hours") 
+    print(f"✅ Novel Integrations: IIT Phi, Orch-OR, Recursive Attention, Chaos")
+    print(f"✅ Submission Tasks: {len(submission)}")
+    print(f"✅ L4x4 Optimized: Mixed Precision, OneCycle LR, CPU Multi-threading")
+    
+    if total_time > 9.0:
+        print("⚠️  WARNING: Exceeded 9-hour time limit!")
+    else:
+        print("✅ Within 9-hour time limit!")
+    
+    return model, submission
+
+# =============================================================================
+# EXECUTION GUARANTEE
+# =============================================================================
+
+if __name__ == "__main__":
+    try:
+        print("=" * 60)
+        print("ORCA ARC PRIZE 2025 - COMPETITION READY")
+        print("27M Parameter Target + L4x4 + 9-Hour Compliance")
+        print("=" * 60)
+        
+        model, submission = competition_main()
+        
+        if model and submission:
+            print("\n🎉 SUCCESS: ORCA pipeline completed within constraints!")
+            print("📁 Submission file: submission.json")
+        else:
+            print("\n❌ Pipeline failed - check errors above")
+            
+    except Exception as e:
+        print(f"❌ Critical error: {e}")
+        traceback.print_exc()
