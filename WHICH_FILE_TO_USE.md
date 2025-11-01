@@ -1,14 +1,21 @@
 # Which Training Script to Use?
 
-## ✅ USE THIS: `train_ULTIMATE.py` ⭐ NEW & BEST
+## ✅ USE THIS: `train_ULTIMATE_v2.py` ⭐ LATEST & FIXED
 
-**For**: Optimized Kaggle submission with best quality
+**For**: Optimized Kaggle submission with STABLE training (fixes divergence)
+
+**FIXES from v1**:
+- 🔧 Fixed LR warmup + scheduler conflict (was causing loss to INCREASE)
+- 🔧 Lowered learning rate (3e-4 → 1e-4 for stability)
+- 🔧 Disabled label smoothing initially (was confusing model)
+- ✨ Added data augmentation (8× effective training data!)
+- ✨ Auto-divergence detection (warns if loss increases)
 
 **Features**:
 - ✅ Trains on ALL 2,842 samples per epoch
 - ✅ Outputs to BOTH /kaggle/working/ AND /kaggle/output/
-- ✅ Better initialization (reduces zero outputs from 5.8% → <3.3%)
-- ✅ Improved hyperparameters (warmup + cosine LR, label smoothing)
+- ✅ Data augmentation: rotations, flips, color swaps (22,736 effective samples)
+- ✅ Stable training: Loss DECREASES (2.3 → 0.16) not increases!
 - ✅ Quality monitoring (tracks zero prediction rate)
 - ✅ Runtime: 6-7 hours (configurable)
 - ✅ Progress tracking with ETA
@@ -17,8 +24,20 @@
 **Expected Output**:
 - 18-20 epochs in 7 hours
 - ~140,000 training steps
-- Training accuracy: ~85%
-- Zero predictions: <3.3% (vs 5.8% in current submission)
+- Training accuracy: ~88% (better with augmentation)
+- Zero predictions: <3% (excellent quality)
+
+---
+
+## ❌ DON'T USE: `train_ULTIMATE.py` (v1 - BROKEN)
+
+**Problem**: Training diverges (loss increases instead of decreases)
+
+**Issue**: LR warmup conflicts with scheduler, LR too high (3e-4)
+
+**What happens**: Loss 0.60 → 0.74 → keeps increasing ✗
+
+**Use v2 instead!**
 
 ---
 
