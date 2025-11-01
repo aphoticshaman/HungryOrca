@@ -467,39 +467,49 @@ print("GENERATING SUBMISSION")
 print("=" * 80)
 
 model.eval()
-submission = []
+submission = {}  # FIXED: dict not list! (Kaggle format requirement)
 zero_count = 0
+total_test_items = 0
 
 with torch.no_grad():
     for i, (task_id, task_data) in enumerate(test_tasks.items(), 1):
-        test_input = task_data['test'][0]['input']
-        x = torch.from_numpy(pad_grid(test_input)).unsqueeze(0).to(DEVICE)
-        logits = model(x)
-        pred = logits.argmax(dim=-1).squeeze(0).cpu().numpy()
+        # FIXED: Handle MULTIPLE test items per task
+        task_predictions = []
 
-        H = len(test_input)
-        W = len(test_input[0]) if test_input else 1
-        pred_grid = pred[:H, :W].tolist()
+        for test_item in task_data['test']:
+            test_input = test_item['input']
+            x = torch.from_numpy(pad_grid(test_input)).unsqueeze(0).to(DEVICE)
+            logits = model(x)
+            pred = logits.argmax(dim=-1).squeeze(0).cpu().numpy()
 
-        # PROPER zero check (v2 had this wrong!)
-        if is_all_zeros(pred_grid):
-            zero_count += 1
+            H = len(test_input)
+            W = len(test_input[0]) if test_input else 1
+            pred_grid = pred[:H, :W].tolist()
 
-        submission.append({
-            "task_id": task_id,
-            "attempt_1": pred_grid,
-            "attempt_2": pred_grid
-        })
+            # PROPER zero check (v2 had this wrong!)
+            if is_all_zeros(pred_grid):
+                zero_count += 1
+
+            total_test_items += 1
+
+            # Each test item gets one attempt object
+            task_predictions.append({
+                "attempt_1": pred_grid,
+                "attempt_2": pred_grid
+            })
+
+        # FIXED: Dict format with task_id as key, list of attempts as value
+        submission[task_id] = task_predictions
 
         if i % 50 == 0:
-            print(f"  Progress: {i}/{len(test_tasks)}")
+            print(f"  Progress: {i}/{len(test_tasks)} tasks, {total_test_items} test items")
 
-print(f"\n✓ Generated {len(submission)} predictions")
+print(f"\n✓ Generated {len(submission)} tasks, {total_test_items} total test items")
 
 # Quality check
-zero_pct = (zero_count / len(submission)) * 100
+zero_pct = (zero_count / total_test_items) * 100 if total_test_items > 0 else 0
 print(f"\nQuality check:")
-print(f"  All-zero predictions: {zero_count}/{len(submission)} ({zero_pct:.1f}%)")
+print(f"  All-zero predictions: {zero_count}/{total_test_items} ({zero_pct:.1f}%)")
 
 if zero_pct > 10.0:
     print(f"  🔴 HIGH zero rate (>10%) - May need more training")
@@ -536,7 +546,8 @@ for path in [CONFIG['output_working'], CONFIG['output_final']]:
     else:
         print(f"  ✗ ERROR: {path} not created!")
 
-print(f"\n✓ {len(submission)} tasks in submission")
+print(f"\n✓ {len(submission)} tasks in submission ({total_test_items} test items)")
+print(f"✓ Format: DICT (Kaggle-compliant)")
 print(f"✓ Ready for Kaggle submission!")
 
 # =============================================================================
@@ -556,8 +567,9 @@ if CONFIG['do_training']:
     print(f"Best val loss: {best_val_loss:.4f}")
     print(f"Best train loss: {best_train_loss:.4f}")
     print(f"Best train accuracy: {best_acc:.3f}")
-print(f"Test predictions: {len(submission)}")
+print(f"Test tasks: {len(submission)} ({total_test_items} test items)")
 print(f"Zero predictions: {zero_count} ({zero_pct:.1f}%)")
+print(f"Submission format: DICT (Kaggle-compliant)")
 
 print("\n📊 Comparison to v2:")
 print(f"  v2: 24 zeros (10.0%), 5M params, 100 epochs, WITH augmentation")
