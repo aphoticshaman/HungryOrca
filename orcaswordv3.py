@@ -5,20 +5,7 @@ OrcaSword v3 - Mathematically Rigorous ARC-AGI Solver
 
 Production-ready ARC Prize 2025 solver with deep mathematical formalization.
 
-Architecture:
-- Mathematical Foundations & Formal Proofs (38+ theorems)
-- Full Phi Partition Lattice & Advanced IIT
-- Hierarchical Abstraction + CSP/Logic Solver
-- Program Synthesis + Causal/Temporal Reasoning
-- Testing Framework + Fallacy Detection + Integration
-
-Performance Targets:
-- Runtime: <1 hour on CPU, optimal on GPU
-- Training: Maximize time while staying few-shot compliant
-- Accuracy: Target >90% on ARC evaluation set
-- Production: Grade-A reliability, no dead code
-
-Total: 2,619 lines of production code
+Total: 2,600+ lines of production code
 38+ mathematical theorems with formal proofs
 """
 
@@ -554,8 +541,7 @@ print("="*80)
 # CELL 2: FULL PHI PARTITION LATTICE & ADVANCED IIT
 # =============================================================================
 
-print("
-" + "="*80)
+print("\n" + "="*80)
 print("CELL 2: Full Phi Partition Lattice & Advanced IIT")
 print("="*80)
 
@@ -967,11 +953,9 @@ class FormalChaosAttention(nn.Module):
         
         return perturbation
 
-print("
-" + "="*80)
+print("\n" + "="*80)
 print("Full Phi Partition Lattice Module: READY ✓")
 print("="*80)
-
 
 # =============================================================================
 # CELL 3: HIERARCHICAL ABSTRACTION + CSP/LOGIC SOLVER
@@ -1495,7 +1479,6 @@ print("\n" + "="*80)
 print("Hierarchical Abstraction + CSP Solver Module: READY ✓")
 print("="*80)
 
-
 # =============================================================================
 # CELL 4: PROGRAM SYNTHESIS + CAUSAL/TEMPORAL REASONING
 # =============================================================================
@@ -2006,7 +1989,6 @@ class TemporalModelChecker:
 print("\n" + "="*80)
 print("Program Synthesis + Causal/Temporal Reasoning Module: READY ✓")
 print("="*80)
-
 
 # =============================================================================
 # CELL 5: TESTING FRAMEWORK + FALLACY DETECTION + INTEGRATION
@@ -2644,5 +2626,4 @@ def main():
 # Execute main
 if __name__ == "__main__":
     model, pipeline = main()
-
 
