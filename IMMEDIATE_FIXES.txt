@@ -1,0 +1,154 @@
+================================================================================
+TRAINING STOPPED AT EPOCH 29 - IMMEDIATE RECOVERY
+================================================================================
+
+MOST LIKELY CAUSES (in order):
+1. Kaggle Session Timeout (9-12 hour limit)
+2. GPU Out of Memory
+3. Disk full from checkpoints
+4. Silent crash/kernel restart
+
+================================================================================
+STEP 1: CHECK IF CHECKPOINT WAS SAVED
+================================================================================
+
+Run in console/new cell:
+
+import os
+checkpoint_files = ['orcasword_full_checkpoint.pt', 'best_model.pt']
+for f in checkpoint_files:
+    if os.path.exists(f):
+        size = os.path.getsize(f) / 1e6
+        print(f"✓ {f}: {size:.1f} MB")
+    else:
+        print(f"✗ {f}: NOT FOUND")
+
+================================================================================
+STEP 2: CLEAR GPU MEMORY
+================================================================================
+
+import torch, gc
+gc.collect()
+torch.cuda.empty_cache()
+print(f"GPU memory freed. Available: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB")
+
+================================================================================
+STEP 3: CHECK DISK SPACE
+================================================================================
+
+!df -h /kaggle/working
+
+# If disk is >90% full, delete old checkpoints:
+# !rm -f orcasword_checkpoint.pt  # old one
+
+================================================================================
+STEP 4: RESUME TRAINING (if checkpoint exists)
+================================================================================
+
+# Load checkpoint
+import torch
+DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+if os.path.exists('orcasword_full_checkpoint.pt'):
+    checkpoint = torch.load('orcasword_full_checkpoint.pt', map_location=DEVICE)
+    print(f"Checkpoint found at epoch {checkpoint.get('epoch', '?')}")
+
+    # Load model state (assuming model is already defined)
+    model.load_state_dict(checkpoint['model_state_dict'])
+    optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+    start_epoch = checkpoint.get('epoch', 0) + 1
+
+    print(f"✓ Ready to resume from epoch {start_epoch}")
+
+================================================================================
+STEP 5A: RESUME WITH REMAINING TIME
+================================================================================
+
+# Modify CONFIG to use remaining time:
+CONFIG['epochs'] = 50  # or whatever
+CONFIG['target_runtime_hours'] = 2  # Adjust for remaining time!
+
+# Then continue the training loop starting from start_epoch
+
+================================================================================
+STEP 5B: JUST GENERATE SUBMISSION (if near end)
+================================================================================
+
+# If you were at epoch 29/50, you might have good enough model!
+# Just generate submission:
+
+model.eval()
+submission = []
+
+with torch.no_grad():
+    for task_id, task_data in test_tasks.items():
+        test_input = task_data['test'][0]['input']
+        x = torch.from_numpy(pad_grid(test_input)).unsqueeze(0).to(DEVICE)
+        logits = model(x)
+        pred = logits.argmax(dim=-1).squeeze(0).cpu().numpy()
+
+        H, W = len(test_input), len(test_input[0])
+        pred_grid = pred[:H, :W].tolist()
+
+        submission.append({
+            "task_id": task_id,
+            "attempt_1": pred_grid,
+            "attempt_2": pred_grid
+        })
+
+import json
+with open('submission.json', 'w') as f:
+    json.dump(submission, f)
+
+print("✓ submission.json generated!")
+
+================================================================================
+STEP 6: CHECK SESSION TIME (Kaggle specific)
+================================================================================
+
+import time
+from datetime import datetime
+
+# Kaggle limits:
+# - GPU: 9 hours per session
+# - CPU: 12 hours per session
+
+# Check if you're near limit:
+print("If you've been running 8+ hours, Kaggle auto-stopped you")
+print("Solution: Generate submission with current checkpoint and restart")
+
+================================================================================
+RECOMMENDED ACTION (Based on stopping at Epoch 29):
+================================================================================
+
+Since you were at epoch 29 with 97.3% accuracy, you have a GOOD model!
+
+OPTION A: Generate submission NOW (safest)
+  - Use code from Step 5B above
+  - Download submission.json
+  - Submit to competition
+
+OPTION B: Resume for a few more epochs
+  - Clear memory (Step 2)
+  - Resume from checkpoint (Step 4)
+  - Run 5-10 more epochs
+  - Generate submission
+
+OPTION C: Start new session (if Kaggle timeout)
+  - Download checkpoint file
+  - Create new Kaggle notebook
+  - Upload checkpoint
+  - Continue training or generate submission
+
+================================================================================
+IMMEDIATE ACTION:
+================================================================================
+
+1. Run Step 1 to check for checkpoint
+2. If found, run Step 5B to generate submission
+3. Download submission.json immediately
+4. Then decide if you want to train more
+
+Your model at epoch 29 with 97.3% train accuracy is likely GOOD ENOUGH!
+
+================================================================================
