@@ -54,6 +54,7 @@ from dataclasses import dataclass
 from collections import deque
 from enum import Enum
 import time
+import heapq  # ROUND 3.4: Priority queue for A* and beam search
 import hashlib
 
 
@@ -472,7 +473,8 @@ class SymbolicProgramSynthesizer:
         elif strategy == SearchStrategy.ASTAR:
             result = self._astar_search(start_state, goal_state, timeout)
         elif strategy == SearchStrategy.BEAM:
-            result = self._beam_search(start_state, goal_state, timeout)
+            # ROUND 3.4: Beam search with priority queue and top-k cutoff
+            result = self._beam_search_bidirectional(start_state, goal_state, timeout)
         else:
             raise ValueError(f"Unknown strategy: {strategy}")
 
@@ -557,6 +559,114 @@ class SymbolicProgramSynthesizer:
 
                 # Expand backward (ROUND 3.2: pass start for heuristic)
                 self._expand_backward(current, backward_frontier, backward_visited, start)
+
+        return None
+
+    def _beam_search_bidirectional(self,
+                                    start: GridState,
+                                    goal: GridState,
+                                    timeout: float) -> Optional[List[str]]:
+        """
+        ROUND 3.4: Beam search with priority queue and top-k cutoff
+
+        Uses A* heuristic to prioritize promising states, and limits frontier size
+        to beam_width to control memory and computation.
+
+        Algorithm:
+        1. Priority queue: Order by f-score = cost + heuristic
+        2. Beam cutoff: Keep only top-k nodes (k = beam_width)
+        3. Bidirectional: Run forward and backward search simultaneously
+
+        Args:
+            start: Initial state
+            goal: Target state
+            timeout: Max search time in seconds
+
+        Returns:
+            program: List of primitive names, or None if not found
+
+        Properties:
+            - Complete: No (beam cutoff may miss solutions)
+            - Optimal: No (may not find shortest program)
+            - Fast: Yes (beam limits exploration)
+
+        Tradeoffs:
+            - beam_width=1: Greedy search (very fast, may fail)
+            - beam_width=3-5: Good balance (fast + high success)
+            - beam_width=10+: Close to full search (slower, more complete)
+        """
+        start_time = time.time()
+
+        # Priority queues: ordered by f-score = cost + heuristic
+        forward_frontier = []  # Will use heapq
+        heapq.heappush(forward_frontier, ProgramNode(start, [], 0, 0.0))
+        forward_visited = {start: {'program': [], 'cost': 0}}
+
+        backward_frontier = []  # Will use heapq
+        heapq.heappush(backward_frontier, ProgramNode(goal, [], 0, 0.0))
+        backward_visited = {goal: {'program': [], 'cost': 0}}
+
+        # Alternate between forward and backward
+        for iteration in range(self.max_program_length * 2):
+            # Timeout check
+            if time.time() - start_time > timeout:
+                return None
+
+            # Forward step
+            if forward_frontier:
+                current = heapq.heappop(forward_frontier)  # Get best node
+
+                # Check if we've reached a state the backward search has visited
+                if current.state in backward_visited:
+                    # SUCCESS! Combine programs
+                    forward_prog = current.program
+                    backward_prog = backward_visited[current.state]['program']
+
+                    # Backward program needs to be reversed and inverted
+                    backward_prog_inverted = [
+                        self.executor.get_inverse(p)
+                        for p in reversed(backward_prog)
+                        if self.executor.get_inverse(p)
+                    ]
+
+                    return forward_prog + backward_prog_inverted
+
+                # Expand forward
+                self._expand_forward_beam(current, forward_frontier, forward_visited, goal)
+
+                # ROUND 3.4: Beam cutoff (keep only top-k nodes)
+                if len(forward_frontier) > self.beam_width:
+                    # Re-heapify and keep only top-k
+                    forward_frontier = heapq.nsmallest(self.beam_width, forward_frontier)
+                    heapq.heapify(forward_frontier)
+
+            # Backward step
+            if backward_frontier:
+                current = heapq.heappop(backward_frontier)  # Get best node
+
+                # Check if we've reached a state the forward search has visited
+                if current.state in forward_visited:
+                    # SUCCESS! Combine programs
+                    forward_prog = forward_visited[current.state]['program']
+                    backward_prog = current.program
+
+                    # Backward program needs to be reversed and inverted
+                    backward_prog_inverted = [
+                        self.executor.get_inverse(p)
+                        for p in reversed(backward_prog)
+                        if self.executor.get_inverse(p)
+                    ]
+
+                    return forward_prog + backward_prog_inverted
+
+                # Expand backward
+                self._expand_backward_beam(current, backward_frontier, backward_visited, start)
+
+                # ROUND 3.4: Beam cutoff (keep only top-k nodes)
+                if len(backward_frontier) > self.beam_width:
+                    # Re-heapify and keep only top-k
+                    backward_frontier = heapq.nsmallest(self.beam_width, backward_frontier)
+                    heapq.heapify(backward_frontier)
 
         return None
 
@@ -650,6 +760,87 @@ class SymbolicProgramSynthesizer:
 
             frontier.append(next_node)
             # ROUND 3.3: Store with cost for better pruning
+            visited[next_state] = {'program': next_program, 'cost': next_cost}
+            self.stats['states_explored'] += 1
+
+    def _expand_forward_beam(self, node: ProgramNode, frontier: list, visited: Dict, goal: GridState):
+        """
+        ROUND 3.4: Expand forward for beam search (uses heapq.heappush)
+
+        Same as _expand_forward but uses priority queue (heapq) instead of deque.
+        """
+        if node.cost >= self.max_program_length:
+            return
+
+        for prim_name in self.executor.primitives.keys():
+            # Apply primitive
+            next_state = self.executor.execute(node.state, prim_name)
+
+            if next_state is None:
+                continue
+
+            # Cost-aware pruning
+            next_cost = node.cost + 1
+            if next_state in visited:
+                if visited[next_state]['cost'] <= next_cost:
+                    continue
+
+            # Compute A* heuristic
+            heuristic = self.compute_heuristic(next_state, goal)
+
+            # Add to frontier
+            next_program = node.program + [prim_name]
+            next_node = ProgramNode(
+                state=next_state,
+                program=next_program,
+                cost=next_cost,
+                heuristic=heuristic
+            )
+
+            heapq.heappush(frontier, next_node)  # ROUND 3.4: Priority queue
+            visited[next_state] = {'program': next_program, 'cost': next_cost}
+            self.stats['states_explored'] += 1
+
+    def _expand_backward_beam(self, node: ProgramNode, frontier: list, visited: Dict, start: GridState):
+        """
+        ROUND 3.4: Expand backward for beam search (uses heapq.heappush)
+
+        Same as _expand_backward but uses priority queue (heapq) instead of deque.
+        """
+        if node.cost >= self.max_program_length:
+            return
+
+        for prim_name in self.executor.primitives.keys():
+            # Only use invertible primitives for backward search
+            inv_name = self.executor.get_inverse(prim_name)
+            if inv_name is None:
+                continue
+
+            # Apply inverse
+            next_state = self.executor.execute(node.state, inv_name)
+
+            if next_state is None:
+                continue
+
+            # Cost-aware pruning
+            next_cost = node.cost + 1
+            if next_state in visited:
+                if visited[next_state]['cost'] <= next_cost:
+                    continue
+
+            # Compute A* heuristic
+            heuristic = self.compute_heuristic(next_state, start)
+
+            # Add to frontier (store forward primitive name)
+            next_program = node.program + [prim_name]
+            next_node = ProgramNode(
+                state=next_state,
+                program=next_program,
+                cost=next_cost,
+                heuristic=heuristic
+            )
+
+            heapq.heappush(frontier, next_node)  # ROUND 3.4: Priority queue
             visited[next_state] = {'program': next_program, 'cost': next_cost}
             self.stats['states_explored'] += 1
 
