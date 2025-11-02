@@ -1,0 +1,5484 @@
+{
+  "raw_runs": [
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.0021779537200927734,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0007431507110595703,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.0005593299865722656,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.0005269050598144531,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.000522613525390625,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0005035400390625,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.0005102157592773438,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.0006670951843261719,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.0007660388946533203,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0006036758422851562,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.0006451606750488281,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0005939006805419922,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0005886554718017578,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.0009260177612304688,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0006008148193359375,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0005791187286376953,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.0006036758422851562,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0005638599395751953,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0005962848663330078,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.0006458759307861328,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.0005779266357421875,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0005466938018798828,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.0005190372467041016,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.00048613548278808594,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.0005586147308349609,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0005335807800292969,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.0008728504180908203,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.0005702972412109375,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.0005347728729248047,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0004565715789794922,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.0005340576171875,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0005941390991210938,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0005238056182861328,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.0005462169647216797,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0004949569702148438,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0005137920379638672,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.0004734992980957031,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0004837512969970703,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0004754066467285156,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.0005650520324707031,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.0007281303405761719,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0005772113800048828,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.0005040168762207031,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.0005118846893310547,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.0005161762237548828,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0005052089691162109,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.0004897117614746094,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.0005064010620117188,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.0004892349243164062,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0004534721374511719,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.0005662441253662109,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0005216598510742188,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0005757808685302734,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.0005261898040771484,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0005402565002441406,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0005261898040771484,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.0005288124084472656,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0005404949188232422,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0005517005920410156,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.0005662441253662109,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.000522613525390625,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0005476474761962891,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.00048613548278808594,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.00047469139099121094,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.0005400180816650391,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0005598068237304688,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.0005061626434326172,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.0005133152008056641,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.0004725456237792969,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0004725456237792969,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.0005242824554443359,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0005021095275878906,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0005481243133544922,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.0005486011505126953,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0005552768707275391,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0005288124084472656,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.000518798828125,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0005004405975341797,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0005035400390625,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.000499725341796875,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.0004930496215820312,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0005316734313964844,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.00044989585876464844,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.0004813671112060547,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.00047850608825683594,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0005781650543212891,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.0007648468017578125,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.00087738037109375,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.000522613525390625,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0005207061767578125,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.0008885860443115234,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0005581378936767578,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0005583763122558594,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.0005846023559570312,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0004987716674804688,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0007331371307373047,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.000644683837890625,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0004990100860595703,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0005631446838378906,
+      "confidence": 0.95,
+      "prediction_correct": false
+    },
+    {
+      "condition": "nspsa_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.00055694580078125,
+      "confidence": 0.95,
+      "prediction_correct": true
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 3.3855438232421875e-05,
+      "confidence": 0.6319017587930581,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.8835067749023438e-05,
+      "confidence": 0.6830179908468793,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 9.5367431640625e-06,
+      "confidence": 0.5965898202512385,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 7.152557373046875e-06,
+      "confidence": 0.5366872413977892,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 6.9141387939453125e-06,
+      "confidence": 0.5217281230265471,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 6.9141387939453125e-06,
+      "confidence": 0.39204360341357847,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 6.198883056640625e-06,
+      "confidence": 0.6467326599765792,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 8.58306884765625e-06,
+      "confidence": 0.4053374576739823,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 6.9141387939453125e-06,
+      "confidence": 0.5750250322658468,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 8.344650268554688e-06,
+      "confidence": 0.6236664149932731,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 7.152557373046875e-06,
+      "confidence": 0.5715907653043963,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 6.4373016357421875e-06,
+      "confidence": 0.5846323443691233,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 6.67572021484375e-06,
+      "confidence": 0.4521103886031719,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 6.4373016357421875e-06,
+      "confidence": 0.5851407694577248,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 6.198883056640625e-06,
+      "confidence": 0.4844508923904548,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 6.4373016357421875e-06,
+      "confidence": 0.6678237033887573,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 6.9141387939453125e-06,
+      "confidence": 0.6970375822760508,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 6.9141387939453125e-06,
+      "confidence": 0.5372026197684907,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 7.152557373046875e-06,
+      "confidence": 0.36510349731400027,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 6.9141387939453125e-06,
+      "confidence": 0.33603178685055285,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 7.62939453125e-06,
+      "confidence": 0.32964833634515656,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 7.152557373046875e-06,
+      "confidence": 0.4170520482527356,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 7.152557373046875e-06,
+      "confidence": 0.6016211181606017,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 6.9141387939453125e-06,
+      "confidence": 0.4910049468150969,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 7.3909759521484375e-06,
+      "confidence": 0.6902961595917925,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.36365192780293853,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.4266827021987448,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.4555600523670133,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 7.3909759521484375e-06,
+      "confidence": 0.49951405551780337,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 6.9141387939453125e-06,
+      "confidence": 0.6539602969867059,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 6.67572021484375e-06,
+      "confidence": 0.5683377563227668,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 7.152557373046875e-06,
+      "confidence": 0.5617292068060014,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.0728836059570312e-05,
+      "confidence": 0.6439574772108108,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.0251998901367188e-05,
+      "confidence": 0.39290559278021364,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.5513236250070814,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.4752952916630123,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.4858835916171785,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.5693273735891687,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.3589859008789062e-05,
+      "confidence": 0.5179342038593812,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.3589859008789062e-05,
+      "confidence": 0.3019895646423377,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 1.7404556274414062e-05,
+      "confidence": 0.4081651641159174,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.33514404296875e-05,
+      "confidence": 0.36797546598653774,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 2.0742416381835938e-05,
+      "confidence": 0.526770377347451,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.3918992656894551,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.3113021850585938e-05,
+      "confidence": 0.5228171815665296,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.430511474609375e-05,
+      "confidence": 0.4380095909691961,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.3589859008789062e-05,
+      "confidence": 0.5217155606454339,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 2.6941299438476562e-05,
+      "confidence": 0.31486520989174466,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.3589859008789062e-05,
+      "confidence": 0.6377845493279736,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.37313464958410164,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.44385891981057735,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.6371896604291897,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.3046208673632654,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.811981201171875e-05,
+      "confidence": 0.48444060767276276,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.6775621254285179,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.1205673217773438e-05,
+      "confidence": 0.6890545245208517,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.40609161598735916,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.049041748046875e-05,
+      "confidence": 0.4922334893027985,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.4704114039884655,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.38202242201503667,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.6503785601115566,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.2636184692382812e-05,
+      "confidence": 0.4877088511481612,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.5845584038330194,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.31040059337642006,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.44604116141271843,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.0728836059570312e-05,
+      "confidence": 0.4127512546393827,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.2636184692382812e-05,
+      "confidence": 0.3070818711805989,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.4687311764356037,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.5796425420124302,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.657677082585614,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.4112025667216612,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.6689300537109375e-05,
+      "confidence": 0.47251734103153953,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.4493846636763089,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.5203860811297312,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.5128322509883629,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.364114420975724,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.1205673217773438e-05,
+      "confidence": 0.3544409708841393,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.43808877913951183,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.5213406896717435,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.41919570616223345,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 1.3113021850585938e-05,
+      "confidence": 0.6119131206171264,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.5999032574911908,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 1.2636184692382812e-05,
+      "confidence": 0.5083144246180155,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.6813891586696277,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.3400222438323204,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.5213906660677692,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.0728836059570312e-05,
+      "confidence": 0.32565521263402425,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.6985745172854275,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.36668330697246515,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.6227344522240454,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.0251998901367188e-05,
+      "confidence": 0.5949971300035568,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.33331163561347993,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.4097073417993945,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.6857784506383695,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.6777620424791293,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.3113021850585938e-05,
+      "confidence": 0.6638747646069033,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.4989827669907464,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.36124089178576574,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.608032186273331,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.630387383802966,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 1.5735626220703125e-05,
+      "confidence": 0.30548541095208204,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.3589859008789062e-05,
+      "confidence": 0.5363673301091729,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.3753337882066702,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.3113021850585938e-05,
+      "confidence": 0.5316804313416738,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.5020370483398438e-05,
+      "confidence": 0.6094579097552715,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.5856416367620123,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.5453640053820156,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.3768675674740287,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.40066644031289145,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.5896889722463471,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.33514404296875e-05,
+      "confidence": 0.32950054899491693,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.1205673217773438e-05,
+      "confidence": 0.6494372961104949,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.049041748046875e-05,
+      "confidence": 0.5574063206319366,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 9.059906005859375e-06,
+      "confidence": 0.5436203494944456,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 7.62939453125e-06,
+      "confidence": 0.5184998944885726,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 5.9604644775390625e-06,
+      "confidence": 0.664798501757683,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 6.198883056640625e-06,
+      "confidence": 0.30225375446687647,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.7642974853515625e-05,
+      "confidence": 0.5606693781497782,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.6505296027515224,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 0,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 2.3126602172851562e-05,
+      "confidence": 0.4774221641965147,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.4130054265421149,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.0013580322265625e-05,
+      "confidence": 0.40586046410146337,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.5079885562368637,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.049041748046875e-05,
+      "confidence": 0.44630939629827554,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.0728836059570312e-05,
+      "confidence": 0.6495872408181333,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.049041748046875e-05,
+      "confidence": 0.6586164252292296,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.0251998901367188e-05,
+      "confidence": 0.48706360797322534,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.1205673217773438e-05,
+      "confidence": 0.35273850256652706,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.049041748046875e-05,
+      "confidence": 0.34412062122697096,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.53643139249457,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.5500358323172712,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.5313828526933202,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.0728836059570312e-05,
+      "confidence": 0.6017852035506341,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.5667289791395518,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.4490450026342026,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.0728836059570312e-05,
+      "confidence": 0.45313313563629065,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.1205673217773438e-05,
+      "confidence": 0.44445740383389626,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.0251998901367188e-05,
+      "confidence": 0.3036304131511826,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.32227412384428505,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 1,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 8.821487426757812e-06,
+      "confidence": 0.3971101313035565,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 9.059906005859375e-06,
+      "confidence": 0.33323669483116425,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.6717779445143428,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 1.2636184692382812e-05,
+      "confidence": 0.6093018786645714,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.37385160059823486,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.7404556274414062e-05,
+      "confidence": 0.32571654201066924,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.4007536419388417,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.37990667058033173,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.6930878832759131,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.3696291503229457,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.3037260472189177,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.3113021850585938e-05,
+      "confidence": 0.32754811932843547,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.6063309860032979,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.6102548661612499,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.5382330783042585,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.430511474609375e-05,
+      "confidence": 0.40399078821512835,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.2636184692382812e-05,
+      "confidence": 0.35234066334208863,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.1205673217773438e-05,
+      "confidence": 0.40467909369558086,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.5725405386218978,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.1205673217773438e-05,
+      "confidence": 0.5008669572667352,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 2,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.5213750387377938,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.5040672321786996,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.3390564897508428,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.6125063794891606,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.6470609508101629,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.311716234114605,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.44195245358366714,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.2636184692382812e-05,
+      "confidence": 0.4367137875358083,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.31175855833325966,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.5335153893954198,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 2.5510787963867188e-05,
+      "confidence": 0.4939712867924516,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.6199385257154189,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.4064736098005477,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.4006122303676856,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.44635119436983656,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.2874603271484375e-05,
+      "confidence": 0.31649255656606673,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.3784306885914195,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.4149603657442855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.5470200829906791,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.9311904907226562e-05,
+      "confidence": 0.6748411323021197,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 3,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.1920928955078125e-05,
+      "confidence": 0.36789987213544867,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.3503126666564537,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.37202776491140654,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 8.821487426757812e-06,
+      "confidence": 0.6388876117206651,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.3595574480429661,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.049041748046875e-05,
+      "confidence": 0.5978057901064715,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.5868009481313843,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.1682510375976562e-05,
+      "confidence": 0.5043039795625939,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.239776611328125e-05,
+      "confidence": 0.32575881970369125,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.1205673217773438e-05,
+      "confidence": 0.5413522460873803,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 1.0728836059570312e-05,
+      "confidence": 0.3508788820015134,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.1205673217773438e-05,
+      "confidence": 0.4597430475018153,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.6880156908755184,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.049041748046875e-05,
+      "confidence": 0.6577548772270861,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.0728836059570312e-05,
+      "confidence": 0.6020185226314674,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.0967254638671875e-05,
+      "confidence": 0.3421382649560519,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.3689613913832162,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.2636184692382812e-05,
+      "confidence": 0.47805668600310136,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.1444091796875e-05,
+      "confidence": 0.6842985415419411,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.0728836059570312e-05,
+      "confidence": 0.6892565361424035,
+      "prediction_correct": false
+    },
+    {
+      "condition": "llm_alone",
+      "run_id": 4,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.2159347534179688e-05,
+      "confidence": 0.63266070540195,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 3.170967102050781e-05,
+      "confidence": 0.5742243749923378,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 3.814697265625e-05,
+      "confidence": 0.4804102521403323,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 2.956390380859375e-05,
+      "confidence": 0.6230134193963475,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 2.8133392333984375e-05,
+      "confidence": 0.5981132152863435,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 3.218650817871094e-05,
+      "confidence": 0.43864797353587626,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 2.8133392333984375e-05,
+      "confidence": 0.490923599703048,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 2.8371810913085938e-05,
+      "confidence": 0.6887474170968597,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 3.123283386230469e-05,
+      "confidence": 0.5670110906308348,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 3.123283386230469e-05,
+      "confidence": 0.42243685227958155,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 2.9087066650390625e-05,
+      "confidence": 0.6465877704923836,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 3.0279159545898438e-05,
+      "confidence": 0.6122255942297634,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 2.7894973754882812e-05,
+      "confidence": 0.5779546557675521,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 3.1948089599609375e-05,
+      "confidence": 0.5348310706734363,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 3.0517578125e-05,
+      "confidence": 0.4990109587611472,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 3.1948089599609375e-05,
+      "confidence": 0.447931829261587,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 2.6702880859375e-05,
+      "confidence": 0.5072827314459294,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 2.7894973754882812e-05,
+      "confidence": 0.6765215578902122,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 2.8848648071289062e-05,
+      "confidence": 0.36974990793814755,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 3.24249267578125e-05,
+      "confidence": 0.4271614880090319,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 0,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.71661376953125e-05,
+      "confidence": 0.6767614992190342,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 3.0994415283203125e-05,
+      "confidence": 0.5630406486373207,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 2.7418136596679688e-05,
+      "confidence": 0.5252646911125587,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 2.4080276489257812e-05,
+      "confidence": 0.6361178898632106,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 2.5987625122070312e-05,
+      "confidence": 0.6236961988456657,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 2.7418136596679688e-05,
+      "confidence": 0.4965021644705696,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 2.7894973754882812e-05,
+      "confidence": 0.5773948396961387,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 2.6464462280273438e-05,
+      "confidence": 0.47125478444689756,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 2.8371810913085938e-05,
+      "confidence": 0.39932452316852196,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 2.765655517578125e-05,
+      "confidence": 0.6993710469965577,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 4.100799560546875e-05,
+      "confidence": 0.5508262898034381,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 2.86102294921875e-05,
+      "confidence": 0.5308224655480891,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 3.910064697265625e-05,
+      "confidence": 0.6295139693999925,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 2.8133392333984375e-05,
+      "confidence": 0.6094068337986012,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 2.8848648071289062e-05,
+      "confidence": 0.5790239528465995,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 2.7179718017578125e-05,
+      "confidence": 0.6848045040581447,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 4.100799560546875e-05,
+      "confidence": 0.5667559351577557,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 2.9325485229492188e-05,
+      "confidence": 0.5214032853387931,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 2.7894973754882812e-05,
+      "confidence": 0.5896201319240086,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 3.147125244140625e-05,
+      "confidence": 0.6542435546409948,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 1,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 2.765655517578125e-05,
+      "confidence": 0.6162783379149575,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 2.6464462280273438e-05,
+      "confidence": 0.5802954355388896,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.6450881958007812e-05,
+      "confidence": 0.529668411707701,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 2.5510787963867188e-05,
+      "confidence": 0.4925032454042805,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 2.7894973754882812e-05,
+      "confidence": 0.6562196292254361,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 2.7179718017578125e-05,
+      "confidence": 0.5116542949647286,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 2.8848648071289062e-05,
+      "confidence": 0.5400005310835884,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 3.933906555175781e-05,
+      "confidence": 0.5042666082219533,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 2.8848648071289062e-05,
+      "confidence": 0.6426697883161725,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 2.8133392333984375e-05,
+      "confidence": 0.5154088649888118,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 2.4318695068359375e-05,
+      "confidence": 0.6673640955648081,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.6450881958007812e-05,
+      "confidence": 0.6265096346963516,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.6466974556623045,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.6956030358784815,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.4543533325195312e-05,
+      "confidence": 0.6827752785125838,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 2.0503997802734375e-05,
+      "confidence": 0.5916515431427007,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.47483403823606257,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.430511474609375e-05,
+      "confidence": 0.6456501616299773,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.5822656677912106,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.597844035387381,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 2,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.5020370483398438e-05,
+      "confidence": 0.6529390160220216,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 1.4543533325195312e-05,
+      "confidence": 0.5623258560240222,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.5735626220703125e-05,
+      "confidence": 0.6467138249632642,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.6507653617962528,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.5020370483398438e-05,
+      "confidence": 0.5242769735480817,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.52587890625e-05,
+      "confidence": 0.6963520756720015,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.5293958510625117,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.6256962351013227,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.601809035157177,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.599108624015426,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.6392939323163356,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.52587890625e-05,
+      "confidence": 0.6731538455415534,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.41094480659246824,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.4543533325195312e-05,
+      "confidence": 0.6371568031241932,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 4.1961669921875e-05,
+      "confidence": 0.48820512096358587,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.621246337890625e-05,
+      "confidence": 0.5096047148136587,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.5626530097425151,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.6689300537109375e-05,
+      "confidence": 0.6575806553239497,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.4971849329689326,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.49395119704491963,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 3,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.4543533325195312e-05,
+      "confidence": 0.5610285688200881,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.4712724032125497,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 1.430511474609375e-05,
+      "confidence": 0.4710982240422708,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 1.430511474609375e-05,
+      "confidence": 0.6529748646890644,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 1.4543533325195312e-05,
+      "confidence": 0.5329354640526385,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 1.621246337890625e-05,
+      "confidence": 0.5211916188087965,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.6056129021330185,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 1.4543533325195312e-05,
+      "confidence": 0.5051962019496045,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 1.5020370483398438e-05,
+      "confidence": 0.3406441560579968,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 1.4543533325195312e-05,
+      "confidence": 0.6437196310697053,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.5622371049881631,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 1.5497207641601562e-05,
+      "confidence": 0.4707203907785237,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.34215030898563403,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 1.4066696166992188e-05,
+      "confidence": 0.6432768426506869,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.5827962044682038,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 1.430511474609375e-05,
+      "confidence": 0.6027037399960629,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 1.3828277587890625e-05,
+      "confidence": 0.5573958417928833,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 1.4781951904296875e-05,
+      "confidence": 0.3709731175113946,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 1.5020370483398438e-05,
+      "confidence": 0.4472363661254596,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 1.71661376953125e-05,
+      "confidence": 0.6537865696416431,
+      "prediction_correct": false
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "run_id": 4,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 1.8596649169921875e-05,
+      "confidence": 0.5841099454661198,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 5.91278076171875e-05,
+      "confidence": 0.7448299437250514,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 3.24249267578125e-05,
+      "confidence": 0.6981381862586852,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 2.9325485229492188e-05,
+      "confidence": 0.7940688758603602,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 2.765655517578125e-05,
+      "confidence": 0.8015253016151844,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 2.8371810913085938e-05,
+      "confidence": 0.6926383775250333,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 2.8848648071289062e-05,
+      "confidence": 0.8648275887017309,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 2.7418136596679688e-05,
+      "confidence": 0.8436594692224012,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 3.361701965332031e-05,
+      "confidence": 0.7995015793912377,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 3.147125244140625e-05,
+      "confidence": 0.6860690773184461,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 2.9325485229492188e-05,
+      "confidence": 0.8079943283769833,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 3.0040740966796875e-05,
+      "confidence": 0.8149242095739548,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 2.765655517578125e-05,
+      "confidence": 0.8552512945864225,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 3.314018249511719e-05,
+      "confidence": 0.6989556204303816,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 3.2901763916015625e-05,
+      "confidence": 0.8319178034628992,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 3.1948089599609375e-05,
+      "confidence": 0.66213929221488,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 3.1948089599609375e-05,
+      "confidence": 0.796638713121603,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 3.266334533691406e-05,
+      "confidence": 0.716162466608053,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 4.3392181396484375e-05,
+      "confidence": 0.6541314875983463,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 3.3855438232421875e-05,
+      "confidence": 0.8601377337550971,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 0,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 3.24249267578125e-05,
+      "confidence": 0.8431999499394461,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 3.314018249511719e-05,
+      "confidence": 0.705422059709306,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 3.361701965332031e-05,
+      "confidence": 0.6196199182519085,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 3.170967102050781e-05,
+      "confidence": 0.7268613482277845,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 3.337860107421875e-05,
+      "confidence": 0.7334660772174635,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 3.218650817871094e-05,
+      "confidence": 0.6983377338406932,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 3.218650817871094e-05,
+      "confidence": 0.779788587980562,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 3.147125244140625e-05,
+      "confidence": 0.8473903329047066,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 3.266334533691406e-05,
+      "confidence": 0.7218742208658544,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 3.147125244140625e-05,
+      "confidence": 0.8116785846591753,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 3.147125244140625e-05,
+      "confidence": 0.7318132612109564,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 3.147125244140625e-05,
+      "confidence": 0.8490877190998827,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 3.147125244140625e-05,
+      "confidence": 0.8573414518834679,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 3.123283386230469e-05,
+      "confidence": 0.879163514181573,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 8.535385131835938e-05,
+      "confidence": 0.8354226372479355,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 3.3855438232421875e-05,
+      "confidence": 0.7754590693487456,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 3.1948089599609375e-05,
+      "confidence": 0.8227429927719556,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 3.24249267578125e-05,
+      "confidence": 0.8036141331995363,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 3.314018249511719e-05,
+      "confidence": 0.8027676206203501,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 3.218650817871094e-05,
+      "confidence": 0.8794748791741684,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 1,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 3.123283386230469e-05,
+      "confidence": 0.871933071552027,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 3.0040740966796875e-05,
+      "confidence": 0.7874445321796264,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 3.24249267578125e-05,
+      "confidence": 0.748856110102521,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 4.887580871582031e-05,
+      "confidence": 0.7408414862151751,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 4.00543212890625e-05,
+      "confidence": 0.8153215827431088,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 2.765655517578125e-05,
+      "confidence": 0.7937674659517489,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 2.8133392333984375e-05,
+      "confidence": 0.7190591266180054,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 2.7894973754882812e-05,
+      "confidence": 0.7225997200610199,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 2.6941299438476562e-05,
+      "confidence": 0.7594944581120063,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 3.504753112792969e-05,
+      "confidence": 0.7531562232763434,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 5.793571472167969e-05,
+      "confidence": 0.8604986129034242,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 4.553794860839844e-05,
+      "confidence": 0.8304439421773754,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 2.9802322387695312e-05,
+      "confidence": 0.8313345208844639,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 4.1484832763671875e-05,
+      "confidence": 0.8666097057755427,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 4.601478576660156e-05,
+      "confidence": 0.8719824320543411,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 3.933906555175781e-05,
+      "confidence": 0.713047291591855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 3.170967102050781e-05,
+      "confidence": 0.7987854655732064,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 3.147125244140625e-05,
+      "confidence": 0.7438068185812671,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 3.218650817871094e-05,
+      "confidence": 0.8703628550392052,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 3.719329833984375e-05,
+      "confidence": 0.8072517373473558,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 2,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 3.1948089599609375e-05,
+      "confidence": 0.8226132815266061,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 3.075599670410156e-05,
+      "confidence": 0.8352999415107373,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 2.8371810913085938e-05,
+      "confidence": 0.7494095328182714,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 2.574920654296875e-05,
+      "confidence": 0.6956777181596197,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 4.57763671875e-05,
+      "confidence": 0.8508813754033033,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 3.910064697265625e-05,
+      "confidence": 0.6647831671330799,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 2.765655517578125e-05,
+      "confidence": 0.7790626539021323,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 2.7894973754882812e-05,
+      "confidence": 0.834631286022335,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 2.7179718017578125e-05,
+      "confidence": 0.7646531375338291,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 2.6702880859375e-05,
+      "confidence": 0.862178120254312,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 2.4557113647460938e-05,
+      "confidence": 0.833893176301364,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 2.7418136596679688e-05,
+      "confidence": 0.5977515538528615,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 5.316734313964844e-05,
+      "confidence": 0.6834579510742098,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 2.9325485229492188e-05,
+      "confidence": 0.6847587356821284,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 2.765655517578125e-05,
+      "confidence": 0.8159219951766803,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 2.574920654296875e-05,
+      "confidence": 0.8410560764773978,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 2.6941299438476562e-05,
+      "confidence": 0.7799481011806761,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 2.6702880859375e-05,
+      "confidence": 0.8201260516770066,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 2.6226043701171875e-05,
+      "confidence": 0.6924740260127437,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 2.6464462280273438e-05,
+      "confidence": 0.5987602235433317,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 3,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 2.5987625122070312e-05,
+      "confidence": 0.6378248120009482,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 2.6464462280273438e-05,
+      "confidence": 0.6537215818764381,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 3.814697265625e-05,
+      "confidence": 0.8747455359851604,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 3.0994415283203125e-05,
+      "confidence": 0.7316558547139514,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 2.7179718017578125e-05,
+      "confidence": 0.84695355377665,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 2.574920654296875e-05,
+      "confidence": 0.8024679994788582,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 5.078315734863281e-05,
+      "confidence": 0.6629432152355149,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 3.0517578125e-05,
+      "confidence": 0.7156187515115776,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 4.863739013671875e-05,
+      "confidence": 0.7442871526446067,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 2.6941299438476562e-05,
+      "confidence": 0.7414510054021582,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 2.574920654296875e-05,
+      "confidence": 0.8074618525041646,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 2.5510787963867188e-05,
+      "confidence": 0.5929045394976061,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 2.5033950805664062e-05,
+      "confidence": 0.8795506940300543,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 2.6702880859375e-05,
+      "confidence": 0.763746460039152,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 2.574920654296875e-05,
+      "confidence": 0.5576458880733736,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 2.5987625122070312e-05,
+      "confidence": 0.8472041981103681,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 2.5510787963867188e-05,
+      "confidence": 0.7989102528120954,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 2.6226043701171875e-05,
+      "confidence": 0.8185945569452576,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 5.030632019042969e-05,
+      "confidence": 0.8336597930804686,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 6.198883056640625e-05,
+      "confidence": 0.6736970456944095,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "run_id": 4,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 3.337860107421875e-05,
+      "confidence": 0.7772727828345481,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.0009455680847167969,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0006618499755859375,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.0005662441253662109,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.0005605220794677734,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.0005948543548583984,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0005698204040527344,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.0005524158477783203,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.0005624294281005859,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.0005261898040771484,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0005576610565185547,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.0005953311920166016,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0005707740783691406,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0006153583526611328,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.0006096363067626953,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0005781650543212891,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0005688667297363281,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.0005693435668945312,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0005645751953125,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0005638599395751953,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 0,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.0005581378936767578,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.0007922649383544922,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0006377696990966797,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.0005733966827392578,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.0005855560302734375,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.0005812644958496094,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0006527900695800781,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.000560760498046875,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.0005996227264404297,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.0005385875701904297,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0005774497985839844,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.0006265640258789062,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0006053447723388672,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0006356239318847656,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.000690460205078125,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0006351470947265625,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0006101131439208984,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.0005755424499511719,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0006167888641357422,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0006134510040283203,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 1,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.0005717277526855469,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.000990152359008789,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0006732940673828125,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.0008263587951660156,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.0007314682006835938,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.0008289813995361328,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0008311271667480469,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.0008215904235839844,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.0006709098815917969,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.0005629062652587891,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0006146430969238281,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.0006830692291259766,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0006759166717529297,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0007772445678710938,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.0007188320159912109,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0006644725799560547,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0006506443023681641,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.0005869865417480469,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0006768703460693359,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0006747245788574219,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 2,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.0005898475646972656,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.0007047653198242188,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0007021427154541016,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.0006008148193359375,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.0005855560302734375,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.0006554126739501953,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0006031990051269531,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.0006427764892578125,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.0006055831909179688,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.0005745887756347656,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0005598068237304688,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.0006442070007324219,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0006279945373535156,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0006024837493896484,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.0008764266967773438,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0006706714630126953,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0007398128509521484,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.0008134841918945312,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0006210803985595703,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0006442070007324219,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 3,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.0006115436553955078,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "rotation_easy_0",
+      "success": true,
+      "time_seconds": 0.0007781982421875,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "rotation_easy_1",
+      "success": true,
+      "time_seconds": 0.0006358623504638672,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "rotation_easy_2",
+      "success": true,
+      "time_seconds": 0.0006034374237060547,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "rotation_easy_3",
+      "success": true,
+      "time_seconds": 0.0005822181701660156,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "rotation_easy_4",
+      "success": true,
+      "time_seconds": 0.0006144046783447266,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "reflection_easy_0",
+      "success": true,
+      "time_seconds": 0.0009589195251464844,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "reflection_easy_1",
+      "success": true,
+      "time_seconds": 0.0006086826324462891,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "reflection_easy_2",
+      "success": true,
+      "time_seconds": 0.0005881786346435547,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "reflection_easy_3",
+      "success": true,
+      "time_seconds": 0.0005497932434082031,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "reflection_easy_4",
+      "success": true,
+      "time_seconds": 0.0005316734313964844,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "inversion_medium_0",
+      "success": true,
+      "time_seconds": 0.000591278076171875,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "inversion_medium_1",
+      "success": true,
+      "time_seconds": 0.0005691051483154297,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "inversion_medium_2",
+      "success": true,
+      "time_seconds": 0.0005936622619628906,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "inversion_medium_3",
+      "success": true,
+      "time_seconds": 0.0006122589111328125,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "inversion_medium_4",
+      "success": true,
+      "time_seconds": 0.0005981922149658203,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "composition_hard_0",
+      "success": true,
+      "time_seconds": 0.0005879402160644531,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "composition_hard_1",
+      "success": true,
+      "time_seconds": 0.00072479248046875,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "composition_hard_2",
+      "success": true,
+      "time_seconds": 0.0005748271942138672,
+      "confidence": 0.855,
+      "prediction_correct": true
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "composition_hard_3",
+      "success": true,
+      "time_seconds": 0.0005581378936767578,
+      "confidence": 0.855,
+      "prediction_correct": false
+    },
+    {
+      "condition": "full_system",
+      "run_id": 4,
+      "task_id": "composition_hard_4",
+      "success": true,
+      "time_seconds": 0.0006659030914306641,
+      "confidence": 0.855,
+      "prediction_correct": true
+    }
+  ],
+  "aggregates": [
+    {
+      "condition": "nspsa_alone",
+      "num_runs": 5,
+      "num_tasks": 4,
+      "mean_success_rate": 1.0,
+      "std_success_rate": 0.0,
+      "mean_time": 0.0005761885643005371,
+      "std_time": 6.458210076882838e-05,
+      "mean_confidence": 0.9499999999999998,
+      "std_confidence": 0.0,
+      "mean_accuracy": 0.9,
+      "std_accuracy": 0.0
+    },
+    {
+      "condition": "hrm_alone",
+      "num_runs": 5,
+      "num_tasks": 4,
+      "mean_success_rate": 1.0,
+      "std_success_rate": 0.0,
+      "mean_time": 1.1451244354248045e-05,
+      "std_time": 1.8916166727171387e-06,
+      "mean_confidence": 0.5049128235306332,
+      "std_confidence": 0.03128552722654264,
+      "mean_accuracy": 0.0,
+      "std_accuracy": 0.0
+    },
+    {
+      "condition": "llm_alone",
+      "num_runs": 5,
+      "num_tasks": 4,
+      "mean_success_rate": 1.0,
+      "std_success_rate": 0.0,
+      "mean_time": 1.2187957763671876e-05,
+      "std_time": 7.076494773517285e-07,
+      "mean_confidence": 0.4826707363996553,
+      "std_confidence": 0.021475396742094057,
+      "mean_accuracy": 0.0,
+      "std_accuracy": 0.0
+    },
+    {
+      "condition": "hrm_llm_no_vae",
+      "num_runs": 5,
+      "num_tasks": 4,
+      "mean_success_rate": 1.0,
+      "std_success_rate": 0.0,
+      "mean_time": 2.2339820861816407e-05,
+      "std_time": 6.4028373658634855e-06,
+      "mean_confidence": 0.5635026740140673,
+      "std_confidence": 0.02391818911948682,
+      "mean_accuracy": 0.0,
+      "std_accuracy": 0.0
+    },
+    {
+      "condition": "full_orcawhiskey",
+      "num_runs": 5,
+      "num_tasks": 4,
+      "mean_success_rate": 1.0,
+      "std_success_rate": 0.0,
+      "mean_time": 3.333806991577149e-05,
+      "std_time": 2.0830690062480155e-06,
+      "mean_confidence": 0.7722429023191183,
+      "std_confidence": 0.0165326477311458,
+      "mean_accuracy": 0.0,
+      "std_accuracy": 0.0
+    },
+    {
+      "condition": "full_system",
+      "num_runs": 5,
+      "num_tasks": 4,
+      "mean_success_rate": 1.0,
+      "std_success_rate": 0.0,
+      "mean_time": 0.0006403589248657226,
+      "std_time": 4.095178899589362e-05,
+      "mean_confidence": 0.8550000000000001,
+      "std_confidence": 0.0,
+      "mean_accuracy": 0.9,
+      "std_accuracy": 0.0
+    }
+  ]
+}
