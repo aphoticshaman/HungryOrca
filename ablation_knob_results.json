@@ -1,0 +1,83 @@
+{
+  "num_tasks": 10,
+  "time_per_task": 10,
+  "results": {
+    "BASELINE (fast, underfit)": {
+      "avg_score": 0.1,
+      "avg_time": 5.538463592529297e-05,
+      "perfect": 1,
+      "config": {
+        "name": "BASELINE (fast, underfit)",
+        "search_depth": 1,
+        "transform_set": [
+          "identity",
+          "flip_h",
+          "flip_v",
+          "color_map"
+        ],
+        "validation_strictness": 1,
+        "time_allocation": 0.6
+      }
+    },
+    "STANDARD (balanced)": {
+      "avg_score": 0.0,
+      "avg_time": 7.712841033935547e-05,
+      "perfect": 0,
+      "config": {
+        "name": "STANDARD (balanced)",
+        "search_depth": 2,
+        "transform_set": [
+          "identity",
+          "flip_h",
+          "flip_v",
+          "rot_90",
+          "rot_180",
+          "color_map"
+        ],
+        "validation_strictness": 2,
+        "time_allocation": 0.6
+      }
+    },
+    "AGGRESSIVE (thorough, may overfit)": {
+      "avg_score": 0.0,
+      "avg_time": 8.761882781982422e-05,
+      "perfect": 0,
+      "config": {
+        "name": "AGGRESSIVE (thorough, may overfit)",
+        "search_depth": 2,
+        "transform_set": [
+          "identity",
+          "flip_h",
+          "flip_v",
+          "rot_90",
+          "rot_180",
+          "rot_270",
+          "color_map",
+          "transpose",
+          "fill"
+        ],
+        "validation_strictness": 999,
+        "time_allocation": 0.99
+      }
+    },
+    "DEPTH-3 (compositional)": {
+      "avg_score": 0.0,
+      "avg_time": 6.797313690185547e-05,
+      "perfect": 0,
+      "config": {
+        "name": "DEPTH-3 (compositional)",
+        "search_depth": 3,
+        "transform_set": [
+          "identity",
+          "flip_h",
+          "flip_v",
+          "rot_90",
+          "rot_180",
+          "color_map"
+        ],
+        "validation_strictness": 2,
+        "time_allocation": 0.6
+      }
+    }
+  }
+}
