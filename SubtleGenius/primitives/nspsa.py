@@ -29,38 +29,69 @@ class PrimitiveRanker:
     """
     Neural network that predicts primitive usefulness scores.
     Uses simple but effective feature engineering + logistic regression.
+
+    ROUND 2 REFACTORING: Dynamic primitive discovery
     """
 
-    def __init__(self, num_primitives: int = 15):
-        self.num_primitives = num_primitives
-        self.primitive_names = [
-            'rotate_90_cw', 'rotate_90_ccw', 'rotate_180',
-            'reflect_h', 'reflect_v', 'reflect_d1', 'reflect_d2',
-            'transpose', 'invert_colors',
-            'scale_up_2x', 'scale_down_2x',
-            'translate_h', 'translate_v',
-            'fill_interior', 'extract_largest_component'
-        ]
+    def __init__(self, primitive_executor=None):
+        # ROUND 2.2: Dynamically discover primitives from executor
+        if primitive_executor is None:
+            from symbolic_solver import SymbolicPrimitiveExecutor
+            primitive_executor = SymbolicPrimitiveExecutor()
+
+        self.executor = primitive_executor
+        self.primitive_names = list(self.executor.primitives.keys())
+        self.num_primitives = len(self.primitive_names)
+
+        # Build primitive name to index mapping
+        self.prim_to_idx = {name: idx for idx, name in enumerate(self.primitive_names)}
 
         # Weights learned from experience (initialized to prior knowledge)
-        # Shape: (num_features, num_primitives)
+        # Shape: (num_features, num_primitives) - DYNAMIC based on actual primitives
         self.weights = self._initialize_weights()
+
+        # ROUND 2.6: Learning rate with decay
         self.learning_rate = 0.01
+        self.lr_decay = 0.995  # Multiply LR by this after each update
+        self.min_lr = 0.001
+
+        # ROUND 2.7: Momentum
+        self.momentum = np.zeros_like(self.weights)
+        self.beta = 0.9
+
+        # ROUND 2.5: Regularization
+        self.l2_lambda = 0.01
 
     def _initialize_weights(self) -> np.ndarray:
-        """Initialize with prior knowledge about primitive usefulness"""
+        """
+        Initialize with prior knowledge about primitive usefulness
+        ROUND 2.3: Dynamic initialization without hardcoded indices
+        """
         # Features: [size_ratio, color_change, shape_change, symmetry_change, connectivity_change]
         num_features = 5
         weights = np.random.randn(num_features, self.num_primitives) * 0.1
 
-        # Prior: rotations don't change colors
-        weights[1, 0:3] = -0.5  # rotate primitives
+        # ROUND 2.3: Set priors based on primitive NAME patterns (not indices)
+        for idx, prim_name in enumerate(self.primitive_names):
+            # Prior: rotations don't change colors
+            if 'rotate' in prim_name:
+                weights[1, idx] = -0.5  # Feature 1 (color_change)
 
-        # Prior: color inversion strongly changes colors
-        weights[1, 8] = 1.0  # invert_colors
+            # Prior: color/invert operations strongly change colors
+            if 'color' in prim_name or 'invert' in prim_name:
+                weights[1, idx] = 1.0
 
-        # Prior: scaling changes size
-        weights[0, 9:11] = 1.0  # scale primitives
+            # Prior: scaling changes size
+            if 'scale' in prim_name:
+                weights[0, idx] = 1.0  # Feature 0 (size_ratio)
+
+            # Prior: reflections change symmetry
+            if 'reflect' in prim_name:
+                weights[3, idx] = 0.5  # Feature 3 (symmetry_change)
+
+            # Prior: transpose changes aspect ratio
+            if 'transpose' in prim_name:
+                weights[2, idx] = 0.8  # Feature 2 (shape_change)
 
         return weights
 
@@ -115,15 +146,43 @@ class PrimitiveRanker:
 
     def update(self, input_grid: np.ndarray, output_grid: np.ndarray,
                successful_primitive: str, reward: float):
-        """Update weights based on success/failure"""
-        if successful_primitive not in self.primitive_names:
+        """
+        Update weights based on success/failure
+        ROUND 2.4: Proper gradient descent with logistic regression
+        """
+        if successful_primitive not in self.prim_to_idx:
             return
 
-        prim_idx = self.primitive_names.index(successful_primitive)
+        prim_idx = self.prim_to_idx[successful_primitive]
         features = self.extract_features(input_grid, output_grid)
 
-        # Simple gradient update: weights += lr * reward * features (for successful primitive)
-        self.weights[:, prim_idx] += self.learning_rate * reward * features
+        # ROUND 2.4: Compute current prediction
+        logit = features @ self.weights[:, prim_idx]
+        p = 1.0 / (1.0 + np.exp(-logit))  # Sigmoid
+
+        # Error signal: target (reward) vs prediction (p)
+        # If reward=1.0 (success) and p=0.3, error=0.7 (need to increase score)
+        # If reward=0.0 (failure) and p=0.8, error=-0.8 (need to decrease score)
+        error = reward - p
+
+        # Logistic regression gradient: error * sigmoid_derivative * features
+        # sigmoid_derivative = p * (1 - p)
+        gradient = error * p * (1 - p) * features
+
+        # ROUND 2.5: Add L2 regularization (weight decay)
+        gradient -= self.l2_lambda * self.weights[:, prim_idx]
+
+        # ROUND 2.7: Momentum update
+        self.momentum[:, prim_idx] = (
+            self.beta * self.momentum[:, prim_idx] +
+            (1 - self.beta) * gradient
+        )
+
+        # Weight update with momentum
+        self.weights[:, prim_idx] += self.learning_rate * self.momentum[:, prim_idx]
+
+        # ROUND 2.6: Learning rate decay
+        self.learning_rate = max(self.min_lr, self.learning_rate * self.lr_decay)
 
 
 # ============================================================================
