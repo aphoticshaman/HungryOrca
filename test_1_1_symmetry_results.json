@@ -1,0 +1,168 @@
+{
+  "test_id": "1.1",
+  "test_name": "Symmetry Strength Feature",
+  "hypothesis": "Better symmetry detection \u2192 improved pattern matching",
+  "conditions": {
+    "A": {
+      "name": "Current Fuzzy (4 features)",
+      "runs": [
+        {
+          "run_number": 1,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        },
+        {
+          "run_number": 2,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        },
+        {
+          "run_number": 3,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        },
+        {
+          "run_number": 4,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        },
+        {
+          "run_number": 5,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        }
+      ],
+      "mean_accuracy": 20.0,
+      "std_accuracy": 0.0
+    },
+    "B": {
+      "name": "Symmetry-Only (1 feature)",
+      "runs": [
+        {
+          "run_number": 1,
+          "tasks_solved": 0,
+          "total_tasks": 10,
+          "accuracy": 0.0,
+          "solved_task_ids": []
+        },
+        {
+          "run_number": 2,
+          "tasks_solved": 0,
+          "total_tasks": 10,
+          "accuracy": 0.0,
+          "solved_task_ids": []
+        },
+        {
+          "run_number": 3,
+          "tasks_solved": 0,
+          "total_tasks": 10,
+          "accuracy": 0.0,
+          "solved_task_ids": []
+        },
+        {
+          "run_number": 4,
+          "tasks_solved": 0,
+          "total_tasks": 10,
+          "accuracy": 0.0,
+          "solved_task_ids": []
+        },
+        {
+          "run_number": 5,
+          "tasks_solved": 0,
+          "total_tasks": 10,
+          "accuracy": 0.0,
+          "solved_task_ids": []
+        }
+      ],
+      "mean_accuracy": 0.0,
+      "std_accuracy": 0.0
+    },
+    "C": {
+      "name": "Current + Symmetry (5 features)",
+      "runs": [
+        {
+          "run_number": 1,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        },
+        {
+          "run_number": 2,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        },
+        {
+          "run_number": 3,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        },
+        {
+          "run_number": 4,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        },
+        {
+          "run_number": 5,
+          "tasks_solved": 2,
+          "total_tasks": 10,
+          "accuracy": 20.0,
+          "solved_task_ids": [
+            "00576224",
+            "009d5c81"
+          ]
+        }
+      ],
+      "mean_accuracy": 20.0,
+      "std_accuracy": 0.0
+    }
+  },
+  "analysis": {
+    "improvement_absolute": 0.0,
+    "improvement_relative": 0.0,
+    "decision": "NO-GO"
+  }
+}
