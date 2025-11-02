@@ -32,8 +32,23 @@ import numpy as np
 import json
 import time
 import os
+import sys
 from typing import List, Tuple, Dict, Set
+from datetime import datetime
 from collections import defaultdict
+
+
+# LOGGING SETUP - Write to both console and log.txt with immediate flush
+LOG_FILE = 'turboorca_log.txt'
+
+def log(msg, end='\n', flush=True):
+    """Print to console AND write to log.txt with immediate flush."""
+    print(msg, end=end, flush=flush)
+    with open(LOG_FILE, 'a') as f:
+        f.write(msg + end)
+        if flush:
+            f.flush()
+            os.fsync(f.fileno())  # Force write to disk
 
 
 def get_data_paths():
@@ -438,9 +453,9 @@ class TurboOrcaV7:
     def validate_on_training_set(self, num_samples: int = 50):
         """Validate on training set."""
 
-        print("\n" + "=" * 80)
-        print("TRAINING VALIDATION")
-        print("=" * 80)
+        log("\n" + "=" * 80)
+        log("TRAINING VALIDATION")
+        log("=" * 80)
 
         paths = get_data_paths()
         try:
@@ -449,7 +464,7 @@ class TurboOrcaV7:
             with open(paths['training_solutions']) as f:
                 solutions = json.load(f)
         except FileNotFoundError as e:
-            print(f"ERROR: {e}")
+            log(f"ERROR: {e}")
             return
 
         task_ids = list(train_tasks.keys())[:num_samples]
@@ -462,7 +477,7 @@ class TurboOrcaV7:
         else:
             time_per_task = 0.5
 
-        print(f"Testing on {num_samples} tasks ({time_per_task}s each)...\n")
+        log(f"Testing on {num_samples} tasks ({time_per_task}s each)...\n")
 
         perfect = 0
         partial = 0
@@ -486,24 +501,25 @@ class TurboOrcaV7:
                 partial += 1
 
             if (i + 1) % 10 == 0:
-                print(f"  {i+1}/{num_samples}: Perfect={perfect}, "
-                      f"Avg={np.mean(similarities):.1%}")
+                log(f"  {i+1}/{num_samples}: Perfect={perfect}, "
+                    f"Avg={np.mean(similarities):.1%}")
 
         self.training_perfect = perfect
         self.training_partial = partial
         self.training_total = num_samples
         self.training_similarities = similarities
 
-        print(f"\n✓ Perfect: {perfect}/{num_samples} ({perfect/num_samples:.1%})")
-        print(f"✓ Partial: {partial}/{num_samples} ({partial/num_samples:.1%})")
-        print(f"✓ Avg: {np.mean(similarities):.1%}\n")
+        log(f"\n✓ Perfect: {perfect}/{num_samples} ({perfect/num_samples:.1%})")
+        log(f"✓ Partial: {partial}/{num_samples} ({partial/num_samples:.1%})")
+        log(f"✓ Avg: {np.mean(similarities):.1%}\n")
 
     def generate_submission(self, output_file: str = 'submission.json'):
         """Generate submission with three essential metrics."""
 
-        print("=" * 80)
-        print("TurboOrca v7 - REAL IMPROVEMENTS")
-        print("=" * 80)
+        log("=" * 80)
+        log("TurboOrca v7 - REAL IMPROVEMENTS")
+        log(f"RUN STARTED: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        log("=" * 80)
 
         # Validate on training (scale with time budget)
         if self.time_budget >= 1800:  # >= 30 minutes
@@ -511,32 +527,32 @@ class TurboOrcaV7:
         elif self.time_budget >= 300:  # >= 5 minutes
             self.validate_on_training_set(num_samples=10)
         else:  # < 5 minutes - SKIP validation, go straight to test
-            print("\n⚡ Fast mode: Skipping training validation")
+            log("\n⚡ Fast mode: Skipping training validation")
             self.training_perfect = 0
             self.training_partial = 0
             self.training_total = 1
             self.training_similarities = [0.5]
 
         # Generate test submission
-        print("\n" + "=" * 80)
-        print("GENERATING TEST SUBMISSION")
-        print("=" * 80)
+        log("\n" + "=" * 80)
+        log("GENERATING TEST SUBMISSION")
+        log("=" * 80)
 
         paths = get_data_paths()
         try:
             with open(paths['test_challenges']) as f:
                 test_tasks = json.load(f)
         except FileNotFoundError:
-            print(f"ERROR: {paths['test_challenges']} not found!")
+            log(f"ERROR: {paths['test_challenges']} not found!")
             return
 
         num_tasks = len(test_tasks)
         time_per_task = self.time_budget / num_tasks
 
-        print(f"Tasks: {num_tasks}")
-        print(f"Time budget: {self.time_budget/60:.1f} minutes")
-        print(f"Time per task: {time_per_task:.1f} seconds")
-        print("=" * 80)
+        log(f"Tasks: {num_tasks}")
+        log(f"Time budget: {self.time_budget/60:.1f} minutes")
+        log(f"Time per task: {time_per_task:.1f} seconds")
+        log("=" * 80)
 
         self.start_time = time.time()
         deadline = self.start_time + self.time_budget
@@ -550,7 +566,7 @@ class TurboOrcaV7:
 
         for task_id, task_data in test_tasks.items():
             if time.time() > deadline:
-                print(f"\n⏱️ Time limit reached at task {completed}/{num_tasks}")
+                log(f"\n⏱️ Time limit reached at task {completed}/{num_tasks}")
                 break
 
             task_start = time.time()
@@ -567,14 +583,15 @@ class TurboOrcaV7:
                 recent_scores = task_scores[-10:] if len(task_scores) >= 10 else task_scores
                 recent_avg = np.mean(recent_scores) if recent_scores else 0
 
-                print(f"\n{'='*80}")
-                print(f"📊 PROGRESS UPDATE - {completed}/{num_tasks} tasks ({completed/num_tasks*100:.0f}%)")
-                print(f"{'='*80}")
-                print(f"⏱️  Time:   Elapsed {elapsed:.1f}m | Remaining {remaining:.1f}m | Budget {self.time_budget/60:.0f}m")
+                log(f"\n{'='*80}")
+                log(f"📊 PROGRESS UPDATE - {completed}/{num_tasks} tasks ({completed/num_tasks*100:.0f}%)")
+                log(f"{'='*80}")
+                log(f"⏱️  Time:   Elapsed {elapsed:.1f}m | Remaining {remaining:.1f}m | Budget {self.time_budget/60:.0f}m")
                 if task_times:
-                    print(f"📈 Stats:  Avg time/task: {avg_time:.2f}s | Overall score: {avg_score:.1%}")
-                    print(f"📈 Recent: Last 10 tasks score: {recent_avg:.1%}")
-                print(f"{'='*80}")
+                    log(f"📈 Stats:  Avg time/task: {avg_time:.2f}s | Overall score: {avg_score:.1%}")
+                    log(f"📈 Recent: Last 10 tasks score: {recent_avg:.1%}")
+                log(f"{'='*80}")
+                log(f"CHECKPOINT: Completed {completed} tasks | Timestamp: {datetime.now().strftime('%H:%M:%S')}")
 
                 last_progress_time = time.time()
                 last_progress_task = completed
@@ -638,39 +655,53 @@ class TurboOrcaV7:
         test_avg_estimate = max(0, training_avg * (1 - conservative_reduction))
         test_partial_estimate = max(0, training_partial_pct * (1 - conservative_reduction))
 
-        print("\n" + "=" * 80)
-        print("✅ COMPLETE - TIME BUDGET CONFIRMATION")
-        print("=" * 80)
-        print(f"Tasks: {len(submission)}/{num_tasks}")
-        print(f"⏱️  Expected: {self.time_budget/60:.1f}m (TIME_BUDGET_MINUTES={TIME_BUDGET_MINUTES})")
-        print(f"⏱️  Actual:   {elapsed_total:.1f}m")
+        log("\n" + "=" * 80)
+        log("✅ COMPLETE - TIME BUDGET CONFIRMATION")
+        log(f"RUN FINISHED: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        log("=" * 80)
+        log(f"Tasks: {len(submission)}/{num_tasks}")
+        log(f"⏱️  Expected: {self.time_budget/60:.1f}m (TIME_BUDGET_MINUTES={TIME_BUDGET_MINUTES})")
+        log(f"⏱️  Actual:   {elapsed_total:.1f}m")
 
         # CHECK ITS WATCH - Did it actually use the time budget?
         expected_min = self.time_budget / 60
         usage_percent = (elapsed_total / expected_min) * 100 if expected_min > 0 else 0
 
         if usage_percent < 50:
-            print(f"🚨 WARNING: Only used {usage_percent:.0f}% of time budget! DID YOU FORGET TO SET THE ALARM?!")
-            print(f"🚨 This means the search is TOO SHALLOW - not finding better solutions!")
+            log(f"🚨 WARNING: Only used {usage_percent:.0f}% of time budget! DID YOU FORGET TO SET THE ALARM?!")
+            log(f"🚨 This means the search is TOO SHALLOW - not finding better solutions!")
         elif usage_percent < 80:
-            print(f"⚠️  Used {usage_percent:.0f}% of time budget (should be closer to 100%)")
+            log(f"⚠️  Used {usage_percent:.0f}% of time budget (should be closer to 100%)")
         else:
-            print(f"✅ Time budget used correctly: {usage_percent:.0f}%")
+            log(f"✅ Time budget used correctly: {usage_percent:.0f}%")
 
-        print(f"Output: {output_file}")
-        print("=" * 80)
+        log(f"Output: {output_file}")
+        log("=" * 80)
 
-        print("\n📊 THREE ESSENTIAL LEADERBOARD METRICS:\n")
-        print(f"1️⃣  PERFECT ACCURACY: {test_perfect_estimate:.1%} ({test_perfect_estimate * 240:.0f}/240 tasks)")
-        print(f"2️⃣  PARTIAL CREDIT:   {test_avg_estimate:.1%} avg similarity")
-        print(f"3️⃣  COMBINED SCORE:    {(test_perfect_estimate + test_partial_estimate*0.5):.1%}")
+        log("\n📊 THREE ESSENTIAL LEADERBOARD METRICS:\n")
+        log(f"1️⃣  PERFECT ACCURACY: {test_perfect_estimate:.1%} ({test_perfect_estimate * 240:.0f}/240 tasks)")
+        log(f"2️⃣  PARTIAL CREDIT:   {test_avg_estimate:.1%} avg similarity")
+        log(f"3️⃣  COMBINED SCORE:    {(test_perfect_estimate + test_partial_estimate*0.5):.1%}")
 
         grade = 'F' if test_perfect_estimate < 0.05 else 'D' if test_perfect_estimate < 0.10 else 'C' if test_perfect_estimate < 0.15 else 'B' if test_perfect_estimate < 0.25 else 'A'
-        print(f"\nGrade Estimate: {grade}")
-        print(f"\n🚀 Ready for Kaggle submission!")
+        log(f"\nGrade Estimate: {grade}")
+        log(f"\n🚀 Ready for Kaggle submission!")
+        log(f"\n{'='*80}")
+        log(f"📁 FULL LOG SAVED TO: {LOG_FILE}")
+        log(f"{'='*80}")
 
 
 if __name__ == '__main__':
+    # Clear old log file and start fresh
+    with open(LOG_FILE, 'w') as f:
+        f.write(f"{'='*80}\n")
+        f.write(f"TurboOrca v7 - New Run Started\n")
+        f.write(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        f.write(f"Time Budget: {TIME_BUDGET_MINUTES} minutes\n")
+        f.write(f"{'='*80}\n\n")
+        f.flush()
+        os.fsync(f.fileno())
+
     print("""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
