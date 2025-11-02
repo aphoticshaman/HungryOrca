@@ -65,14 +65,30 @@ class PrimitiveRanker:
     def _initialize_weights(self) -> np.ndarray:
         """
         Initialize with prior knowledge about primitive usefulness
+
         ROUND 2.3: Dynamic initialization without hardcoded indices
+        ROUND 2.5d: Expanded to 8 features with spatial priors
+
+        Features:
+        0. size_ratio: size change indicator
+        1. color_change: color palette modification
+        2. shape_change: aspect ratio change
+        3. symmetry_change: symmetry modification
+        4. connectivity: non-zero pixel count change
+        5. position_correlation: pixel position preservation (NEW)
+        6. orientation_change: row↔column transformation (NEW)
+        7. corner_movement: corner displacement (NEW)
+
+        Returns:
+            np.ndarray: Weight matrix of shape (8, num_primitives)
         """
-        # Features: [size_ratio, color_change, shape_change, symmetry_change, connectivity_change]
-        num_features = 5
+        num_features = 8  # ROUND 2.5d: Expanded from 5 to 8
         weights = np.random.randn(num_features, self.num_primitives) * 0.1
 
         # ROUND 2.3: Set priors based on primitive NAME patterns (not indices)
         for idx, prim_name in enumerate(self.primitive_names):
+            # ===== ORIGINAL 5 FEATURES =====
+
             # Prior: rotations don't change colors
             if 'rotate' in prim_name:
                 weights[1, idx] = -0.5  # Feature 1 (color_change)
@@ -93,39 +109,243 @@ class PrimitiveRanker:
             if 'transpose' in prim_name:
                 weights[2, idx] = 0.8  # Feature 2 (shape_change)
 
+            # ===== ROUND 2.5d: NEW SPATIAL FEATURES =====
+
+            # Prior: spatial transforms have LOW position correlation
+            # (pixels move to different locations)
+            if 'rotate' in prim_name or 'reflect' in prim_name or 'transpose' in prim_name:
+                weights[5, idx] = -0.8  # Feature 5 (position_correlation)
+
+            # Prior: identity/crop have HIGH position correlation
+            # (pixels stay in similar positions)
+            if 'identity' in prim_name or 'crop' in prim_name:
+                weights[5, idx] = 1.0
+
+            # Prior: transpose and rotations have HIGH orientation change
+            # (rows become columns or vice versa)
+            if 'transpose' in prim_name:
+                weights[6, idx] = 1.2  # Feature 6 (orientation_change)
+            if 'rotate' in prim_name:
+                weights[6, idx] = 0.7
+
+            # Prior: rotations and reflections have HIGH corner movement
+            # (corners move to different positions)
+            if 'rotate' in prim_name:
+                weights[7, idx] = 1.0  # Feature 7 (corner_movement)
+            if 'reflect' in prim_name:
+                weights[7, idx] = 0.8
+
         return weights
 
     def extract_features(self, input_grid: np.ndarray, output_grid: np.ndarray) -> np.ndarray:
-        """Extract features from input/output pair"""
-        features = np.zeros(5)
+        """
+        Extract features from input/output pair
 
-        # Feature 1: Size ratio
+        ROUND 2.5: Expanded from 5 to 8 features to capture spatial transforms
+
+        Features:
+        0. size_ratio: log2(output_size / input_size)
+        1. color_change: symmetric difference of color sets / 10
+        2. shape_change: abs difference in aspect ratios
+        3. symmetry_change: binary (symmetry changed or not)
+        4. connectivity: change in non-zero pixel count
+        5. position_correlation: how well pixel positions correlate (NEW)
+        6. orientation_change: detect rows→columns transformations (NEW)
+        7. corner_movement: how far corner pixels moved (NEW)
+
+        Args:
+            input_grid: Input grid (H1 x W1)
+            output_grid: Output grid (H2 x W2)
+
+        Returns:
+            Feature vector of shape (8,)
+
+        Raises:
+            ValueError: If grids are empty or invalid
+        """
+        if input_grid.size == 0 or output_grid.size == 0:
+            raise ValueError("Cannot extract features from empty grids")
+
+        features = np.zeros(8)  # ROUND 2.5: Expanded to 8 features
+
         input_size = input_grid.shape[0] * input_grid.shape[1]
         output_size = output_grid.shape[0] * output_grid.shape[1]
+
+        # Feature 0: Size ratio
         features[0] = np.log2(output_size / input_size) if input_size > 0 else 0.0
 
-        # Feature 2: Color change (how many unique colors changed)
+        # Feature 1: Color change
         input_colors = set(input_grid.flatten())
         output_colors = set(output_grid.flatten())
         features[1] = len(input_colors.symmetric_difference(output_colors)) / 10.0
 
-        # Feature 3: Shape change (aspect ratio)
+        # Feature 2: Shape change (aspect ratio)
         if input_grid.shape[0] > 0 and output_grid.shape[0] > 0:
             input_aspect = input_grid.shape[1] / input_grid.shape[0]
             output_aspect = output_grid.shape[1] / output_grid.shape[0]
             features[2] = abs(input_aspect - output_aspect)
 
-        # Feature 4: Symmetry change
+        # Feature 3: Symmetry change
         input_symmetric = np.allclose(input_grid, np.flip(input_grid, axis=0))
         output_symmetric = np.allclose(output_grid, np.flip(output_grid, axis=0))
         features[3] = 1.0 if input_symmetric != output_symmetric else 0.0
 
-        # Feature 5: Connectivity (are non-zero pixels more/less connected)
+        # Feature 4: Connectivity
         input_nonzero = np.count_nonzero(input_grid)
         output_nonzero = np.count_nonzero(output_grid)
         features[4] = (output_nonzero - input_nonzero) / (input_size + 1)
 
+        # ROUND 2.5: New spatial features
+        features[5] = self._compute_position_correlation(input_grid, output_grid)
+        features[6] = self._compute_orientation_change(input_grid, output_grid)
+        features[7] = self._compute_corner_movement(input_grid, output_grid)
+
         return features
+
+    def _compute_position_correlation(self, input_grid: np.ndarray, output_grid: np.ndarray) -> float:
+        """
+        Compute position correlation between input and output grids
+
+        ROUND 2.5a: Measures how well pixel positions correlate after transformation
+        High correlation (→1.0): pixels stay in similar positions (identity, small translate)
+        Low correlation (→0.0): pixels move significantly (rotation, reflection)
+
+        Algorithm:
+        1. If sizes differ, return 0 (positions can't correlate)
+        2. Compute normalized position difference: sum(|inp[i,j] - out[i,j]|) / max_diff
+        3. Convert to correlation: 1.0 - normalized_diff
+
+        Args:
+            input_grid: Input grid
+            output_grid: Output grid
+
+        Returns:
+            Position correlation in [0, 1] where 1.0 = perfect correlation
+        """
+        # Size mismatch → no position correlation
+        if input_grid.shape != output_grid.shape:
+            return 0.0
+
+        # Compute element-wise difference
+        diff = np.abs(input_grid.astype(float) - output_grid.astype(float))
+
+        # Normalize by maximum possible difference (if all pixels changed by max color value)
+        max_diff = 9.0 * input_grid.size  # ARC uses colors 0-9
+        normalized_diff = np.sum(diff) / (max_diff + 1e-10)  # Avoid division by zero
+
+        # Convert to correlation (1.0 = identical, 0.0 = completely different)
+        correlation = 1.0 - np.clip(normalized_diff, 0.0, 1.0)
+
+        return float(correlation)
+
+    def _compute_orientation_change(self, input_grid: np.ndarray, output_grid: np.ndarray) -> float:
+        """
+        Detect if grid orientation changed (rows ↔ columns)
+
+        ROUND 2.5b: Identifies transpose-like transformations
+        Returns 1.0 if orientation flipped, 0.0 if preserved
+
+        Algorithm:
+        1. Check if dimensions swapped (H×W → W×H)
+        2. Compute directional gradients:
+           - Horizontal: diff along rows
+           - Vertical: diff along columns
+        3. Compare gradient magnitudes:
+           - If horizontal↔vertical swapped → orientation changed
+
+        Args:
+            input_grid: Input grid (H1 × W1)
+            output_grid: Output grid (H2 × W2)
+
+        Returns:
+            Orientation change score in [0, 1]
+        """
+        h1, w1 = input_grid.shape
+        h2, w2 = output_grid.shape
+
+        # Strong signal: dimensions swapped (transpose-like)
+        if (h1, w1) == (w2, h2) and h1 != w1:
+            return 1.0
+
+        # Weak signal: dimensions unchanged but orientation might have changed
+        if (h1, w1) != (h2, w2):
+            return 0.0  # Size change, can't compare orientation
+
+        # Compare directional gradients
+        # Horizontal gradient (diff along rows)
+        inp_h_grad = np.sum(np.abs(np.diff(input_grid, axis=1)))
+        out_h_grad = np.sum(np.abs(np.diff(output_grid, axis=1)))
+
+        # Vertical gradient (diff along columns)
+        inp_v_grad = np.sum(np.abs(np.diff(input_grid, axis=0)))
+        out_v_grad = np.sum(np.abs(np.diff(output_grid, axis=0)))
+
+        # Normalize gradients
+        inp_total = inp_h_grad + inp_v_grad + 1e-10
+        out_total = out_h_grad + out_v_grad + 1e-10
+
+        inp_h_ratio = inp_h_grad / inp_total
+        inp_v_ratio = inp_v_grad / inp_total
+        out_h_ratio = out_h_grad / out_total
+        out_v_ratio = out_v_grad / out_total
+
+        # If horizontal and vertical switched roles → orientation changed
+        # Score: how much horizontal→vertical and vertical→horizontal
+        orientation_flip = abs(inp_h_ratio - out_v_ratio) + abs(inp_v_ratio - out_h_ratio)
+        orientation_flip = np.clip(orientation_flip, 0.0, 1.0)
+
+        return float(orientation_flip)
+
+    def _compute_corner_movement(self, input_grid: np.ndarray, output_grid: np.ndarray) -> float:
+        """
+        Measure how far corner pixels moved
+
+        ROUND 2.5c: Tracks corner displacement to detect rotations/reflections
+        Corners move significantly during rotation (diagonal distance)
+        Corners stay same during identity/small translations
+
+        Algorithm:
+        1. Extract 4 corner values from input
+        2. Find where each corner value appears in output
+        3. Compute Euclidean distance moved
+        4. Normalize by grid diagonal
+
+        Args:
+            input_grid: Input grid (H1 × W1)
+            output_grid: Output grid (H2 × W2)
+
+        Returns:
+            Corner movement score in [0, 1] where 1.0 = maximum movement
+        """
+        h1, w1 = input_grid.shape
+        h2, w2 = output_grid.shape
+
+        # If sizes differ dramatically, return high movement
+        if h1 != h2 or w1 != w2:
+            return 1.0
+
+        # Extract corner values
+        corners_inp = [
+            input_grid[0, 0],       # Top-left
+            input_grid[0, w1-1],    # Top-right
+            input_grid[h1-1, 0],    # Bottom-left
+            input_grid[h1-1, w1-1]  # Bottom-right
+        ]
+
+        corners_out = [
+            output_grid[0, 0],
+            output_grid[0, w2-1],
+            output_grid[h2-1, 0],
+            output_grid[h2-1, w2-1]
+        ]
+
+        # Simple heuristic: count how many corners changed value
+        corners_changed = sum(c_in != c_out for c_in, c_out in zip(corners_inp, corners_out))
+
+        # Normalize: 0-4 corners changed → 0.0-1.0
+        movement_score = corners_changed / 4.0
+
+        return float(movement_score)
 
     def rank_primitives(self, input_grid: np.ndarray, output_grid: np.ndarray) -> List[Tuple[str, float]]:
         """
