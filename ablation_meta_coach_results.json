@@ -1,0 +1,72 @@
+{
+  "condition_a": [
+    {
+      "run": 1,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    },
+    {
+      "run": 2,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    },
+    {
+      "run": 3,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    },
+    {
+      "run": 4,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    },
+    {
+      "run": 5,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    }
+  ],
+  "condition_b": [
+    {
+      "run": 1,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    },
+    {
+      "run": 2,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    },
+    {
+      "run": 3,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    },
+    {
+      "run": 4,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    },
+    {
+      "run": 5,
+      "exact_matches": 0,
+      "avg_partial_match": 51.848412698412695,
+      "solved_tasks": []
+    }
+  ],
+  "mean_exact_a": 0.0,
+  "mean_exact_b": 0.0,
+  "mean_partial_a": 51.8484126984127,
+  "mean_partial_b": 51.8484126984127,
+  "improvement": 0.0,
+  "decision": "\u274c NO-GO - No improvement, remove MetaCoach"
+}
