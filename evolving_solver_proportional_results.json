@@ -1,0 +1,75 @@
+{
+  "config": {
+    "total_time_budget": 150.0,
+    "max_tasks": 10,
+    "time_per_task": 15.0
+  },
+  "summary": {
+    "tasks_attempted": 10,
+    "avg_partial_match": 0.5189994331065759,
+    "exact_matches": 1,
+    "total_time": 0.020105838775634766
+  },
+  "results": [
+    {
+      "task_id": "00576224",
+      "score": 0.0,
+      "exact": false,
+      "time": 0.00838923454284668
+    },
+    {
+      "task_id": "007bbfb7",
+      "score": 0.0,
+      "exact": false,
+      "time": 0.0007314682006835938
+    },
+    {
+      "task_id": "009d5c81",
+      "score": 1.0,
+      "exact": true,
+      "time": 0.0024826526641845703
+    },
+    {
+      "task_id": "00d62c1b",
+      "score": 0.9175,
+      "exact": false,
+      "time": 0.0015094280242919922
+    },
+    {
+      "task_id": "00dbd492",
+      "score": 0.78,
+      "exact": false,
+      "time": 0.0012423992156982422
+    },
+    {
+      "task_id": "017c7c7b",
+      "score": 0.0,
+      "exact": false,
+      "time": 0.0005981922149658203
+    },
+    {
+      "task_id": "025d127b",
+      "score": 0.88,
+      "exact": false,
+      "time": 0.0007600784301757812
+    },
+    {
+      "task_id": "03560426",
+      "score": 0.71,
+      "exact": false,
+      "time": 0.0008525848388671875
+    },
+    {
+      "task_id": "045e512c",
+      "score": 0.9024943310657596,
+      "exact": false,
+      "time": 0.0013818740844726562
+    },
+    {
+      "task_id": "0520fde7",
+      "score": 0.0,
+      "exact": false,
+      "time": 0.0005500316619873047
+    }
+  ]
+}
