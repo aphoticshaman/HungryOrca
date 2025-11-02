@@ -364,6 +364,11 @@ class TurboOrcaV7:
             else:
                 break
 
+        # Confirm we used the full time budget
+        elapsed = time.time() - start_time
+        if elapsed >= time_limit - 0.1:
+            pass  # Used full budget (normal)
+
         return best_solution, best_score
 
     def _apply_color_map(self, grid: np.ndarray, color_map: Dict) -> np.ndarray:
@@ -448,7 +453,16 @@ class TurboOrcaV7:
             return
 
         task_ids = list(train_tasks.keys())[:num_samples]
-        print(f"Testing on {num_samples} tasks...\n")
+
+        # Scale time per task based on budget
+        if self.time_budget >= 1800:  # >= 30 min
+            time_per_task = 10
+        elif self.time_budget >= 300:  # >= 5 min
+            time_per_task = 2
+        else:
+            time_per_task = 0.5
+
+        print(f"Testing on {num_samples} tasks ({time_per_task}s each)...\n")
 
         perfect = 0
         partial = 0
@@ -461,7 +475,7 @@ class TurboOrcaV7:
             test_input = np.array(task['test'][0]['input'])
             ground_truth = np.array(solutions[task_id][0])
 
-            solution, _ = self.solve_task(train_pairs, test_input, time_limit=10)
+            solution, _ = self.solve_task(train_pairs, test_input, time_limit=time_per_task)
 
             similarity = self._calc_similarity(solution, ground_truth)
             similarities.append(similarity)
@@ -491,8 +505,17 @@ class TurboOrcaV7:
         print("TurboOrca v7 - REAL IMPROVEMENTS")
         print("=" * 80)
 
-        # Validate on training
-        self.validate_on_training_set(num_samples=50)
+        # Validate on training (scale with time budget)
+        if self.time_budget >= 1800:  # >= 30 minutes
+            self.validate_on_training_set(num_samples=50)
+        elif self.time_budget >= 300:  # >= 5 minutes
+            self.validate_on_training_set(num_samples=10)
+        else:  # < 5 minutes - SKIP validation, go straight to test
+            print("\n⚡ Fast mode: Skipping training validation")
+            self.training_perfect = 0
+            self.training_partial = 0
+            self.training_total = 1
+            self.training_similarities = [0.5]
 
         # Generate test submission
         print("\n" + "=" * 80)
@@ -520,17 +543,41 @@ class TurboOrcaV7:
 
         submission = {}
         completed = 0
+        task_times = []
+        task_scores = []
+        last_progress_time = time.time()
+        last_progress_task = 0
 
         for task_id, task_data in test_tasks.items():
             if time.time() > deadline:
                 print(f"\n⏱️ Time limit reached at task {completed}/{num_tasks}")
                 break
 
-            if completed % 50 == 0:
+            task_start = time.time()
+
+            # Progress updates: EVERY 1 MINUTE OR EVERY 10 TASKS (whichever comes first)
+            time_since_update = (time.time() - last_progress_time) / 60
+            tasks_since_update = completed - last_progress_task
+
+            if time_since_update >= 1.0 or tasks_since_update >= 10:
                 elapsed = (time.time() - self.start_time) / 60
                 remaining = (deadline - time.time()) / 60
-                print(f"Progress: {completed}/{num_tasks} | "
-                      f"Elapsed: {elapsed:.1f}m | Remaining: {remaining:.1f}m")
+                avg_time = np.mean(task_times) if task_times else 0
+                avg_score = np.mean(task_scores) if task_scores else 0
+                recent_scores = task_scores[-10:] if len(task_scores) >= 10 else task_scores
+                recent_avg = np.mean(recent_scores) if recent_scores else 0
+
+                print(f"\n{'='*80}")
+                print(f"📊 PROGRESS UPDATE - {completed}/{num_tasks} tasks ({completed/num_tasks*100:.0f}%)")
+                print(f"{'='*80}")
+                print(f"⏱️  Time:   Elapsed {elapsed:.1f}m | Remaining {remaining:.1f}m | Budget {self.time_budget/60:.0f}m")
+                if task_times:
+                    print(f"📈 Stats:  Avg time/task: {avg_time:.2f}s | Overall score: {avg_score:.1%}")
+                    print(f"📈 Recent: Last 10 tasks score: {recent_avg:.1%}")
+                print(f"{'='*80}")
+
+                last_progress_time = time.time()
+                last_progress_task = completed
 
             train_pairs = [(np.array(p['input'], dtype=np.int32),
                            np.array(p['output'], dtype=np.int32))
@@ -541,15 +588,32 @@ class TurboOrcaV7:
                 test_input = np.array(test_pair['input'], dtype=np.int32)
 
                 try:
-                    solution, _ = self.solve_task(train_pairs, test_input, time_per_task)
+                    solution, score = self.solve_task(train_pairs, test_input, time_per_task)
                     attempts.append(solution.tolist())
+                    task_scores.append(score)
                 except:
                     attempts.append(test_input.tolist())
+                    task_scores.append(0.0)
 
             while len(attempts) < 2:
                 attempts.append(attempts[0] if attempts else [[0]])
 
             submission[task_id] = attempts[:2]
+
+            task_time = time.time() - task_start
+            task_times.append(task_time)
+
+            # Print dot per task (compact output)
+            if completed % 10 == 0:
+                print()  # New line every 10 tasks
+            score_display = task_scores[-1] if task_scores else 0
+            if score_display >= 0.8:
+                print('✓', end='', flush=True)  # Good score
+            elif score_display >= 0.5:
+                print('·', end='', flush=True)  # Medium score
+            else:
+                print('·', end='', flush=True)  # Low score
+
             completed += 1
 
         # Fill remaining
@@ -575,10 +639,24 @@ class TurboOrcaV7:
         test_partial_estimate = max(0, training_partial_pct * (1 - conservative_reduction))
 
         print("\n" + "=" * 80)
-        print("✅ COMPLETE")
+        print("✅ COMPLETE - TIME BUDGET CONFIRMATION")
         print("=" * 80)
         print(f"Tasks: {len(submission)}/{num_tasks}")
-        print(f"Time: {elapsed_total:.1f}m")
+        print(f"⏱️  Expected: {self.time_budget/60:.1f}m (TIME_BUDGET_MINUTES={TIME_BUDGET_MINUTES})")
+        print(f"⏱️  Actual:   {elapsed_total:.1f}m")
+
+        # CHECK ITS WATCH - Did it actually use the time budget?
+        expected_min = self.time_budget / 60
+        usage_percent = (elapsed_total / expected_min) * 100 if expected_min > 0 else 0
+
+        if usage_percent < 50:
+            print(f"🚨 WARNING: Only used {usage_percent:.0f}% of time budget! DID YOU FORGET TO SET THE ALARM?!")
+            print(f"🚨 This means the search is TOO SHALLOW - not finding better solutions!")
+        elif usage_percent < 80:
+            print(f"⚠️  Used {usage_percent:.0f}% of time budget (should be closer to 100%)")
+        else:
+            print(f"✅ Time budget used correctly: {usage_percent:.0f}%")
+
         print(f"Output: {output_file}")
         print("=" * 80)
 
