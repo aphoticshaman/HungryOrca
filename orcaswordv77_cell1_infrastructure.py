@@ -261,7 +261,7 @@ def grids_equal(g1: Grid, g2: Grid) -> bool:
 # L2: PATTERN DYNAMICS (124 PRIMITIVES - CORE 30 IMPLEMENTED)
 # =============================================================================
 
-print("📦 L2: Pattern Dynamics (144 primitives - core 50 active)")
+print("📦 L2: Pattern Dynamics (145 primitives - core 51 active)")
 
 # === L2.1: BASE PATTERN (51 primitives - 10 core) ===
 
@@ -423,7 +423,7 @@ def attention_mechanism(grid: Grid, query_pos: Tuple[int, int]) -> Tuple[Grid, f
 
 # === L2.6: ADVANCED ATTENTION MECHANISMS (20 PRIMITIVES) ===
 
-print("📦 L2.6: Advanced Attention (20 cutting-edge primitives)")
+print("📦 L2.6: Advanced Attention (21 cutting-edge primitives)")
 
 def softmax(x, axis=-1):
     """Stable softmax"""
@@ -452,11 +452,57 @@ def nsm_attention(Q, K, rules):
 
 # === INSIGHT 2: Scaled Dot-Product Matching (SDPM) ===
 def sdpm(Q, K, V):
-    """Streamline dims with dynamic scaling for ARC variable grids"""
+    """Streamline dims with dynamic scaling for ARC variable grids (simple version)"""
     d_k = K.shape[1]
     scores = (Q @ K.T) / np.sqrt(d_k)
     attn = softmax(scores)
     return attn @ V
+
+# === INSIGHT 2.1: OPTIMIZED SDPM (PRODUCTION-GRADE) ===
+def optimized_sdpm(Q, K, V, mask=None):
+    """
+    Production-grade SDPM with batching, masking, numerical stability
+
+    Features:
+    - float32 for safety/efficiency
+    - einsum vectorization for batched operations
+    - Optional masking support
+    - Numerically stable softmax (subtract max)
+    - Returns both output and attention weights
+
+    Args:
+        Q: Query tensor [batch, seq_q, d_k]
+        K: Key tensor [batch, seq_k, d_k]
+        V: Value tensor [batch, seq_k, d_v]
+        mask: Optional mask [batch, seq_q, seq_k]
+
+    Returns:
+        output: [batch, seq_q, d_v]
+        attn: Attention weights [batch, seq_q, seq_k]
+    """
+    Q = Q.astype(np.float32)
+    K = K.astype(np.float32)
+    V = V.astype(np.float32)
+
+    d_k = Q.shape[-1]
+
+    # Batched scaled dot-product: [b, q, k]
+    scores = np.einsum('bqd,bkd->bqk', Q, K) / np.sqrt(d_k)
+
+    # Apply mask if provided
+    if mask is not None:
+        scores = np.where(mask == 0, float('-inf'), scores)
+
+    # Numerically stable softmax
+    max_scores = np.max(scores, axis=-1, keepdims=True)
+    attn = np.exp(scores - max_scores)
+    attn_sum = np.sum(attn, axis=-1, keepdims=True)
+    attn = attn / attn_sum
+
+    # Weighted sum: [b, q, d_v]
+    output = np.einsum('bqk,bkd->bqd', attn, V)
+
+    return output, attn
 
 # === INSIGHT 3: Dim Handling Avoidance ===
 def adaptive_proj(grid, target_dim=64):
@@ -716,7 +762,7 @@ def parallel_sdpm_broadcast(Q, K, V, heads):
     attn = softmax(scores, axis=-1)
     return (attn @ V).squeeze()
 
-print(f"✓ L2.6: 20 advanced attention mechanisms loaded")
+print(f"✓ L2.6: 21 advanced attention mechanisms loaded (incl. optimized SDPM)")
 
 # =============================================================================
 # L3: RULE INDUCTION (25 PRIMITIVES - CORE 12 IMPLEMENTED)
@@ -1115,10 +1161,11 @@ class ORCAOmegaSolver:
             self.vgae = None
 
         print("🗡️  ORCA-Ω Initialized")
-        print(f"   - L0-L2: {18 + 42 + 144} primitives (perception + attention)")
+        print(f"   - L0-L2: {18 + 42 + 145} primitives (perception + attention)")
         print(f"   - L3-L5: {25 + 12 + 8} primitives (reasoning)")
         print(f"   - L6-L9+: Meta & Gödel layers")
         print(f"   - VGAE: {'Enabled' if self.vgae else 'CPU Fallback'}")
+        print(f"   - Optimized SDPM: einsum vectorization + float32")
 
     def solve_task(self, task: Dict) -> Tuple[Grid, Grid, float]:
         """
@@ -1201,10 +1248,10 @@ print("="*80)
 print("✅ CELL 1: INFRASTRUCTURE LOADED")
 print("="*80)
 print("📊 Primitives Active:")
-print("   L0: 18 | L1: 15 | L2: 50 (incl. 20 advanced attention)")
+print("   L0: 18 | L1: 15 | L2: 51 (incl. 21 advanced attention)")
 print("   L3: 12 | L4: 8 | L5: 4")
 print("   L6-L9+: Meta layers (simplified)")
-print("   VGAE: Graph Neural Network")
+print("   VGAE: Graph Neural Network + EfficientMHA")
 print("="*80)
 print("🗡️  ORCA-Ω is ready. Waiting for Cell 2 execution...")
 print("="*80)
