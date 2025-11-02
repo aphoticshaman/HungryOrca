@@ -3,11 +3,16 @@
 TurboOrca v7 - REAL IMPROVEMENTS (No Fluff)
 ============================================
 
+⚙️  TIME BUDGET CONFIGURATION (Line 10): Change below
+"""
+TIME_BUDGET_MINUTES = 90  # ← CHANGE THIS (1=fast test, 30=medium, 90=full)
+"""
+
 FOCUS: Actually improve ARC solving, not simulate biology.
 
 REAL IMPROVEMENTS:
 1. Better transforms (pattern-based, not just geometric)
-2. Actually use time budget (22.5s per task)
+2. Actually use time budget (search until time runs out)
 3. Adaptive search depth (deeper when needed)
 4. Learn from training examples (extract patterns)
 5. Smart validation (check what matters)
@@ -184,7 +189,7 @@ class TurboOrcaV7:
                     if score > best_score:
                         best_solution = candidate
                         best_score = score
-                        if score >= 0.95:  # Good enough
+                        if score >= 0.999:  # Only exit on PERFECT match
                             return best_solution, best_score
                 except:
                     continue
@@ -211,7 +216,7 @@ class TurboOrcaV7:
                     if score > best_score:
                         best_solution = candidate
                         best_score = score
-                        if score >= 0.95:
+                        if score >= 0.999:  # Only exit on PERFECT match
                             return best_solution, best_score
             except:
                 continue
@@ -247,7 +252,7 @@ class TurboOrcaV7:
                         if score > best_score:
                             best_solution = candidate
                             best_score = score
-                            if score >= 0.95:
+                            if score >= 0.999:  # Only exit on PERFECT match
                                 return best_solution, best_score
 
                     # Try another transform
@@ -261,7 +266,7 @@ class TurboOrcaV7:
                             if score > best_score:
                                 best_solution = candidate
                                 best_score = score
-                                if score >= 0.95:
+                                if score >= 0.999:  # Only exit on PERFECT match
                                     return best_solution, best_score
                         except:
                             continue
@@ -289,6 +294,75 @@ class TurboOrcaV7:
                         best_score = score
                 except:
                     continue
+
+        # PHASE 6: Keep searching until time runs out (use full time budget)
+        iteration = 0
+        while time.time() < deadline:
+            iteration += 1
+
+            # Try 3-step compositions if time permits
+            if iteration % 3 == 0 and time.time() < deadline - 0.1:
+                try:
+                    import random
+                    # Pick 3 random transforms
+                    t1 = random.choice([np.flip, np.rot90, np.transpose])
+                    t2 = random.choice([np.flip, np.rot90, np.transpose])
+                    t3 = random.choice([np.flip, np.rot90, np.transpose])
+
+                    candidate = t1(test_input)
+                    candidate = t2(candidate)
+                    candidate = t3(candidate)
+
+                    score = self._validate_on_training(candidate, train_pairs)
+                    if score > best_score:
+                        best_solution = candidate
+                        best_score = score
+                        if score >= 0.999:
+                            return best_solution, best_score
+                except:
+                    pass
+
+            # Try different color map variations
+            if patterns['color_mappings'] and time.time() < deadline - 0.1:
+                try:
+                    for t_fn in [np.flip, np.rot90, np.transpose]:
+                        if time.time() >= deadline:
+                            break
+                        intermediate = t_fn(test_input)
+                        candidate = self._apply_color_map(intermediate, patterns['color_mappings'])
+                        score = self._validate_on_training(candidate, train_pairs)
+                        if score > best_score:
+                            best_solution = candidate
+                            best_score = score
+                            if score >= 0.999:
+                                return best_solution, best_score
+                except:
+                    pass
+
+            # Try advanced transforms with compositions
+            if time.time() < deadline - 0.1:
+                try:
+                    for adv_fn in [self._fill_zeros, self._symmetry_h, self._symmetry_v]:
+                        if time.time() >= deadline:
+                            break
+                        for basic_fn in [np.flip, np.rot90]:
+                            if time.time() >= deadline:
+                                break
+                            candidate = adv_fn(basic_fn(test_input))
+                            score = self._validate_on_training(candidate, train_pairs)
+                            if score > best_score:
+                                best_solution = candidate
+                                best_score = score
+                                if score >= 0.999:
+                                    return best_solution, best_score
+                except:
+                    pass
+
+            # Small sleep to prevent CPU spinning too fast
+            if time.time() < deadline - 0.05:
+                time.sleep(0.01)
+            else:
+                break
 
         return best_solution, best_score
 
@@ -542,5 +616,5 @@ if __name__ == '__main__':
 ╚══════════════════════════════════════════════════════════════════════════════╝
     """)
 
-    solver = TurboOrcaV7(time_budget_minutes=90)
+    solver = TurboOrcaV7(time_budget_minutes=TIME_BUDGET_MINUTES)
     solver.generate_submission()
