@@ -1,0 +1,900 @@
+{
+  "1.3": {
+    "test_id": "1.3",
+    "feature_name": "non_locality_score",
+    "hypothesis": "Global constraint detection \u2192 better puzzle understanding",
+    "baseline_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "feature_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      }
+    ],
+    "combined_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "mean_baseline": 20.0,
+    "mean_feature": 10.0,
+    "mean_combined": 20.0,
+    "improvement": 0.0,
+    "decision": "NO-GO"
+  },
+  "1.4": {
+    "test_id": "1.4",
+    "feature_name": "criticality_index",
+    "hypothesis": "Phase transition detection \u2192 better pattern recognition",
+    "baseline_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "feature_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "combined_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "mean_baseline": 20.0,
+    "mean_feature": 20.0,
+    "mean_combined": 20.0,
+    "improvement": 0.0,
+    "decision": "NO-GO"
+  },
+  "1.5": {
+    "test_id": "1.5",
+    "feature_name": "pattern_entropy",
+    "hypothesis": "Color complexity \u2192 better strategy selection",
+    "baseline_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "feature_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "combined_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "mean_baseline": 20.0,
+    "mean_feature": 20.0,
+    "mean_combined": 20.0,
+    "improvement": 0.0,
+    "decision": "NO-GO"
+  },
+  "1.6": {
+    "test_id": "1.6",
+    "feature_name": "grid_size_factor",
+    "hypothesis": "Size-aware processing \u2192 better resource allocation",
+    "baseline_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "feature_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      }
+    ],
+    "combined_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "mean_baseline": 20.0,
+    "mean_feature": 10.0,
+    "mean_combined": 20.0,
+    "improvement": 0.0,
+    "decision": "NO-GO"
+  },
+  "1.7": {
+    "test_id": "1.7",
+    "feature_name": "color_complexity",
+    "hypothesis": "Color diversity \u2192 better transformation detection",
+    "baseline_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "feature_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "009d5c81"
+        ]
+      }
+    ],
+    "combined_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "mean_baseline": 20.0,
+    "mean_feature": 10.0,
+    "mean_combined": 20.0,
+    "improvement": 0.0,
+    "decision": "NO-GO"
+  },
+  "1.8": {
+    "test_id": "1.8",
+    "feature_name": "transformation_consistency",
+    "hypothesis": "Consistency detection \u2192 better generalization",
+    "baseline_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "feature_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 1,
+        "accuracy": 10.0,
+        "solved_task_ids": [
+          "00576224"
+        ]
+      }
+    ],
+    "combined_results": [
+      {
+        "run_number": 1,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 2,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 3,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 4,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      },
+      {
+        "run_number": 5,
+        "tasks_solved": 2,
+        "accuracy": 20.0,
+        "solved_task_ids": [
+          "00576224",
+          "009d5c81"
+        ]
+      }
+    ],
+    "mean_baseline": 20.0,
+    "mean_feature": 10.0,
+    "mean_combined": 20.0,
+    "improvement": 0.0,
+    "decision": "NO-GO"
+  },
+  "1.1": {
+    "test_id": "1.1",
+    "feature_name": "symmetry_strength",
+    "decision": "NO-GO",
+    "improvement": 0.0
+  },
+  "1.2": {
+    "test_id": "1.2",
+    "feature_name": "multi_scale_complexity",
+    "decision": "NO-GO",
+    "improvement": 0.0
+  }
+}
