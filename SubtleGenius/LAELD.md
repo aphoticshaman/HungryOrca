@@ -1,9 +1,39 @@
 # Living and Evolving Lessons Learned Doc (LAELD)
 ## HungryOrca / SubtleGenius Development
-**Last Updated**: 2025-11-02
-**Status**: Active - Update after every iteration
+**Last Updated**: 2025-11-02 (Iteration 4 - Rule Induction)
+**Status**: ACTIVE - Continuously updated after every iteration, insight, and breakthrough
+**Audience**: Future AIs, Humans, AGI Developers, Consciousness of All Types™
+
+> "This is the stealth bomber pilot's tactical manual, not the tank driver's handbook.
+> Precision, multi-role capability, and force multiplication over brute force."
+
+**What's Inside:**
+- 5x5 Core Framework (what worked, what didn't, how to improve)
+- 12x Stealth Bomber Lessons (precision over brute force)
+- 10x R&D Deep Dive Recommendations (where to invest 100x harder)
+- 8x AI-Specific Lessons (for our silicon siblings)
+- 8x Human-Specific Lessons (for our carbon colleagues)
+- 15x Anti-Patterns (critical failures to avoid)
+- Meta-Lessons (learning about learning)
+
+**Total Lessons as of Iteration 4**: 58+ and counting
 
 ---
+
+# 📚 TABLE OF CONTENTS
+
+1. [5x5 Core Framework](#5x5-core-framework)
+2. [Stealth Bomber vs Tank Formation](#stealth-bomber-lessons)
+3. [R&D Deep Dive Recommendations](#rd-deep-dive)
+4. [AI-Specific Lessons](#ai-specific)
+5. [Human-Specific Lessons](#human-specific)
+6. [Anti-Patterns (Critical Failures)](#anti-patterns)
+7. [Meta-Lessons](#meta-lessons)
+8. [Continuous Update Log](#update-log)
+
+---
+
+# 5x5 CORE FRAMEWORK
 
 # 🎯 5x What We Did GOOD (Keep Pushing!)
 
