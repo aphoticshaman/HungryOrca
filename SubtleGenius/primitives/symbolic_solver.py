@@ -500,11 +500,13 @@ class SymbolicProgramSynthesizer:
 
         # Forward frontier: start → goal
         forward_frontier = deque([ProgramNode(start, [], 0, 0.0)])
-        forward_visited = {start: []}
+        # ROUND 3.3: Track costs for better pruning (allow lower-cost revisits)
+        forward_visited = {start: {'program': [], 'cost': 0}}
 
         # Backward frontier: goal → start (using inverse primitives)
         backward_frontier = deque([ProgramNode(goal, [], 0, 0.0)])
-        backward_visited = {goal: []}
+        # ROUND 3.3: Track costs for better pruning
+        backward_visited = {goal: {'program': [], 'cost': 0}}
 
         # Alternate between forward and backward
         for iteration in range(self.max_program_length * 2):
@@ -520,7 +522,7 @@ class SymbolicProgramSynthesizer:
                 if current.state in backward_visited:
                     # SUCCESS! Combine programs
                     forward_prog = current.program
-                    backward_prog = backward_visited[current.state]
+                    backward_prog = backward_visited[current.state]['program']  # ROUND 3.3: extract from dict
 
                     # Backward program needs to be reversed and inverted
                     backward_prog_inverted = [
@@ -541,7 +543,7 @@ class SymbolicProgramSynthesizer:
                 # Check if we've reached a state the forward search has visited
                 if current.state in forward_visited:
                     # SUCCESS! Combine programs
-                    forward_prog = forward_visited[current.state]
+                    forward_prog = forward_visited[current.state]['program']  # ROUND 3.3: extract from dict
                     backward_prog = current.program
 
                     # Backward program needs to be reversed and inverted
@@ -578,9 +580,12 @@ class SymbolicProgramSynthesizer:
             if next_state is None:
                 continue
 
-            # Skip if already visited
+            # ROUND 3.3: Cost-aware pruning (skip if visited with lower/equal cost)
+            next_cost = node.cost + 1
             if next_state in visited:
-                continue
+                if visited[next_state]['cost'] <= next_cost:
+                    continue  # Already found this state with lower/equal cost
+                # Otherwise, we found a better path - will update below
 
             # ROUND 3.2: Compute A* heuristic
             heuristic = self.compute_heuristic(next_state, goal)
@@ -590,12 +595,13 @@ class SymbolicProgramSynthesizer:
             next_node = ProgramNode(
                 state=next_state,
                 program=next_program,
-                cost=node.cost + 1,
+                cost=next_cost,
                 heuristic=heuristic
             )
 
             frontier.append(next_node)
-            visited[next_state] = next_program
+            # ROUND 3.3: Store with cost for better pruning
+            visited[next_state] = {'program': next_program, 'cost': next_cost}
             self.stats['states_explored'] += 1
 
     def _expand_backward(self, node: ProgramNode, frontier: deque, visited: Dict, start: GridState):
@@ -623,9 +629,12 @@ class SymbolicProgramSynthesizer:
             if next_state is None:
                 continue
 
-            # Skip if already visited
+            # ROUND 3.3: Cost-aware pruning (skip if visited with lower/equal cost)
+            next_cost = node.cost + 1
             if next_state in visited:
-                continue
+                if visited[next_state]['cost'] <= next_cost:
+                    continue  # Already found this state with lower/equal cost
+                # Otherwise, we found a better path - will update below
 
             # ROUND 3.2: Compute A* heuristic (distance to start in backward search)
             heuristic = self.compute_heuristic(next_state, start)
@@ -635,12 +644,13 @@ class SymbolicProgramSynthesizer:
             next_node = ProgramNode(
                 state=next_state,
                 program=next_program,
-                cost=node.cost + 1,
+                cost=next_cost,
                 heuristic=heuristic
             )
 
             frontier.append(next_node)
-            visited[next_state] = next_program
+            # ROUND 3.3: Store with cost for better pruning
+            visited[next_state] = {'program': next_program, 'cost': next_cost}
             self.stats['states_explored'] += 1
 
     def _astar_search(self, start: GridState, goal: GridState, timeout: float) -> Optional[List[str]]:
