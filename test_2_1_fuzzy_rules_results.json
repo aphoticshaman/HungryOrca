@@ -1,0 +1,71 @@
+{
+  "test_id": "2.1",
+  "baseline_results": [
+    {
+      "run_number": 1,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    },
+    {
+      "run_number": 2,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    },
+    {
+      "run_number": 3,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    },
+    {
+      "run_number": 4,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    },
+    {
+      "run_number": 5,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    }
+  ],
+  "combined_results": [
+    {
+      "run_number": 1,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    },
+    {
+      "run_number": 2,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    },
+    {
+      "run_number": 3,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    },
+    {
+      "run_number": 4,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    },
+    {
+      "run_number": 5,
+      "tasks_solved": 0,
+      "accuracy": 0.0,
+      "solved_task_ids": []
+    }
+  ],
+  "mean_baseline": 0.0,
+  "mean_combined": 0.0,
+  "improvement": 0.0,
+  "decision": "\u274c NO-GO"
+}
