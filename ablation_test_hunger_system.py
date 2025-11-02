@@ -368,10 +368,10 @@ def run_ablation_test(num_tasks: int = 10, time_per_task: float = 300):
 
     # Load test data
     try:
-        with open('arc-agi_evaluation_challenges.json') as f:
+        with open('arc-agi_training_challenges.json') as f:
             all_tasks = json.load(f)
     except FileNotFoundError:
-        print("ERROR: arc-agi_evaluation_challenges.json not found")
+        print("ERROR: arc-agi_training_challenges.json not found")
         return
 
     # Select diverse tasks (mix of difficulty)
