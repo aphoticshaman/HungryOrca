@@ -484,38 +484,72 @@ class FillMaster(EvolvingSpecialist):
         return result, best_score, evolution
 
     def _find_interior(self, grid, bg=0):
-        """Find interior cells using flood-fill from edges."""
-        exterior = set()
+        """
+        Find interior cells using FIXED algorithm.
+
+        Old (broken): Flood-fill from edges, fill "everything else"
+        New (fixed): Find connected components of bg, fill ones not touching edges
+        """
+        from collections import deque
+
         h, w = grid.shape
-        stack = []
 
-        # Start from all edge cells
-        for i in range(h):
-            stack.append((i, 0))
-            stack.append((i, w-1))
-        for j in range(w):
-            stack.append((0, j))
-            stack.append((h-1, j))
-
-        # Flood fill from edges
-        while stack:
-            i, j = stack.pop()
-            if (i, j) in exterior:
-                continue
-            if not (0 <= i < h and 0 <= j < w):
-                continue
-
-            exterior.add((i, j))
-
-            for di, dj in [(0,1), (1,0), (0,-1), (-1,0)]:
-                stack.append((i+di, j+dj))
-
-        # Interior = all cells not in exterior
-        interior = []
+        # Find all background cells
+        bg_cells = set()
         for i in range(h):
             for j in range(w):
-                if (i, j) not in exterior:
-                    interior.append((i, j))
+                if grid[i, j] == bg:
+                    bg_cells.add((i, j))
+
+        if not bg_cells:
+            return []
+
+        # Find connected components of background
+        components = []
+        visited = set()
+
+        for start_cell in bg_cells:
+            if start_cell in visited:
+                continue
+
+            # BFS to find component
+            component = set()
+            queue = deque([start_cell])
+
+            while queue:
+                i, j = queue.popleft()
+
+                if (i, j) in visited:
+                    continue
+
+                if not (0 <= i < h and 0 <= j < w):
+                    continue
+
+                if grid[i, j] != bg:
+                    continue
+
+                visited.add((i, j))
+                component.add((i, j))
+
+                # 4-connected neighbors
+                for di, dj in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+                    queue.append((i + di, j + dj))
+
+            components.append(component)
+
+        # Find enclosed components (don't touch edges)
+        interior = []
+        for component in components:
+            touches_edge = False
+
+            for i, j in component:
+                if i == 0 or i == h - 1 or j == 0 or j == w - 1:
+                    touches_edge = True
+                    break
+
+            if not touches_edge:
+                # This component is enclosed!
+                interior.extend(list(component))
 
         return interior
 
