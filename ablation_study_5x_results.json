@@ -1,0 +1,125 @@
+{
+  "study_parameters": {
+    "num_runs": 5,
+    "num_tasks": 10,
+    "task_ids": [
+      "00576224",
+      "007bbfb7",
+      "009d5c81",
+      "00d62c1b",
+      "00dbd492",
+      "017c7c7b",
+      "025d127b",
+      "03560426",
+      "045e512c",
+      "0520fde7"
+    ]
+  },
+  "results": [
+    {
+      "condition": "Baseline-Pattern",
+      "run_number": 1,
+      "tasks_solved": 1,
+      "total_tasks": 10,
+      "accuracy": 0.1,
+      "solved_task_ids": [
+        "00576224"
+      ]
+    },
+    {
+      "condition": "Baseline-Pattern",
+      "run_number": 2,
+      "tasks_solved": 1,
+      "total_tasks": 10,
+      "accuracy": 0.1,
+      "solved_task_ids": [
+        "00576224"
+      ]
+    },
+    {
+      "condition": "Baseline-Pattern",
+      "run_number": 3,
+      "tasks_solved": 1,
+      "total_tasks": 10,
+      "accuracy": 0.1,
+      "solved_task_ids": [
+        "00576224"
+      ]
+    },
+    {
+      "condition": "Baseline-Pattern",
+      "run_number": 4,
+      "tasks_solved": 1,
+      "total_tasks": 10,
+      "accuracy": 0.1,
+      "solved_task_ids": [
+        "00576224"
+      ]
+    },
+    {
+      "condition": "Baseline-Pattern",
+      "run_number": 5,
+      "tasks_solved": 1,
+      "total_tasks": 10,
+      "accuracy": 0.1,
+      "solved_task_ids": [
+        "00576224"
+      ]
+    },
+    {
+      "condition": "Fuzzy-Integrated",
+      "run_number": 1,
+      "tasks_solved": 2,
+      "total_tasks": 10,
+      "accuracy": 0.2,
+      "solved_task_ids": [
+        "00576224",
+        "009d5c81"
+      ]
+    },
+    {
+      "condition": "Fuzzy-Integrated",
+      "run_number": 2,
+      "tasks_solved": 2,
+      "total_tasks": 10,
+      "accuracy": 0.2,
+      "solved_task_ids": [
+        "00576224",
+        "009d5c81"
+      ]
+    },
+    {
+      "condition": "Fuzzy-Integrated",
+      "run_number": 3,
+      "tasks_solved": 2,
+      "total_tasks": 10,
+      "accuracy": 0.2,
+      "solved_task_ids": [
+        "00576224",
+        "009d5c81"
+      ]
+    },
+    {
+      "condition": "Fuzzy-Integrated",
+      "run_number": 4,
+      "tasks_solved": 2,
+      "total_tasks": 10,
+      "accuracy": 0.2,
+      "solved_task_ids": [
+        "00576224",
+        "009d5c81"
+      ]
+    },
+    {
+      "condition": "Fuzzy-Integrated",
+      "run_number": 5,
+      "tasks_solved": 2,
+      "total_tasks": 10,
+      "accuracy": 0.2,
+      "solved_task_ids": [
+        "00576224",
+        "009d5c81"
+      ]
+    }
+  ]
+}

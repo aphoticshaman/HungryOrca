@@ -1,0 +1,536 @@
+{
+  "summary": {
+    "total_metrics": 120,
+    "unique_solvers": 12,
+    "unique_tasks": 10
+  },
+  "solver_analyses": {
+    "BOLTON-02-Pattern": {
+      "solver_name": "BOLTON-02-Pattern",
+      "total_tasks": 10,
+      "exact_matches": 1,
+      "exact_match_rate": 0.1,
+      "made_predictions": 1,
+      "prediction_rate": 0.1,
+      "avg_partial_match": 0.1,
+      "near_misses": 0,
+      "shape_correct_count": 1,
+      "shape_correct_rate": 1.0,
+      "learned_rules": 1,
+      "learning_rate": 0.1,
+      "error_types": {
+        "no_prediction": 9,
+        "size": 0,
+        "color": 0,
+        "pattern": 0
+      },
+      "avg_color_accuracy": 1.0
+    },
+    "BOLTON-04-Size": {
+      "solver_name": "BOLTON-04-Size",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 0,
+      "prediction_rate": 0.0,
+      "avg_partial_match": 0.0,
+      "near_misses": 0,
+      "shape_correct_count": 0,
+      "shape_correct_rate": 0,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 10,
+        "size": 0,
+        "color": 0,
+        "pattern": 0
+      },
+      "avg_color_accuracy": 0
+    },
+    "BOLTON-09-Symmetry": {
+      "solver_name": "BOLTON-09-Symmetry",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 0,
+      "prediction_rate": 0.0,
+      "avg_partial_match": 0.0,
+      "near_misses": 0,
+      "shape_correct_count": 0,
+      "shape_correct_rate": 0,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 10,
+        "size": 0,
+        "color": 0,
+        "pattern": 0
+      },
+      "avg_color_accuracy": 0
+    },
+    "BOLTON-11-Identity": {
+      "solver_name": "BOLTON-11-Identity",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 0,
+      "prediction_rate": 0.0,
+      "avg_partial_match": 0.0,
+      "near_misses": 0,
+      "shape_correct_count": 0,
+      "shape_correct_rate": 0,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 10,
+        "size": 0,
+        "color": 0,
+        "pattern": 0
+      },
+      "avg_color_accuracy": 0
+    },
+    "BOLTON-15-Abstraction": {
+      "solver_name": "BOLTON-15-Abstraction",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 0,
+      "prediction_rate": 0.0,
+      "avg_partial_match": 0.0,
+      "near_misses": 0,
+      "shape_correct_count": 0,
+      "shape_correct_rate": 0,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 10,
+        "size": 0,
+        "color": 0,
+        "pattern": 0
+      },
+      "avg_color_accuracy": 0
+    },
+    "BOLTON-06-Example": {
+      "solver_name": "BOLTON-06-Example",
+      "total_tasks": 10,
+      "exact_matches": 1,
+      "exact_match_rate": 0.1,
+      "made_predictions": 10,
+      "prediction_rate": 1.0,
+      "avg_partial_match": 0.5523327664399093,
+      "near_misses": 5,
+      "shape_correct_count": 7,
+      "shape_correct_rate": 0.7,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 0,
+        "size": 3,
+        "color": 1,
+        "pattern": 5
+      },
+      "avg_color_accuracy": 0.5523327664399093
+    },
+    "BOLTON-01-Object": {
+      "solver_name": "BOLTON-01-Object",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 10,
+      "prediction_rate": 1.0,
+      "avg_partial_match": 0.5057341269841269,
+      "near_misses": 6,
+      "shape_correct_count": 6,
+      "shape_correct_rate": 0.6,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 0,
+        "size": 4,
+        "color": 0,
+        "pattern": 6
+      },
+      "avg_color_accuracy": 0.5057341269841269
+    },
+    "BOLTON-10-Histogram": {
+      "solver_name": "BOLTON-10-Histogram",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 0,
+      "prediction_rate": 0.0,
+      "avg_partial_match": 0.0,
+      "near_misses": 0,
+      "shape_correct_count": 0,
+      "shape_correct_rate": 0,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 10,
+        "size": 0,
+        "color": 0,
+        "pattern": 0
+      },
+      "avg_color_accuracy": 0
+    },
+    "BOLTON-03-Rules": {
+      "solver_name": "BOLTON-03-Rules",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 1,
+      "prediction_rate": 0.1,
+      "avg_partial_match": 0.08673469387755102,
+      "near_misses": 1,
+      "shape_correct_count": 1,
+      "shape_correct_rate": 1.0,
+      "learned_rules": 1,
+      "learning_rate": 0.1,
+      "error_types": {
+        "no_prediction": 9,
+        "size": 0,
+        "color": 0,
+        "pattern": 1
+      },
+      "avg_color_accuracy": 0.8673469387755102
+    },
+    "BOLTON-07-Grid": {
+      "solver_name": "BOLTON-07-Grid",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 0,
+      "prediction_rate": 0.0,
+      "avg_partial_match": 0.0,
+      "near_misses": 0,
+      "shape_correct_count": 0,
+      "shape_correct_rate": 0,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 10,
+        "size": 0,
+        "color": 0,
+        "pattern": 0
+      },
+      "avg_color_accuracy": 0
+    },
+    "BOLTON-14-RuleInduction": {
+      "solver_name": "BOLTON-14-RuleInduction",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 3,
+      "prediction_rate": 0.3,
+      "avg_partial_match": 0.11111111111111112,
+      "near_misses": 1,
+      "shape_correct_count": 2,
+      "shape_correct_rate": 0.6666666666666666,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 7,
+        "size": 1,
+        "color": 1,
+        "pattern": 1
+      },
+      "avg_color_accuracy": 0.3703703703703704
+    },
+    "BOLTON-13-NearestNeighbor": {
+      "solver_name": "BOLTON-13-NearestNeighbor",
+      "total_tasks": 10,
+      "exact_matches": 0,
+      "exact_match_rate": 0.0,
+      "made_predictions": 10,
+      "prediction_rate": 1.0,
+      "avg_partial_match": 0.42745924666162755,
+      "near_misses": 3,
+      "shape_correct_count": 8,
+      "shape_correct_rate": 0.8,
+      "learned_rules": 0,
+      "learning_rate": 0.0,
+      "error_types": {
+        "no_prediction": 0,
+        "size": 2,
+        "color": 4,
+        "pattern": 4
+      },
+      "avg_color_accuracy": 0.42745924666162755
+    }
+  },
+  "complementary_pairs": [
+    [
+      "BOLTON-04-Size",
+      "BOLTON-06-Example",
+      1.0
+    ],
+    [
+      "BOLTON-09-Symmetry",
+      "BOLTON-06-Example",
+      1.0
+    ],
+    [
+      "BOLTON-11-Identity",
+      "BOLTON-06-Example",
+      1.0
+    ],
+    [
+      "BOLTON-15-Abstraction",
+      "BOLTON-06-Example",
+      1.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-06-Example",
+      0.5
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-04-Size",
+      0.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-09-Symmetry",
+      0.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-11-Identity",
+      0.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-15-Abstraction",
+      0.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-01-Object",
+      0.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-10-Histogram",
+      0.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-03-Rules",
+      0.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-07-Grid",
+      0.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-14-RuleInduction",
+      0.0
+    ],
+    [
+      "BOLTON-02-Pattern",
+      "BOLTON-13-NearestNeighbor",
+      0.0
+    ],
+    [
+      "BOLTON-06-Example",
+      "BOLTON-01-Object",
+      0.0
+    ],
+    [
+      "BOLTON-06-Example",
+      "BOLTON-10-Histogram",
+      0.0
+    ],
+    [
+      "BOLTON-06-Example",
+      "BOLTON-03-Rules",
+      0.0
+    ],
+    [
+      "BOLTON-06-Example",
+      "BOLTON-07-Grid",
+      0.0
+    ],
+    [
+      "BOLTON-06-Example",
+      "BOLTON-14-RuleInduction",
+      0.0
+    ],
+    [
+      "BOLTON-06-Example",
+      "BOLTON-13-NearestNeighbor",
+      0.0
+    ]
+  ],
+  "uplift_opportunities": {
+    "BOLTON-01-Object": {
+      "uplift_score": 12.5,
+      "reasons": [
+        "6 near-miss tasks (>70% correct)",
+        "High prediction rate but wrong"
+      ],
+      "analysis": {
+        "solver_name": "BOLTON-01-Object",
+        "total_tasks": 10,
+        "exact_matches": 0,
+        "exact_match_rate": 0.0,
+        "made_predictions": 10,
+        "prediction_rate": 1.0,
+        "avg_partial_match": 0.5057341269841269,
+        "near_misses": 6,
+        "shape_correct_count": 6,
+        "shape_correct_rate": 0.6,
+        "learned_rules": 0,
+        "learning_rate": 0.0,
+        "error_types": {
+          "no_prediction": 0,
+          "size": 4,
+          "color": 0,
+          "pattern": 6
+        },
+        "avg_color_accuracy": 0.5057341269841269
+      }
+    },
+    "BOLTON-06-Example": {
+      "uplift_score": 10.0,
+      "reasons": [
+        "5 near-miss tasks (>70% correct)"
+      ],
+      "analysis": {
+        "solver_name": "BOLTON-06-Example",
+        "total_tasks": 10,
+        "exact_matches": 1,
+        "exact_match_rate": 0.1,
+        "made_predictions": 10,
+        "prediction_rate": 1.0,
+        "avg_partial_match": 0.5523327664399093,
+        "near_misses": 5,
+        "shape_correct_count": 7,
+        "shape_correct_rate": 0.7,
+        "learned_rules": 0,
+        "learning_rate": 0.0,
+        "error_types": {
+          "no_prediction": 0,
+          "size": 3,
+          "color": 1,
+          "pattern": 5
+        },
+        "avg_color_accuracy": 0.5523327664399093
+      }
+    },
+    "BOLTON-13-NearestNeighbor": {
+      "uplift_score": 7.5,
+      "reasons": [
+        "3 near-miss tasks (>70% correct)",
+        "Shape correct (80%) but color errors",
+        "High prediction rate but wrong"
+      ],
+      "analysis": {
+        "solver_name": "BOLTON-13-NearestNeighbor",
+        "total_tasks": 10,
+        "exact_matches": 0,
+        "exact_match_rate": 0.0,
+        "made_predictions": 10,
+        "prediction_rate": 1.0,
+        "avg_partial_match": 0.42745924666162755,
+        "near_misses": 3,
+        "shape_correct_count": 8,
+        "shape_correct_rate": 0.8,
+        "learned_rules": 0,
+        "learning_rate": 0.0,
+        "error_types": {
+          "no_prediction": 0,
+          "size": 2,
+          "color": 4,
+          "pattern": 4
+        },
+        "avg_color_accuracy": 0.42745924666162755
+      }
+    },
+    "BOLTON-03-Rules": {
+      "uplift_score": 3.0,
+      "reasons": [
+        "1 near-miss tasks (>70% correct)",
+        "Shape correct (100%) but color errors"
+      ],
+      "analysis": {
+        "solver_name": "BOLTON-03-Rules",
+        "total_tasks": 10,
+        "exact_matches": 0,
+        "exact_match_rate": 0.0,
+        "made_predictions": 1,
+        "prediction_rate": 0.1,
+        "avg_partial_match": 0.08673469387755102,
+        "near_misses": 1,
+        "shape_correct_count": 1,
+        "shape_correct_rate": 1.0,
+        "learned_rules": 1,
+        "learning_rate": 0.1,
+        "error_types": {
+          "no_prediction": 9,
+          "size": 0,
+          "color": 0,
+          "pattern": 1
+        },
+        "avg_color_accuracy": 0.8673469387755102
+      }
+    },
+    "BOLTON-14-RuleInduction": {
+      "uplift_score": 2.0,
+      "reasons": [
+        "1 near-miss tasks (>70% correct)"
+      ],
+      "analysis": {
+        "solver_name": "BOLTON-14-RuleInduction",
+        "total_tasks": 10,
+        "exact_matches": 0,
+        "exact_match_rate": 0.0,
+        "made_predictions": 3,
+        "prediction_rate": 0.3,
+        "avg_partial_match": 0.11111111111111112,
+        "near_misses": 1,
+        "shape_correct_count": 2,
+        "shape_correct_rate": 0.6666666666666666,
+        "learned_rules": 0,
+        "learning_rate": 0.0,
+        "error_types": {
+          "no_prediction": 7,
+          "size": 1,
+          "color": 1,
+          "pattern": 1
+        },
+        "avg_color_accuracy": 0.3703703703703704
+      }
+    },
+    "BOLTON-02-Pattern": {
+      "uplift_score": 1.0,
+      "reasons": [
+        "Shape correct (100%) but color errors"
+      ],
+      "analysis": {
+        "solver_name": "BOLTON-02-Pattern",
+        "total_tasks": 10,
+        "exact_matches": 1,
+        "exact_match_rate": 0.1,
+        "made_predictions": 1,
+        "prediction_rate": 0.1,
+        "avg_partial_match": 0.1,
+        "near_misses": 0,
+        "shape_correct_count": 1,
+        "shape_correct_rate": 1.0,
+        "learned_rules": 1,
+        "learning_rate": 0.1,
+        "error_types": {
+          "no_prediction": 9,
+          "size": 0,
+          "color": 0,
+          "pattern": 0
+        },
+        "avg_color_accuracy": 1.0
+      }
+    }
+  }
+}
