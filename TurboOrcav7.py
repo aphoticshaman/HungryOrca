@@ -26,8 +26,38 @@ OUTPUT: submission.json + three essential metrics
 import numpy as np
 import json
 import time
+import os
 from typing import List, Tuple, Dict, Set
 from collections import defaultdict
+
+
+def get_data_paths():
+    """
+    Get correct data paths for Kaggle or local environment.
+
+    Returns dict with paths to all data files.
+    """
+    # Check if we're on Kaggle
+    kaggle_path = '/kaggle/input/arc-prize-2025/'
+
+    if os.path.exists(kaggle_path):
+        # On Kaggle
+        return {
+            'training_challenges': os.path.join(kaggle_path, 'arc-agi_training_challenges.json'),
+            'training_solutions': os.path.join(kaggle_path, 'arc-agi_training_solutions.json'),
+            'evaluation_challenges': os.path.join(kaggle_path, 'arc-agi_evaluation_challenges.json'),
+            'evaluation_solutions': os.path.join(kaggle_path, 'arc-agi_evaluation_solutions.json'),
+            'test_challenges': os.path.join(kaggle_path, 'arc-agi_test_challenges.json'),
+        }
+    else:
+        # Local environment
+        return {
+            'training_challenges': 'arc-agi_training_challenges.json',
+            'training_solutions': 'arc-agi_training_solutions.json',
+            'evaluation_challenges': 'arc-agi_evaluation_challenges.json',
+            'evaluation_solutions': 'arc-agi_evaluation_solutions.json',
+            'test_challenges': 'arc-agi_test_challenges.json',
+        }
 
 
 class PatternLearner:
@@ -333,10 +363,11 @@ class TurboOrcaV7:
         print("TRAINING VALIDATION")
         print("=" * 80)
 
+        paths = get_data_paths()
         try:
-            with open('arc-agi_training_challenges.json') as f:
+            with open(paths['training_challenges']) as f:
                 train_tasks = json.load(f)
-            with open('arc-agi_training_solutions.json') as f:
+            with open(paths['training_solutions']) as f:
                 solutions = json.load(f)
         except FileNotFoundError as e:
             print(f"ERROR: {e}")
@@ -394,11 +425,12 @@ class TurboOrcaV7:
         print("GENERATING TEST SUBMISSION")
         print("=" * 80)
 
+        paths = get_data_paths()
         try:
-            with open('arc-agi_test_challenges.json') as f:
+            with open(paths['test_challenges']) as f:
                 test_tasks = json.load(f)
         except FileNotFoundError:
-            print("ERROR: arc-agi_test_challenges.json not found!")
+            print(f"ERROR: {paths['test_challenges']} not found!")
             return
 
         num_tasks = len(test_tasks)
