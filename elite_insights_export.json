@@ -1,0 +1,62 @@
+{
+  "1_algebraic_colors": {
+    "principle": "Colors as Mathematical Objects",
+    "description": "\n                    Don't just treat colors as pixels - they can be field elements,\n                    group elements, or algebraic objects with operations.\n\n                    Test: If (color_a \u2295 color_b) = color_c consistently, there's\n                    an algebraic structure. Find the operation!\n                ",
+    "implementation": "Try modular arithmetic, field operations, group theory",
+    "expected_gain": "+5-8% on algebraic pattern tasks"
+  },
+  "2_topological_invariants": {
+    "principle": "Invariants Over Visual Similarity",
+    "description": "\n                    Compute topological features (holes, components, genus).\n                    Transformation often preserves these even when appearance changes.\n\n                    Invariants filter out impossible transformations early!\n                ",
+    "implementation": "Compute Betti numbers, Euler characteristic, check preservation",
+    "expected_gain": "+3-5% by eliminating wrong hypotheses"
+  },
+  "3_spectral_methods": {
+    "principle": "Graph Laplacian for Global Structure",
+    "description": "\n                    Grid as graph. Laplacian eigenvalues capture global connectivity.\n                    Eigenvectors give optimal partitioning and clustering.\n\n                    Non-local dependencies become explicit in spectral domain!\n                ",
+    "implementation": "Build adjacency matrix, compute Laplacian, use eigenvectors",
+    "expected_gain": "+4-6% on complex spatial relationship tasks"
+  },
+  "4_iterative_dynamics": {
+    "principle": "Time Evolution as Transformation",
+    "description": "\n                    Output may be f^n(input), not f(input).\n                    Check for cellular automata, iterated functions, dynamical systems.\n\n                    Finding the rule is easier than finding f^n directly!\n                ",
+    "implementation": "Test CA rules, look for conservation laws, check reversibility",
+    "expected_gain": "+2-4% on iterative pattern tasks"
+  },
+  "5_higher_dimensions": {
+    "principle": "3D Embedding of 2D Grids",
+    "description": "\n                    Embed 2D grid in 3D (color = depth/height).\n                    Apply 3D transformations, project back to 2D.\n\n                    Explains \"impossible\" 2D rotations and perspective effects!\n                ",
+    "implementation": "Color \u2192 z-coordinate, apply 3D rotation, orthogonal projection",
+    "expected_gain": "+3-5% on visual illusion/projection tasks"
+  },
+  "6_superposition_resolution": {
+    "principle": "Ambiguity as Quantum Superposition",
+    "description": "\n                    Multiple valid interpretations \u2192 superposition state.\n                    Training examples are \"measurements\" that collapse state.\n\n                    Ensemble of weighted interpretations!\n                ",
+    "implementation": "Extract all interpretations, weight by training consistency",
+    "expected_gain": "+4-6% on ambiguous pattern tasks"
+  },
+  "7_structure_preservation": {
+    "principle": "Functorial/Structure-Preserving Maps",
+    "description": "\n                    Best transformations preserve key structure:\n                    - Composition, connectivity, ordering, operations\n\n                    Preservation is a powerful constraint!\n                ",
+    "implementation": "Identify structural properties, find preserving transformation",
+    "expected_gain": "+5-7% via constraint-based filtering"
+  },
+  "8_nearest_valid_pattern": {
+    "principle": "Projection onto Manifold",
+    "description": "\n                    Output = nearest valid pattern to input in some metric.\n                    Learn manifold of valid patterns from training.\n\n                    Error correction / noise cleaning!\n                ",
+    "implementation": "Learn pattern manifold, project input onto it",
+    "expected_gain": "+3-5% on cleanup/correction tasks"
+  },
+  "9_constraint_satisfaction": {
+    "principle": "Global CSP Formulation",
+    "description": "\n                    Extract constraints from training, formulate as CSP.\n                    Use SAT/SMT solvers for satisfying assignment.\n\n                    When it looks \"puzzly\", it IS a puzzle!\n                ",
+    "implementation": "Z3 solver, constraint propagation, backtracking",
+    "expected_gain": "+6-10% on Sudoku-like constraint tasks"
+  },
+  "10_fractal_compression": {
+    "principle": "Multi-Scale Self-Similarity",
+    "description": "\n                    Fractal patterns: small generator \u2192 whole pattern.\n                    Compute fractal dimension, find self-similar structure.\n\n                    Essential for large grids (30\u00d730, 50\u00d750)!\n                ",
+    "implementation": "Box-counting dimension, recursive generator extraction",
+    "expected_gain": "+8-12% on large-scale recursive patterns"
+  }
+}
