@@ -156,6 +156,13 @@ class SymbolicPrimitiveExecutor:
             # Analytical
             'extract_largest': self._extract_largest_object,
             'fill_background': self._fill_background,
+
+            # Compositions (ROUND 1 INSIGHT: atomic 2-step operations)
+            'rotate_reflect_h': self._rotate_reflect_h,
+            'rotate_reflect_v': self._rotate_reflect_v,
+            'scale_rotate': self._scale_rotate,
+            'tile_invert': self._tile_invert,
+            'reflect_transpose': self._reflect_transpose,
         }
 
         # Build inverse map (for backward search)
@@ -262,6 +269,37 @@ class SymbolicPrimitiveExecutor:
 
         most_common = np.bincount(nonzero.flatten()).argmax()
         return np.where(grid == 0, most_common, grid)
+
+    # ========================================================================
+    # ROUND 1 INSIGHT: Composition Primitives
+    # Insight: 2-step tasks fail with atomic primitives alone
+    # Solution: Add common compositions as new atomic operations
+    # ========================================================================
+
+    def _rotate_reflect_h(self, grid: np.ndarray) -> np.ndarray:
+        """Rotate 90° CW then reflect horizontally"""
+        rotated = self._rotate_90_cw(grid)
+        return self._reflect_horizontal(rotated)
+
+    def _rotate_reflect_v(self, grid: np.ndarray) -> np.ndarray:
+        """Rotate 90° CW then reflect vertically"""
+        rotated = self._rotate_90_cw(grid)
+        return self._reflect_vertical(rotated)
+
+    def _scale_rotate(self, grid: np.ndarray) -> np.ndarray:
+        """Scale up 2x then rotate 90° CW"""
+        scaled = self._scale_up_2x(grid)
+        return self._rotate_90_cw(scaled)
+
+    def _tile_invert(self, grid: np.ndarray) -> np.ndarray:
+        """Tile 2x2 then invert colors"""
+        tiled = self._tile_2x2(grid)
+        return self._invert_colors(tiled)
+
+    def _reflect_transpose(self, grid: np.ndarray) -> np.ndarray:
+        """Reflect horizontally then transpose"""
+        reflected = self._reflect_horizontal(grid)
+        return self._transpose(reflected)
 
 
 # ============================================================================
