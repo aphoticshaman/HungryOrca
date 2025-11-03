@@ -872,11 +872,11 @@ class TurboOrcaV9:
             while len(attempts) < 2:
                 attempts.append(attempts[0] if attempts else [[0]])
 
-            # KAGGLE FORMAT: [{"attempt_1": grid1, "attempt_2": grid2}]
-            submission[task_id] = [{
+            # KAGGLE FORMAT: [{"attempt_1": grid1, "attempt_2": grid2}
+            submission[task_id] = {
                 "attempt_1": attempts[0],
                 "attempt_2": attempts[1] if len(attempts) > 1 else attempts[0]
-            }]
+            }
 
             task_time = time.time() - task_start
             task_times.append(task_time)
@@ -898,11 +898,11 @@ class TurboOrcaV9:
         if completed < num_tasks:
             for task_id, task_data in list(test_tasks.items())[completed:]:
                 test_input = np.array(task_data['test'][0]['input'], dtype=np.int32)
-                # KAGGLE FORMAT: [{"attempt_1": grid, "attempt_2": grid}]
-                submission[task_id] = [{
+                # KAGGLE FORMAT: [{"attempt_1": grid, "attempt_2": grid}
+                submission[task_id] = {
                     "attempt_1": test_input.tolist(),
                     "attempt_2": test_input.tolist()
-                }]
+                }
 
         # Save submission
         with open(output_file, 'w') as f:
@@ -974,7 +974,7 @@ if __name__ == '__main__':
 ║                                                                              ║
 ║  CRITICAL FIX in v8:                                                         ║
 ║    ✅ Outputs correct Kaggle submission format                              ║
-║       Format: [{"attempt_1": grid1, "attempt_2": grid2}]                    ║
+║       Format: [{"attempt_1": grid1, "attempt_2": grid2}                    ║
 ║                                                                              ║
 ║  What's ACTUALLY improved:                                                   ║
 ║    ✅ Pattern learning from training examples                               ║
