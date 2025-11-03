@@ -1,0 +1,28 @@
+Loading ARC training data...
+Loaded 10 tasks for ablation testing
+
+================================================================================
+ABLATION TEST 1: Cortex Size
+================================================================================
+
+Testing size=5000...
+  Error: could not broadcast input array from shape (500,) into shape (0,)
+  Error: could not broadcast input array from shape (500,) into shape (0,)
+  Error: could not broadcast input array from shape (500,) into shape (0,)
+  Error: could not broadcast input array from shape (500,) into shape (0,)
+  Error: could not broadcast input array from shape (500,) into shape (0,)
+  Confidence: 0.000
+  Time: 0.00s
+  Efficiency: 0.0000
+
+Testing size=10000...
+  Error: could not broadcast input array from shape (500,) into shape (2500,)
+  Error: could not broadcast input array from shape (500,) into shape (2500,)
+  Error: could not broadcast input array from shape (500,) into shape (2500,)
+  Error: could not broadcast input array from shape (500,) into shape (2500,)
+  Error: could not broadcast input array from shape (500,) into shape (2500,)
+  Confidence: 0.000
+  Time: 0.00s
+  Efficiency: 0.0000
+
+Testing size=50000...

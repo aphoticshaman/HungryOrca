@@ -80,17 +80,25 @@ class UnifiedCortex:
         # PROCESSING BIASES (not separate modules!)
         if ENABLE_SEMANTIC_BIAS:
             self.semantic_bias = np.zeros(size)
-            self.semantic_bias[2500:5000] = 1.0  # Peak in "semantic region"
+            sem_start = int(size * 0.25)
+            sem_end = int(size * 0.50)
+            self.semantic_bias[sem_start:sem_end] = 1.0  # Peak in "semantic region"
             # But also some influence in overlap region
-            self.semantic_bias[4000:6000] = 0.5
+            overlap_start = int(size * 0.40)
+            overlap_end = int(size * 0.60)
+            self.semantic_bias[overlap_start:overlap_end] = 0.5
         else:
             self.semantic_bias = np.zeros(size)
 
         if ENABLE_SPATIAL_BIAS:
             self.spatial_bias = np.zeros(size)
-            self.spatial_bias[5000:7500] = 1.0  # Peak in "spatial region"
+            spat_start = int(size * 0.50)
+            spat_end = int(size * 0.75)
+            self.spatial_bias[spat_start:spat_end] = 1.0  # Peak in "spatial region"
             # And overlap region
-            self.spatial_bias[4000:6000] = 0.5
+            overlap_start = int(size * 0.40)
+            overlap_end = int(size * 0.60)
+            self.spatial_bias[overlap_start:overlap_end] = 0.5
         else:
             self.spatial_bias = np.zeros(size)
 
@@ -108,18 +116,19 @@ class UnifiedCortex:
         Encode ARC grid into neural activation pattern.
 
         Simple encoding: Flatten grid and map to visual cortex.
-        Visual cortex = neurons 0-2500.
+        Visual cortex = first 25% of neurons (0-25%).
         """
 
         # Flatten grid
         flat = grid.flatten()
 
-        # Map to visual cortex (first 2500 neurons)
-        visual_activation = np.zeros(2500)
+        # Map to visual cortex (first 25% of neurons)
+        visual_size = int(self.size * 0.25)
+        visual_activation = np.zeros(visual_size)
 
         # Repeat pattern to fill visual cortex
-        repeats = int(np.ceil(2500 / len(flat)))
-        extended = np.tile(flat, repeats)[:2500]
+        repeats = int(np.ceil(visual_size / len(flat)))
+        extended = np.tile(flat, repeats)[:visual_size]
 
         # Normalize to [0, 1]
         if extended.max() > 0:
@@ -148,10 +157,11 @@ class UnifiedCortex:
             return stimulus[:100] if len(stimulus) > 100 else np.pad(stimulus, (0, 100-len(stimulus)))
 
         # INITIAL ACTIVATION: Stimulus activates visual cortex
-        if len(stimulus) <= 2500:
+        visual_size = int(self.size * 0.25)
+        if len(stimulus) <= visual_size:
             self.neurons[:len(stimulus)] += stimulus
         else:
-            self.neurons[:2500] += stimulus[:2500]
+            self.neurons[:visual_size] += stimulus[:visual_size]
 
         # ITERATIVE PROPAGATION
         if ENABLE_ITERATIVE_PROPAGATION:
@@ -182,15 +192,20 @@ class UnifiedCortex:
 
     def get_semantic_state(self) -> np.ndarray:
         """Get semantic-biased region activation."""
-        return self.neurons[2500:5000]
+        start = int(self.size * 0.25)
+        end = int(self.size * 0.50)
+        return self.neurons[start:end]
 
     def get_spatial_state(self) -> np.ndarray:
         """Get spatial-biased region activation."""
-        return self.neurons[5000:7500]
+        start = int(self.size * 0.50)
+        end = int(self.size * 0.75)
+        return self.neurons[start:end]
 
     def get_motor_state(self) -> np.ndarray:
         """Get motor cortex (output planning) activation."""
-        return self.neurons[7500:10000]
+        start = int(self.size * 0.75)
+        return self.neurons[start:]
 
     def measure_coherence(self) -> float:
         """
@@ -204,18 +219,26 @@ class UnifiedCortex:
         spatial = self.get_spatial_state()
 
         # Coherence = correlation in overlap region
-        # Neurons 4000-6000 are influenced by both
-        overlap_semantic = self.neurons[4000:5000]  # Tail of semantic
-        overlap_spatial = self.neurons[5000:6000]   # Head of spatial
+        # Overlap region is 40-60% of cortex (influenced by both)
+        overlap_start = int(self.size * 0.40)
+        overlap_mid = int(self.size * 0.50)
+        overlap_end = int(self.size * 0.60)
+
+        overlap_semantic = self.neurons[overlap_start:overlap_mid]  # Tail of semantic
+        overlap_spatial = self.neurons[overlap_mid:overlap_end]     # Head of spatial
 
         if ENABLE_DISTRIBUTED_REPS:
             # Measure agreement via dot product
-            coherence = np.dot(overlap_semantic, overlap_spatial[:1000])
-            # Normalize
-            norm_s = np.linalg.norm(overlap_semantic)
-            norm_p = np.linalg.norm(overlap_spatial[:1000])
-            if norm_s > 0 and norm_p > 0:
-                coherence = coherence / (norm_s * norm_p)
+            min_len = min(len(overlap_semantic), len(overlap_spatial))
+            if min_len > 0:
+                coherence = np.dot(overlap_semantic[:min_len], overlap_spatial[:min_len])
+                # Normalize
+                norm_s = np.linalg.norm(overlap_semantic[:min_len])
+                norm_p = np.linalg.norm(overlap_spatial[:min_len])
+                if norm_s > 0 and norm_p > 0:
+                    coherence = coherence / (norm_s * norm_p)
+                else:
+                    coherence = 0.0
             else:
                 coherence = 0.0
         else:
@@ -280,6 +303,11 @@ class CorticalSolver:
 
         start_time = time.time()
 
+        # Calculate cortex regions (proportional, not hardcoded!)
+        cortex_size = self.cortex.size
+        motor_start = int(cortex_size * 0.75)  # Last 25% is motor cortex
+        motor_size = cortex_size - motor_start
+
         # TRAINING PHASE: Learn from examples
         for inp, out in train_pairs:
             self.cortex.reset()
@@ -291,7 +319,8 @@ class CorticalSolver:
             # Encode output (what we want to achieve)
             out_encoded = self.cortex.encode_grid(out)
             # Activate motor cortex with desired output
-            self.cortex.neurons[7500:7500+len(out_encoded)] = out_encoded[:500]
+            motor_len = min(len(out_encoded), motor_size)
+            self.cortex.neurons[motor_start:motor_start+motor_len] = out_encoded[:motor_len]
 
             if time.time() - start_time > time_limit * 0.3:
                 break
