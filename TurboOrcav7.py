@@ -600,22 +600,35 @@ class TurboOrcaV7:
                            np.array(p['output'], dtype=np.int32))
                           for p in task_data['train']]
 
-            attempts = []
+            # CORRECT FORMAT: Each task has a list of test inputs
+            # Each test input gets {"attempt_1": grid, "attempt_2": grid}
+            test_attempts = []
             for test_pair in task_data['test']:
                 test_input = np.array(test_pair['input'], dtype=np.int32)
 
+                # Generate 2 attempts for this test input
                 try:
-                    solution, score = self.solve_task(train_pairs, test_input, time_per_task)
-                    attempts.append(solution.tolist())
+                    solution1, score = self.solve_task(train_pairs, test_input, time_per_task)
+                    attempt_1 = solution1.tolist()
                     task_scores.append(score)
                 except:
-                    attempts.append(test_input.tolist())
+                    attempt_1 = test_input.tolist()
                     task_scores.append(0.0)
 
-            while len(attempts) < 2:
-                attempts.append(attempts[0] if attempts else [[0]])
+                # Second attempt (could be different or same)
+                try:
+                    solution2, score = self.solve_task(train_pairs, test_input, time_per_task * 0.5)
+                    attempt_2 = solution2.tolist()
+                except:
+                    attempt_2 = attempt_1  # Fallback to attempt 1
 
-            submission[task_id] = attempts[:2]
+                # Correct format
+                test_attempts.append({
+                    "attempt_1": attempt_1,
+                    "attempt_2": attempt_2
+                })
+
+            submission[task_id] = test_attempts
 
             task_time = time.time() - task_start
             task_times.append(task_time)
@@ -633,11 +646,18 @@ class TurboOrcaV7:
 
             completed += 1
 
-        # Fill remaining
+        # Fill remaining tasks (if timeout)
         if completed < num_tasks:
             for task_id, task_data in list(test_tasks.items())[completed:]:
-                test_input = np.array(task_data['test'][0]['input'], dtype=np.int32)
-                submission[task_id] = [test_input.tolist(), test_input.tolist()]
+                # Fill with correct format
+                test_attempts = []
+                for test_pair in task_data['test']:
+                    test_input = np.array(test_pair['input'], dtype=np.int32).tolist()
+                    test_attempts.append({
+                        "attempt_1": test_input,
+                        "attempt_2": test_input
+                    })
+                submission[task_id] = test_attempts
 
         # Save submission
         with open(output_file, 'w') as f:
