@@ -1,17 +1,12 @@
 #!/usr/bin/env python3
 """
-TurboOrca v8 - KAGGLE FORMAT FIX + REAL IMPROVEMENTS
-=====================================================
+TurboOrca v7 - REAL IMPROVEMENTS (No Fluff)
+============================================
 
 ⚙️  TIME BUDGET CONFIGURATION (Line 10): Change below
 """
 TIME_BUDGET_MINUTES = 90  # ← CHANGE THIS (1=fast test, 30=medium, 90=full)
 """
-
-CHANGES IN v8:
-✅ FIXED KAGGLE SUBMISSION FORMAT (CRITICAL)
-   - Now outputs: [{"attempt_1": grid1, "attempt_2": grid2}]
-   - Previous v7 format was WRONG and would be rejected by Kaggle
 
 FOCUS: Actually improve ARC solving, not simulate biology.
 
@@ -29,8 +24,8 @@ NO FLUFF:
 - No caffeine/nicotine tracking
 - Just better ARC solving
 
-USAGE: python3 TurboOrcav8.py
-OUTPUT: submission.json (Kaggle-compliant format) + three essential metrics
+USAGE: python3 TurboOrcav7.py
+OUTPUT: submission.json + three essential metrics
 """
 
 import numpy as np
@@ -522,7 +517,7 @@ class TurboOrcaV7:
         """Generate submission with three essential metrics."""
 
         log("=" * 80)
-        log("TurboOrca v8 - KAGGLE FORMAT FIX + REAL IMPROVEMENTS")
+        log("TurboOrca v7 - REAL IMPROVEMENTS")
         log(f"RUN STARTED: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         log("=" * 80)
 
@@ -620,11 +615,7 @@ class TurboOrcaV7:
             while len(attempts) < 2:
                 attempts.append(attempts[0] if attempts else [[0]])
 
-            # KAGGLE FORMAT: [{"attempt_1": grid1, "attempt_2": grid2}]
-            submission[task_id] = [{
-                "attempt_1": attempts[0],
-                "attempt_2": attempts[1] if len(attempts) > 1 else attempts[0]
-            }]
+            submission[task_id] = attempts[:2]
 
             task_time = time.time() - task_start
             task_times.append(task_time)
@@ -646,11 +637,7 @@ class TurboOrcaV7:
         if completed < num_tasks:
             for task_id, task_data in list(test_tasks.items())[completed:]:
                 test_input = np.array(task_data['test'][0]['input'], dtype=np.int32)
-                # KAGGLE FORMAT: [{"attempt_1": grid, "attempt_2": grid}]
-                submission[task_id] = [{
-                    "attempt_1": test_input.tolist(),
-                    "attempt_2": test_input.tolist()
-                }]
+                submission[task_id] = [test_input.tolist(), test_input.tolist()]
 
         # Save submission
         with open(output_file, 'w') as f:
@@ -708,7 +695,7 @@ if __name__ == '__main__':
     # Clear old log file and start fresh
     with open(LOG_FILE, 'w') as f:
         f.write(f"{'='*80}\n")
-        f.write(f"TurboOrca v8 - New Run Started (Kaggle Format Fix)\n")
+        f.write(f"TurboOrca v7 - New Run Started\n")
         f.write(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write(f"Time Budget: {TIME_BUDGET_MINUTES} minutes\n")
         f.write(f"{'='*80}\n\n")
@@ -718,11 +705,7 @@ if __name__ == '__main__':
     print("""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
-║                   TurboOrca v8 - KAGGLE FORMAT FIX                           ║
-║                                                                              ║
-║  CRITICAL FIX in v8:                                                         ║
-║    ✅ Outputs correct Kaggle submission format                              ║
-║       Format: [{"attempt_1": grid1, "attempt_2": grid2}]                    ║
+║                   TurboOrca v7 - REAL IMPROVEMENTS                           ║
 ║                                                                              ║
 ║  What's ACTUALLY improved:                                                   ║
 ║    ✅ Pattern learning from training examples                               ║
@@ -737,7 +720,7 @@ if __name__ == '__main__':
 ║    ❌ Spiking neural networks                                               ║
 ║    ❌ Caffeine/nicotine tracking                                            ║
 ║                                                                              ║
-║  Just better ARC solving. No fluff. Correct format.                          ║
+║  Just better ARC solving. No fluff.                                          ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
     """)
