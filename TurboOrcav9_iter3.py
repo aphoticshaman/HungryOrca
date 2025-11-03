@@ -974,7 +974,7 @@ if __name__ == '__main__':
 ║                                                                              ║
 ║  CRITICAL FIX in v8:                                                         ║
 ║    ✅ Outputs correct Kaggle submission format                              ║
-║       Format: [{"attempt_1": grid1, "attempt_2": grid2}                    ║
+║       Format: {"attempt_1": grid1, "attempt_2": grid2}                    ║
 ║                                                                              ║
 ║  What's ACTUALLY improved:                                                   ║
 ║    ✅ Pattern learning from training examples                               ║
