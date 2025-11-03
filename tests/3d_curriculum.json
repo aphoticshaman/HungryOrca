@@ -1,0 +1,503 @@
+{
+  "total_tasks": 40,
+  "difficulties": [
+    "3x3x3",
+    "5x5x5",
+    "7x7x7",
+    "10x10x10"
+  ],
+  "patterns": [
+    "rotate_x",
+    "rotate_y",
+    "rotate_z",
+    "reflect_xy",
+    "reflect_xz",
+    "reflect_yz",
+    "translate",
+    "scale",
+    "fill",
+    "count"
+  ],
+  "tasks": [
+    {
+      "task_id": "3d_3x3x3_0000",
+      "difficulty": "3x3x3",
+      "pattern_type": "rotate_x",
+      "description": "3x3x3 - rotate_x",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_3x3x3_0001",
+      "difficulty": "3x3x3",
+      "pattern_type": "rotate_y",
+      "description": "3x3x3 - rotate_y",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_3x3x3_0002",
+      "difficulty": "3x3x3",
+      "pattern_type": "rotate_z",
+      "description": "3x3x3 - rotate_z",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_3x3x3_0003",
+      "difficulty": "3x3x3",
+      "pattern_type": "reflect_xy",
+      "description": "3x3x3 - reflect_xy",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_3x3x3_0004",
+      "difficulty": "3x3x3",
+      "pattern_type": "reflect_xz",
+      "description": "3x3x3 - reflect_xz",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_3x3x3_0005",
+      "difficulty": "3x3x3",
+      "pattern_type": "reflect_yz",
+      "description": "3x3x3 - reflect_yz",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_3x3x3_0006",
+      "difficulty": "3x3x3",
+      "pattern_type": "translate",
+      "description": "3x3x3 - translate",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_3x3x3_0007",
+      "difficulty": "3x3x3",
+      "pattern_type": "scale",
+      "description": "3x3x3 - scale",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_3x3x3_0008",
+      "difficulty": "3x3x3",
+      "pattern_type": "fill",
+      "description": "3x3x3 - fill",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_3x3x3_0009",
+      "difficulty": "3x3x3",
+      "pattern_type": "count",
+      "description": "3x3x3 - count",
+      "train_pairs": 3,
+      "test_shape": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0010",
+      "difficulty": "5x5x5",
+      "pattern_type": "rotate_x",
+      "description": "5x5x5 - rotate_x",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0011",
+      "difficulty": "5x5x5",
+      "pattern_type": "rotate_y",
+      "description": "5x5x5 - rotate_y",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0012",
+      "difficulty": "5x5x5",
+      "pattern_type": "rotate_z",
+      "description": "5x5x5 - rotate_z",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0013",
+      "difficulty": "5x5x5",
+      "pattern_type": "reflect_xy",
+      "description": "5x5x5 - reflect_xy",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0014",
+      "difficulty": "5x5x5",
+      "pattern_type": "reflect_xz",
+      "description": "5x5x5 - reflect_xz",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0015",
+      "difficulty": "5x5x5",
+      "pattern_type": "reflect_yz",
+      "description": "5x5x5 - reflect_yz",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0016",
+      "difficulty": "5x5x5",
+      "pattern_type": "translate",
+      "description": "5x5x5 - translate",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0017",
+      "difficulty": "5x5x5",
+      "pattern_type": "scale",
+      "description": "5x5x5 - scale",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0018",
+      "difficulty": "5x5x5",
+      "pattern_type": "fill",
+      "description": "5x5x5 - fill",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_5x5x5_0019",
+      "difficulty": "5x5x5",
+      "pattern_type": "count",
+      "description": "5x5x5 - count",
+      "train_pairs": 3,
+      "test_shape": [
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0020",
+      "difficulty": "7x7x7",
+      "pattern_type": "rotate_x",
+      "description": "7x7x7 - rotate_x",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0021",
+      "difficulty": "7x7x7",
+      "pattern_type": "rotate_y",
+      "description": "7x7x7 - rotate_y",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0022",
+      "difficulty": "7x7x7",
+      "pattern_type": "rotate_z",
+      "description": "7x7x7 - rotate_z",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0023",
+      "difficulty": "7x7x7",
+      "pattern_type": "reflect_xy",
+      "description": "7x7x7 - reflect_xy",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0024",
+      "difficulty": "7x7x7",
+      "pattern_type": "reflect_xz",
+      "description": "7x7x7 - reflect_xz",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0025",
+      "difficulty": "7x7x7",
+      "pattern_type": "reflect_yz",
+      "description": "7x7x7 - reflect_yz",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0026",
+      "difficulty": "7x7x7",
+      "pattern_type": "translate",
+      "description": "7x7x7 - translate",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0027",
+      "difficulty": "7x7x7",
+      "pattern_type": "scale",
+      "description": "7x7x7 - scale",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0028",
+      "difficulty": "7x7x7",
+      "pattern_type": "fill",
+      "description": "7x7x7 - fill",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_7x7x7_0029",
+      "difficulty": "7x7x7",
+      "pattern_type": "count",
+      "description": "7x7x7 - count",
+      "train_pairs": 3,
+      "test_shape": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0030",
+      "difficulty": "10x10x10",
+      "pattern_type": "rotate_x",
+      "description": "10x10x10 - rotate_x",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0031",
+      "difficulty": "10x10x10",
+      "pattern_type": "rotate_y",
+      "description": "10x10x10 - rotate_y",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0032",
+      "difficulty": "10x10x10",
+      "pattern_type": "rotate_z",
+      "description": "10x10x10 - rotate_z",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0033",
+      "difficulty": "10x10x10",
+      "pattern_type": "reflect_xy",
+      "description": "10x10x10 - reflect_xy",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0034",
+      "difficulty": "10x10x10",
+      "pattern_type": "reflect_xz",
+      "description": "10x10x10 - reflect_xz",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0035",
+      "difficulty": "10x10x10",
+      "pattern_type": "reflect_yz",
+      "description": "10x10x10 - reflect_yz",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0036",
+      "difficulty": "10x10x10",
+      "pattern_type": "translate",
+      "description": "10x10x10 - translate",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0037",
+      "difficulty": "10x10x10",
+      "pattern_type": "scale",
+      "description": "10x10x10 - scale",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0038",
+      "difficulty": "10x10x10",
+      "pattern_type": "fill",
+      "description": "10x10x10 - fill",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "task_id": "3d_10x10x10_0039",
+      "difficulty": "10x10x10",
+      "pattern_type": "count",
+      "description": "10x10x10 - count",
+      "train_pairs": 3,
+      "test_shape": [
+        10,
+        10,
+        10
+      ]
+    }
+  ]
+}

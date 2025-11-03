@@ -1,0 +1,57 @@
+{
+  "performance": {
+    "exact_matches": 1,
+    "high_scores": 5,
+    "medium_scores": 0,
+    "failures": 4
+  },
+  "failure_characteristics": {
+    "size_transformation": 13,
+    "expansion": 10,
+    "reduction": 3
+  },
+  "recommendations": [
+    {
+      "name": "Multi-Step Transformation",
+      "impact": 999,
+      "description": "Chain multiple transformations (e.g., rotate THEN color map)",
+      "implementation": "Try compositions of successful individual transforms",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Iterative Refinement",
+      "impact": 800,
+      "description": "Improve solution through multiple attempts",
+      "implementation": "Score intermediate results, adjust based on partial match",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Negative Space Analysis",
+      "impact": 500,
+      "description": "Understand background vs foreground, holes vs solid",
+      "implementation": "Invert thinking - what is NOT there vs what IS there",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Size Relationship Learner",
+      "impact": 13,
+      "description": "Learn size relationships between input/output",
+      "implementation": "Detect scale factors, ratios, patterns in size changes",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Composition/Tiling Detector",
+      "impact": 10,
+      "description": "Detect when output is composed by repeating/tiling input",
+      "implementation": "Check if output is np.tile(input, (h, w)) or concatenation",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Object Selection/Cropping",
+      "impact": 3,
+      "description": "Extract specific objects or crop to relevant region",
+      "implementation": "Connected component analysis + bounding box extraction",
+      "priority": "HIGH"
+    }
+  ]
+}

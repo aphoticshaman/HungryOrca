@@ -1,0 +1,318 @@
+{
+  "iterations": [
+    {
+      "iteration": 1,
+      "timestamp": 1762102281.8086388,
+      "nspsa_accuracy": 0.9021665412914798,
+      "full_system_accuracy": 0.90764269546095,
+      "improvement_vs_baseline": 0.5476154169470226,
+      "lessons": [
+        "Integration not adding value - agents may need better coordination",
+        "Weak synergy - check latent space alignment",
+        "Early phase: Focus on basic integration"
+      ],
+      "refactorings": [
+        "Improve cross-agent communication protocol",
+        "Re-initialize latent bridge with better alignment"
+      ]
+    },
+    {
+      "iteration": 2,
+      "timestamp": 1762102281.8088143,
+      "nspsa_accuracy": 0.9048665489336024,
+      "full_system_accuracy": 0.9155568086598278,
+      "improvement_vs_baseline": 1.0690259726225393,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Early phase: Focus on basic integration"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment"
+      ]
+    },
+    {
+      "iteration": 3,
+      "timestamp": 1762102281.808951,
+      "nspsa_accuracy": 0.9075477225092183,
+      "full_system_accuracy": 0.9220850500062668,
+      "improvement_vs_baseline": 1.4537327497048502,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Early phase: Focus on basic integration"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment"
+      ]
+    },
+    {
+      "iteration": 4,
+      "timestamp": 1762102281.8090997,
+      "nspsa_accuracy": 0.9074404961875888,
+      "full_system_accuracy": 0.929394894817429,
+      "improvement_vs_baseline": 2.1954398629840166,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Early phase: Focus on basic integration"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment"
+      ]
+    },
+    {
+      "iteration": 5,
+      "timestamp": 1762102281.8092012,
+      "nspsa_accuracy": 0.9129397338660434,
+      "full_system_accuracy": 0.9393769340163336,
+      "improvement_vs_baseline": 2.6437200150290163,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Checkpoint: Review cumulative progress",
+        "Mid phase: Optimize component interactions"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment",
+        "Save model checkpoint for rollback"
+      ]
+    },
+    {
+      "iteration": 6,
+      "timestamp": 1762102281.8092973,
+      "nspsa_accuracy": 0.9153360155799732,
+      "full_system_accuracy": 0.9444787016948547,
+      "improvement_vs_baseline": 2.9142686114881466,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Mid phase: Optimize component interactions"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment"
+      ]
+    },
+    {
+      "iteration": 7,
+      "timestamp": 1762102281.8093991,
+      "nspsa_accuracy": 0.9187314898998423,
+      "full_system_accuracy": 0.9545393324882416,
+      "improvement_vs_baseline": 3.580784258839931,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Near-ceiling performance - focus on harder tasks",
+        "Mid phase: Optimize component interactions"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment"
+      ]
+    },
+    {
+      "iteration": 8,
+      "timestamp": 1762102281.809524,
+      "nspsa_accuracy": 0.9196464083050159,
+      "full_system_accuracy": 0.962281650016045,
+      "improvement_vs_baseline": 4.263524171102917,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Near-ceiling performance - focus on harder tasks",
+        "Mid phase: Optimize component interactions"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment"
+      ]
+    },
+    {
+      "iteration": 9,
+      "timestamp": 1762102281.8096442,
+      "nspsa_accuracy": 0.9223689002454383,
+      "full_system_accuracy": 0.9697100083452905,
+      "improvement_vs_baseline": 4.734110809985226,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Near-ceiling performance - focus on harder tasks",
+        "Mid phase: Optimize component interactions"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment"
+      ]
+    },
+    {
+      "iteration": 10,
+      "timestamp": 1762102281.8097644,
+      "nspsa_accuracy": 0.9296065831691985,
+      "full_system_accuracy": 0.9740423877073119,
+      "improvement_vs_baseline": 4.443580453811336,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Near-ceiling performance - focus on harder tasks",
+        "Checkpoint: Review cumulative progress",
+        "Late phase: Fine-tune hyperparameters"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment",
+        "Save model checkpoint for rollback",
+        "Tune learning rates and beam widths"
+      ]
+    },
+    {
+      "iteration": 11,
+      "timestamp": 1762102281.8098652,
+      "nspsa_accuracy": 0.9264405190530753,
+      "full_system_accuracy": 0.9901558277317022,
+      "improvement_vs_baseline": 6.371530867862685,
+      "lessons": [
+        "Near-ceiling performance - focus on harder tasks",
+        "Late phase: Fine-tune hyperparameters"
+      ],
+      "refactorings": [
+        "Tune learning rates and beam widths"
+      ]
+    },
+    {
+      "iteration": 12,
+      "timestamp": 1762102281.8099787,
+      "nspsa_accuracy": 0.9304193697804074,
+      "full_system_accuracy": 0.9912048592781055,
+      "improvement_vs_baseline": 6.078548949769813,
+      "lessons": [
+        "Near-ceiling performance - focus on harder tasks",
+        "Late phase: Fine-tune hyperparameters"
+      ],
+      "refactorings": [
+        "Tune learning rates and beam widths"
+      ]
+    },
+    {
+      "iteration": 13,
+      "timestamp": 1762102281.810085,
+      "nspsa_accuracy": 0.933835193180018,
+      "full_system_accuracy": 0.9949576533811972,
+      "improvement_vs_baseline": 6.1122460201179285,
+      "lessons": [
+        "Near-ceiling performance - focus on harder tasks",
+        "Late phase: Fine-tune hyperparameters"
+      ],
+      "refactorings": [
+        "Tune learning rates and beam widths"
+      ]
+    },
+    {
+      "iteration": 14,
+      "timestamp": 1762102281.8102043,
+      "nspsa_accuracy": 0.9324696289200393,
+      "full_system_accuracy": 1.0,
+      "improvement_vs_baseline": 6.753037107996073,
+      "lessons": [
+        "Near-ceiling performance - focus on harder tasks",
+        "Late phase: Fine-tune hyperparameters"
+      ],
+      "refactorings": [
+        "Tune learning rates and beam widths"
+      ]
+    },
+    {
+      "iteration": 15,
+      "timestamp": 1762102281.8103118,
+      "nspsa_accuracy": 0.9367298992095927,
+      "full_system_accuracy": 1.0,
+      "improvement_vs_baseline": 6.327010079040729,
+      "lessons": [
+        "Near-ceiling performance - focus on harder tasks",
+        "Checkpoint: Review cumulative progress",
+        "Final phase: Polish and validate"
+      ],
+      "refactorings": [
+        "Save model checkpoint for rollback"
+      ]
+    },
+    {
+      "iteration": 16,
+      "timestamp": 1762102281.810426,
+      "nspsa_accuracy": 0.9422448579617152,
+      "full_system_accuracy": 1.0,
+      "improvement_vs_baseline": 5.775514203828481,
+      "lessons": [
+        "Near-ceiling performance - focus on harder tasks",
+        "Final phase: Polish and validate"
+      ],
+      "refactorings": []
+    },
+    {
+      "iteration": 17,
+      "timestamp": 1762102281.810535,
+      "nspsa_accuracy": 0.9459214715478521,
+      "full_system_accuracy": 1.0,
+      "improvement_vs_baseline": 5.407852845214789,
+      "lessons": [
+        "Near-ceiling performance - focus on harder tasks",
+        "Final phase: Polish and validate"
+      ],
+      "refactorings": []
+    },
+    {
+      "iteration": 18,
+      "timestamp": 1762102281.8106332,
+      "nspsa_accuracy": 0.9509845433267481,
+      "full_system_accuracy": 1.0,
+      "improvement_vs_baseline": 4.901545667325191,
+      "lessons": [
+        "Weak synergy - check latent space alignment",
+        "Near-ceiling performance - focus on harder tasks",
+        "Final phase: Polish and validate"
+      ],
+      "refactorings": [
+        "Re-initialize latent bridge with better alignment"
+      ]
+    },
+    {
+      "iteration": 19,
+      "timestamp": 1762102281.8107898,
+      "nspsa_accuracy": 0.9395548803347031,
+      "full_system_accuracy": 1.0,
+      "improvement_vs_baseline": 6.0445119665296865,
+      "lessons": [
+        "Near-ceiling performance - focus on harder tasks",
+        "Final phase: Polish and validate"
+      ],
+      "refactorings": []
+    },
+    {
+      "iteration": 20,
+      "timestamp": 1762102281.8109083,
+      "nspsa_accuracy": 0.9498470019331102,
+      "full_system_accuracy": 1.0,
+      "improvement_vs_baseline": 5.015299806688978,
+      "lessons": [
+        "Near-ceiling performance - focus on harder tasks",
+        "Checkpoint: Review cumulative progress",
+        "Final phase: Polish and validate"
+      ],
+      "refactorings": [
+        "Save model checkpoint for rollback"
+      ]
+    }
+  ],
+  "cumulative_refactorings": [
+    "Improve cross-agent communication protocol",
+    "Re-initialize latent bridge with better alignment",
+    "Re-initialize latent bridge with better alignment",
+    "Re-initialize latent bridge with better alignment",
+    "Re-initialize latent bridge with better alignment",
+    "Re-initialize latent bridge with better alignment",
+    "Save model checkpoint for rollback",
+    "Re-initialize latent bridge with better alignment",
+    "Re-initialize latent bridge with better alignment",
+    "Re-initialize latent bridge with better alignment",
+    "Re-initialize latent bridge with better alignment",
+    "Re-initialize latent bridge with better alignment",
+    "Save model checkpoint for rollback",
+    "Tune learning rates and beam widths",
+    "Tune learning rates and beam widths",
+    "Tune learning rates and beam widths",
+    "Tune learning rates and beam widths",
+    "Tune learning rates and beam widths",
+    "Save model checkpoint for rollback",
+    "Re-initialize latent bridge with better alignment",
+    "Save model checkpoint for rollback"
+  ],
+  "final_nspsa_accuracy": 0.9498470019331102,
+  "final_full_accuracy": 1.0,
+  "total_improvement": 9.235730453905
+}

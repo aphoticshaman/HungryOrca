@@ -1,0 +1,20 @@
+{
+  "underfit": {
+    "solved": 0,
+    "total": 20,
+    "avg_time": 1.94549560546875e-05,
+    "transforms": {}
+  },
+  "balanced": {
+    "solved": 0,
+    "total": 20,
+    "avg_time": 4.589557647705078e-05,
+    "transforms": {}
+  },
+  "overfit": {
+    "solved": 0,
+    "total": 20,
+    "avg_time": 6.316900253295898e-05,
+    "transforms": {}
+  }
+}

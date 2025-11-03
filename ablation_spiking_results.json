@@ -1,0 +1,9 @@
+{
+  "iterations": 3,
+  "tasks_per_iteration": 30,
+  "comparison": [
+    {
+      "mode": "CONTROL (No Spiking)",
+      "avg_similarity": 0.5519921245606932,
+      "avg_perfect": 0.3333333333333333,
+      "total_perfect": 
