@@ -1312,6 +1312,46 @@ class LucidOrcaChampionshipComplete:
 # MAIN ENTRY POINT
 # ═══════════════════════════════════════════════════════════════
 
+def load_arc_datasets():
+    """Load ARC datasets from Kaggle or local paths"""
+
+    # Try Kaggle paths first
+    kaggle_base = Path("/kaggle/input/arc-prize-2025")
+    local_base = Path("/home/user/HungryOrca")
+
+    # Determine which base to use
+    if kaggle_base.exists():
+        base_path = kaggle_base
+        print(f"📂 Using Kaggle input: {base_path}")
+    else:
+        base_path = local_base
+        print(f"📂 Using local input: {base_path}")
+
+    # Load all datasets
+    datasets = {}
+
+    files = {
+        'training_challenges': 'arc-agi_training_challenges.json',
+        'training_solutions': 'arc-agi_training_solutions.json',
+        'test_challenges': 'arc-agi_test_challenges.json',
+        'evaluation_challenges': 'arc-agi_evaluation_challenges.json',
+        'evaluation_solutions': 'arc-agi_evaluation_solutions.json',
+        'sample_submission': 'sample_submission.json'
+    }
+
+    for key, filename in files.items():
+        filepath = base_path / filename
+        if filepath.exists():
+            with open(filepath, 'r') as f:
+                datasets[key] = json.load(f)
+            print(f"  ✓ Loaded {key}: {len(datasets[key]) if isinstance(datasets[key], dict) else 'N/A'} items")
+        else:
+            print(f"  ⚠️  Missing {key}: {filepath}")
+            datasets[key] = {}
+
+    return datasets
+
+
 def main():
     """Championship run"""
 
@@ -1324,18 +1364,17 @@ def main():
     print("🚀 NSM→SDPM→XYZA pipeline active")
     print("="*70)
 
-    # Load datasets
-    train_path = Path("/home/user/HungryOrca/arc-agi_training_challenges.json")
-    test_path = Path("/home/user/HungryOrca/arc-agi_test_challenges.json")
+    # Load all datasets
+    print(f"\n📂 Loading ARC datasets...")
+    datasets = load_arc_datasets()
 
-    print(f"\n📂 Loading datasets...")
-    with open(train_path, 'r') as f:
-        training_tasks = json.load(f)
-    with open(test_path, 'r') as f:
-        test_tasks = json.load(f)
+    training_tasks = datasets['training_challenges']
+    test_tasks = datasets['test_challenges']
 
-    print(f"  Training: {len(training_tasks)} tasks")
-    print(f"  Testing: {len(test_tasks)} tasks\n")
+    print(f"\n📊 Dataset summary:")
+    print(f"  Training tasks: {len(training_tasks)}")
+    print(f"  Test tasks: {len(test_tasks)}")
+    print(f"  Evaluation tasks: {len(datasets['evaluation_challenges'])}")
 
     # Initialize solver
     cfg = ChampionshipConfig()
@@ -1347,10 +1386,17 @@ def main():
     # PHASE 2: Testing
     solutions = solver.solve_test_set(test_tasks)
 
-    # Save submission
-    output_path = Path("/home/user/HungryOrca/submission_championship_complete.json")
+    # Save submission (Kaggle or local)
+    if Path("/kaggle/working").exists():
+        output_path = Path("/kaggle/working/submission.json")
+    else:
+        output_path = Path("/home/user/HungryOrca/submission_championship_complete.json")
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w') as f:
         json.dump(solutions, f)
+
+    print(f"💾 Saved to: {output_path}")
 
     # Final report
     stats = solver.get_overall_stats()
