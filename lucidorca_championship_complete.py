@@ -25,6 +25,8 @@ import numpy as np
 import json
 import time
 import signal
+import resource
+import gc
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional, Any, Callable
 from dataclasses import dataclass, field
@@ -60,10 +62,62 @@ class ChampionshipConfig:
     # Parallel processing
     parallel_workers: int = 8
 
+    # Memory management (Kaggle: 16GB × 0.66 = 10.5GB)
+    kaggle_memory_gb: float = 16.0
+    memory_limit_ratio: float = 0.66
+    max_memory_bytes: int = int(16.0 * 0.66 * 1024 * 1024 * 1024)  # 10.5GB in bytes
+
     # All features enabled
     use_all_optimizations: bool = True
 
 config = ChampionshipConfig()
+
+
+# ═══════════════════════════════════════════════════════════════
+# MEMORY MANAGEMENT SYSTEM
+# ═══════════════════════════════════════════════════════════════
+
+def setup_memory_limits(cfg: ChampionshipConfig):
+    """
+    Set memory limits to 66% of Kaggle's 16GB kernel limit = 10.5GB
+
+    This prevents OOM kills and ensures stable execution.
+    """
+    try:
+        # Set virtual memory limit (RLIMIT_AS)
+        # Note: This is a soft limit, not hard enforcement
+        soft, hard = resource.getrlimit(resource.RLIMIT_AS)
+
+        # Set to 10.5GB if not already limited
+        if soft == resource.RLIM_INFINITY or soft > cfg.max_memory_bytes:
+            resource.setrlimit(resource.RLIMIT_AS, (cfg.max_memory_bytes, hard))
+            print(f"🧠 Memory limit set: {cfg.max_memory_bytes / (1024**3):.2f} GB")
+        else:
+            print(f"🧠 Memory already limited to: {soft / (1024**3):.2f} GB")
+
+        # Enable aggressive garbage collection
+        gc.enable()
+        gc.set_threshold(700, 10, 10)  # More frequent GC
+
+        print(f"♻️  Garbage collection: ENABLED (aggressive mode)")
+
+    except Exception as e:
+        print(f"⚠️  Could not set memory limit: {e}")
+        print(f"   (This is normal on some systems, continuing...)")
+
+
+def get_memory_usage() -> Dict[str, float]:
+    """Get current memory usage statistics"""
+    try:
+        usage = resource.getrusage(resource.RUSAGE_SELF)
+        # maxrss is in KB on Linux, bytes on macOS
+        max_rss_gb = usage.ru_maxrss / (1024 * 1024)  # Assume Linux (KB)
+        return {
+            'max_rss_gb': max_rss_gb,
+            'max_rss_mb': usage.ru_maxrss / 1024
+        }
+    except:
+        return {'max_rss_gb': 0, 'max_rss_mb': 0}
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1364,6 +1418,9 @@ def main():
     print("🚀 NSM→SDPM→XYZA pipeline active")
     print("="*70)
 
+    # Set memory limits (66% of Kaggle's 16GB = 10.5GB)
+    setup_memory_limits(config)
+
     # Load all datasets
     print(f"\n📂 Loading ARC datasets...")
     datasets = load_arc_datasets()
@@ -1400,6 +1457,7 @@ def main():
 
     # Final report
     stats = solver.get_overall_stats()
+    mem_stats = get_memory_usage()
 
     print("\n" + "="*70)
     print("🏆 CHAMPIONSHIP RUN COMPLETE")
@@ -1408,6 +1466,7 @@ def main():
     print(f"  Training: {stats['training']['accuracy']:.2f}%")
     print(f"  Testing: {stats['testing']['accuracy']:.2f}%")
     print(f"  Total time: {stats['training']['time_spent'] + stats['testing']['time_spent']:.0f}s")
+    print(f"  Peak memory: {mem_stats['max_rss_gb']:.2f} GB / {config.kaggle_memory_gb * config.memory_limit_ratio:.2f} GB limit")
     print(f"\n📥 Submission: {output_path}")
     print("="*70)
 
