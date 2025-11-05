@@ -1,0 +1,346 @@
+Integration Testing Report
+================================================================================
+
+Total Tests: 48
+Passed: 15
+Failed: 33
+Pass Rate: 31.2%
+
+[
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "Import Vision-EBNF Hybrid",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "Import Interactive UI",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "Import ARC Synthesis",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "Import RPM Abstraction",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "File exists: vision_ebnf_hybrid.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "File exists: interactive_arc_ui.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "File exists: arc_synthesis_enhancements.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "File exists: rpm_abstraction_enhancements.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "File exists: lucidorca_championship_complete.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "Class VisionModelEncoder check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "Class BeamSearchLLM check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "Class VisionEBNFHybridSolver check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "Class GridEditor check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 1,
+    "test": "Class TransformationToolkit check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "Import Vision-EBNF Hybrid",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "Import Interactive UI",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "Import ARC Synthesis",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "Import RPM Abstraction",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "File exists: vision_ebnf_hybrid.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "File exists: interactive_arc_ui.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "File exists: arc_synthesis_enhancements.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "File exists: rpm_abstraction_enhancements.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "File exists: lucidorca_championship_complete.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "Class VisionModelEncoder check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "Class BeamSearchLLM check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "Class VisionEBNFHybridSolver check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "Class GridEditor check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 2,
+    "test": "Class TransformationToolkit check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "Import Vision-EBNF Hybrid",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "Import Interactive UI",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "Import ARC Synthesis",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "Import RPM Abstraction",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "File exists: vision_ebnf_hybrid.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "File exists: interactive_arc_ui.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "File exists: arc_synthesis_enhancements.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "File exists: rpm_abstraction_enhancements.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "File exists: lucidorca_championship_complete.py",
+    "passed": true,
+    "error": null
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "Class VisionModelEncoder check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "Class BeamSearchLLM check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "Class VisionEBNFHybridSolver check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "Class GridEditor check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 1,
+    "cycle": 3,
+    "test": "Class TransformationToolkit check",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 2,
+    "cycle": 1,
+    "test": "EBNF Grammar",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 2,
+    "cycle": 1,
+    "test": "Transformation Toolkit",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 2,
+    "cycle": 2,
+    "test": "EBNF Grammar",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 2,
+    "cycle": 2,
+    "test": "Transformation Toolkit",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 2,
+    "cycle": 3,
+    "test": "EBNF Grammar",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  },
+  {
+    "round": 2,
+    "cycle": 3,
+    "test": "Transformation Toolkit",
+    "passed": false,
+    "error": "No module named 'numpy'"
+  }
+]
