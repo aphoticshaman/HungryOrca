@@ -277,9 +277,24 @@ class EigenformConvergence:
 
         # Strategy 2: FIXED - Directly test primitives even if they don't converge
         # (rot90, flip, etc. cycle but still work!)
+        #
+        # SUCCESS MODE #4: Rapid hypothesis falsification
+        # Test on ONE example first; if it fails, immediately discard (Popperian search)
         for name, op in primitives:
             try:
-                confidence = self._test_against_examples(op, examples)
+                # Falsification test: try first example
+                if examples:
+                    first_ex = examples[0]
+                    inp = np.array(first_ex['input'])
+                    out = np.array(first_ex['output'])
+                    result = op(inp)
+
+                    # If fails on first example, prune immediately
+                    if not (result.shape == out.shape and np.array_equal(result, out)):
+                        continue  # FALSIFIED - skip to next primitive
+
+                # Passed first test, now try all examples with Bayesian amplification
+                confidence = self._test_against_examples(op, examples, use_bayesian_amplification=True)
                 if confidence > best_confidence:
                     best_program = (name, op)
                     best_confidence = confidence
@@ -301,7 +316,13 @@ class EigenformConvergence:
             ('double', lambda g: np.tile(g, (2, 2))),
         ]
 
-    def _test_against_examples(self, op, examples) -> float:
+    def _test_against_examples(self, op, examples, use_bayesian_amplification: bool = True) -> float:
+        """
+        SUCCESS MODE #6: Bayesian confidence amplification
+
+        When multiple examples agree, confidence should spike EXPONENTIALLY not linearly.
+        If 3 independent examples support hypothesis H, P(H) ∝ p³ not 3p/3.
+        """
         if not examples:
             return 0.5
         matches = 0
@@ -314,7 +335,104 @@ class EigenformConvergence:
                     matches += 1
             except:
                 continue
-        return matches / len(examples)
+
+        base_confidence = matches / len(examples)
+
+        if use_bayesian_amplification and matches > 0:
+            # Exponential boost: each agreeing example multiplies confidence
+            # If base=0.7 and 3 examples agree: 0.7^3 = 0.343 before normalization
+            # Actually we want BOOST, so: base * (1 + matches/total)^matches
+            amplification_factor = (1.0 + matches / len(examples)) ** matches
+            return min(1.0, base_confidence * amplification_factor)
+
+        return base_confidence
+
+
+# ═══════════════════════════════════════════════════════════════
+# SUCCESS MODE #7: OBJECT-CENTRIC REPRESENTATION
+# ═══════════════════════════════════════════════════════════════
+
+class ObjectPerceptionModule:
+    """
+    Treat grids as collections of objects (connected components) rather than pixels.
+    Enables reasoning about "the red square" vs "pixel (3,4)".
+
+    Gestalt perception: humans see objects, not pixels.
+    """
+
+    @staticmethod
+    def extract_objects(grid: np.ndarray) -> List[Dict]:
+        """Parse grid into object list with properties (color, position, size, shape)"""
+        objects = []
+
+        if grid.size == 0:
+            return objects
+
+        # Find connected components for each unique color (excluding background 0)
+        unique_colors = np.unique(grid)
+
+        for color in unique_colors:
+            if color == 0:  # Skip background
+                continue
+
+            # Create binary mask for this color
+            mask = (grid == color).astype(np.uint8)
+
+            # Find connected components using simple flood fill
+            labeled = ObjectPerceptionModule._label_components(mask)
+
+            for obj_id in range(1, labeled.max() + 1):
+                obj_mask = (labeled == obj_id)
+                positions = np.argwhere(obj_mask)
+
+                if len(positions) == 0:
+                    continue
+
+                # Extract object properties
+                min_row, min_col = positions.min(axis=0)
+                max_row, max_col = positions.max(axis=0)
+
+                objects.append({
+                    'color': int(color),
+                    'size': len(positions),
+                    'positions': positions,
+                    'bbox': (min_row, min_col, max_row, max_col),
+                    'height': max_row - min_row + 1,
+                    'width': max_col - min_col + 1,
+                    'center': (positions[:, 0].mean(), positions[:, 1].mean()),
+                })
+
+        return objects
+
+    @staticmethod
+    def _label_components(mask: np.ndarray) -> np.ndarray:
+        """Simple connected component labeling (4-connectivity)"""
+        labeled = np.zeros_like(mask, dtype=np.int32)
+        label = 0
+
+        for i in range(mask.shape[0]):
+            for j in range(mask.shape[1]):
+                if mask[i, j] and not labeled[i, j]:
+                    label += 1
+                    ObjectPerceptionModule._flood_fill(mask, labeled, i, j, label)
+
+        return labeled
+
+    @staticmethod
+    def _flood_fill(mask: np.ndarray, labeled: np.ndarray, i: int, j: int, label: int):
+        """Flood fill for connected component labeling"""
+        if i < 0 or i >= mask.shape[0] or j < 0 or j >= mask.shape[1]:
+            return
+        if not mask[i, j] or labeled[i, j]:
+            return
+
+        labeled[i, j] = label
+
+        # 4-connectivity
+        ObjectPerceptionModule._flood_fill(mask, labeled, i-1, j, label)
+        ObjectPerceptionModule._flood_fill(mask, labeled, i+1, j, label)
+        ObjectPerceptionModule._flood_fill(mask, labeled, i, j-1, label)
+        ObjectPerceptionModule._flood_fill(mask, labeled, i, j+1, label)
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1207,11 +1325,12 @@ class LucidOrcaChampionshipComplete:
         self.strange = StrangeLoopDetector()
         self.parallel = ParallelHypothesisTester(cfg.parallel_workers)
         self.metacog = MetaCognitiveMonitor()
+        self.object_perception = ObjectPerceptionModule()  # SUCCESS MODE #7
 
         # Bootstrap with innate primitive knowledge
         self._bootstrap_primitive_library()
 
-        print("✅ All 12 optimizations initialized!\n")
+        print("✅ All 12 optimizations + 3 NSM Success Modes initialized!\n")
 
         # Statistics
         self.training_stats = {'total': 0, 'solved': 0, 'time_spent': 0}
@@ -1374,13 +1493,10 @@ class LucidOrcaChampionshipComplete:
 
     def _train_task(self, task_id: str, task: Dict, timeout: float = 5.0) -> bool:
         """
-        Few-shot learning: Use training examples to learn patterns with advanced solvers
-
-        Strategy:
-        1. Use first N-1 examples as "training set" to find pattern
-        2. Validate pattern on last example
-        3. Try all advanced solvers (eigenform, bootstrap, NSM, SDPM, etc.)
-        4. Store successful patterns in XYZA for transfer learning
+        Few-shot learning with NSM insights:
+        - NSM #6: Information-theoretic example selection
+        - NSM #4: Adaptive time budgeting with early stopping
+        - NSM #9: Compositional primitive search
         """
         profiler.start(f"train_task")
         task_start = time.time()
@@ -1390,34 +1506,39 @@ class LucidOrcaChampionshipComplete:
             profiler.end(f"train_task")
             return False
 
-        # Use first N-1 examples to learn, last one to validate
-        if len(examples) < 2:
+        # NSM #6: Sort examples by information content, use most informative
+        def example_entropy(ex):
+            try:
+                inp, out = np.array(ex['input']), np.array(ex['output'])
+                return (len(np.unique(inp)) + len(np.unique(out))) / 10.0 + inp.size / 900.0
+            except:
+                return 0.5
+
+        if len(examples) >= 2:
+            sorted_examples = sorted(examples, key=example_entropy, reverse=True)
+            learning_examples = sorted_examples[:min(3, len(examples)-1)]
+            validation_examples = sorted_examples[min(3, len(examples)-1):min(4, len(examples))]
+        else:
             learning_examples = examples
             validation_examples = []
-        else:
-            # Limit to 3 learning + 1 validation for speed
-            learning_examples = examples[:min(3, len(examples)-1)]
-            validation_examples = examples[min(3, len(examples)-1):min(4, len(examples))]
 
-        # Try each advanced solver on the learning examples
         correct = 0
         total_attempts = len(learning_examples) + len(validation_examples)
+        attempts_so_far = 0
 
-        # Strategy 1: Try eigenform convergence (fast)
+        # Strategy 1: Try eigenform with compositional search
         if time.time() - task_start < timeout * 0.3:
             profiler.start(f"train_eigenform")
             try:
-                # Use first example as test case
                 if learning_examples:
                     inp = np.array(learning_examples[0]['input'])
-                    expected = np.array(learning_examples[0]['output'])
-
                     program, conf = self.eigenform.find_eigenform_program(inp, learning_examples)
 
-                    if program and conf > 0.4:
+                    if program and conf > 0.3:  # Lowered threshold
                         name, op = program
                         # Validate on all examples
                         for ex in learning_examples + validation_examples:
+                            attempts_so_far += 1
                             try:
                                 result = op(np.array(ex['input']))
                                 if np.array_equal(result, np.array(ex['output'])):
@@ -1425,7 +1546,16 @@ class LucidOrcaChampionshipComplete:
                             except:
                                 pass
 
-                        # Store pattern if successful
+                        # NSM #4: Adaptive budgeting - early stopping if not learning efficiently
+                        time_used = time.time() - task_start
+                        learning_rate = correct / attempts_so_far if attempts_so_far > 0 else 0
+                        expected_rate = time_used / timeout  # Should have used this much of budget
+
+                        if learning_rate < expected_rate * 0.3:  # Learning too slowly
+                            profiler.end(f"train_eigenform")
+                            profiler.end(f"train_task")
+                            return False  # Abort, not learning fast enough
+
                         if correct > 0:
                             self.xyza.store_pattern(task_id, name, conf * (correct / total_attempts))
                             profiler.end(f"train_eigenform")
