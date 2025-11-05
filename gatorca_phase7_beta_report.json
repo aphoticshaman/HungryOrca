@@ -1,0 +1,494 @@
+{
+  "summary": {
+    "total_tasks": 20,
+    "solved_tasks": 0,
+    "accuracy": 0.0,
+    "avg_fitness": 0.03333333333333333,
+    "avg_generations": 20.0,
+    "avg_time_per_task": 0.1739877462387085
+  },
+  "best_performance": {
+    "task_id": "b9b7f026",
+    "fitness": 0.6666666666666666,
+    "dna": [
+      "crop_to_content",
+      "create_symmetric",
+      "extract_borders",
+      "count_objects"
+    ]
+  },
+  "worst_performance": {
+    "task_id": "e619ca6e",
+    "fitness": 0.0,
+    "dna": []
+  },
+  "dna_insights": {
+    "most_common_genes": [
+      [
+        "crop_to_content",
+        1
+      ],
+      [
+        "create_symmetric",
+        1
+      ],
+      [
+        "extract_borders",
+        1
+      ],
+      [
+        "count_objects",
+        1
+      ]
+    ],
+    "unique_genes_used": 4,
+    "total_gene_pool": 65
+  },
+  "detailed_results": [
+    {
+      "task_id": "e619ca6e",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          25,
+          22
+        ],
+        "output_size": [
+          25,
+          22
+        ],
+        "input_colors": 2,
+        "output_colors": 2
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.5135817527770996
+    },
+    {
+      "task_id": "94be5b80",
+      "stats": {
+        "train_examples": 2,
+        "test_examples": 1,
+        "input_size": [
+          18,
+          14
+        ],
+        "output_size": [
+          18,
+          14
+        ],
+        "input_colors": 5,
+        "output_colors": 5
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.06237316131591797
+    },
+    {
+      "task_id": "ddf7fa4f",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          10,
+          10
+        ],
+        "output_size": [
+          10,
+          10
+        ],
+        "input_colors": 5,
+        "output_colors": 4
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.23648452758789062
+    },
+    {
+      "task_id": "aedd82e4",
+      "stats": {
+        "train_examples": 4,
+        "test_examples": 1,
+        "input_size": [
+          5,
+          4
+        ],
+        "output_size": [
+          5,
+          4
+        ],
+        "input_colors": 2,
+        "output_colors": 3
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.020530223846435547
+    },
+    {
+      "task_id": "973e499e",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 2,
+        "input_size": [
+          3,
+          3
+        ],
+        "output_size": [
+          9,
+          9
+        ],
+        "input_colors": 2,
+        "output_colors": 3
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.022387266159057617
+    },
+    {
+      "task_id": "0b148d64",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          18,
+          19
+        ],
+        "output_size": [
+          7,
+          9
+        ],
+        "input_colors": 3,
+        "output_colors": 2
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.16692447662353516
+    },
+    {
+      "task_id": "3d31c5b3",
+      "stats": {
+        "train_examples": 6,
+        "test_examples": 1,
+        "input_size": [
+          12,
+          6
+        ],
+        "output_size": [
+          3,
+          6
+        ],
+        "input_colors": 5,
+        "output_colors": 3
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.18882513046264648
+    },
+    {
+      "task_id": "aba27056",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          9,
+          9
+        ],
+        "output_size": [
+          9,
+          9
+        ],
+        "input_colors": 2,
+        "output_colors": 3
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.0797886848449707
+    },
+    {
+      "task_id": "d5d6de2d",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 2,
+        "input_size": [
+          15,
+          15
+        ],
+        "output_size": [
+          15,
+          15
+        ],
+        "input_colors": 2,
+        "output_colors": 2
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.15668034553527832
+    },
+    {
+      "task_id": "4522001f",
+      "stats": {
+        "train_examples": 2,
+        "test_examples": 1,
+        "input_size": [
+          3,
+          3
+        ],
+        "output_size": [
+          9,
+          9
+        ],
+        "input_colors": 3,
+        "output_colors": 2
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.01686716079711914
+    },
+    {
+      "task_id": "b9b7f026",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          15,
+          17
+        ],
+        "output_size": [
+          1,
+          1
+        ],
+        "input_colors": 6,
+        "output_colors": 1
+      },
+      "solved": false,
+      "best_fitness": 0.6666666666666666,
+      "best_dna": [
+        "crop_to_content",
+        "create_symmetric",
+        "extract_borders",
+        "count_objects"
+      ],
+      "generations": 20,
+      "time_elapsed": 0.22166991233825684
+    },
+    {
+      "task_id": "f83cb3f6",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          12,
+          14
+        ],
+        "output_size": [
+          12,
+          14
+        ],
+        "input_colors": 3,
+        "output_colors": 3
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.17528104782104492
+    },
+    {
+      "task_id": "57edb29d",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          20,
+          24
+        ],
+        "output_size": [
+          5,
+          7
+        ],
+        "input_colors": 6,
+        "output_colors": 2
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.5065033435821533
+    },
+    {
+      "task_id": "8d5021e8",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          3,
+          2
+        ],
+        "output_size": [
+          9,
+          4
+        ],
+        "input_colors": 2,
+        "output_colors": 2
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.022918701171875
+    },
+    {
+      "task_id": "ba97ae07",
+      "stats": {
+        "train_examples": 4,
+        "test_examples": 1,
+        "input_size": [
+          8,
+          7
+        ],
+        "output_size": [
+          8,
+          7
+        ],
+        "input_colors": 3,
+        "output_colors": 3
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.07108020782470703
+    },
+    {
+      "task_id": "3e980e27",
+      "stats": {
+        "train_examples": 4,
+        "test_examples": 1,
+        "input_size": [
+          13,
+          13
+        ],
+        "output_size": [
+          13,
+          13
+        ],
+        "input_colors": 5,
+        "output_colors": 5
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.13676190376281738
+    },
+    {
+      "task_id": "e1d2900e",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          30,
+          30
+        ],
+        "output_size": [
+          30,
+          30
+        ],
+        "input_colors": 3,
+        "output_colors": 3
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.4174339771270752
+    },
+    {
+      "task_id": "6cf79266",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          20,
+          20
+        ],
+        "output_size": [
+          20,
+          20
+        ],
+        "input_colors": 2,
+        "output_colors": 3
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.22117209434509277
+    },
+    {
+      "task_id": "62ab2642",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          10,
+          9
+        ],
+        "output_size": [
+          10,
+          9
+        ],
+        "input_colors": 2,
+        "output_colors": 4
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.09490656852722168
+    },
+    {
+      "task_id": "e2092e0c",
+      "stats": {
+        "train_examples": 3,
+        "test_examples": 1,
+        "input_size": [
+          15,
+          15
+        ],
+        "output_size": [
+          15,
+          15
+        ],
+        "input_colors": 10,
+        "output_colors": 10
+      },
+      "solved": false,
+      "best_fitness": 0.0,
+      "best_dna": [],
+      "generations": 20,
+      "time_elapsed": 0.1475844383239746
+    }
+  ]
+}
