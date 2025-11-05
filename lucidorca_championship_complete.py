@@ -1417,7 +1417,8 @@ class LucidOrcaChampionshipComplete:
         print("="*70)
         print(f"🧪 Testing on {len(test_tasks)} tasks")
         print(f"⏱️  Budget: {testing_budget:.0f}s ({testing_budget/60:.1f} min)")
-        print(f"📈 Target: 85%+ accuracy\n")
+        print(f"📈 Target: 85%+ REAL accuracy (measured on Kaggle)")
+        print(f"⚠️  Note: ✓/✗ below shows CONFIDENCE (>0.6), NOT real accuracy\n")
 
         solutions = {}
         solved = 0
@@ -1462,11 +1463,12 @@ class LucidOrcaChampionshipComplete:
         }
 
         print("\n" + "="*70)
-        print("📊 TESTING SUMMARY")
+        print("📊 TESTING SUMMARY (Confidence-Based)")
         print("="*70)
         print(f"  Tasks: {self.testing_stats['total']}")
-        print(f"  Solved: {self.testing_stats['solved']}")
-        print(f"  Accuracy: {self.testing_stats['accuracy']:.2f}%")
+        print(f"  High Confidence (>0.6): {self.testing_stats['solved']}")
+        print(f"  Confidence Rate: {self.testing_stats['accuracy']:.2f}%")
+        print(f"  ⚠️  Real accuracy unknown - will be measured on Kaggle")
         print(f"  Time: {self.testing_stats['time_spent']:.0f}s ({self.testing_stats['time_spent']/60:.1f} min)")
         print("="*70)
 
@@ -1761,7 +1763,83 @@ def main():
     # PHASE 1: Training
     solver.train(training_tasks)
 
-    # PHASE 2: Testing
+    # PHASE 1.5: Validation on evaluation set (has real solutions!)
+    eval_tasks = datasets['evaluation_challenges']
+    eval_solutions = datasets['evaluation_solutions']
+
+    if eval_tasks and eval_solutions:
+        print("\n" + "="*70)
+        print("🎯 VALIDATION PHASE - Real Accuracy on Evaluation Set")
+        print("="*70)
+        print(f"📊 Validating on {len(eval_tasks)} tasks with known solutions")
+        print(f"⏱️  Budget: 10 minutes (600s)")
+        print("="*70)
+
+        validation_start = time.time()
+        validation_budget = 600  # 10 minutes
+
+        correct = 0
+        high_confidence = 0
+
+        for i, (task_id, task) in enumerate(eval_tasks.items()):
+            if time.time() - validation_start > validation_budget:
+                print(f"\n⏱️  Validation budget exhausted at {i}/{len(eval_tasks)}")
+                break
+
+            try:
+                # Solve using same method as testing
+                task_start = time.time()
+                complexity = solver.phi_temporal.estimate_complexity(task)
+                timeout = min(30.0, (validation_budget - (time.time() - validation_start)) / (len(eval_tasks) - i))
+
+                solution_list, success = solver._solve_task_complete(task_id, task, timeout)
+
+                # Extract attempt_1 from solution
+                if solution_list and len(solution_list) > 0:
+                    predicted = solution_list[0].get('attempt_1', [[0]])
+                else:
+                    predicted = [[0]]
+
+                # Get ground truth
+                if task_id in eval_solutions:
+                    expected = eval_solutions[task_id][0]  # First test output
+
+                    # Compare
+                    predicted_arr = np.array(predicted)
+                    expected_arr = np.array(expected)
+
+                    is_correct = np.array_equal(predicted_arr, expected_arr)
+                    if is_correct:
+                        correct += 1
+
+                    if success:  # High confidence (>0.6)
+                        high_confidence += 1
+
+                    # Print every 10 tasks
+                    if (i + 1) % 10 == 0:
+                        real_acc = correct / (i + 1) * 100
+                        conf_acc = high_confidence / (i + 1) * 100
+                        print(f"  [{i+1:3d}/{len(eval_tasks)}] Real: {real_acc:5.1f}% | Confident: {conf_acc:5.1f}%")
+
+            except Exception as e:
+                continue
+
+        validation_time = time.time() - validation_start
+        real_accuracy = correct / i * 100 if i > 0 else 0
+        confidence_accuracy = high_confidence / i * 100 if i > 0 else 0
+
+        print("\n" + "="*70)
+        print("📊 VALIDATION RESULTS (REAL ACCURACY)")
+        print("="*70)
+        print(f"  Tasks validated: {i}")
+        print(f"  ✅ REAL Accuracy: {real_accuracy:.2f}% ({correct}/{i})")
+        print(f"  🎯 Confidence Accuracy: {confidence_accuracy:.2f}% ({high_confidence}/{i})")
+        print(f"  📈 Confidence Calibration: {(confidence_accuracy - real_accuracy):+.2f}%")
+        print(f"  ⏱️  Time: {validation_time:.0f}s ({validation_time/60:.1f} min)")
+        print("="*70)
+        print()
+
+    # PHASE 2: Testing (no real solutions, only confidence)
     solutions = solver.solve_test_set(test_tasks)
 
     # Validate submission format
@@ -1795,17 +1873,17 @@ def main():
     print("🏆 CHAMPIONSHIP RUN COMPLETE")
     print("="*70)
     print(f"📊 Statistics:")
-    print(f"  Training: {stats['training']['accuracy']:.2f}%")
-    print(f"  Testing: {stats['testing']['accuracy']:.2f}%")
+    print(f"  Training Accuracy (real): {stats['training']['accuracy']:.2f}%")
+    print(f"  Testing Confidence (fake): {stats['testing']['accuracy']:.2f}%")
+    print(f"  ⚠️  Use validation results above for real accuracy estimate")
     print(f"  Total time: {total_run_time:.0f}s ({total_run_time/3600:.2f} hours)")
     print(f"  Peak memory: {mem_stats['max_rss_gb']:.2f} GB / {config.kaggle_memory_gb * config.memory_limit_ratio:.2f} GB limit")
     print(f"\n📥 Submission: {output_path}")
     print("="*70)
 
-    if stats['testing']['accuracy'] >= 85:
-        print("\n🎉 🏆 CHAMPIONSHIP TARGET ACHIEVED! 🏆 🎉")
-    else:
-        print(f"\n📈 Reached {stats['testing']['accuracy']:.1f}% (Target: 85%)")
+    # Note: Can't determine target achievement without validation results
+    print(f"\n💡 Real accuracy will be measured on Kaggle leaderboard")
+    print(f"📊 Check VALIDATION RESULTS above for best accuracy estimate")
 
     # Print detailed timing breakdown
     profiler.print_summary(top_n=30)
