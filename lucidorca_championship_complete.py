@@ -44,10 +44,11 @@ import copy
 class ChampionshipConfig:
     """Complete championship configuration"""
 
-    # Time management (3 hours = 10,800 seconds)
-    total_time_budget: float = 10800.0
-    training_ratio: float = 0.30  # 30% = 54 minutes
-    testing_ratio: float = 0.70   # 70% = 126 minutes
+    # Time management (5 hours target, 6 hours max = 21,600 seconds)
+    total_time_budget: float = 18000.0  # 5 hours = 18,000 seconds
+    max_time_budget: float = 21600.0    # 6 hours max = 21,600 seconds
+    training_ratio: float = 0.30  # 30% = 90 minutes
+    testing_ratio: float = 0.70   # 70% = 210 minutes
 
     # Phi-temporal
     base_time_per_task: float = 45.0
@@ -1114,34 +1115,69 @@ class LucidOrcaChampionshipComplete:
         self.testing_stats = {'total': 0, 'solved': 0, 'time_spent': 0}
 
     def train(self, training_tasks: Dict) -> None:
-        """Train phase: 30% of 3-hour budget"""
+        """Train phase: 30% of 5-hour budget"""
 
         training_budget = self.config.total_time_budget * self.config.training_ratio
         start_time = time.time()
 
+        # Calculate per-task timeout: budget / tasks with 20% safety margin
+        per_task_timeout = (training_budget * 0.8) / len(training_tasks)
+        per_task_timeout = max(2.0, min(per_task_timeout, 10.0))  # Clamp to 2-10 seconds
+
         print("="*70)
-        print("🎓 TRAINING PHASE - 30% Budget (54 minutes)")
+        print("🎓 TRAINING PHASE - 30% Budget (90 minutes)")
         print("="*70)
         print(f"📚 Training on {len(training_tasks)} tasks")
-        print(f"⏱️  Budget: {training_budget:.0f}s ({training_budget/60:.1f} min)\n")
+        print(f"⏱️  Budget: {training_budget:.0f}s ({training_budget/60:.1f} min)")
+        print(f"⏱️  Per-task timeout: {per_task_timeout:.1f}s\n")
 
         solved = 0
+        recent_10_solved = 0  # Track last 10 tasks
+
         for i, (task_id, task) in enumerate(training_tasks.items()):
             elapsed = time.time() - start_time
             if elapsed > training_budget:
                 print(f"\n⏱️  Training budget exhausted at {i}/{len(training_tasks)}")
                 break
 
+            task_start = time.time()
             try:
-                success = self._train_task(task_id, task)
+                success = self._train_task(task_id, task, timeout=per_task_timeout)
                 if success:
                     solved += 1
-            except:
+                    recent_10_solved += 1
+            except Exception as e:
+                # Timeout or error - skip
                 pass
 
+            # Hard timeout enforcement
+            task_duration = time.time() - task_start
+            if task_duration > per_task_timeout * 1.5:
+                print(f"   ⚠️  Task {i+1} took {task_duration:.1f}s (limit: {per_task_timeout:.1f}s)")
+
+            # Print every 10 tasks
+            if (i + 1) % 10 == 0:
+                recent_acc = recent_10_solved / 10 * 100
+                overall_acc = solved / (i + 1) * 100
+                rate = (i + 1) / elapsed if elapsed > 0 else 0
+                eta = (len(training_tasks) - (i + 1)) / rate if rate > 0 else 0
+                print(f"  [{i+1:4d}/{len(training_tasks)}] Last 10: {recent_10_solved}/10 ({recent_acc:4.0f}%) | "
+                      f"Overall: {overall_acc:5.1f}% | Time: {elapsed:5.0f}s | ETA: {eta:5.0f}s")
+                recent_10_solved = 0  # Reset for next batch
+
+            # Detailed analysis every 100 tasks
             if (i + 1) % 100 == 0:
-                acc = solved / (i + 1) * 100
-                print(f"  Progress: {i+1:4d}/{len(training_tasks)} | Accuracy: {acc:5.1f}% | Time: {elapsed:5.0f}s")
+                overall_acc = solved / (i + 1) * 100
+                rate = (i + 1) / elapsed
+                projected_total_time = len(training_tasks) / rate if rate > 0 else 0
+                print(f"\n  {'─'*66}")
+                print(f"  📊 ANALYSIS @ {i+1} tasks:")
+                print(f"     Accuracy: {overall_acc:.1f}% ({solved}/{i+1})")
+                print(f"     Rate: {rate:.2f} tasks/sec")
+                print(f"     Projected total: {projected_total_time:.0f}s ({projected_total_time/60:.1f} min)")
+                if projected_total_time > training_budget:
+                    print(f"     ⚠️  Warning: {(projected_total_time - training_budget):.0f}s over budget")
+                print(f"  {'─'*66}\n")
 
         total_time = time.time() - start_time
         self.training_stats = {
@@ -1166,40 +1202,46 @@ class LucidOrcaChampionshipComplete:
 
         print("="*70)
 
-    def _train_task(self, task_id: str, task: Dict) -> bool:
-        """Train on task by solving all training examples"""
+    def _train_task(self, task_id: str, task: Dict, timeout: float = 5.0) -> bool:
+        """Train on task by solving all training examples with strict timeout"""
+        task_start = time.time()
         examples = task.get('train', [])
         if not examples:
             return False
 
-        # Try to solve all training examples
+        # Limit to first 2 examples for speed
+        examples = examples[:2]
+
+        # Try to solve training examples
         correct = 0
         for example in examples:
+            if time.time() - task_start > timeout:
+                break  # Hard timeout
+
             try:
                 inp = np.array(example['input'])
                 expected = np.array(example['output'])
 
-                # Try eigenform first (fast)
-                program, confidence = self.eigenform.find_eigenform_program(inp, examples)
-
-                if program and confidence > 0.3:  # Lower threshold for training
-                    # Extract the operation from tuple (name, op)
-                    name, op = program
-                    # Test if it produces correct output
-                    result = op(inp)
-                    if np.array_equal(result, expected):
-                        correct += 1
-                        # Store successful pattern
-                        self.ratchet.try_update(f"{task_id}_train", result, confidence)
-                        continue
-
-                # Try simple transformations as fallback
-                for op in [np.rot90, np.fliplr, np.flipud, np.transpose]:
-                    result = op(inp)
-                    if np.array_equal(result, expected):
-                        correct += 1
-                        self.ratchet.try_update(f"{task_id}_train", result, 0.8)
+                # Skip eigenform (too slow) - only try simple transformations
+                found = False
+                for op in [lambda x: x,  # identity
+                          np.rot90,
+                          lambda x: np.rot90(x, 2),
+                          lambda x: np.rot90(x, 3),
+                          np.fliplr,
+                          np.flipud,
+                          np.transpose]:
+                    if time.time() - task_start > timeout:
                         break
+                    try:
+                        result = op(inp)
+                        if np.array_equal(result, expected):
+                            correct += 1
+                            self.ratchet.try_update(f"{task_id}_train", result, 0.8)
+                            found = True
+                            break
+                    except:
+                        continue
             except:
                 continue
 
@@ -1207,13 +1249,13 @@ class LucidOrcaChampionshipComplete:
         return correct >= len(examples) / 2
 
     def solve_test_set(self, test_tasks: Dict) -> Dict:
-        """Testing phase: 70% of 3-hour budget"""
+        """Testing phase: 70% of 5-hour budget"""
 
         testing_budget = self.config.total_time_budget * self.config.testing_ratio
         start_time = time.time()
 
         print("\n" + "="*70)
-        print("🏆 TESTING PHASE - 70% Budget (126 minutes)")
+        print("🏆 TESTING PHASE - 70% Budget (210 minutes)")
         print("="*70)
         print(f"🧪 Testing on {len(test_tasks)} tasks")
         print(f"⏱️  Budget: {testing_budget:.0f}s ({testing_budget/60:.1f} min)")
@@ -1361,18 +1403,30 @@ class LucidOrcaChampionshipComplete:
             # Add to quantum superposition
             self.quantum.add_state(best_solution, best_conf)
 
-            formatted = [[best_solution.tolist(), test_input.tolist()]]
+            # Format: [{"attempt_1": grid, "attempt_2": grid}]
+            formatted = [{
+                "attempt_1": best_solution.tolist(),
+                "attempt_2": test_input.tolist()  # Fallback to input
+            }]
             return formatted, success
 
         return self._fallback(task), False
 
     def _fallback(self, task: Dict) -> List:
-        """Fallback solution"""
+        """Fallback solution matching sample_submission.json format"""
         try:
             test_input = np.array(task['test'][0]['input'])
-            return [[np.rot90(test_input).tolist(), test_input.tolist()]]
+            # Format: [{"attempt_1": grid, "attempt_2": grid}]
+            return [{
+                "attempt_1": np.rot90(test_input).tolist(),
+                "attempt_2": test_input.tolist()
+            }]
         except:
-            return [[[0]]]
+            # Emergency fallback - 2x2 grid of zeros
+            return [{
+                "attempt_1": [[0, 0], [0, 0]],
+                "attempt_2": [[0, 0], [0, 0]]
+            }]
 
     def get_overall_stats(self) -> Dict:
         """Get combined stats"""
@@ -1428,14 +1482,76 @@ def load_arc_datasets():
     return datasets
 
 
+def validate_submission_format(submission: Dict, sample: Dict) -> bool:
+    """
+    Validate submission format matches sample_submission.json EXACTLY
+
+    Format: {"task_id": [{"attempt_1": [[grid]], "attempt_2": [[grid]]}], ...}
+    """
+    print("\n🔍 Validating submission format...")
+
+    issues = []
+
+    # Check all task IDs from sample are present
+    missing_tasks = set(sample.keys()) - set(submission.keys())
+    if missing_tasks:
+        issues.append(f"Missing {len(missing_tasks)} tasks: {list(missing_tasks)[:5]}...")
+
+    # Check format for each task
+    for task_id, task_solutions in submission.items():
+        # Must be a list
+        if not isinstance(task_solutions, list):
+            issues.append(f"{task_id}: value must be list, got {type(task_solutions)}")
+            continue
+
+        # Must have at least one solution dict
+        if len(task_solutions) == 0:
+            issues.append(f"{task_id}: empty solution list")
+            continue
+
+        # Each element must be a dict with attempt_1 and attempt_2
+        for idx, sol in enumerate(task_solutions):
+            if not isinstance(sol, dict):
+                issues.append(f"{task_id}[{idx}]: must be dict, got {type(sol)}")
+                continue
+
+            if "attempt_1" not in sol:
+                issues.append(f"{task_id}[{idx}]: missing 'attempt_1'")
+            if "attempt_2" not in sol:
+                issues.append(f"{task_id}[{idx}]: missing 'attempt_2'")
+
+            # Attempts must be 2D arrays (list of lists)
+            for attempt_key in ["attempt_1", "attempt_2"]:
+                if attempt_key in sol:
+                    attempt = sol[attempt_key]
+                    if not isinstance(attempt, list):
+                        issues.append(f"{task_id}[{idx}].{attempt_key}: must be list")
+                    elif len(attempt) > 0 and not isinstance(attempt[0], list):
+                        issues.append(f"{task_id}[{idx}].{attempt_key}: must be 2D list")
+
+    if issues:
+        print(f"❌ Found {len(issues)} validation issues:")
+        for issue in issues[:10]:
+            print(f"   - {issue}")
+        if len(issues) > 10:
+            print(f"   ... and {len(issues) - 10} more")
+        return False
+    else:
+        print(f"✅ Submission valid: {len(submission)} tasks, format matches sample")
+        return True
+
+
 def main():
     """Championship run"""
+
+    run_start_time = time.time()
 
     print("\n" + "="*70)
     print("🌊🧬 LUCIDORCA CHAMPIONSHIP - COMPLETE 12-POINT SOLVER")
     print("="*70)
     print("🎯 Target: 85%+ accuracy")
-    print("⏱️  Budget: 3 hours (30% train, 70% test)")
+    print("⏱️  Budget: 5 hours (target) | 6 hours (max)")
+    print("⏱️  Split: 30% train (90 min), 70% test (210 min)")
     print("🧠 ALL 12 optimizations fully implemented")
     print("🚀 NSM→SDPM→XYZA pipeline active")
     print("="*70)
@@ -1465,6 +1581,14 @@ def main():
     # PHASE 2: Testing
     solutions = solver.solve_test_set(test_tasks)
 
+    # Validate submission format
+    sample_submission = datasets.get('sample_submission', {})
+    is_valid = validate_submission_format(solutions, sample_submission)
+
+    if not is_valid:
+        print("\n⚠️  WARNING: Submission format validation failed!")
+        print("   Saving anyway, but may need manual fixes...")
+
     # Save submission (Kaggle or local)
     if Path("/kaggle/working").exists():
         output_path = Path("/kaggle/working/submission.json")
@@ -1473,9 +1597,11 @@ def main():
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w') as f:
-        json.dump(solutions, f)
+        json.dump(solutions, f, indent=None, separators=(',', ': '))
 
-    print(f"💾 Saved to: {output_path}")
+    print(f"\n💾 Saved submission to: {output_path}")
+    print(f"   File size: {output_path.stat().st_size / 1024:.1f} KB")
+    print(f"   Tasks: {len(solutions)}")
 
     # Final report
     stats = solver.get_overall_stats()
