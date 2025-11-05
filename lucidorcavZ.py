@@ -39,6 +39,53 @@ from enum import Enum
 import copy
 
 
+# ═══════════════════════════════════════════════════════════════
+# CHAMPIONSHIP CONFIGURATION
+# ═══════════════════════════════════════════════════════════════
+
+@dataclass
+class ChampionshipConfig:
+    """Complete championship configuration"""
+
+    # Time management: 3hrs training, 5hrs testing, 8hr hard shutoff
+    training_budget: float = 10800.0     # 3 hours = 180 minutes = 10,800s
+    testing_budget: float = 18000.0      # 5 hours = 300 minutes = 18,000s
+    total_time_budget: float = 25200.0   # Target: 7 hours = 420 minutes
+    max_time_budget: float = 28800.0     # Hard limit: 8 hours
+    training_ratio: float = 0.375  # 3hr / 8hr = 37.5%
+    testing_ratio: float = 0.625   # 5hr / 8hr = 62.5%
+
+    # Phi-temporal
+    base_time_per_task: float = 45.0
+    phi_ratio: float = 1.618
+
+    # Core parameters
+    recursion_depth: int = 7
+    superposition_branches: int = 50
+    collapse_threshold: float = 0.3
+    eigenform_max_iterations: int = 36
+
+    # Parallel processing
+    parallel_workers: int = 8
+
+    # Memory management (Kaggle: 16GB × 0.66 = 10.5GB)
+    kaggle_memory_gb: float = 16.0
+    memory_limit_ratio: float = 0.66
+    max_memory_bytes: int = int(16.0 * 0.66 * 1024 * 1024 * 1024)  # 10.5GB in bytes
+
+    # Curriculum learning parameters
+    use_curriculum_learning: bool = True
+    use_two_pass_learning: bool = True      # Two-pass: attempt 1 + attempt 2
+    base_task_timeout: float = 5.0          # Base timeout per training task
+    timeout_reduction_ratio: float = 0.80   # Trim 20% from regular tasks
+    num_priority_tasks: int = 20            # Top N easiest tasks get bonus time
+
+    # All features enabled
+    use_all_optimizations: bool = True
+
+
+config = ChampionshipConfig()
+
 
 # ═══════════════════════════════════════════════════════════════
 # TIMING & PROFILING SYSTEM
