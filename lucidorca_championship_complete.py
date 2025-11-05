@@ -44,11 +44,13 @@ import copy
 class ChampionshipConfig:
     """Complete championship configuration"""
 
-    # Time management (5 hours target, 6 hours max = 21,600 seconds)
-    total_time_budget: float = 18000.0  # 5 hours = 18,000 seconds
-    max_time_budget: float = 21600.0    # 6 hours max = 21,600 seconds
-    training_ratio: float = 0.30  # 30% = 90 minutes
-    testing_ratio: float = 0.70   # 70% = 210 minutes
+    # Time management: 30% of 5hrs for training, 70% of 6hrs for testing
+    training_budget: float = 5400.0      # 30% of 5hrs = 90 minutes = 5,400s
+    testing_budget: float = 15120.0      # 70% of 6hrs = 252 minutes = 15,120s
+    total_time_budget: float = 20520.0   # Total = 342 minutes = 5.7 hours
+    max_time_budget: float = 21600.0     # Hard limit: 6 hours
+    training_ratio: float = 0.30  # For compatibility
+    testing_ratio: float = 0.70   # For compatibility
 
     # Phi-temporal
     base_time_per_task: float = 45.0
@@ -72,6 +74,74 @@ class ChampionshipConfig:
     use_all_optimizations: bool = True
 
 config = ChampionshipConfig()
+
+
+# ═══════════════════════════════════════════════════════════════
+# TIMING & PROFILING SYSTEM
+# ═══════════════════════════════════════════════════════════════
+
+class TimingProfiler:
+    """Track timing at every level: task, solver, function, operation"""
+
+    def __init__(self):
+        self.timings = defaultdict(list)  # {category: [durations]}
+        self.start_times = {}
+        self.call_counts = defaultdict(int)
+
+    def start(self, category: str):
+        """Start timing a category"""
+        self.start_times[category] = time.time()
+
+    def end(self, category: str):
+        """End timing and record duration"""
+        if category in self.start_times:
+            duration = time.time() - self.start_times[category]
+            self.timings[category].append(duration)
+            self.call_counts[category] += 1
+            del self.start_times[category]
+            return duration
+        return 0.0
+
+    def get_stats(self, category: str = None) -> Dict:
+        """Get timing statistics"""
+        if category:
+            if category in self.timings:
+                times = self.timings[category]
+                return {
+                    'count': len(times),
+                    'total': sum(times),
+                    'mean': np.mean(times),
+                    'median': np.median(times),
+                    'min': min(times),
+                    'max': max(times),
+                }
+            return {}
+
+        # Return all stats
+        return {cat: self.get_stats(cat) for cat in self.timings.keys()}
+
+    def print_summary(self, top_n: int = 20):
+        """Print timing summary"""
+        print("\n" + "="*70)
+        print("⏱️  DETAILED TIMING BREAKDOWN")
+        print("="*70)
+
+        # Sort by total time
+        categories = sorted(
+            self.timings.keys(),
+            key=lambda k: sum(self.timings[k]),
+            reverse=True
+        )[:top_n]
+
+        for cat in categories:
+            stats = self.get_stats(cat)
+            print(f"  {cat:40s}: {stats['total']:7.2f}s ({stats['count']:4d} calls, "
+                  f"avg: {stats['mean']:.3f}s)")
+
+        print("="*70)
+
+# Global profiler
+profiler = TimingProfiler()
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1115,9 +1185,9 @@ class LucidOrcaChampionshipComplete:
         self.testing_stats = {'total': 0, 'solved': 0, 'time_spent': 0}
 
     def train(self, training_tasks: Dict) -> None:
-        """Train phase: 30% of 5-hour budget"""
+        """Train phase: 30% of 5hrs = 90 minutes"""
 
-        training_budget = self.config.total_time_budget * self.config.training_ratio
+        training_budget = self.config.training_budget
         start_time = time.time()
 
         # Calculate per-task timeout: budget / tasks with 20% safety margin
@@ -1125,7 +1195,7 @@ class LucidOrcaChampionshipComplete:
         per_task_timeout = max(2.0, min(per_task_timeout, 10.0))  # Clamp to 2-10 seconds
 
         print("="*70)
-        print("🎓 TRAINING PHASE - 30% Budget (90 minutes)")
+        print("🎓 TRAINING PHASE - 30% of 5hrs = 90 minutes")
         print("="*70)
         print(f"📚 Training on {len(training_tasks)} tasks")
         print(f"⏱️  Budget: {training_budget:.0f}s ({training_budget/60:.1f} min)")
@@ -1204,9 +1274,11 @@ class LucidOrcaChampionshipComplete:
 
     def _train_task(self, task_id: str, task: Dict, timeout: float = 5.0) -> bool:
         """Train on task by solving all training examples with strict timeout"""
+        profiler.start(f"train_task")
         task_start = time.time()
         examples = task.get('train', [])
         if not examples:
+            profiler.end(f"train_task")
             return False
 
         # Limit to first 2 examples for speed
@@ -1214,48 +1286,62 @@ class LucidOrcaChampionshipComplete:
 
         # Try to solve training examples
         correct = 0
-        for example in examples:
+        transformation_ops = [
+            ('identity', lambda x: x),
+            ('rot90', np.rot90),
+            ('rot180', lambda x: np.rot90(x, 2)),
+            ('rot270', lambda x: np.rot90(x, 3)),
+            ('flip_h', np.fliplr),
+            ('flip_v', np.flipud),
+            ('transpose', np.transpose),
+        ]
+
+        for example_idx, example in enumerate(examples):
             if time.time() - task_start > timeout:
+                profiler.end(f"train_task")
                 break  # Hard timeout
 
             try:
+                profiler.start(f"train_example_parse")
                 inp = np.array(example['input'])
                 expected = np.array(example['output'])
+                profiler.end(f"train_example_parse")
 
-                # Skip eigenform (too slow) - only try simple transformations
+                # Try simple transformations
                 found = False
-                for op in [lambda x: x,  # identity
-                          np.rot90,
-                          lambda x: np.rot90(x, 2),
-                          lambda x: np.rot90(x, 3),
-                          np.fliplr,
-                          np.flipud,
-                          np.transpose]:
+                for op_name, op in transformation_ops:
                     if time.time() - task_start > timeout:
                         break
+
+                    profiler.start(f"train_transform_{op_name}")
                     try:
                         result = op(inp)
                         if np.array_equal(result, expected):
                             correct += 1
+                            profiler.start(f"train_ratchet_update")
                             self.ratchet.try_update(f"{task_id}_train", result, 0.8)
+                            profiler.end(f"train_ratchet_update")
                             found = True
+                            profiler.end(f"train_transform_{op_name}")
                             break
                     except:
-                        continue
+                        pass
+                    profiler.end(f"train_transform_{op_name}")
             except:
                 continue
 
+        profiler.end(f"train_task")
         # Success if we solved at least half the training examples
         return correct >= len(examples) / 2
 
     def solve_test_set(self, test_tasks: Dict) -> Dict:
-        """Testing phase: 70% of 5-hour budget"""
+        """Testing phase: 70% of 6hrs = 252 minutes"""
 
-        testing_budget = self.config.total_time_budget * self.config.testing_ratio
+        testing_budget = self.config.testing_budget
         start_time = time.time()
 
         print("\n" + "="*70)
-        print("🏆 TESTING PHASE - 70% Budget (210 minutes)")
+        print("🏆 TESTING PHASE - 70% of 6hrs = 252 minutes")
         print("="*70)
         print(f"🧪 Testing on {len(test_tasks)} tasks")
         print(f"⏱️  Budget: {testing_budget:.0f}s ({testing_budget/60:.1f} min)")
@@ -1317,17 +1403,19 @@ class LucidOrcaChampionshipComplete:
     def _solve_task_complete(self, task_id: str, task: Dict, timeout: float) -> Tuple[List, bool]:
         """Solve with ALL 12 optimizations"""
 
+        profiler.start(f"test_solve_task")
+        profiler.start(f"test_parse_input")
         test_input = np.array(task['test'][0]['input'])
         examples = task.get('train', [])
+        profiler.end(f"test_parse_input")
 
         strategies = []
         strategy_start = time.time()
 
         # Try all solvers with metacognitive monitoring
-        current_strategy = 'eigenform'
-
         # 1. Eigenform
         if time.time() - strategy_start < timeout:
+            profiler.start(f"test_solver_eigenform")
             try:
                 program, conf = self.eigenform.find_eigenform_program(test_input, examples)
                 if program and conf > 0.5:
@@ -1337,9 +1425,11 @@ class LucidOrcaChampionshipComplete:
                     self.metacog.record_attempt('eigenform', conf > 0.7, time.time() - strategy_start)
             except:
                 pass
+            profiler.end(f"test_solver_eigenform")
 
         # 2. Recursive bootstrapping
         if time.time() - strategy_start < timeout:
+            profiler.start(f"test_solver_bootstrap")
             try:
                 program, conf = self.bootstrapper.bootstrap_understanding(test_input, examples)
                 if program and conf > 0.5:
@@ -1348,9 +1438,11 @@ class LucidOrcaChampionshipComplete:
                     self.metacog.record_attempt('bootstrap', conf > 0.7, time.time() - strategy_start)
             except:
                 pass
+            profiler.end(f"test_solver_bootstrap")
 
         # 3. NSM Fusion
         if time.time() - strategy_start < timeout:
+            profiler.start(f"test_solver_nsm")
             try:
                 result, conf = self.nsm.solve_hybrid(task, test_input)
                 if conf > 0.5:
@@ -1358,9 +1450,11 @@ class LucidOrcaChampionshipComplete:
                     self.metacog.record_attempt('nsm', conf > 0.7, time.time() - strategy_start)
             except:
                 pass
+            profiler.end(f"test_solver_nsm")
 
         # 4. SDPM
         if time.time() - strategy_start < timeout:
+            profiler.start(f"test_solver_sdpm")
             try:
                 result, conf = self.sdpm.solve_sdpm(test_input, examples)
                 if conf > 0.5:
@@ -1368,9 +1462,11 @@ class LucidOrcaChampionshipComplete:
                     self.metacog.record_attempt('sdpm', conf > 0.7, time.time() - strategy_start)
             except:
                 pass
+            profiler.end(f"test_solver_sdpm")
 
         # 5. XYZA Zero-shot
         if time.time() - strategy_start < timeout:
+            profiler.start(f"test_solver_xyza")
             try:
                 result, conf = self.xyza.zero_shot_solve(task, test_input)
                 if conf > 0.5:
@@ -1378,9 +1474,11 @@ class LucidOrcaChampionshipComplete:
                     self.metacog.record_attempt('xyza', conf > 0.7, time.time() - strategy_start)
             except:
                 pass
+            profiler.end(f"test_solver_xyza")
 
         # 6. Strange loops
         if time.time() - strategy_start < timeout:
+            profiler.start(f"test_solver_strange")
             try:
                 result, conf = self.strange.detect_strange_loops(task, test_input)
                 if result is not None and conf > 0.5:
@@ -1388,8 +1486,10 @@ class LucidOrcaChampionshipComplete:
                     self.metacog.record_attempt('strange', conf > 0.7, time.time() - strategy_start)
             except:
                 pass
+            profiler.end(f"test_solver_strange")
 
         # Select best strategy
+        profiler.start(f"test_select_best")
         if strategies:
             strategies.sort(key=lambda x: x[1], reverse=True)
             best_solution, best_conf, best_strategy = strategies[0]
@@ -1397,19 +1497,29 @@ class LucidOrcaChampionshipComplete:
             success = best_conf > 0.6
 
             # Update ratchet
+            profiler.start(f"test_ratchet_update")
             if success:
                 self.ratchet.try_update(task_id, best_solution, best_conf)
+            profiler.end(f"test_ratchet_update")
 
             # Add to quantum superposition
+            profiler.start(f"test_quantum_add")
             self.quantum.add_state(best_solution, best_conf)
+            profiler.end(f"test_quantum_add")
 
             # Format: [{"attempt_1": grid, "attempt_2": grid}]
+            profiler.start(f"test_format_output")
             formatted = [{
                 "attempt_1": best_solution.tolist(),
                 "attempt_2": test_input.tolist()  # Fallback to input
             }]
+            profiler.end(f"test_format_output")
+            profiler.end(f"test_select_best")
+            profiler.end(f"test_solve_task")
             return formatted, success
 
+        profiler.end(f"test_select_best")
+        profiler.end(f"test_solve_task")
         return self._fallback(task), False
 
     def _fallback(self, task: Dict) -> List:
@@ -1550,8 +1660,9 @@ def main():
     print("🌊🧬 LUCIDORCA CHAMPIONSHIP - COMPLETE 12-POINT SOLVER")
     print("="*70)
     print("🎯 Target: 85%+ accuracy")
-    print("⏱️  Budget: 5 hours (target) | 6 hours (max)")
-    print("⏱️  Split: 30% train (90 min), 70% test (210 min)")
+    print("⏱️  Training: 30% of 5hrs = 90 min (5,400s)")
+    print("⏱️  Testing: 70% of 6hrs = 252 min (15,120s)")
+    print("⏱️  Total: up to 6 hours max")
     print("🧠 ALL 12 optimizations fully implemented")
     print("🚀 NSM→SDPM→XYZA pipeline active")
     print("="*70)
@@ -1606,6 +1717,7 @@ def main():
     # Final report
     stats = solver.get_overall_stats()
     mem_stats = get_memory_usage()
+    total_run_time = time.time() - run_start_time
 
     print("\n" + "="*70)
     print("🏆 CHAMPIONSHIP RUN COMPLETE")
@@ -1613,7 +1725,7 @@ def main():
     print(f"📊 Statistics:")
     print(f"  Training: {stats['training']['accuracy']:.2f}%")
     print(f"  Testing: {stats['testing']['accuracy']:.2f}%")
-    print(f"  Total time: {stats['training']['time_spent'] + stats['testing']['time_spent']:.0f}s")
+    print(f"  Total time: {total_run_time:.0f}s ({total_run_time/3600:.2f} hours)")
     print(f"  Peak memory: {mem_stats['max_rss_gb']:.2f} GB / {config.kaggle_memory_gb * config.memory_limit_ratio:.2f} GB limit")
     print(f"\n📥 Submission: {output_path}")
     print("="*70)
@@ -1622,6 +1734,9 @@ def main():
         print("\n🎉 🏆 CHAMPIONSHIP TARGET ACHIEVED! 🏆 🎉")
     else:
         print(f"\n📈 Reached {stats['testing']['accuracy']:.1f}% (Target: 85%)")
+
+    # Print detailed timing breakdown
+    profiler.print_summary(top_n=30)
 
     print("\n🚀 Ready for ARC Prize 2025!")
     print("="*70)
