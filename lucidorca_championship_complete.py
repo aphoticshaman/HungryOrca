@@ -44,13 +44,13 @@ import copy
 class ChampionshipConfig:
     """Complete championship configuration"""
 
-    # Time management: 30% of 5hrs for training, 70% of 6hrs for testing
-    training_budget: float = 5400.0      # 30% of 5hrs = 90 minutes = 5,400s
-    testing_budget: float = 15120.0      # 70% of 6hrs = 252 minutes = 15,120s
-    total_time_budget: float = 20520.0   # Total = 342 minutes = 5.7 hours
-    max_time_budget: float = 21600.0     # Hard limit: 6 hours
-    training_ratio: float = 0.30  # For compatibility
-    testing_ratio: float = 0.70   # For compatibility
+    # Time management: 3hrs training, 5hrs testing, 8hr hard shutoff
+    training_budget: float = 10800.0     # 3 hours = 180 minutes = 10,800s
+    testing_budget: float = 18000.0      # 5 hours = 300 minutes = 18,000s
+    total_time_budget: float = 25200.0   # Target: 7 hours = 420 minutes
+    max_time_budget: float = 28800.0     # Hard limit: 8 hours
+    training_ratio: float = 0.375  # 3hr / 8hr = 37.5%
+    testing_ratio: float = 0.625   # 5hr / 8hr = 62.5%
 
     # Phi-temporal
     base_time_per_task: float = 45.0
@@ -69,6 +69,12 @@ class ChampionshipConfig:
     kaggle_memory_gb: float = 16.0
     memory_limit_ratio: float = 0.66
     max_memory_bytes: int = int(16.0 * 0.66 * 1024 * 1024 * 1024)  # 10.5GB in bytes
+
+    # Curriculum learning parameters
+    use_curriculum_learning: bool = True
+    base_task_timeout: float = 5.0          # Base timeout per training task
+    timeout_reduction_ratio: float = 0.80   # Trim 20% from regular tasks
+    num_priority_tasks: int = 20            # Top N easiest tasks get bonus time
 
     # All features enabled
     use_all_optimizations: bool = True
@@ -142,6 +148,77 @@ class TimingProfiler:
 
 # Global profiler
 profiler = TimingProfiler()
+
+
+# ═══════════════════════════════════════════════════════════════
+# CURRICULUM LEARNING - DIFFICULTY ESTIMATION
+# ═══════════════════════════════════════════════════════════════
+
+def estimate_task_difficulty(task: Dict) -> float:
+    """
+    Estimate task difficulty for curriculum learning.
+    Lower score = easier task (should be learned first).
+
+    Considers:
+    - Grid size (larger = harder)
+    - Number of unique colors (more = harder)
+    - Number of examples (fewer = harder)
+    - Shape changes (input→output shape change = harder)
+    - Symmetry breaking (more complex transformations)
+    """
+    examples = task.get('train', [])
+
+    if not examples:
+        return 999.0  # No examples = impossible, do last
+
+    try:
+        # Factor 1: Average grid size (larger grids = more complex)
+        avg_grid_size = np.mean([
+            np.array(ex['input']).size + np.array(ex['output']).size
+            for ex in examples
+        ])
+        grid_complexity = avg_grid_size / 100.0  # Normalize to ~0-5 range
+
+        # Factor 2: Number of unique colors (more colors = harder pattern)
+        all_colors = set()
+        for ex in examples:
+            all_colors.update(np.array(ex['input']).flatten().tolist())
+            all_colors.update(np.array(ex['output']).flatten().tolist())
+        color_complexity = len(all_colors) * 0.5
+
+        # Factor 3: Few examples = harder to learn pattern
+        num_examples_penalty = 10.0 / (len(examples) + 1)
+
+        # Factor 4: Shape changes (harder to predict)
+        shape_changes = sum(
+            1 for ex in examples
+            if np.array(ex['input']).shape != np.array(ex['output']).shape
+        )
+        shape_complexity = shape_changes * 2.0
+
+        # Factor 5: Size ratio changes (scaling transformations)
+        size_ratios = []
+        for ex in examples:
+            in_size = np.array(ex['input']).size
+            out_size = np.array(ex['output']).size
+            if in_size > 0:
+                size_ratios.append(abs(out_size / in_size - 1.0))
+        size_change_complexity = np.mean(size_ratios) * 3.0 if size_ratios else 0.0
+
+        # Combined difficulty score
+        difficulty = (
+            grid_complexity +
+            color_complexity +
+            num_examples_penalty +
+            shape_complexity +
+            size_change_complexity
+        )
+
+        return difficulty
+
+    except Exception as e:
+        # If any error in estimation, treat as medium difficulty
+        return 10.0
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1404,34 +1481,87 @@ class LucidOrcaChampionshipComplete:
         print(f"   ✓ Solver starts with ~{len(primitives)*0.7:.0f}% baseline coverage")
 
     def train(self, training_tasks: Dict) -> None:
-        """Train phase: 30% of 5hrs = 90 minutes"""
+        """
+        Train phase: 3 hours with curriculum learning
+
+        Curriculum Learning Strategy:
+        1. Sort tasks by difficulty (easiest first)
+        2. Trim 20% from regular task timeouts
+        3. Redistribute savings to top 20 easiest tasks
+        4. Build strong priors on easy tasks, then tackle harder ones
+        """
 
         training_budget = self.config.training_budget
         start_time = time.time()
 
-        # Calculate per-task timeout: budget / tasks with 20% safety margin
-        per_task_timeout = (training_budget * 0.8) / len(training_tasks)
-        per_task_timeout = max(2.0, min(per_task_timeout, 10.0))  # Clamp to 2-10 seconds
-
         print("="*70)
-        print("🎓 TRAINING PHASE - 30% of 5hrs = 90 minutes")
+        print("🎓 TRAINING PHASE - 3 hours (curriculum learning enabled)")
         print("="*70)
         print(f"📚 Training on {len(training_tasks)} tasks")
         print(f"⏱️  Budget: {training_budget:.0f}s ({training_budget/60:.1f} min)")
-        print(f"⏱️  Per-task timeout: {per_task_timeout:.1f}s\n")
+
+        # CURRICULUM LEARNING: Sort tasks by difficulty
+        if self.config.use_curriculum_learning:
+            print(f"🧠 Estimating task difficulty for curriculum learning...")
+            task_list = list(training_tasks.items())
+
+            # Estimate difficulty for each task
+            task_difficulties = []
+            for task_id, task in task_list:
+                difficulty = estimate_task_difficulty(task)
+                task_difficulties.append((task_id, task, difficulty))
+
+            # Sort by difficulty (easiest first)
+            task_difficulties.sort(key=lambda x: x[2])
+            sorted_tasks = [(tid, t) for tid, t, _ in task_difficulties]
+
+            # Calculate dynamic timeouts
+            base_timeout = self.config.base_task_timeout
+            reduced_timeout = base_timeout * self.config.timeout_reduction_ratio
+            num_priority = self.config.num_priority_tasks
+
+            # Time savings from reducing regular tasks
+            time_saved_per_task = base_timeout - reduced_timeout
+            total_time_saved = time_saved_per_task * (len(sorted_tasks) - num_priority)
+
+            # Bonus time for priority (easiest) tasks
+            bonus_per_priority = total_time_saved / num_priority if num_priority > 0 else 0
+
+            print(f"📊 Curriculum Learning Stats:")
+            print(f"   Base timeout: {base_timeout:.1f}s")
+            print(f"   Reduced timeout (80%): {reduced_timeout:.1f}s")
+            print(f"   Priority tasks (easiest {num_priority}): {base_timeout + bonus_per_priority:.1f}s each")
+            print(f"   Regular tasks: {reduced_timeout:.1f}s each")
+            print(f"   Time saved and redistributed: {total_time_saved:.0f}s\n")
+
+        else:
+            # No curriculum learning - use original order
+            sorted_tasks = list(training_tasks.items())
+            base_timeout = self.config.base_task_timeout
+            reduced_timeout = base_timeout
+            bonus_per_priority = 0
+            num_priority = 0
 
         solved = 0
         recent_10_solved = 0  # Track last 10 tasks
 
-        for i, (task_id, task) in enumerate(training_tasks.items()):
+        for i, (task_id, task) in enumerate(sorted_tasks):
             elapsed = time.time() - start_time
             if elapsed > training_budget:
-                print(f"\n⏱️  Training budget exhausted at {i}/{len(training_tasks)}")
+                print(f"\n⏱️  Training budget exhausted at {i}/{len(sorted_tasks)}")
                 break
+
+            # Dynamic timeout based on curriculum learning
+            if self.config.use_curriculum_learning and i < num_priority:
+                # Priority task (easiest) - gets bonus time
+                task_timeout = base_timeout + bonus_per_priority
+            else:
+                # Regular task - reduced timeout
+                task_timeout = reduced_timeout
 
             task_start = time.time()
             try:
-                success = self._train_task(task_id, task, timeout=per_task_timeout)
+                success = self._train_task(task_id, task, timeout=task_timeout)
                 if success:
                     solved += 1
                     recent_10_solved += 1
@@ -1441,16 +1571,21 @@ class LucidOrcaChampionshipComplete:
 
             # Hard timeout enforcement
             task_duration = time.time() - task_start
-            if task_duration > per_task_timeout * 1.5:
-                print(f"   ⚠️  Task {i+1} took {task_duration:.1f}s (limit: {per_task_timeout:.1f}s)")
+            if task_duration > task_timeout * 1.5:
+                print(f"   ⚠️  Task {i+1} took {task_duration:.1f}s (limit: {task_timeout:.1f}s)")
 
             # Print every 10 tasks
             if (i + 1) % 10 == 0:
                 recent_acc = recent_10_solved / 10 * 100
                 overall_acc = solved / (i + 1) * 100
                 rate = (i + 1) / elapsed if elapsed > 0 else 0
-                eta = (len(training_tasks) - (i + 1)) / rate if rate > 0 else 0
-                print(f"  [{i+1:4d}/{len(training_tasks)}] Last 10: {recent_10_solved}/10 ({recent_acc:4.0f}%) | "
+                eta = (len(sorted_tasks) - (i + 1)) / rate if rate > 0 else 0
+
+                # Show curriculum phase
+                phase = "PRIORITY" if i < num_priority else "REGULAR"
+                phase_str = f"[{phase}] " if self.config.use_curriculum_learning else ""
+
+                print(f"  {phase_str}[{i+1:4d}/{len(sorted_tasks)}] Last 10: {recent_10_solved}/10 ({recent_acc:4.0f}%) | "
                       f"Overall: {overall_acc:5.1f}% | Time: {elapsed:5.0f}s | ETA: {eta:5.0f}s")
                 recent_10_solved = 0  # Reset for next batch
 
@@ -1458,7 +1593,7 @@ class LucidOrcaChampionshipComplete:
             if (i + 1) % 100 == 0:
                 overall_acc = solved / (i + 1) * 100
                 rate = (i + 1) / elapsed
-                projected_total_time = len(training_tasks) / rate if rate > 0 else 0
+                projected_total_time = len(sorted_tasks) / rate if rate > 0 else 0
                 print(f"\n  {'─'*66}")
                 print(f"  📊 ANALYSIS @ {i+1} tasks:")
                 print(f"     Accuracy: {overall_acc:.1f}% ({solved}/{i+1})")
@@ -1466,6 +1601,11 @@ class LucidOrcaChampionshipComplete:
                 print(f"     Projected total: {projected_total_time:.0f}s ({projected_total_time/60:.1f} min)")
                 if projected_total_time > training_budget:
                     print(f"     ⚠️  Warning: {(projected_total_time - training_budget):.0f}s over budget")
+                if self.config.use_curriculum_learning:
+                    if i < num_priority:
+                        print(f"     🎯 Curriculum: Building priors on easiest tasks ({i+1}/{num_priority})")
+                    else:
+                        print(f"     🎯 Curriculum: Applying patterns to harder tasks")
                 print(f"  {'─'*66}\n")
 
         total_time = time.time() - start_time
@@ -1626,13 +1766,13 @@ class LucidOrcaChampionshipComplete:
         return correct >= total_attempts / 2
 
     def solve_test_set(self, test_tasks: Dict) -> Dict:
-        """Testing phase: 70% of 6hrs = 252 minutes"""
+        """Testing phase: 5 hours = 300 minutes"""
 
         testing_budget = self.config.testing_budget
         start_time = time.time()
 
         print("\n" + "="*70)
-        print("🏆 TESTING PHASE - 70% of 6hrs = 252 minutes")
+        print("🏆 TESTING PHASE - 5 hours = 300 minutes")
         print("="*70)
         print(f"🧪 Testing on {len(test_tasks)} tasks")
         print(f"⏱️  Budget: {testing_budget:.0f}s ({testing_budget/60:.1f} min)")
