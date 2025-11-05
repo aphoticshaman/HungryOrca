@@ -1167,22 +1167,44 @@ class LucidOrcaChampionshipComplete:
         print("="*70)
 
     def _train_task(self, task_id: str, task: Dict) -> bool:
-        """Quick training on task"""
+        """Train on task by solving all training examples"""
         examples = task.get('train', [])
         if not examples:
             return False
 
-        inp = np.array(examples[0]['input'])
+        # Try to solve all training examples
+        correct = 0
+        for example in examples:
+            try:
+                inp = np.array(example['input'])
+                expected = np.array(example['output'])
 
-        # Try eigenform
-        program, confidence = self.eigenform.find_eigenform_program(inp, examples)
+                # Try eigenform first (fast)
+                program, confidence = self.eigenform.find_eigenform_program(inp, examples)
 
-        if confidence > 0.7:
-            out = np.array(examples[0]['output'])
-            self.ratchet.try_update(task_id, out, confidence)
-            return True
+                if program and confidence > 0.3:  # Lower threshold for training
+                    # Extract the operation from tuple (name, op)
+                    name, op = program
+                    # Test if it produces correct output
+                    result = op(inp)
+                    if np.array_equal(result, expected):
+                        correct += 1
+                        # Store successful pattern
+                        self.ratchet.try_update(f"{task_id}_train", result, confidence)
+                        continue
 
-        return False
+                # Try simple transformations as fallback
+                for op in [np.rot90, np.fliplr, np.flipud, np.transpose]:
+                    result = op(inp)
+                    if np.array_equal(result, expected):
+                        correct += 1
+                        self.ratchet.try_update(f"{task_id}_train", result, 0.8)
+                        break
+            except:
+                continue
+
+        # Success if we solved at least half the training examples
+        return correct >= len(examples) / 2
 
     def solve_test_set(self, test_tasks: Dict) -> Dict:
         """Testing phase: 70% of 3-hour budget"""
