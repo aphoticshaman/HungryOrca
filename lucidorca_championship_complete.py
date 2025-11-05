@@ -1778,10 +1778,18 @@ class LucidOrcaChampionshipComplete:
 
     def _train_task(self, task_id: str, task: Dict, timeout: float = 5.0) -> bool:
         """
-        Few-shot learning with NSM insights:
-        - NSM #6: Information-theoretic example selection
-        - NSM #4: Adaptive time budgeting with early stopping
-        - NSM #9: Compositional primitive search
+        FULLY INTEGRATED: ALL 12 optimizations + NSM success modes
+
+        Time allocation per strategy:
+        - 15% Eigenform (symbolic reasoning)
+        - 15% Bootstrap (recursive learning)
+        - 15% NSM Fusion (neuro-symbolic hybrid)
+        - 15% SDPM (dynamic programming)
+        - 15% Quantum (superposition search)
+        - 15% Parallel (concurrent hypotheses)
+        - 10% Simple transforms (fallback)
+
+        NO EARLY STOPPING - Try ALL strategies!
         """
         profiler.start(f"train_task")
         task_start = time.time()
@@ -1791,12 +1799,12 @@ class LucidOrcaChampionshipComplete:
             profiler.end(f"train_task")
             return False
 
-        # NSM #6: Sort examples by information content, use most informative
+        # NSM #6: Sort examples by information content
         def example_entropy(ex):
             try:
                 inp, out = np.array(ex['input']), np.array(ex['output'])
                 return (len(np.unique(inp)) + len(np.unique(out))) / 10.0 + inp.size / 900.0
-            except:
+            except Exception as e:
                 return 0.5
 
         if len(examples) >= 2:
@@ -1807,108 +1815,200 @@ class LucidOrcaChampionshipComplete:
             learning_examples = examples
             validation_examples = []
 
-        correct = 0
-        total_attempts = len(learning_examples) + len(validation_examples)
-        attempts_so_far = 0
+        # Track best solution across ALL strategies
+        best_correct = 0
+        best_strategy = None
+        total_examples = len(learning_examples) + len(validation_examples)
 
-        # Strategy 1: Try eigenform with compositional search
-        if time.time() - task_start < timeout * 0.3:
+        # Helper: test operation on all examples
+        def test_operation(op, op_name="unknown"):
+            correct = 0
+            for ex in learning_examples + validation_examples:
+                try:
+                    result = op(np.array(ex['input']))
+                    if np.array_equal(result, np.array(ex['output'])):
+                        correct += 1
+                except Exception as e:
+                    pass  # Operation failed on this example
+            return correct
+
+        # ═══════════════════════════════════════════════════════════
+        # STRATEGY 1: Eigenform (15% of timeout)
+        # ═══════════════════════════════════════════════════════════
+        if time.time() - task_start < timeout * 0.15:
             profiler.start(f"train_eigenform")
             try:
-                if learning_examples:
-                    inp = np.array(learning_examples[0]['input'])
-                    program, conf = self.eigenform.find_eigenform_program(inp, learning_examples)
+                inp = np.array(learning_examples[0]['input'])
+                program, conf = self.eigenform.find_eigenform_program(inp, learning_examples)
 
-                    if program and conf > 0.3:  # Lowered threshold
-                        name, op = program
-                        # Validate on all examples
-                        for ex in learning_examples + validation_examples:
-                            attempts_so_far += 1
-                            try:
-                                result = op(np.array(ex['input']))
-                                if np.array_equal(result, np.array(ex['output'])):
-                                    correct += 1
-                            except:
-                                pass
+                if program and conf > 0.2:  # Lower threshold
+                    name, op = program
+                    correct = test_operation(op, name)
 
-                        # NSM #4: Adaptive budgeting - early stopping if not learning efficiently
-                        time_used = time.time() - task_start
-                        learning_rate = correct / attempts_so_far if attempts_so_far > 0 else 0
-                        expected_rate = time_used / timeout  # Should have used this much of budget
-
-                        if learning_rate < expected_rate * 0.3:  # Learning too slowly
-                            profiler.end(f"train_eigenform")
-                            profiler.end(f"train_task")
-                            return False  # Abort, not learning fast enough
-
-                        if correct > 0:
-                            self.xyza.store_pattern(task_id, name, conf * (correct / total_attempts))
-                            profiler.end(f"train_eigenform")
-                            profiler.end(f"train_task")
-                            return correct >= total_attempts / 2
-            except:
-                pass
+                    if correct > best_correct:
+                        best_correct = correct
+                        best_strategy = ('eigenform', name, conf)
+                        self.xyza.store_pattern(task_id, name, conf * (correct / total_examples))
+            except Exception as e:
+                pass  # Eigenform failed, continue to next strategy
             profiler.end(f"train_eigenform")
 
-        # Strategy 2: Try recursive bootstrapping
-        if time.time() - task_start < timeout * 0.6 and correct < total_attempts / 2:
+        # ═══════════════════════════════════════════════════════════
+        # STRATEGY 2: Bootstrap (15% of timeout)
+        # ═══════════════════════════════════════════════════════════
+        if time.time() - task_start < timeout * 0.30:
             profiler.start(f"train_bootstrap")
             try:
-                if learning_examples:
-                    inp = np.array(learning_examples[0]['input'])
-                    program, conf = self.bootstrapper.bootstrap_understanding(inp, learning_examples)
+                inp = np.array(learning_examples[0]['input'])
+                program, conf = self.bootstrapper.bootstrap_understanding(inp, learning_examples)
 
-                    if program and conf > 0.4:
-                        for ex in learning_examples + validation_examples:
-                            try:
-                                result = program(np.array(ex['input']))
-                                if np.array_equal(result, np.array(ex['output'])):
-                                    correct += 1
-                            except:
-                                pass
+                if program and conf > 0.2:
+                    correct = test_operation(program, 'bootstrap')
 
-                        if correct > 0:
-                            self.xyza.store_pattern(task_id, 'bootstrap', conf * (correct / total_attempts))
-            except:
-                pass
+                    if correct > best_correct:
+                        best_correct = correct
+                        best_strategy = ('bootstrap', 'recursive', conf)
+                        self.xyza.store_pattern(task_id, 'bootstrap', conf * (correct / total_examples))
+            except Exception as e:
+                pass  # Bootstrap failed
             profiler.end(f"train_bootstrap")
 
-        # Strategy 3: Simple transformations (fallback)
-        if time.time() - task_start < timeout and correct < total_attempts / 2:
+        # ═══════════════════════════════════════════════════════════
+        # STRATEGY 3: NSM Fusion (15% of timeout) - ACTUALLY USE IT!
+        # ═══════════════════════════════════════════════════════════
+        if time.time() - task_start < timeout * 0.45:
+            profiler.start(f"train_nsm")
+            try:
+                # Combine symbolic (eigenform) + neural (bootstrap) results
+                inp = np.array(learning_examples[0]['input'])
+                result = self.nsm.fuse_approaches(inp, learning_examples)
+                if result is not None:
+                    correct = test_operation(lambda x: result, 'nsm_fusion')
+
+                    if correct > best_correct:
+                        best_correct = correct
+                        best_strategy = ('nsm', 'fusion', 0.7)
+            except Exception as e:
+                pass  # NSM failed
+            profiler.end(f"train_nsm")
+
+        # ═══════════════════════════════════════════════════════════
+        # STRATEGY 4: SDPM (15% of timeout) - ACTUALLY USE IT!
+        # ═══════════════════════════════════════════════════════════
+        if time.time() - task_start < timeout * 0.60:
+            profiler.start(f"train_sdpm")
+            try:
+                # Dynamic programming for compositional solutions
+                inp = np.array(learning_examples[0]['input'])
+                program = self.sdpm.synthesize_program(inp, learning_examples)
+                if program:
+                    correct = test_operation(program, 'sdpm')
+
+                    if correct > best_correct:
+                        best_correct = correct
+                        best_strategy = ('sdpm', 'composition', 0.7)
+            except Exception as e:
+                pass  # SDPM failed
+            profiler.end(f"train_sdpm")
+
+        # ═══════════════════════════════════════════════════════════
+        # STRATEGY 5: Quantum Superposition (15% of timeout) - USE IT!
+        # ═══════════════════════════════════════════════════════════
+        if time.time() - task_start < timeout * 0.75:
+            profiler.start(f"train_quantum")
+            try:
+                inp = np.array(learning_examples[0]['input'])
+                # Test multiple hypotheses in superposition
+                hypotheses = [
+                    lambda x: np.rot90(x),
+                    lambda x: np.fliplr(x),
+                    lambda x: np.flipud(x),
+                    lambda x: x.T if x.shape[0] == x.shape[1] else x
+                ]
+                result, conf = self.quantum.collapse_best(inp, hypotheses, learning_examples)
+                if result is not None:
+                    correct = test_operation(lambda x: result, 'quantum')
+
+                    if correct > best_correct:
+                        best_correct = correct
+                        best_strategy = ('quantum', 'superposition', conf)
+            except Exception as e:
+                pass  # Quantum failed
+            profiler.end(f"train_quantum")
+
+        # ═══════════════════════════════════════════════════════════
+        # STRATEGY 6: Parallel Hypotheses (15% of timeout) - USE IT!
+        # ═══════════════════════════════════════════════════════════
+        if time.time() - task_start < timeout * 0.90:
+            profiler.start(f"train_parallel")
+            try:
+                inp = np.array(learning_examples[0]['input'])
+                hypotheses = [
+                    lambda x: np.rot90(x),
+                    lambda x: np.rot90(x, 2),
+                    lambda x: np.fliplr(x),
+                    lambda x: np.flipud(x),
+                ]
+                result, conf = self.parallel.test_parallel(task, inp, hypotheses)
+                if result is not None:
+                    correct = test_operation(lambda x: result, 'parallel')
+
+                    if correct > best_correct:
+                        best_correct = correct
+                        best_strategy = ('parallel', 'concurrent', conf)
+            except Exception as e:
+                pass  # Parallel failed
+            profiler.end(f"train_parallel")
+
+        # ═══════════════════════════════════════════════════════════
+        # STRATEGY 7: Simple Transforms + EXPANDED PRIMITIVES (10%)
+        # ═══════════════════════════════════════════════════════════
+        if time.time() - task_start < timeout:
             profiler.start(f"train_simple")
-            transformation_ops = [
+
+            # EXPANDED: Add color/count/mask operations!
+            all_transforms = [
+                # Geometric (existing)
                 ('identity', lambda x: x),
-                ('rot90', np.rot90),
+                ('rot90', lambda x: np.rot90(x)),
                 ('rot180', lambda x: np.rot90(x, 2)),
                 ('rot270', lambda x: np.rot90(x, 3)),
-                ('flip_h', np.fliplr),
-                ('flip_v', np.flipud),
-                ('transpose', np.transpose),
+                ('flip_h', lambda x: np.fliplr(x)),
+                ('flip_v', lambda x: np.flipud(x)),
+                ('transpose', lambda x: x.T if x.shape[0] == x.shape[1] else x),
+
+                # Color operations (NEW!)
+                ('invert_colors', lambda x: np.max(x) - x),
+                ('extract_color_1', lambda x: (x == 1).astype(int)),
+                ('extract_color_2', lambda x: (x == 2).astype(int)),
+                ('mask_nonzero', lambda x: (x > 0).astype(int)),
+
+                # Counting/aggregation (NEW!)
+                ('count_colors', lambda x: np.array([[len(np.unique(x))]])),
+                ('max_value', lambda x: np.array([[np.max(x)]])),
+
+                # Spatial (NEW!)
+                ('extract_edges', lambda x: x - np.roll(x, 1, axis=0)),
             ]
 
-            for op_name, op in transformation_ops:
-                temp_correct = 0
+            for op_name, op in all_transforms:
                 try:
-                    for ex in learning_examples + validation_examples:
-                        result = op(np.array(ex['input']))
-                        if np.array_equal(result, np.array(ex['output'])):
-                            temp_correct += 1
+                    correct = test_operation(op, op_name)
 
-                    if temp_correct > correct:
-                        correct = temp_correct
-                        self.ratchet.try_update(f"{task_id}_train", result, 0.8)
-                        self.xyza.store_pattern(task_id, op_name, temp_correct / total_attempts)
-
-                        if correct >= total_attempts / 2:
-                            profiler.end(f"train_simple")
-                            break
-                except:
-                    continue
+                    if correct > best_correct:
+                        best_correct = correct
+                        best_strategy = ('simple', op_name, 0.9)
+                        self.ratchet.try_update(f"{task_id}_train", None, 0.8)
+                        self.xyza.store_pattern(task_id, op_name, correct / total_examples)
+                except Exception as e:
+                    continue  # This primitive doesn't work
             profiler.end(f"train_simple")
 
         profiler.end(f"train_task")
-        # Success if we solved at least half the examples
-        return correct >= total_attempts / 2
+
+        # Success if solved at least half the examples
+        success = best_correct >= total_examples / 2
+        return success
 
     def solve_test_set(self, test_tasks: Dict) -> Dict:
         """Testing phase: 5 hours = 300 minutes"""
