@@ -238,11 +238,19 @@ class EigenformConvergence:
         self.max_iter = cfg.eigenform_max_iterations
 
     def find_eigenform_program(self, grid: np.ndarray, examples: List) -> Tuple[Any, float]:
-        """Find program converging to stable eigenform"""
+        """
+        Find program converging to stable eigenform OR just test primitives directly
+
+        FIXED: Original only looked for fixed points (convergence), but most
+        geometric operations cycle instead of converge! Now tries both:
+        1. Look for eigenforms (convergent operations)
+        2. Directly test all primitives (even non-convergent ones)
+        """
         primitives = self._get_primitives()
         best_program = None
         best_confidence = 0.0
 
+        # Strategy 1: Look for eigenforms (convergent operations)
         for name, op in primitives:
             try:
                 # Test for fixed point
@@ -264,6 +272,17 @@ class EigenformConvergence:
                             best_program = (name, op)
                             best_confidence = total_confidence
                         break
+            except:
+                continue
+
+        # Strategy 2: FIXED - Directly test primitives even if they don't converge
+        # (rot90, flip, etc. cycle but still work!)
+        for name, op in primitives:
+            try:
+                confidence = self._test_against_examples(op, examples)
+                if confidence > best_confidence:
+                    best_program = (name, op)
+                    best_confidence = confidence
             except:
                 continue
 
