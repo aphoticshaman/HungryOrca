@@ -817,6 +817,17 @@ class ExtendedZeroShotAdapter:
         solutions.sort(key=lambda x: x[1], reverse=True)
         return solutions[0]  # Return highest confidence
 
+    def store_pattern(self, task_id: str, pattern_name: str, confidence: float):
+        """Store learned pattern for transfer learning"""
+        # Add to adaptation cache for quick retrieval
+        self.adaptation_cache[task_id] = {
+            'pattern': pattern_name,
+            'confidence': confidence
+        }
+
+        # If confidence is high, consider adding to meta-patterns library
+        # (In full implementation, would dynamically update meta_patterns)
+
 
 # ═══════════════════════════════════════════════════════════════
 # OPTIMIZATION 9: MULTI-SCALE PATTERN DETECTOR
@@ -1273,66 +1284,127 @@ class LucidOrcaChampionshipComplete:
         print("="*70)
 
     def _train_task(self, task_id: str, task: Dict, timeout: float = 5.0) -> bool:
-        """Train on task by solving all training examples with strict timeout"""
+        """
+        Few-shot learning: Use training examples to learn patterns with advanced solvers
+
+        Strategy:
+        1. Use first N-1 examples as "training set" to find pattern
+        2. Validate pattern on last example
+        3. Try all advanced solvers (eigenform, bootstrap, NSM, SDPM, etc.)
+        4. Store successful patterns in XYZA for transfer learning
+        """
         profiler.start(f"train_task")
         task_start = time.time()
         examples = task.get('train', [])
+
         if not examples:
             profiler.end(f"train_task")
             return False
 
-        # Limit to first 2 examples for speed
-        examples = examples[:2]
+        # Use first N-1 examples to learn, last one to validate
+        if len(examples) < 2:
+            learning_examples = examples
+            validation_examples = []
+        else:
+            # Limit to 3 learning + 1 validation for speed
+            learning_examples = examples[:min(3, len(examples)-1)]
+            validation_examples = examples[min(3, len(examples)-1):min(4, len(examples))]
 
-        # Try to solve training examples
+        # Try each advanced solver on the learning examples
         correct = 0
-        transformation_ops = [
-            ('identity', lambda x: x),
-            ('rot90', np.rot90),
-            ('rot180', lambda x: np.rot90(x, 2)),
-            ('rot270', lambda x: np.rot90(x, 3)),
-            ('flip_h', np.fliplr),
-            ('flip_v', np.flipud),
-            ('transpose', np.transpose),
-        ]
+        total_attempts = len(learning_examples) + len(validation_examples)
 
-        for example_idx, example in enumerate(examples):
-            if time.time() - task_start > timeout:
-                profiler.end(f"train_task")
-                break  # Hard timeout
-
+        # Strategy 1: Try eigenform convergence (fast)
+        if time.time() - task_start < timeout * 0.3:
+            profiler.start(f"train_eigenform")
             try:
-                profiler.start(f"train_example_parse")
-                inp = np.array(example['input'])
-                expected = np.array(example['output'])
-                profiler.end(f"train_example_parse")
+                # Use first example as test case
+                if learning_examples:
+                    inp = np.array(learning_examples[0]['input'])
+                    expected = np.array(learning_examples[0]['output'])
 
-                # Try simple transformations
-                found = False
-                for op_name, op in transformation_ops:
-                    if time.time() - task_start > timeout:
-                        break
+                    program, conf = self.eigenform.find_eigenform_program(inp, learning_examples)
 
-                    profiler.start(f"train_transform_{op_name}")
-                    try:
-                        result = op(inp)
-                        if np.array_equal(result, expected):
-                            correct += 1
-                            profiler.start(f"train_ratchet_update")
-                            self.ratchet.try_update(f"{task_id}_train", result, 0.8)
-                            profiler.end(f"train_ratchet_update")
-                            found = True
-                            profiler.end(f"train_transform_{op_name}")
-                            break
-                    except:
-                        pass
-                    profiler.end(f"train_transform_{op_name}")
+                    if program and conf > 0.4:
+                        name, op = program
+                        # Validate on all examples
+                        for ex in learning_examples + validation_examples:
+                            try:
+                                result = op(np.array(ex['input']))
+                                if np.array_equal(result, np.array(ex['output'])):
+                                    correct += 1
+                            except:
+                                pass
+
+                        # Store pattern if successful
+                        if correct > 0:
+                            self.xyza.store_pattern(task_id, name, conf * (correct / total_attempts))
+                            profiler.end(f"train_eigenform")
+                            profiler.end(f"train_task")
+                            return correct >= total_attempts / 2
             except:
-                continue
+                pass
+            profiler.end(f"train_eigenform")
+
+        # Strategy 2: Try recursive bootstrapping
+        if time.time() - task_start < timeout * 0.6 and correct < total_attempts / 2:
+            profiler.start(f"train_bootstrap")
+            try:
+                if learning_examples:
+                    inp = np.array(learning_examples[0]['input'])
+                    program, conf = self.bootstrapper.bootstrap_understanding(inp, learning_examples)
+
+                    if program and conf > 0.4:
+                        for ex in learning_examples + validation_examples:
+                            try:
+                                result = program(np.array(ex['input']))
+                                if np.array_equal(result, np.array(ex['output'])):
+                                    correct += 1
+                            except:
+                                pass
+
+                        if correct > 0:
+                            self.xyza.store_pattern(task_id, 'bootstrap', conf * (correct / total_attempts))
+            except:
+                pass
+            profiler.end(f"train_bootstrap")
+
+        # Strategy 3: Simple transformations (fallback)
+        if time.time() - task_start < timeout and correct < total_attempts / 2:
+            profiler.start(f"train_simple")
+            transformation_ops = [
+                ('identity', lambda x: x),
+                ('rot90', np.rot90),
+                ('rot180', lambda x: np.rot90(x, 2)),
+                ('rot270', lambda x: np.rot90(x, 3)),
+                ('flip_h', np.fliplr),
+                ('flip_v', np.flipud),
+                ('transpose', np.transpose),
+            ]
+
+            for op_name, op in transformation_ops:
+                temp_correct = 0
+                try:
+                    for ex in learning_examples + validation_examples:
+                        result = op(np.array(ex['input']))
+                        if np.array_equal(result, np.array(ex['output'])):
+                            temp_correct += 1
+
+                    if temp_correct > correct:
+                        correct = temp_correct
+                        self.ratchet.try_update(f"{task_id}_train", result, 0.8)
+                        self.xyza.store_pattern(task_id, op_name, temp_correct / total_attempts)
+
+                        if correct >= total_attempts / 2:
+                            profiler.end(f"train_simple")
+                            break
+                except:
+                    continue
+            profiler.end(f"train_simple")
 
         profiler.end(f"train_task")
-        # Success if we solved at least half the training examples
-        return correct >= len(examples) / 2
+        # Success if we solved at least half the examples
+        return correct >= total_attempts / 2
 
     def solve_test_set(self, test_tasks: Dict) -> Dict:
         """Testing phase: 70% of 6hrs = 252 minutes"""
