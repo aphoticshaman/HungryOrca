@@ -1,0 +1,398 @@
+{
+  "summary": {
+    "total_tasks": 30,
+    "solved_tasks": 1,
+    "accuracy": 0.03333333333333333,
+    "avg_fitness": 0.7403868098830819,
+    "avg_time": 0.8031108617782593,
+    "cw5_interventions": 4573,
+    "unique_operations_used": 47
+  },
+  "results": [
+    {
+      "task_id": "dd2401ed",
+      "solved": false,
+      "best_fitness": 0.875922619047619,
+      "best_dna": [
+        "identity"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.4515962600708008,
+      "cw5_interventions": 10
+    },
+    {
+      "task_id": "5b37cb25",
+      "solved": false,
+      "best_fitness": 0.9618440253036495,
+      "best_dna": [
+        "object_to_corners",
+        "pad_uniform",
+        "remove_border",
+        "compress_vertical",
+        "fill_holes"
+      ],
+      "generations": 50,
+      "time_elapsed": 3.6362149715423584,
+      "cw5_interventions": 20
+    },
+    {
+      "task_id": "626c0bcc",
+      "solved": false,
+      "best_fitness": 0.7464475020777542,
+      "best_dna": [
+        "binarize",
+        "logical_xor"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.2502131462097168,
+      "cw5_interventions": 30
+    },
+    {
+      "task_id": "ad38a9d0",
+      "solved": false,
+      "best_fitness": 0.6324074074074073,
+      "best_dna": [
+        "intersection",
+        "compress_horizontal",
+        "logical_xor"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.3251760005950928,
+      "cw5_interventions": 40
+    },
+    {
+      "task_id": "758abdf0",
+      "solved": false,
+      "best_fitness": 0.9373261933527703,
+      "best_dna": [
+        "gravity_down"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.3516407012939453,
+      "cw5_interventions": 50
+    },
+    {
+      "task_id": "e57337a4",
+      "solved": false,
+      "best_fitness": 0.462962962962963,
+      "best_dna": [
+        "decrement_colors",
+        "bounding_box",
+        "pad_uniform",
+        "count_objects",
+        "add_border",
+        "invert_colors",
+        "outer_ring"
+      ],
+      "generations": 50,
+      "time_elapsed": 1.6946942806243896,
+      "cw5_interventions": 60
+    },
+    {
+      "task_id": "d406998b",
+      "solved": false,
+      "best_fitness": 0.7974358974358974,
+      "best_dna": [
+        "identity",
+        "sort_by_size"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.26403093338012695,
+      "cw5_interventions": 70
+    },
+    {
+      "task_id": "50f325b5",
+      "solved": false,
+      "best_fitness": 0.9519274735260344,
+      "best_dna": [
+        "compress_vertical",
+        "connect_nearest"
+      ],
+      "generations": 50,
+      "time_elapsed": 1.2253923416137695,
+      "cw5_interventions": 79
+    },
+    {
+      "task_id": "00d62c1b",
+      "solved": false,
+      "best_fitness": 0.8932144516895967,
+      "best_dna": [
+        "logical_xor",
+        "connect_nearest"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.796572208404541,
+      "cw5_interventions": 89
+    },
+    {
+      "task_id": "a61ba2ce",
+      "solved": false,
+      "best_fitness": 0.521,
+      "best_dna": [
+        "compress_vertical",
+        "extract_bottom_half",
+        "compress_horizontal"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.3388533592224121,
+      "cw5_interventions": 98
+    },
+    {
+      "task_id": "edcc2ff0",
+      "solved": false,
+      "best_fitness": 0.9052765217080001,
+      "best_dna": [
+        "intersection"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.8716201782226562,
+      "cw5_interventions": 108
+    },
+    {
+      "task_id": "833dafe3",
+      "solved": false,
+      "best_fitness": 0.68125,
+      "best_dna": [
+        "repeat_pattern"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.16380977630615234,
+      "cw5_interventions": 118
+    },
+    {
+      "task_id": "88207623",
+      "solved": false,
+      "best_fitness": 0.8726066331642102,
+      "best_dna": [
+        "connect_nearest"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.45003652572631836,
+      "cw5_interventions": 128
+    },
+    {
+      "task_id": "a9f96cdd",
+      "solved": false,
+      "best_fitness": 0.7773214285714285,
+      "best_dna": [
+        "center_objects",
+        "gravity_up",
+        "increment_colors"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.2071399688720703,
+      "cw5_interventions": 138
+    },
+    {
+      "task_id": "0962bcdd",
+      "solved": false,
+      "best_fitness": 0.7954671088999447,
+      "best_dna": [
+        "detect_symmetry",
+        "logical_and"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.335249662399292,
+      "cw5_interventions": 147
+    },
+    {
+      "task_id": "e633a9e5",
+      "solved": true,
+      "best_fitness": 1.0,
+      "best_dna": [
+        "gravity_up",
+        "scale_up_3x",
+        "scale_down_2x"
+      ],
+      "generations": 47,
+      "time_elapsed": 0.19365501403808594,
+      "cw5_interventions": 157
+    },
+    {
+      "task_id": "a48eeaf7",
+      "solved": false,
+      "best_fitness": 0.958,
+      "best_dna": [
+        "difference",
+        "fill_pattern"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.24537396430969238,
+      "cw5_interventions": 167
+    },
+    {
+      "task_id": "0bb8deee",
+      "solved": false,
+      "best_fitness": 0.24394841979725698,
+      "best_dna": [
+        "extract_bottom_half",
+        "extract_borders",
+        "replace_color",
+        "reflect_vertical",
+        "extract_left_half"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.724872350692749,
+      "cw5_interventions": 177
+    },
+    {
+      "task_id": "017c7c7b",
+      "solved": false,
+      "best_fitness": 0.1843605006105006,
+      "best_dna": [
+        "extract_top_half",
+        "outer_ring",
+        "replace_color",
+        "gravity_up",
+        "repeat_pattern",
+        "rotate_90",
+        "bounding_box"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.3436253070831299,
+      "cw5_interventions": 187
+    },
+    {
+      "task_id": "25d8a9c8",
+      "solved": false,
+      "best_fitness": 0.725,
+      "best_dna": [
+        "background_to_foreground",
+        "compress_horizontal",
+        "logical_xor",
+        "fill_holes",
+        "grid_overlay",
+        "checkerboard_mask",
+        "gravity_down"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.30872154235839844,
+      "cw5_interventions": 196
+    },
+    {
+      "task_id": "694f12f3",
+      "solved": false,
+      "best_fitness": 0.8231171171171171,
+      "best_dna": [
+        "voronoi_regions",
+        "extract_skeleton"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.3316779136657715,
+      "cw5_interventions": 206
+    },
+    {
+      "task_id": "e9bb6954",
+      "solved": false,
+      "best_fitness": 0.8321323116623152,
+      "best_dna": [
+        "difference"
+      ],
+      "generations": 50,
+      "time_elapsed": 1.2188963890075684,
+      "cw5_interventions": 216
+    },
+    {
+      "task_id": "73ccf9c2",
+      "solved": false,
+      "best_fitness": 0.5846897546897547,
+      "best_dna": [
+        "create_symmetric",
+        "remove_border",
+        "extract_bottom_half",
+        "remove_border",
+        "extract_largest_object",
+        "bounding_box",
+        "bounding_box"
+      ],
+      "generations": 50,
+      "time_elapsed": 1.9516868591308594,
+      "cw5_interventions": 226
+    },
+    {
+      "task_id": "cad67732",
+      "solved": false,
+      "best_fitness": 0.8473527582087091,
+      "best_dna": [
+        "extract_borders",
+        "majority_filter",
+        "extract_skeleton",
+        "tile_2x2"
+      ],
+      "generations": 50,
+      "time_elapsed": 1.9957163333892822,
+      "cw5_interventions": 236
+    },
+    {
+      "task_id": "83302e8f",
+      "solved": false,
+      "best_fitness": 0.4087531243034992,
+      "best_dna": [
+        "logical_or"
+      ],
+      "generations": 50,
+      "time_elapsed": 1.6421151161193848,
+      "cw5_interventions": 245
+    },
+    {
+      "task_id": "7447852a",
+      "solved": false,
+      "best_fitness": 0.7700000000000001,
+      "best_dna": [
+        "compress_vertical",
+        "extract_borders"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.2148129940032959,
+      "cw5_interventions": 255
+    },
+    {
+      "task_id": "d968ffd4",
+      "solved": false,
+      "best_fitness": 0.4719087970404372,
+      "best_dna": [
+        "object_to_corners",
+        "gravity_up"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.5097596645355225,
+      "cw5_interventions": 265
+    },
+    {
+      "task_id": "6855a6e4",
+      "solved": false,
+      "best_fitness": 0.9591111111111111,
+      "best_dna": [
+        "sort_by_size"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.7385241985321045,
+      "cw5_interventions": 275
+    },
+    {
+      "task_id": "b2862040",
+      "solved": false,
+      "best_fitness": 0.8069485843876087,
+      "best_dna": [
+        "detect_symmetry",
+        "detect_symmetry"
+      ],
+      "generations": 50,
+      "time_elapsed": 0.9051461219787598,
+      "cw5_interventions": 285
+    },
+    {
+      "task_id": "0f63c0b9",
+      "solved": false,
+      "best_fitness": 0.7838715924168712,
+      "best_dna": [
+        "extract_skeleton",
+        "extract_borders",
+        "extend_lines"
+      ],
+      "generations": 50,
+      "time_elapsed": 1.4065017700195312,
+      "cw5_interventions": 295
+    }
+  ]
+}
