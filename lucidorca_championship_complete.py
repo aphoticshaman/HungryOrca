@@ -228,81 +228,84 @@ def estimate_task_difficulty(task: Dict) -> float:
 
 def calculate_attempt1_timeout(task_index: int, total_tasks: int) -> float:
     """
-    ATTEMPT 1: Inverted Bell Curve - Build Foundation
+    ATTEMPT 1: Inverted Bell Curve - Build Foundation (BUDGET-CORRECTED)
 
-    Allocates MASSIVE time to easiest tasks, decaying exponentially.
+    Exponential decay SCALED to fit within 5,400s budget.
 
     Visual:
-    90s ●╲
+    27s ●╲
         │ ╲___
-    50s │     ╲____
+    16s │     ╲____
         │          ╲_______
-     2s └───────────────────●
+   0.5s └───────────────────●
         Easy ──────────→ Hard
 
-    Strategy:
-    - Task 0 (easiest): 90s - Build PERFECT priors
-    - Task 100: ~10s - Solid attempt
-    - Task 500+: 2-3s - Quick reconnaissance
+    Actual timeouts (budget-compliant):
+    - Task 0: 27s (NOT 90s - that doesn't fit budget!)
+    - Task 100: 16s
+    - Task 500: 2s
+    - Task 999: 0.5s
 
     Goal: NAIL easy tasks, identify hard ones for attempt 2
     """
-    max_time = 90.0  # First task gets 90 seconds!
-    min_time = 2.0   # Plateau at 2 seconds
-    decay_rate = 5.0 / total_tasks  # Exponential decay rate
+    # Pre-calculated: sum of exp(-5/1000 * i) for i in range(1000) = 199.15
+    sum_weights = 199.15
 
-    # Exponential decay: t = max * e^(-decay * index)
-    timeout = max_time * np.exp(-decay_rate * task_index)
+    decay_rate = 5.0 / total_tasks
+    weight = np.exp(-decay_rate * task_index)
 
-    return max(timeout, min_time)
+    # Scale to fit budget (5,400s for attempt 1)
+    budget_per_attempt = 5400.0
+    timeout = (budget_per_attempt / sum_weights) * weight
+
+    # Floor at 0.5s
+    return max(timeout, 0.5)
 
 
 def calculate_attempt2_timeout(task_index: int, total_tasks: int,
                                remaining_budget: float,
                                solved_in_attempt1: set) -> float:
     """
-    ATTEMPT 2: Linear Ramp - Leverage Foundation
+    ATTEMPT 2: Linear Ramp - Leverage Foundation (BUDGET-CORRECTED)
 
-    Allocates minimal time to easy (already learned), MASSIVE time to hard.
+    Allocates time using linear ramp, SCALED to fit within 5,400s budget.
+    Split: 70% for regular tasks, 30% for top 10% hardest.
 
     Visual:
-                                    ┌─●80s (top 10%)
-    60s                         ┌───┘
-                            ┌───┘
-    40s                 ┌───┘
-                    ┌───┘
-     1s ●───────────┘
+                        ┌─●24s (top 10%)
+        16s         ┌───┘
+                ┌───┘
+         8s ┌───┘
+        ┌───┘
+    0.5s●
         Easy ──────────→ Hard
 
-    Strategy:
-    - Task 0-100 (easy): 1-5s - Quick confirmation (already solved)
-    - Task 500 (medium): 15s - Apply patterns from attempt 1
-    - Task 900 (hard): 40s - Deep reasoning with foundation
-    - Task 950-999 (top 10%): 60-80s - CRACK THE HARDEST
+    Actual timeouts (budget-compliant):
+    - Task 0: 0.5s (quick check, already seen in attempt 1)
+    - Task 500: 4.6s (apply patterns)
+    - Task 900: 7.9s (start of top 10%)
+    - Task 950: 16s (deep reasoning)
+    - Task 999: 24s (CRACK hardest, NOT 80s - doesn't fit!)
 
     Goal: Use easy priors to solve previously impossible hard tasks
     """
-    top_10_threshold = int(total_tasks * 0.9)  # Top 10% hardest
+    top_10_threshold = int(total_tasks * 0.9)  # 900
 
-    # If already solved in attempt 1, give minimal time
-    # (We'll skip this in implementation, but budget for it)
-
+    # Budget split: 70% for regular (3,780s), 30% for top 10% (1,620s)
     if task_index < top_10_threshold:
-        # First 90%: Linear increase from 1s to 40s
-        base = 1.0
-        max_regular = 40.0
-        slope = (max_regular - base) / top_10_threshold
-        timeout = base + slope * task_index
+        # Regular tasks (0-899): Linear 0.5s → 7.9s
+        min_timeout = 0.5
+        max_timeout = 7.9
+        progress = task_index / top_10_threshold
+        timeout = min_timeout + (max_timeout - min_timeout) * progress
     else:
-        # Top 10% hardest: Massive bonus 50-80s
+        # Top 10% hardest (900-999): Linear 7.9s → 24s
+        min_timeout = 7.9
+        max_timeout = 24.3
         top_10_index = task_index - top_10_threshold
-        top_10_size = total_tasks - top_10_threshold
-
-        base_hard = 50.0
-        max_hard = 80.0
-        bonus_range = max_hard - base_hard
-
-        timeout = base_hard + (bonus_range * top_10_index / top_10_size)
+        top_10_count = total_tasks - top_10_threshold
+        progress = top_10_index / top_10_count
+        timeout = min_timeout + (max_timeout - min_timeout) * progress
 
     return timeout
 
