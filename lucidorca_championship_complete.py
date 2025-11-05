@@ -1585,8 +1585,8 @@ class LucidOrcaChampionshipComplete:
                 phase = "PRIORITY" if i < num_priority else "REGULAR"
                 phase_str = f"[{phase}] " if self.config.use_curriculum_learning else ""
 
-                print(f"  {phase_str}[{i+1:4d}/{len(sorted_tasks)}] Last 10: {recent_10_solved}/10 ({recent_acc:4.0f}%) | "
-                      f"Overall: {overall_acc:5.1f}% | Time: {elapsed:5.0f}s | ETA: {eta:5.0f}s")
+                print(f"  {phase_str}[{i+1:4d}/{len(sorted_tasks)}] Last 10: {recent_10_solved}/10 ({recent_acc:7.3f}%) | "
+                      f"Overall: {overall_acc:7.3f}% | Time: {elapsed:5.0f}s | ETA: {eta:5.0f}s")
                 recent_10_solved = 0  # Reset for next batch
 
             # Detailed analysis every 100 tasks
@@ -1596,7 +1596,7 @@ class LucidOrcaChampionshipComplete:
                 projected_total_time = len(sorted_tasks) / rate if rate > 0 else 0
                 print(f"\n  {'─'*66}")
                 print(f"  📊 ANALYSIS @ {i+1} tasks:")
-                print(f"     Accuracy: {overall_acc:.1f}% ({solved}/{i+1})")
+                print(f"     Accuracy: {overall_acc:.3f}% ({solved}/{i+1})")
                 print(f"     Rate: {rate:.2f} tasks/sec")
                 print(f"     Projected total: {projected_total_time:.0f}s ({projected_total_time/60:.1f} min)")
                 if projected_total_time > training_budget:
@@ -1621,7 +1621,7 @@ class LucidOrcaChampionshipComplete:
         print("="*70)
         print(f"  Tasks: {self.training_stats['total']}")
         print(f"  Solved: {self.training_stats['solved']}")
-        print(f"  Accuracy: {self.training_stats['accuracy']:.2f}%")
+        print(f"  Accuracy: {self.training_stats['accuracy']:.3f}%")
         print(f"  Time: {self.training_stats['time_spent']:.0f}s ({self.training_stats['time_spent']/60:.1f} min)")
 
         if self.ratchet:
@@ -1807,7 +1807,7 @@ class LucidOrcaChampionshipComplete:
                 status = "✓" if success else "✗"
                 print(f"  {status} Task {i+1:3d}/{len(test_tasks)}: {task_id} | "
                       f"Cplx: {complexity:.2f} | Time: {task_time:5.2f}s | "
-                      f"Acc: {solved/(i+1)*100:5.1f}%")
+                      f"Acc: {solved/(i+1)*100:7.3f}%")
 
             except Exception as e:
                 print(f"  ✗ Task {i+1:3d}/{len(test_tasks)}: {task_id} | ERROR")
@@ -1826,7 +1826,7 @@ class LucidOrcaChampionshipComplete:
         print("="*70)
         print(f"  Tasks: {self.testing_stats['total']}")
         print(f"  High Confidence (>0.6): {self.testing_stats['solved']}")
-        print(f"  Confidence Rate: {self.testing_stats['accuracy']:.2f}%")
+        print(f"  Confidence Rate: {self.testing_stats['accuracy']:.3f}%")
         print(f"  ⚠️  Real accuracy unknown - will be measured on Kaggle")
         print(f"  Time: {self.testing_stats['time_spent']:.0f}s ({self.testing_stats['time_spent']/60:.1f} min)")
         print("="*70)
@@ -2178,7 +2178,7 @@ def main():
                     if (i + 1) % 10 == 0:
                         real_acc = correct / (i + 1) * 100
                         conf_acc = high_confidence / (i + 1) * 100
-                        print(f"  [{i+1:3d}/{len(eval_tasks)}] Real: {real_acc:5.1f}% | Confident: {conf_acc:5.1f}%")
+                        print(f"  [{i+1:3d}/{len(eval_tasks)}] Real: {real_acc:7.3f}% | Confident: {conf_acc:7.3f}%")
 
             except Exception as e:
                 continue
@@ -2191,9 +2191,9 @@ def main():
         print("📊 VALIDATION RESULTS (REAL ACCURACY)")
         print("="*70)
         print(f"  Tasks validated: {i}")
-        print(f"  ✅ REAL Accuracy: {real_accuracy:.2f}% ({correct}/{i})")
-        print(f"  🎯 Confidence Accuracy: {confidence_accuracy:.2f}% ({high_confidence}/{i})")
-        print(f"  📈 Confidence Calibration: {(confidence_accuracy - real_accuracy):+.2f}%")
+        print(f"  ✅ REAL Accuracy: {real_accuracy:.3f}% ({correct}/{i})")
+        print(f"  🎯 Confidence Accuracy: {confidence_accuracy:.3f}% ({high_confidence}/{i})")
+        print(f"  📈 Confidence Calibration: {(confidence_accuracy - real_accuracy):+.3f}%")
         print(f"  ⏱️  Time: {validation_time:.0f}s ({validation_time/60:.1f} min)")
         print("="*70)
         print()
@@ -2232,8 +2232,8 @@ def main():
     print("🏆 CHAMPIONSHIP RUN COMPLETE")
     print("="*70)
     print(f"📊 Statistics:")
-    print(f"  Training Accuracy (real): {stats['training']['accuracy']:.2f}%")
-    print(f"  Testing Confidence (fake): {stats['testing']['accuracy']:.2f}%")
+    print(f"  Training Accuracy (real): {stats['training']['accuracy']:.3f}%")
+    print(f"  Testing Confidence (fake): {stats['testing']['accuracy']:.3f}%")
     print(f"  ⚠️  Use validation results above for real accuracy estimate")
     print(f"  Total time: {total_run_time:.0f}s ({total_run_time/3600:.2f} hours)")
     print(f"  Peak memory: {mem_stats['max_rss_gb']:.2f} GB / {config.kaggle_memory_gb * config.memory_limit_ratio:.2f} GB limit")
