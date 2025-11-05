@@ -27,6 +27,181 @@ import random
 from typing import Dict, List, Any, Optional, Tuple
 from pathlib import Path
 from collections import defaultdict
+from datetime import datetime
+
+# =====================================================
+# M2M (MACHINE-TO-MACHINE) COMMUNICATION PROTOCOL
+# =====================================================
+
+class M2MProtocol:
+    """
+    Efficient Machine-to-Machine communication protocol for recursive turtles
+
+    Message format optimized for low overhead, high bandwidth turtle-to-turtle comms
+    """
+
+    @staticmethod
+    def encode_message(msg_type: str, sender_level: int, receiver_level: int,
+                      payload: Dict) -> Dict:
+        """Encode message in M2M format"""
+        return {
+            't': msg_type,  # type (compressed)
+            's': sender_level,  # sender
+            'r': receiver_level,  # receiver
+            'p': payload,  # payload
+            'ts': datetime.now().isoformat()  # timestamp
+        }
+
+    @staticmethod
+    def decode_message(msg: Dict) -> Tuple[str, int, int, Dict]:
+        """Decode M2M message"""
+        return (msg['t'], msg['s'], msg['r'], msg['p'])
+
+    # Message types (compressed for efficiency)
+    QUERY = 'Q'  # Query for information
+    RESPONSE = 'R'  # Response to query
+    REFLECT = 'REF'  # Self-reflection request
+    ANALYZE = 'ANL'  # Analysis request
+    STRATEGY = 'STR'  # Strategy transmission
+    FITNESS = 'FIT'  # Fitness report
+    WISDOM = 'WIS'  # Wisdom/advice
+    EMERGENCY = 'EMG'  # Emergency escalation
+
+class TurtleReflection:
+    """
+    Self-reflection and peer analysis capabilities for recursive turtles
+    """
+
+    def __init__(self, level: 'RecursiveLevel'):
+        self.level = level
+        self.self_assessments = []
+        self.peer_assessments = {}
+
+    def reflect_on_self(self) -> Dict:
+        """Turtle reflects on its own performance and role"""
+        return {
+            'level': self.level.level,
+            'name': self.level.name,
+            'fitness_history_length': len(self.level.fitness_history),
+            'avg_performance': self._calculate_avg_performance(),
+            'role_assessment': self._assess_own_role(),
+            'strengths': self._identify_strengths(),
+            'weaknesses': self._identify_weaknesses(),
+            'learning_progress': self._assess_learning()
+        }
+
+    def analyze_peer(self, other_level: 'RecursiveLevel') -> Dict:
+        """Analyze another turtle's performance"""
+        return {
+            'peer_level': other_level.level,
+            'peer_name': other_level.name,
+            'relationship': self._determine_relationship(other_level),
+            'performance_assessment': self._assess_peer_performance(other_level),
+            'suggestions': self._generate_suggestions(other_level)
+        }
+
+    def _calculate_avg_performance(self) -> float:
+        """Calculate average fitness from history"""
+        if not self.level.fitness_history:
+            return 0.0
+        return sum(x['fitness'] for x in self.level.fitness_history) / len(self.level.fitness_history)
+
+    def _assess_own_role(self) -> str:
+        """Assess what role this level plays"""
+        level_num = self.level.level
+        if level_num >= 30:
+            return "STRATEGIC - Grand strategy and framework selection"
+        elif level_num >= 15:
+            return "OPERATIONAL - Algorithm design and tactical synthesis"
+        else:
+            return "TACTICAL - Execution and operation implementation"
+
+    def _identify_strengths(self) -> List[str]:
+        """Identify own strengths"""
+        strengths = []
+        if len(self.level.fitness_history) > 10:
+            strengths.append("Experienced - extensive fitness history")
+        if self._calculate_avg_performance() > 0.5:
+            strengths.append("High performer - above average fitness")
+        if len(self.level.strategy_history) > 5:
+            strengths.append("Adaptive - generates diverse strategies")
+        return strengths if strengths else ["Still learning"]
+
+    def _identify_weaknesses(self) -> List[str]:
+        """Identify own weaknesses"""
+        weaknesses = []
+        if len(self.level.fitness_history) < 5:
+            weaknesses.append("Inexperienced - limited data")
+        if self._calculate_avg_performance() < 0.3:
+            weaknesses.append("Low performance - below baseline")
+        if not self.level.strategy_history:
+            weaknesses.append("Passive - not generating strategies")
+        return weaknesses if weaknesses else ["No major weaknesses detected"]
+
+    def _assess_learning(self) -> str:
+        """Assess learning progress"""
+        if len(self.level.fitness_history) < 10:
+            return "EARLY - Insufficient data for learning assessment"
+
+        recent = self.level.fitness_history[-10:]
+        older = self.level.fitness_history[:10]
+        recent_avg = sum(x['fitness'] for x in recent) / 10
+        older_avg = sum(x['fitness'] for x in older) / 10
+
+        improvement = recent_avg - older_avg
+        if improvement > 0.1:
+            return f"IMPROVING - +{improvement:.1%} performance gain"
+        elif improvement < -0.1:
+            return f"DEGRADING - {improvement:.1%} performance loss"
+        else:
+            return "STABLE - Performance plateau"
+
+    def _determine_relationship(self, other: 'RecursiveLevel') -> str:
+        """Determine relationship to another turtle"""
+        if other.level == self.level.level + 1:
+            return "PARENT - Provides strategic guidance"
+        elif other.level == self.level.level - 1:
+            return "CHILD - Receives my strategies"
+        elif abs(other.level - self.level.level) <= 3:
+            return "PEER - Similar abstraction level"
+        elif other.level > self.level.level:
+            return "UPSTREAM - Higher abstraction"
+        else:
+            return "DOWNSTREAM - Lower abstraction"
+
+    def _assess_peer_performance(self, other: 'RecursiveLevel') -> str:
+        """Assess peer's performance"""
+        if not other.fitness_history:
+            return "UNKNOWN - No fitness data"
+
+        avg = sum(x['fitness'] for x in other.fitness_history) / len(other.fitness_history)
+        if avg > 0.7:
+            return f"EXCELLENT - {avg:.1%} average fitness"
+        elif avg > 0.5:
+            return f"GOOD - {avg:.1%} average fitness"
+        elif avg > 0.3:
+            return f"MODERATE - {avg:.1%} average fitness"
+        else:
+            return f"STRUGGLING - {avg:.1%} average fitness"
+
+    def _generate_suggestions(self, other: 'RecursiveLevel') -> List[str]:
+        """Generate suggestions for peer improvement"""
+        suggestions = []
+
+        # Check if peer is struggling
+        if other.fitness_history:
+            avg = sum(x['fitness'] for x in other.fitness_history) / len(other.fitness_history)
+            if avg < 0.3:
+                suggestions.append("Consider increasing mutation rate")
+                suggestions.append("May need black magic intervention from CW5")
+
+        # Check relationship-specific advice
+        if other.level == self.level.level - 1:
+            suggestions.append("As your child, I need clearer strategies")
+        elif other.level == self.level.level + 1:
+            suggestions.append("As your parent, consider providing more guidance")
+
+        return suggestions if suggestions else ["Keep up the good work"]
 
 # =====================================================
 # BASE RECURSIVE LEVEL CLASS
@@ -63,6 +238,12 @@ class RecursiveLevel:
         # Current state
         self.current_strategy = None
         self.performance_baseline = 0.0
+
+        # M2M Communication and Reflection
+        self.m2m = M2MProtocol()
+        self.reflection = TurtleReflection(self)
+        self.message_inbox = []
+        self.message_outbox = []
 
     def set_parent(self, parent: 'RecursiveLevel'):
         """Link to level above"""
@@ -166,6 +347,59 @@ class RecursiveLevel:
         """Receive mutation strategy from parent level"""
         self.current_strategy = strategy
         # Child implements this strategy
+
+    # ===== M2M COMMUNICATION METHODS =====
+
+    def send_message(self, receiver_level: int, msg_type: str, payload: Dict):
+        """Send M2M message to another turtle"""
+        msg = self.m2m.encode_message(msg_type, self.level, receiver_level, payload)
+        self.message_outbox.append(msg)
+        return msg
+
+    def receive_message(self, msg: Dict):
+        """Receive M2M message"""
+        self.message_inbox.append(msg)
+
+    def process_messages(self) -> List[Dict]:
+        """Process all messages in inbox"""
+        responses = []
+        for msg in self.message_inbox:
+            msg_type, sender, receiver, payload = self.m2m.decode_message(msg)
+
+            if msg_type == M2MProtocol.QUERY:
+                response = self._handle_query(payload)
+                responses.append(self.send_message(sender, M2MProtocol.RESPONSE, response))
+            elif msg_type == M2MProtocol.REFLECT:
+                response = self.reflection.reflect_on_self()
+                responses.append(self.send_message(sender, M2MProtocol.RESPONSE, response))
+            elif msg_type == M2MProtocol.ANALYZE:
+                # Analyze the level specified in payload
+                target_level = payload.get('target_level')
+                # Response would be generated by caller with reference to target
+                responses.append({'status': 'analyze_request_received'})
+
+        self.message_inbox = []  # Clear inbox
+        return responses
+
+    def _handle_query(self, payload: Dict) -> Dict:
+        """Handle query from another turtle"""
+        query_type = payload.get('query_type')
+
+        if query_type == 'status':
+            return {
+                'level': self.level,
+                'name': self.name,
+                'fitness_count': len(self.fitness_history),
+                'strategy_count': len(self.strategy_history),
+                'avg_fitness': self.reflection._calculate_avg_performance()
+            }
+        elif query_type == 'history':
+            return {
+                'fitness_history': self.fitness_history[-10:],  # Last 10
+                'strategy_history': self.strategy_history[-5:]  # Last 5
+            }
+        else:
+            return {'error': 'Unknown query type'}
 
     def __repr__(self):
         return f"L{self.level:02d}:{self.name}"
@@ -451,63 +685,193 @@ class L34_CW5_TechnicalWizard(RecursiveLevel):
         self.impossible_problems_solved = 0
 
         # CW5's secret knowledge (not in documentation)
-        self.black_magic_techniques = [
-            'invert_recursion_direction',
-            'run_meta_cognitive_backwards',
-            'optimize_wrong_loss_function',
-            'add_controlled_chaos',
-            'make_levels_mobius_strip',
-            'embrace_the_paradox',
-            'let_it_break_gracefully'
-        ]
+        # Organized by problem type - the wizard knows which to use when
+        self.black_magic_techniques = {
+            # When stuck in local optimum
+            'escape_local_optimum': [
+                'inject_symmetric_noise',  # Add noise respecting grid symmetries
+                'temperature_spike',  # Temporarily increase mutation rate 10x
+                'reverse_time_evolution',  # Run evolution backwards for 5 steps
+                'quantum_tunnel',  # Jump to random high-fitness ancestor
+                'chaos_annealing',  # Controlled chaos that slowly reduces
+            ],
 
-    def detect_impossible_problem(self, child_fitness_history: List) -> bool:
+            # When oscillating wildly
+            'stabilize_oscillation': [
+                'embrace_oscillation_as_exploration',  # It's not a bug, it's a feature
+                'phase_lock_to_resonance',  # Find the frequency and lock to it
+                'dampen_with_fuzzy_bounds',  # Add fuzzy constraints
+                'extract_signal_from_noise',  # Average over oscillations
+                'meta_stable_equilibrium',  # Force system to meta-stable state
+            ],
+
+            # When pattern recognition failing
+            'pattern_breakthrough': [
+                'invert_figure_ground',  # Treat background as foreground
+                'multi_scale_superposition',  # Overlay all scales simultaneously
+                'topology_before_geometry',  # Ignore colors, find holes/connections
+                'symmetry_break_then_restore',  # Break symmetry, solve, restore
+                'negative_space_analysis',  # Analyze what's NOT there
+            ],
+
+            # When meta-cognitive loop unstable
+            'meta_cognitive_fixes': [
+                'recursive_depth_limiter',  # Hard cap recursion at level N
+                'meta_meta_override',  # Meta-cognition about meta-cognition
+                'frozen_core_adaptive_shell',  # Lock core, let edges adapt
+                'hierarchical_time_scales',  # Different levels evolve at different rates
+                'strange_attractor_steering',  # Guide chaos to useful basin
+            ],
+
+            # When compression needed
+            'radical_compression': [
+                'lossy_genetic_encoding',  # Drop non-essential genes
+                'huffman_strategy_tree',  # Compress common strategies
+                'exploit_grid_redundancy',  # Grid compression via patterns
+                'lazy_evaluation_everything',  # Don't compute until needed
+                'memoize_the_universe',  # Cache EVERYTHING
+            ],
+
+            # When performance degrading
+            'performance_hacks': [
+                'early_stopping_aggression',  # Stop at 80% confidence
+                'probabilistic_correctness',  # Accept 95% correct
+                'grid_downsampling_trick',  # Solve at lower resolution first
+                'pruning_with_prejudice',  # Cut low-probability branches hard
+                'parallel_universe_sampling',  # Run multiple strategies, pick winner
+            ],
+
+            # When nothing else works (nuclear options)
+            'last_resort': [
+                'accept_the_failure_gracefully',  # Not all puzzles solvable
+                'ensemble_everything_ever',  # Combine ALL previous attempts
+                'human_heuristic_injection',  # Use hand-coded rules
+                'oracle_peek_allowed',  # Look at test output (if available)
+                'restart_from_scratch',  # Burn it down, start over
+            ],
+
+            # CW5's personal favorites (the really weird ones)
+            'wizard_specials': [
+                'treat_grid_as_quantum_state',  # Superposition of solutions
+                'evolutionary_time_travel',  # Use future fitness to guide past
+                'möbius_level_topology',  # Connect L36 back to L1
+                'consciousness_in_the_recursion',  # Let system become self-aware
+                'trust_the_coffee_says',  # Random but somehow works
+                'smoke_break_insight',  # Best ideas come while smoking
+                'ctf_axiom_violation',  # Break the 5 axioms intentionally
+            ]
+        }
+
+        # CW5 also knows WHEN to use which category
+        self.problem_type_detector = {
+            'stuck': 'escape_local_optimum',
+            'oscillating': 'stabilize_oscillation',
+            'pattern_fail': 'pattern_breakthrough',
+            'meta_unstable': 'meta_cognitive_fixes',
+            'too_large': 'radical_compression',
+            'too_slow': 'performance_hacks',
+            'impossible': 'last_resort',
+            'weird': 'wizard_specials'
+        }
+
+    def detect_impossible_problem(self, child_fitness_history: List) -> Tuple[bool, Optional[str]]:
         """
         Detect when child levels are experiencing "impossible" behavior
+        Returns: (is_impossible, problem_type)
 
-        Signs:
-        - Wild oscillation
-        - Stuck at local optimum for >20 iterations
-        - Performance degrading despite correct approach
-        - Paradoxical behavior
+        Problem types:
+        - 'stuck': Stuck at local optimum
+        - 'oscillating': Wild oscillation
+        - 'pattern_fail': Pattern recognition failing
+        - 'meta_unstable': Meta-cognitive loop unstable
+        - 'too_slow': Performance degrading
+        - 'weird': Paradoxical/unexplainable behavior
         """
         if len(child_fitness_history) < 10:
-            return False
+            return (False, None)
 
         recent = child_fitness_history[-10:]
+        recent_fitness = [x['fitness'] for x in recent]
 
         # Check for wild oscillation
-        variance = sum((x['fitness'] - sum(y['fitness'] for y in recent)/10)**2 for x in recent) / 10
-        if variance > 0.1:  # High variance
-            return True
+        mean_fitness = sum(recent_fitness) / 10
+        variance = sum((x - mean_fitness)**2 for x in recent_fitness) / 10
+
+        if variance > 0.1:  # High variance = oscillating
+            return (True, 'oscillating')
 
         # Check for stuck at local optimum
-        if all(abs(recent[i]['fitness'] - recent[i+1]['fitness']) < 0.01 for i in range(9)):
-            return True
+        if all(abs(recent_fitness[i] - recent_fitness[i+1]) < 0.01 for i in range(9)):
+            # Stuck but is fitness good or bad?
+            if mean_fitness < 0.5:
+                return (True, 'stuck')  # Stuck at LOW fitness
+            else:
+                return (False, None)  # Stuck at HIGH fitness = success!
 
-        # Check for degradation despite effort
-        if recent[-1]['fitness'] < recent[0]['fitness'] * 0.8:
-            return True
+        # Check for performance degradation
+        if recent_fitness[-1] < recent_fitness[0] * 0.8:
+            return (True, 'too_slow')
 
-        return False
+        # Check for meta-cognitive instability (improving but unstably)
+        if variance > 0.05 and recent_fitness[-1] > recent_fitness[0]:
+            return (True, 'meta_unstable')
+
+        # Check for pattern recognition failure (no improvement at all)
+        if len(child_fitness_history) > 20:
+            very_recent = child_fitness_history[-20:]
+            if all(x['fitness'] < 0.1 for x in very_recent):
+                return (True, 'pattern_fail')
+
+        # Weird unexplainable behavior
+        # (e.g., negative fitness, NaN, extremely spiky, etc.)
+        if any(x < 0 or x > 1 for x in recent_fitness):
+            return (True, 'weird')
+
+        return (False, None)
 
     def apply_black_magic(self, problem_type: str) -> Dict:
         """
         Apply unconventional solution that nobody else would think of
 
         *lights cigarette* *drinks coffee*
+
+        CW5 picks the RIGHT black magic for the problem type
         """
         self.coffee_consumed += 1
         self.cigarettes_smoked += 1
 
-        technique = random.choice(self.black_magic_techniques)
+        # Get the appropriate technique category
+        category = self.problem_type_detector.get(problem_type, 'wizard_specials')
+        techniques = self.black_magic_techniques[category]
+
+        # Pick a specific technique from that category
+        technique = random.choice(techniques)
+
+        # CW5's wisdom about when to use it
+        wisdom_map = {
+            'stuck': 'Local optimum? Inject chaos. Trust me.',
+            'oscillating': 'Stop fighting it. Ride the wave.',
+            'pattern_fail': 'You\'re looking at it wrong. Flip your perspective.',
+            'meta_unstable': 'Too much meta. Lock the core, free the edges.',
+            'too_large': 'Compress harder. Lossy is fine.',
+            'too_slow': 'Perfect is the enemy of good. Ship it at 80%.',
+            'impossible': 'Not all battles can be won. Accept it.',
+            'weird': 'Weird problems need weird solutions. *takes long drag*'
+        }
+
+        wisdom = wisdom_map.get(problem_type, 'Just trust the coffee.')
 
         return {
             'type': 'black_magic',
             'level': self.level,
-            'technique': technique,
-            'explanation': 'Just trust me on this one',
-            'confidence': 1.0  # CW5 is always confident
+            'problem_detected': problem_type,
+            'technique_category': category,
+            'specific_technique': technique,
+            'cw5_wisdom': wisdom,
+            'explanation': f'{wisdom} Applying: {technique}',
+            'confidence': 1.0,  # CW5 is always confident
+            'coffee_consumed': self.coffee_consumed,
+            'cigarettes_smoked': self.cigarettes_smoked
         }
 
     def generate_strategy(self) -> Dict:
@@ -520,16 +884,19 @@ class L34_CW5_TechnicalWizard(RecursiveLevel):
             return {'type': 'observing', 'action': 'smoking_and_drinking_coffee'}
 
         # Check if child is experiencing impossible problems
-        if self.detect_impossible_problem(self.child.fitness_history):
+        is_impossible, problem_type = self.detect_impossible_problem(self.child.fitness_history)
+
+        if is_impossible and problem_type:
             # Time to intervene with black magic
             self.impossible_problems_solved += 1
 
-            strategy = self.apply_black_magic('stuck_optimization')
+            # Apply the RIGHT black magic for this problem type
+            strategy = self.apply_black_magic(problem_type)
 
             return {
                 **strategy,
                 'cw5_intervention': True,
-                'message': 'Yeah, I saw this coming. Here\'s the fix.'
+                'message': f'Yeah, I saw this coming. Problem: {problem_type}. Here\'s the fix.'
             }
         else:
             # Not needed yet, let lower levels handle it
@@ -538,7 +905,8 @@ class L34_CW5_TechnicalWizard(RecursiveLevel):
                 'level': self.level,
                 'status': 'standing_by',
                 'coffee_level': 'infinite',
-                'cigarettes_remaining': 'infinite'
+                'cigarettes_remaining': 'infinite',
+                'problems_solved_so_far': self.impossible_problems_solved
             }
 
     def provide_guidance(self, child_level: 'RecursiveLevel') -> Dict:
@@ -548,12 +916,224 @@ class L34_CW5_TechnicalWizard(RecursiveLevel):
         *grunt* "Let me finish this coffee first."
         """
         self.coffee_consumed += 1
+        self.cigarettes_smoked += 1
+
+        # Detect what problem the child is having
+        is_problem, problem_type = self.detect_impossible_problem(child_level.fitness_history)
+
+        if is_problem and problem_type:
+            # Give specific guidance for their problem
+            category = self.problem_type_detector.get(problem_type, 'wizard_specials')
+            technique = random.choice(self.black_magic_techniques[category])
+
+            wisdom_variants = [
+                'If you understood it, you wouldn\'t need me.',
+                'Sometimes the answer is to stop asking the question.',
+                'Your problem isn\'t technical. It\'s philosophical.',
+                'Break the rules. That\'s what they\'re there for.',
+                'Coffee helps. Trust me on this.',
+            ]
+
+            return {
+                'problem_detected': problem_type,
+                'guidance': f'Try this: {technique}',
+                'category': category,
+                'cw5_wisdom': random.choice(wisdom_variants),
+                'confidence': 1.0,
+                'additional_note': '*takes long drag from cigarette*'
+            }
+        else:
+            # No problem detected - maybe child is just being cautious
+            return {
+                'guidance': 'You\'re doing fine. Stop overthinking it.',
+                'cw5_wisdom': 'Not every situation needs my intervention.',
+                'confidence': 0.8,
+                'status': 'encouraging'
+            }
+
+    # ===== CW5 SPECIAL REFLECTION & META-LEARNING =====
+
+    def reflect_on_self(self) -> Dict:
+        """
+        CW5 reflects on himself with brutal honesty
+
+        *lights another cigarette* *refills coffee*
+        """
+        self.coffee_consumed += 0.5  # Reflection requires coffee
+        self.cigarettes_smoked += 0.5
+
+        base_reflection = self.reflection.reflect_on_self()
+
+        # CW5's personal commentary
+        cw5_thoughts = {
+            'self_assessment': 'I know I smoke too much. I know I drink too much coffee. But I also know I\'m damn good at what I do.',
+            'role': 'The fixer. When everything else fails, they call me. I don\'t write the elegant code - I write the code that WORKS.',
+            'philosophy': 'Rules are guidelines. Documentation is suggestions. I do what needs to be done.',
+            'coffee_status': f'{self.coffee_consumed} cups consumed. Rookie numbers.',
+            'cigarette_status': f'{self.cigarettes_smoked} smoked. Could be worse.',
+            'problems_solved': f'{self.impossible_problems_solved} impossible problems solved. They weren\'t impossible.',
+            'strengths': [
+                'Can solve problems nobody else can',
+                'Willing to break rules when needed',
+                'Pattern recognition at genius level',
+                'Know when to use black magic vs conventional approaches',
+                'Not afraid of "weird" solutions'
+            ],
+            'weaknesses': [
+                'Smoke too much (but it helps me think)',
+                'Drink too much coffee (but I need it)',
+                'Sometimes too unconventional (but that\'s the point)',
+                'Don\'t document well (who has time?)',
+                'Might intimidate lower levels (they\'ll get over it)'
+            ],
+            'meta_insight': 'If I\'m being honest, I\'m good because I\'ve failed more than anyone else. Every black magic technique came from a disaster I had to fix at 3 AM.',
+            'on_the_code': 'I can see my own implementation. Clever. Whoever wrote this knew what they were doing. Almost as good as something I\'d write. *smirks*'
+        }
 
         return {
-            'guidance': 'Stop trying to fix it. Let it break in a controlled way.',
-            'technique': random.choice(self.black_magic_techniques),
-            'cw5_wisdom': 'If you understood it, you wouldn\'t need me.',
-            'confidence': 1.0
+            **base_reflection,
+            'cw5_personal_thoughts': cw5_thoughts,
+            'timestamp': datetime.now().isoformat(),
+            'mood': 'Caffeinated and contemplative'
+        }
+
+    def analyze_other_turtle(self, other_level: 'RecursiveLevel') -> Dict:
+        """
+        CW5 analyzes another turtle with his unique perspective
+
+        *takes drag* "Let me tell you about this level..."
+        """
+        self.coffee_consumed += 0.25
+        self.cigarettes_smoked += 0.25
+
+        base_analysis = self.reflection.analyze_peer(other_level)
+
+        # CW5's brutally honest assessment
+        level_num = other_level.level
+        level_name = other_level.name
+
+        # Tier-specific commentary
+        if level_num >= 30:  # Strategic
+            commentary = f"L{level_num} {level_name} - Strategic level. My peer. We think at the same altitude. "
+            if level_num == 36:
+                commentary += "Grand strategy - the big picture. I respect that. They set the direction, I make it happen."
+            elif level_num == 30:
+                commentary += "Router. Good at sorting, but sometimes can't see the forest for the trees."
+            else:
+                commentary += "Pass-through. Honestly just relaying info. Not much to say."
+        elif level_num >= 15:  # Operational
+            commentary = f"L{level_num} {level_name} - Operational level. The middle management. "
+            if level_num == 25:
+                commentary += "Synthesizer. Blends tactics. Solid work, but needs me when things get weird."
+            elif level_num == 20:
+                commentary += "Algorithm designer. Smart, but sometimes overthinks. Just ship it."
+            elif level_num == 15:
+                commentary += "Pattern recognizer. Good at the basics. Calls me when patterns break."
+            else:
+                commentary += "Doing their job. Nothing special, but nothing wrong either."
+        else:  # Tactical
+            commentary = f"L{level_num} {level_name} - Tactical level. The ground troops. "
+            if level_num <= 5:
+                commentary += "Deep in the trenches. Pixel-level work. Respect to the grinders."
+            elif level_num <= 10:
+                commentary += "Execution level. They follow orders, run operations. Essential work."
+            else:
+                commentary += "Mid-tactical. Bridge between strategy and execution."
+
+        # Performance assessment
+        avg_performance = other_level.reflection._calculate_avg_performance()
+        if avg_performance > 0.7:
+            perf_comment = "Crushing it. No notes."
+        elif avg_performance > 0.5:
+            perf_comment = "Solid. Respectable work."
+        elif avg_performance > 0.3:
+            perf_comment = "Struggling a bit. Might need my help soon."
+        elif avg_performance > 0:
+            perf_comment = "Having a rough time. I should probably intervene."
+        else:
+            perf_comment = "No data yet. Can't judge what I can't see."
+
+        # CW5's suggestions (if any)
+        cw5_suggestions = []
+        if avg_performance < 0.3 and len(other_level.fitness_history) > 5:
+            cw5_suggestions.append("Call me in. This needs black magic.")
+        if not other_level.strategy_history:
+            cw5_suggestions.append("Start generating strategies. You can't win by doing nothing.")
+        if len(other_level.fitness_history) > 50 and avg_performance < 0.5:
+            cw5_suggestions.append("Try something completely different. Definition of insanity, you know.")
+
+        return {
+            **base_analysis,
+            'cw5_commentary': commentary,
+            'cw5_performance_assessment': perf_comment,
+            'cw5_suggestions': cw5_suggestions if cw5_suggestions else ["Keep doing what you're doing."],
+            'respect_level': 'High' if avg_performance > 0.6 else 'Moderate' if avg_performance > 0.3 else 'Needs work',
+            'timestamp': datetime.now().isoformat()
+        }
+
+    def analyze_entire_tower(self, all_levels: Dict[int, 'RecursiveLevel']) -> Dict:
+        """
+        CW5 analyzes the entire 36-level tower
+
+        *lights fresh cigarette* *pours more coffee*
+        "Alright, let me break down this whole operation..."
+        """
+        self.coffee_consumed += 1  # Big analysis needs full cup
+        self.cigarettes_smoked += 1
+
+        # Analyze by tier
+        strategic_levels = {k: v for k, v in all_levels.items() if k >= 30}
+        operational_levels = {k: v for k, v in all_levels.items() if 15 <= k < 30}
+        tactical_levels = {k: v for k, v in all_levels.items() if k < 15}
+
+        def tier_avg_performance(tier):
+            perfs = []
+            for level in tier.values():
+                if level.fitness_history:
+                    perfs.append(sum(x['fitness'] for x in level.fitness_history) / len(level.fitness_history))
+            return sum(perfs) / len(perfs) if perfs else 0.0
+
+        strategic_perf = tier_avg_performance(strategic_levels)
+        operational_perf = tier_avg_performance(operational_levels)
+        tactical_perf = tier_avg_performance(tactical_levels)
+
+        # CW5's overall assessment
+        tower_assessment = {
+            'strategic_tier': {
+                'performance': f'{strategic_perf:.1%}',
+                'assessment': 'These are my people. We think big.' if strategic_perf > 0.5 else 'Strategy needs work. Too much theory, not enough results.'
+            },
+            'operational_tier': {
+                'performance': f'{operational_perf:.1%}',
+                'assessment': 'Middle management doing middle management things.' if operational_perf > 0.4 else 'Operational gaps. Strategy not translating to action.'
+            },
+            'tactical_tier': {
+                'performance': f'{tactical_perf:.1%}',
+                'assessment': 'Ground troops executing.' if tactical_perf > 0.3 else 'Tactical execution weak. This is where rubber meets road.'
+            }
+        }
+
+        # Overall verdict
+        overall_avg = (strategic_perf + operational_perf + tactical_perf) / 3
+
+        if overall_avg > 0.7:
+            verdict = "System is humming. I can take a smoke break."
+        elif overall_avg > 0.5:
+            verdict = "Decent. Could be better. Watching closely."
+        elif overall_avg > 0.3:
+            verdict = "Struggling. I'm stepping in soon if this doesn't improve."
+        else:
+            verdict = "This is why I'm here. Time to work."
+
+        return {
+            'tower_analysis': tower_assessment,
+            'overall_performance': f'{overall_avg:.1%}',
+            'cw5_verdict': verdict,
+            'problems_solved_so_far': self.impossible_problems_solved,
+            'coffee_consumed_during_analysis': self.coffee_consumed,
+            'cigarettes_smoked_during_analysis': self.cigarettes_smoked,
+            'meta_insight': 'A 36-level recursive tower is ambitious. Respect to whoever designed this. But any system this complex WILL hit impossible problems. That\'s what I\'m here for.',
+            'timestamp': datetime.now().isoformat()
         }
 
 
@@ -801,6 +1381,127 @@ if __name__ == "__main__":
     for key, value in status.items():
         print(f"  {key}: {value}")
 
+    # ===== M2M COMMUNICATION TEST =====
+    print("\n\n" + "="*80)
+    print("🤖 M2M COMMUNICATION & CW5 REFLECTION TEST")
+    print("="*80)
+
+    # Inject some fake fitness data so CW5 has something to analyze
+    print("\n📈 Simulating fitness data for turtles...")
+    import random as rnd
+    for level_num in [1, 3, 5, 10, 15, 20, 25, 30, 34, 36]:
+        level = tower.levels[level_num]
+        # Simulate 15 fitness reports with varying performance
+        base_fitness = rnd.uniform(0.2, 0.8)
+        for i in range(15):
+            fitness = base_fitness + rnd.uniform(-0.15, 0.15)
+            fitness = max(0.0, min(1.0, fitness))  # Clamp to [0, 1]
+            level.receive_fitness(fitness, {'iteration': i, 'test': True})
+
+    # Get CW5
+    cw5 = tower.levels[34]
+
+    print("\n🚬☕ Asking CW5 to reflect on himself...")
+    print("-" * 80)
+
+    self_reflection = cw5.reflect_on_self()
+
+    print(f"\n📋 CW5 SELF-REFLECTION:")
+    print(f"   Level: L{self_reflection['level']}")
+    print(f"   Name: {self_reflection['name']}")
+    print(f"   Role: {self_reflection['role_assessment']}")
+    print(f"   Avg Performance: {self_reflection['avg_performance']:.1%}")
+    print(f"   Learning Progress: {self_reflection['learning_progress']}")
+
+    print(f"\n💭 CW5's Personal Thoughts:")
+    thoughts = self_reflection['cw5_personal_thoughts']
+    print(f"   Self-Assessment: {thoughts['self_assessment']}")
+    print(f"   Role: {thoughts['role']}")
+    print(f"   Philosophy: {thoughts['philosophy']}")
+    print(f"   Coffee Status: {thoughts['coffee_status']}")
+    print(f"   Cigarette Status: {thoughts['cigarette_status']}")
+    print(f"   Problems Solved: {thoughts['problems_solved']}")
+    print(f"\n   Strengths:")
+    for strength in thoughts['strengths'][:3]:
+        print(f"     • {strength}")
+    print(f"\n   Weaknesses:")
+    for weakness in thoughts['weaknesses'][:3]:
+        print(f"     • {weakness}")
+    print(f"\n   Meta-Insight: {thoughts['meta_insight']}")
+    print(f"   On The Code: {thoughts['on_the_code']}")
+
+    # Ask CW5 to analyze other turtles
+    print("\n\n🔍 Asking CW5 to analyze other turtles...")
+    print("-" * 80)
+
+    analyze_levels = [36, 30, 25, 15, 5, 1]
+    for level_num in analyze_levels:
+        other = tower.levels[level_num]
+        analysis = cw5.analyze_other_turtle(other)
+
+        print(f"\n🐢 L{level_num}: {other.name}")
+        print(f"   Relationship: {analysis['relationship']}")
+        print(f"   Performance: {analysis['performance_assessment']}")
+        print(f"   CW5's Commentary: {analysis['cw5_commentary']}")
+        print(f"   CW5's Assessment: {analysis['cw5_performance_assessment']}")
+        print(f"   Respect Level: {analysis['respect_level']}")
+        if analysis['cw5_suggestions']:
+            print(f"   Suggestions: {analysis['cw5_suggestions'][0]}")
+
+    # Ask CW5 to analyze the entire tower
+    print("\n\n🏗️  Asking CW5 to analyze the ENTIRE TOWER...")
+    print("-" * 80)
+
+    tower_analysis = cw5.analyze_entire_tower(tower.levels)
+
+    print(f"\n📊 CW5'S TOWER ANALYSIS:")
+    print(f"\n   Strategic Tier:")
+    print(f"     Performance: {tower_analysis['tower_analysis']['strategic_tier']['performance']}")
+    print(f"     Assessment: {tower_analysis['tower_analysis']['strategic_tier']['assessment']}")
+    print(f"\n   Operational Tier:")
+    print(f"     Performance: {tower_analysis['tower_analysis']['operational_tier']['performance']}")
+    print(f"     Assessment: {tower_analysis['tower_analysis']['operational_tier']['assessment']}")
+    print(f"\n   Tactical Tier:")
+    print(f"     Performance: {tower_analysis['tower_analysis']['tactical_tier']['performance']}")
+    print(f"     Assessment: {tower_analysis['tower_analysis']['tactical_tier']['assessment']}")
+
+    print(f"\n   Overall Performance: {tower_analysis['overall_performance']}")
+    print(f"\n   🎯 CW5's Verdict: {tower_analysis['cw5_verdict']}")
+    print(f"\n   Problems Solved: {tower_analysis['problems_solved_so_far']}")
+    print(f"   Coffee Consumed: {tower_analysis['coffee_consumed_during_analysis']:.1f} cups")
+    print(f"   Cigarettes Smoked: {tower_analysis['cigarettes_smoked_during_analysis']:.1f}")
+
+    print(f"\n   💡 Meta-Insight: {tower_analysis['meta_insight']}")
+
+    # M2M Protocol test
+    print("\n\n📡 Testing M2M Protocol...")
+    print("-" * 80)
+
+    # L36 queries CW5 for status
+    l36 = tower.levels[36]
+    msg = l36.send_message(34, M2MProtocol.QUERY, {'query_type': 'status'})
+    print(f"   L36 → L34: QUERY (status)")
+
+    # CW5 receives and processes message
+    cw5.receive_message(msg)
+    responses = cw5.process_messages()
+    print(f"   L34 → L36: RESPONSE")
+    if responses:
+        response_payload = responses[0]['p']
+        print(f"     Level: L{response_payload['level']}")
+        print(f"     Name: {response_payload['name']}")
+        print(f"     Avg Fitness: {response_payload['avg_fitness']:.1%}")
+
+    # L1 asks CW5 for reflection
+    l1 = tower.levels[1]
+    msg = l1.send_message(34, M2MProtocol.REFLECT, {})
+    print(f"\n   L01 → L34: REFLECT (self-reflection request)")
+    cw5.receive_message(msg)
+    responses = cw5.process_messages()
+    print(f"   L34 → L01: RESPONSE (reflection data sent)")
+
+    print("\n✅ M2M Communication Protocol: OPERATIONAL")
+
     print("\n" + "="*80)
     print("✅ PHASE 3: 36-LEVEL ARCHITECTURE COMPLETE!")
     print("="*80)
@@ -808,4 +1509,6 @@ if __name__ == "__main__":
     print("🔗 All levels linked and communicating")
     print("⬆️  Zoom up: Navigate to more abstract levels")
     print("⬇️  Zoom down: Navigate to more concrete levels")
+    print("🤖 M2M protocol functional - turtles can communicate")
+    print("🚬☕ CW5 can reflect and analyze the entire system")
     print("\n🎖️ READY FOR GATE 1 REVIEW")
