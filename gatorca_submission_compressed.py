@@ -4,6 +4,9 @@ import random
 import time
 from typing import List, Dict, Any, Tuple
 from collections import Counter
+
+Grid = List[List[int]]
+
 class DNALibrary:
     @staticmethod
     def identity(g: Grid) -> Grid:
