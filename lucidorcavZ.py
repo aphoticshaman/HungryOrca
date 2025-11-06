@@ -38,6 +38,9 @@ from itertools import combinations, product
 from enum import Enum
 import copy
 
+# MAXIMIZE SYSTEM LIMITS FOR KAGGLE
+sys.setrecursionlimit(10000)  # Max Python recursion depth for deep solving
+
 
 # ═══════════════════════════════════════════════════════════════
 # CHAMPIONSHIP CONFIGURATION
@@ -59,14 +62,14 @@ class ChampionshipConfig:
     base_time_per_task: float = 45.0
     phi_ratio: float = 1.618
 
-    # Core parameters
-    recursion_depth: int = 7
-    superposition_branches: int = 50
+    # Core parameters - MAXED FOR KAGGLE LIMITS
+    recursion_depth: int = 1000              # Max practical recursion depth
+    superposition_branches: int = 200        # Max quantum branches for exploration
     collapse_threshold: float = 0.3
-    eigenform_max_iterations: int = 36
+    eigenform_max_iterations: int = 100      # Increased iterations for convergence
 
-    # Parallel processing
-    parallel_workers: int = 8
+    # Parallel processing - KAGGLE HAS 4 CORES
+    parallel_workers: int = 4                # Match Kaggle's 4 CPU cores
 
     # Memory management (Kaggle: 16GB × 0.66 = 10.5GB)
     kaggle_memory_gb: float = 16.0

@@ -335,3 +335,340 @@ Traceback (most recent call last):
     print(f"\n🏆 WINNER: {best_config['config']}")
                           ~~~~~~~~~~~^^^^^^^^^^
 TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+🎛️  PARAMETER TUNING - 5 Fast Rounds
+======================================================================
+Goal: Find optimal settings for 30-minute production run
+Method: Test different parameter combinations on small subsets
+Constraint: Each round < 60 seconds
+======================================================================
+
+📂 Loaded 120 tasks
+
+🌊⚛️ Initializing LucidOrca Quantum (one-time setup)...
+
+======================================================================
+🌊⚛️ LUCIDORCA QUANTUM - Championship Edition
+======================================================================
+
+🚀 Initializing components...
+  ✅ LucidOrca vZ solvers loaded
+🔧 Initializing 12-point optimization system...
+🧬 Bootstrapping primitive library...
+   ✓ Loaded 17 innate geometric primitives
+   ✓ Solver starts with ~12% baseline coverage
+✅ All 12 optimizations + 3 NSM Success Modes initialized!
+
+✅ Base LucidOrca solver initialized
+✅ All synthesis methods initialized!
+📊 Total components: Vision + EBNF + 15 synthesis methods + Base solver
+  ⚛️  Quantum exploitation framework
+
+======================================================================
+⚛️🎮 QUANTUM ARC EXPLOITER - Grey Hat Mode
+======================================================================
+
+🔍 Initializing exploit systems...
+  ⚛️  Quantum entanglement: ACTIVE
+  🌀 Attractor basin mapping: ACTIVE
+  🎮 Game Genie analysis: READY
+  🔓 Vulnerability scanner: ACTIVE
+  🧠 SPDM: ACTIVE
+
+✅ All exploit systems online
+======================================================================
+
+✅ LucidOrca Quantum ready!
+======================================================================
+
+
+======================================================================
+ROUND 1/5: BASELINE - Balanced Time Allocation
+======================================================================
+
+======================================================================
+🎛️  Round: Baseline (75/20/5)
+======================================================================
+Tasks: 5 | Budget: 30s | Per-task: 6.0s
+
+======================================================================
+🏋️⚛️ PROGRESSIVE OVERLOAD QUANTUM SOLVING
+======================================================================
+Tasks: 5
+Time budget: 0.0 hours (0 min)
+Strategy: 75% time on EASY, 20% on MEDIUM, 5% on HARD
+======================================================================
+
+📊 PHASE 1: Classifying task difficulty...
+  Easy:     3 tasks (60.0%)
+  Medium:   2 tasks (40.0%)
+  Hard:     0 tasks (0.0%)
+
+⏱️  Time allocation:
+  Easy:   0.4 min → 7.5s per task
+  Medium: 0.1 min → 3.0s per task
+  Hard:   0.0 min → 1.5s per task
+
+🎯 PHASE 3: Solving tasks...
+  ? [  1/5] E 135a2760 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  2/5] E 13e47133 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  3/5] E 142ca369 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  4/5] M 0934a4d8 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  5/5] M 136b0064 | fallback_dual        | Conf: 0.10 |  0.00s
+
+======================================================================
+📊 PROGRESSIVE OVERLOAD RESULTS
+======================================================================
+  Total tasks: 5/5
+  High confidence: 0 (0.0%)
+
+  By Difficulty:
+    Easy  :   3/  3 solved |   0 high-conf (0.0%)
+    Medium:   2/  2 solved |   0 high-conf (0.0%)
+
+  Time: 0s (0.0 min)
+  Avg/task: 0.0s
+======================================================================
+
+📊 Results:
+   Accuracy:  0.000000%
+   Time:      0.048005s (0.009601s per task)
+   Speed:     104.156626 tasks/sec
+
+
+======================================================================
+ROUND 2/5: AGGRESSIVE - More time on easy tasks
+======================================================================
+
+======================================================================
+🎛️  Round: Aggressive (85/12/3)
+======================================================================
+Tasks: 5 | Budget: 30s | Per-task: 6.0s
+
+======================================================================
+🏋️⚛️ PROGRESSIVE OVERLOAD QUANTUM SOLVING
+======================================================================
+Tasks: 5
+Time budget: 0.0 hours (0 min)
+Strategy: 75% time on EASY, 20% on MEDIUM, 5% on HARD
+======================================================================
+
+📊 PHASE 1: Classifying task difficulty...
+  Easy:     3 tasks (60.0%)
+  Medium:   2 tasks (40.0%)
+  Hard:     0 tasks (0.0%)
+
+⏱️  Time allocation:
+  Easy:   0.4 min → 7.5s per task
+  Medium: 0.1 min → 3.0s per task
+  Hard:   0.0 min → 1.5s per task
+
+🎯 PHASE 3: Solving tasks...
+  ? [  1/5] E 135a2760 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  2/5] E 13e47133 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  3/5] E 142ca369 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  4/5] M 0934a4d8 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  5/5] M 136b0064 | fallback_dual        | Conf: 0.10 |  0.00s
+
+======================================================================
+📊 PROGRESSIVE OVERLOAD RESULTS
+======================================================================
+  Total tasks: 5/5
+  High confidence: 0 (0.0%)
+
+  By Difficulty:
+    Easy  :   3/  3 solved |   0 high-conf (0.0%)
+    Medium:   2/  2 solved |   0 high-conf (0.0%)
+
+  Time: 0s (0.0 min)
+  Avg/task: 0.0s
+======================================================================
+
+📊 Results:
+   Accuracy:  0.000000%
+   Time:      0.037819s (0.007564s per task)
+   Speed:     132.207330 tasks/sec
+
+
+======================================================================
+ROUND 3/5: CONSERVATIVE - More exploration time
+======================================================================
+
+======================================================================
+🎛️  Round: Conservative (65/25/10)
+======================================================================
+Tasks: 5 | Budget: 30s | Per-task: 6.0s
+
+======================================================================
+🏋️⚛️ PROGRESSIVE OVERLOAD QUANTUM SOLVING
+======================================================================
+Tasks: 5
+Time budget: 0.0 hours (0 min)
+Strategy: 75% time on EASY, 20% on MEDIUM, 5% on HARD
+======================================================================
+
+📊 PHASE 1: Classifying task difficulty...
+  Easy:     3 tasks (60.0%)
+  Medium:   2 tasks (40.0%)
+  Hard:     0 tasks (0.0%)
+
+⏱️  Time allocation:
+  Easy:   0.4 min → 7.5s per task
+  Medium: 0.1 min → 3.0s per task
+  Hard:   0.0 min → 1.5s per task
+
+🎯 PHASE 3: Solving tasks...
+  ? [  1/5] E 135a2760 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  2/5] E 13e47133 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  3/5] E 142ca369 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  4/5] M 0934a4d8 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  5/5] M 136b0064 | fallback_dual        | Conf: 0.10 |  0.00s
+
+======================================================================
+📊 PROGRESSIVE OVERLOAD RESULTS
+======================================================================
+  Total tasks: 5/5
+  High confidence: 0 (0.0%)
+
+  By Difficulty:
+    Easy  :   3/  3 solved |   0 high-conf (0.0%)
+    Medium:   2/  2 solved |   0 high-conf (0.0%)
+
+  Time: 0s (0.0 min)
+  Avg/task: 0.0s
+======================================================================
+
+📊 Results:
+   Accuracy:  0.000000%
+   Time:      0.038269s (0.007654s per task)
+   Speed:     130.655535 tasks/sec
+
+
+======================================================================
+ROUND 4/5: SPEED - Fast shallow search
+======================================================================
+
+======================================================================
+🎛️  Round: Speed (75/20/5, fast)
+======================================================================
+Tasks: 5 | Budget: 15s | Per-task: 3.0s
+
+======================================================================
+🏋️⚛️ PROGRESSIVE OVERLOAD QUANTUM SOLVING
+======================================================================
+Tasks: 5
+Time budget: 0.0 hours (0 min)
+Strategy: 75% time on EASY, 20% on MEDIUM, 5% on HARD
+======================================================================
+
+📊 PHASE 1: Classifying task difficulty...
+  Easy:     3 tasks (60.0%)
+  Medium:   2 tasks (40.0%)
+  Hard:     0 tasks (0.0%)
+
+⏱️  Time allocation:
+  Easy:   0.2 min → 3.8s per task
+  Medium: 0.1 min → 1.5s per task
+  Hard:   0.0 min → 0.8s per task
+
+🎯 PHASE 3: Solving tasks...
+  ? [  1/5] E 135a2760 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  2/5] E 13e47133 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  3/5] E 142ca369 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  4/5] M 0934a4d8 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  5/5] M 136b0064 | fallback_dual        | Conf: 0.10 |  0.00s
+
+======================================================================
+📊 PROGRESSIVE OVERLOAD RESULTS
+======================================================================
+  Total tasks: 5/5
+  High confidence: 0 (0.0%)
+
+  By Difficulty:
+    Easy  :   3/  3 solved |   0 high-conf (0.0%)
+    Medium:   2/  2 solved |   0 high-conf (0.0%)
+
+  Time: 0s (0.0 min)
+  Avg/task: 0.0s
+======================================================================
+
+📊 Results:
+   Accuracy:  0.000000%
+   Time:      0.039220s (0.007844s per task)
+   Speed:     127.486444 tasks/sec
+
+
+======================================================================
+ROUND 5/5: DEEP - Thorough search
+======================================================================
+
+======================================================================
+🎛️  Round: Deep (75/20/5, slow)
+======================================================================
+Tasks: 5 | Budget: 45s | Per-task: 9.0s
+
+======================================================================
+🏋️⚛️ PROGRESSIVE OVERLOAD QUANTUM SOLVING
+======================================================================
+Tasks: 5
+Time budget: 0.0 hours (1 min)
+Strategy: 75% time on EASY, 20% on MEDIUM, 5% on HARD
+======================================================================
+
+📊 PHASE 1: Classifying task difficulty...
+  Easy:     3 tasks (60.0%)
+  Medium:   2 tasks (40.0%)
+  Hard:     0 tasks (0.0%)
+
+⏱️  Time allocation:
+  Easy:   0.6 min → 11.2s per task
+  Medium: 0.1 min → 4.5s per task
+  Hard:   0.0 min → 2.2s per task
+
+🎯 PHASE 3: Solving tasks...
+  ? [  1/5] E 135a2760 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  2/5] E 13e47133 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  3/5] E 142ca369 | fallback_dual        | Conf: 0.10 |  0.00s
+  ? [  4/5] M 0934a4d8 | fallback_dual        | Conf: 0.10 |  0.01s
+  ? [  5/5] M 136b0064 | fallback_dual        | Conf: 0.10 |  0.00s
+
+======================================================================
+📊 PROGRESSIVE OVERLOAD RESULTS
+======================================================================
+  Total tasks: 5/5
+  High confidence: 0 (0.0%)
+
+  By Difficulty:
+    Easy  :   3/  3 solved |   0 high-conf (0.0%)
+    Medium:   2/  2 solved |   0 high-conf (0.0%)
+
+  Time: 0s (0.0 min)
+  Avg/task: 0.0s
+======================================================================
+
+📊 Results:
+   Accuracy:  0.000000%
+   Time:      0.039699s (0.007940s per task)
+   Speed:     125.946754 tasks/sec
+
+
+======================================================================
+📊 TUNING SUMMARY - All 5 Rounds
+======================================================================
+
+Config                             Accuracy    Time/Task      Score
+----------------------------------------------------------------------
+Baseline (75/20/5)                0.000000%    0.009601s     -0.02
+Aggressive (85/12/3)              0.000000%    0.007564s     -0.02
+Conservative (65/25/10)           0.000000%    0.007654s     -0.02
+Speed (75/20/5, fast)             0.000000%    0.007844s     -0.02
+Deep (75/20/5, slow)              0.000000%    0.007940s     -0.02
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/HungryOrca/tune_parameters.py", line 222, in <module>
+    main()
+  File "/home/user/HungryOrca/tune_parameters.py", line 187, in main
+    print(f"\n🏆 WINNER: {best_config['config']}")
+                          ~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
