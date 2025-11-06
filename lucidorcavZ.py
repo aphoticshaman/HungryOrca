@@ -3439,10 +3439,30 @@ class LucidOrcaVZ:
         except Exception as e:
             print(f"⚠️  Recursive decomp failed: {e}")
         
-        # Step 4: Base solver fallback SKIPPED
-        # LucidOrcaVZ already integrates all components - redundant fallback removed
-        # (self.base_solver is LucidOrcaChampionshipComplete which lacks .solve() method)
-        
+        # Step 4: Try base solver with all 12 optimizations + bootstrapped primitives
+        if self.base_solver is not None:
+            try:
+                # Call base solver's complete method which uses all optimizations
+                task_id = 'temp_' + str(hash(str(task)))[:8]
+                solution_list, success = self.base_solver._solve_task_complete(task_id, task, timeout=timeout * 0.4)
+
+                if solution_list:  # solution_list is a list of predictions
+                    metadata['methods_used'].append('base_solver_complete')
+                    base_conf = 0.8 if success else 0.5
+                    confidences_dict['base_solver'] = base_conf
+
+                    # Convert list to numpy array (take first prediction)
+                    if isinstance(solution_list, list) and len(solution_list) > 0:
+                        result = np.array(solution_list[0]) if not isinstance(solution_list[0], np.ndarray) else solution_list[0]
+
+                        final_confidence = self.confidence_fusion.fuse_confidences(confidences_dict)
+                        metadata['confidences']['final'] = final_confidence
+                        metadata['solve_time'] = time.time() - start_time
+
+                        return result, final_confidence, metadata
+            except Exception as e:
+                print(f"⚠️  Base solver failed: {e}")
+
         # Step 5: Fuse all confidences
         final_confidence = self.confidence_fusion.fuse_confidences(confidences_dict)
         metadata['confidences']['final'] = final_confidence
