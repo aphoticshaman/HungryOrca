@@ -256,6 +256,7 @@ production_bundle = {
     'quantum_exploiter': quantum_exploiter,
     'game_genie': game_genie,
     'feature_cols': feature_cols,
+    'exploited_feature_cols': list(X_train.columns),  # Save final feature names after exploitation
     'performance': {
         'sharpe': sharpe,
         'total_return': total_return,
