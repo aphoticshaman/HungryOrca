@@ -3436,20 +3436,9 @@ class LucidOrcaVZ:
         except Exception as e:
             print(f"⚠️  Recursive decomp failed: {e}")
         
-        # Step 4: Fall back to base solver if available
-        if self.base_solver is not None:
-            try:
-                # Use base LucidOrca solver
-                result = self.base_solver.solve_task(task, timeout=timeout * 0.7)
-                metadata['methods_used'].append('base_lucidorca')
-                confidences_dict['base_lucidorca'] = 0.6
-                
-                final_confidence = self.confidence_fusion.fuse_confidences(confidences_dict)
-                metadata['confidences']['final'] = final_confidence
-                
-                return result, final_confidence, metadata
-            except Exception as e:
-                print(f"⚠️  Base solver failed: {e}")
+        # Step 4: Base solver fallback SKIPPED
+        # LucidOrcaVZ already integrates all components - redundant fallback removed
+        # (self.base_solver is LucidOrcaChampionshipComplete which lacks .solve() method)
         
         # Step 5: Fuse all confidences
         final_confidence = self.confidence_fusion.fuse_confidences(confidences_dict)

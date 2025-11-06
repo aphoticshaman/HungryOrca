@@ -1,0 +1,241 @@
+
+======================================================================
+🏃 QUICK PROGRESSIVE OVERLOAD TEST (Sub 2-Minute Runs)
+======================================================================
+Purpose: Validate fixes and tune for fast runs
+Config: 20 tasks x 120s = 40 minutes total
+Precision: 6 decimal places for fine-tuning
+======================================================================
+
+📂 Loading evaluation data...
+   Selected: 20 tasks for quick validation
+
+  Quick Test Distribution:
+    color_complex       :  13 (65.000000%)
+    color_medium        :   5 (25.000000%)
+    color_simple        :   2 (10.000000%)
+    grid_large          :  16 (80.000000%)
+    grid_medium         :   4 (20.000000%)
+
+🌊⚛️ Initializing LucidOrca Quantum...
+
+======================================================================
+🌊⚛️ LUCIDORCA QUANTUM - Championship Edition
+======================================================================
+
+🚀 Initializing components...
+  ✅ LucidOrca vZ solvers loaded
+🔧 Initializing 12-point optimization system...
+🧬 Bootstrapping primitive library...
+   ✓ Loaded 17 innate geometric primitives
+   ✓ Solver starts with ~12% baseline coverage
+✅ All 12 optimizations + 3 NSM Success Modes initialized!
+
+✅ Base LucidOrca solver initialized
+✅ All synthesis methods initialized!
+📊 Total components: Vision + EBNF + 15 synthesis methods + Base solver
+  ⚛️  Quantum exploitation framework
+
+======================================================================
+⚛️🎮 QUANTUM ARC EXPLOITER - Grey Hat Mode
+======================================================================
+
+🔍 Initializing exploit systems...
+  ⚛️  Quantum entanglement: ACTIVE
+  🌀 Attractor basin mapping: ACTIVE
+  🎮 Game Genie analysis: READY
+  🔓 Vulnerability scanner: ACTIVE
+  🧠 SPDM: ACTIVE
+
+✅ All exploit systems online
+======================================================================
+
+✅ LucidOrca Quantum ready!
+======================================================================
+
+🏋️ Running test (120s per task)...
+
+======================================================================
+🏋️⚛️ PROGRESSIVE OVERLOAD QUANTUM SOLVING
+======================================================================
+Tasks: 20
+Time budget: 0.7 hours (40 min)
+Strategy: 75% time on EASY, 20% on MEDIUM, 5% on HARD
+======================================================================
+
+📊 PHASE 1: Classifying task difficulty...
+  Easy:    12 tasks (60.0%)
+  Medium:   8 tasks (40.0%)
+  Hard:     0 tasks (0.0%)
+
+⏱️  Time allocation:
+  Easy:   30.0 min → 150.0s per task
+  Medium: 8.0 min → 60.0s per task
+  Hard:   2.0 min → 120.0s per task
+
+🎯 PHASE 3: Solving tasks...
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [  1/20] 135a2760 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [  2/20] 13e47133 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [  3/20] 142ca369 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [  4/20] 16b78196 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [  5/20] 16de56c4 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [  6/20] 1818057f | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [  7/20] 195c6913 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [  8/20] 1ae2feb7 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [  9/20] 247ef758 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 10/20] 271d71e2 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 11/20] 28a6681f | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 12/20] 2b83f449 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 13/20] 0934a4d8 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 14/20] 136b0064 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 15/20] 20270e3b | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 16/20] 20a9e565 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 17/20] 21897d95 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 18/20] 221dfab4 | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 19/20] 269e22fb | ERROR: len() of unsized object
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+⚠️  Base solver failed: 'LucidOrcaChampionshipComplete' object has no attribute 'solve'
+  ✗ [ 20/20] 291dc1e1 | ERROR: len() of unsized object
+
+======================================================================
+📊 PROGRESSIVE OVERLOAD RESULTS
+======================================================================
+  Total tasks: 20/20
+  High confidence: 0 (0.0%)
+
+  By Difficulty:
+    Easy  :  12/ 12 solved |   0 high-conf (0.0%)
+    Medium:   8/  8 solved |   0 high-conf (0.0%)
+
+  Time: 0s (0.0 min)
+  Avg/task: 0.0s
+======================================================================
+
+📊 Evaluating solutions...
+
+======================================================================
+🏆 QUICK TEST RESULTS (6 DECIMAL PRECISION)
+======================================================================
+
+  Overall: 0/20 = 0.000000%
+
+  By Grid Size:
+    Medium  :   0/  4 = 0.000000%
+    Large   :   0/ 16 = 0.000000%
+
+  By Color Complexity:
+    Simple  :   0/  2 = 0.000000%
+    Medium  :   0/  5 = 0.000000%
+    Complex :   0/ 13 = 0.000000%
+
+  Performance:
+    Total time:    0.139596s (0.002327 min)
+    Avg per task:  0.006980s
+    Tasks/minute:  8596.235747
+
+======================================================================
+🎯 TARGET ANALYSIS:
+   Current:  0.000000%
+   Target:   85.000000%
+   Gap:      +85.000000%
+
+   ⚠️  Need significant improvement
+======================================================================

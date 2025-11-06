@@ -1,0 +1,1257 @@
+{
+  "overall": {
+    "correct": 0,
+    "total": 120,
+    "accuracy": 0.0
+  },
+  "by_characteristic": {
+    "grid_size": {
+      "large": {
+        "correct": 0,
+        "total": 98
+      },
+      "medium": {
+        "correct": 0,
+        "total": 22
+      },
+      "small": {
+        "correct": 0,
+        "total": 0
+      }
+    },
+    "color": {
+      "medium": {
+        "correct": 0,
+        "total": 24
+      },
+      "complex": {
+        "correct": 0,
+        "total": 90
+      },
+      "simple": {
+        "correct": 0,
+        "total": 6
+      }
+    },
+    "primitive": {
+      "complex": {
+        "correct": 0,
+        "total": 102
+      },
+      "objects": {
+        "correct": 0,
+        "total": 14
+      },
+      "patterns": {
+        "correct": 0,
+        "total": 3
+      },
+      "shapes": {
+        "correct": 0,
+        "total": 1
+      }
+    }
+  },
+  "per_task": {
+    "135a2760": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 29,
+        "num_colors": 6
+      }
+    },
+    "13e47133": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "142ca369": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 9
+      }
+    },
+    "16b78196": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 7
+      }
+    },
+    "16de56c4": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 21,
+        "num_colors": 10
+      }
+    },
+    "1818057f": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "simple",
+        "primitive": "complex",
+        "max_dim": 22,
+        "num_colors": 3
+      }
+    },
+    "195c6913": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "1ae2feb7": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 10
+      }
+    },
+    "247ef758": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 10
+      }
+    },
+    "271d71e2": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 26,
+        "num_colors": 5
+      }
+    },
+    "28a6681f": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 10,
+        "num_colors": 7
+      }
+    },
+    "2b83f449": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 19,
+        "num_colors": 5
+      }
+    },
+    "2c181942": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 26,
+        "num_colors": 7
+      }
+    },
+    "31f7f899": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 17,
+        "num_colors": 8
+      }
+    },
+    "332f06d7": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 4
+      }
+    },
+    "35ab12c3": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 21,
+        "num_colors": 8
+      }
+    },
+    "36a08778": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "simple",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 3
+      }
+    },
+    "3a25b0d8": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "3dc255db": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 13,
+        "num_colors": 8
+      }
+    },
+    "3e6067c3": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "45a5af55": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 26,
+        "num_colors": 7
+      }
+    },
+    "4a21e3da": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "simple",
+        "primitive": "complex",
+        "max_dim": 21,
+        "num_colors": 3
+      }
+    },
+    "4c3d4a41": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 20,
+        "num_colors": 9
+      }
+    },
+    "4c416de3": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 23,
+        "num_colors": 10
+      }
+    },
+    "4e34c42c": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "53fb4810": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 25,
+        "num_colors": 8
+      }
+    },
+    "581f7754": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 22,
+        "num_colors": 6
+      }
+    },
+    "5961cc34": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 27,
+        "num_colors": 5
+      }
+    },
+    "62593bfd": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "64efde09": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 29,
+        "num_colors": 9
+      }
+    },
+    "67e490f4": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "6e4f6532": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "7491f3cf": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 25,
+        "num_colors": 10
+      }
+    },
+    "7b5033c1": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 24,
+        "num_colors": 6
+      }
+    },
+    "7b80bb43": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "patterns",
+        "max_dim": 30,
+        "num_colors": 6
+      }
+    },
+    "7c66cb00": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 7
+      }
+    },
+    "7ed72f31": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 28,
+        "num_colors": 7
+      }
+    },
+    "800d221b": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "80a900e0": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "88bcf3b4": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 27,
+        "num_colors": 10
+      }
+    },
+    "88e364bc": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 20,
+        "num_colors": 8
+      }
+    },
+    "8b7bacbf": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "8e5c0c38": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 22,
+        "num_colors": 7
+      }
+    },
+    "9385bd28": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 19,
+        "num_colors": 10
+      }
+    },
+    "97d7923e": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 7
+      }
+    },
+    "9aaea919": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "9bbf930d": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 23,
+        "num_colors": 10
+      }
+    },
+    "a25697e4": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 8
+      }
+    },
+    "a395ee82": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 22,
+        "num_colors": 7
+      }
+    },
+    "a47bf94d": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 26,
+        "num_colors": 9
+      }
+    },
+    "b10624e5": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 27,
+        "num_colors": 6
+      }
+    },
+    "b5ca7ac4": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 22,
+        "num_colors": 10
+      }
+    },
+    "b6f77b65": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 12,
+        "num_colors": 10
+      }
+    },
+    "b99e7126": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 29,
+        "num_colors": 6
+      }
+    },
+    "b9e38dc0": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 19,
+        "num_colors": 10
+      }
+    },
+    "c4d067a0": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 27,
+        "num_colors": 5
+      }
+    },
+    "c7f57c3e": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 28,
+        "num_colors": 6
+      }
+    },
+    "cbebaa4b": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 26,
+        "num_colors": 10
+      }
+    },
+    "d59b0160": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 16,
+        "num_colors": 10
+      }
+    },
+    "da515329": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "simple",
+        "primitive": "patterns",
+        "max_dim": 26,
+        "num_colors": 2
+      }
+    },
+    "db0c5428": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 19,
+        "num_colors": 9
+      }
+    },
+    "db695cfb": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 25,
+        "num_colors": 6
+      }
+    },
+    "dbff022c": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 15,
+        "num_colors": 10
+      }
+    },
+    "dd6b8c4b": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 11,
+        "num_colors": 5
+      }
+    },
+    "dfadab01": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 9
+      }
+    },
+    "e12f9a14": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "e376de54": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 16,
+        "num_colors": 8
+      }
+    },
+    "e8686506": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 15,
+        "num_colors": 8
+      }
+    },
+    "eee78d87": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 16,
+        "num_colors": 7
+      }
+    },
+    "f931b4a8": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 16,
+        "num_colors": 9
+      }
+    },
+    "0934a4d8": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "136b0064": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 19,
+        "num_colors": 7
+      }
+    },
+    "20270e3b": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "simple",
+        "primitive": "complex",
+        "max_dim": 13,
+        "num_colors": 3
+      }
+    },
+    "20a9e565": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "21897d95": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "221dfab4": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "objects",
+        "max_dim": 30,
+        "num_colors": 6
+      }
+    },
+    "269e22fb": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "shapes",
+        "max_dim": 20,
+        "num_colors": 6
+      }
+    },
+    "291dc1e1": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 28,
+        "num_colors": 10
+      }
+    },
+    "2ba387bc": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 24,
+        "num_colors": 9
+      }
+    },
+    "2d0172a1": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "patterns",
+        "max_dim": 25,
+        "num_colors": 8
+      }
+    },
+    "38007db0": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 29,
+        "num_colors": 5
+      }
+    },
+    "409aa875": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 16,
+        "num_colors": 6
+      }
+    },
+    "446ef5d2": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 26,
+        "num_colors": 9
+      }
+    },
+    "4c7dc4dd": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 8
+      }
+    },
+    "5545f144": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 27,
+        "num_colors": 8
+      }
+    },
+    "58490d8a": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 25,
+        "num_colors": 7
+      }
+    },
+    "58f5dbd5": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 23,
+        "num_colors": 9
+      }
+    },
+    "5dbc8537": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 25,
+        "num_colors": 10
+      }
+    },
+    "65b59efc": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "6e453dd6": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 25,
+        "num_colors": 4
+      }
+    },
+    "6ffbe589": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 8
+      }
+    },
+    "71e489b6": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "simple",
+        "primitive": "complex",
+        "max_dim": 19,
+        "num_colors": 3
+      }
+    },
+    "7666fa5d": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "medium",
+        "primitive": "objects",
+        "max_dim": 16,
+        "num_colors": 5
+      }
+    },
+    "78332cb0": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 23,
+        "num_colors": 8
+      }
+    },
+    "7b0280bc": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "7b3084d4": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 9
+      }
+    },
+    "8698868d": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "89565ca0": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "898e7135": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "8b9c3697": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 27,
+        "num_colors": 6
+      }
+    },
+    "8f215267": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 27,
+        "num_colors": 8
+      }
+    },
+    "8f3a5a89": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 4
+      }
+    },
+    "981571dc": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "a251c730": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "a32d8b75": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "a6f40cea": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "aa4ec2a5": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 28,
+        "num_colors": 5
+      }
+    },
+    "abc82100": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 9
+      }
+    },
+    "b0039139": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 29,
+        "num_colors": 10
+      }
+    },
+    "bf45cf4b": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 17,
+        "num_colors": 7
+      }
+    },
+    "cb2d8a2c": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "medium",
+        "primitive": "complex",
+        "max_dim": 29,
+        "num_colors": 4
+      }
+    },
+    "d35bdbdc": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "medium",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 10,
+        "num_colors": 10
+      }
+    },
+    "d8e07eb2": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "de809cff": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 30,
+        "num_colors": 7
+      }
+    },
+    "e3721c99": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "objects",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "e87109e9": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "edb79dae": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 9
+      }
+    },
+    "f560132c": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 30,
+        "num_colors": 10
+      }
+    },
+    "faa9f03d": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 20,
+        "num_colors": 7
+      }
+    },
+    "fc7cae8d": {
+      "correct": false,
+      "characteristics": {
+        "grid_size": "large",
+        "color_complexity": "complex",
+        "primitive": "complex",
+        "max_dim": 29,
+        "num_colors": 10
+      }
+    }
+  }
+}
