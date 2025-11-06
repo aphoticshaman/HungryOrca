@@ -43,6 +43,12 @@ test_df = pd.read_csv(f'{data_path}/test.csv')
 
 print(f"  Train: {len(train_df)} days")
 print(f"  Test: {len(test_df)} days")
+
+# CRITICAL: Filter test to only scored rows if is_scored column exists
+if 'is_scored' in test_df.columns:
+    scored_count = test_df['is_scored'].sum()
+    test_df = test_df[test_df['is_scored'] == True].copy()
+    print(f"  Filtered to {len(test_df)} scored rows (was {len(test_df) + (scored_count != len(test_df))} total)")
 print()
 
 # Extract features and target
@@ -276,15 +282,19 @@ print()
 print("💾 Creating submission.parquet...")
 
 submission = pd.DataFrame({
-    'date_id': test_df['date_id'],
+    'date_id': test_df['date_id'].values,  # Use .values to avoid index issues
     'prediction': predictions
 })
 
 # Ensure predictions are in valid range
 submission['prediction'] = submission['prediction'].clip(0.0, 2.0)
 
-# CRITICAL: Save as submission.parquet (Kaggle requirement)
-submission.to_parquet('submission.parquet', index=False)
+# CRITICAL: Save as submission.parquet WITHOUT pandas metadata (Kaggle requirement)
+import pyarrow as pa
+import pyarrow.parquet as pq
+table = pa.Table.from_pandas(submission, preserve_index=False)
+table = table.replace_schema_metadata(None)  # Strip pandas metadata
+pq.write_table(table, 'submission.parquet')
 
 print("✅ Submission saved: submission.parquet")
 print()
