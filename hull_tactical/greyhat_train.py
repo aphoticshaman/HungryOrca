@@ -150,13 +150,13 @@ healer_pred_val = healer.predict(X_val_scaled)
 
 # 2. Tank (Random Forest)
 print("  Training Tank (Random Forest)...")
-tank = RandomForestRegressor(n_estimators=100, max_depth=10, min_samples_split=20, n_jobs=-1, random_state=42)
+tank = RandomForestRegressor(n_estimators=150, max_depth=10, min_samples_split=20, n_jobs=-1, random_state=42)
 tank.fit(X_train, y_train)
 tank_pred_val = tank.predict(X_val)
 
 # 3. DPS (Gradient Boosting)
 print("  Training DPS (Gradient Boosting)...")
-dps = GradientBoostingRegressor(n_estimators=100, learning_rate=0.05, max_depth=5, subsample=0.8, random_state=42)
+dps = GradientBoostingRegressor(n_estimators=150, learning_rate=0.06, max_depth=5, subsample=0.8, random_state=42)
 dps.fit(X_train, y_train)
 dps_pred_val = dps.predict(X_val)
 
