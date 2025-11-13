@@ -2,10 +2,11 @@
  * INTENTION SCREEN - Set reading intention
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 import { NeonText, LPMUDText, FlickerText, ScanLines } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
+import { validateIntention } from '../utils/intentionValidator';
 
 const SPREAD_TYPES = [
   {
@@ -57,8 +58,19 @@ export default function IntentionScreen({ route, navigation }) {
   const [intention, setIntention] = useState('');
   const [spreadType, setSpreadType] = useState('three_card');
   const [error, setError] = useState('');
+  const [validation, setValidation] = useState(null);
 
   const selectedSpread = SPREAD_TYPES.find(s => s.id === spreadType);
+
+  // Validate intention on change
+  useEffect(() => {
+    if (intention.trim().length > 0) {
+      const result = validateIntention(intention);
+      setValidation(result);
+    } else {
+      setValidation(null);
+    }
+  }, [intention]);
 
   const handleContinue = () => {
     if (!intention.trim()) {
@@ -68,6 +80,15 @@ export default function IntentionScreen({ route, navigation }) {
 
     if (intention.trim().length < 3) {
       setError('Intention too short');
+      return;
+    }
+
+    // Validate with 5W+H checker
+    const validationResult = validateIntention(intention);
+
+    // BLOCK if validation fails (score < 33%)
+    if (!validationResult.valid) {
+      setError('AGI REFUSES: Intention lacks context. See feedback below.');
       return;
     }
 
@@ -115,6 +136,34 @@ export default function IntentionScreen({ route, navigation }) {
             numberOfLines={4}
             maxLength={200}
           />
+
+          {/* 5W+H Validation Feedback */}
+          {validation && (
+            <View style={[
+              styles.validationBox,
+              validation.valid ? styles.validationGood : styles.validationPoor
+            ]}>
+              <View style={styles.validationHeader}>
+                <NeonText
+                  color={validation.score >= 0.67 ? NEON_COLORS.hiGreen : validation.score >= 0.33 ? NEON_COLORS.hiYellow : NEON_COLORS.hiRed}
+                  style={styles.validationScore}
+                >
+                  5W+H SCORE: {Math.round(validation.score * 100)}%
+                </NeonText>
+                <NeonText
+                  color={NEON_COLORS.dimCyan}
+                  style={styles.validationElements}
+                >
+                  [{validation.present.join(', ').toUpperCase()}]
+                </NeonText>
+              </View>
+              <LPMUDText style={styles.validationFeedback}>
+                {validation.score >= 0.67 ? '$HIG$' : validation.score >= 0.33 ? '$HIY$' : '$HIR$'}
+                {validation.feedback}
+                $NOR$
+              </LPMUDText>
+            </View>
+          )}
 
           {error && (
             <NeonText color={NEON_COLORS.hiRed} style={styles.errorText}>
@@ -261,6 +310,41 @@ const styles = StyleSheet.create({
     fontFamily: 'monospace',
     marginTop: 5,
     textAlign: 'right',
+  },
+  validationBox: {
+    marginTop: 12,
+    padding: 12,
+    borderWidth: 2,
+    backgroundColor: '#000000',
+  },
+  validationGood: {
+    borderColor: NEON_COLORS.hiGreen,
+  },
+  validationPoor: {
+    borderColor: NEON_COLORS.hiRed,
+  },
+  validationHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+    paddingBottom: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: NEON_COLORS.dimCyan,
+  },
+  validationScore: {
+    fontSize: 11,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+  },
+  validationElements: {
+    fontSize: 9,
+    fontFamily: 'monospace',
+  },
+  validationFeedback: {
+    fontSize: 11,
+    fontFamily: 'monospace',
+    lineHeight: 16,
   },
   spreadSection: {
     marginBottom: 25,
