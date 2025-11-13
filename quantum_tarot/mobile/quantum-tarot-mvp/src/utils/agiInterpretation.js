@@ -214,10 +214,21 @@ function extractIntentionEntities(intention) {
 
   const intentionLower = intention.toLowerCase();
 
-  // Extract subjects (people, relationships)
+  // Extract subjects (people, relationships) - EXPANDED DICTIONARY
   const subjects = [];
   const subjectPatterns = [
-    /my (partner|boyfriend|girlfriend|husband|wife|spouse|ex|friend|boss|manager|coworker|colleague|mother|father|parent|sibling|sister|brother|child|son|daughter)/gi,
+    // Romantic/intimate
+    /my (partner|boyfriend|girlfriend|husband|wife|spouse|fianc[eé]|lover|ex|ex-girlfriend|ex-boyfriend|ex-wife|ex-husband|ex-partner|crush|date)/gi,
+    // Professional
+    /my (boss|manager|supervisor|coworker|colleague|employee|subordinate|client|customer|vendor|contractor|mentor|coach|advisor|consultant|business partner|investor)/gi,
+    /potential customer|prospective client/gi,
+    // Family
+    /my (mother|mom|father|dad|parent|son|daughter|child|sibling|sister|brother|grandmother|grandma|grandfather|grandpa|grandparent|grandchild|grandson|granddaughter|aunt|uncle|niece|nephew|cousin|in-law|stepmother|stepfather|stepson|stepdaughter)/gi,
+    // Social/community
+    /my (friend|best friend|neighbor|roommate|enemy|rival|therapist|doctor|lawyer|teacher|landlord)/gi,
+    // Contact status
+    /ex (who|that|we) (stay|stayed) friends/gi,
+    /no contact (with|ex|relationship)/gi,
     /(with|about) ([A-Z][a-z]+)/g, // Names (capitalized words)
     /my relationship|my marriage|my team|my family|my business|my company/gi
   ];

@@ -60,11 +60,41 @@ function analyzeWho(text, original) {
     /\b(i|me|my|myself)\b/,
     /\b(we|us|our)\b/,
     /\b(he|she|they|him|her|them)\b/,
-    /\b(partner|boyfriend|girlfriend|husband|wife|spouse|ex)\b/,
-    /\b(boss|manager|coworker|colleague|employee|client|customer)\b/,
-    /\b(mother|father|parent|son|daughter|child|sibling|sister|brother|family)\b/,
-    /\b(friend|enemy|rival|mentor|coach|therapist)\b/,
-    /[A-Z][a-z]+\b/ // Proper names
+    // Romantic/intimate relationships
+    /\b(partner|boyfriend|girlfriend|husband|wife|spouse|fianc[eé]|lover)\b/,
+    /\b(ex|ex-girlfriend|ex-boyfriend|ex-wife|ex-husband|ex-partner)\b/,
+    /\b(dating|crush|hookup|situationship)\b/,
+    // Professional relationships
+    /\b(boss|manager|supervisor|coworker|colleague|employee|subordinate)\b/,
+    /\b(client|customer|vendor|supplier|contractor|freelancer)\b/,
+    /\b(potential customer|prospective client|lead)\b/,
+    /\b(mentor|coach|advisor|consultant|therapist|counselor)\b/,
+    /\b(business partner|investor|stakeholder|shareholder)\b/,
+    // Family relationships
+    /\b(mother|mom|father|dad|parent|parents|stepmother|stepfather|step-parent)\b/,
+    /\b(son|daughter|child|children|kid|kids|stepson|stepdaughter|stepchild)\b/,
+    /\b(sibling|sister|brother|half-sister|half-brother|stepsister|stepbrother)\b/,
+    /\b(grandmother|grandma|grandfather|grandpa|grandparent|grandparents)\b/,
+    /\b(grandchild|grandchildren|grandson|granddaughter)\b/,
+    /\b(aunt|auntie|uncle|niece|nephew)\b/,
+    /\b(cousin|cousins)\b/,
+    /\b(in-law|mother-in-law|father-in-law|sister-in-law|brother-in-law)\b/,
+    /\b(family|relatives|extended family)\b/,
+    // Social/community
+    /\b(friend|best friend|close friend|old friend|childhood friend)\b/,
+    /\b(acquaintance|neighbor|roommate|housemate)\b/,
+    /\b(enemy|rival|competitor|adversary)\b/,
+    /\b(stranger|someone|person|people)\b/,
+    // Service/authority
+    /\b(doctor|physician|nurse|dentist|therapist|psychiatrist|psychologist)\b/,
+    /\b(teacher|professor|instructor|tutor)\b/,
+    /\b(lawyer|attorney|accountant|financial advisor)\b/,
+    /\b(landlord|tenant|property manager)\b/,
+    /\b(police|officer|authority)\b/,
+    // Contact status
+    /\b(no contact|low contact|estranged)\b/,
+    /\b(stay friends|stayed friends|friendly ex)\b/,
+    /[A-Z][a-z]+\b/ // Proper names (must be last to avoid false positives)
   ];
 
   const matches = whoPatterns.filter(pattern => pattern.test(text));
