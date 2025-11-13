@@ -120,7 +120,7 @@ export default function CardDrawingScreen({ route, navigation }) {
     switch (phase) {
       case 'initializing': return 'INITIALIZING...';
       case 'shuffling': return 'QUANTUM SHUFFLE...';
-      case 'drawing': return `DRAWING CARDS... [${cardCount}]`;
+      case 'drawing': return `DRAWING CARDS... [${cardCount}/${totalCards}] ${Math.round((cardCount / totalCards) * 100)}%`;
       case 'complete': return 'COMPLETE';
       default: return 'PROCESSING...';
     }
