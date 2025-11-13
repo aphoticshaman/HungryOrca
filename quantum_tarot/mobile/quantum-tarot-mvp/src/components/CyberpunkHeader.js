@@ -63,14 +63,14 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
 function WaveText({ text, color, style }) {
   const [glitchIndex, setGlitchIndex] = useState(0);
 
-  // Glitch text variations
+  // Glitch text variations (all must be 7 chars!)
   const glitchVariations = [
     'LunatIQ',
     'Lun4t1Q',
     'LunatiQ',
     'LxnxtxQ',
     'LunatIQ',
-    'L00n4t1q',
+    'L00n4tQ',
     'LunatIQ',
   ];
 

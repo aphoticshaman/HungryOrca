@@ -144,6 +144,11 @@ export default function WelcomeScreen({ navigation }) {
 
         {/* Birthday input section */}
         <View style={styles.birthdaySection}>
+          {/* Matrix rain background for birthday box */}
+          <View style={styles.birthdayMatrixContainer}>
+            <MatrixRain width={SCREEN_WIDTH - 40} height={300} speed={40} />
+          </View>
+
           <LPMUDText style={styles.birthdayLabel}>
             $HIY${'>'} BIRTH DATE$NOR$
           </LPMUDText>
@@ -264,6 +269,16 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: NEON_COLORS.dimCyan,
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  birthdayMatrixContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 0.5,
   },
   birthdayLabel: {
     fontSize: 14,
