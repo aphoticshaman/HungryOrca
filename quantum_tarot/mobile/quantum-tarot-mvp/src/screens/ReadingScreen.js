@@ -1,16 +1,45 @@
 /**
- * READING SCREEN - Display cards and interpretation
+ * READING SCREEN - Display cards and AGI interpretation
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import CyberpunkCard from '../components/CyberpunkCard';
 import { NeonText, LPMUDText, FlickerText, ScanLines } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
+import { interpretReading } from '../utils/agiInterpretation';
 
 export default function ReadingScreen({ route, navigation }) {
-  const { cards, spread, intention } = route.params;
+  const { cards, spreadType, intention, readingType, zodiacSign, birthdate, quantumSeed, timestamp } = route.params;
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [reading, setReading] = useState(null);
+
+  useEffect(() => {
+    // Generate AGI interpretation
+    const fullReading = interpretReading(cards, spreadType, intention, {
+      readingType,
+      zodiacSign,
+      birthdate
+    });
+    setReading(fullReading);
+  }, []);
+
+  if (!reading) {
+    return (
+      <View style={styles.container}>
+        <ScanLines />
+        <View style={styles.loadingContainer}>
+          <FlickerText color={NEON_COLORS.hiCyan} style={styles.loadingText}>
+            GENERATING INTERPRETATION...
+          </FlickerText>
+        </View>
+      </View>
+    );
+  }
+
+  const currentInterpretation = reading.interpretations[currentCardIndex];
+  const currentCard = cards[currentCardIndex];
+  const astroContext = reading.astrologicalContext;
 
   const handleNextCard = () => {
     if (currentCardIndex < cards.length - 1) {
@@ -28,14 +57,12 @@ export default function ReadingScreen({ route, navigation }) {
     navigation.navigate('Welcome');
   };
 
-  const currentCard = cards[currentCardIndex];
-
   return (
     <View style={styles.container}>
       <ScanLines />
 
       <ScrollView contentContainerStyle={styles.content}>
-        {/* Header */}
+        {/* Header with quantum seed */}
         <View style={styles.header}>
           <LPMUDText style={styles.headerTitle}>
             $HIC${'>'} YOUR READING$NOR$
@@ -43,12 +70,29 @@ export default function ReadingScreen({ route, navigation }) {
           <NeonText color={NEON_COLORS.dimYellow} style={styles.headerSubtitle}>
             CARD {currentCardIndex + 1} OF {cards.length}
           </NeonText>
+          <NeonText color={NEON_COLORS.dimCyan} style={styles.quantumSeed}>
+            QUANTUM SEED: {quantumSeed}
+          </NeonText>
+        </View>
+
+        {/* Astrological Context Banner */}
+        <View style={styles.astroBox}>
+          <LPMUDText style={styles.astroText}>
+            $HIM$ASTRO CONTEXT:$NOR${'\n'}
+            $HIY${astroContext.moonPhase.name}$NOR$ |
+            $HIC${astroContext.natalSign}$NOR$ |
+            {astroContext.mercuryRetrograde.isRetrograde ?
+              ' $HIR$MERCURY RETROGRADE$NOR$' :
+              ' $HIG$Mercury Direct$NOR$'}
+            {'\n'}
+            $NOR${astroContext.planetaryInfluences.dominantPlanet} energy - {astroContext.planetaryInfluences.energy}
+          </LPMUDText>
         </View>
 
         {/* Intention reminder */}
         <View style={styles.intentionBox}>
           <LPMUDText style={styles.intentionText}>
-            $HIY$INTENTION:$NOR$ {intention || 'General guidance'}
+            $HIY$INTENTION:$NOR$ {intention}
           </LPMUDText>
         </View>
 
@@ -59,28 +103,55 @@ export default function ReadingScreen({ route, navigation }) {
           position={currentCard.position}
         />
 
-        {/* AGI Interpretation */}
+        {/* AGI Interpretation - 5 Layers */}
         <View style={styles.interpretationBox}>
           <LPMUDText style={styles.interpretationTitle}>
-            $HIM${'>'} AGI INTERPRETATION$NOR$
+            $HIM${'>'} LUNATIQ AGI INTERPRETATION$NOR$
           </LPMUDText>
 
-          <LPMUDText style={styles.interpretationText}>
+          {/* Position & Orientation */}
+          <LPMUDText style={styles.interpretationSection}>
             $HIW$POSITION:$NOR$ {currentCard.position}{'\n'}
-            $HIW$ORIENTATION:$NOR$ {currentCard.reversed ? '$HIR$REVERSED$NOR$' : '$HIG$UPRIGHT$NOR$'}{'\n\n'}
+            $HIW$ORIENTATION:$NOR$ {currentCard.reversed ? '$HIR$REVERSED$NOR$' : '$HIG$UPRIGHT$NOR$'}
+          </LPMUDText>
 
-            $HIC$ARCHETYPAL LAYER:$NOR${'\n'}
-            This card speaks to the universal pattern of [archetypal meaning].
-            In your context, it suggests...{'\n\n'}
+          {/* Layer 1: Archetypal */}
+          <LPMUDText style={styles.interpretationSection}>
+            $HIC$━━ ARCHETYPAL LAYER ━━$NOR${'\n'}
+            $HIY${currentInterpretation.cardData.name.toUpperCase()}$NOR${'\n'}
+            $NOR${currentInterpretation.layers.archetypal.core_meaning}{'\n\n'}
+            $HIM$Keywords:$NOR$ {currentInterpretation.layers.archetypal.keywords.join(', ')}
+          </LPMUDText>
 
-            $HIG$PRACTICAL LAYER:$NOR${'\n'}
-            Actionable insight: [concrete guidance based on personality profile]{'\n\n'}
+          {/* Layer 2: Contextual */}
+          <LPMUDText style={styles.interpretationSection}>
+            $HIC$━━ CONTEXTUAL LAYER ━━$NOR${'\n'}
+            $NOR${currentInterpretation.layers.contextual.position_significance}{'\n\n'}
+            {currentInterpretation.layers.contextual.intention_alignment}
+          </LPMUDText>
 
-            $HIM$PSYCHOLOGICAL LAYER:$NOR${'\n'}
-            Shadow work: [deep psychological insight]{'\n\n'}
+          {/* Layer 3: Psychological */}
+          <LPMUDText style={styles.interpretationSection}>
+            $HIC$━━ PSYCHOLOGICAL LAYER ━━$NOR${'\n'}
+            $HIM$Shadow Work:$NOR$ {currentInterpretation.layers.psychological.shadow_work}{'\n\n'}
+            $HIM$Integration:$NOR$ {currentInterpretation.layers.psychological.integration_path}
+          </LPMUDText>
 
-            $HIY$SYNTHESIS:$NOR${'\n'}
-            [Integrated interpretation from all 5 agents + personality weighting]
+          {/* Layer 4: Practical */}
+          <LPMUDText style={styles.interpretationSection}>
+            $HIC$━━ PRACTICAL LAYER ━━$NOR${'\n'}
+            $HIG$Action Steps:$NOR${'\n'}
+            {currentInterpretation.layers.practical.action_steps.map((step, i) =>
+              `  ${i + 1}. ${step}\n`
+            ).join('')}
+            {'\n'}$HIY$Focus On:$NOR$ {currentInterpretation.layers.practical.what_to_focus_on}
+          </LPMUDText>
+
+          {/* Layer 5: Synthesis */}
+          <LPMUDText style={styles.interpretationSection}>
+            $HIC$━━ SYNTHESIS ━━$NOR${'\n'}
+            $HIW${currentInterpretation.layers.synthesis.core_message}$NOR${'\n\n'}
+            $HIG${currentInterpretation.layers.synthesis.next_steps}$NOR$
           </LPMUDText>
         </View>
 
@@ -139,9 +210,19 @@ const styles = StyleSheet.create({
   content: {
     padding: 20,
   },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    fontSize: 18,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+  },
   header: {
-    marginBottom: 20,
-    paddingBottom: 15,
+    marginBottom: 15,
+    paddingBottom: 12,
     borderBottomWidth: 1,
     borderBottomColor: NEON_COLORS.dimCyan,
   },
@@ -155,12 +236,30 @@ const styles = StyleSheet.create({
   headerSubtitle: {
     fontSize: 11,
     fontFamily: 'monospace',
+    marginBottom: 5,
+  },
+  quantumSeed: {
+    fontSize: 8,
+    fontFamily: 'monospace',
+    marginTop: 5,
+  },
+  astroBox: {
+    borderWidth: 2,
+    borderColor: NEON_COLORS.hiMagenta,
+    padding: 12,
+    marginBottom: 15,
+    backgroundColor: '#0a000a',
+  },
+  astroText: {
+    fontSize: 10,
+    fontFamily: 'monospace',
+    lineHeight: 15,
   },
   intentionBox: {
     borderWidth: 1,
     borderColor: NEON_COLORS.dimYellow,
     padding: 12,
-    marginBottom: 20,
+    marginBottom: 15,
     backgroundColor: '#0a0a00',
   },
   intentionText: {
@@ -170,22 +269,23 @@ const styles = StyleSheet.create({
   },
   interpretationBox: {
     borderWidth: 2,
-    borderColor: NEON_COLORS.dimMagenta,
+    borderColor: NEON_COLORS.dimCyan,
     padding: 15,
-    marginVertical: 20,
+    marginVertical: 15,
     backgroundColor: '#000000',
   },
   interpretationTitle: {
     fontSize: 14,
     fontFamily: 'monospace',
     fontWeight: 'bold',
-    marginBottom: 12,
+    marginBottom: 15,
     lineHeight: 18,
   },
-  interpretationText: {
+  interpretationSection: {
     fontSize: 11,
     fontFamily: 'monospace',
     lineHeight: 17,
+    marginBottom: 15,
   },
   navRow: {
     flexDirection: 'row',

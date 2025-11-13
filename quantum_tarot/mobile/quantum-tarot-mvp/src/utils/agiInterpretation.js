@@ -1,9 +1,10 @@
 /**
  * LUNATIQ AGI ENGINE - Multi-layer tarot interpretation
- * Offline AGI that adapts to personality profile
+ * Offline AGI that adapts to personality profile + astrological context
  */
 
 import { CARD_DATABASE } from '../data/cardDatabase';
+import { getAstrologicalContext } from './astrology';
 
 /**
  * Generate interpretation for a single card
@@ -187,13 +188,48 @@ function generateTimingGuidance(position) {
 }
 
 /**
- * Generate full reading interpretation
+ * Generate full reading interpretation with astrological context
  * @param {Array} cards - Array of drawn cards
  * @param {string} spreadType - Type of spread
  * @param {string} intention - User's intention
- * @param {Object} context - Reading context
- * @returns {Array} - Full interpretation for all cards
+ * @param {Object} context - Reading context (zodiacSign, birthdate, readingType, etc.)
+ * @returns {Object} - Full interpretation with astrological data
  */
 export function interpretReading(cards, spreadType, intention, context = {}) {
-  return cards.map(card => interpretCard(card, intention, context.readingType || 'general', context));
+  // Get comprehensive astrological context
+  const astroContext = getAstrologicalContext({
+    birthdate: context.birthdate,
+    zodiacSign: context.zodiacSign
+  });
+
+  // Interpret each card with full context
+  const interpretations = cards.map(card =>
+    interpretCard(card, intention, context.readingType || 'general', {
+      ...context,
+      astrology: astroContext
+    })
+  );
+
+  return {
+    interpretations,
+    astrologicalContext: astroContext,
+    spreadType,
+    intention,
+    summary: generateReadingSummary(interpretations, astroContext)
+  };
+}
+
+/**
+ * Generate overall reading summary
+ */
+function generateReadingSummary(interpretations, astroContext) {
+  const cardNames = interpretations.map(i => i.cardData.name).slice(0, 3).join(', ');
+
+  return {
+    cards_drawn: cardNames + (interpretations.length > 3 ? '...' : ''),
+    astrological_influence: astroContext.summary,
+    moon_phase: astroContext.moonPhase.name,
+    mercury_status: astroContext.mercuryRetrograde.isRetrograde ? 'Retrograde' : 'Direct',
+    overall_energy: `${astroContext.planetaryInfluences.dominantPlanet} energy dominant`
+  };
 }
