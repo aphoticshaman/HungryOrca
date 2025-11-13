@@ -3,7 +3,7 @@
  * Helper functions to access card data
  */
 
-import tarotData from './tarotCards.json';
+import tarotData from './tarotCards.json' with { type: 'json' };
 
 /**
  * Complete deck array (all 78 cards)

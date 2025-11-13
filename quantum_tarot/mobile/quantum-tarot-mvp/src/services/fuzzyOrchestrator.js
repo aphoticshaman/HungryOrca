@@ -134,7 +134,7 @@ class SymbolicAnalyzer {
 class RelationalAnalyzer {
   analyze(cards, positions) {
     // Card contrast (opposing meanings)
-    const hasReversals = cards.some(c => c.reversed);
+    const hasReversals = positions.some(p => p.reversed);
     const reversalTension = hasReversals ? 0.7 : 0.3;
 
     // Position relationships (past-present-future)

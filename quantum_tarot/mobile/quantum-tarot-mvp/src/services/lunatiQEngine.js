@@ -15,15 +15,15 @@
  * Offline, no LLM dependencies
  */
 
-import { LunatiQOrchestrator } from './fuzzyOrchestrator';
+import { LunatiQOrchestrator } from './fuzzyOrchestrator.js';
 import {
   ArchetypalAgent,
   PracticalAgent,
   PsychologicalAgent,
   RelationalAgent,
   MysticalAgent
-} from './interpretationAgents';
-import { AdaptiveLanguageEngine } from './adaptiveLanguage';
+} from './interpretationAgents.js';
+import { AdaptiveLanguageEngine } from './adaptiveLanguage.js';
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // ENSEMBLE BLENDER - Multi-agent interpretation synthesis

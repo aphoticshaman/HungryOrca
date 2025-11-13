@@ -12,7 +12,7 @@
  * - Offline, no LLM dependencies
  */
 
-import { CommunicationVoice } from './adaptiveLanguage';
+import { CommunicationVoice } from './adaptiveLanguage.js';
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // ARCHETYPAL AGENT - Deep symbolic/Jungian interpretation
@@ -390,7 +390,7 @@ export class PsychologicalAgent {
       return null;
     }
 
-    const cognitivePa pattern = this.getCognitivePattern(card, isReversed);
+    const pattern = this.getCognitivePattern(card, isReversed);
     const dbtSkill = this.getRelevantDBTSkill(card, context.profile);
     const emotionalWork = this.getEmotionalRegulationGuidance(card, isReversed);
 
@@ -411,6 +411,11 @@ export class PsychologicalAgent {
     // Emotional regulation guidance
     if (emotionalWork && activation > 0.5) {
       parts.push(emotionalWork);
+    }
+
+    // If nothing generated, provide generic psychological insight
+    if (parts.length === 0 && activation > 0.4) {
+      return `Notice what feelings arise with this card. What is your body telling you?`;
     }
 
     return parts.join(' ');
