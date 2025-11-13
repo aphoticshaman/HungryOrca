@@ -58,12 +58,27 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
 }
 
 /**
- * Wave animated text - each letter bobs up and down
+ * Wave animated text - each letter bobs up and down with glitch variations
  */
 function WaveText({ text, color, style }) {
-  const letters = text.split('');
+  const [glitchIndex, setGlitchIndex] = useState(0);
+
+  // Glitch text variations
+  const glitchVariations = [
+    'LunatIQ',
+    'Lun4t1Q',
+    'LunatiQ',
+    'LxnxtxQ',
+    'LunatIQ',
+    'L00n4t1q',
+    'LunatIQ',
+  ];
+
+  const currentText = glitchVariations[glitchIndex];
+  const letters = currentText.split('');
+
   const animations = useRef(
-    letters.map(() => new Animated.Value(0))
+    Array.from({ length: 7 }, () => new Animated.Value(0))
   ).current;
 
   useEffect(() => {
@@ -92,6 +107,15 @@ function WaveText({ text, color, style }) {
     return () => {
       animations.forEach(anim => anim.stopAnimation());
     };
+  }, []);
+
+  useEffect(() => {
+    // Cycle through glitch variations
+    const interval = setInterval(() => {
+      setGlitchIndex((prev) => (prev + 1) % glitchVariations.length);
+    }, 800); // Faster glitch cycling
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
