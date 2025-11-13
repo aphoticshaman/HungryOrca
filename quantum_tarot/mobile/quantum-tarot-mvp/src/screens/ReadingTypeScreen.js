@@ -75,7 +75,7 @@ export default function ReadingTypeScreen({ navigation }) {
 
   const handleContinue = () => {
     if (selected) {
-      navigation.navigate('Intention', { readingType: selected });
+      navigation.navigate('Birthday', { readingType: selected });
     }
   };
 
