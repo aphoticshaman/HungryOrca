@@ -29,26 +29,12 @@ export default function WelcomeScreen({ navigation }) {
         </View>
       )}
 
-      <ScrollView contentContainerStyle={styles.content}>
+      <View style={styles.content}>
         {/* Cyberpunk header */}
         <CyberpunkHeader showMatrixBg={false} />
 
-        {/* Welcome message with LPMUD colors */}
-        <View style={styles.messageBox}>
-          <LPMUDText style={styles.message}>
-            $HIC${'>'} QUANTUM TAROT ${'<'}$NOR${'\n'}
-            $HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR${'\n\n'}
-
-            $HIW$Welcome.$NOR${'\n\n'}
-
-            $HIG$Offline AGI interpretation$NOR${'\n'}
-            $HIG$Quantum randomization$NOR${'\n'}
-            $HIG$Terminal interface$NOR${'\n\n'}
-
-            $HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR${'\n'}
-            $HIC$BEGIN$NOR$
-          </LPMUDText>
-        </View>
+        {/* Spacer */}
+        <View style={styles.spacer} />
 
         {/* Start button */}
         <TouchableOpacity
@@ -62,7 +48,7 @@ export default function WelcomeScreen({ navigation }) {
             {'[ START ]'}
           </NeonText>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
     </View>
   );
 }
@@ -73,66 +59,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   content: {
-    padding: 20,
-    paddingTop: 0,
+    flex: 1,
+    justifyContent: 'space-between',
   },
-  messageBox: {
-    borderWidth: 2,
-    borderColor: NEON_COLORS.dimCyan,
-    padding: 15,
-    marginVertical: 20,
-    backgroundColor: '#000000',
-  },
-  message: {
-    fontSize: 13,
-    fontFamily: 'monospace',
-    lineHeight: 18,
-  },
-  demoBox: {
-    marginVertical: 20,
-    alignItems: 'center',
-    gap: 15,
-  },
-  demoText: {
-    fontSize: 14,
-    fontFamily: 'monospace',
-    fontWeight: 'bold',
+  spacer: {
+    flex: 1,
   },
   startButton: {
-    padding: 20,
-    borderWidth: 2,
-    borderColor: NEON_COLORS.hiYellow,
+    margin: 20,
+    padding: 25,
+    borderWidth: 3,
+    borderColor: NEON_COLORS.hiCyan,
     backgroundColor: '#000000',
     alignItems: 'center',
-    marginVertical: 20,
   },
   startButtonText: {
-    fontSize: 18,
+    fontSize: 24,
     fontFamily: 'monospace',
     fontWeight: 'bold',
-  },
-  featureBox: {
-    borderWidth: 1,
-    borderColor: NEON_COLORS.dimCyan,
-    padding: 15,
-    marginTop: 20,
-    backgroundColor: '#000000',
-  },
-  featureTitle: {
-    fontSize: 14,
-    fontFamily: 'monospace',
-    marginBottom: 10,
-  },
-  featureText: {
-    fontSize: 11,
-    fontFamily: 'monospace',
-    lineHeight: 18,
-  },
-  versionText: {
-    fontSize: 9,
-    fontFamily: 'monospace',
-    textAlign: 'center',
-    marginTop: 20,
-    marginBottom: 40,
   },
 });
