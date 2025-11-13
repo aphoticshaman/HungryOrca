@@ -1,235 +1,345 @@
+/**
+ * INTENTION SCREEN - Set reading intention
+ */
+
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert, Linking } from 'react-native';
-import { useTheme } from '../context/ThemeContext';
-import { FeatureGate } from '../utils/featureGate';
+import { View, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import { NeonText, LPMUDText, FlickerText, ScanLines } from '../components/TerminalEffects';
+import { NEON_COLORS } from '../styles/cyberpunkColors';
+
+const SPREAD_TYPES = [
+  {
+    id: 'single_card',
+    name: 'SINGLE CARD',
+    description: 'Quick guidance snapshot',
+    cardCount: 1,
+    pattern: 'linear'
+  },
+  {
+    id: 'three_card',
+    name: 'PAST-PRESENT-FUTURE',
+    description: 'Timeline analysis',
+    cardCount: 3,
+    pattern: 'linear'
+  },
+  {
+    id: 'daily',
+    name: 'DAILY CHECK-IN',
+    description: 'Focus | Avoid | Gift',
+    cardCount: 3,
+    pattern: 'linear'
+  },
+  {
+    id: 'decision',
+    name: 'DECISION TREE',
+    description: 'Path A vs Path B analysis',
+    cardCount: 6,
+    pattern: 'tree'
+  },
+  {
+    id: 'relationship',
+    name: 'RELATIONSHIP',
+    description: 'Deep connection analysis',
+    cardCount: 6,
+    pattern: 'spatial'
+  },
+  {
+    id: 'celtic_cross',
+    name: 'CELTIC CROSS',
+    description: 'Comprehensive 10-card spread',
+    cardCount: 10,
+    pattern: 'spatial'
+  }
+];
 
 export default function IntentionScreen({ route, navigation }) {
-  // Validate route params
-  if (!route || !route.params || !route.params.readingType || !route.params.profile) {
-    // Navigate back to safety if params missing
-    React.useEffect(() => {
-      navigation.navigate('ReadingType');
-    }, []);
-    return null;
-  }
-
-  const { readingType, profile } = route.params;
-  const { theme } = useTheme();
+  const { readingType, zodiacSign, birthdate } = route.params;
   const [intention, setIntention] = useState('');
   const [spreadType, setSpreadType] = useState('three_card');
+  const [error, setError] = useState('');
 
-  const styles = createStyles(theme);
+  const selectedSpread = SPREAD_TYPES.find(s => s.id === spreadType);
 
-  const SPREADS = [
-    // LINEAR SPREADS
-    { type: 'single_card', name: 'Single Card', desc: 'Quick guidance', icon: '🎯' },
-    { type: 'three_card', name: 'Past-Present-Future', desc: 'Classic timeline', icon: '⏳' },
-    { type: 'daily_checkin', name: 'Daily Check-In', desc: 'Focus, avoid, gift', icon: '🌅' },
-    { type: 'goal_progress', name: 'Goal Progress', desc: 'Track your journey', icon: '🎯' },
-    { type: 'clairvoyant_predictive', name: 'Clairvoyant Forecast', desc: 'If I do X...?', icon: '🔮' },
-
-    // DECISION TREE
-    { type: 'decision_analysis', name: 'Decision Analysis', desc: 'Two paths', icon: '🌿' },
-
-    // SPATIAL SPREADS
-    { type: 'relationship', name: 'Relationship', desc: '6-card deep dive', icon: '❤️' },
-    { type: 'celtic_cross', name: 'Celtic Cross', desc: '10-card comprehensive', icon: '✨' },
-    { type: 'horseshoe', name: 'Horseshoe', desc: '7-card exploration', icon: '🐴' }
-  ];
-
-  async function handleDrawCards() {
+  const handleContinue = () => {
     if (!intention.trim()) {
-      Alert.alert('Hold on', 'What question do you hold in your heart?');
+      setError('Intention required');
       return;
     }
 
-    // Check if user can draw reading (handles both free and premium)
-    const readingCheck = await FeatureGate.canDrawReading();
-
-    if (!readingCheck.allowed) {
-      // Daily limit reached in free version
-      const upgradePrice = FeatureGate.getUpgradePrice();
-      const upgradeUrl = FeatureGate.getUpgradeUrl();
-      const premiumFeatures = FeatureGate.getPremiumFeatures();
-
-      Alert.alert(
-        'Daily Limit Reached',
-        `You've used your free reading for today!\n\nNext reading in ${readingCheck.hoursUntil} hours.\n\nUpgrade to Premium for ${upgradePrice}:\n\n${premiumFeatures.slice(0, 5).map(f => `• ${f}`).join('\n')}`,
-        [
-          { text: 'Maybe Later', style: 'cancel' },
-          {
-            text: `Upgrade ${upgradePrice}`,
-            onPress: () => Linking.openURL(upgradeUrl)
-          }
-        ]
-      );
+    if (intention.trim().length < 3) {
+      setError('Intention too short');
       return;
     }
 
-    // Check if selected spread is available
-    if (!FeatureGate.isSpreadAvailable(spreadType)) {
-      showSpreadLockedAlert(spreadType);
-      return;
-    }
-
+    // Navigate to card drawing
     navigation.navigate('CardDrawing', {
       readingType,
-      profile,
-      intention,
+      zodiacSign,
+      birthdate,
+      intention: intention.trim(),
       spreadType
     });
-  }
-
-  function showSpreadLockedAlert(spread) {
-    const spreadName = SPREADS.find(s => s.type === spread)?.name || spread;
-    const upgradePrice = FeatureGate.getUpgradePrice();
-    const upgradeUrl = FeatureGate.getUpgradeUrl();
-
-    Alert.alert(
-      'Premium Feature',
-      `"${spreadName}" spread is available in Premium.\n\nUpgrade for ${upgradePrice} to unlock:\n\n• All 9 spread types\n• Unlimited readings\n• Reading history\n• Advanced features`,
-      [
-        { text: 'Choose Different Spread', style: 'cancel' },
-        {
-          text: `Upgrade ${upgradePrice}`,
-          onPress: () => Linking.openURL(upgradeUrl)
-        }
-      ]
-    );
-  }
+  };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>
-{`╔═══════════════════════════════╗
-║   SET YOUR INTENTION          ║
-╚═══════════════════════════════╝`}
-      </Text>
+    <View style={styles.container}>
+      <ScanLines />
 
-      <Text style={styles.label}>What question do you hold?</Text>
-      <TextInput
-        style={styles.textArea}
-        value={intention}
-        onChangeText={setIntention}
-        placeholder="What do I need to know about..."
-        placeholderTextColor={theme.textDim}
-        multiline
-        numberOfLines={4}
-      />
+      <ScrollView contentContainerStyle={styles.content}>
+        {/* Header */}
+        <View style={styles.header}>
+          <LPMUDText style={styles.headerTitle}>
+            $HIC${'>'} SET INTENTION$NOR$
+          </LPMUDText>
+          <NeonText color={NEON_COLORS.dimYellow} style={styles.headerSubtitle}>
+            {readingType.toUpperCase()} | {zodiacSign}
+          </NeonText>
+        </View>
 
-      <Text style={styles.label}>Choose your spread:</Text>
-      <ScrollView style={styles.spreadList} nestedScrollEnabled>
-        {SPREADS.map((spread) => {
-          const isAvailable = FeatureGate.isSpreadAvailable(spread.type);
-          const isLocked = !isAvailable && FeatureGate.showPremiumBadges();
+        {/* Intention input */}
+        <View style={styles.inputSection}>
+          <LPMUDText style={styles.inputLabel}>
+            $HIY$QUESTION:$NOR$
+          </LPMUDText>
 
-          return (
-            <TouchableOpacity
-              key={spread.type}
-              style={[
-                styles.spreadOption,
-                spreadType === spread.type && styles.spreadSelected,
-                isLocked && styles.spreadLocked
-              ]}
-              onPress={() => setSpreadType(spread.type)}
-            >
-              <Text style={styles.spreadIcon}>{spread.icon}{isLocked && ' 🔒'}</Text>
-              <View style={styles.spreadInfo}>
-                <Text style={styles.spreadName}>
-                  {spread.name} {isLocked && '(Premium)'}
-                </Text>
-                <Text style={styles.spreadDesc}>{spread.desc}</Text>
-              </View>
-            </TouchableOpacity>
-          );
-        })}
+          <TextInput
+            style={styles.textInput}
+            value={intention}
+            onChangeText={(text) => {
+              setIntention(text);
+              setError('');
+            }}
+            placeholder="What guidance do you seek?"
+            placeholderTextColor={NEON_COLORS.dimCyan}
+            multiline
+            numberOfLines={4}
+            maxLength={200}
+          />
+
+          {error && (
+            <NeonText color={NEON_COLORS.hiRed} style={styles.errorText}>
+              {'>'} {error}
+            </NeonText>
+          )}
+
+          <NeonText color={NEON_COLORS.dimCyan} style={styles.charCount}>
+            {intention.length} / 200
+          </NeonText>
+        </View>
+
+        {/* Spread selection */}
+        <View style={styles.spreadSection}>
+          <LPMUDText style={styles.spreadLabel}>
+            $HIY$SPREAD TYPE:$NOR$
+          </LPMUDText>
+
+          <View style={styles.spreadList}>
+            {SPREAD_TYPES.map((spread) => (
+              <TouchableOpacity
+                key={spread.id}
+                onPress={() => setSpreadType(spread.id)}
+                style={[
+                  styles.spreadCard,
+                  spreadType === spread.id && styles.spreadCardSelected
+                ]}
+              >
+                <View style={styles.spreadHeader}>
+                  <LPMUDText style={styles.spreadName}>
+                    {spreadType === spread.id ? '$HIC$' : '$NOR$'}
+                    {spread.name}
+                    $NOR$
+                  </LPMUDText>
+                  <NeonText
+                    color={spreadType === spread.id ? NEON_COLORS.hiCyan : NEON_COLORS.dimCyan}
+                    style={styles.cardCount}
+                  >
+                    [{spread.cardCount} CARDS]
+                  </NeonText>
+                </View>
+
+                <NeonText
+                  color={NEON_COLORS.dimWhite}
+                  style={styles.spreadDescription}
+                >
+                  {spread.description}
+                </NeonText>
+
+                {spreadType === spread.id && (
+                  <View style={styles.selectedIndicator}>
+                    <NeonText color={NEON_COLORS.hiCyan} style={styles.selectedText}>
+                      {'[ SELECTED ]'}
+                    </NeonText>
+                  </View>
+                )}
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+
+        {/* Continue button */}
+        <TouchableOpacity
+          onPress={handleContinue}
+          style={styles.continueButton}
+        >
+          <FlickerText
+            color={NEON_COLORS.hiGreen}
+            style={styles.continueButtonText}
+            flickerSpeed={150}
+          >
+            {'[ DRAW CARDS ]'}
+          </FlickerText>
+        </TouchableOpacity>
+
+        {/* Back button */}
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
+          <NeonText color={NEON_COLORS.dimCyan} style={styles.backButtonText}>
+            {'[ ← BACK ]'}
+          </NeonText>
+        </TouchableOpacity>
+
+        <View style={styles.spacer} />
       </ScrollView>
-
-      <TouchableOpacity style={styles.button} onPress={handleDrawCards}>
-        <Text style={styles.buttonText}>✧ DRAW CARDS ✧</Text>
-      </TouchableOpacity>
-    </ScrollView>
+    </View>
   );
 }
 
-function createStyles(theme) {
-  return StyleSheet.create({
-    container: {
-      flexGrow: 1,
-      backgroundColor: theme.background,
-      padding: 20
-    },
-    title: {
-      fontFamily: 'monospace',
-      fontSize: 10,
-      color: theme.text,
-      textAlign: 'center',
-      marginTop: 40,
-      marginBottom: 30
-    },
-    label: {
-      fontFamily: 'monospace',
-      fontSize: 12,
-      color: theme.text,
-      marginBottom: 10,
-      marginTop: 20
-    },
-    textArea: {
-      fontFamily: 'monospace',
-      fontSize: 14,
-      color: theme.text,
-      borderWidth: 1,
-      borderColor: theme.border,
-      padding: 12,
-      backgroundColor: theme.background,
-      minHeight: 100,
-      textAlignVertical: 'top'
-    },
-    spreadList: {
-      maxHeight: 300,
-      marginBottom: 10
-    },
-    spreadOption: {
-      borderWidth: 1,
-      borderColor: theme.border,
-      padding: 12,
-      marginBottom: 8,
-      flexDirection: 'row',
-      alignItems: 'center'
-    },
-    spreadSelected: {
-      borderColor: theme.accent,
-      backgroundColor: theme.accent + '20'
-    },
-    spreadIcon: {
-      fontSize: 24,
-      marginRight: 12
-    },
-    spreadInfo: {
-      flex: 1
-    },
-    spreadName: {
-      fontFamily: 'monospace',
-      fontSize: 11,
-      color: theme.text,
-      marginBottom: 3
-    },
-    spreadDesc: {
-      fontFamily: 'monospace',
-      fontSize: 9,
-      color: theme.textDim
-    },
-    button: {
-      borderWidth: 2,
-      borderColor: theme.border,
-      paddingVertical: 15,
-      marginTop: 30
-    },
-    buttonText: {
-      fontFamily: 'monospace',
-      fontSize: 14,
-      color: theme.text,
-      textAlign: 'center'
-    }
-  });
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000000',
+  },
+  content: {
+    padding: 20,
+  },
+  header: {
+    marginBottom: 25,
+    paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: NEON_COLORS.dimCyan,
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+    marginBottom: 5,
+    lineHeight: 22,
+  },
+  headerSubtitle: {
+    fontSize: 11,
+    fontFamily: 'monospace',
+  },
+  inputSection: {
+    marginBottom: 25,
+  },
+  inputLabel: {
+    fontSize: 12,
+    fontFamily: 'monospace',
+    marginBottom: 10,
+    lineHeight: 16,
+  },
+  textInput: {
+    borderWidth: 2,
+    borderColor: NEON_COLORS.dimCyan,
+    padding: 12,
+    fontSize: 14,
+    fontFamily: 'monospace',
+    color: NEON_COLORS.hiWhite,
+    backgroundColor: '#000000',
+    minHeight: 100,
+    textAlignVertical: 'top',
+  },
+  errorText: {
+    fontSize: 11,
+    fontFamily: 'monospace',
+    marginTop: 8,
+  },
+  charCount: {
+    fontSize: 9,
+    fontFamily: 'monospace',
+    marginTop: 5,
+    textAlign: 'right',
+  },
+  spreadSection: {
+    marginBottom: 25,
+  },
+  spreadLabel: {
+    fontSize: 12,
+    fontFamily: 'monospace',
+    marginBottom: 10,
+    lineHeight: 16,
+  },
+  spreadList: {
+    gap: 10,
+  },
+  spreadCard: {
+    borderWidth: 2,
+    borderColor: NEON_COLORS.dimCyan,
+    padding: 12,
+    backgroundColor: '#000000',
+  },
+  spreadCardSelected: {
+    borderColor: NEON_COLORS.hiCyan,
+    borderWidth: 3,
+  },
+  spreadHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  spreadName: {
+    fontSize: 13,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+    lineHeight: 16,
+  },
+  cardCount: {
+    fontSize: 10,
+    fontFamily: 'monospace',
+  },
+  spreadDescription: {
+    fontSize: 11,
+    fontFamily: 'monospace',
+    lineHeight: 16,
+  },
+  selectedIndicator: {
+    marginTop: 8,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: NEON_COLORS.hiCyan,
+  },
+  selectedText: {
+    fontSize: 10,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  continueButton: {
+    padding: 18,
+    borderWidth: 3,
+    borderColor: NEON_COLORS.hiGreen,
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  continueButtonText: {
+    fontSize: 16,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+  },
+  backButton: {
+    padding: 15,
+    borderWidth: 1,
+    borderColor: NEON_COLORS.dimCyan,
+    alignItems: 'center',
+  },
+  backButtonText: {
+    fontSize: 14,
+    fontFamily: 'monospace',
+  },
+  spacer: {
+    height: 40,
+  },
+});
