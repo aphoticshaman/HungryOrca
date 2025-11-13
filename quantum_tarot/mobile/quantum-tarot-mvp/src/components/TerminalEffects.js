@@ -43,7 +43,11 @@ export function LPMUDText({ children, style, ...props }) {
     text = children;
   } else if (Array.isArray(children)) {
     // Handle array of children (from template literals)
-    text = children.join('');
+    // Filter out undefined, null, and empty values before joining
+    text = children
+      .filter(child => child != null && child !== '')
+      .map(child => String(child))
+      .join('');
   } else if (children != null) {
     // Handle other types (numbers, etc)
     text = String(children);
@@ -51,7 +55,17 @@ export function LPMUDText({ children, style, ...props }) {
     return null;
   }
 
+  // If text is empty after processing, return null
+  if (!text || text.trim() === '') {
+    return null;
+  }
+
   const segments = parseLPMUDColors(text);
+
+  // If no segments were parsed, return null to avoid empty boxes
+  if (!segments || segments.length === 0) {
+    return null;
+  }
 
   return (
     <Text style={[{ color: NEON_COLORS.dimWhite }, style]} {...props}>
