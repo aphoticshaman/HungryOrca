@@ -243,6 +243,51 @@ export default function ReadingScreen({ route, navigation }) {
           </LPMUDText>
         </View>
 
+        {/* SPREAD SUMMARY - Big Picture (shown on last card of multi-card spreads) */}
+        {reading.spreadSummary && currentCardIndex === cards.length - 1 && (
+          <View style={styles.spreadSummaryBox}>
+            <LPMUDText style={styles.spreadSummaryTitle}>
+              $HIY${'>'} SPREAD SYNTHESIS - THE BIG PICTURE {'<'}$NOR$
+            </LPMUDText>
+
+            {/* Critical Insight */}
+            <View style={styles.criticalInsightBox}>
+              <LPMUDText style={styles.criticalInsightText}>
+                $HIR$⚠ {reading.spreadSummary.criticalInsight} ⚠$NOR$
+              </LPMUDText>
+            </View>
+
+            {/* Narrative */}
+            <LPMUDText style={styles.spreadNarrative}>
+              $HIC$━━ FULL READING ANALYSIS ━━$NOR${'\n\n'}
+              $HIW${reading.spreadSummary.narrative}$NOR$
+            </LPMUDText>
+
+            {/* Patterns */}
+            <LPMUDText style={styles.patternsSection}>
+              $HIC$━━ PATTERNS DETECTED ━━$NOR${'\n'}
+              $HIG$ENERGY FLOW:$NOR$ {reading.spreadSummary.patterns.energyFlow.toUpperCase()} ({reading.spreadSummary.patterns.reversedCount}/{reading.spreadSummary.patterns.totalCards} reversed){'\n'}
+              $HIG$INTENSITY:$NOR$ {reading.spreadSummary.patterns.intensity.toUpperCase()} ({reading.spreadSummary.patterns.majorArcanaCount} Major Arcana){'\n'}
+              $HIG$DOMINANT ELEMENT:$NOR$ {reading.spreadSummary.patterns.dominantElement.toUpperCase()}{'\n'}
+              {reading.spreadSummary.patterns.dominantThemes.length > 0 && (
+                `$HIG$KEY THEMES:$NOR$ ${reading.spreadSummary.patterns.dominantThemes.join(', ')}\n`
+              )}
+            </LPMUDText>
+
+            {/* Integrated Actions */}
+            <LPMUDText style={styles.integratedActionsSection}>
+              $HIC$━━ TOP PRIORITY ACTIONS ━━$NOR${'\n'}
+              $HIG$Based on ALL cards together:$NOR$
+            </LPMUDText>
+
+            {reading.spreadSummary.integratedActions.map((action, i) => (
+              <LPMUDText key={i} style={styles.integratedActionItem}>
+                $HIY${i + 1}.$NOR$ {action}
+              </LPMUDText>
+            ))}
+          </View>
+        )}
+
         {/* Navigation */}
         <View style={styles.navRow}>
           {currentCardIndex > 0 && (
@@ -420,6 +465,60 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontFamily: 'monospace',
     lineHeight: 16,
+  },
+  spreadSummaryBox: {
+    borderWidth: 3,
+    borderColor: NEON_COLORS.hiYellow,
+    padding: 15,
+    marginVertical: 20,
+    backgroundColor: '#0a0a00',
+  },
+  spreadSummaryTitle: {
+    fontSize: 14,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+    marginBottom: 15,
+    lineHeight: 18,
+    textAlign: 'center',
+  },
+  criticalInsightBox: {
+    borderWidth: 2,
+    borderColor: NEON_COLORS.hiRed,
+    padding: 12,
+    marginBottom: 15,
+    backgroundColor: '#1a0000',
+  },
+  criticalInsightText: {
+    fontSize: 12,
+    fontFamily: 'monospace',
+    lineHeight: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  spreadNarrative: {
+    fontSize: 11,
+    fontFamily: 'monospace',
+    lineHeight: 17,
+    marginBottom: 15,
+  },
+  patternsSection: {
+    fontSize: 10,
+    fontFamily: 'monospace',
+    lineHeight: 16,
+    marginBottom: 15,
+  },
+  integratedActionsSection: {
+    fontSize: 11,
+    fontFamily: 'monospace',
+    lineHeight: 17,
+    marginBottom: 10,
+  },
+  integratedActionItem: {
+    fontSize: 11,
+    fontFamily: 'monospace',
+    lineHeight: 17,
+    marginLeft: 10,
+    marginBottom: 8,
   },
   navRow: {
     flexDirection: 'row',

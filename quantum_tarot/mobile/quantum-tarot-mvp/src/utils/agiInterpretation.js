@@ -581,12 +581,21 @@ export function interpretReading(cards, spreadType, intention, context = {}) {
     })
   );
 
+  // Generate spread synthesis (big picture analysis)
+  const spreadSummary = generateSpreadSummary(
+    interpretations,
+    intention,
+    spreadType,
+    context.readingType || 'general'
+  );
+
   return {
     interpretations,
     astrologicalContext: astroContext,
     spreadType,
     intention,
-    summary: generateReadingSummary(interpretations, astroContext)
+    summary: generateReadingSummary(interpretations, astroContext),
+    spreadSummary // NEW: Big picture synthesis across all cards
   };
 }
 
@@ -603,4 +612,292 @@ function generateReadingSummary(interpretations, astroContext) {
     mercury_status: astroContext.mercuryRetrograde.isRetrograde ? 'Retrograde' : 'Direct',
     overall_energy: `${astroContext.planetaryInfluences.dominantPlanet} energy dominant`
   };
+}
+
+/**
+ * SPREAD SYNTHESIS - "Big Picture" analysis across all cards
+ * Generates 200-300 word synthesis showing how all cards relate to the intention
+ *
+ * @param {Array} interpretations - All card interpretations from the spread
+ * @param {string} intention - User's original intention
+ * @param {string} spreadType - Type of spread (single_card, three_card, etc.)
+ * @param {string} readingType - Reading focus (career, romance, etc.)
+ * @returns {Object} - Comprehensive spread synthesis
+ */
+export function generateSpreadSummary(interpretations, intention, spreadType, readingType) {
+  if (!interpretations || interpretations.length === 0) {
+    return null;
+  }
+
+  // Single card readings don't need spread summary
+  if (interpretations.length === 1) {
+    return null;
+  }
+
+  // Analyze patterns across all cards
+  const patterns = analyzeSpreadPatterns(interpretations);
+
+  // Extract key entities from intention
+  const entities = extractIntentionEntities(intention || '');
+
+  // Generate narrative synthesis
+  const narrative = generateSpreadNarrative(
+    interpretations,
+    intention,
+    spreadType,
+    readingType,
+    patterns,
+    entities
+  );
+
+  // Generate integrated action steps from all cards
+  const integratedActions = generateIntegratedActions(interpretations, entities);
+
+  return {
+    patterns,
+    narrative,
+    integratedActions,
+    keyThemes: patterns.dominantThemes,
+    overallOrientation: patterns.energyFlow,
+    criticalInsight: generateCriticalInsight(interpretations, patterns, intention)
+  };
+}
+
+/**
+ * Analyze patterns across all cards in the spread
+ */
+function analyzeSpreadPatterns(interpretations) {
+  const totalCards = interpretations.length;
+  let reversedCount = 0;
+  let majorArcanaCount = 0;
+  const elements = { fire: 0, water: 0, air: 0, earth: 0, spirit: 0 };
+  const suits = { wands: 0, cups: 0, swords: 0, pentacles: 0, major: 0 };
+  const allKeywords = [];
+
+  interpretations.forEach(interp => {
+    // Count reversed
+    if (interp.reversed) reversedCount++;
+
+    // Count Major Arcana
+    const arcana = interp.cardData.arcana;
+    if (arcana === 'Major') {
+      majorArcanaCount++;
+      suits.major++;
+    } else {
+      // Count suits for Minor Arcana
+      const suit = interp.cardData.suit?.toLowerCase();
+      if (suit && suits[suit] !== undefined) {
+        suits[suit]++;
+      }
+    }
+
+    // Count elements
+    const element = interp.cardData.element?.toLowerCase() || 'spirit';
+    if (elements[element] !== undefined) {
+      elements[element]++;
+    }
+
+    // Collect keywords
+    const keywords = interp.reversed
+      ? (interp.cardData.keywords?.reversed || [])
+      : (interp.cardData.keywords?.upright || []);
+    allKeywords.push(...keywords);
+  });
+
+  // Calculate dominant element
+  const dominantElement = Object.entries(elements)
+    .sort((a, b) => b[1] - a[1])[0][0];
+
+  // Calculate dominant suit (if applicable)
+  const dominantSuit = Object.entries(suits)
+    .filter(([suit, _]) => suit !== 'major')
+    .sort((a, b) => b[1] - a[1])[0];
+
+  // Find repeating keyword themes (appear 2+ times)
+  const keywordFrequency = {};
+  allKeywords.forEach(kw => {
+    const key = kw.toLowerCase();
+    keywordFrequency[key] = (keywordFrequency[key] || 0) + 1;
+  });
+  const dominantThemes = Object.entries(keywordFrequency)
+    .filter(([_, count]) => count >= 2)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5)
+    .map(([theme, _]) => theme);
+
+  // Energy flow assessment
+  const reversedRatio = reversedCount / totalCards;
+  const energyFlow = reversedRatio > 0.6 ? 'blocked/internal' :
+                     reversedRatio > 0.3 ? 'mixed/transitional' :
+                     'flowing/external';
+
+  // Major Arcana intensity
+  const majorArcanaRatio = majorArcanaCount / totalCards;
+  const intensity = majorArcanaRatio > 0.6 ? 'high' :
+                    majorArcanaRatio > 0.3 ? 'moderate' :
+                    'low';
+
+  return {
+    totalCards,
+    reversedCount,
+    reversedRatio,
+    majorArcanaCount,
+    majorArcanaRatio,
+    intensity,
+    dominantElement,
+    elementalBalance: elements,
+    dominantSuit: dominantSuit ? dominantSuit[0] : null,
+    suitDistribution: suits,
+    dominantThemes,
+    energyFlow
+  };
+}
+
+/**
+ * Generate narrative synthesis (200-300 words)
+ */
+function generateSpreadNarrative(interpretations, intention, spreadType, readingType, patterns, entities) {
+  const cardNames = interpretations.map(i => i.cardData.name).join(', ');
+
+  // Opening: Reference intention and cards
+  let narrative = `Regarding your question "${intention}" - you drew ${cardNames}. `;
+
+  // Major Arcana significance
+  if (patterns.majorArcanaRatio > 0.5) {
+    narrative += `With ${patterns.majorArcanaCount} Major Arcana cards, this is a MAJOR life moment requiring significant attention. These aren't small tweaks—this is deep transformation, destiny-level stuff. `;
+  } else if (patterns.majorArcanaCount === 0) {
+    narrative += `All Minor Arcana suggests this situation is within your control and more about day-to-day choices than fate. You have agency here. `;
+  }
+
+  // Energy flow (reversed ratio)
+  if (patterns.energyFlow === 'blocked/internal') {
+    narrative += `The majority of cards are reversed, indicating internal blocks, resistance, or the need to address shadow patterns before external progress is possible. You're in an integration phase—don't force forward movement yet. `;
+  } else if (patterns.energyFlow === 'flowing/external') {
+    narrative += `Most cards upright shows flowing, active energy. The universe is conspiring in your favor—take bold action aligned with these themes. `;
+  } else {
+    narrative += `Mixed upright/reversed cards suggest you're in transition—some areas flowing, others requiring inner work. `;
+  }
+
+  // Elemental dominance
+  const elementInsights = {
+    fire: 'Fire dominates: passion, action, risk-taking, courage. This requires DOING, not overthinking.',
+    water: 'Water dominates: emotion, intuition, feeling, flow. Trust your gut, honor feelings, dive deep.',
+    air: 'Air dominates: communication, clarity, truth-telling, mental work. Speak up, get clear, analyze.',
+    earth: 'Earth dominates: practical action, building, patience, embodiment. Ground yourself, take concrete steps.',
+    spirit: 'Spiritual energy dominates: this is about transcendence, faith, connecting to something larger.'
+  };
+  narrative += `${elementInsights[patterns.dominantElement]} `;
+
+  // Dominant themes
+  if (patterns.dominantThemes.length > 0) {
+    narrative += `Key themes repeating across cards: ${patterns.dominantThemes.slice(0, 3).join(', ')}. Pay special attention to these—they're the universe shouting at you. `;
+  }
+
+  // Spread-specific insights
+  const spreadInsights = {
+    three_card: 'Looking at past-present-future: ',
+    daily: 'For today: ',
+    decision: 'Comparing your two paths: ',
+    relationship: 'The relationship dynamics show: ',
+    celtic_cross: 'The full Celtic Cross reveals: '
+  };
+  if (spreadInsights[spreadType]) {
+    narrative += spreadInsights[spreadType];
+
+    if (spreadType === 'three_card') {
+      narrative += `Your past (${interpretations[0].cardData.name}) brought you here, your present (${interpretations[1].cardData.name}) is the current work, and your future (${interpretations[2].cardData.name}) is where this leads if you stay the course. `;
+    } else if (spreadType === 'decision') {
+      narrative += `Path A shows ${interpretations[1].cardData.name}, Path B shows ${interpretations[4].cardData.name}. Neither is "right"—both have gifts and challenges. The question isn't which path, but which YOU are you becoming? `;
+    }
+  }
+
+  // Entity-specific addressing (hyper-personalization)
+  if (entities.subjects.length > 0) {
+    narrative += `Regarding ${entities.subjects[0]}: the cards suggest ${entities.emotions.length > 0 ? `your ${entities.emotions[0]} is` : 'this relationship is'} central to the current dynamic. `;
+  }
+
+  // Closing with directness
+  narrative += `Bottom line: ${generateBottomLine(interpretations, patterns, entities)}`;
+
+  return narrative;
+}
+
+/**
+ * Generate the "bottom line" - direct, actionable conclusion
+ */
+function generateBottomLine(interpretations, patterns, entities) {
+  // High reversed = do inner work first
+  if (patterns.reversedRatio > 0.6) {
+    return `Don't force external action yet. Do the inner work these cards are demanding—therapy, shadow work, rest, or ending toxic patterns. Once you address blocks, the path forward will be obvious.`;
+  }
+
+  // High Major Arcana = major life shift
+  if (patterns.majorArcanaRatio > 0.6) {
+    return `This is a major life chapter. Trust that what's happening (even if hard) is necessary for your evolution. Surrender to the process while taking practical steps the cards suggest.`;
+  }
+
+  // Mostly upright, flowing energy
+  if (patterns.energyFlow === 'flowing/external') {
+    const actions = interpretations
+      .flatMap(i => i.layers.practical.action_steps)
+      .slice(0, 2);
+    return `The energy is RIPE for action. Start immediately: ${actions[0]} Then: ${actions[1]} Don't overthink—DO.`;
+  }
+
+  // Mixed/transitional
+  return `You're in transition. Some things need to die (address the reversed cards), while others need to be born (embody the upright ones). Focus on the 2-3 most practical actions from your cards and execute them this week.`;
+}
+
+/**
+ * Generate integrated actions considering ALL cards together
+ */
+function generateIntegratedActions(interpretations, entities) {
+  // Collect all action steps from all cards
+  const allActions = interpretations.flatMap(i => i.layers.practical.action_steps);
+
+  // Prioritize based on patterns
+  // 1. Actions addressing blocks (if cards are mostly reversed)
+  // 2. Actions that appear in multiple cards
+  // 3. Actions with highest specificity
+
+  // For now, return top 5 unique actions
+  const uniqueActions = [...new Set(allActions)].slice(0, 5);
+
+  return uniqueActions;
+}
+
+/**
+ * Generate the single most critical insight from the spread
+ */
+function generateCriticalInsight(interpretations, patterns, intention) {
+  // This is the ONE THING the user must understand
+
+  if (patterns.reversedRatio > 0.7) {
+    return `CRITICAL: Stop pushing forward. The blocks ARE the work right now. Address resistance before taking external action.`;
+  }
+
+  if (patterns.majorArcanaRatio >= 0.5) {
+    const majorCards = interpretations
+      .filter(i => i.cardData.arcana === 'Major')
+      .map(i => i.cardData.name)
+      .join(', ');
+    return `CRITICAL: ${majorCards} together signals a destiny-level moment. This isn't casual—it's your soul's curriculum. Pay deep attention.`;
+  }
+
+  if (patterns.dominantThemes.length >= 3) {
+    return `CRITICAL: The themes ${patterns.dominantThemes.slice(0, 3).join(', ')} keep repeating. The universe is being LOUD about this. Don't ignore the pattern.`;
+  }
+
+  // Look for contradiction between cards (past vs future, path A vs B)
+  if (interpretations.length >= 2) {
+    const firstCard = interpretations[0];
+    const lastCard = interpretations[interpretations.length - 1];
+    if (firstCard.reversed && !lastCard.reversed) {
+      return `CRITICAL: You're moving from ${firstCard.cardData.name} reversed to ${lastCard.cardData.name} upright—this is a healing arc. Trust the transformation.`;
+    } else if (!firstCard.reversed && lastCard.reversed) {
+      return `CRITICAL: ${firstCard.cardData.name} upright moving to ${lastCard.cardData.name} reversed warns of potential self-sabotage or external obstacles ahead. Course-correct now.`;
+    }
+  }
+
+  return `CRITICAL: All cards point to the same directive—trust the specific actions they've given you and execute them with full commitment.`;
 }
