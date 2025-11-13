@@ -112,14 +112,14 @@ async function getPublicTimestamp() {
 }
 
 /**
- * Draw N random cards from deck (0-77 for full tarot deck)
+ * Draw N random cards from deck (currently 5 cards until full database is populated)
  * Returns array of { cardIndex, reversed } objects
  * @param {number} cardCount - Number of cards to draw
  * @param {string} intention - User's intention (mixed into entropy)
  * @returns {Promise<Array>}
  */
 export async function drawCards(cardCount, intention = '') {
-  const TOTAL_CARDS = 78; // Full tarot deck: 22 major + 56 minor arcana
+  const TOTAL_CARDS = 5; // TODO: Change to 78 when full card database is populated
 
   // Create deck indices
   const deck = Array.from({ length: TOTAL_CARDS }, (_, i) => i);
