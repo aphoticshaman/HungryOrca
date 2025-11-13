@@ -109,18 +109,26 @@ export default function ReadingScreen({ route, navigation }) {
             $HIM${'>'} LUNATIQ AGI INTERPRETATION$NOR$
           </LPMUDText>
 
-          {/* Position & Orientation */}
+          {/* Card Data Header */}
           <LPMUDText style={styles.interpretationSection}>
-            $HIW$POSITION:$NOR$ {currentCard.position}{'\n'}
-            $HIW$ORIENTATION:$NOR$ {currentCard.reversed ? '$HIR$REVERSED$NOR$' : '$HIG$UPRIGHT$NOR$'}
+            $HIC${'>'} CARD DATA STREAM {'<'}$NOR${'\n'}
+            $HIY$━━━━━━━━━━━━━━━━━━━━$NOR${'\n\n'}
+            $HIM$IDENTITY:$NOR$ {currentInterpretation.cardData.name}{'\n'}
+            $HIM$ARCANA:$NOR$ {currentInterpretation.cardData.arcana?.toUpperCase()}{'\n'}
+            $HIM$ELEMENT:$NOR$ {currentInterpretation.cardData.element?.toUpperCase() || 'SPIRIT'}{'\n'}
+            $HIM$NUMEROLOGY:$NOR$ {currentInterpretation.cardData.numerology}{'\n'}
+            $HIM$POSITION:$NOR$ {currentCard.position}{'\n'}
+            $HIM$ORIENTATION:$NOR$ {currentCard.reversed ? '$HIR$REVERSED$NOR$' : '$HIG$UPRIGHT$NOR$'}{'\n\n'}
+            $HIC$SYMBOLS:$NOR$ {currentInterpretation.cardData.symbols?.slice(0, 4).join(', ') || 'N/A'}{'\n\n'}
+            $HIY$━━━━━━━━━━━━━━━━━━━━$NOR$
           </LPMUDText>
 
           {/* Layer 1: Archetypal */}
           <LPMUDText style={styles.interpretationSection}>
             $HIC$━━ ARCHETYPAL LAYER ━━$NOR${'\n'}
-            $HIY${currentInterpretation.cardData.name.toUpperCase()}$NOR${'\n'}
             $NOR${currentInterpretation.layers.archetypal.core_meaning}{'\n\n'}
-            $HIM$Keywords:$NOR$ {currentInterpretation.layers.archetypal.keywords.join(', ')}
+            $HIG$UPRIGHT KEYWORDS:$NOR$ {currentInterpretation.cardData.keywords?.upright?.slice(0, 5).join(', ') || 'N/A'}{'\n\n'}
+            $HIR$REVERSED KEYWORDS:$NOR$ {currentInterpretation.cardData.keywords?.reversed?.slice(0, 5).join(', ') || 'N/A'}
           </LPMUDText>
 
           {/* Layer 2: Contextual */}

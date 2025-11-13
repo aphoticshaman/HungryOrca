@@ -1,23 +1,20 @@
 /**
  * CYBERPUNK TAROT CARD
- * Terminal hacker aesthetic with neon glows and Matrix effects
+ * Terminal hacker aesthetic with neon glows - simplified display
  */
 
-import React, { useState, useRef, useEffect } from 'react';
-import { View, TouchableOpacity, Animated, StyleSheet, Dimensions, Platform } from 'react-native';
-import { NeonText, LPMUDText, FlickerText, GlitchText, MorphText, MatrixRain, ScanLines } from './TerminalEffects';
+import React, { useRef, useEffect } from 'react';
+import { View, Animated, StyleSheet, Dimensions, Platform } from 'react-native';
+import { NeonText, FlickerText, GlitchText, ScanLines } from './TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
 import { CARD_DATABASE } from '../data/cardDatabase';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 /**
- * CYBERPUNK CARD - Flippable card with terminal effects
+ * CYBERPUNK CARD - Simplified card display
  */
-export default function CyberpunkCard({ cardIndex, reversed, position, onReveal }) {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isRevealing, setIsRevealing] = useState(false);
-  const flipAnim = useRef(new Animated.Value(0)).current;
+export default function CyberpunkCard({ cardIndex, reversed, position }) {
   const glowAnim = useRef(new Animated.Value(0)).current;
 
   const card = CARD_DATABASE[cardIndex] || CARD_DATABASE[0];
@@ -40,34 +37,6 @@ export default function CyberpunkCard({ cardIndex, reversed, position, onReveal 
     ).start();
   }, []);
 
-  const handleFlip = () => {
-    Animated.spring(flipAnim, {
-      toValue: isFlipped ? 0 : 180,
-      friction: 8,
-      tension: 10,
-      useNativeDriver: false, // Must be false since we animate borderColor
-    }).start();
-    setIsFlipped(!isFlipped);
-  };
-
-  const handleReveal = () => {
-    setIsRevealing(true);
-    setTimeout(() => {
-      setIsRevealing(false);
-      onReveal && onReveal();
-    }, 1500);
-  };
-
-  const frontInterpolate = flipAnim.interpolate({
-    inputRange: [0, 180],
-    outputRange: ['0deg', '180deg'],
-  });
-
-  const backInterpolate = flipAnim.interpolate({
-    inputRange: [0, 180],
-    outputRange: ['180deg', '360deg'],
-  });
-
   const glowColor = glowAnim.interpolate({
     inputRange: [0, 1],
     outputRange: ['rgba(0, 255, 255, 0.2)', 'rgba(255, 0, 255, 0.8)'],
@@ -81,20 +50,10 @@ export default function CyberpunkCard({ cardIndex, reversed, position, onReveal 
 
   return (
     <View style={styles.cardContainer}>
-      {/* Matrix rain background during reveal */}
-      {isRevealing && (
-        <View style={StyleSheet.absoluteFill}>
-          <MatrixRain width={SCREEN_WIDTH - 40} height={400} speed={30} />
-        </View>
-      )}
-
-      {/* Front of card */}
       <Animated.View
         style={[
           styles.cardFace,
-          styles.cardFront,
           {
-            transform: [{ rotateY: frontInterpolate }],
             borderColor: glowColor,
           },
         ]}
@@ -125,13 +84,14 @@ export default function CyberpunkCard({ cardIndex, reversed, position, onReveal 
               [REVERSED]
             </FlickerText>
           )}
-        </View>
 
-        {/* ASCII Art placeholder */}
-        <View style={styles.asciiContainer}>
-          <LPMUDText style={styles.asciiArt}>
-            {generateCyberpunkASCII(card)}
-          </LPMUDText>
+          {/* Element badge */}
+          <NeonText
+            color={cardColor}
+            style={styles.elementBadge}
+          >
+            {'['} {card.element?.toUpperCase() || 'SPIRIT'} {']'}
+          </NeonText>
         </View>
 
         {/* Position label */}
@@ -141,132 +101,29 @@ export default function CyberpunkCard({ cardIndex, reversed, position, onReveal 
         >
           {'>'} {position} {'<'}
         </NeonText>
-
-        {/* Flip button */}
-        <TouchableOpacity onPress={handleFlip} style={styles.flipButton}>
-          <FlickerText color={NEON_COLORS.hiYellow} style={styles.flipButtonText}>
-            [ REVEAL DATA ] ▶
-          </FlickerText>
-        </TouchableOpacity>
-      </Animated.View>
-
-      {/* Back of card */}
-      <Animated.View
-        style={[
-          styles.cardFace,
-          styles.cardBack,
-          {
-            transform: [{ rotateY: backInterpolate }],
-            borderColor: glowColor,
-          },
-        ]}
-      >
-        <ScanLines />
-
-        {/* Card data with LPMUD color codes */}
-        <View style={styles.cardData}>
-          <LPMUDText style={styles.dataText}>
-            $HIC${'>'} CARD DATA STREAM {'<'}$NOR${'\n'}
-            $HIY$━━━━━━━━━━━━━━━━━━━━$NOR${'\n\n'}
-
-            $HIM$IDENTITY:$NOR$ {card.name}{'\n'}
-            $HIM$ELEMENT:$NOR$ {card.element?.toUpperCase() || 'N/A'}{'\n'}
-            $HIM$NUMEROLOGY:$NOR$ {card.numerology}{'\n\n'}
-
-            $HIC$SYMBOLS:$NOR${'\n'}
-            {card.symbols?.slice(0, 3).map(s => `  • ${s}`).join('\n') || 'N/A'}{'\n\n'}
-
-            $HIW$MEANING:$NOR${'\n'}
-            {card.description?.substring(0, 150) || 'No data available'}...{'\n\n'}
-
-            $HIG$UPRIGHT:$NOR${'\n'}
-            {card.keywords?.upright?.slice(0, 3).join(', ') || 'N/A'}{'\n\n'}
-
-            $HIR$REVERSED:$NOR${'\n'}
-            {card.keywords?.reversed?.slice(0, 3).join(', ') || 'N/A'}{'\n\n'}
-
-            $HIY$ADVICE:$NOR${'\n'}
-            {card.advice || 'Trust the flow'}{'\n\n'}
-
-            $HIY$━━━━━━━━━━━━━━━━━━━━$NOR$
-          </LPMUDText>
-        </View>
-
-        {/* Flip back button */}
-        <TouchableOpacity onPress={handleFlip} style={styles.flipButton}>
-          <FlickerText color={NEON_COLORS.hiCyan} style={styles.flipButtonText}>
-            ◀ [ CLOSE DATA ]
-          </FlickerText>
-        </TouchableOpacity>
       </Animated.View>
     </View>
   );
 }
 
-/**
- * Generate cyberpunk ASCII art placeholder
- * TODO: Replace with actual card-specific ASCII when ready
- */
-function generateCyberpunkASCII(card) {
-  const isMajor = card.arcana === 'major';
-
-  if (isMajor) {
-    return `$HIC$
-    ╔═══════════════╗
-    ║   $HIY$◢◣$HIC$   $HIY$◢◣$HIC$   ║
-    ║  $HIM$◢$HIW$███$HIM$◣$HIC$ $HIM$◢$HIW$███$HIM$◣$HIC$  ║
-    ║  $HIW$█$HIC$░$HIY$☆$HIC$░$HIW$█$HIC$ $HIW$█$HIC$░$HIY$☆$HIC$░$HIW$█$HIC$  ║
-    ║  $HIM$◥$HIW$███$HIM$◤$HIC$ $HIM$◥$HIW$███$HIM$◤$HIC$  ║
-    ║   $HIY$◥◤$HIC$   $HIY$◥◤$HIC$   ║
-    ║               ║
-    ║  $HIY$M A J O R$HIC$  ║
-    ║  $HIM$A R C A N A$HIC$  ║
-    ╚═══════════════╝
-$NOR$`;
-  } else {
-    const suitSymbol = card.suit === 'wands' ? '|' :
-                      card.suit === 'cups' ? '◡' :
-                      card.suit === 'swords' ? '†' :
-                      card.suit === 'pentacles' ? '◯' : '?';
-
-    return `$HIG$
-    ┌───────────────┐
-    │   $HIY$${suitSymbol}$HIG$   $HIY$${suitSymbol}$HIG$   $HIY$${suitSymbol}$HIG$   │
-    │               │
-    │   $HIW$${suitSymbol}$HIG$   $HIM$${suitSymbol}$HIG$   $HIW$${suitSymbol}$HIG$   │
-    │               │
-    │   $HIY$${suitSymbol}$HIG$   $HIY$${suitSymbol}$HIG$   $HIY$${suitSymbol}$HIG$   │
-    └───────────────┘
-$NOR$`;
-  }
-}
-
 const styles = StyleSheet.create({
   cardContainer: {
     width: SCREEN_WIDTH - 40,
-    height: 450,
+    height: 180,
     marginVertical: 10,
     alignSelf: 'center',
   },
   cardFace: {
-    position: 'absolute',
     width: '100%',
     height: '100%',
     backgroundColor: '#000000',
     borderWidth: 2,
     borderRadius: 8,
     padding: 20,
-    backfaceVisibility: 'hidden',
-  },
-  cardFront: {
-    justifyContent: 'space-between',
-  },
-  cardBack: {
-    justifyContent: 'space-between',
+    justifyContent: 'center',
   },
   cardHeader: {
     alignItems: 'center',
-    marginBottom: 15,
   },
   cardNumber: {
     fontSize: 16,
@@ -278,7 +135,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   cardTitle: {
-    fontSize: 24,
+    fontSize: 28,
     fontFamily: Platform.select({
       ios: 'Courier',
       android: 'monospace',
@@ -296,19 +153,14 @@ const styles = StyleSheet.create({
     }),
     marginTop: 5,
   },
-  asciiContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  asciiArt: {
+  elementBadge: {
     fontSize: 12,
     fontFamily: Platform.select({
       ios: 'Courier',
       android: 'monospace',
       default: 'Courier New',
     }),
-    lineHeight: 16,
+    marginTop: 8,
   },
   positionLabel: {
     fontSize: 14,
@@ -318,34 +170,6 @@ const styles = StyleSheet.create({
       default: 'Courier New',
     }),
     textAlign: 'center',
-    marginVertical: 10,
-  },
-  flipButton: {
-    padding: 12,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: NEON_COLORS.dimCyan,
-    borderRadius: 4,
-  },
-  flipButtonText: {
-    fontSize: 16,
-    fontFamily: Platform.select({
-      ios: 'Courier',
-      android: 'monospace',
-      default: 'Courier New',
-    }),
-    fontWeight: 'bold',
-  },
-  cardData: {
-    flex: 1,
-  },
-  dataText: {
-    fontSize: 11,
-    fontFamily: Platform.select({
-      ios: 'Courier',
-      android: 'monospace',
-      default: 'Courier New',
-    }),
-    lineHeight: 16,
+    marginTop: 15,
   },
 });
