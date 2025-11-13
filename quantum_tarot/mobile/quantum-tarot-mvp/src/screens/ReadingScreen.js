@@ -98,6 +98,7 @@ export default function ReadingScreen({ route, navigation }) {
 
         {/* Card display */}
         <CyberpunkCard
+          key={currentCardIndex}
           cardIndex={currentCard.cardIndex}
           reversed={currentCard.reversed}
           position={currentCard.position}
