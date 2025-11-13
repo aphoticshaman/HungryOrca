@@ -141,6 +141,9 @@ export async function drawCards(cardCount, intention = '') {
   // Shuffle deck with quantum randomness
   const shuffledDeck = await quantumShuffle(deck);
 
+  console.log('🎴 QUANTUM DRAW DEBUG:');
+  console.log('Shuffled first 10 cards:', shuffledDeck.slice(0, 10));
+
   // Draw cards and determine reversals
   const drawnCards = [];
   for (let i = 0; i < cardCount; i++) {
@@ -149,11 +152,15 @@ export async function drawCards(cardCount, intention = '') {
     // Quantum random reversal (50/50 chance)
     const reversed = (await getQuantumInt(0, 1)) === 1;
 
+    console.log(`Card ${i + 1}: Index=${cardIndex}, Reversed=${reversed}`);
+
     drawnCards.push({
       cardIndex,
       reversed
     });
   }
+
+  console.log('Final drawn cards:', drawnCards);
 
   return drawnCards;
 }

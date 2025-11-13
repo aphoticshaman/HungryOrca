@@ -38,13 +38,13 @@ export function NeonText({ children, color = NEON_COLORS.cyan, glowColor, style,
  */
 export function LPMUDText({ children, style, ...props }) {
   if (typeof children !== 'string') {
-    return <Text style={style} {...props}>{children}</Text>;
+    return <Text style={[{ color: NEON_COLORS.dimWhite }, style]} {...props}>{children}</Text>;
   }
 
   const segments = parseLPMUDColors(children);
 
   return (
-    <Text style={style} {...props}>
+    <Text style={[{ color: NEON_COLORS.dimWhite }, style]} {...props}>
       {segments.map((segment, i) => (
         <NeonText
           key={i}
