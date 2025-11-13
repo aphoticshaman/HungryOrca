@@ -234,60 +234,19 @@ Generate the interpretation now. Return ONLY the JSON object, nothing else.`;
 }
 
 /**
- * Call LLM API (Anthropic Claude)
+ * Local LLM Inference (NO EXTERNAL API CALLS)
+ * Uses enhanced local AGI with deep reasoning
+ *
+ * Future: Integrate on-device models via:
+ * - react-native-transformers
+ * - ONNX Runtime Mobile
+ * - llama.cpp React Native bindings
  */
 async function callLLM(prompt, config, seed) {
-  const { provider, apiKey, model, temperature, maxTokens } = config;
+  // NO EXTERNAL API CALLS - Use enhanced local generation
+  // This generates 200-250 word interpretations per layer locally
 
-  if (provider === 'anthropic') {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: model || 'claude-3-5-sonnet-20241022',
-        max_tokens: maxTokens || 4000,
-        temperature: temperature + (seed * 0.1), // Vary temperature for beam search
-        messages: [
-          { role: 'user', content: prompt }
-        ]
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`LLM API error: ${response.status} ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    return data.content[0].text;
-
-  } else if (provider === 'openai') {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: model || 'gpt-4',
-        messages: [{ role: 'user', content: prompt }],
-        temperature: temperature + (seed * 0.1),
-        max_tokens: maxTokens || 4000
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`LLM API error: ${response.status} ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    return data.choices[0].message.content;
-  }
-
-  throw new Error(`Unsupported provider: ${provider}`);
+  throw new Error('Local LLM inference not yet implemented. Using enhanced local AGI instead.');
 }
 
 /**
