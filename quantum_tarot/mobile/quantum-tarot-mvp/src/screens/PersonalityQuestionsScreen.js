@@ -4,8 +4,12 @@
 
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NeonText, LPMUDText, FlickerText, ScanLines } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
+
+const PROFILES_KEY = '@lunatiq_profiles';
+const ACTIVE_PROFILE_KEY = '@lunatiq_active_profile';
 
 // 10 personality profiling questions (DBT/CBT/MRT framework)
 const QUESTIONS = [
@@ -121,14 +125,15 @@ const QUESTIONS = [
   }
 ];
 
-export default function PersonalityQuestionsScreen({ navigation }) {
+export default function PersonalityQuestionsScreen({ route, navigation }) {
+  const { profileName, birthdate, zodiacSign } = route.params;
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
 
   const question = QUESTIONS[currentQuestion];
   const isLastQuestion = currentQuestion === QUESTIONS.length - 1;
 
-  const handleAnswer = (value) => {
+  const handleAnswer = async (value) => {
     const newAnswers = {
       ...answers,
       [question.id]: value
@@ -136,13 +141,42 @@ export default function PersonalityQuestionsScreen({ navigation }) {
     setAnswers(newAnswers);
 
     if (isLastQuestion) {
-      // Save profile and continue
-      // TODO: Save to AsyncStorage
-      navigation.navigate('ReadingType', { personalityProfile: newAnswers });
+      // Save profile and set as active
+      await saveProfile(newAnswers);
     } else {
       setCurrentQuestion(currentQuestion + 1);
     }
   };
+
+  async function saveProfile(personalityProfile) {
+    try {
+      // Load existing profiles
+      const profilesData = await AsyncStorage.getItem(PROFILES_KEY);
+      const profiles = profilesData ? JSON.parse(profilesData) : [];
+
+      // Create new profile
+      const newProfile = {
+        id: Date.now().toString(),
+        name: profileName,
+        birthdate,
+        zodiacSign,
+        personality: personalityProfile,
+        createdAt: new Date().toISOString()
+      };
+
+      // Add to profiles array
+      profiles.push(newProfile);
+      await AsyncStorage.setItem(PROFILES_KEY, JSON.stringify(profiles));
+
+      // Set as active profile
+      await AsyncStorage.setItem(ACTIVE_PROFILE_KEY, newProfile.id);
+
+      // Navigate to Welcome
+      navigation.navigate('Welcome');
+    } catch (error) {
+      console.error('Error saving profile:', error);
+    }
+  }
 
   const handleBack = () => {
     if (currentQuestion > 0) {

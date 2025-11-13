@@ -8,6 +8,8 @@ import { ErrorBoundary } from './src/components/ErrorBoundary';
 // Screens
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import OnboardingScreen from './src/screens/OnboardingScreen';
+import ProfileSetupScreen from './src/screens/ProfileSetupScreen';
+import ProfileSelectScreen from './src/screens/ProfileSelectScreen';
 import ReadingTypeScreen from './src/screens/ReadingTypeScreen';
 import BirthdayScreen from './src/screens/BirthdayScreen';
 import PersonalityQuestionsScreen from './src/screens/PersonalityQuestionsScreen';
@@ -35,9 +37,11 @@ export default function App() {
           >
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+            <Stack.Screen name="ProfileSetup" component={ProfileSetupScreen} />
+            <Stack.Screen name="ProfileSelect" component={ProfileSelectScreen} />
+            <Stack.Screen name="PersonalityQuestions" component={PersonalityQuestionsScreen} />
             <Stack.Screen name="ReadingType" component={ReadingTypeScreen} />
             <Stack.Screen name="Birthday" component={BirthdayScreen} />
-            <Stack.Screen name="Questions" component={PersonalityQuestionsScreen} />
             <Stack.Screen name="Intention" component={IntentionScreen} />
             <Stack.Screen name="CardDrawing" component={CardDrawingScreen} />
             <Stack.Screen name="Reading" component={ReadingScreen} />
