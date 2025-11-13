@@ -30,7 +30,7 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
     return (
       <View style={styles.compactContainer}>
         <LPMUDText style={styles.compactTitle}>
-          $HIC$LunatiQ$NOR$ $HIM$TAROT SYSTEM$NOR$
+          $HIC$LunatiQ$NOR$
         </LPMUDText>
       </View>
     );
@@ -46,13 +46,59 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
           style={styles.mainTitle}
         />
 
-        <NeonText
-          color={NEON_COLORS.hiMagenta}
+        <RainbowText
+          text="LunatiQ"
           style={styles.subtitle}
-        >
-          TAROT SYSTEM
-        </NeonText>
+        />
       </View>
+    </View>
+  );
+}
+
+/**
+ * Rainbow text - each character cycles through different colors
+ */
+function RainbowText({ text, style }) {
+  const [colorOffset, setColorOffset] = useState(0);
+
+  const colorPalette = [
+    NEON_COLORS.hiCyan,    // Cyan
+    NEON_COLORS.hiMagenta, // Magenta
+    NEON_COLORS.hiYellow,  // Yellow
+    NEON_COLORS.hiGreen,   // Green
+    '#FF00FF',             // Purple
+    '#FF6EC7',             // Pink
+    '#00FFFF',             // Bright cyan
+    '#FFFF00',             // Bright yellow
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColorOffset((prev) => (prev + 1) % colorPalette.length);
+    }, 300); // Rotate colors every 300ms
+    return () => clearInterval(interval);
+  }, []);
+
+  const letters = text.split('');
+
+  return (
+    <View style={styles.rainbowContainer}>
+      {letters.map((letter, index) => {
+        // Each character gets a different color from the palette
+        const colorIndex = (index + colorOffset) % colorPalette.length;
+        const color = colorPalette[colorIndex];
+
+        return (
+          <NeonText
+            key={index}
+            color={color}
+            glowColor={color}
+            style={[style, { marginHorizontal: 2 }]}
+          >
+            {letter}
+          </NeonText>
+        );
+      })}
     </View>
   );
 }
@@ -202,6 +248,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 15,
+  },
+  rainbowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   mainTitle: {
     fontSize: 48,
