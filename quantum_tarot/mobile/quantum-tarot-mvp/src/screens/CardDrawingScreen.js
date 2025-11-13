@@ -1,5 +1,5 @@
 /**
- * CARD DRAWING SCREEN - Quantum shuffle and draw
+ * CARD DRAWING SCREEN - Card shuffle and draw
  */
 
 import React, { useState, useEffect } from 'react';
@@ -17,15 +17,59 @@ const MONOSPACE_FONT = Platform.select({
   default: 'Courier New',
 });
 
+// 31 Pro-tips inspired by CBT, DBT, Army MRT, and psychology
+const PRO_TIPS = [
+  '💡 Tarot works best when you\'re honest with yourself about what you\'re feeling.',
+  '💡 Notice your first reaction to each card - it reveals what you need to hear.',
+  '💡 Ask yourself: What can I control? Focus your energy there.',
+  '💡 Readings aren\'t predictions - they\'re mirrors reflecting your current path.',
+  '💡 Reversed cards aren\'t \'bad\' - they show what needs attention or balance.',
+  '💡 Write down your intention before reading to stay focused.',
+  '💡 Check the facts: Is your interpretation based on emotion or evidence?',
+  '💡 Practice radical acceptance of what appears - then decide what to do next.',
+  '💡 Your thoughts create your reality - examine your thinking patterns.',
+  '💡 Major Arcana cards signal life-changing themes worth deep reflection.',
+  '💡 Focus on what you can change, accept what you can\'t, find the wisdom between.',
+  '💡 When stuck, ask: What would my wisest self do in this situation?',
+  '💡 Notice patterns across readings - they reveal your blind spots.',
+  '💡 Breathe deeply before viewing your spread to center yourself.',
+  '💡 Difficult cards often carry the most important messages for growth.',
+  '💡 The cards show possibilities, not certainties. You choose your path.',
+  '💡 Trust your intuition - your subconscious knows more than you think.',
+  '💡 Compare how you felt then vs. now to measure real progress.',
+  '💡 Every ending in tarot creates space for a new beginning.',
+  '💡 The universe speaks in symbols - what does this card mean to YOU?',
+  '💡 Small daily actions compound into massive life changes over time.',
+  '💡 Your past doesn\'t define you - your response to it does.',
+  '💡 When emotions run high, pause and name what you\'re feeling.',
+  '💡 Challenge catastrophic thinking: What\'s the evidence? What else could be true?',
+  '💡 Progress isn\'t linear - setbacks are part of the growth process.',
+  '💡 You can\'t control outcomes, but you can control your effort and attitude.',
+  '💡 Self-compassion isn\'t self-indulgence - it\'s a requirement for growth.',
+  '💡 The only constant is change - resistance creates suffering.',
+  '💡 Your interpretation matters more than traditional meanings.',
+  '💡 Celebrate small wins - they\'re proof you\'re moving forward.',
+  '💡 When in doubt, act according to your values, not your fears.',
+];
+
 export default function CardDrawingScreen({ route, navigation }) {
   const { spreadType, intention, readingType, zodiacSign, birthdate } = route.params;
   const [phase, setPhase] = useState('initializing'); // initializing, shuffling, drawing, complete
   const [statusLines, setStatusLines] = useState([]);
   const [cardCount, setCardCount] = useState(0);
   const [totalCards, setTotalCards] = useState(0);
+  const [tipIndex, setTipIndex] = useState(0);
 
   useEffect(() => {
     performQuantumDraw();
+  }, []);
+
+  useEffect(() => {
+    // Rotate pro-tips sequentially every 6 seconds max
+    const tipInterval = setInterval(() => {
+      setTipIndex((prev) => (prev + 1) % PRO_TIPS.length);
+    }, 6000);
+    return () => clearInterval(tipInterval);
   }, []);
 
   async function performQuantumDraw() {
@@ -33,26 +77,27 @@ export default function CardDrawingScreen({ route, navigation }) {
       // Phase 1: Initializing
       setPhase('initializing');
       setStatusLines([
-        '> Initializing quantum entropy generator...',
-        '> Hardware RNG active',
-        '> Mixing intention vector...',
-        '> ',
-        '> Thank you for your patience...',
-        '> We\'re preparing something special for you!'
+        'LunatiQ',
+        '',
+        'Preparing your reading...',
+        '',
+        'Thank you for your patience.',
+        'You\'re going to love your reading!',
       ]);
-      await sleep(1200); // Faster init
+      await sleep(1200);
 
       // Phase 2: Shuffling
       setPhase('shuffling');
       setStatusLines([
-        '> Generating quantum random bytes...',
-        '> Applying Fisher-Yates shuffle...',
-        '> SHA-256 entropy mixing...',
-        '> Deck randomization complete!',
-        '> ',
-        '> Your unique quantum signature is being created...'
+        'LunatiQ',
+        '',
+        'Shuffling the deck...',
+        'Mixing your intention...',
+        '',
+        'Thank you for your patience.',
+        'You\'re going to love your reading!',
       ]);
-      await sleep(1500); // Faster shuffle
+      await sleep(1500);
 
       // Phase 3: Drawing cards
       setPhase('drawing');
@@ -60,18 +105,18 @@ export default function CardDrawingScreen({ route, navigation }) {
       const { cards, quantumSeed, timestamp } = readingData;
       setTotalCards(cards.length);
 
-      // Personalized messages for each card draw
+      // Simple card draw messages
       const drawMessages = [
-        'Your first card is emerging from the quantum field...',
-        'The second card reveals itself to you...',
-        'Drawing your third card with intention...',
-        'The fourth card appears in your spread...',
+        'Your first card is emerging...',
+        'The second card reveals itself...',
+        'Drawing your third card...',
+        'The fourth card appears...',
         'Your fifth card is materializing...',
         'The sixth card shows its face...',
-        'Drawing the seventh card for deeper insight...',
-        'Your eighth card emerges from possibility...',
+        'Drawing the seventh card...',
+        'Your eighth card emerges...',
         'The ninth card completes the pattern...',
-        'Your final card brings the reading together...'
+        'Your final card brings it all together...'
       ];
 
       // Animate card draws with personalized messages
@@ -79,33 +124,32 @@ export default function CardDrawingScreen({ route, navigation }) {
         setCardCount(i + 1);
         const messageIndex = Math.min(i, drawMessages.length - 1);
         setStatusLines([
-          `> ${drawMessages[messageIndex]}`,
-          `> `,
-          `> Position: ${cards[i].position}`,
-          `> Card ${i + 1} of ${cards.length}`,
-          `> Orientation: ${cards[i].reversed ? '⟲ REVERSED' : '⟳ UPRIGHT'}`,
-          `> `,
-          `> Thank you for your patience...`
+          'LunatiQ',
+          '',
+          drawMessages[messageIndex],
+          `Position: ${cards[i].position}`,
+          `Card ${i + 1} of ${cards.length}`,
+          `${cards[i].reversed ? '⟲ REVERSED' : '⟳ UPRIGHT'}',
+          '',
+          'Thank you for your patience.',
         ]);
-        await sleep(600); // Faster = smoother UX
+        await sleep(600);
       }
 
       // Phase 4: Complete
       setPhase('complete');
       setStatusLines([
-        '> All cards drawn successfully! ✓',
-        `> `,
-        `> Quantum signature: ${quantumSeed.substring(0, 20)}...`,
-        '> ',
-        '> Initializing LunatiQ AGI interpretation engine...',
-        '> Loading astrological correspondences...',
-        '> Analyzing spread patterns...',
-        '> Personalizing your reading...',
-        '> ',
-        '> Thank you for your patience!',
-        '> We look forward to sharing your insights...'
+        'LunatiQ',
+        '',
+        'All cards drawn! ✓',
+        '',
+        'Preparing your interpretation...',
+        'Loading insights...',
+        '',
+        'Thank you for your patience!',
+        'You\'re going to love your reading!',
       ]);
-      await sleep(1500); // Faster completion
+      await sleep(1500);
 
       // Navigate to reading
       navigation.replace('Reading', {
@@ -120,11 +164,14 @@ export default function CardDrawingScreen({ route, navigation }) {
       });
 
     } catch (error) {
-      console.error('Quantum draw error:', error);
+      console.error('Draw error:', error);
       setStatusLines([
-        '> ERROR: Quantum draw failed',
-        '> ' + error.message,
-        '> Retrying...'
+        'LunatiQ',
+        '',
+        'ERROR: Drawing failed',
+        error.message,
+        '',
+        'Retrying...'
       ]);
       await sleep(2000);
       performQuantumDraw();
@@ -148,8 +195,8 @@ export default function CardDrawingScreen({ route, navigation }) {
   const getPhaseTitle = () => {
     switch (phase) {
       case 'initializing': return 'INITIALIZING...';
-      case 'shuffling': return 'QUANTUM SHUFFLE...';
-      case 'drawing': return `DRAWING CARDS... [${cardCount}/${totalCards}] ${Math.round((cardCount / totalCards) * 100)}%`;
+      case 'shuffling': return 'SHUFFLING...';
+      case 'drawing': return `DRAWING... [${cardCount}/${totalCards}]`;
       case 'complete': return 'COMPLETE';
       default: return 'PROCESSING...';
     }
@@ -166,7 +213,7 @@ export default function CardDrawingScreen({ route, navigation }) {
           <MorphText
             color={getPhaseColor()}
             style={styles.statusTitle}
-            morphSpeed={60}
+            morphSpeed={400}
           >
             {getPhaseTitle()}
           </MorphText>
@@ -177,6 +224,13 @@ export default function CardDrawingScreen({ route, navigation }) {
                 $HIC${line}$NOR$
               </LPMUDText>
             ))}
+          </View>
+
+          {/* Pro-tip rotating display */}
+          <View style={styles.proTipContainer}>
+            <NeonText color={NEON_COLORS.hiYellow} style={styles.proTip}>
+              {PRO_TIPS[tipIndex]}
+            </NeonText>
           </View>
 
           {/* Progress bar */}
@@ -269,6 +323,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: MONOSPACE_FONT,
     fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  proTipContainer: {
+    marginTop: 20,
+    paddingTop: 15,
+    borderTopWidth: 1,
+    borderTopColor: NEON_COLORS.dimYellow,
+  },
+  proTip: {
+    fontSize: 11,
+    fontFamily: MONOSPACE_FONT,
+    lineHeight: 16,
     textAlign: 'center',
   },
 });
