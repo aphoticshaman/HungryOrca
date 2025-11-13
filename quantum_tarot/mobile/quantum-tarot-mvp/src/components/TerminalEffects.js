@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, Animated, StyleSheet } from 'react-native';
+import { Text, View, Animated, StyleSheet, Platform } from 'react-native';
 import { NEON_COLORS, parseLPMUDColors, GLITCH_COLORS, MATRIX_CHARS } from '../styles/cyberpunkColors';
 
 /**
