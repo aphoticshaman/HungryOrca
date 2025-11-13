@@ -10,22 +10,6 @@ import { NEON_COLORS } from '../styles/cyberpunkColors';
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 export default function CyberpunkHeader({ showMatrixBg = false, compact = false }) {
-  const [colorIndex, setColorIndex] = useState(0);
-
-  const colors = [
-    NEON_COLORS.hiCyan,
-    NEON_COLORS.hiMagenta,
-    NEON_COLORS.hiYellow,
-    NEON_COLORS.hiGreen,
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setColorIndex((prev) => (prev + 1) % colors.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
   if (compact) {
     return (
       <View style={styles.compactContainer}>
@@ -39,16 +23,10 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        {/* Main title with wave animation */}
+        {/* Main title with wave animation and rainbow colors */}
         <WaveText
           text="LunatiQ"
-          color={colors[colorIndex]}
           style={styles.mainTitle}
-        />
-
-        <RainbowText
-          text="LunatiQ"
-          style={styles.subtitle}
         />
       </View>
     </View>
@@ -56,9 +34,9 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
 }
 
 /**
- * Rainbow text - each character cycles through different colors
+ * Wave animated text - each letter bobs up and down with rainbow colors
  */
-function RainbowText({ text, style }) {
+function WaveText({ text, style }) {
   const [colorOffset, setColorOffset] = useState(0);
 
   const colorPalette = [
@@ -72,59 +50,10 @@ function RainbowText({ text, style }) {
     '#FFFF00',             // Bright yellow
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setColorOffset((prev) => (prev + 1) % colorPalette.length);
-    }, 300); // Rotate colors every 300ms
-    return () => clearInterval(interval);
-  }, []);
-
   const letters = text.split('');
 
-  return (
-    <View style={styles.rainbowContainer}>
-      {letters.map((letter, index) => {
-        // Each character gets a different color from the palette
-        const colorIndex = (index + colorOffset) % colorPalette.length;
-        const color = colorPalette[colorIndex];
-
-        return (
-          <NeonText
-            key={index}
-            color={color}
-            glowColor={color}
-            style={[style, { marginHorizontal: 2 }]}
-          >
-            {letter}
-          </NeonText>
-        );
-      })}
-    </View>
-  );
-}
-
-/**
- * Wave animated text - each letter bobs up and down with glitch variations
- */
-function WaveText({ text, color, style }) {
-  const [glitchIndex, setGlitchIndex] = useState(0);
-
-  // Glitch text variations (all must be 7 chars!)
-  const glitchVariations = [
-    'LunatIQ',
-    'Lun4t1Q',
-    'LunatiQ',
-    'LxnxtxQ',
-    'LunatIQ',
-    'L00n4tQ',
-    'LunatIQ',
-  ];
-
-  const currentText = glitchVariations[glitchIndex];
-  const letters = currentText.split('');
-
   const animations = useRef(
-    Array.from({ length: 7 }, () => new Animated.Value(0))
+    Array.from({ length: text.length }, () => new Animated.Value(0))
   ).current;
 
   useEffect(() => {
@@ -156,10 +85,10 @@ function WaveText({ text, color, style }) {
   }, []);
 
   useEffect(() => {
-    // Cycle through glitch variations
+    // Rotate rainbow colors
     const interval = setInterval(() => {
-      setGlitchIndex((prev) => (prev + 1) % glitchVariations.length);
-    }, 800); // Faster glitch cycling
+      setColorOffset((prev) => (prev + 1) % colorPalette.length);
+    }, 300);
 
     return () => clearInterval(interval);
   }, []);
@@ -171,6 +100,10 @@ function WaveText({ text, color, style }) {
           inputRange: [0, 1],
           outputRange: [0, -15], // Wave amplitude
         });
+
+        // Each character gets a different color from the palette
+        const colorIndex = (index + colorOffset) % colorPalette.length;
+        const color = colorPalette[colorIndex];
 
         return (
           <Animated.View
@@ -249,11 +182,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 15,
   },
-  rainbowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   mainTitle: {
     fontSize: 48,
     fontFamily: 'monospace',
@@ -262,16 +190,6 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 20,
     letterSpacing: 4,
-  },
-  subtitle: {
-    fontSize: 32,
-    fontFamily: 'monospace',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    letterSpacing: 12,
-    textShadowColor: NEON_COLORS.glowMagenta,
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 15,
   },
   compactContainer: {
     width: '100%',
