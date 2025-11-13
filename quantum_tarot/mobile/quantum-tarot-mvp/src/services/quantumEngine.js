@@ -6,6 +6,7 @@
 
 import * as Random from 'expo-random';
 import * as Crypto from 'expo-crypto';
+import { getSpreadDefinition } from '../data/spreadDefinitions.js';
 
 /**
  * Quantum State - represents a collapsed card selection
@@ -262,24 +263,6 @@ export class QuantumRandomGenerator {
 export class QuantumSpreadEngine {
   constructor() {
     this.quantumGen = new QuantumRandomGenerator();
-
-    this.SPREADS = {
-      single_card: {
-        positions: ['Focus'],
-        count: 1
-      },
-      three_card: {
-        positions: ['Past', 'Present', 'Future'],
-        count: 3
-      },
-      relationship: {
-        positions: [
-          'You', 'Them', 'Connection',
-          'Challenge', 'Advice', 'Outcome'
-        ],
-        count: 6
-      }
-    };
   }
 
   /**
@@ -298,12 +281,13 @@ export class QuantumSpreadEngine {
         throw new Error('Invalid reading type');
       }
 
-      if (!this.SPREADS[spreadType]) {
+      // Get spread definition
+      const spreadDef = getSpreadDefinition(spreadType);
+      if (!spreadDef) {
         throw new Error(`Unknown spread type: ${spreadType}`);
       }
 
-      const spread = this.SPREADS[spreadType];
-      const numCards = spread.count;
+      const numCards = spreadDef.cardCount;
 
       // Collapse quantum wave function
       const quantumStates = await this.quantumGen.collapseWaveFunction(
@@ -316,16 +300,18 @@ export class QuantumSpreadEngine {
         throw new Error('Invalid quantum states generated');
       }
 
-      // Package reading
+      // Package reading with full spread metadata
       const reading = {
         spreadType,
+        spreadName: spreadDef.name,
+        spreadDescription: spreadDef.description,
         readingType,
         timestamp: Date.now(),
         positions: []
       };
 
-      for (let i = 0; i < spread.positions.length; i++) {
-        const positionName = spread.positions[i];
+      for (let i = 0; i < spreadDef.positions.length; i++) {
+        const positionDef = spreadDef.positions[i];
         const quantumState = quantumStates[i];
 
         if (!quantumState) {
@@ -333,11 +319,15 @@ export class QuantumSpreadEngine {
         }
 
         reading.positions.push({
-          position: positionName,
+          position: positionDef.name,
+          meaning: positionDef.meaning,
           cardIndex: quantumState.cardIndex,
           reversed: quantumState.reversed,
           quantumSignature: quantumState.quantumSignature,
-          collapseTime: quantumState.collapseTimestamp
+          collapseTime: quantumState.collapseTimestamp,
+          coordinates: positionDef.coordinates,
+          colorAccent: positionDef.colorAccent,
+          relatedPositions: positionDef.relatedPositions
         });
       }
 
@@ -352,17 +342,7 @@ export class QuantumSpreadEngine {
    * Get available spreads
    */
   getAvailableSpreads() {
-    return Object.keys(this.SPREADS).map(key => ({
-      type: key,
-      name: this.formatSpreadName(key),
-      positions: this.SPREADS[key].positions,
-      count: this.SPREADS[key].count
-    }));
-  }
-
-  formatSpreadName(type) {
-    return type.split('_').map(word =>
-      word.charAt(0).toUpperCase() + word.slice(1)
-    ).join(' ');
+    const { getAllSpreads } = require('../data/spreadDefinitions.js');
+    return getAllSpreads();
   }
 }

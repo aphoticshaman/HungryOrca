@@ -21,9 +21,20 @@ export default function IntentionScreen({ route, navigation }) {
   const styles = createStyles(theme);
 
   const SPREADS = [
-    { type: 'single_card', name: 'Single Card', desc: 'Quick guidance' },
-    { type: 'three_card', name: 'Past-Present-Future', desc: 'Classic 3-card' },
-    { type: 'relationship', name: 'Relationship', desc: '6-card deep dive' }
+    // LINEAR SPREADS
+    { type: 'single_card', name: 'Single Card', desc: 'Quick guidance', icon: '🎯' },
+    { type: 'three_card', name: 'Past-Present-Future', desc: 'Classic timeline', icon: '⏳' },
+    { type: 'daily_checkin', name: 'Daily Check-In', desc: 'Focus, avoid, gift', icon: '🌅' },
+    { type: 'goal_progress', name: 'Goal Progress', desc: 'Track your journey', icon: '🎯' },
+    { type: 'clairvoyant_predictive', name: 'Clairvoyant Forecast', desc: 'If I do X...?', icon: '🔮' },
+
+    // DECISION TREE
+    { type: 'decision_analysis', name: 'Decision Analysis', desc: 'Two paths', icon: '🌿' },
+
+    // SPATIAL SPREADS
+    { type: 'relationship', name: 'Relationship', desc: '6-card deep dive', icon: '❤️' },
+    { type: 'celtic_cross', name: 'Celtic Cross', desc: '10-card comprehensive', icon: '✨' },
+    { type: 'horseshoe', name: 'Horseshoe', desc: '7-card exploration', icon: '🐴' }
   ];
 
   async function handleDrawCards() {
@@ -79,19 +90,24 @@ export default function IntentionScreen({ route, navigation }) {
       />
 
       <Text style={styles.label}>Choose your spread:</Text>
-      {SPREADS.map((spread) => (
-        <TouchableOpacity
-          key={spread.type}
-          style={[
-            styles.spreadOption,
-            spreadType === spread.type && styles.spreadSelected
-          ]}
-          onPress={() => setSpreadType(spread.type)}
-        >
-          <Text style={styles.spreadName}>{spread.name}</Text>
-          <Text style={styles.spreadDesc}>{spread.desc}</Text>
-        </TouchableOpacity>
-      ))}
+      <ScrollView style={styles.spreadList} nestedScrollEnabled>
+        {SPREADS.map((spread) => (
+          <TouchableOpacity
+            key={spread.type}
+            style={[
+              styles.spreadOption,
+              spreadType === spread.type && styles.spreadSelected
+            ]}
+            onPress={() => setSpreadType(spread.type)}
+          >
+            <Text style={styles.spreadIcon}>{spread.icon}</Text>
+            <View style={styles.spreadInfo}>
+              <Text style={styles.spreadName}>{spread.name}</Text>
+              <Text style={styles.spreadDesc}>{spread.desc}</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
 
       <TouchableOpacity style={styles.button} onPress={handleDrawCards}>
         <Text style={styles.buttonText}>✧ DRAW CARDS ✧</Text>
@@ -133,25 +149,38 @@ function createStyles(theme) {
       minHeight: 100,
       textAlignVertical: 'top'
     },
+    spreadList: {
+      maxHeight: 300,
+      marginBottom: 10
+    },
     spreadOption: {
       borderWidth: 1,
       borderColor: theme.border,
-      padding: 15,
-      marginBottom: 10
+      padding: 12,
+      marginBottom: 8,
+      flexDirection: 'row',
+      alignItems: 'center'
     },
     spreadSelected: {
       borderColor: theme.accent,
       backgroundColor: theme.accent + '20'
     },
+    spreadIcon: {
+      fontSize: 24,
+      marginRight: 12
+    },
+    spreadInfo: {
+      flex: 1
+    },
     spreadName: {
       fontFamily: 'monospace',
-      fontSize: 12,
+      fontSize: 11,
       color: theme.text,
-      marginBottom: 4
+      marginBottom: 3
     },
     spreadDesc: {
       fontFamily: 'monospace',
-      fontSize: 10,
+      fontSize: 9,
       color: theme.textDim
     },
     button: {
