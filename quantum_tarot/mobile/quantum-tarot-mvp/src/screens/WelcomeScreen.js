@@ -200,15 +200,6 @@ export default function WelcomeScreen({ navigation }) {
             </View>
           </View>
 
-          {/* Zodiac sign display */}
-          {zodiacSign && (
-            <View style={styles.zodiacBox}>
-              <LPMUDText style={styles.zodiacText}>
-                $HIC$SIGN:$NOR$ $HIW${zodiacSign.toUpperCase()}$NOR$
-              </LPMUDText>
-            </View>
-          )}
-
           {/* Error display */}
           {error && (
             <NeonText color={NEON_COLORS.hiRed} style={styles.errorText}>
@@ -310,19 +301,6 @@ const styles = StyleSheet.create({
     color: NEON_COLORS.hiCyan,
     backgroundColor: '#000000',
     textAlign: 'center',
-  },
-  zodiacBox: {
-    borderWidth: 1,
-    borderColor: NEON_COLORS.hiYellow,
-    padding: 10,
-    marginBottom: 15,
-    alignItems: 'center',
-  },
-  zodiacText: {
-    fontSize: 14,
-    fontFamily: 'monospace',
-    fontWeight: 'bold',
-    lineHeight: 18,
   },
   errorText: {
     fontSize: 11,

@@ -3,18 +3,26 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, Platform } from 'react-native';
 import { MorphText, MatrixRain, NeonText, LPMUDText } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
 import { performReading } from '../utils/quantumRNG';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
+// Uniform monospace font
+const MONOSPACE_FONT = Platform.select({
+  ios: 'Courier',
+  android: 'monospace',
+  default: 'Courier New',
+});
+
 export default function CardDrawingScreen({ route, navigation }) {
   const { spreadType, intention, readingType, zodiacSign, birthdate } = route.params;
   const [phase, setPhase] = useState('initializing'); // initializing, shuffling, drawing, complete
   const [statusLines, setStatusLines] = useState([]);
   const [cardCount, setCardCount] = useState(0);
+  const [totalCards, setTotalCards] = useState(0);
 
   useEffect(() => {
     performQuantumDraw();
@@ -45,6 +53,7 @@ export default function CardDrawingScreen({ route, navigation }) {
       setPhase('drawing');
       const readingData = await performReading(spreadType, intention);
       const { cards, quantumSeed, timestamp } = readingData;
+      setTotalCards(cards.length);
 
       // Animate card draws
       for (let i = 0; i < cards.length; i++) {
@@ -158,18 +167,14 @@ export default function CardDrawingScreen({ route, navigation }) {
         )}
       </View>
 
-      {/* Bottom info */}
-      <View style={styles.bottomBox}>
-        <NeonText color={NEON_COLORS.dimCyan} style={styles.bottomText}>
-          {'>'} QUANTUM RNG | HARDWARE ENTROPY
-        </NeonText>
-        <NeonText color={NEON_COLORS.dimYellow} style={styles.bottomText}>
-          TRUE RANDOMNESS | ZERO BIAS
-        </NeonText>
-        <LPMUDText style={styles.intentionText}>
-          $HIM$INTENTION:$NOR$ {intention.substring(0, 40)}...
-        </LPMUDText>
-      </View>
+      {/* Bottom info - just card count during drawing */}
+      {phase === 'drawing' && cardCount > 0 && (
+        <View style={styles.bottomBox}>
+          <NeonText color={getPhaseColor()} style={styles.cardCountText}>
+            CARD {cardCount} / {totalCards}
+          </NeonText>
+        </View>
+      )}
     </View>
   );
 }
@@ -190,7 +195,7 @@ const styles = StyleSheet.create({
   },
   statusTitle: {
     fontSize: 20,
-    fontFamily: 'monospace',
+    fontFamily: MONOSPACE_FONT,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
@@ -200,7 +205,7 @@ const styles = StyleSheet.create({
   },
   statusLine: {
     fontSize: 12,
-    fontFamily: 'monospace',
+    fontFamily: MONOSPACE_FONT,
     lineHeight: 16,
   },
   progressContainer: {
@@ -220,18 +225,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 40,
     alignItems: 'center',
-    gap: 5,
-    paddingHorizontal: 20,
   },
-  bottomText: {
-    fontSize: 10,
-    fontFamily: 'monospace',
-  },
-  intentionText: {
-    fontSize: 9,
-    fontFamily: 'monospace',
-    marginTop: 5,
+  cardCountText: {
+    fontSize: 16,
+    fontFamily: MONOSPACE_FONT,
+    fontWeight: 'bold',
     textAlign: 'center',
-    lineHeight: 13,
   },
 });

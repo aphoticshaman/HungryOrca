@@ -133,12 +133,48 @@ function WaveText({ text, color, style }) {
               transform: [{ translateY }],
             }}
           >
+            {/* Layered glow effect for cel-shaded neon look */}
+            {/* Outer glow - big bloom */}
+            <Text
+              style={[
+                style,
+                {
+                  position: 'absolute',
+                  color,
+                  textShadowColor: color,
+                  textShadowOffset: { width: 0, height: 0 },
+                  textShadowRadius: 30,
+                  opacity: 0.8,
+                }
+              ]}
+            >
+              {letter}
+            </Text>
+            {/* Middle glow */}
+            <Text
+              style={[
+                style,
+                {
+                  position: 'absolute',
+                  color,
+                  textShadowColor: color,
+                  textShadowOffset: { width: 0, height: 0 },
+                  textShadowRadius: 15,
+                  opacity: 0.9,
+                }
+              ]}
+            >
+              {letter}
+            </Text>
+            {/* Inner glow - sharp core */}
             <Text
               style={[
                 style,
                 {
                   color,
                   textShadowColor: color,
+                  textShadowOffset: { width: 0, height: 0 },
+                  textShadowRadius: 8,
                 }
               ]}
             >

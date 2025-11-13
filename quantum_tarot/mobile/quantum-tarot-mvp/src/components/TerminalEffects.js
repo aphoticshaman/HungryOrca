@@ -306,7 +306,11 @@ export function ScanLines({ style }) {
 
 const styles = StyleSheet.create({
   neonBase: {
-    fontFamily: 'monospace',
+    fontFamily: Platform.select({
+      ios: 'Courier',
+      android: 'monospace',
+      default: 'Courier New',
+    }),
     fontWeight: 'bold',
   },
   matrixContainer: {
@@ -314,7 +318,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   matrixChar: {
-    fontFamily: 'monospace',
+    fontFamily: Platform.select({
+      ios: 'Courier',
+      android: 'monospace',
+      default: 'Courier New',
+    }),
     fontSize: 14,
     fontWeight: 'bold',
     textShadowColor: NEON_COLORS.glowGreen,

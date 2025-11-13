@@ -5,10 +5,17 @@
  */
 
 import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Animated, Platform } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
 import { getAsciiCard } from '../data/asciiCards';
 import { getCardData } from '../data/cardDatabase';
+
+// Uniform monospace font for ASCII art
+const MONOSPACE_FONT = Platform.select({
+  ios: 'Courier',
+  android: 'monospace',
+  default: 'Courier New',
+});
 
 export default function FlippableCard({ cardIndex, reversed, position, style }) {
   const { theme } = useTheme();
@@ -207,7 +214,7 @@ function createStyles(theme) {
       alignSelf: 'center'
     },
     flipButtonText: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 12,
       color: theme.accent,
       textAlign: 'center'
@@ -234,7 +241,7 @@ function createStyles(theme) {
       justifyContent: 'flex-start'
     },
     cardTitle: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 14,
       color: theme.accent,
       textAlign: 'center',
@@ -242,14 +249,14 @@ function createStyles(theme) {
       fontWeight: 'bold'
     },
     reversedLabel: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 10,
       color: theme.textDim,
       textAlign: 'center',
       marginBottom: 10
     },
     asciiArt: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 9,
       color: theme.text,
       textAlign: 'center',
@@ -257,7 +264,7 @@ function createStyles(theme) {
       marginVertical: 15
     },
     position: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 11,
       color: theme.textDim,
       textAlign: 'center',
@@ -265,7 +272,7 @@ function createStyles(theme) {
     },
     // BACK SIDE STYLES
     backTitle: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 13,
       color: theme.accent,
       textAlign: 'center',
@@ -273,7 +280,7 @@ function createStyles(theme) {
       fontWeight: 'bold'
     },
     backSubtitle: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 9,
       color: theme.textDim,
       textAlign: 'center',
@@ -286,7 +293,7 @@ function createStyles(theme) {
       flex: 1
     },
     sectionTitle: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 10,
       color: theme.accent,
       marginTop: 12,
@@ -294,20 +301,20 @@ function createStyles(theme) {
       textTransform: 'uppercase'
     },
     description: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 10,
       color: theme.text,
       lineHeight: 16,
       marginBottom: 8
     },
     keywords: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 10,
       color: theme.text,
       fontStyle: 'italic'
     },
     symbols: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 10,
       color: theme.text
     },
@@ -319,37 +326,37 @@ function createStyles(theme) {
       borderTopColor: theme.border
     },
     metaItem: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 9,
       color: theme.textDim,
       marginBottom: 3
     },
     themes: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 10,
       color: theme.text
     },
     advice: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 10,
       color: theme.accent,
       fontStyle: 'italic',
       lineHeight: 15
     },
     shadow: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 10,
       color: '#FC8181', // Red tint for shadow
       lineHeight: 15
     },
     light: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 10,
       color: '#68D391', // Green tint for light
       lineHeight: 15
     },
     error: {
-      fontFamily: 'monospace',
+      fontFamily: MONOSPACE_FONT,
       fontSize: 12,
       color: '#FC8181',
       textAlign: 'center'

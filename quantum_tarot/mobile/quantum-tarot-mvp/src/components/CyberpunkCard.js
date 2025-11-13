@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { View, TouchableOpacity, Animated, StyleSheet, Dimensions } from 'react-native';
+import { View, TouchableOpacity, Animated, StyleSheet, Dimensions, Platform } from 'react-native';
 import { NeonText, LPMUDText, FlickerText, GlitchText, MorphText, MatrixRain, ScanLines } from './TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
 import { CARD_DATABASE } from '../data/cardDatabase';
@@ -45,7 +45,7 @@ export default function CyberpunkCard({ cardIndex, reversed, position, onReveal 
       toValue: isFlipped ? 0 : 180,
       friction: 8,
       tension: 10,
-      useNativeDriver: true,
+      useNativeDriver: false, // Must be false since we animate borderColor
     }).start();
     setIsFlipped(!isFlipped);
   };
@@ -270,18 +270,30 @@ const styles = StyleSheet.create({
   },
   cardNumber: {
     fontSize: 16,
-    fontFamily: 'monospace',
+    fontFamily: Platform.select({
+      ios: 'Courier',
+      android: 'monospace',
+      default: 'Courier New',
+    }),
     marginBottom: 5,
   },
   cardTitle: {
     fontSize: 24,
-    fontFamily: 'monospace',
+    fontFamily: Platform.select({
+      ios: 'Courier',
+      android: 'monospace',
+      default: 'Courier New',
+    }),
     fontWeight: 'bold',
     textAlign: 'center',
   },
   reversedLabel: {
     fontSize: 14,
-    fontFamily: 'monospace',
+    fontFamily: Platform.select({
+      ios: 'Courier',
+      android: 'monospace',
+      default: 'Courier New',
+    }),
     marginTop: 5,
   },
   asciiContainer: {
@@ -291,12 +303,20 @@ const styles = StyleSheet.create({
   },
   asciiArt: {
     fontSize: 12,
-    fontFamily: 'monospace',
+    fontFamily: Platform.select({
+      ios: 'Courier',
+      android: 'monospace',
+      default: 'Courier New',
+    }),
     lineHeight: 16,
   },
   positionLabel: {
     fontSize: 14,
-    fontFamily: 'monospace',
+    fontFamily: Platform.select({
+      ios: 'Courier',
+      android: 'monospace',
+      default: 'Courier New',
+    }),
     textAlign: 'center',
     marginVertical: 10,
   },
@@ -309,7 +329,11 @@ const styles = StyleSheet.create({
   },
   flipButtonText: {
     fontSize: 16,
-    fontFamily: 'monospace',
+    fontFamily: Platform.select({
+      ios: 'Courier',
+      android: 'monospace',
+      default: 'Courier New',
+    }),
     fontWeight: 'bold',
   },
   cardData: {
@@ -317,7 +341,11 @@ const styles = StyleSheet.create({
   },
   dataText: {
     fontSize: 11,
-    fontFamily: 'monospace',
+    fontFamily: Platform.select({
+      ios: 'Courier',
+      android: 'monospace',
+      default: 'Courier New',
+    }),
     lineHeight: 16,
   },
 });

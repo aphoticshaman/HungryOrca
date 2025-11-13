@@ -8,19 +8,20 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   // Currently only cyberpunk theme, but structure for future customization
-  const [theme] = useState({
+  const [currentTheme] = useState({
     name: 'cyberpunk',
-    colors: {
-      primary: '#00FFFF',
-      secondary: '#FF00FF',
-      accent: '#FFFF00',
-      background: '#000000',
-      text: '#FFFFFF',
-    }
+    // Flat structure for easy access
+    primary: '#00FFFF',
+    secondary: '#FF00FF',
+    accent: '#FFFF00',
+    background: '#000000',
+    text: '#FFFFFF',
+    textDim: '#CCCCCC',
+    border: '#00FFFF',
   });
 
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext.Provider value={{ theme: currentTheme }}>
       {children}
     </ThemeContext.Provider>
   );
