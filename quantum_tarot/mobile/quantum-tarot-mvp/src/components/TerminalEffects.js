@@ -37,11 +37,21 @@ export function NeonText({ children, color = NEON_COLORS.cyan, glowColor, style,
  * Supports $HIY$, $HIC$, $HIM$, etc.
  */
 export function LPMUDText({ children, style, ...props }) {
-  if (typeof children !== 'string') {
-    return <Text style={[{ color: NEON_COLORS.dimWhite }, style]} {...props}>{children}</Text>;
+  // Convert children to string (handles both strings and template literals)
+  let text;
+  if (typeof children === 'string') {
+    text = children;
+  } else if (Array.isArray(children)) {
+    // Handle array of children (from template literals)
+    text = children.join('');
+  } else if (children != null) {
+    // Handle other types (numbers, etc)
+    text = String(children);
+  } else {
+    return null;
   }
 
-  const segments = parseLPMUDColors(children);
+  const segments = parseLPMUDColors(text);
 
   return (
     <Text style={[{ color: NEON_COLORS.dimWhite }, style]} {...props}>
