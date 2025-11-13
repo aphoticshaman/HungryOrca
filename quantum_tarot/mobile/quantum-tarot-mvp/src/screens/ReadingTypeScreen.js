@@ -70,12 +70,12 @@ export default function ReadingTypeScreen({ navigation }) {
   const [selected, setSelected] = useState(null);
 
   const handleSelect = (type) => {
-    setSelected(type);
-  };
-
-  const handleContinue = () => {
-    if (selected) {
-      navigation.navigate('Birthday', { readingType: selected });
+    if (selected === type) {
+      // Second tap - confirm and navigate
+      navigation.navigate('Birthday', { readingType: type });
+    } else {
+      // First tap - select
+      setSelected(type);
     }
   };
 
@@ -124,25 +124,13 @@ export default function ReadingTypeScreen({ navigation }) {
               {selected === type.id && (
                 <View style={styles.selectedIndicator}>
                   <NeonText color={NEON_COLORS.hiCyan} style={styles.selectedText}>
-                    {'[ SELECTED ]'}
+                    {'[ TAP AGAIN TO CONFIRM ]'}
                   </NeonText>
                 </View>
               )}
             </TouchableOpacity>
           ))}
         </View>
-
-        {/* Continue button */}
-        {selected && (
-          <TouchableOpacity
-            onPress={handleContinue}
-            style={styles.continueButton}
-          >
-            <NeonText color={NEON_COLORS.hiCyan} style={styles.continueButtonText}>
-              {'[ CONTINUE ]'}
-            </NeonText>
-          </TouchableOpacity>
-        )}
 
         <View style={styles.spacer} />
       </ScrollView>
@@ -220,19 +208,6 @@ const styles = StyleSheet.create({
     fontFamily: 'monospace',
     fontWeight: 'bold',
     textAlign: 'center',
-  },
-  continueButton: {
-    marginTop: 30,
-    padding: 20,
-    borderWidth: 2,
-    borderColor: NEON_COLORS.hiCyan,
-    alignItems: 'center',
-    backgroundColor: '#000000',
-  },
-  continueButtonText: {
-    fontSize: 16,
-    fontFamily: 'monospace',
-    fontWeight: 'bold',
   },
   spacer: {
     height: 40,

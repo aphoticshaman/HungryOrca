@@ -2,14 +2,40 @@
  * CYBERPUNK HEADER - Glitchy neon title screen
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { NeonText, LPMUDText, GlitchText, MatrixRain } from './TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
-export default function CyberpunkHeader({ showMatrixBg = false }) {
+export default function CyberpunkHeader({ showMatrixBg = false, compact = false }) {
+  const [colorIndex, setColorIndex] = useState(0);
+
+  const colors = [
+    NEON_COLORS.hiCyan,
+    NEON_COLORS.hiMagenta,
+    NEON_COLORS.hiYellow,
+    NEON_COLORS.hiGreen,
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColorIndex((prev) => (prev + 1) % colors.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (compact) {
+    return (
+      <View style={styles.compactContainer}>
+        <LPMUDText style={styles.compactTitle}>
+          $HIC$LunatiQ$NOR$ $HIM$TAROT SYSTEM$NOR$
+        </LPMUDText>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       {showMatrixBg && (
@@ -19,36 +45,24 @@ export default function CyberpunkHeader({ showMatrixBg = false }) {
       )}
 
       <View style={styles.content}>
-        {/* Main title with glitch effect */}
-        <GlitchText
-          style={styles.mainTitle}
-          glitchChance={0.03}
-          glitchSpeed={200}
-        >
-          {'   QUANTUM   '}
-        </GlitchText>
-
-        {/* Subtitle with LPMUD colors */}
-        <LPMUDText style={styles.subtitle}>
-          $HIC$╔═══════════════════════╗$NOR${'\n'}
-          $HIC$║$HIM$    T A R O T        $HIC$║$NOR${'\n'}
-          $HIC$╚═══════════════════════╝$NOR$
-        </LPMUDText>
-
-        {/* Tagline */}
+        {/* Main title with cycling colors and outline */}
         <NeonText
-          color={NEON_COLORS.dimCyan}
-          style={styles.tagline}
+          color={colors[colorIndex]}
+          style={[
+            styles.mainTitle,
+            {
+              textShadowColor: colors[colorIndex],
+            }
+          ]}
         >
-          {'>'} RETRO TERMINAL EDITION {'<'}
+          LunatiQ
         </NeonText>
 
-        {/* Version info */}
         <NeonText
-          color={NEON_COLORS.dimYellow}
-          style={styles.version}
+          color={NEON_COLORS.hiMagenta}
+          style={styles.subtitle}
         >
-          v1.0.0 | SDK 54 | OFFLINE AGI
+          TAROT SYSTEM
         </NeonText>
       </View>
     </View>
@@ -58,7 +72,7 @@ export default function CyberpunkHeader({ showMatrixBg = false }) {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    paddingVertical: 30,
+    paddingVertical: 40,
     paddingHorizontal: 20,
     backgroundColor: '#000000',
     borderBottomWidth: 2,
@@ -66,32 +80,41 @@ const styles = StyleSheet.create({
   },
   content: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
   mainTitle: {
-    fontSize: 36,
+    fontSize: 48,
     fontFamily: 'monospace',
     fontWeight: 'bold',
-    color: NEON_COLORS.hiCyan,
-    textShadowColor: NEON_COLORS.glowCyan,
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 15,
-    letterSpacing: 8,
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 18,
-    fontFamily: 'monospace',
     textAlign: 'center',
-    lineHeight: 22,
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 20,
+    letterSpacing: 4,
     marginBottom: 15,
   },
-  tagline: {
-    fontSize: 12,
+  subtitle: {
+    fontSize: 32,
     fontFamily: 'monospace',
-    marginBottom: 10,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    letterSpacing: 12,
+    textShadowColor: NEON_COLORS.glowMagenta,
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 15,
   },
-  version: {
-    fontSize: 9,
+  compactContainer: {
+    width: '100%',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    backgroundColor: '#000000',
+    borderBottomWidth: 1,
+    borderBottomColor: NEON_COLORS.dimCyan,
+    alignItems: 'center',
+  },
+  compactTitle: {
+    fontSize: 18,
     fontFamily: 'monospace',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
