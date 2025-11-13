@@ -248,11 +248,11 @@ export function MatrixRain({ width = 100, height = 200, speed = 50 }) {
 
     const interval = setInterval(() => {
       setColumns(prev => prev.map(col => {
-        // Add new char at top with random color
+        // Add new char at top with random color - more transparent for readability
         const newChars = [{
           char: MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)],
           y: 0,
-          opacity: 1,
+          opacity: 0.4, // More transparent (was 1)
           color: RAIN_COLORS[Math.floor(Math.random() * RAIN_COLORS.length)],
         }, ...col.chars];
 
@@ -263,10 +263,10 @@ export function MatrixRain({ width = 100, height = 200, speed = 50 }) {
             .map(c => ({
               ...c,
               y: c.y + col.speed * 5,
-              opacity: c.opacity - 0.02,
+              opacity: c.opacity - 0.01, // Slower fade (was 0.02) = longer trails
             }))
             .filter(c => c.y < height && c.opacity > 0)
-            .slice(0, 20), // Max 20 chars per column
+            .slice(0, 40), // More chars per column (was 20) = longer trails
         };
       }));
     }, speed);
