@@ -1269,9 +1269,1449 @@ export const CARD_DATABASE = [
       "How do you lead with truth?"
     ],
     description: "A king sits enthroned holding upright sword (authority, judgment, intellectual power). Butterflies on throne (air element, transformation). Stern expression (impartial judgment). The King of Swords represents authority, truth, judgment—the mental ruler who leads with logic, ethics, and impartial fairness."
-  }
+  },
 
-  // TODO: Add remaining minor arcana: Wands (36-49), Cups (50-63), Pentacles (64-77)
+  // ═══════════════════════════════════════════════════════════
+  // WANDS - FIRE ELEMENT (36-49)
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 36,
+    name: "Ace of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "ace",
+    number: 1,
+    element: "fire",
+    modality: "cardinal",
+    astrology: "fire initiation",
+    numerology: 1,
+    kabbalah: "kether in fire",
+    symbols: ["hand from cloud", "sprouting leaves", "castle", "mountains", "river"],
+    archetypes: ["spark", "initiation", "raw power"],
+    themes: ["inspiration", "new ventures", "creative spark", "enthusiasm", "potential"],
+    keywords: {
+      upright: ["inspiration", "creative spark", "new opportunity", "growth"],
+      reversed: ["delays", "lack of direction", "creative blocks"]
+    },
+    jungian: "creative impulse",
+    chakra: "solar plexus",
+    seasonality: "spring / initiation",
+    timeframe: "immediate opportunity",
+    advice: "Seize the moment. Act on inspiration. Channel creative fire into form.",
+    shadow_work: "Creative blocks, missed opportunities, passion without direction",
+    light: "Pure creative potential, divine inspiration, bold initiation",
+    questions: [
+      "What new venture calls to you?",
+      "Where must you take bold action?",
+      "What creative spark wants expression?"
+    ],
+    description: "A hand emerges from clouds grasping a wand sprouting leaves (divine creative power, raw potential). Castle in distance (manifestation goals). The Ace of Wands represents inspiration, creative spark, bold new beginnings—pure fire energy ready to be directed."
+  },
+
+  {
+    id: 37,
+    name: "Two of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "2",
+    number: 2,
+    element: "fire",
+    modality: "cardinal",
+    astrology: "mars in aries",
+    numerology: 2,
+    kabbalah: "chokmah in fire",
+    symbols: ["man with globe", "two wands", "castle", "sea"],
+    archetypes: ["planner", "future vision", "decision"],
+    themes: ["planning", "future vision", "personal power", "bold decisions"],
+    keywords: {
+      upright: ["planning", "making decisions", "leaving comfort", "taking risks"],
+      reversed: ["fear of change", "playing it safe", "bad planning"]
+    },
+    jungian: "individuation journey",
+    chakra: "solar plexus",
+    seasonality: "early spring / planning",
+    timeframe: "weeks to months",
+    advice: "Make the plan. Take the risk. The world awaits your boldness.",
+    shadow_work: "Fear of leaving comfort zone, paralysis by analysis, playing small",
+    light: "Visionary planning, calculated risk-taking, personal power",
+    questions: [
+      "What bold plan must you execute?",
+      "What comfort zone must you leave?",
+      "Where do you need to think bigger?"
+    ],
+    description: "A figure holds globe in hand while grasping wand (mastery of personal world, planning power). Looking out to sea (future possibilities). The Two of Wands represents planning, vision, decision-making—standing at the threshold of expansion."
+  },
+
+  {
+    id: 38,
+    name: "Three of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "3",
+    number: 3,
+    element: "fire",
+    modality: "mutable",
+    astrology: "sun in aries",
+    numerology: 3,
+    kabbalah: "binah in fire",
+    symbols: ["figure watching ships", "three wands", "mountains", "sea"],
+    archetypes: ["explorer", "visionary", "enterprise"],
+    themes: ["expansion", "foresight", "overseas opportunities", "progress"],
+    keywords: {
+      upright: ["expansion", "foresight", "overseas opportunities", "progress"],
+      reversed: ["obstacles", "delays", "lack of foresight"]
+    },
+    jungian: "expansion phase",
+    chakra: "solar plexus",
+    seasonality: "late spring / growth",
+    timeframe: "3-6 months",
+    advice: "Expand your reach. Think globally. Your ships are coming in.",
+    shadow_work: "Impatience, overextension, lack of follow-through",
+    light: "Strategic expansion, manifesting vision, global thinking",
+    questions: [
+      "Where must you expand your reach?",
+      "What distant opportunities call?",
+      "How can you think more globally?"
+    ],
+    description: "Figure stands watching ships sail (ventures launched, waiting for results). Three wands planted (established foundation). The Three of Wands represents expansion, foresight, watching plans unfold—the exciting phase after initial action."
+  },
+
+  {
+    id: 39,
+    name: "Four of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "4",
+    number: 4,
+    element: "fire",
+    modality: "fixed",
+    astrology: "venus in aries",
+    numerology: 4,
+    kabbalah: "chesed in fire",
+    symbols: ["four wands with garland", "celebrating figures", "castle", "bouquets"],
+    archetypes: ["celebration", "homecoming", "harvest"],
+    themes: ["celebration", "harmony", "homecoming", "milestone reached"],
+    keywords: {
+      upright: ["celebration", "harmony", "homecoming", "milestone"],
+      reversed: ["lack of support", "instability", "broken relationships"]
+    },
+    jungian: "integration",
+    chakra: "heart",
+    seasonality: "summer / celebration",
+    timeframe: "milestone achieved",
+    advice: "Celebrate wins. Honor milestones. Community supports your fire.",
+    shadow_work: "Inability to celebrate, isolation, perfectionism blocking joy",
+    light: "Joyful celebration, community support, stability achieved",
+    questions: [
+      "What milestone deserves celebration?",
+      "Where do you need community support?",
+      "How can you honor your progress?"
+    ],
+    description: "Four wands adorned with garland, figures celebrating (achievement, harmony, joy). Castle in background (home base established). The Four of Wands represents celebration, homecoming, stability—the harvest festival after hard work."
+  },
+
+  {
+    id: 40,
+    name: "Five of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "5",
+    number: 5,
+    element: "fire",
+    modality: "mutable",
+    astrology: "saturn in leo",
+    numerology: 5,
+    kabbalah: "geburah in fire",
+    symbols: ["five figures with wands clashing", "struggle", "competition"],
+    archetypes: ["competition", "conflict", "struggle"],
+    themes: ["conflict", "competition", "disagreement", "tension"],
+    keywords: {
+      upright: ["conflict", "competition", "disagreements", "tension"],
+      reversed: ["avoiding conflict", "inner conflict", "end of struggle"]
+    },
+    jungian: "shadow confrontation",
+    chakra: "solar plexus",
+    seasonality: "conflict phase",
+    timeframe: "short-term struggle",
+    advice: "Engage the conflict. Competition sharpens you. May the best idea win.",
+    shadow_work: "Avoidance of necessary conflict, ego battles, wasted energy",
+    light: "Healthy competition, creative friction, growth through challenge",
+    questions: [
+      "What conflict must you engage?",
+      "Where is competition healthy?",
+      "What struggle sharpens your skills?"
+    ],
+    description: "Five figures with wands appearing to clash (competition, conflict, struggle). May be playful or serious (context matters). The Five of Wands represents conflict, competition, tension—the struggle that either wastes energy or catalyzes growth."
+  },
+
+  {
+    id: 41,
+    name: "Six of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "6",
+    number: 6,
+    element: "fire",
+    modality: "mutable",
+    astrology: "jupiter in leo",
+    numerology: 6,
+    kabbalah: "tiphareth in fire",
+    symbols: ["victorious rider", "wreath", "followers", "six wands"],
+    archetypes: ["victor", "leader", "hero"],
+    themes: ["victory", "public recognition", "success", "self-confidence"],
+    keywords: {
+      upright: ["victory", "public recognition", "progress", "self-confidence"],
+      reversed: ["arrogance", "lack of recognition", "fall from grace"]
+    },
+    jungian: "hero's return",
+    chakra: "solar plexus",
+    seasonality: "peak success",
+    timeframe: "recent victory",
+    advice: "Own your victory. Accept recognition. Leadership is service.",
+    shadow_work: "Arrogance, need for external validation, ego inflation",
+    light: "Confident leadership, earned recognition, inspiring others",
+    questions: [
+      "What victory must you own?",
+      "Where do you deserve recognition?",
+      "How can you lead with humility?"
+    ],
+    description: "Victorious rider with wreath-crowned wand, followers celebrating (public recognition, success). The Six of Wands represents victory, public success, leadership—the moment of triumph and recognition for efforts."
+  },
+
+  {
+    id: 42,
+    name: "Seven of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "7",
+    number: 7,
+    element: "fire",
+    modality: "cardinal",
+    astrology: "mars in leo",
+    numerology: 7,
+    kabbalah: "netzach in fire",
+    symbols: ["figure defending high ground", "six wands attacking", "mismatched shoes"],
+    archetypes: ["defender", "warrior", "challenger"],
+    themes: ["defense", "maintaining position", "challenge", "perseverance"],
+    keywords: {
+      upright: ["defense", "maintaining position", "challenged", "perseverance"],
+      reversed: ["giving up", "overwhelmed", "losing ground"]
+    },
+    jungian: "defending ego boundaries",
+    chakra: "solar plexus",
+    seasonality: "under siege",
+    timeframe: "current challenge",
+    advice: "Hold your ground. Defend what matters. Courage under fire defines character.",
+    shadow_work: "Defensiveness, siege mentality, unnecessary battles",
+    light: "Righteous defense, perseverance, courage under pressure",
+    questions: [
+      "What ground must you hold?",
+      "Where are you under attack?",
+      "What requires your fierce defense?"
+    ],
+    description: "Figure on high ground defending against six wands (holding position under challenge). Mismatched shoes (caught off-guard but fighting anyway). The Seven of Wands represents defense, perseverance, holding ground—courage when challenged."
+  },
+
+  {
+    id: 43,
+    name: "Eight of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "8",
+    number: 8,
+    element: "fire",
+    modality: "mutable",
+    astrology: "mercury in sagittarius",
+    numerology: 8,
+    kabbalah: "hod in fire",
+    symbols: ["eight wands flying", "clear sky", "river", "landscape"],
+    archetypes: ["messenger", "speed", "action"],
+    themes: ["speed", "rapid action", "air travel", "communication"],
+    keywords: {
+      upright: ["speed", "rapid action", "movement", "progress"],
+      reversed: ["delays", "frustration", "resisting change"]
+    },
+    jungian: "rapid development",
+    chakra: "solar plexus",
+    seasonality: "rapid change",
+    timeframe: "days to weeks",
+    advice: "Move fast. Strike while hot. Momentum compounds.",
+    shadow_work: "Impatience, lack of grounding, burnout from speed",
+    light: "Swift action, perfect timing, momentum mastery",
+    questions: [
+      "What requires swift action?",
+      "Where must you accelerate?",
+      "What momentum must you ride?"
+    ],
+    description: "Eight wands flying through clear sky (rapid movement, messages, travel). No obstacles (clear path forward). The Eight of Wands represents speed, rapid progress, swift communication—things moving fast in your favor."
+  },
+
+  {
+    id: 44,
+    name: "Nine of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "9",
+    number: 9,
+    element: "fire",
+    modality: "fixed",
+    astrology: "moon in sagittarius",
+    numerology: 9,
+    kabbalah: "yesod in fire",
+    symbols: ["wounded figure", "eight wands behind", "one wand in hand", "bandage"],
+    archetypes: ["survivor", "wounded warrior", "resilience"],
+    themes: ["resilience", "persistence", "last stand", "wounded but standing"],
+    keywords: {
+      upright: ["resilience", "persistence", "test of faith", "boundaries"],
+      reversed: ["paranoia", "stubbornness", "refusing help"]
+    },
+    jungian: "wounded healer",
+    chakra: "root",
+    seasonality: "final test",
+    timeframe: "near completion",
+    advice: "One more push. You've survived worse. Finish strong.",
+    shadow_work: "Paranoia, refusal to heal, martyr complex, isolation",
+    light: "Resilience through adversity, wisdom from wounds, final courage",
+    questions: [
+      "What final test faces you?",
+      "Where must you persist despite wounds?",
+      "What wisdom comes from your scars?"
+    ],
+    description: "Wounded but standing figure, bandage on head, guarding eight wands (battle-scarred but unbroken). The Nine of Wands represents resilience, persistence, wounded warrior—you've been through hell but you're still standing."
+  },
+
+  {
+    id: 45,
+    name: "Ten of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "10",
+    number: 10,
+    element: "fire",
+    modality: "cardinal",
+    astrology: "saturn in sagittarius",
+    numerology: 10,
+    kabbalah: "malkuth in fire",
+    symbols: ["figure carrying ten wands", "burden", "town ahead", "bent posture"],
+    archetypes: ["burden bearer", "martyr", "over-commitment"],
+    themes: ["burden", "responsibility", "hard work", "nearing completion"],
+    keywords: {
+      upright: ["burden", "responsibility", "hard work", "accomplishment near"],
+      reversed: ["release", "delegation", "burnout avoided"]
+    },
+    jungian: "inflation / carrying too much",
+    chakra: "root",
+    seasonality: "harvest burden",
+    timeframe: "near end of cycle",
+    advice: "Delegate. Release unnecessary burdens. Success shouldn't break your back.",
+    shadow_work: "Martyr complex, inability to delegate, self-imposed suffering",
+    light: "Responsible completion, strength to finish, wisdom to delegate",
+    questions: [
+      "What burden must you release?",
+      "Where can you delegate?",
+      "What's the difference between responsibility and martyrdom?"
+    ],
+    description: "Figure bent under burden of ten wands, town ahead (so close to finish but heavy burden). The Ten of Wands represents burden, over-responsibility, hard work—carrying too much alone when delegation would help."
+  },
+
+  {
+    id: 46,
+    name: "Page of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "page",
+    number: 11,
+    element: "fire",
+    modality: "mutable",
+    astrology: "earth of fire",
+    numerology: 11,
+    kabbalah: "princess of fire",
+    symbols: ["young figure with wand", "desert", "pyramids", "sprouting wand"],
+    archetypes: ["explorer", "student", "messenger"],
+    themes: ["exploration", "enthusiasm", "discovery", "free spirit"],
+    keywords: {
+      upright: ["exploration", "enthusiasm", "discovery", "free spirit"],
+      reversed: ["lack of direction", "procrastination", "laziness"]
+    },
+    jungian: "puer / puella",
+    chakra: "sacral",
+    seasonality: "youthful exploration",
+    timeframe: "beginning phase",
+    advice: "Explore freely. Learn by doing. Enthusiasm is its own reward.",
+    shadow_work: "Lack of follow-through, scattered energy, perpetual beginner",
+    light: "Enthusiastic exploration, courageous learning, authentic curiosity",
+    questions: [
+      "What new passion calls you?",
+      "Where must you explore?",
+      "What message of enthusiasm do you carry?"
+    ],
+    description: "Young figure holding wand observing sprouting leaves (curious exploration, messages of passion). Desert setting (uncharted territory). The Page of Wands represents enthusiasm, exploration, discovery—the youthful fire of new interests."
+  },
+
+  {
+    id: 47,
+    name: "Knight of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "knight",
+    number: 12,
+    element: "fire",
+    modality: "cardinal",
+    astrology: "air of fire",
+    numerology: 12,
+    kabbalah: "prince of fire",
+    symbols: ["knight on rearing horse", "armor with salamanders", "desert", "pyramids"],
+    archetypes: ["adventurer", "warrior", "hero"],
+    themes: ["action", "adventure", "fearlessness", "passion"],
+    keywords: {
+      upright: ["action", "adventure", "fearlessness", "passion"],
+      reversed: ["recklessness", "haste", "scattered energy"]
+    },
+    jungian: "warrior archetype",
+    chakra: "solar plexus",
+    seasonality: "action phase",
+    timeframe: "immediate / sudden",
+    advice: "Act boldly. Move fast. Fortune favors the brave.",
+    shadow_work: "Recklessness, impulsiveness, lack of planning, burnout",
+    light: "Courageous action, passionate pursuit, bold adventure",
+    questions: [
+      "Where must you act boldly?",
+      "What adventure calls you?",
+      "When is speed more important than planning?"
+    ],
+    description: "Knight on rearing horse, armor decorated with salamanders (fire element symbol, passionate action). The Knight of Wands represents action, adventure, fearlessness—charging forward with passion and courage."
+  },
+
+  {
+    id: 48,
+    name: "Queen of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "queen",
+    number: 13,
+    element: "fire",
+    modality: "fixed",
+    astrology: "water of fire",
+    numerology: 13,
+    kabbalah: "queen of fire",
+    symbols: ["queen on throne", "black cat", "sunflowers", "lions"],
+    archetypes: ["sovereign", "empress", "magnetic presence"],
+    themes: ["confidence", "independence", "determination", "vivaciousness"],
+    keywords: {
+      upright: ["confidence", "independence", "determination", "vivaciousness"],
+      reversed: ["jealousy", "selfishness", "demanding"]
+    },
+    jungian: "empress / sovereignty",
+    chakra: "sacral",
+    seasonality: "full bloom",
+    timeframe: "mature / established",
+    advice: "Own your power. Shine without apology. Your confidence inspires others.",
+    shadow_work: "Jealousy, need for attention, dominating energy, insecurity masked as confidence",
+    light: "Authentic confidence, warm leadership, magnetic presence",
+    questions: [
+      "Where must you own your power?",
+      "How can you inspire through confidence?",
+      "What makes you uniquely magnetic?"
+    ],
+    description: "Queen enthroned with sunflowers, black cat, lions (confidence, warmth, sovereignty). Wand in hand (command of creative power). The Queen of Wands represents confidence, independence, charismatic leadership—the sovereign who rules with warmth and strength."
+  },
+
+  {
+    id: 49,
+    name: "King of Wands",
+    arcana: "minor",
+    suit: "wands",
+    rank: "king",
+    number: 14,
+    element: "fire",
+    modality: "cardinal",
+    astrology: "fire of fire",
+    numerology: 14,
+    kabbalah: "king of fire",
+    symbols: ["king on throne", "lions", "salamanders", "crown"],
+    archetypes: ["leader", "visionary", "entrepreneur"],
+    themes: ["leadership", "vision", "entrepreneurship", "honor"],
+    keywords: {
+      upright: ["leadership", "vision", "entrepreneurship", "honor"],
+      reversed: ["tyranny", "arrogance", "impulsiveness"]
+    },
+    jungian: "king archetype",
+    chakra: "solar plexus",
+    seasonality: "full mastery",
+    timeframe: "leadership established",
+    advice: "Lead boldly. Vision without action is fantasy. Be the king of your domain.",
+    shadow_work: "Tyranny, ego inflation, reckless leadership, domination",
+    light: "Visionary leadership, honorable command, inspiring action",
+    questions: [
+      "Where must you lead boldly?",
+      "What vision requires your leadership?",
+      "How do you wield power with honor?"
+    ],
+    description: "King enthroned with lions, salamanders (fire mastery, bold leadership). Commanding presence, wand of power. The King of Wands represents leadership, vision, entrepreneurship—the sovereign who leads with bold vision and honorable action."
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // CUPS - WATER ELEMENT (50-63)
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 50,
+    name: "Ace of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "ace",
+    number: 1,
+    element: "water",
+    modality: "cardinal",
+    astrology: "water initiation",
+    numerology: 1,
+    kabbalah: "kether in water",
+    symbols: ["hand from cloud", "overflowing cup", "dove", "lotus", "five streams"],
+    archetypes: ["divine love", "spiritual opening", "compassion"],
+    themes: ["new love", "emotional awakening", "compassion", "intuition", "creativity"],
+    keywords: {
+      upright: ["new love", "emotional awakening", "intuition", "spiritual connection"],
+      reversed: ["emotional loss", "blocked creativity", "emptiness"]
+    },
+    jungian: "anima / animus awakening",
+    chakra: "heart",
+    seasonality: "spring / emotional renewal",
+    timeframe: "new emotional beginning",
+    advice: "Open your heart. Receive love. Let emotions flow freely.",
+    shadow_work: "Closed heart, fear of vulnerability, emotional unavailability",
+    light: "Divine love, open heart, emotional receptivity",
+    questions: [
+      "What new emotional experience calls you?",
+      "Where must you open your heart?",
+      "What prevents you from receiving love?"
+    ],
+    description: "Hand from clouds offering overflowing cup, dove descending, lotus blooms (divine love, spiritual awakening). Five streams (five senses awakened to love). The Ace of Cups represents new love, emotional opening, divine connection—the heart's first stirring."
+  },
+
+  {
+    id: 51,
+    name: "Two of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "2",
+    number: 2,
+    element: "water",
+    modality: "cardinal",
+    astrology: "venus in cancer",
+    numerology: 2,
+    kabbalah: "chokmah in water",
+    symbols: ["two figures", "caduceus", "lion head", "mutual gaze"],
+    archetypes: ["union", "partnership", "soul connection"],
+    themes: ["partnership", "mutual respect", "attraction", "unity"],
+    keywords: {
+      upright: ["partnership", "mutual attraction", "unity", "connection"],
+      reversed: ["disharmony", "imbalance", "broken relationship"]
+    },
+    jungian: "syzygy / sacred marriage",
+    chakra: "heart",
+    seasonality: "union / partnership",
+    timeframe: "forming connection",
+    advice: "Honor partnership. Mutual respect creates magic. Two become one.",
+    shadow_work: "Codependency, loss of self, idealization, projection",
+    light: "Sacred partnership, mutual honoring, balanced union",
+    questions: [
+      "What partnership must you honor?",
+      "Where do you project instead of see?",
+      "How can two remain two while becoming one?"
+    ],
+    description: "Two figures facing each other, cups raised (partnership, mutual respect, attraction). Caduceus above (healing through union). The Two of Cups represents partnership, attraction, sacred union—when two hearts meet as equals."
+  },
+
+  {
+    id: 52,
+    name: "Three of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "3",
+    number: 3,
+    element: "water",
+    modality: "mutable",
+    astrology: "mercury in cancer",
+    numerology: 3,
+    kabbalah: "binah in water",
+    symbols: ["three dancing figures", "raised cups", "harvest", "celebration"],
+    archetypes: ["celebration", "community", "friendship"],
+    themes: ["celebration", "friendship", "community", "creativity"],
+    keywords: {
+      upright: ["celebration", "friendship", "creativity", "community"],
+      reversed: ["overindulgence", "gossip", "isolation"]
+    },
+    jungian: "collective feminine",
+    chakra: "sacral",
+    seasonality: "harvest / celebration",
+    timeframe: "social gathering",
+    advice: "Celebrate with others. Community amplifies joy. Friendship is medicine.",
+    shadow_work: "Codependency on social validation, gossip, superficial connections",
+    light: "Authentic community, joyful celebration, creative collaboration",
+    questions: [
+      "What deserves celebration?",
+      "Where do you need community?",
+      "How can you co-create joy?"
+    ],
+    description: "Three figures dancing, cups raised in celebration (community, friendship, harvest joy). The Three of Cups represents celebration, friendship, creative collaboration—the joy of connection and shared success."
+  },
+
+  {
+    id: 53,
+    name: "Four of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "4",
+    number: 4,
+    element: "water",
+    modality: "fixed",
+    astrology: "moon in cancer",
+    numerology: 4,
+    kabbalah: "chesed in water",
+    symbols: ["seated figure", "three cups", "hand offering fourth", "tree"],
+    archetypes: ["contemplation", "apathy", "meditation"],
+    themes: ["contemplation", "apathy", "reevaluation", "meditation"],
+    keywords: {
+      upright: ["contemplation", "apathy", "reevaluation", "meditation"],
+      reversed: ["awareness", "acceptance", "new perspectives"]
+    },
+    jungian: "withdrawal / introv
+
+ersion",
+    chakra: "third eye",
+    seasonality: "introspective phase",
+    timeframe: "pause / reflection",
+    advice: "Pause to reflect. What you seek may be right before you. Discontent is a teacher.",
+    shadow_work: "Apathy, taking blessings for granted, grass-is-greener syndrome",
+    light: "Deep contemplation, wise discernment, spiritual introspection",
+    questions: [
+      "What are you not seeing?",
+      "Where is discontent a teacher?",
+      "What new offering do you ignore?"
+    ],
+    description: "Figure sits cross-armed, three cups before them, hand from cloud offering fourth (apathy, contemplation, missing opportunities). The Four of Cups represents contemplation, apathy, reevaluation—sometimes missing the gift right in front of you."
+  },
+
+  {
+    id: 54,
+    name: "Five of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "5",
+    number: 5,
+    element: "water",
+    modality: "mutable",
+    astrology: "mars in scorpio",
+    numerology: 5,
+    kabbalah: "geburah in water",
+    symbols: ["cloaked figure", "three spilled cups", "two standing cups", "bridge"],
+    archetypes: ["grief", "loss", "regret"],
+    themes: ["loss", "grief", "regret", "disappointment"],
+    keywords: {
+      upright: ["loss", "grief", "regret", "disappointment"],
+      reversed: ["acceptance", "moving on", "finding peace"]
+    },
+    jungian: "shadow work / grief",
+    chakra: "heart",
+    seasonality: "winter / loss",
+    timeframe: "recent loss",
+    advice: "Grieve fully. Honor loss. But see: two cups still stand, and a bridge awaits.",
+    shadow_work: "Dwelling in victimhood, refusing to see remaining blessings, stuck in grief",
+    light: "Honest grief, acknowledging loss, finding gifts in pain",
+    questions: [
+      "What must you grieve?",
+      "What two cups still stand?",
+      "When does grief become dwelling?"
+    ],
+    description: "Cloaked figure mourning three spilled cups, two cups remain standing, bridge in distance (loss, grief, but hope remains). The Five of Cups represents loss, regret, grief—but also the choice to see what remains and move forward."
+  },
+
+  {
+    id: 55,
+    name: "Six of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "6",
+    number: 6,
+    element: "water",
+    modality: "mutable",
+    astrology: "sun in scorpio",
+    numerology: 6,
+    kabbalah: "tiphareth in water",
+    symbols: ["children", "flowers in cups", "home", "nostalgia"],
+    archetypes: ["innocence", "nostalgia", "childhood"],
+    themes: ["nostalgia", "childhood memories", "innocence", "reunion"],
+    keywords: {
+      upright: ["nostalgia", "childhood memories", "innocence", "reunion"],
+      reversed: ["stuck in past", "rose-colored glasses", "childhood wounds"]
+    },
+    jungian: "inner child",
+    chakra: "heart",
+    seasonality: "returning home",
+    timeframe: "past revisited",
+    advice: "Honor your past. Your inner child needs attention. Innocence is not lost, only forgotten.",
+    shadow_work: "Living in past, idealizing childhood, refusing present, unhealed wounds",
+    light: "Healed inner child, genuine innocence, wisdom from past",
+    questions: [
+      "What does your inner child need?",
+      "Where are you stuck in the past?",
+      "How does nostalgia serve or hinder you?"
+    ],
+    description: "Children exchanging flowers in cups (nostalgia, innocence, childhood memories). Home in background (returning to roots). The Six of Cups represents nostalgia, reunion, inner child work—revisiting the past to heal and integrate."
+  },
+
+  {
+    id: 56,
+    name: "Seven of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "7",
+    number: 7,
+    element: "water",
+    modality: "cardinal",
+    astrology: "venus in scorpio",
+    numerology: 7,
+    kabbalah: "netzach in water",
+    symbols: ["silhouette", "seven cups with visions", "clouds", "choices"],
+    archetypes: ["illusion", "fantasy", "wishful thinking"],
+    themes: ["choices", "illusion", "fantasy", "wishful thinking"],
+    keywords: {
+      upright: ["choices", "fantasy", "illusion", "opportunities"],
+      reversed: ["clarity", "reality check", "determination"]
+    },
+    jungian: "inflation / illusion",
+    chakra: "third eye",
+    seasonality: "confusion phase",
+    timeframe: "decision paralysis",
+    advice: "Choose wisely. Not all that glitters is gold. Fantasy must meet reality.",
+    shadow_work: "Escapism, analysis paralysis, avoiding choice, living in fantasy",
+    light: "Visionary dreaming, wise discernment, grounding dreams in reality",
+    questions: [
+      "Which choice is real vs. fantasy?",
+      "Where are you avoiding decision?",
+      "What dream must you ground in reality?"
+    ],
+    description: "Figure faces seven cups floating in clouds, each containing a vision (choices, illusions, fantasies). The Seven of Cups represents choices, fantasy, illusion—the challenge of discerning real opportunities from mirages."
+  },
+
+  {
+    id: 57,
+    name: "Eight of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "8",
+    number: 8,
+    element: "water",
+    modality: "mutable",
+    astrology: "saturn in pisces",
+    numerology: 8,
+    kabbalah: "hod in water",
+    symbols: ["figure walking away", "eight cups", "moon", "mountains"],
+    archetypes: ["journey", "abandonment", "search"],
+    themes: ["walking away", "spiritual journey", "seeking deeper meaning"],
+    keywords: {
+      upright: ["walking away", "seeking truth", "spiritual journey", "abandonment"],
+      reversed: ["fear of change", "stuck", "avoiding loss"]
+    },
+    jungian: "individuation journey",
+    chakra: "crown",
+    seasonality: "pilgrim phase",
+    timeframe: "transition / departure",
+    advice: "Walk away from what no longer serves. The spiritual journey requires leaving comfort.",
+    shadow_work: "Fear of loss, attachment to familiar suffering, avoiding growth",
+    light: "Courageous departure, spiritual seeking, choosing growth over comfort",
+    questions: [
+      "What must you walk away from?",
+      "What deeper truth calls you?",
+      "When is leaving an act of self-love?"
+    ],
+    description: "Figure walks away from eight cups toward mountains under moon (abandonment, spiritual quest, seeking deeper meaning). The Eight of Cups represents walking away, spiritual journey, seeking truth—leaving what's comfortable for what's meaningful."
+  },
+
+  {
+    id: 58,
+    name: "Nine of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "9",
+    number: 9,
+    element: "water",
+    modality: "fixed",
+    astrology: "jupiter in pisces",
+    numerology: 9,
+    kabbalah: "yesod in water",
+    symbols: ["satisfied figure", "nine cups arranged", "smile", "arms crossed"],
+    archetypes: ["contentment", "wish fulfillment", "satisfaction"],
+    themes: ["contentment", "satisfaction", "wishes fulfilled", "happiness"],
+    keywords: {
+      upright: ["contentment", "satisfaction", "wish fulfillment", "happiness"],
+      reversed: ["greed", "dissatisfaction", "materialism"]
+    },
+    jungian: "self-satisfaction",
+    chakra: "solar plexus",
+    seasonality: "abundance peak",
+    timeframe: "wish granted",
+    advice: "Savor satisfaction. You earned this. Gratitude amplifies abundance.",
+    shadow_work: "Greed, never enough, smugness, attachment to comfort",
+    light: "Genuine contentment, gratitude, celebrating success",
+    questions: [
+      "What wish has been fulfilled?",
+      "Where can you savor success?",
+      "How does contentment differ from complacency?"
+    ],
+    description: "Figure sits contentedly, nine cups arranged (wish fulfillment, satisfaction, emotional abundance). The Nine of Cups represents contentment, wishes fulfilled, satisfaction—the 'wish card' where dreams manifest."
+  },
+
+  {
+    id: 59,
+    name: "Ten of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "10",
+    number: 10,
+    element: "water",
+    modality: "cardinal",
+    astrology: "mars in pisces",
+    numerology: 10,
+    kabbalah: "malkuth in water",
+    symbols: ["family", "rainbow", "home", "children", "ten cups"],
+    archetypes: ["harmony", "family", "completion"],
+    themes: ["harmony", "family", "emotional fulfillment", "lasting happiness"],
+    keywords: {
+      upright: ["harmony", "family", "happiness", "alignment"],
+      reversed: ["broken family", "disconnection", "misalignment"]
+    },
+    jungian: "wholeness / family archetype",
+    chakra: "heart",
+    seasonality: "completion / harvest",
+    timeframe: "lasting fulfillment",
+    advice: "This is it—the happy ending. Family (chosen or blood) is everything. Cherish harmony.",
+    shadow_work: "Idealization of family, ignoring dysfunction, superficial harmony",
+    light: "Genuine harmony, loving family, emotional completion",
+    questions: [
+      "What does 'home' mean to you?",
+      "Where have you found your tribe?",
+      "How do you maintain harmony without sacrificing truth?"
+    ],
+    description: "Family embracing, rainbow and ten cups above (emotional fulfillment, harmony, lasting happiness). The Ten of Cups represents family harmony, emotional completion, lasting joy—the happily ever after of emotional fulfillment."
+  },
+
+  {
+    id: 60,
+    name: "Page of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "page",
+    number: 11,
+    element: "water",
+    modality: "mutable",
+    astrology: "earth of water",
+    numerology: 11,
+    kabbalah: "princess of water",
+    symbols: ["young figure with cup", "fish emerging", "ocean", "dreamy expression"],
+    archetypes: ["creative", "intuitive", "messenger"],
+    themes: ["creativity", "intuition", "good news", "new feelings"],
+    keywords: {
+      upright: ["creativity", "intuition", "good news", "inner child"],
+      reversed: ["emotional immaturity", "creative blocks", "bad news"]
+    },
+    jungian: "inner child / intuition",
+    chakra: "sacral",
+    seasonality: "emotional awakening",
+    timeframe: "new emotional message",
+    advice: "Trust intuition. Emotions bring messages. Play like a child, create like an artist.",
+    shadow_work: "Emotional immaturity, ignoring intuition, creative blocks",
+    light: "Intuitive wisdom, creative play, emotional honesty",
+    questions: [
+      "What does your intuition whisper?",
+      "What wants to be created?",
+      "How does your inner child want to play?"
+    ],
+    description: "Young figure holding cup, fish emerging (intuition, creativity, emotional messages). The Page of Cups represents intuition, creativity, good news—the youthful, dreamy messenger of the heart."
+  },
+
+  {
+    id: 61,
+    name: "Knight of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "knight",
+    number: 12,
+    element: "water",
+    modality: "cardinal",
+    astrology: "air of water",
+    numerology: 12,
+    kabbalah: "prince of water",
+    symbols: ["knight on white horse", "cup", "winged helmet", "flowing water"],
+    archetypes: ["romantic", "idealist", "artist"],
+    themes: ["romance", "charm", "idealism", "proposals"],
+    keywords: {
+      upright: ["romance", "charm", "idealism", "following heart"],
+      reversed: ["moodiness", "unrealistic expectations", "disappointment"]
+    },
+    jungian: "animus / romantic ideal",
+    chakra: "heart",
+    seasonality: "courtship phase",
+    timeframe: "romantic gesture",
+    advice: "Follow your heart. Romance is sacred. But ground idealism in reality.",
+    shadow_work: "Unrealistic expectations, love addiction, avoiding commitment, fantasy over reality",
+    light: "Authentic romance, creative expression, emotional courage",
+    questions: [
+      "What romantic gesture calls you?",
+      "Where are expectations unrealistic?",
+      "How do you balance idealism with reality?"
+    ],
+    description: "Knight on white horse offering cup (romance, proposals, idealism). Winged helmet (elevated emotions). The Knight of Cups represents romance, charm, following the heart—the poet, artist, and romantic idealist."
+  },
+
+  {
+    id: 62,
+    name: "Queen of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "queen",
+    number: 13,
+    element: "water",
+    modality: "fixed",
+    astrology: "water of water",
+    numerology: 13,
+    kabbalah: "queen of water",
+    symbols: ["queen on throne", "ornate cup", "water", "angels", "shells"],
+    archetypes: ["psychic", "empath", "healer"],
+    themes: ["empathy", "intuition", "emotional depth", "compassion"],
+    keywords: {
+      upright: ["empathy", "intuition", "compassion", "emotional security"],
+      reversed: ["emotional manipulation", "codependency", "martyrdom"]
+    },
+    jungian: "great mother / healer",
+    chakra: "heart",
+    seasonality: "emotional mastery",
+    timeframe: "mature emotional wisdom",
+    advice: "Trust your empathy. Emotional wisdom is power. But maintain boundaries.",
+    shadow_work: "Emotional manipulation, martyrdom, porous boundaries, vicarious living",
+    light: "Psychic sensitivity, compassionate healing, emotional mastery",
+    questions: [
+      "Where must you trust your intuition?",
+      "How do you honor emotions without drowning?",
+      "What's the difference between empathy and enmeshment?"
+    ],
+    description: "Queen enthroned by water, ornate cup, angels and shells (empathy, intuition, emotional depth). The Queen of Cups represents empathy, psychic ability, compassionate wisdom—the emotional healer and intuitive guide."
+  },
+
+  {
+    id: 63,
+    name: "King of Cups",
+    arcana: "minor",
+    suit: "cups",
+    rank: "king",
+    number: 14,
+    element: "water",
+    modality: "cardinal",
+    astrology: "fire of water",
+    numerology: 14,
+    kabbalah: "king of water",
+    symbols: ["king on throne", "cup", "turbulent seas", "ship", "fish"],
+    archetypes: ["wise counselor", "emotional mastery", "diplomacy"],
+    themes: ["emotional control", "diplomacy", "compassion", "wise counsel"],
+    keywords: {
+      upright: ["emotional control", "diplomacy", "compassion", "calm"],
+      reversed: ["emotional manipulation", "coldness", "repression"]
+    },
+    jungian: "wise king / emotional mastery",
+    chakra: "throat",
+    seasonality: "emotional sovereignty",
+    timeframe: "mature emotional leadership",
+    advice: "Master emotions without suppressing them. Lead with compassion. Calm in the storm.",
+    shadow_work: "Emotional suppression, manipulation through caring, passive aggression",
+    light: "Emotional sovereignty, wise counseling, compassionate leadership",
+    questions: [
+      "How do you lead with heart?",
+      "Where do you confuse control with mastery?",
+      "What wisdom comes from emotional balance?"
+    ],
+    description: "King enthroned amid turbulent seas, calm demeanor (emotional mastery, calm in chaos). Fish jumping (emotional depths surfacing). The King of Cups represents emotional control, diplomacy, wise counsel—the master of the emotional realm."
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // PENTACLES - EARTH ELEMENT (64-77)
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 64,
+    name: "Ace of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "ace",
+    number: 1,
+    element: "earth",
+    modality: "cardinal",
+    astrology: "earth initiation",
+    numerology: 1,
+    kabbalah: "kether in earth",
+    symbols: ["hand from cloud", "pentacle", "garden", "archway", "mountains"],
+    archetypes: ["manifestation", "prosperity", "grounding"],
+    themes: ["opportunity", "prosperity", "manifestation", "new financial venture"],
+    keywords: {
+      upright: ["opportunity", "prosperity", "manifestation", "abundance"],
+      reversed: ["missed opportunity", "lack of planning", "greed"]
+    },
+    jungian: "embodiment / manifestation",
+    chakra: "root",
+    seasonality: "planting season",
+    timeframe: "new material beginning",
+    advice: "Plant seeds now. Material opportunity is here. Ground dreams in reality.",
+    shadow_work: "Greed, materialism, refusing to take practical action",
+    light: "Grounded manifestation, practical abundance, embodied prosperity",
+    questions: [
+      "What material opportunity presents itself?",
+      "Where must you take practical action?",
+      "What dream needs grounding?"
+    ],
+    description: "Hand from clouds offering pentacle, lush garden below (material opportunity, prosperity, manifestation). The Ace of Pentacles represents new financial ventures, practical opportunities, grounded beginnings—spirit made manifest."
+  },
+
+  {
+    id: 65,
+    name: "Two of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "2",
+    number: 2,
+    element: "earth",
+    modality: "cardinal",
+    astrology: "jupiter in capricorn",
+    numerology: 2,
+    kabbalah: "chokmah in earth",
+    symbols: ["juggling figure", "two pentacles", "infinity loop", "ships on waves"],
+    archetypes: ["balance", "adaptability", "multitasking"],
+    themes: ["balance", "adaptability", "time management", "priorities"],
+    keywords: {
+      upright: ["balance", "adaptability", "time management", "priorities"],
+      reversed: ["overwhelm", "disorganization", "loss of balance"]
+    },
+    jungian: "balancing opposites",
+    chakra: "sacral",
+    seasonality: "active juggling",
+    timeframe: "short-term balancing",
+    advice: "Stay flexible. Balance competing priorities. Dance with change.",
+    shadow_work: "Overwhelm, scattered focus, inability to prioritize, chaos",
+    light: "Graceful balance, adaptive flow, masterful juggling",
+    questions: [
+      "What needs balancing?",
+      "Where are you juggling too much?",
+      "How can you prioritize better?"
+    ],
+    description: "Figure juggling two pentacles in infinity loop, ships on turbulent waves (balance, adaptability, managing multiple priorities). The Two of Pentacles represents balance, time management, juggling responsibilities—finding flow amid chaos."
+  },
+
+  {
+    id: 66,
+    name: "Three of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "3",
+    number: 3,
+    element: "earth",
+    modality: "mutable",
+    astrology: "mars in capricorn",
+    numerology: 3,
+    kabbalah: "binah in earth",
+    symbols: ["craftsperson", "architect", "monk", "cathedral", "pentacles"],
+    archetypes: ["craftsperson", "teamwork", "mastery"],
+    themes: ["teamwork", "collaboration", "learning", "implementation"],
+    keywords: {
+      upright: ["teamwork", "collaboration", "learning", "implementation"],
+      reversed: ["lack of teamwork", "disharmony", "poor quality"]
+    },
+    jungian: "skill development",
+    chakra: "solar plexus",
+    seasonality: "building phase",
+    timeframe: "learning / apprenticeship",
+    advice: "Master your craft. Collaborate. Quality requires skill, teamwork, and time.",
+    shadow_work: "Lone wolf syndrome, refusing to learn, sloppy work, ego over excellence",
+    light: "Masterful collaboration, dedicated learning, quality craftsmanship",
+    questions: [
+      "What skill must you master?",
+      "Where do you need collaboration?",
+      "How can you improve quality?"
+    ],
+    description: "Craftsperson collaborating with architect and monk in cathedral (teamwork, skill, implementation). The Three of Pentacles represents collaboration, mastery, building—bringing vision into form through skilled teamwork."
+  },
+
+  {
+    id: 67,
+    name: "Four of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "4",
+    number: 4,
+    element: "earth",
+    modality: "fixed",
+    astrology: "sun in capricorn",
+    numerology: 4,
+    kabbalah: "chesed in earth",
+    symbols: ["figure clutching pentacles", "crown with pentacle", "city behind"],
+    archetypes: ["control", "security", "possessiveness"],
+    themes: ["control", "security", "possessiveness", "conservation"],
+    keywords: {
+      upright: ["control", "stability", "security", "conservatism"],
+      reversed: ["greed", "materialism", "self-protection gone too far"]
+    },
+    jungian: "ego control / security shadow",
+    chakra: "root",
+    seasonality: "winter / preservation",
+    timeframe: "holding phase",
+    advice: "Protect what's yours. But know: grasping kills. Security requires flow, not death grip.",
+    shadow_work: "Greed, control, fear-based hoarding, inability to receive",
+    light: "Healthy boundaries, wise conservation, secure foundation",
+    questions: [
+      "What are you clutching too tightly?",
+      "Where does security become prison?",
+      "How do you balance saving with flow?"
+    ],
+    description: "Figure clutching pentacles tightly, crown with pentacle on head (control, security, possessiveness). The Four of Pentacles represents security, control, conservation—the fine line between protection and imprisonment."
+  },
+
+  {
+    id: 68,
+    name: "Five of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "5",
+    number: 5,
+    element: "earth",
+    modality: "mutable",
+    astrology: "mercury in taurus",
+    numerology: 5,
+    kabbalah: "geburah in earth",
+    symbols: ["two beggars", "stained glass window", "snow", "church"],
+    archetypes: ["poverty", "isolation", "hardship"],
+    themes: ["poverty", "hardship", "isolation", "material loss"],
+    keywords: {
+      upright: ["poverty", "hardship", "isolation", "material loss"],
+      reversed: ["recovery", "spiritual growth from hardship", "help arrives"]
+    },
+    jungian: "dark night of soul / material crisis",
+    chakra: "root",
+    seasonality: "winter / hardship",
+    timeframe: "difficult period",
+    advice: "Ask for help. You're not alone. The church door is open—walk through it.",
+    shadow_work: "Victim mentality, refusing help, pride blocking receiving, poverty consciousness",
+    light: "Vulnerability, asking for help, spiritual growth through hardship",
+    questions: [
+      "Where do you need help?",
+      "What prevents you from asking?",
+      "How does hardship serve your growth?"
+    ],
+    description: "Two figures in snow outside church with stained glass (hardship, isolation, but help is near). The Five of Pentacles represents material hardship, poverty, isolation—but also the reminder that help is available if you reach for it."
+  },
+
+  {
+    id: 69,
+    name: "Six of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "6",
+    number: 6,
+    element: "earth",
+    modality: "mutable",
+    astrology: "moon in taurus",
+    numerology: 6,
+    kabbalah: "tiphareth in earth",
+    symbols: ["wealthy figure", "beggars", "scales", "giving"],
+    archetypes: ["generosity", "charity", "sharing"],
+    themes: ["generosity", "charity", "sharing wealth", "financial help"],
+    keywords: {
+      upright: ["generosity", "charity", "sharing", "financial help"],
+      reversed: ["strings attached", "power imbalance", "debt"]
+    },
+    jungian: "healthy exchange",
+    chakra: "heart",
+    seasonality: "harvest sharing",
+    timeframe: "giving / receiving",
+    advice: "Give freely. Receive graciously. Wealth flows when shared. But guard against control disguised as generosity.",
+    shadow_work: "Using money for control, refusing to receive, guilt around wealth, power dynamics",
+    light: "Generous sharing, balanced exchange, wealth consciousness",
+    questions: [
+      "Where can you give generously?",
+      "How do you receive without shame?",
+      "Does your giving create dependence or empowerment?"
+    ],
+    description: "Wealthy figure with scales giving to beggars (generosity, charity, balanced giving). The Six of Pentacles represents generosity, sharing, financial help—but also the power dynamics in giving and receiving."
+  },
+
+  {
+    id: 70,
+    name: "Seven of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "7",
+    number: 7,
+    element: "earth",
+    modality: "cardinal",
+    astrology: "saturn in taurus",
+    numerology: 7,
+    kabbalah: "netzach in earth",
+    symbols: ["farmer resting", "pentacles on vine", "contemplation"],
+    archetypes: ["patience", "assessment", "long-term vision"],
+    themes: ["patience", "assessment", "long-term investment", "evaluation"],
+    keywords: {
+      upright: ["patience", "long-term view", "assessment", "perseverance"],
+      reversed: ["impatience", "lack of rewards", "poor investment"]
+    },
+    jungian: "evaluation phase",
+    chakra: "solar plexus",
+    seasonality: "mid-growth assessment",
+    timeframe: "long-term investment",
+    advice: "Pause. Assess. Are your efforts bearing fruit? Course-correct if needed.",
+    shadow_work: "Impatience, giving up too soon, not assessing progress",
+    light: "Patient perseverance, wise assessment, long-term thinking",
+    questions: [
+      "What investment needs more time?",
+      "Where should you course-correct?",
+      "How do you balance patience with action?"
+    ],
+    description: "Farmer leaning on hoe, observing pentacles growing on vine (assessment, patience, long-term vision). The Seven of Pentacles represents patience, evaluation, long-term investment—the pause to assess if your efforts are working."
+  },
+
+  {
+    id: 71,
+    name: "Eight of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "8",
+    number: 8,
+    element: "earth",
+    modality: "mutable",
+    astrology: "sun in virgo",
+    numerology: 8,
+    kabbalah: "hod in earth",
+    symbols: ["craftsperson at work", "pentacles on wall", "town in distance"],
+    archetypes: ["mastery", "diligence", "skill development"],
+    themes: ["mastery", "diligence", "skill development", "attention to detail"],
+    keywords: {
+      upright: ["mastery", "skill development", "diligence", "detail work"],
+      reversed: ["perfectionism", "lack of ambition", "poor quality"]
+    },
+    jungian: "individuation through work",
+    chakra: "solar plexus",
+    seasonality: "deep work phase",
+    timeframe: "mastery development",
+    advice: "Master your craft. Ten thousand hours. Quality over quantity. Excellence is the path.",
+    shadow_work: "Perfectionism, workaholic, meaningless toil, lack of vision",
+    light: "Joyful mastery, dedicated practice, craftsmanship",
+    questions: [
+      "What skill deserves your dedication?",
+      "Where does perfectionism block progress?",
+      "How does your work serve something larger?"
+    ],
+    description: "Craftsperson diligently working, finished pentacles displayed (mastery, skill development, dedication). The Eight of Pentacles represents mastery, diligence, skill development—the path of dedicated practice and excellence."
+  },
+
+  {
+    id: 72,
+    name: "Nine of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "9",
+    number: 9,
+    element: "earth",
+    modality: "fixed",
+    astrology: "venus in virgo",
+    numerology: 9,
+    kabbalah: "yesod in earth",
+    symbols: ["wealthy figure", "garden", "falcon", "pentacles", "luxury"],
+    archetypes: ["self-sufficiency", "luxury", "independence"],
+    themes: ["self-sufficiency", "luxury", "financial independence", "self-discipline"],
+    keywords: {
+      upright: ["self-sufficiency", "luxury", "financial independence", "self-discipline"],
+      reversed: ["over-investment in image", "financial dependence", "lack of discipline"]
+    },
+    jungian: "individuated self / sovereignty",
+    chakra: "solar plexus",
+    seasonality: "harvest / abundance",
+    timeframe: "established success",
+    advice: "Enjoy the fruits of your labor. You built this. Self-sufficiency is freedom.",
+    shadow_work: "Isolation from self-sufficiency, materialism, image over substance",
+    light: "Earned luxury, genuine independence, disciplined success",
+    questions: [
+      "What have you built alone?",
+      "How do you balance independence with connection?",
+      "Where can you enjoy your success?"
+    ],
+    description: "Wealthy figure in abundant garden with falcon (self-sufficiency, luxury, financial independence). The Nine of Pentacles represents independence, luxury, self-made success—the sovereignty of one who built their own empire."
+  },
+
+  {
+    id: 73,
+    name: "Ten of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "10",
+    number: 10,
+    element: "earth",
+    modality: "cardinal",
+    astrology: "mercury in virgo",
+    numerology: 10,
+    kabbalah: "malkuth in earth",
+    symbols: ["family", "elder", "archway", "pentacles", "dogs"],
+    archetypes: ["legacy", "inheritance", "completion"],
+    themes: ["legacy", "inheritance", "family wealth", "long-term success"],
+    keywords: {
+      upright: ["legacy", "inheritance", "family wealth", "long-term success"],
+      reversed: ["family disputes", "financial failure", "lost inheritance"]
+    },
+    jungian: "wholeness / completion",
+    chakra: "root",
+    seasonality: "completion / legacy",
+    timeframe: "generational",
+    advice: "Build for generations. Legacy matters. What you create outlives you.",
+    shadow_work: "Dynasty thinking, family dysfunction, wealth without values",
+    light: "Lasting legacy, family prosperity, wealth with wisdom",
+    questions: [
+      "What legacy do you leave?",
+      "How do you balance individual success with family harmony?",
+      "What values do you pass down?"
+    ],
+    description: "Multi-generational family, elder at gate, pentacles throughout (legacy, inheritance, lasting wealth). The Ten of Pentacles represents legacy, family wealth, generational prosperity—the completion of material success passing to the next generation."
+  },
+
+  {
+    id: 74,
+    name: "Page of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "page",
+    number: 11,
+    element: "earth",
+    modality: "mutable",
+    astrology: "earth of earth",
+    numerology: 11,
+    kabbalah: "princess of earth",
+    symbols: ["young figure", "pentacle", "green field", "mountains"],
+    archetypes: ["student", "manifestation", "opportunity"],
+    themes: ["new financial opportunity", "manifestation", "skill development", "grounding"],
+    keywords: {
+      upright: ["opportunity", "new venture", "manifestation", "study"],
+      reversed: ["lack of progress", "procrastination", "get-rich-quick schemes"]
+    },
+    jungian: "eager student",
+    chakra: "root",
+    seasonality: "planting / learning",
+    timeframe: "new beginning",
+    advice: "Study diligently. Opportunity knocks. Ground your dreams in practical action.",
+    shadow_work: "Lack of follow-through, procrastination, distraction from real work",
+    light: "Eager learning, practical dreaming, diligent study",
+    questions: [
+      "What opportunity presents itself?",
+      "What skill must you learn?",
+      "How do you ground your vision?"
+    ],
+    description: "Young figure studying pentacle intently, green field (new opportunity, learning, manifestation). The Page of Pentacles represents new financial ventures, study, practical opportunities—the eager student of material mastery."
+  },
+
+  {
+    id: 75,
+    name: "Knight of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "knight",
+    number: 12,
+    element: "earth",
+    modality: "cardinal",
+    astrology: "air of earth",
+    numerology: 12,
+    kabbalah: "prince of earth",
+    symbols: ["knight on horse", "pentacle", "plowed field", "deliberate pace"],
+    archetypes: ["worker", "reliability", "persistence"],
+    themes: ["hard work", "responsibility", "reliability", "routine"],
+    keywords: {
+      upright: ["hard work", "reliability", "routine", "persistence"],
+      reversed: ["laziness", "obsession with work", "stuck in routine"]
+    },
+    jungian: "reliable worker",
+    chakra: "root",
+    seasonality: "steady progress",
+    timeframe: "slow but sure",
+    advice: "Slow and steady. Reliability wins. Do the work, every day, no drama.",
+    shadow_work: "Workaholism, stuck in routine, lack of vision, plodding without purpose",
+    light: "Reliable dedication, steady progress, grounded action",
+    questions: [
+      "Where must you show up consistently?",
+      "What work requires patient dedication?",
+      "How do you balance routine with flexibility?"
+    ],
+    description: "Knight on stationary horse holding pentacle, plowed field (hard work, reliability, steady progress). The Knight of Pentacles represents reliability, hard work, dedication—the worker who shows up every day without fail."
+  },
+
+  {
+    id: 76,
+    name: "Queen of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "queen",
+    number: 13,
+    element: "earth",
+    modality: "fixed",
+    astrology: "water of earth",
+    numerology: 13,
+    kabbalah: "queen of earth",
+    symbols: ["queen on throne", "pentacle", "rabbit", "lush garden", "roses"],
+    archetypes: ["nurturer", "provider", "earth mother"],
+    themes: ["nurturing", "practical", "working parent", "financial security"],
+    keywords: {
+      upright: ["nurturing", "practical", "providing", "working parent"],
+      reversed: ["smothering", "neglect", "work-life imbalance"]
+    },
+    jungian: "great mother / provider",
+    chakra: "heart",
+    seasonality: "abundant harvest",
+    timeframe: "established prosperity",
+    advice: "Nurture through provision. Care for self and others. Abundance flows from grounded care.",
+    shadow_work: "Martyr mom, neglecting self, using provision for control",
+    light: "Abundant nurturer, grounded care, prosperity with warmth",
+    questions: [
+      "How do you nurture through practical means?",
+      "Where must you provide for yourself first?",
+      "How do you balance care with boundaries?"
+    ],
+    description: "Queen enthroned in lush garden, pentacle in lap, rabbit at feet (nurturing, practical care, abundant provision). The Queen of Pentacles represents nurturing, practical care, financial security—the earth mother who provides with warmth."
+  },
+
+  {
+    id: 77,
+    name: "King of Pentacles",
+    arcana: "minor",
+    suit: "pentacles",
+    rank: "king",
+    number: 14,
+    element: "earth",
+    modality: "cardinal",
+    astrology: "fire of earth",
+    numerology: 14,
+    kabbalah: "king of earth",
+    symbols: ["king on throne", "pentacle", "castle", "bull", "grapes"],
+    archetypes: ["provider", "leader", "wealth"],
+    themes: ["wealth", "business", "leadership", "security"],
+    keywords: {
+      upright: ["wealth", "business success", "leadership", "security"],
+      reversed: ["greed", "corruption", "financial failure", "stubbornness"]
+    },
+    jungian: "wise king / material mastery",
+    chakra: "root",
+    seasonality: "established empire",
+    timeframe: "mastery achieved",
+    advice: "Lead through provision. Build empires. But never lose touch with earth beneath throne.",
+    shadow_work: "Greed, workaholic, empire over people, losing touch with why",
+    light: "Wise provision, benevolent leadership, material mastery with heart",
+    questions: [
+      "What empire must you build?",
+      "How do you lead with provision?",
+      "Where does success distance you from humanity?"
+    ],
+    description: "King enthroned in opulent setting, pentacle, bull, grapes (wealth, business mastery, established power). The King of Pentacles represents material success, business mastery, providing leadership—the sovereign who built an empire with his own hands."
+  }
 ];
 
 /**
