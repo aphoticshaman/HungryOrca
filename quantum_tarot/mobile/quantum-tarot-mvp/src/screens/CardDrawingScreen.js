@@ -127,9 +127,9 @@ export default function CardDrawingScreen({ route, navigation }) {
           'LunatiQ',
           '',
           drawMessages[messageIndex],
-          `Position: ${cards[i].position}`,
-          `Card ${i + 1} of ${cards.length}`,
-          `${cards[i].reversed ? '⟲ REVERSED' : '⟳ UPRIGHT'}',
+          'Position: ' + cards[i].position,
+          'Card ' + (i + 1) + ' of ' + cards.length,
+          (cards[i].reversed ? '⟲ REVERSED' : '⟳ UPRIGHT'),
           '',
           'Thank you for your patience.',
         ]);
@@ -241,7 +241,7 @@ export default function CardDrawingScreen({ route, navigation }) {
                   style={[
                     styles.progressFill,
                     {
-                      width: `${(cardCount / totalCards) * 100}%`,
+                      width: ((cardCount / totalCards) * 100) + '%',
                       backgroundColor: getPhaseColor()
                     }
                   ]}
