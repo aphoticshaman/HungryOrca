@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Animated, TouchableOpacity, Alert } from 'react
 import { useTheme } from '../context/ThemeContext';
 import { QuantumSpreadEngine } from '../services/quantumEngine';
 import { AdaptiveLanguageEngine } from '../services/adaptiveLanguage';
+import { LunatiQEngine } from '../services/lunatiQEngine';
 import { getCardByIndex } from '../data/tarotLoader';
 import { recordReading, saveReading, getUserProfile } from '../utils/storage';
 import { CARD_BACK } from '../data/asciiCards';
@@ -67,30 +68,34 @@ export default function CardDrawingScreen({ route, navigation }) {
         throw new Error('Invalid reading generated');
       }
 
-      setStatus('Interpreting...');
+      setStatus('Interpreting through multi-modal AGI...');
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Enrich with card data and interpretations
+      // Get all cards first for relational analysis
+      const cards = reading.positions.map(pos => getCardByIndex(pos.cardIndex));
+
+      // Initialize LunatiQ AGI engine
+      const lunatiQ = new LunatiQEngine();
+
+      // Generate AGI-powered interpretations
+      const interpretedCards = lunatiQ.generateSpreadInterpretation(
+        cards,
+        reading.positions,
+        profile,
+        intention,
+        commProfile
+      );
+
+      // Enrich with card data and AGI interpretations
       const enrichedReading = {
         ...reading,
         userIntention: intention,
         commProfile,
-        cards: reading.positions.map(pos => {
-          const card = getCardByIndex(pos.cardIndex);
-          const interpretation = AdaptiveLanguageEngine.generateCardInterpretation(
-            card,
-            pos.position,
-            pos.reversed,
-            commProfile,
-            readingType
-          );
-
-          return {
-            ...pos,
-            card,
-            interpretation
-          };
-        })
+        cards: interpretedCards.map((interpreted, index) => ({
+          ...reading.positions[index],
+          card: interpreted.card,
+          interpretation: interpreted.interpretation
+        }))
       };
 
       // Validate enriched reading
