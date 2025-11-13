@@ -1876,9 +1876,7 @@ export const CARD_DATABASE = [
       upright: ["contemplation", "apathy", "reevaluation", "meditation"],
       reversed: ["awareness", "acceptance", "new perspectives"]
     },
-    jungian: "withdrawal / introv
-
-ersion",
+    jungian: "withdrawal / introversion",
     chakra: "third eye",
     seasonality: "introspective phase",
     timeframe: "pause / reflection",
