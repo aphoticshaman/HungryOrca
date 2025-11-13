@@ -196,7 +196,7 @@ export default function CardDrawingScreen({ route, navigation }) {
     switch (phase) {
       case 'initializing': return 'INITIALIZING...';
       case 'shuffling': return 'SHUFFLING...';
-      case 'drawing': return `DRAWING... [${cardCount}/${totalCards}]`;
+      case 'drawing': return 'DRAWING... [' + cardCount + '/' + totalCards + ']';
       case 'complete': return 'COMPLETE';
       default: return 'PROCESSING...';
     }
