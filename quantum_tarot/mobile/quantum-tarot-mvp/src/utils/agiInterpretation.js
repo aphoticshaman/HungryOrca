@@ -125,19 +125,58 @@ function generatePracticalLayer(cardData, reversed, position, readingType, inten
  * LAYER 5: SYNTHESIS - Integrated multi-layer interpretation
  */
 function generateSynthesis(archetypal, contextual, psychological, practical) {
+  // Extract the first sentence from contextual.intention_alignment (which now contains the full intention-aware analysis)
+  const intentionContext = contextual.intention_alignment || '';
+
   return {
-    core_message: `${archetypal.name} speaks to the archetypal pattern of ${archetypal.keywords.slice(0, 3).join(', ')}. ${contextual.position_significance}`,
+    core_message: `${intentionContext} ${archetypal.name} embodies ${archetypal.keywords.slice(0, 3).join(', ')} - ${contextual.position_significance}`,
     integration: `${psychological.integration_path} ${practical.practical_advice}`,
     deeper_insight: psychological.shadow_work,
-    next_steps: practical.action_steps.join(' ')
+    next_steps: practical.action_steps.join(' Then: ')
   };
 }
 
 // Helper functions
 
 function analyzeIntentionAlignment(cardData, intention, reversed) {
-  // Stub: In full implementation, would use NLP to analyze intention-card alignment
-  return `This card ${reversed ? 'challenges or complicates' : 'supports and clarifies'} your question about "${intention.substring(0, 50)}..."`;
+  if (!intention || intention.trim().length === 0) {
+    return 'Consider how this card relates to your current situation.';
+  }
+
+  const intentionLower = intention.toLowerCase();
+  const cardName = cardData.name.toLowerCase();
+  const keywords = reversed
+    ? (cardData.keywords?.reversed || [])
+    : (cardData.keywords?.upright || []);
+
+  // Analyze intention context
+  let context = '';
+
+  // Detect question type from intention
+  if (intentionLower.includes('should i') || intentionLower.includes('can i')) {
+    context = reversed
+      ? `Regarding "${intention}" - ${cardData.name} reversed suggests reconsidering or addressing blocks before proceeding. The ${keywords.slice(0, 2).join(' and ')} energy is inverted, indicating obstacles or internal resistance.`
+      : `Regarding "${intention}" - ${cardData.name} upright indicates ${keywords.slice(0, 2).join(' and ')}, suggesting favorable conditions for your question.`;
+  } else if (intentionLower.includes('how') || intentionLower.includes('what')) {
+    context = reversed
+      ? `Your question "${intention}" draws ${cardData.name} reversed, pointing to ${keywords.slice(0, 2).join(', ')}, or a need to examine where energy is blocked or misdirected.`
+      : `Your question "${intention}" draws ${cardData.name} upright, illuminating themes of ${keywords.slice(0, 2).join(', ')}. This card offers guidance on your inquiry.`;
+  } else if (intentionLower.includes('why')) {
+    context = reversed
+      ? `Asking "${intention}" - ${cardData.name} reversed suggests the reason involves ${keywords.slice(0, 2).join(' or ')}, inverted or blocked energies that need attention.`
+      : `Asking "${intention}" - ${cardData.name} upright reveals this is about ${keywords.slice(0, 2).join(' and ')}, core themes requiring your awareness.`;
+  } else if (intentionLower.includes('when')) {
+    context = reversed
+      ? `Your timing question "${intention}" with ${cardData.name} reversed suggests delays or the need to resolve ${keywords.slice(0, 2).join(' and ')} issues first.`
+      : `Your timing question "${intention}" with ${cardData.name} upright indicates movement around ${keywords.slice(0, 2).join(' and ')} - pay attention to these themes.`;
+  } else {
+    // General intention
+    context = reversed
+      ? `In relation to "${intention}" - ${cardData.name} reversed highlights challenges or inversions in ${keywords.slice(0, 2).join(' and ')}, suggesting areas needing healing or course correction.`
+      : `In relation to "${intention}" - ${cardData.name} upright brings ${keywords.slice(0, 2).join(' and ')} energy directly to bear on your situation.`;
+  }
+
+  return context;
 }
 
 function analyzeTemporalAspect(position) {
