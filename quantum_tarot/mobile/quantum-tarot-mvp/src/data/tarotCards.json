@@ -1,0 +1,200 @@
+{
+  "majorArcana": [
+    {
+      "number": 0,
+      "name": "The Fool",
+      "suit": "major_arcana",
+      "element": "spirit",
+      "uprightKeywords": ["new beginnings", "innocence", "spontaneity", "leap of faith"],
+      "reversedKeywords": ["recklessness", "naivety", "poor judgment"],
+      "uprightMeaning": "New beginnings, unlimited potential, free spirit taking a leap of faith.",
+      "reversedMeaning": "Reckless decisions without planning. Being taken advantage of through naivety.",
+      "shadowWork": "Where does fear of judgment prevent authentic self-expression?",
+      "soulLesson": "Trust the journey. Every master was once a beginner.",
+      "careerInterpretation": "New career opportunity or entrepreneurial venture. Trust instincts.",
+      "romanceInterpretation": "New relationship or fresh start. Approach with open heart.",
+      "wellnessInterpretation": "Try new health approaches. Trust body wisdom.",
+      "familyInterpretation": "Break unhealthy patterns. Beginner's mind helps.",
+      "selfGrowthInterpretation": "At a threshold. Release old self for new to emerge.",
+      "schoolInterpretation": "New subject or unique perspective valuable.",
+      "psychology": {
+        "dbtSkills": ["Wise Mind", "Willingness"],
+        "cbtConcepts": ["Growth Mindset", "Challenging Catastrophizing"],
+        "mrtPillars": ["Self-Awareness", "Mental Agility"],
+        "coreMetaphor": "Starting therapy: vulnerable but necessary courage to not know.",
+        "growthPrompt": "What would you attempt if you couldn't fail?"
+      },
+      "astroSign": "Uranus",
+      "astroPlanet": "Uranus"
+    },
+    {
+      "number": 1,
+      "name": "The Magician",
+      "suit": "major_arcana",
+      "element": "spirit",
+      "uprightKeywords": ["manifestation", "resourcefulness", "power", "inspired action"],
+      "reversedKeywords": ["manipulation", "poor planning", "untapped talents"],
+      "uprightMeaning": "You have all tools needed. Channel divine will into material reality.",
+      "reversedMeaning": "Talents misused or wasted. Manipulation or scattered energy.",
+      "shadowWork": "Where do you give away power or manipulate rather than inspire?",
+      "soulLesson": "You are conduit for Source. Your will aligned with Divine creates miracles.",
+      "careerInterpretation": "You have skills and resources. Execute now. Time for action.",
+      "romanceInterpretation": "Take initiative. Clear communication manifests desired relationship.",
+      "wellnessInterpretation": "Mind affects body powerfully. Visualization and intentional healing work.",
+      "familyInterpretation": "Use communication skills to mediate and bridge gaps.",
+      "selfGrowthInterpretation": "Recognize your power. You create reality, not victim of it.",
+      "schoolInterpretation": "You have capacity. Apply focused study techniques.",
+      "psychology": {
+        "dbtSkills": ["Opposite Action", "Building Mastery"],
+        "cbtConcepts": ["Self-Efficacy", "Locus of Control"],
+        "mrtPillars": ["Self-Regulation", "Mental Agility"],
+        "coreMetaphor": "Mastering DBT skills: have tools, now practice applying them.",
+        "growthPrompt": "What resources do you already possess but overlook?"
+      },
+      "astroSign": "Mercury",
+      "astroPlanet": "Mercury"
+    },
+    {
+      "number": 2,
+      "name": "The High Priestess",
+      "suit": "major_arcana",
+      "element": "spirit",
+      "uprightKeywords": ["intuition", "sacred knowledge", "divine feminine", "inner voice"],
+      "reversedKeywords": ["secrets", "disconnected from intuition", "withdrawal"],
+      "uprightMeaning": "Trust inner knowing. Answers within, not external. Guards veil between worlds.",
+      "reversedMeaning": "Ignoring intuition. Secrets kept. Disconnection from inner wisdom.",
+      "shadowWork": "What truths are you avoiding? What does intuition whisper that ego refuses?",
+      "soulLesson": "Universe speaks through symbols, dreams, synchronicities. Stillness reveals truth.",
+      "careerInterpretation": "Trust gut about workplace. Information coming. Wait before acting.",
+      "romanceInterpretation": "Pay attention to unspoken. Your intuition is correct. Honor mysteries.",
+      "wellnessInterpretation": "Listen to subtle body signals. Explore mind-body connection, meditation.",
+      "familyInterpretation": "Family secrets or unspoken dynamics. Intuition navigates what words cannot.",
+      "selfGrowthInterpretation": "Develop intuitive abilities. Journal, meditate, note synchronicities.",
+      "schoolInterpretation": "Trust understanding even if can't articulate. Incubation before breakthrough.",
+      "psychology": {
+        "dbtSkills": ["Observe and Describe", "Mindfulness"],
+        "cbtConcepts": ["Interoceptive Awareness"],
+        "mrtPillars": ["Self-Awareness", "Emotional Regulation"],
+        "coreMetaphor": "Pause before responding in therapy: stillness reveals deeper truths.",
+        "growthPrompt": "What has your intuition been trying to tell you?"
+      },
+      "astroSign": "Moon",
+      "astroPlanet": "Moon"
+    }
+  ],
+  "wands": [
+    {
+      "number": 1,
+      "name": "Ace of Wands",
+      "suit": "wands",
+      "element": "fire",
+      "uprightKeywords": ["inspiration", "creative spark", "new opportunity", "enthusiasm"],
+      "reversedKeywords": ["delay", "lack of direction", "creative blocks"],
+      "uprightMeaning": "Pure creative potential. Divine inspiration. New passionate beginning.",
+      "reversedMeaning": "Creative blocks. False starts. Hesitation preventing action.",
+      "shadowWork": "What creative impulses do you dismiss? Where does fear kill inspiration?",
+      "soulLesson": "Source speaks through inspiration. Act on divine downloads.",
+      "careerInterpretation": "New project, job offer, or business idea with potential. Strike while hot.",
+      "romanceInterpretation": "New passionate attraction or renewed spark. Follow excitement.",
+      "wellnessInterpretation": "New fitness routine calls. Your enthusiasm fuels success.",
+      "familyInterpretation": "New creative project with family or renewed energy.",
+      "selfGrowthInterpretation": "New path ignites passion. Follow this thread.",
+      "schoolInterpretation": "Exciting new subject. Your enthusiasm makes you quick study.",
+      "psychology": {
+        "dbtSkills": ["Willingness", "Building Mastery"],
+        "cbtConcepts": ["Behavioral Activation", "Self-Efficacy"],
+        "mrtPillars": ["Mental Agility", "Optimism"],
+        "coreMetaphor": "First therapy session: full of potential if you commit.",
+        "growthPrompt": "What idea keeps exciting you? What's one action to explore it?"
+      }
+    }
+  ],
+  "cups": [
+    {
+      "number": 1,
+      "name": "Ace of Cups",
+      "suit": "cups",
+      "element": "water",
+      "uprightKeywords": ["love", "new feelings", "emotional awakening", "intuition"],
+      "reversedKeywords": ["emotional loss", "repressed emotions", "blocked creativity"],
+      "uprightMeaning": "Pure emotional potential. Divine love pours forth. Heart opens.",
+      "reversedMeaning": "Heart blocked. Emotions repressed. Love's flow dammed.",
+      "shadowWork": "What prevents your heart from opening? Where have you closed to love?",
+      "soulLesson": "You are worthy of love. Open to receive what universe offers.",
+      "careerInterpretation": "New work you love. Emotional fulfillment in career. Follow heart.",
+      "romanceInterpretation": "New love or deepening relationship. Heart opens fully.",
+      "wellnessInterpretation": "Emotional healing begins. Heart's wounds mend. Love heals all.",
+      "familyInterpretation": "Family love flows. Emotional renewal. Heart reconnects.",
+      "selfGrowthInterpretation": "Open your heart. Love yourself fully. Emotional awakening begins.",
+      "schoolInterpretation": "Fall in love with learning. Emotional connection to subject.",
+      "psychology": {
+        "dbtSkills": ["Emotion Regulation", "Interpersonal Effectiveness"],
+        "cbtConcepts": ["Emotional Awareness"],
+        "mrtPillars": ["Emotional Regulation", "Relationship Building"],
+        "coreMetaphor": "First feeling in therapy after numbness: painful but healing begins.",
+        "growthPrompt": "What new feeling is emerging? Can you let your heart open?"
+      }
+    }
+  ],
+  "swords": [
+    {
+      "number": 1,
+      "name": "Ace of Swords",
+      "suit": "swords",
+      "element": "air",
+      "uprightKeywords": ["clarity", "breakthrough", "truth", "mental clarity"],
+      "reversedKeywords": ["confusion", "mental fog", "miscommunication"],
+      "uprightMeaning": "Breakthrough clarity. Truth cuts through illusion. Mental clarity.",
+      "reversedMeaning": "Confusion. Mental fog. Truth obscured.",
+      "shadowWork": "What truth are you avoiding? What clarity do you fear?",
+      "soulLesson": "Truth liberates. Your mind is powerful. Clarity is birthright.",
+      "careerInterpretation": "Mental clarity about career. Truth revealed. Clear decision possible.",
+      "romanceInterpretation": "Truth in relationship. Honest communication. Clarity about feelings.",
+      "wellnessInterpretation": "Mental clarity affects physical health. Understand mind-body connection.",
+      "familyInterpretation": "Truth spoken in family. Clarity cuts through dysfunction.",
+      "selfGrowthInterpretation": "Mental breakthrough. See clearly now. Truth sets free.",
+      "schoolInterpretation": "Sudden understanding. Concept clicks. Mental clarity in learning.",
+      "psychology": {
+        "dbtSkills": ["Mindfulness", "Wise Mind"],
+        "cbtConcepts": ["Cognitive Clarity"],
+        "mrtPillars": ["Self-Awareness", "Mental Agility"],
+        "coreMetaphor": "Breakthrough in therapy: sudden clarity about pattern. Truth emerges.",
+        "growthPrompt": "What truth is trying to emerge? Can you face it clearly?"
+      }
+    }
+  ],
+  "pentacles": [
+    {
+      "number": 1,
+      "name": "Ace of Pentacles",
+      "suit": "pentacles",
+      "element": "earth",
+      "uprightKeywords": ["opportunity", "prosperity", "new job", "manifestation"],
+      "reversedKeywords": ["missed opportunity", "lack of planning", "materialism"],
+      "uprightMeaning": "Material opportunity. New job or income. Prosperity seed. Ground your dreams.",
+      "reversedMeaning": "Missed opportunity. Poor planning. Materialism without meaning.",
+      "shadowWork": "Can you receive abundance? Do you feel worthy of prosperity?",
+      "soulLesson": "Universe provides. You are worthy of material abundance.",
+      "careerInterpretation": "Job offer or raise. Business opportunity. Ground-floor potential.",
+      "romanceInterpretation": "Relationship stability. Potential for lasting commitment. Grounded love.",
+      "wellnessInterpretation": "New health opportunity. Body ready for change. Physical improvement.",
+      "familyInterpretation": "Family financial improvement or new home. Material stability.",
+      "selfGrowthInterpretation": "Ground spiritual insights in material reality. Abundance available.",
+      "schoolInterpretation": "Scholarship, grant, or educational opportunity. Invest in learning.",
+      "psychology": {
+        "dbtSkills": ["Building Mastery", "PLEASE skills"],
+        "cbtConcepts": ["Goal Setting"],
+        "mrtPillars": ["Optimism", "Self-Regulation"],
+        "coreMetaphor": "New skills in therapy: practice grounds insight into real change.",
+        "growthPrompt": "What opportunity is presenting? How can you ground dreams in reality?"
+      }
+    }
+  ],
+  "_meta": {
+    "deckType": "Rider-Waite-Smith",
+    "totalCards": 78,
+    "majorArcana": 22,
+    "minorArcana": 56,
+    "note": "This is a SAMPLE with key cards. Full deck has all 78 cards."
+  }
+}
