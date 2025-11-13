@@ -113,7 +113,7 @@ function generatePracticalLayer(cardData, reversed, position, readingType, inten
   const advice = cardData.advice || 'Trust your intuition and move forward mindfully.';
 
   return {
-    action_steps: generateActionSteps(cardData, reversed, readingType),
+    action_steps: generateActionSteps(cardData, reversed, readingType, intention), // XYZA: Now passes intention for entity extraction
     what_to_focus_on: cardData.keywords?.upright?.[0] || 'Present moment awareness',
     what_to_avoid: reversed ? 'Getting stuck in this pattern' : 'Overextending this energy',
     timing_guidance: generateTimingGuidance(position),
@@ -203,7 +203,101 @@ function analyzeZodiacConnection(cardData, zodiacSign) {
   return `As a ${zodiacSign}, this card resonates with your natural tendencies.`;
 }
 
-function generateActionSteps(cardData, reversed, readingType) {
+/**
+ * XYZA CYCLE 1: Extract semantic entities from intention
+ * Enables hyper-specific, context-aware action generation
+ */
+function extractIntentionEntities(intention) {
+  if (!intention || intention.trim().length === 0) {
+    return { subjects: [], situations: [], emotions: [], goals: [], timeframes: [], specificity: 'baseline' };
+  }
+
+  const intentionLower = intention.toLowerCase();
+
+  // Extract subjects (people, relationships)
+  const subjects = [];
+  const subjectPatterns = [
+    /my (partner|boyfriend|girlfriend|husband|wife|spouse|ex|friend|boss|manager|coworker|colleague|mother|father|parent|sibling|sister|brother|child|son|daughter)/gi,
+    /(with|about) ([A-Z][a-z]+)/g, // Names (capitalized words)
+    /my relationship|my marriage|my team|my family|my business|my company/gi
+  ];
+  subjectPatterns.forEach(pattern => {
+    const matches = intention.match(pattern);
+    if (matches) subjects.push(...matches.map(m => m.trim()));
+  });
+
+  // Extract situations (contexts, places, events)
+  const situations = [];
+  const situationPatterns = [
+    /my (job|career|work|business|startup|company|project|role|position) (at|with)? ?([A-Za-z]+)?/gi,
+    /(quit|leave|start|launch|join|move to|apply to|negotiate|interview for) ([a-z ]+)/gi,
+    /at (work|home|school|university|therapy|counseling)/gi,
+    /(interview|meeting|presentation|deadline|decision|choice|opportunity|offer)/gi
+  ];
+  situationPatterns.forEach(pattern => {
+    const matches = intention.match(pattern);
+    if (matches) situations.push(...matches.map(m => m.trim()));
+  });
+
+  // Extract emotions (feelings, states)
+  const emotions = [];
+  const emotionPatterns = [
+    /(afraid|scared|terrified|anxious|worried|nervous|stressed)/gi,
+    /(stuck|trapped|lost|confused|uncertain|unsure)/gi,
+    /(angry|frustrated|resentful|bitter|hurt|betrayed)/gi,
+    /(hopeful|excited|optimistic|motivated|inspired)/gi,
+    /(depressed|sad|lonely|alone|isolated|empty)/gi,
+    /(overwhelmed|exhausted|burned out|drained|tired)/gi
+  ];
+  emotionPatterns.forEach(pattern => {
+    const matches = intention.match(pattern);
+    if (matches) emotions.push(...matches.map(m => m.trim()));
+  });
+
+  // Extract goals (desired outcomes, actions)
+  const goals = [];
+  const goalPatterns = [
+    /should i (quit|leave|start|move|change|apply|ask|tell|confront|end|begin)/gi,
+    /want to (quit|leave|start|move|change|apply|ask|tell|confront|end|begin|make|earn|lose|gain|heal|fix|improve)/gi,
+    /trying to (quit|leave|start|move|change|apply|ask|tell|confront|end|begin|make|earn|lose|gain|heal|fix|improve)/gi,
+    /need to (quit|leave|start|move|change|apply|ask|tell|confront|end|begin|make|earn|lose|gain|heal|fix|improve)/gi
+  ];
+  goalPatterns.forEach(pattern => {
+    const matches = intention.match(pattern);
+    if (matches) goals.push(...matches.map(m => m.replace(/(should i|want to|trying to|need to) /gi, '').trim()));
+  });
+
+  // Extract timeframes
+  const timeframes = [];
+  const timePatterns = [
+    /(right now|immediately|today|this week|this month|this year|soon|eventually)/gi,
+    /(within \d+ (days|weeks|months|years))/gi,
+    /(by \w+day|by next (week|month|year))/gi
+  ];
+  timePatterns.forEach(pattern => {
+    const matches = intention.match(pattern);
+    if (matches) timeframes.push(...matches.map(m => m.trim()));
+  });
+
+  // Calculate specificity level (for XYZA Amplify phase)
+  const entityCount = subjects.length + situations.length + emotions.length + goals.length + timeframes.length;
+  const specificity = intention.length > 100 && entityCount >= 5 ? 'high' :
+                     intention.length > 50 && entityCount >= 3 ? 'medium' : 'baseline';
+
+  return {
+    subjects: [...new Set(subjects)], // Remove duplicates
+    situations: [...new Set(situations)],
+    emotions: [...new Set(emotions)],
+    goals: [...new Set(goals)],
+    timeframes: [...new Set(timeframes)],
+    specificity
+  };
+}
+
+/**
+ * Generate action steps with entity-aware targeting (XYZA enhanced)
+ */
+function generateActionSteps(cardData, reversed, readingType, intention) {
   const cardName = cardData.name.toLowerCase();
   const element = cardData.element || 'spirit';
   const readingFocus = readingType || 'general';
@@ -382,9 +476,68 @@ function generateActionSteps(cardData, reversed, readingType) {
   const categoryActions = actionMap[readingFocus] || actionMap.general;
   const pool = categoryActions[orientation];
 
+  // XYZA: Extract entities from intention
+  const entities = extractIntentionEntities(intention || '');
+
   // Pick 3 random actions from the pool
   const shuffled = [...pool].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, 3);
+  let selectedActions = shuffled.slice(0, 3);
+
+  // XYZA ENHANCEMENT: Interpolate entities into actions for specificity
+  // This transforms "Have vulnerable conversation" → "Have vulnerable conversation with your partner about your fear of abandonment"
+  selectedActions = selectedActions.map(action => {
+    let enhanced = action;
+
+    // If high specificity, add entity context
+    if (entities.specificity === 'high' || entities.specificity === 'medium') {
+      // Add subject context (people, relationships)
+      if (entities.subjects.length > 0 && !action.toLowerCase().includes('partner') && !action.toLowerCase().includes('boss')) {
+        const subject = entities.subjects[0];
+        // Insert subject where contextually appropriate
+        if (action.includes('conversation') || action.includes('talk') || action.includes('discuss')) {
+          enhanced = enhanced.replace(/conversation/i, `conversation with ${subject}`);
+          enhanced = enhanced.replace(/talk/i, `talk with ${subject}`);
+        } else if (action.includes('relationship') || action.includes('couples')) {
+          enhanced = enhanced.replace(/relationship/i, `relationship with ${subject}`);
+        }
+      }
+
+      // Add situational context
+      if (entities.situations.length > 0) {
+        const situation = entities.situations[0];
+        // Append situation context at end if not already specific
+        if (!enhanced.includes('at work') && !enhanced.includes('job') && (situation.includes('job') || situation.includes('work'))) {
+          enhanced += ` (specifically: ${situation})`;
+        } else if (situation.includes('quit') || situation.includes('start') || situation.includes('launch')) {
+          enhanced += ` - ${situation}`;
+        }
+      }
+
+      // Add emotional context
+      if (entities.emotions.length > 0) {
+        const emotion = entities.emotions[0];
+        // Address the specific fear/emotion
+        if (action.includes('fear') || action.includes('resistance') || action.includes('block')) {
+          enhanced = enhanced.replace(/fear/i, `${emotion}`);
+          enhanced = enhanced.replace(/resistance/i, `${emotion}`);
+        } else if (action.includes('shadow') && !enhanced.includes(emotion)) {
+          enhanced += ` - address your ${emotion}`;
+        }
+      }
+
+      // Add timeframe urgency
+      if (entities.timeframes.length > 0) {
+        const timeframe = entities.timeframes[0];
+        if (!enhanced.includes('this week') && !enhanced.includes('within') && !enhanced.includes('days')) {
+          enhanced += ` ${timeframe}`;
+        }
+      }
+    }
+
+    return enhanced;
+  });
+
+  return selectedActions;
 }
 
 function generateTimingGuidance(position) {
