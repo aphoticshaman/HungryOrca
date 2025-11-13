@@ -16,7 +16,7 @@ export default function WelcomeScreen({ navigation }) {
   const handleStart = () => {
     setShowMatrix(true);
     setTimeout(() => {
-      navigation.navigate('Onboarding');
+      navigation.navigate('ReadingType');
     }, 1500);
   };
 
