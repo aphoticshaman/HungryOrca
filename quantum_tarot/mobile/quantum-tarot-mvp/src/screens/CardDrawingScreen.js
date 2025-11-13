@@ -7,6 +7,7 @@ import { LunatiQEngine } from '../services/lunatiQEngine';
 import { getCardByIndex } from '../data/tarotLoader';
 import { recordReading, saveReading, getUserProfile } from '../utils/storage';
 import { CARD_BACK } from '../data/asciiCards';
+import CardImage from '../components/CardImage';
 
 export default function CardDrawingScreen({ route, navigation }) {
   // Validate route params

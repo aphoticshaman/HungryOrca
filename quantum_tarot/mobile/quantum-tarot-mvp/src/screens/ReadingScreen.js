@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
-import { getAsciiCard } from '../data/asciiCards';
+import CardImage from '../components/CardImage';
 
 export default function ReadingScreen({ route, navigation }) {
   // Validate route params
@@ -33,9 +33,11 @@ export default function ReadingScreen({ route, navigation }) {
         <View key={index} style={styles.cardContainer}>
           <Text style={styles.position}>{cardPos.position}</Text>
 
-          <Text style={styles.asciiCard}>
-            {getAsciiCard(cardPos.cardIndex, cardPos.reversed)}
-          </Text>
+          <CardImage
+            cardIndex={cardPos.cardIndex}
+            reversed={cardPos.reversed}
+            style={styles.cardImage}
+          />
 
           <Text style={styles.cardName}>
             {cardPos.card.name}
