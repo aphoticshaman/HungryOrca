@@ -23,7 +23,7 @@ export const NEON_COLORS = {
   dimCyan: '#008B8B',
   dimMagenta: '#8B008B',
   dimYellow: '#8B8B00',
-  dimWhite: '#AAAAAA',
+  dimWhite: '#CCCCCC',
   dimGreen: '#008000',
   dimRed: '#8B0000',
 

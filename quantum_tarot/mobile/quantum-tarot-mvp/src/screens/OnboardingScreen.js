@@ -15,77 +15,40 @@ export default function OnboardingScreen({ navigation }) {
       title: '$HIC$01 | PERSONALITY PROFILING$NOR$',
       content: `$HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR$
 
-$HIW$First, we map your psyche.$NOR$
+$HIW$First: 10 questions about you.$NOR$
 
-The cards respond to $HIM$who you are$NOR$,
-not just what you ask.
+The interpretation adapts to
+$HIM$your psychological profile$NOR$.
 
-10 questions. No bullshit.
 DBT + CBT + MRT framework.
 
-This isn't astrology.
-This is $HIG$psychological profiling$NOR$.
-
 $HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR$`
     },
     {
-      title: '$HIC$02 | THE AGI ENGINE$NOR$',
+      title: '$HIC$02 | OFFLINE AGI$NOR$',
       content: `$HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR$
 
-$HIW$LunatiQ - Offline AGI$NOR$
+$HIW$LunatiQ Engine$NOR$
 
+Runs locally on your device.
 No cloud. No API calls.
-No tracking. $HIG$Zero bullshit$NOR$.
 
-4-layer interpretation:
-  $HIM$→$NOR$ Fuzzy Orchestrator
-  $HIM$→$NOR$ 5 Specialized Agents
-  $HIM$→$NOR$ Ensemble Blender
-  $HIM$→$NOR$ Adaptive Language
-
-It $HIM$learns your voice$NOR$.
-It $HIG$evolves with you$NOR$.
+4-layer interpretation system
+adapts to your profile.
 
 $HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR$`
     },
     {
-      title: '$HIC$03 | QUANTUM RANDOMNESS$NOR$',
+      title: '$HIC$03 | QUANTUM RNG$NOR$',
       content: `$HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR$
 
-$HIW$Hardware RNG + SHA-256$NOR$
+$HIW$Hardware randomization$NOR$
 
-Not Math.random().
-Not Date.now().
+Uses your device's crypto hardware
+for true quantum entropy.
 
-True quantum entropy from
-your device's $HIG$crypto hardware$NOR$.
-
-Mixed with SHA-256 hashing
-and your unique intention.
-
-The cards are $HIM$truly random$NOR$.
-The interpretation is $HIM$deeply personal$NOR$.
-
-$HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR$`
-    },
-    {
-      title: '$HIC$04 | TERMINAL AESTHETIC$NOR$',
-      content: `$HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR$
-
-$HIW$No skeuomorphism.$NOR$
-$HIW$No pretty pictures.$NOR$
-$HIW$No mystical bullshit.$NOR$
-
-Just pure $HIC$terminal hacker vibes$NOR$:
-  $HIG$✓$NOR$ LPMUD color codes
-  $HIG$✓$NOR$ Matrix rain effects
-  $HIG$✓$NOR$ CRT scan lines
-  $HIG$✓$NOR$ Neon glows everywhere
-  $HIG$✓$NOR$ Glitch animations
-  $HIG$✓$NOR$ ASCII art cards
-
-This is our $HIM$moat$NOR$.
-No other tarot app does this.
+Mixed with SHA-256 and your
+intention for unique draws.
 
 $HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR$`
     }

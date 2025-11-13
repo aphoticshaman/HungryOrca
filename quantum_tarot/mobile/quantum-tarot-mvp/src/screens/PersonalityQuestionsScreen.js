@@ -211,9 +211,8 @@ export default function PersonalityQuestionsScreen({ navigation }) {
         {/* Context note */}
         <View style={styles.noteBox}>
           <LPMUDText style={styles.noteText}>
-            $HIY$NOTE:$NOR$ This profiling uses DBT/CBT/MRT frameworks.{'\n'}
-            Your answers shape how the AGI interprets cards.{'\n'}
-            No right or wrong. Just $HIG$honest$NOR$.
+            $HIY$Your answers shape the interpretation.$NOR${'\n'}
+            Be honest.
           </LPMUDText>
         </View>
       </ScrollView>

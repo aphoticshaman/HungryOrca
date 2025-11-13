@@ -36,42 +36,18 @@ export default function WelcomeScreen({ navigation }) {
         {/* Welcome message with LPMUD colors */}
         <View style={styles.messageBox}>
           <LPMUDText style={styles.message}>
-            $HIC${'>'} SYSTEM INITIALIZED ${'<'}$NOR${'\n'}
+            $HIC${'>'} QUANTUM TAROT ${'<'}$NOR${'\n'}
             $HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR${'\n\n'}
 
-            $HIW$Welcome, Seeker.$NOR${'\n\n'}
+            $HIW$Welcome.$NOR${'\n\n'}
 
-            $HIM$This is not your grandmother's$NOR${'\n'}
-            $HIM$tarot app.$NOR${'\n\n'}
-
-            $HIC$No pretty pictures.$NOR${'\n'}
-            $HIC$No skeuomorphic bullshit.$NOR${'\n\n'}
-
-            $HIG$Just pure terminal hacker vibes$NOR${'\n'}
-            $HIG$+ genuine AGI interpretation.$NOR${'\n\n'}
+            $HIG$Offline AGI interpretation$NOR${'\n'}
+            $HIG$Quantum randomization$NOR${'\n'}
+            $HIG$Terminal interface$NOR${'\n\n'}
 
             $HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR${'\n'}
-            $HIC$READY TO JACK IN?$NOR$
+            $HIC$BEGIN$NOR$
           </LPMUDText>
-        </View>
-
-        {/* Demo effects */}
-        <View style={styles.demoBox}>
-          <GlitchText style={styles.demoText} glitchChance={0.05}>
-            [GLITCH EFFECT]
-          </GlitchText>
-
-          <FlickerText
-            color={NEON_COLORS.hiCyan}
-            style={styles.demoText}
-            flickerSpeed={150}
-          >
-            [FLICKER EFFECT]
-          </FlickerText>
-
-          <NeonText color={NEON_COLORS.hiMagenta} style={styles.demoText}>
-            [NEON GLOW EFFECT]
-          </NeonText>
         </View>
 
         {/* Start button */}
@@ -79,33 +55,13 @@ export default function WelcomeScreen({ navigation }) {
           onPress={handleStart}
           style={styles.startButton}
         >
-          <FlickerText
-            color={NEON_COLORS.hiYellow}
+          <NeonText
+            color={NEON_COLORS.hiCyan}
             style={styles.startButtonText}
           >
-            {'[ INITIALIZE SYSTEM ]'}
-          </FlickerText>
-        </TouchableOpacity>
-
-        {/* Feature list */}
-        <View style={styles.featureBox}>
-          <NeonText color={NEON_COLORS.dimCyan} style={styles.featureTitle}>
-            {'>'} SYSTEM FEATURES
+            {'[ START ]'}
           </NeonText>
-
-          <LPMUDText style={styles.featureText}>
-            $HIG$✓$NOR$ Offline AGI - No cloud, no tracking{'\n'}
-            $HIG$✓$NOR$ Quantum RNG - True randomness{'\n'}
-            $HIG$✓$NOR$ Terminal aesthetic - Pure cyberpunk{'\n'}
-            $HIG$✓$NOR$ No subscriptions - $3.99 forever{'\n'}
-            $HIG$✓$NOR$ Built by a hacker, for hackers
-          </LPMUDText>
-        </View>
-
-        {/* Version info */}
-        <NeonText color={NEON_COLORS.dimYellow} style={styles.versionText}>
-          SDK 54 | React Native 0.81 | React 19
-        </NeonText>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
