@@ -6,12 +6,19 @@ Everything is built. Just need to run it.
 
 ---
 
-## 🏃 Quick Start (2 Minutes)
+## 🪟 Fresh Windows Installation?
 
-When your laptop finishes installing Windows:
+**Open FRESH_WINDOWS_SETUP.md** - Complete setup guide (~20 minutes)
+
+You need to install Node.js and Git first, then clone the repo.
+
+---
+
+## 🏃 Already Have Node.js Installed?
 
 ```bash
 cd quantum_tarot/mobile/quantum-tarot-mvp
+npm install
 npm start
 ```
 
