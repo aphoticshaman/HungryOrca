@@ -131,50 +131,52 @@ export default function CardDrawingScreen({ route, navigation }) {
       {/* Matrix rain background */}
       <MatrixRain width={SCREEN_WIDTH} height={SCREEN_HEIGHT} speed={30} />
 
-      {/* Status display */}
-      <View style={styles.statusBox}>
-        <MorphText
-          color={getPhaseColor()}
-          style={styles.statusTitle}
-          morphSpeed={60}
-        >
-          {getPhaseTitle()}
-        </MorphText>
+      {/* Status display - positioned to stay on screen */}
+      <View style={styles.centerContent}>
+        <View style={styles.statusBox}>
+          <MorphText
+            color={getPhaseColor()}
+            style={styles.statusTitle}
+            morphSpeed={60}
+          >
+            {getPhaseTitle()}
+          </MorphText>
 
-        <View style={styles.statusContent}>
-          {statusLines.map((line, i) => (
-            <LPMUDText key={i} style={styles.statusLine}>
-              $HIC${line}$NOR$
-            </LPMUDText>
-          ))}
-        </View>
-
-        {/* Progress bar */}
-        {phase === 'drawing' && cardCount > 0 && (
-          <View style={styles.progressContainer}>
-            <View style={styles.progressBar}>
-              <View
-                style={[
-                  styles.progressFill,
-                  {
-                    width: `${(cardCount / statusLines.length) * 100}%`,
-                    backgroundColor: getPhaseColor()
-                  }
-                ]}
-              />
-            </View>
+          <View style={styles.statusContent}>
+            {statusLines.map((line, i) => (
+              <LPMUDText key={i} style={styles.statusLine}>
+                $HIC${line}$NOR$
+              </LPMUDText>
+            ))}
           </View>
-        )}
-      </View>
 
-      {/* Bottom info - just card count during drawing */}
-      {phase === 'drawing' && cardCount > 0 && (
-        <View style={styles.bottomBox}>
-          <NeonText color={getPhaseColor()} style={styles.cardCountText}>
-            CARD {cardCount} / {totalCards}
-          </NeonText>
+          {/* Progress bar */}
+          {phase === 'drawing' && cardCount > 0 && (
+            <View style={styles.progressContainer}>
+              <View style={styles.progressBar}>
+                <View
+                  style={[
+                    styles.progressFill,
+                    {
+                      width: `${(cardCount / totalCards) * 100}%`,
+                      backgroundColor: getPhaseColor()
+                    }
+                  ]}
+                />
+              </View>
+            </View>
+          )}
+
+          {/* Card count inside status box */}
+          {phase === 'drawing' && cardCount > 0 && (
+            <View style={styles.cardCountContainer}>
+              <NeonText color={getPhaseColor()} style={styles.cardCountText}>
+                CARD {cardCount} / {totalCards}
+              </NeonText>
+            </View>
+          )}
         </View>
-      )}
+      </View>
     </View>
   );
 }
@@ -183,11 +185,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000000',
+  },
+  centerContent: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 60,
   },
   statusBox: {
     width: SCREEN_WIDTH - 40,
+    maxHeight: SCREEN_HEIGHT - 120,
     padding: 30,
     borderWidth: 2,
     borderColor: NEON_COLORS.hiCyan,
@@ -221,13 +228,15 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 3,
   },
-  bottomBox: {
-    position: 'absolute',
-    bottom: 40,
+  cardCountContainer: {
+    marginTop: 20,
     alignItems: 'center',
+    paddingTop: 15,
+    borderTopWidth: 1,
+    borderTopColor: NEON_COLORS.dimCyan,
   },
   cardCountText: {
-    fontSize: 16,
+    fontSize: 18,
     fontFamily: MONOSPACE_FONT,
     fontWeight: 'bold',
     textAlign: 'center',
