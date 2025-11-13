@@ -5,6 +5,15 @@ import { QuestionBank, PersonalityAnalyzer } from '../services/personalityProfil
 import { savePersonalityProfile, getUserProfile } from '../utils/storage';
 
 export default function PersonalityQuestionsScreen({ route, navigation }) {
+  // Validate route params
+  if (!route || !route.params || !route.params.readingType) {
+    // Navigate back to safety if params missing
+    React.useEffect(() => {
+      navigation.navigate('ReadingType');
+    }, []);
+    return null;
+  }
+
   const { readingType } = route.params;
   const { theme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -108,12 +117,13 @@ function createStyles(theme) {
       lineHeight: 22
     },
     options: {
-      gap: 15
+      // Note: 'gap' not supported in React Native, using marginBottom in children
     },
     option: {
       borderWidth: 1,
       borderColor: theme.border,
-      padding: 15
+      padding: 15,
+      marginBottom: 15
     },
     optionText: {
       fontFamily: 'monospace',

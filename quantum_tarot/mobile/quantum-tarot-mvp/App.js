@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from './src/context/ThemeContext';
+import { ErrorBoundary } from './src/components/ErrorBoundary';
 
 // Screens
 import WelcomeScreen from './src/screens/WelcomeScreen';
@@ -18,28 +19,30 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <StatusBar style="light" />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Welcome"
-          screenOptions={{
-            headerShown: false,
-            cardStyle: { backgroundColor: '#000000' },
-            animationEnabled: true,
-            gestureEnabled: true
-          }}
-        >
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-          <Stack.Screen name="ReadingType" component={ReadingTypeScreen} />
-          <Stack.Screen name="Questions" component={PersonalityQuestionsScreen} />
-          <Stack.Screen name="Intention" component={IntentionScreen} />
-          <Stack.Screen name="CardDrawing" component={CardDrawingScreen} />
-          <Stack.Screen name="Reading" component={ReadingScreen} />
-          <Stack.Screen name="Settings" component={SettingsScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <StatusBar style="light" />
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Welcome"
+            screenOptions={{
+              headerShown: false,
+              cardStyle: { backgroundColor: '#000000' },
+              animationEnabled: true,
+              gestureEnabled: true
+            }}
+          >
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+            <Stack.Screen name="ReadingType" component={ReadingTypeScreen} />
+            <Stack.Screen name="Questions" component={PersonalityQuestionsScreen} />
+            <Stack.Screen name="Intention" component={IntentionScreen} />
+            <Stack.Screen name="CardDrawing" component={CardDrawingScreen} />
+            <Stack.Screen name="Reading" component={ReadingScreen} />
+            <Stack.Screen name="Settings" component={SettingsScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }

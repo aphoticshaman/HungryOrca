@@ -4,6 +4,15 @@ import { useTheme } from '../context/ThemeContext';
 import { canDrawReading, getTimeUntilNextReading, isPremiumUser } from '../utils/storage';
 
 export default function IntentionScreen({ route, navigation }) {
+  // Validate route params
+  if (!route || !route.params || !route.params.readingType || !route.params.profile) {
+    // Navigate back to safety if params missing
+    React.useEffect(() => {
+      navigation.navigate('ReadingType');
+    }, []);
+    return null;
+  }
+
   const { readingType, profile } = route.params;
   const { theme } = useTheme();
   const [intention, setIntention] = useState('');

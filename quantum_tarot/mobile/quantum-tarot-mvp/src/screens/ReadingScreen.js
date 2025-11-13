@@ -4,6 +4,15 @@ import { useTheme } from '../context/ThemeContext';
 import { getAsciiCard } from '../data/asciiCards';
 
 export default function ReadingScreen({ route, navigation }) {
+  // Validate route params
+  if (!route || !route.params || !route.params.reading) {
+    // Navigate back to safety if params missing
+    React.useEffect(() => {
+      navigation.navigate('Welcome');
+    }, []);
+    return null;
+  }
+
   const { reading } = route.params;
   const { theme } = useTheme();
   const styles = createStyles(theme);

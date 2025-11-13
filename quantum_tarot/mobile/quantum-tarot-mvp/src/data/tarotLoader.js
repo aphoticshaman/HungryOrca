@@ -22,19 +22,58 @@ export const COMPLETE_DECK = [
  * Get card by index (0-77)
  */
 export function getCardByIndex(index) {
-  if (index < 0 || index >= COMPLETE_DECK.length) {
-    throw new Error(`Invalid card index: ${index}`);
+  try {
+    // Validate index
+    if (typeof index !== 'number' || isNaN(index)) {
+      throw new Error(`Invalid card index type: ${index}`);
+    }
+
+    // Bounds check
+    if (index < 0 || index >= COMPLETE_DECK.length) {
+      console.warn(`Card index ${index} out of bounds (0-${COMPLETE_DECK.length - 1}), using fallback`);
+      // Fallback to a valid index (wrap around)
+      index = Math.abs(index) % COMPLETE_DECK.length;
+    }
+
+    const card = COMPLETE_DECK[index];
+    if (!card) {
+      throw new Error(`Card at index ${index} is null/undefined`);
+    }
+
+    return card;
+  } catch (error) {
+    console.error('Failed to get card by index:', error);
+    // Ultimate fallback: return The Fool (index 0)
+    return COMPLETE_DECK[0] || {
+      name: 'The Fool',
+      number: 0,
+      suit: 'major_arcana',
+      uprightMeaning: 'New beginnings, innocence, spontaneity',
+      reversedMeaning: 'Recklessness, fearlessness, risk',
+      uprightKeywords: ['beginnings', 'innocence', 'spontaneity', 'free spirit'],
+      reversedKeywords: ['recklessness', 'risk-taking', 'inconsideration']
+    };
   }
-  return COMPLETE_DECK[index];
 }
 
 /**
  * Get card by name
  */
 export function getCardByName(name) {
-  return COMPLETE_DECK.find(card =>
-    card.name.toLowerCase() === name.toLowerCase()
-  );
+  try {
+    if (!name || typeof name !== 'string') {
+      throw new Error('Invalid card name');
+    }
+
+    const card = COMPLETE_DECK.find(card =>
+      card && card.name && card.name.toLowerCase() === name.toLowerCase()
+    );
+
+    return card || null;
+  } catch (error) {
+    console.error('Failed to get card by name:', error);
+    return null;
+  }
 }
 
 /**
@@ -48,27 +87,50 @@ export function getCardsBySuit(suit) {
  * Get interpretation for card based on reading type
  */
 export function getInterpretation(card, readingType, isReversed = false) {
-  // If reversed and not a specific reading type, use reversed meaning
-  if (isReversed && readingType === 'general') {
-    return card.reversedMeaning;
-  }
+  try {
+    // Validate inputs
+    if (!card || typeof card !== 'object') {
+      throw new Error('Invalid card object');
+    }
+    if (!readingType || typeof readingType !== 'string') {
+      throw new Error('Invalid reading type');
+    }
 
-  // Get specific interpretation
-  switch (readingType) {
-    case 'career':
-      return card.careerInterpretation;
-    case 'romance':
-      return card.romanceInterpretation;
-    case 'wellness':
-      return card.wellnessInterpretation;
-    case 'family':
-      return card.familyInterpretation;
-    case 'self_growth':
-      return card.selfGrowthInterpretation;
-    case 'school':
-      return card.schoolInterpretation;
-    default:
-      return isReversed ? card.reversedMeaning : card.uprightMeaning;
+    // If reversed and not a specific reading type, use reversed meaning
+    if (isReversed && readingType === 'general') {
+      return card.reversedMeaning || card.uprightMeaning || 'No interpretation available';
+    }
+
+    // Get specific interpretation
+    let interpretation;
+    switch (readingType) {
+      case 'career':
+        interpretation = card.careerInterpretation;
+        break;
+      case 'romance':
+        interpretation = card.romanceInterpretation;
+        break;
+      case 'wellness':
+        interpretation = card.wellnessInterpretation;
+        break;
+      case 'family':
+        interpretation = card.familyInterpretation;
+        break;
+      case 'self_growth':
+        interpretation = card.selfGrowthInterpretation;
+        break;
+      case 'school':
+        interpretation = card.schoolInterpretation;
+        break;
+      default:
+        interpretation = isReversed ? card.reversedMeaning : card.uprightMeaning;
+    }
+
+    // Fallback if specific interpretation missing
+    return interpretation || card.uprightMeaning || 'No interpretation available';
+  } catch (error) {
+    console.error('Failed to get interpretation:', error);
+    return 'No interpretation available';
   }
 }
 
@@ -76,7 +138,24 @@ export function getInterpretation(card, readingType, isReversed = false) {
  * Get keywords for card
  */
 export function getKeywords(card, isReversed = false) {
-  return isReversed ? card.reversedKeywords : card.uprightKeywords;
+  try {
+    if (!card || typeof card !== 'object') {
+      throw new Error('Invalid card object');
+    }
+
+    const keywords = isReversed ? card.reversedKeywords : card.uprightKeywords;
+
+    // Validate keywords is an array
+    if (!keywords || !Array.isArray(keywords)) {
+      console.warn('Missing or invalid keywords, using fallback');
+      return ['mystery', 'potential', 'unknown'];
+    }
+
+    return keywords;
+  } catch (error) {
+    console.error('Failed to get keywords:', error);
+    return ['mystery', 'potential', 'unknown'];
+  }
 }
 
 /**

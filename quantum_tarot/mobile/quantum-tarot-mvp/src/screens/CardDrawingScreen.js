@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, Text, StyleSheet, Animated, TouchableOpacity, Alert } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
 import { QuantumSpreadEngine } from '../services/quantumEngine';
 import { AdaptiveLanguageEngine } from '../services/adaptiveLanguage';
@@ -8,9 +8,19 @@ import { recordReading, saveReading, getUserProfile } from '../utils/storage';
 import { CARD_BACK } from '../data/asciiCards';
 
 export default function CardDrawingScreen({ route, navigation }) {
+  // Validate route params
+  if (!route || !route.params || !route.params.readingType || !route.params.profile || !route.params.intention || !route.params.spreadType) {
+    // Navigate back to safety if params missing
+    React.useEffect(() => {
+      navigation.navigate('ReadingType');
+    }, []);
+    return null;
+  }
+
   const { readingType, profile, intention, spreadType } = route.params;
   const { theme } = useTheme();
   const [status, setStatus] = useState('Collapsing quantum wave function...');
+  const [error, setError] = useState(null);
   const fadeAnim = useState(new Animated.Value(0))[0];
 
   const styles = createStyles(theme);
@@ -20,74 +30,126 @@ export default function CardDrawingScreen({ route, navigation }) {
   }, []);
 
   async function performReading() {
-    // Animate card back
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(fadeAnim, { toValue: 1, duration: 1000, useNativeDriver: true }),
-        Animated.timing(fadeAnim, { toValue: 0.5, duration: 1000, useNativeDriver: true })
-      ])
-    ).start();
+    try {
+      setError(null);
 
-    // Build communication profile
-    const userProfile = await getUserProfile();
-    const birthYear = userProfile.birthday ? new Date(userProfile.birthday).getFullYear() : null;
-    const commProfile = AdaptiveLanguageEngine.buildCommunicationProfile(profile, birthYear);
+      // Animate card back
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(fadeAnim, { toValue: 1, duration: 1000, useNativeDriver: true }),
+          Animated.timing(fadeAnim, { toValue: 0.5, duration: 1000, useNativeDriver: true })
+        ])
+      ).start();
 
-    setStatus('Mixing intention with quantum entropy...');
-    await new Promise(resolve => setTimeout(resolve, 1500));
+      // Build communication profile
+      const userProfile = await getUserProfile();
+      if (!userProfile) {
+        throw new Error('Failed to load user profile');
+      }
 
-    // Perform quantum reading
-    const engine = new QuantumSpreadEngine();
-    setStatus('Drawing cards from the quantum field...');
+      const birthYear = userProfile.birthday ? new Date(userProfile.birthday).getFullYear() : null;
+      const commProfile = AdaptiveLanguageEngine.buildCommunicationProfile(profile, birthYear);
 
-    const reading = await engine.performReading(spreadType, intention, readingType);
+      if (!commProfile) {
+        throw new Error('Failed to build communication profile');
+      }
 
-    setStatus('Interpreting...');
-    await new Promise(resolve => setTimeout(resolve, 1000));
+      setStatus('Mixing intention with quantum entropy...');
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
-    // Enrich with card data and interpretations
-    const enrichedReading = {
-      ...reading,
-      userIntention: intention,
-      commProfile,
-      cards: reading.positions.map(pos => {
-        const card = getCardByIndex(pos.cardIndex);
-        const interpretation = AdaptiveLanguageEngine.generateCardInterpretation(
-          card,
-          pos.position,
-          pos.reversed,
-          commProfile,
-          readingType
-        );
+      // Perform quantum reading
+      const engine = new QuantumSpreadEngine();
+      setStatus('Drawing cards from the quantum field...');
 
-        return {
-          ...pos,
-          card,
-          interpretation
-        };
-      })
-    };
+      const reading = await engine.performReading(spreadType, intention, readingType);
 
-    // Save reading
-    await saveReading(enrichedReading);
-    await recordReading();
+      if (!reading || !reading.positions) {
+        throw new Error('Invalid reading generated');
+      }
 
-    // Navigate to result
-    navigation.replace('Reading', { reading: enrichedReading });
+      setStatus('Interpreting...');
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Enrich with card data and interpretations
+      const enrichedReading = {
+        ...reading,
+        userIntention: intention,
+        commProfile,
+        cards: reading.positions.map(pos => {
+          const card = getCardByIndex(pos.cardIndex);
+          const interpretation = AdaptiveLanguageEngine.generateCardInterpretation(
+            card,
+            pos.position,
+            pos.reversed,
+            commProfile,
+            readingType
+          );
+
+          return {
+            ...pos,
+            card,
+            interpretation
+          };
+        })
+      };
+
+      // Validate enriched reading
+      if (!enrichedReading.cards || enrichedReading.cards.length === 0) {
+        throw new Error('No cards in reading');
+      }
+
+      // Save reading
+      await saveReading(enrichedReading);
+      await recordReading();
+
+      // Navigate to result
+      navigation.replace('Reading', { reading: enrichedReading });
+    } catch (err) {
+      console.error('Reading failed:', err);
+      setError(err.message || 'Unknown error occurred');
+      setStatus('Quantum disruption detected');
+    }
+  }
+
+  function handleRetry() {
+    setError(null);
+    setStatus('Collapsing quantum wave function...');
+    performReading();
+  }
+
+  function handleGoBack() {
+    navigation.goBack();
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.status}>{status}</Text>
 
-      <Animated.View style={{ opacity: fadeAnim }}>
-        <Text style={styles.cardBack}>{CARD_BACK}</Text>
-      </Animated.View>
+      {error ? (
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorTitle}>✧ QUANTUM DISRUPTION ✧</Text>
+          <Text style={styles.errorMessage}>{error}</Text>
+          <View style={styles.errorButtons}>
+            <TouchableOpacity style={styles.retryButton} onPress={handleRetry}>
+              <Text style={styles.retryButtonText}>TRY AGAIN</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
+              <Text style={styles.backButtonText}>GO BACK</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      ) : (
+        <>
+          <Animated.View style={{ opacity: fadeAnim }}>
+            <Text style={styles.cardBack}>{CARD_BACK}</Text>
+          </Animated.View>
 
-      <Text style={styles.subtitle}>
-        Genuine quantum randomness{'\n'}
-        from your device hardware
-      </Text>
+          <Text style={styles.subtitle}>
+            Genuine quantum randomness{'\n'}
+            from your device hardware
+          </Text>
+        </>
+      )}
     </View>
   );
 }
@@ -119,6 +181,55 @@ function createStyles(theme) {
       fontSize: 10,
       color: theme.textDim,
       marginTop: 30,
+      textAlign: 'center'
+    },
+    errorContainer: {
+      alignItems: 'center',
+      padding: 20
+    },
+    errorTitle: {
+      fontFamily: 'monospace',
+      fontSize: 14,
+      color: theme.accent,
+      marginBottom: 20,
+      textAlign: 'center'
+    },
+    errorMessage: {
+      fontFamily: 'monospace',
+      fontSize: 11,
+      color: theme.text,
+      marginBottom: 30,
+      textAlign: 'center',
+      lineHeight: 18
+    },
+    errorButtons: {
+      flexDirection: 'column',
+      gap: 10,
+      width: '100%'
+    },
+    retryButton: {
+      borderWidth: 2,
+      borderColor: theme.accent,
+      paddingVertical: 12,
+      paddingHorizontal: 20,
+      marginBottom: 10
+    },
+    retryButtonText: {
+      fontFamily: 'monospace',
+      fontSize: 12,
+      color: theme.accent,
+      textAlign: 'center'
+    },
+    backButton: {
+      borderWidth: 1,
+      borderColor: theme.border,
+      paddingVertical: 12,
+      paddingHorizontal: 20
+    },
+    backButtonText: {
+      fontFamily: 'monospace',
+      fontSize: 12,
+      color: theme.text,
       textAlign: 'center'
     }
   });

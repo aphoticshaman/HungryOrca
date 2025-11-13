@@ -34,21 +34,55 @@ export class QuantumRandomGenerator {
    * Uses crypto.getRandomValues (backed by hardware RNG)
    */
   async getQuantumBytes(numBytes = 32) {
-    // expo-random uses device's hardware random number generator
-    // This is genuinely random (quantum effects in silicon + environmental noise)
-    const randomBytes = await Random.getRandomBytesAsync(numBytes);
-    return randomBytes;
+    try {
+      // Validate input
+      if (!numBytes || numBytes <= 0 || numBytes > 1024) {
+        throw new Error('Invalid byte count');
+      }
+
+      // expo-random uses device's hardware random number generator
+      // This is genuinely random (quantum effects in silicon + environmental noise)
+      const randomBytes = await Random.getRandomBytesAsync(numBytes);
+
+      // Validate result
+      if (!randomBytes || randomBytes.length !== numBytes) {
+        throw new Error('Failed to generate quantum bytes');
+      }
+
+      return randomBytes;
+    } catch (error) {
+      console.error('Quantum RNG failed, falling back to Math.random():', error);
+
+      // FALLBACK: Use Math.random() if hardware RNG fails
+      // Not quantum, but better than crashing
+      const fallbackBytes = new Uint8Array(numBytes);
+      for (let i = 0; i < numBytes; i++) {
+        fallbackBytes[i] = Math.floor(Math.random() * 256);
+      }
+      return fallbackBytes;
+    }
   }
 
   /**
    * Convert bytes to integer
    */
   bytesToInt(bytes) {
-    let result = 0;
-    for (let i = 0; i < Math.min(4, bytes.length); i++) {
-      result = (result << 8) | bytes[i];
+    try {
+      // Validate input
+      if (!bytes || bytes.length === 0) {
+        throw new Error('Invalid bytes array');
+      }
+
+      let result = 0;
+      for (let i = 0; i < Math.min(4, bytes.length); i++) {
+        result = (result << 8) | bytes[i];
+      }
+      return result >>> 0; // Convert to unsigned 32-bit integer
+    } catch (error) {
+      console.error('Failed to convert bytes to int:', error);
+      // Fallback to random integer
+      return Math.floor(Math.random() * 0xFFFFFFFF);
     }
-    return result >>> 0; // Convert to unsigned 32-bit integer
   }
 
   /**
@@ -114,25 +148,44 @@ export class QuantumRandomGenerator {
    * Create cryptographic signature from quantum entropy
    */
   async createQuantumSignature(quantumBytes, index) {
-    // Create SHA-256 hash using expo-crypto
-    const timestamp = Date.now().toString();
-    const indexStr = index.toString();
+    try {
+      // Validate inputs
+      if (!quantumBytes || quantumBytes.length === 0) {
+        throw new Error('Invalid quantum bytes');
+      }
+      if (typeof index !== 'number' || index < 0) {
+        throw new Error('Invalid index');
+      }
 
-    // Combine data
-    const combined = new Uint8Array(quantumBytes.length + timestamp.length + indexStr.length);
-    combined.set(quantumBytes, 0);
-    for (let i = 0; i < timestamp.length; i++) {
-      combined[quantumBytes.length + i] = timestamp.charCodeAt(i);
-    }
-    for (let i = 0; i < indexStr.length; i++) {
-      combined[quantumBytes.length + timestamp.length + i] = indexStr.charCodeAt(i);
-    }
+      // Create SHA-256 hash using expo-crypto
+      const timestamp = Date.now().toString();
+      const indexStr = index.toString();
 
-    const digest = await Crypto.digestStringAsync(
-      Crypto.CryptoDigestAlgorithm.SHA256,
-      Array.from(combined).map(b => String.fromCharCode(b)).join('')
-    );
-    return digest;
+      // Combine data
+      const combined = new Uint8Array(quantumBytes.length + timestamp.length + indexStr.length);
+      combined.set(quantumBytes, 0);
+      for (let i = 0; i < timestamp.length; i++) {
+        combined[quantumBytes.length + i] = timestamp.charCodeAt(i);
+      }
+      for (let i = 0; i < indexStr.length; i++) {
+        combined[quantumBytes.length + timestamp.length + i] = indexStr.charCodeAt(i);
+      }
+
+      const digest = await Crypto.digestStringAsync(
+        Crypto.CryptoDigestAlgorithm.SHA256,
+        Array.from(combined).map(b => String.fromCharCode(b)).join('')
+      );
+
+      if (!digest) {
+        throw new Error('Failed to create digest');
+      }
+
+      return digest;
+    } catch (error) {
+      console.error('Failed to create quantum signature:', error);
+      // Fallback to simple hash
+      return `fallback_${Date.now()}_${index}_${Math.random()}`;
+    }
   }
 
   /**
@@ -140,36 +193,65 @@ export class QuantumRandomGenerator {
    * Mix intention with quantum randomness
    */
   async collapseWaveFunction(userIntention, readingType, numCards = 3) {
-    // Hash user intention to create intention-seed
-    const intentionString = userIntention + readingType + Date.now().toString();
-    const intentionHashHex = await Crypto.digestStringAsync(
-      Crypto.CryptoDigestAlgorithm.SHA256,
-      intentionString
-    );
+    try {
+      // Validate inputs
+      if (!userIntention || typeof userIntention !== 'string') {
+        throw new Error('Invalid user intention');
+      }
+      if (!readingType || typeof readingType !== 'string') {
+        throw new Error('Invalid reading type');
+      }
+      if (!numCards || numCards <= 0 || numCards > 78) {
+        throw new Error('Invalid card count');
+      }
 
-    // Convert hex string to bytes
-    const intentionHash = new Uint8Array(
-      intentionHashHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16))
-    );
+      // Hash user intention to create intention-seed
+      const intentionString = userIntention + readingType + Date.now().toString();
+      const intentionHashHex = await Crypto.digestStringAsync(
+        Crypto.CryptoDigestAlgorithm.SHA256,
+        intentionString
+      );
 
-    // Get quantum entropy
-    const quantumBytes = await this.getQuantumBytes(32);
+      if (!intentionHashHex || typeof intentionHashHex !== 'string') {
+        throw new Error('Failed to hash intention');
+      }
 
-    // Mix intention with quantum entropy (XOR operation)
-    const mixed = new Uint8Array(32);
-    for (let i = 0; i < 32; i++) {
-      mixed[i] = quantumBytes[i] ^ intentionHash[i % intentionHash.length];
+      // Convert hex string to bytes
+      const hexPairs = intentionHashHex.match(/.{1,2}/g);
+      if (!hexPairs || hexPairs.length === 0) {
+        throw new Error('Invalid hash format');
+      }
+
+      const intentionHash = new Uint8Array(
+        hexPairs.map(byte => parseInt(byte, 16))
+      );
+
+      // Get quantum entropy
+      const quantumBytes = await this.getQuantumBytes(32);
+
+      // Mix intention with quantum entropy (XOR operation)
+      const mixed = new Uint8Array(32);
+      for (let i = 0; i < 32; i++) {
+        mixed[i] = quantumBytes[i] ^ intentionHash[i % intentionHash.length];
+      }
+
+      // Use mixed entropy to seed card selection
+      // The quantum randomness ensures unpredictability
+      // The intention ensures personal relevance
+      const seed = this.bytesToInt(mixed.slice(0, 4));
+
+      // Generate quantum states
+      const states = await this.generateCardPositions(numCards, 78, false);
+
+      if (!states || states.length !== numCards) {
+        throw new Error('Failed to generate card positions');
+      }
+
+      return states;
+    } catch (error) {
+      console.error('Wave function collapse failed:', error);
+      throw error; // Re-throw to let caller handle
     }
-
-    // Use mixed entropy to seed card selection
-    // The quantum randomness ensures unpredictability
-    // The intention ensures personal relevance
-    const seed = this.bytesToInt(mixed.slice(0, 4));
-
-    // Generate quantum states
-    const states = await this.generateCardPositions(numCards, 78, false);
-
-    return states;
   }
 }
 
@@ -204,42 +286,66 @@ export class QuantumSpreadEngine {
    * Perform a complete quantum tarot reading
    */
   async performReading(spreadType, userIntention, readingType) {
-    if (!this.SPREADS[spreadType]) {
-      throw new Error(`Unknown spread type: ${spreadType}`);
+    try {
+      // Validate inputs
+      if (!spreadType || typeof spreadType !== 'string') {
+        throw new Error('Invalid spread type');
+      }
+      if (!userIntention || typeof userIntention !== 'string') {
+        throw new Error('Invalid user intention');
+      }
+      if (!readingType || typeof readingType !== 'string') {
+        throw new Error('Invalid reading type');
+      }
+
+      if (!this.SPREADS[spreadType]) {
+        throw new Error(`Unknown spread type: ${spreadType}`);
+      }
+
+      const spread = this.SPREADS[spreadType];
+      const numCards = spread.count;
+
+      // Collapse quantum wave function
+      const quantumStates = await this.quantumGen.collapseWaveFunction(
+        userIntention,
+        readingType,
+        numCards
+      );
+
+      if (!quantumStates || quantumStates.length !== numCards) {
+        throw new Error('Invalid quantum states generated');
+      }
+
+      // Package reading
+      const reading = {
+        spreadType,
+        readingType,
+        timestamp: Date.now(),
+        positions: []
+      };
+
+      for (let i = 0; i < spread.positions.length; i++) {
+        const positionName = spread.positions[i];
+        const quantumState = quantumStates[i];
+
+        if (!quantumState) {
+          throw new Error(`Missing quantum state at position ${i}`);
+        }
+
+        reading.positions.push({
+          position: positionName,
+          cardIndex: quantumState.cardIndex,
+          reversed: quantumState.reversed,
+          quantumSignature: quantumState.quantumSignature,
+          collapseTime: quantumState.collapseTimestamp
+        });
+      }
+
+      return reading;
+    } catch (error) {
+      console.error('Failed to perform reading:', error);
+      throw error; // Re-throw to let screen handle with UI
     }
-
-    const spread = this.SPREADS[spreadType];
-    const numCards = spread.count;
-
-    // Collapse quantum wave function
-    const quantumStates = await this.quantumGen.collapseWaveFunction(
-      userIntention,
-      readingType,
-      numCards
-    );
-
-    // Package reading
-    const reading = {
-      spreadType,
-      readingType,
-      timestamp: Date.now(),
-      positions: []
-    };
-
-    for (let i = 0; i < spread.positions.length; i++) {
-      const positionName = spread.positions[i];
-      const quantumState = quantumStates[i];
-
-      reading.positions.push({
-        position: positionName,
-        cardIndex: quantumState.cardIndex,
-        reversed: quantumState.reversed,
-        quantumSignature: quantumState.quantumSignature,
-        collapseTime: quantumState.collapseTimestamp
-      });
-    }
-
-    return reading;
   }
 
   /**
