@@ -5,6 +5,7 @@
  */
 
 import * as Random from 'expo-random';
+import * as Crypto from 'expo-crypto';
 
 /**
  * Quantum State - represents a collapsed card selection
@@ -113,16 +114,25 @@ export class QuantumRandomGenerator {
    * Create cryptographic signature from quantum entropy
    */
   async createQuantumSignature(quantumBytes, index) {
-    // Create SHA-256 hash
-    const data = new Uint8Array([
-      ...quantumBytes,
-      ...new TextEncoder().encode(Date.now().toString()),
-      ...new TextEncoder().encode(index.toString())
-    ]);
+    // Create SHA-256 hash using expo-crypto
+    const timestamp = Date.now().toString();
+    const indexStr = index.toString();
 
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    // Combine data
+    const combined = new Uint8Array(quantumBytes.length + timestamp.length + indexStr.length);
+    combined.set(quantumBytes, 0);
+    for (let i = 0; i < timestamp.length; i++) {
+      combined[quantumBytes.length + i] = timestamp.charCodeAt(i);
+    }
+    for (let i = 0; i < indexStr.length; i++) {
+      combined[quantumBytes.length + timestamp.length + i] = indexStr.charCodeAt(i);
+    }
+
+    const digest = await Crypto.digestStringAsync(
+      Crypto.CryptoDigestAlgorithm.SHA256,
+      Array.from(combined).map(b => String.fromCharCode(b)).join('')
+    );
+    return digest;
   }
 
   /**
@@ -131,12 +141,16 @@ export class QuantumRandomGenerator {
    */
   async collapseWaveFunction(userIntention, readingType, numCards = 3) {
     // Hash user intention to create intention-seed
-    const intentionData = new TextEncoder().encode(
-      userIntention + readingType + Date.now().toString()
+    const intentionString = userIntention + readingType + Date.now().toString();
+    const intentionHashHex = await Crypto.digestStringAsync(
+      Crypto.CryptoDigestAlgorithm.SHA256,
+      intentionString
     );
 
-    const intentionHashBuffer = await crypto.subtle.digest('SHA-256', intentionData);
-    const intentionHash = new Uint8Array(intentionHashBuffer);
+    // Convert hex string to bytes
+    const intentionHash = new Uint8Array(
+      intentionHashHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16))
+    );
 
     // Get quantum entropy
     const quantumBytes = await this.getQuantumBytes(32);
