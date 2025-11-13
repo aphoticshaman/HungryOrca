@@ -1,10 +1,10 @@
 /**
- * CYBERPUNK HEADER - Glitchy neon title screen
+ * CYBERPUNK HEADER - Wave-animated neon title
  */
 
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { NeonText, LPMUDText, GlitchText, MatrixRain } from './TerminalEffects';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, StyleSheet, Dimensions, Animated, Text } from 'react-native';
+import { NeonText, LPMUDText } from './TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -38,25 +38,13 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
 
   return (
     <View style={styles.container}>
-      {showMatrixBg && (
-        <View style={StyleSheet.absoluteFill}>
-          <MatrixRain width={SCREEN_WIDTH} height={200} speed={60} />
-        </View>
-      )}
-
       <View style={styles.content}>
-        {/* Main title with cycling colors and outline */}
-        <NeonText
+        {/* Main title with wave animation */}
+        <WaveText
+          text="LunatiQ"
           color={colors[colorIndex]}
-          style={[
-            styles.mainTitle,
-            {
-              textShadowColor: colors[colorIndex],
-            }
-          ]}
-        >
-          LunatiQ
-        </NeonText>
+          style={styles.mainTitle}
+        />
 
         <NeonText
           color={NEON_COLORS.hiMagenta}
@@ -69,18 +57,91 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
   );
 }
 
+/**
+ * Wave animated text - each letter bobs up and down
+ */
+function WaveText({ text, color, style }) {
+  const letters = text.split('');
+  const animations = useRef(
+    letters.map(() => new Animated.Value(0))
+  ).current;
+
+  useEffect(() => {
+    // Create wave animation for each letter
+    const waveAnimations = animations.map((anim, index) => {
+      return Animated.loop(
+        Animated.sequence([
+          Animated.delay(index * 100), // Stagger the waves
+          Animated.timing(anim, {
+            toValue: 1,
+            duration: 1000,
+            useNativeDriver: true,
+          }),
+          Animated.timing(anim, {
+            toValue: 0,
+            duration: 1000,
+            useNativeDriver: true,
+          }),
+        ])
+      );
+    });
+
+    // Start all animations
+    Animated.stagger(0, waveAnimations).start();
+
+    return () => {
+      animations.forEach(anim => anim.stopAnimation());
+    };
+  }, []);
+
+  return (
+    <View style={styles.waveContainer}>
+      {letters.map((letter, index) => {
+        const translateY = animations[index].interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, -15], // Wave amplitude
+        });
+
+        return (
+          <Animated.View
+            key={index}
+            style={{
+              transform: [{ translateY }],
+            }}
+          >
+            <Text
+              style={[
+                style,
+                {
+                  color,
+                  textShadowColor: color,
+                }
+              ]}
+            >
+              {letter}
+            </Text>
+          </Animated.View>
+        );
+      })}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
     width: '100%',
     paddingVertical: 40,
     paddingHorizontal: 20,
     backgroundColor: '#000000',
-    borderBottomWidth: 2,
-    borderBottomColor: NEON_COLORS.dimCyan,
   },
   content: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  waveContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 15,
   },
   mainTitle: {
     fontSize: 48,
@@ -90,7 +151,6 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 20,
     letterSpacing: 4,
-    marginBottom: 15,
   },
   subtitle: {
     fontSize: 32,

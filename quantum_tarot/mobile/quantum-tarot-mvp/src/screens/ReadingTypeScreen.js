@@ -66,13 +66,14 @@ const READING_TYPES = [
   }
 ];
 
-export default function ReadingTypeScreen({ navigation }) {
+export default function ReadingTypeScreen({ route, navigation }) {
+  const { zodiacSign, birthdate } = route.params;
   const [selected, setSelected] = useState(null);
 
   const handleSelect = (type) => {
     if (selected === type) {
       // Second tap - confirm and navigate
-      navigation.navigate('Birthday', { readingType: type });
+      navigation.navigate('Intention', { readingType: type, zodiacSign, birthdate });
     } else {
       // First tap - select
       setSelected(type);

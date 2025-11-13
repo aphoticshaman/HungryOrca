@@ -191,10 +191,26 @@ export function MorphText({
 }
 
 /**
- * MATRIX RAIN - Falling character columns
+ * MATRIX RAIN - Multicolor falling character columns
  */
 export function MatrixRain({ width = 100, height = 200, speed = 50 }) {
   const [columns, setColumns] = useState([]);
+
+  // Multicolor palette - 2025 cyberpunk aesthetic
+  const RAIN_COLORS = [
+    '#FFFFFF', // white
+    '#00FFFF', // cyan
+    '#0099FF', // blue
+    '#0044AA', // dark blue
+    '#FF0000', // red
+    '#DC143C', // crimson
+    '#888888', // grey
+    '#FFFF00', // yellow
+    '#FFA500', // orange
+    '#FF69B4', // pink
+    '#9370DB', // purple
+    '#8B4513', // brown
+  ];
 
   useEffect(() => {
     // Initialize columns
@@ -208,11 +224,12 @@ export function MatrixRain({ width = 100, height = 200, speed = 50 }) {
 
     const interval = setInterval(() => {
       setColumns(prev => prev.map(col => {
-        // Add new char at top
+        // Add new char at top with random color
         const newChars = [{
           char: MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)],
           y: 0,
           opacity: 1,
+          color: RAIN_COLORS[Math.floor(Math.random() * RAIN_COLORS.length)],
         }, ...col.chars];
 
         // Update positions and fade
@@ -246,7 +263,7 @@ export function MatrixRain({ width = 100, height = 200, speed = 50 }) {
                   position: 'absolute',
                   top: charObj.y,
                   opacity: charObj.opacity,
-                  color: charIndex === 0 ? NEON_COLORS.hiWhite : NEON_COLORS.hiGreen,
+                  color: charObj.color,
                 }
               ]}
             >
