@@ -788,9 +788,490 @@ export const CARD_DATABASE = [
       "What mastery have you achieved?"
     ],
     description: "A naked dancer moves within a laurel wreath (victory, completion, eternal cycle). She holds two wands (active manifestation). In the four corners, four creatures (lion, bull, eagle, human—the four fixed signs, four elements, four evangelists—wholeness). Infinity ribbons flow (eternal return). The World represents completion, wholeness, cosmic consciousness—the end of the Fool's journey and the beginning of the next spiral. Integration of all parts. The universe itself."
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // MINOR ARCANA: SWORDS (22-35)
+  // Element: Air | Mental realm, thought, conflict, truth
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 22,
+    name: "Ace of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "ace",
+    number: 1,
+    element: "air",
+    modality: "cardinal",
+    astrology: "air signs",
+    numerology: 1,
+    kabbalah: "kether of air",
+    symbols: ["upright sword", "crown", "mountains", "clouds"],
+    archetypes: ["mental clarity", "truth seeker", "breakthrough"],
+    themes: ["breakthrough", "clarity", "mental power", "truth", "new ideas"],
+    keywords: {
+      upright: ["breakthrough", "clarity", "truth", "mental power", "new ideas"],
+      reversed: ["confusion", "mental fog", "lies", "blocked communication"]
+    },
+    jungian: "thinking",
+    chakra: "throat",
+    seasonality: "spring / dawn of thought",
+    timeframe: "sudden / immediate",
+    advice: "Cut through illusion. Speak your truth. Mental clarity is power.",
+    shadow_work: "Using truth as a weapon, intellectual cruelty, cutting others down",
+    light: "Pure truth, mental clarity, breakthrough insight",
+    questions: [
+      "What truth needs to be spoken?",
+      "What illusion must be cut away?",
+      "Where do you need mental clarity?"
+    ],
+    description: "A hand emerges from clouds gripping a sword crowned with laurel (victory through truth). Mountains in the background (mental challenges conquered). The Ace of Swords represents breakthrough, cutting through confusion, mental clarity—the moment when truth pierces illusion."
+  },
+
+  {
+    id: 23,
+    name: "Two of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "2",
+    number: 2,
+    element: "air",
+    modality: "fixed",
+    astrology: "moon in libra",
+    numerology: 2,
+    kabbalah: "chokmah of air",
+    symbols: ["blindfolded figure", "crossed swords", "water", "crescent moon"],
+    archetypes: ["indecision", "stalemate", "avoidance"],
+    themes: ["indecision", "stalemate", "avoidance", "denial", "difficult choice"],
+    keywords: {
+      upright: ["indecision", "stalemate", "avoidance", "difficult choice"],
+      reversed: ["information overload", "decision made", "removal of blindfold"]
+    },
+    jungian: "repression",
+    chakra: "third eye",
+    seasonality: "stagnation / crossroads",
+    timeframe: "delayed / waiting",
+    advice: "Remove the blindfold. Face what you're avoiding. Make the choice.",
+    shadow_work: "Willful blindness, refusing to see truth, decision paralysis",
+    light: "Peaceful contemplation, taking time to decide wisely",
+    questions: [
+      "What are you refusing to see?",
+      "What decision are you avoiding?",
+      "What happens if you remove the blindfold?"
+    ],
+    description: "A blindfolded figure sits holding two crossed swords (blocking out reality to avoid choice). Water and crescent moon behind (emotions suppressed by intellect). The Two of Swords represents indecision, stalemate, willful blindness—refusing to see what must be seen."
+  },
+
+  {
+    id: 24,
+    name: "Three of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "3",
+    number: 3,
+    element: "air",
+    modality: "mutable",
+    astrology: "saturn in libra",
+    numerology: 3,
+    kabbalah: "binah of air",
+    symbols: ["heart pierced by three swords", "storm clouds", "rain"],
+    archetypes: ["heartbreak", "grief", "painful truth"],
+    themes: ["heartbreak", "sorrow", "painful truth", "grief", "separation"],
+    keywords: {
+      upright: ["heartbreak", "sorrow", "painful truth", "grief"],
+      reversed: ["healing", "forgiveness", "releasing pain"]
+    },
+    jungian: "suffering",
+    chakra: "heart",
+    seasonality: "storm / crisis",
+    timeframe: "painful present",
+    advice: "Feel the pain. Truth hurts before it heals. Grief is love persisting.",
+    shadow_work: "Holding onto pain, refusing to heal, weaponizing suffering",
+    light: "Honest grief, truth even when painful, necessary heartbreak for growth",
+    questions: [
+      "What painful truth must you accept?",
+      "Where is your heart wounded?",
+      "What grief needs to be felt?"
+    ],
+    description: "Three swords pierce a red heart under stormy skies (painful truth, heartbreak, necessary wound). Rain falls (cleansing tears). The Three of Swords represents sorrow, painful truth, heartbreak—the moment when reality cuts through illusion and the heart must break open."
+  },
+
+  {
+    id: 25,
+    name: "Four of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "4",
+    number: 4,
+    element: "air",
+    modality: "cardinal",
+    astrology: "jupiter in libra",
+    numerology: 4,
+    kabbalah: "chesed of air",
+    symbols: ["resting figure", "stained glass window", "three swords on wall", "one sword beneath"],
+    archetypes: ["rest", "recuperation", "contemplation"],
+    themes: ["rest", "recuperation", "meditation", "timeout", "recovery"],
+    keywords: {
+      upright: ["rest", "recuperation", "meditation", "timeout"],
+      reversed: ["burnout", "restlessness", "stagnation"]
+    },
+    jungian: "integration",
+    chakra: "crown",
+    seasonality: "winter / dormancy",
+    timeframe: "pause / recovery period",
+    advice: "Rest is not weakness. Recuperate. Contemplation restores power.",
+    shadow_work: "Avoiding life through rest, depression disguised as meditation",
+    light: "Sacred rest, intentional recovery, meditative contemplation",
+    questions: [
+      "What needs to rest?",
+      "Where are you depleted?",
+      "What happens if you pause?"
+    ],
+    description: "A figure rests in prayer position, hands folded (peaceful recuperation). Three swords hang on wall (past battles), one beneath (remaining vigilance). Stained glass shows blessing (divine rest). The Four of Swords represents rest, recovery, contemplation—the necessary pause before re-engaging."
+  },
+
+  {
+    id: 26,
+    name: "Five of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "5",
+    number: 5,
+    element: "air",
+    modality: "fixed",
+    astrology: "venus in aquarius",
+    numerology: 5,
+    kabbalah: "geburah of air",
+    symbols: ["figure collecting swords", "defeated opponents walking away", "stormy sky"],
+    archetypes: ["conflict", "defeat", "hollow victory"],
+    themes: ["conflict", "defeat", "hollow victory", "unfair tactics", "self-interest"],
+    keywords: {
+      upright: ["conflict", "defeat", "hollow victory", "self-interest"],
+      reversed: ["reconciliation", "making amends", "moving on"]
+    },
+    jungian: "shadow",
+    chakra: "solar plexus",
+    seasonality: "aftermath / winter",
+    timeframe: "recent past / consequences",
+    advice: "Not every battle is worth winning. Know when victory is hollow. Choose your battles.",
+    shadow_work: "Winning at all costs, cruelty, taking advantage, gloating",
+    light: "Walking away from toxic battles, knowing when to surrender",
+    questions: [
+      "What victory would be hollow?",
+      "What battle isn't worth fighting?",
+      "Where have you won but lost yourself?"
+    ],
+    description: "A figure collects five swords with a smirk while two defeated figures walk away (hollow victory through unfair means). Stormy sky (conflict leaves damage). The Five of Swords represents conflict, defeat, the cost of winning through cruelty—victory that damages the victor."
+  },
+
+  {
+    id: 27,
+    name: "Six of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "6",
+    number: 6,
+    element: "air",
+    modality: "mutable",
+    astrology: "mercury in aquarius",
+    numerology: 6,
+    kabbalah: "tiphareth of air",
+    symbols: ["boat", "ferryman", "woman and child", "six swords", "calm waters ahead"],
+    archetypes: ["transition", "moving on", "journey"],
+    themes: ["transition", "moving on", "travel", "healing journey", "leaving behind"],
+    keywords: {
+      upright: ["transition", "moving on", "travel", "healing journey"],
+      reversed: ["stuck in the past", "unable to move on", "turbulent waters"]
+    },
+    jungian: "transition",
+    chakra: "sacral",
+    seasonality: "autumn / passage",
+    timeframe: "gradual / transitional",
+    advice: "Move forward. The journey heals. You cannot stay where you are.",
+    shadow_work: "Refusing to move on, romanticizing the past, fear of the new",
+    light: "Necessary departures, healing through movement, guided transitions",
+    questions: [
+      "What must you leave behind?",
+      "Where are you being called to travel?",
+      "What healing requires departure?"
+    ],
+    description: "A ferryman guides a boat carrying woman and child across water (guided transition). Six swords stand upright in boat (carrying wounds but moving forward). Rough waters behind, calm ahead (moving toward healing). The Six of Swords represents transition, moving on, the healing journey—leaving pain behind."
+  },
+
+  {
+    id: 28,
+    name: "Seven of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "7",
+    number: 7,
+    element: "air",
+    modality: "cardinal",
+    astrology: "moon in aquarius",
+    numerology: 7,
+    kabbalah: "netzach of air",
+    symbols: ["figure sneaking away with swords", "military camp", "two swords left behind"],
+    archetypes: ["deception", "strategy", "theft"],
+    themes: ["deception", "strategy", "theft", "getting away with something", "betrayal"],
+    keywords: {
+      upright: ["deception", "strategy", "theft", "sneakiness"],
+      reversed: ["getting caught", "confession", "coming clean"]
+    },
+    jungian: "trickster",
+    chakra: "throat",
+    seasonality: "night / covert action",
+    timeframe: "secretive / hidden",
+    advice: "Strategy is not the same as deception. Use intelligence wisely. Own your shadows.",
+    shadow_work: "Deception, theft, betrayal, taking what isn't yours, sneakiness",
+    light: "Strategic thinking, necessary secrets, protecting yourself",
+    questions: [
+      "Where are you being dishonest?",
+      "What are you taking that isn't yours?",
+      "What secret is eating at you?"
+    ],
+    description: "A figure sneaks away from camp carrying five swords, leaving two behind (theft, deception, getting away with something). Looking back over shoulder (guilty conscience). The Seven of Swords represents deception, strategy, betrayal—taking what isn't yours or hiding what is."
+  },
+
+  {
+    id: 29,
+    name: "Eight of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "8",
+    number: 8,
+    element: "air",
+    modality: "fixed",
+    astrology: "jupiter in gemini",
+    numerology: 8,
+    kabbalah: "hod of air",
+    symbols: ["bound and blindfolded figure", "eight swords", "marshy ground", "castle in distance"],
+    archetypes: ["imprisonment", "victim", "self-limitation"],
+    themes: ["imprisonment", "restriction", "victim mentality", "self-limitation", "fear"],
+    keywords: {
+      upright: ["imprisonment", "restriction", "victim mentality", "self-limitation"],
+      reversed: ["freedom", "release", "self-empowerment"]
+    },
+    jungian: "victim",
+    chakra: "solar plexus",
+    seasonality: "trapped / stagnation",
+    timeframe: "feeling endless / stuck",
+    advice: "You are freer than you think. The bindings are loose. Remove your own blindfold.",
+    shadow_work: "Victim mentality, learned helplessness, refusing to free yourself",
+    light: "Recognizing self-imposed limitations, choosing freedom",
+    questions: [
+      "What prison have you built?",
+      "Where do you play the victim?",
+      "What if you removed your own blindfold?"
+    ],
+    description: "A bound and blindfolded figure stands among eight swords stuck in muddy ground (self-imposed prison). Bindings are loose (could escape). Castle in distance (safety accessible). The Eight of Swords represents self-limitation, victim mentality—imprisonment by belief rather than reality."
+  },
+
+  {
+    id: 30,
+    name: "Nine of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "9",
+    number: 9,
+    element: "air",
+    modality: "mutable",
+    astrology: "mars in gemini",
+    numerology: 9,
+    kabbalah: "yesod of air",
+    symbols: ["figure sitting up in bed", "head in hands", "nine swords on wall", "nightmare imagery"],
+    archetypes: ["anxiety", "nightmare", "mental anguish"],
+    themes: ["anxiety", "worry", "nightmare", "mental anguish", "insomnia"],
+    keywords: {
+      upright: ["anxiety", "worry", "nightmare", "mental anguish"],
+      reversed: ["hope", "recovery", "light after darkness"]
+    },
+    jungian: "anxiety",
+    chakra: "third eye",
+    seasonality: "darkest hour / 3am",
+    timeframe: "middle of the night / crisis",
+    advice: "The nightmare is in your mind, not reality. Breathe. Dawn comes. Seek help.",
+    shadow_work: "Catastrophizing, rumination, refusing comfort, anxiety spirals",
+    light: "Facing fears, seeking help, recognizing thoughts aren't reality",
+    questions: [
+      "What nightmare keeps you awake?",
+      "What anxiety is controlling you?",
+      "What would happen if you asked for help?"
+    ],
+    description: "A figure sits up in bed, head in hands (mental anguish, anxiety, insomnia). Nine swords on wall (accumulated worries). Nightmare imagery on quilt (fears manifest). The Nine of Swords represents anxiety, worry, the dark night of the soul—when the mind becomes the tormentor."
+  },
+
+  {
+    id: 31,
+    name: "Ten of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "10",
+    number: 10,
+    element: "air",
+    modality: "cardinal",
+    astrology: "sun in gemini",
+    numerology: 10,
+    kabbalah: "malkuth of air",
+    symbols: ["figure with ten swords in back", "black sky", "sunrise", "calm water"],
+    archetypes: ["rock bottom", "endings", "betrayal"],
+    themes: ["rock bottom", "painful ending", "betrayal", "defeat", "hitting bottom"],
+    keywords: {
+      upright: ["rock bottom", "painful ending", "betrayal", "defeat"],
+      reversed: ["recovery", "regeneration", "resisting inevitable end"]
+    },
+    jungian: "death and rebirth",
+    chakra: "root",
+    seasonality: "darkest before dawn",
+    timeframe: "the end / rock bottom",
+    advice: "It cannot get worse. You've hit bottom. Now the only way is up. Dawn comes.",
+    shadow_work: "Victimhood, dramatizing pain, refusing to rise, playing dead",
+    light: "Necessary endings, clearing for rebirth, surrendering to what is",
+    questions: [
+      "What has reached its absolute end?",
+      "Where have you hit rock bottom?",
+      "What new beginning awaits after this ending?"
+    ],
+    description: "A figure lies face down with ten swords in back (complete defeat, rock bottom, betrayal). Black sky but sunrise on horizon (darkest before dawn). Calm water (peace after storm). The Ten of Swords represents painful endings, rock bottom—but also the promise that it cannot get worse, and dawn is coming."
+  },
+
+  {
+    id: 32,
+    name: "Page of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "page",
+    number: 11,
+    element: "air",
+    modality: "mutable",
+    astrology: "earth of air",
+    numerology: 11,
+    kabbalah: "princess of air",
+    symbols: ["young figure with sword", "alert stance", "windswept trees", "birds"],
+    archetypes: ["messenger", "student", "vigilance"],
+    themes: ["new ideas", "vigilance", "curiosity", "mental energy", "communication"],
+    keywords: {
+      upright: ["new ideas", "vigilance", "curiosity", "mental energy"],
+      reversed: ["all talk no action", "haste", "defensive"]
+    },
+    jungian: "eternal youth",
+    chakra: "throat",
+    seasonality: "spring / new thought",
+    timeframe: "beginning / youthful",
+    advice: "Stay alert. Ask questions. Guard your mind. Mental vigilance is strength.",
+    shadow_work: "Gossip, hastiness, intellectual arrogance, all talk no action",
+    light: "Curious mind, vigilant awareness, truth-seeking",
+    questions: [
+      "What new idea is emerging?",
+      "Where do you need to be more vigilant?",
+      "What truth are you seeking?"
+    ],
+    description: "A young figure holds sword upright in alert stance (mental vigilance, readiness). Windswept trees and birds (mental activity, communication). The Page of Swords represents curiosity, new ideas, vigilant mind—the mental student ready to learn and defend truth."
+  },
+
+  {
+    id: 33,
+    name: "Knight of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "knight",
+    number: 12,
+    element: "air",
+    modality: "fixed",
+    astrology: "fire of air",
+    numerology: 12,
+    kabbalah: "prince of air",
+    symbols: ["charging knight", "sword raised", "white horse", "turbulent sky", "birds"],
+    archetypes: ["warrior", "action", "haste"],
+    themes: ["action", "haste", "direct approach", "assertiveness", "charging forward"],
+    keywords: {
+      upright: ["action", "haste", "direct approach", "assertiveness"],
+      reversed: ["recklessness", "impulsiveness", "lack of direction"]
+    },
+    jungian: "warrior",
+    chakra: "throat",
+    seasonality: "storm / action",
+    timeframe: "fast / immediate",
+    advice: "Act decisively. But temper speed with wisdom. Haste makes waste.",
+    shadow_work: "Recklessness, impulsiveness, aggression, bulldozing",
+    light: "Decisive action, mental clarity in motion, truth in action",
+    questions: [
+      "Where do you need to act now?",
+      "What requires decisive action?",
+      "Are you being reckless or righteous?"
+    ],
+    description: "A knight charges forward on white horse, sword raised (decisive action, mental aggression). Turbulent sky and birds (air element in motion). The Knight of Swords represents action, assertiveness, charging forward—mental energy in rapid motion, for better or worse."
+  },
+
+  {
+    id: 34,
+    name: "Queen of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "queen",
+    number: 13,
+    element: "air",
+    modality: "cardinal",
+    astrology: "water of air",
+    numerology: 13,
+    kabbalah: "queen of air",
+    symbols: ["seated queen", "upright sword", "raised hand", "clouds", "butterflies"],
+    archetypes: ["wise woman", "clarity", "boundaries"],
+    themes: ["clarity", "independence", "direct communication", "boundaries", "clear thinking"],
+    keywords: {
+      upright: ["clarity", "independence", "direct communication", "boundaries"],
+      reversed: ["cold", "bitter", "harsh", "cutting"]
+    },
+    jungian: "wise woman",
+    chakra: "throat",
+    seasonality: "autumn / wisdom",
+    timeframe: "experienced / mature",
+    advice: "Speak truth clearly. Set boundaries firmly. Independence is not loneliness.",
+    shadow_work: "Coldness, bitterness, using truth as weapon, isolation",
+    light: "Clear boundaries, truthful communication, wisdom through pain",
+    questions: [
+      "What truth must you speak?",
+      "What boundary must you set?",
+      "Where do you need clarity over emotion?"
+    ],
+    description: "A queen sits alone holding upright sword and raising hand (commanding presence, clear boundaries). Clouds and butterflies (air element, transformation through thought). The Queen of Swords represents clarity, independence, direct communication—wisdom earned through pain, truth without sugar-coating."
+  },
+
+  {
+    id: 35,
+    name: "King of Swords",
+    arcana: "minor",
+    suit: "swords",
+    rank: "king",
+    number: 14,
+    element: "air",
+    modality: "fixed",
+    astrology: "air of air",
+    numerology: 14,
+    kabbalah: "king of air",
+    symbols: ["seated king", "upright sword", "butterflies", "clouds", "throne"],
+    archetypes: ["judge", "authority", "intellectual power"],
+    themes: ["authority", "truth", "judgment", "intellectual power", "legal matters"],
+    keywords: {
+      upright: ["authority", "truth", "judgment", "intellectual power"],
+      reversed: ["tyranny", "manipulation", "abuse of power"]
+    },
+    jungian: "wise king",
+    chakra: "throat",
+    seasonality: "winter / judgment",
+    timeframe: "authoritative / final",
+    advice: "Judge fairly. Lead with truth. Power requires responsibility. Mental mastery is kingship.",
+    shadow_work: "Tyranny, cold logic without compassion, manipulation, abuse of power",
+    light: "Fair judgment, ethical leadership, truth as authority",
+    questions: [
+      "What requires your fair judgment?",
+      "Where must you exercise authority?",
+      "How do you lead with truth?"
+    ],
+    description: "A king sits enthroned holding upright sword (authority, judgment, intellectual power). Butterflies on throne (air element, transformation). Stern expression (impartial judgment). The King of Swords represents authority, truth, judgment—the mental ruler who leads with logic, ethics, and impartial fairness."
   }
 
-  // TODO: Add 56 minor arcana cards (Wands, Cups, Swords, Pentacles)
+  // TODO: Add remaining minor arcana: Wands (36-49), Cups (50-63), Pentacles (64-77)
 ];
 
 /**

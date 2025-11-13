@@ -119,7 +119,7 @@ async function getPublicTimestamp() {
  * @returns {Promise<Array>}
  */
 export async function drawCards(cardCount, intention = '') {
-  const TOTAL_CARDS = 22; // All 22 major arcana (0-21). TODO: Change to 78 when minor arcana added
+  const TOTAL_CARDS = 36; // 22 major arcana + 14 swords (0-35). TODO: Change to 78 when remaining suits added
 
   // Create deck indices
   const deck = Array.from({ length: TOTAL_CARDS }, (_, i) => i);

@@ -8,11 +8,13 @@ import CyberpunkCard from '../components/CyberpunkCard';
 import { NeonText, LPMUDText, FlickerText, ScanLines } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
 import { interpretReading } from '../utils/agiInterpretation';
+import { initializeReading, saveActionStatus, getReadingActions } from '../utils/actionTracker';
 
 export default function ReadingScreen({ route, navigation }) {
   const { cards, spreadType, intention, readingType, zodiacSign, birthdate, quantumSeed, timestamp } = route.params;
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [reading, setReading] = useState(null);
+  const [actionStatus, setActionStatus] = useState({}); // XYZA Cycle 2: Track action completion per card
 
   useEffect(() => {
     // Generate AGI interpretation
@@ -22,7 +24,44 @@ export default function ReadingScreen({ route, navigation }) {
       birthdate
     });
     setReading(fullReading);
+
+    // XYZA Cycle 2: Initialize action tracking for this reading
+    const allActions = fullReading.interpretations.flatMap((interp, cardIdx) =>
+      interp.layers.practical.action_steps.map(step => `Card ${cardIdx + 1}: ${step}`)
+    );
+    initializeReading(quantumSeed, intention, spreadType, allActions);
+
+    // Load existing action status
+    loadActionStatus();
   }, []);
+
+  async function loadActionStatus() {
+    const actions = await getReadingActions(quantumSeed);
+    if (actions) {
+      const statusMap = {};
+      actions.forEach((action, idx) => {
+        statusMap[idx] = action.completed;
+      });
+      setActionStatus(statusMap);
+    }
+  }
+
+  // XYZA Cycle 2: Toggle action completion
+  async function toggleActionStatus(actionIndex) {
+    const currentStatus = actionStatus[actionIndex];
+    let newStatus;
+
+    if (currentStatus === null) {
+      newStatus = true; // null → done
+    } else if (currentStatus === true) {
+      newStatus = false; // done → not done
+    } else {
+      newStatus = null; // not done → skipped
+    }
+
+    setActionStatus(prev => ({ ...prev, [actionIndex]: newStatus }));
+    await saveActionStatus(quantumSeed, actionIndex, newStatus);
+  }
 
   if (!reading) {
     return (
@@ -147,14 +186,54 @@ export default function ReadingScreen({ route, navigation }) {
           </LPMUDText>
 
           {/* Layer 4: Practical */}
-          <LPMUDText style={styles.interpretationSection}>
-            $HIC$━━ PRACTICAL LAYER ━━$NOR${'\n'}
-            $HIG$Action Steps:$NOR${'\n'}
-            {currentInterpretation.layers.practical.action_steps.map((step, i) =>
-              `  ${i + 1}. ${step}\n`
-            ).join('')}
-            {'\n'}$HIY$Focus On:$NOR$ {currentInterpretation.layers.practical.what_to_focus_on}
-          </LPMUDText>
+          <View style={styles.interpretationSection}>
+            <LPMUDText style={styles.interpretationSectionText}>
+              $HIC$━━ PRACTICAL LAYER ━━$NOR${'\n'}
+              $HIG$Action Steps:$NOR$
+            </LPMUDText>
+
+            {/* XYZA Cycle 2: Action tracking checkboxes */}
+            {currentInterpretation.layers.practical.action_steps.map((step, i) => {
+              const globalActionIndex = currentCardIndex * 3 + i; // 3 actions per card
+              const status = actionStatus[globalActionIndex];
+
+              return (
+                <TouchableOpacity
+                  key={i}
+                  onPress={() => toggleActionStatus(globalActionIndex)}
+                  style={styles.actionRow}
+                >
+                  <View style={styles.checkboxContainer}>
+                    <View style={[
+                      styles.checkbox,
+                      status === true && styles.checkboxDone,
+                      status === false && styles.checkboxNotDone,
+                      status === null && styles.checkboxSkipped
+                    ]}>
+                      {status === true && (
+                        <NeonText color={NEON_COLORS.hiGreen} style={styles.checkmark}>✓</NeonText>
+                      )}
+                      {status === false && (
+                        <NeonText color={NEON_COLORS.hiRed} style={styles.checkmark}>✗</NeonText>
+                      )}
+                      {status === null && (
+                        <NeonText color={NEON_COLORS.dimCyan} style={styles.checkmark}>−</NeonText>
+                      )}
+                    </View>
+                  </View>
+                  <View style={styles.actionTextContainer}>
+                    <LPMUDText style={styles.actionText}>
+                      $NOR${i + 1}. {step}$NOR$
+                    </LPMUDText>
+                  </View>
+                </TouchableOpacity>
+              );
+            })}
+
+            <LPMUDText style={[styles.interpretationSectionText, { marginTop: 15 }]}>
+              {'\n'}$HIY$Focus On:$NOR$ {currentInterpretation.layers.practical.what_to_focus_on}
+            </LPMUDText>
+          </View>
 
           {/* Layer 5: Synthesis */}
           <LPMUDText style={styles.interpretationSection}>
@@ -291,10 +370,56 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   interpretationSection: {
+    marginBottom: 15,
+  },
+  interpretationSectionText: {
     fontSize: 11,
     fontFamily: 'monospace',
     lineHeight: 17,
-    marginBottom: 15,
+  },
+  actionRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginVertical: 8,
+    paddingHorizontal: 5,
+  },
+  checkboxContainer: {
+    marginRight: 10,
+    marginTop: 2,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderWidth: 2,
+    borderColor: NEON_COLORS.dimCyan,
+    backgroundColor: '#000000',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkboxDone: {
+    borderColor: NEON_COLORS.hiGreen,
+    backgroundColor: '#001a00',
+  },
+  checkboxNotDone: {
+    borderColor: NEON_COLORS.hiRed,
+    backgroundColor: '#1a0000',
+  },
+  checkboxSkipped: {
+    borderColor: NEON_COLORS.dimCyan,
+    backgroundColor: '#000a0a',
+  },
+  checkmark: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    lineHeight: 18,
+  },
+  actionTextContainer: {
+    flex: 1,
+  },
+  actionText: {
+    fontSize: 11,
+    fontFamily: 'monospace',
+    lineHeight: 16,
   },
   navRow: {
     flexDirection: 'row',
