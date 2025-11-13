@@ -35,9 +35,12 @@ export default function CardDrawingScreen({ route, navigation }) {
       setStatusLines([
         '> Initializing quantum entropy generator...',
         '> Hardware RNG active',
-        '> Mixing intention vector...'
+        '> Mixing intention vector...',
+        '> ',
+        '> Thank you for your patience...',
+        '> We\'re preparing something special for you!'
       ]);
-      await sleep(1500);
+      await sleep(1200); // Faster init
 
       // Phase 2: Shuffling
       setPhase('shuffling');
@@ -45,9 +48,11 @@ export default function CardDrawingScreen({ route, navigation }) {
         '> Generating quantum random bytes...',
         '> Applying Fisher-Yates shuffle...',
         '> SHA-256 entropy mixing...',
-        '> Deck randomization complete'
+        '> Deck randomization complete!',
+        '> ',
+        '> Your unique quantum signature is being created...'
       ]);
-      await sleep(2000);
+      await sleep(1500); // Faster shuffle
 
       // Phase 3: Drawing cards
       setPhase('drawing');
@@ -55,28 +60,52 @@ export default function CardDrawingScreen({ route, navigation }) {
       const { cards, quantumSeed, timestamp } = readingData;
       setTotalCards(cards.length);
 
-      // Animate card draws
+      // Personalized messages for each card draw
+      const drawMessages = [
+        'Your first card is emerging from the quantum field...',
+        'The second card reveals itself to you...',
+        'Drawing your third card with intention...',
+        'The fourth card appears in your spread...',
+        'Your fifth card is materializing...',
+        'The sixth card shows its face...',
+        'Drawing the seventh card for deeper insight...',
+        'Your eighth card emerges from possibility...',
+        'The ninth card completes the pattern...',
+        'Your final card brings the reading together...'
+      ];
+
+      // Animate card draws with personalized messages
       for (let i = 0; i < cards.length; i++) {
         setCardCount(i + 1);
+        const messageIndex = Math.min(i, drawMessages.length - 1);
         setStatusLines([
-          `> Drawing card ${i + 1}/${cards.length}...`,
+          `> ${drawMessages[messageIndex]}`,
+          `> `,
           `> Position: ${cards[i].position}`,
-          `> Card index: ${cards[i].cardIndex}`,
-          `> Orientation: ${cards[i].reversed ? 'REVERSED' : 'UPRIGHT'}`
+          `> Card ${i + 1} of ${cards.length}`,
+          `> Orientation: ${cards[i].reversed ? '⟲ REVERSED' : '⟳ UPRIGHT'}`,
+          `> `,
+          `> Thank you for your patience...`
         ]);
-        await sleep(800);
+        await sleep(600); // Faster = smoother UX
       }
 
       // Phase 4: Complete
       setPhase('complete');
       setStatusLines([
-        '> All cards drawn',
-        `> Quantum seed: ${quantumSeed.substring(0, 20)}...`,
-        '> Initializing AGI interpretation...',
-        '> Loading astrological data...',
-        '> Preparing reading...'
+        '> All cards drawn successfully! ✓',
+        `> `,
+        `> Quantum signature: ${quantumSeed.substring(0, 20)}...`,
+        '> ',
+        '> Initializing LunatiQ AGI interpretation engine...',
+        '> Loading astrological correspondences...',
+        '> Analyzing spread patterns...',
+        '> Personalizing your reading...',
+        '> ',
+        '> Thank you for your patience!',
+        '> We look forward to sharing your insights...'
       ]);
-      await sleep(2000);
+      await sleep(1500); // Faster completion
 
       // Navigate to reading
       navigation.replace('Reading', {
@@ -208,12 +237,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   statusContent: {
-    gap: 8,
+    // gap not supported in RN StyleSheet - use marginBottom on children
   },
   statusLine: {
     fontSize: 12,
     fontFamily: MONOSPACE_FONT,
     lineHeight: 16,
+    marginBottom: 8, // Instead of gap on parent
   },
   progressContainer: {
     marginTop: 20,
