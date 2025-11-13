@@ -399,7 +399,7 @@ export const SPREAD_DEFINITIONS = {
       {
         index: 3,
         name: 'Recent Past',
-        meaning: 'Events leading here, what's leaving',
+        meaning: 'Events leading here, what is leaving',
         coordinates: { x: 0.2, y: 0.5, rotation: 0 },
         zIndex: 1,
         relatedPositions: [0],
@@ -471,7 +471,7 @@ export const SPREAD_DEFINITIONS = {
       {
         name: 'The Cross',
         cardIndices: [0, 1, 2, 3, 4, 5],
-        description: 'The situation itself - what's happening'
+        description: 'The situation itself - what is happening'
       },
       {
         name: 'The Staff',
