@@ -3,6 +3,7 @@
     "name": "Quantum Tarot: Retro Edition",
     "slug": "quantum-tarot-mvp",
     "version": "1.0.0",
+    "scheme": "quantumtarot",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
