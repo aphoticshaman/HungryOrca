@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Quantum Tarot: Retro Edition",
+    "slug": "quantum-tarot-mvp",
+    "version": "1.0.0",
+    "scheme": "quantumtarot",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aphoticshaman.quantumtarot"
+    },
+    "android": {
+      "package": "com.aphoticshaman.quantumtarot",
+      "permissions": []
+    },
+    "web": {}
+  }
+}
