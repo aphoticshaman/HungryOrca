@@ -16,17 +16,13 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Dimensions,
   SafeAreaView,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import EncryptedTextReveal from '../components/EncryptedTextReveal';
 import CyberpunkHeader from '../components/CyberpunkHeader';
-import { NeonText, LPMUDText, MatrixRain } from '../components/TerminalEffects';
+import { NeonText, LPMUDText } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
 import { generateQuantumSeed } from '../utils/quantumRNG';
-
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default function SynthesisScreen({ route, navigation }) {
   const {
@@ -65,11 +61,6 @@ export default function SynthesisScreen({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* Matrix rain background */}
-      <View style={StyleSheet.absoluteFill}>
-        <MatrixRain width={SCREEN_WIDTH} height={SCREEN_HEIGHT} speed={30} />
-      </View>
-
       <SafeAreaView style={styles.safeArea}>
         {/* Compact header */}
         <CyberpunkHeader compact={true} />

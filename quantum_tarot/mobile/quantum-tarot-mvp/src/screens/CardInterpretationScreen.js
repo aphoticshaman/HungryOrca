@@ -4,7 +4,6 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Dimensions,
 } from 'react-native';
 import EncryptedTextReveal from '../components/EncryptedTextReveal';
 import MCQModal from '../components/MCQModal';
@@ -12,10 +11,8 @@ import { CARD_DATABASE } from '../data/cardDatabase';
 import { generateQuantumSeed } from '../utils/quantumRNG';
 import { generatePostCardQuestions } from '../utils/postCardQuestions';
 import { generateMegaSynthesis } from '../utils/megaSynthesisEngine';
-import { NeonText, LPMUDText, MatrixRain, ScanLines } from '../components/TerminalEffects';
+import { NeonText, LPMUDText, ScanLines } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
-
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 /**
  * CARD INTERPRETATION SCREEN WITH MCQ INTEGRATION
@@ -190,10 +187,6 @@ const CardInterpretationScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* Matrix rain background */}
-      <View style={StyleSheet.absoluteFill}>
-        <MatrixRain width={SCREEN_WIDTH} height={SCREEN_HEIGHT} speed={30} />
-      </View>
       <ScanLines />
 
       <View style={styles.safeArea}>
