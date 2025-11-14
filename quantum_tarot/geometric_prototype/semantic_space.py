@@ -26,23 +26,94 @@ class Card:
     reversed: bool = False
 
 
-# Hand-coded embeddings for 10 representative cards
+# All 78 Tarot Card Embeddings
+# Auto-generated with hand-tuned Major Arcana
 # Format: [elemental, consciousness, temporal]
 # Range: [-1, 1] for each axis
 CARD_EMBEDDINGS: Dict[int, Tuple[str, np.ndarray, float]] = {
-    # Major Arcana
-    0: ("The Fool", np.array([0.1, 0.7, 0.9]), 0.3),     # Air, conscious, future-oriented
-    1: ("The Magician", np.array([0.5, 0.8, 0.5]), 0.25), # Fire-Air, conscious, present
-    13: ("Death", np.array([0.0, -0.3, 0.0]), 0.4),      # Neutral, shadow, transformative present
-    15: ("The Devil", np.array([0.7, -0.8, -0.2]), 0.3), # Fire, deep shadow, past-patterns
-    16: ("The Tower", np.array([0.9, -0.6, 0.1]), 0.35), # Fire, shadow, sudden present
-    17: ("The Star", np.array([-0.4, 0.6, 0.8]), 0.4),   # Water, conscious-hope, future
-
-    # Minor Arcana samples
-    40: ("Ten of Cups", np.array([-0.8, 0.7, 0.3]), 0.25),    # Water, conscious-joy, present-future
-    54: ("Three of Swords", np.array([0.2, -0.5, -0.4]), 0.3), # Air-pain, shadow, past-hurt
-    64: ("King of Pentacles", np.array([-0.6, 0.5, 0.2]), 0.2), # Earth, conscious-mastery, stable
-    27: ("Knight of Wands", np.array([0.9, 0.4, 0.7]), 0.3),   # Fire, action-oriented, future
+    # Major Arcana (0-21) - Hand-tuned archetypal positions
+    0: ("The Fool", np.array([0.100, 0.700, 0.900]), 0.30),
+    1: ("The Magician", np.array([0.500, 0.800, 0.500]), 0.25),
+    2: ("The High Priestess", np.array([-0.300, 0.600, -0.200]), 0.35),
+    3: ("The Empress", np.array([-0.700, 0.700, 0.400]), 0.40),
+    4: ("The Emperor", np.array([0.600, 0.500, 0.300]), 0.35),
+    5: ("The Hierophant", np.array([0.200, 0.400, -0.100]), 0.30),
+    6: ("The Lovers", np.array([0.400, 0.500, 0.200]), 0.35),
+    7: ("The Chariot", np.array([0.700, 0.600, 0.500]), 0.30),
+    8: ("Strength", np.array([0.500, 0.700, 0.300]), 0.35),
+    9: ("The Hermit", np.array([0.100, 0.300, -0.300]), 0.30),
+    10: ("Wheel of Fortune", np.array([0.000, 0.000, 0.000]), 0.40),
+    11: ("Justice", np.array([0.300, 0.500, 0.000]), 0.30),
+    12: ("The Hanged Man", np.array([-0.200, -0.200, -0.100]), 0.35),
+    13: ("Death", np.array([0.000, -0.300, 0.000]), 0.40),
+    14: ("Temperance", np.array([-0.100, 0.600, 0.400]), 0.35),
+    15: ("The Devil", np.array([0.700, -0.800, -0.200]), 0.30),
+    16: ("The Tower", np.array([0.900, -0.600, 0.100]), 0.35),
+    17: ("The Star", np.array([-0.400, 0.600, 0.800]), 0.40),
+    18: ("The Moon", np.array([-0.500, -0.400, 0.200]), 0.35),
+    19: ("The Sun", np.array([0.600, 0.800, 0.700]), 0.40),
+    20: ("Judgement", np.array([0.300, 0.500, 0.600]), 0.35),
+    21: ("The World", np.array([0.000, 0.700, 0.500]), 0.40),
+    # Wands (Fire) - Suit 22-35
+    22: ("Ace of Wands", np.array([0.800, 0.600, -0.400]), 0.20),
+    23: ("Two of Wands", np.array([0.800, 0.400, -0.300]), 0.20),
+    24: ("Three of Wands", np.array([0.800, 0.500, -0.200]), 0.20),
+    25: ("Four of Wands", np.array([0.800, 0.300, -0.100]), 0.20),
+    26: ("Five of Wands", np.array([0.800, -0.200, 0.000]), 0.20),
+    27: ("Six of Wands", np.array([0.800, 0.400, 0.100]), 0.20),
+    28: ("Seven of Wands", np.array([0.800, -0.100, 0.000]), 0.20),
+    29: ("Eight of Wands", np.array([0.800, 0.200, 0.200]), 0.20),
+    30: ("Nine of Wands", np.array([0.800, 0.100, 0.300]), 0.20),
+    31: ("Ten of Wands", np.array([0.800, 0.000, 0.400]), 0.25),
+    32: ("Page of Wands", np.array([0.800, 0.500, 0.100]), 0.25),
+    33: ("Knight of Wands", np.array([0.900, 0.400, 0.500]), 0.30),
+    34: ("Queen of Wands", np.array([0.700, 0.600, 0.200]), 0.25),
+    35: ("King of Wands", np.array([0.900, 0.500, 0.300]), 0.25),
+    # Cups (Water) - Suit 36-49
+    36: ("Ace of Cups", np.array([-0.800, 0.700, -0.400]), 0.20),
+    37: ("Two of Cups", np.array([-0.800, 0.500, -0.300]), 0.20),
+    38: ("Three of Cups", np.array([-0.800, 0.600, -0.200]), 0.20),
+    39: ("Four of Cups", np.array([-0.800, 0.400, -0.100]), 0.20),
+    40: ("Five of Cups", np.array([-0.800, -0.100, 0.000]), 0.20),
+    41: ("Six of Cups", np.array([-0.800, 0.500, 0.100]), 0.20),
+    42: ("Seven of Cups", np.array([-0.800, 0.000, 0.000]), 0.20),
+    43: ("Eight of Cups", np.array([-0.800, 0.300, 0.200]), 0.20),
+    44: ("Nine of Cups", np.array([-0.800, 0.200, 0.300]), 0.20),
+    45: ("Ten of Cups", np.array([-0.800, 0.100, 0.400]), 0.25),
+    46: ("Page of Cups", np.array([-0.800, 0.600, 0.100]), 0.25),
+    47: ("Knight of Cups", np.array([-0.900, 0.500, 0.500]), 0.30),
+    48: ("Queen of Cups", np.array([-0.700, 0.700, 0.200]), 0.25),
+    49: ("King of Cups", np.array([-0.700, 0.600, 0.300]), 0.25),
+    # Swords (Air) - Suit 50-63
+    50: ("Ace of Swords", np.array([0.300, 0.600, -0.400]), 0.20),
+    51: ("Two of Swords", np.array([0.300, 0.400, -0.300]), 0.20),
+    52: ("Three of Swords", np.array([0.300, 0.500, -0.200]), 0.20),
+    53: ("Four of Swords", np.array([0.300, 0.300, -0.100]), 0.20),
+    54: ("Five of Swords", np.array([0.300, -0.200, 0.000]), 0.20),
+    55: ("Six of Swords", np.array([0.300, 0.400, 0.100]), 0.20),
+    56: ("Seven of Swords", np.array([0.300, -0.100, 0.000]), 0.20),
+    57: ("Eight of Swords", np.array([0.300, 0.200, 0.200]), 0.20),
+    58: ("Nine of Swords", np.array([0.300, 0.100, 0.300]), 0.20),
+    59: ("Ten of Swords", np.array([0.300, 0.000, 0.400]), 0.25),
+    60: ("Page of Swords", np.array([0.300, 0.500, 0.100]), 0.25),
+    61: ("Knight of Swords", np.array([0.400, 0.400, 0.500]), 0.30),
+    62: ("Queen of Swords", np.array([0.200, 0.600, 0.200]), 0.25),
+    63: ("King of Swords", np.array([0.400, 0.500, 0.300]), 0.25),
+    # Pentacles (Earth) - Suit 64-77
+    64: ("Ace of Pentacles", np.array([-0.600, 0.500, -0.400]), 0.20),
+    65: ("Two of Pentacles", np.array([-0.600, 0.300, -0.300]), 0.20),
+    66: ("Three of Pentacles", np.array([-0.600, 0.400, -0.200]), 0.20),
+    67: ("Four of Pentacles", np.array([-0.600, 0.200, -0.100]), 0.20),
+    68: ("Five of Pentacles", np.array([-0.600, -0.300, 0.000]), 0.20),
+    69: ("Six of Pentacles", np.array([-0.600, 0.300, 0.100]), 0.20),
+    70: ("Seven of Pentacles", np.array([-0.600, -0.200, 0.000]), 0.20),
+    71: ("Eight of Pentacles", np.array([-0.600, 0.100, 0.200]), 0.20),
+    72: ("Nine of Pentacles", np.array([-0.600, 0.000, 0.300]), 0.20),
+    73: ("Ten of Pentacles", np.array([-0.600, -0.100, 0.400]), 0.25),
+    74: ("Page of Pentacles", np.array([-0.600, 0.400, 0.100]), 0.25),
+    75: ("Knight of Pentacles", np.array([-0.700, 0.300, 0.500]), 0.30),
+    76: ("Queen of Pentacles", np.array([-0.500, 0.500, 0.200]), 0.25),
+    77: ("King of Pentacles", np.array([-0.500, 0.400, 0.300]), 0.25),
 }
 
 
