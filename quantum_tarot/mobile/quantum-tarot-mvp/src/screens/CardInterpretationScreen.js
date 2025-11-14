@@ -1,19 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  SafeAreaView,
+  Dimensions,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import EncryptedTextReveal from '../components/EncryptedTextReveal';
 import MCQModal from '../components/MCQModal';
 import { CARD_DATABASE } from '../data/cardDatabase';
 import { generateQuantumSeed } from '../utils/quantumRNG';
 import { generatePostCardQuestions } from '../utils/postCardQuestions';
 import { generateMegaSynthesis } from '../utils/megaSynthesisEngine';
+import { NeonText, LPMUDText, MatrixRain, ScanLines } from '../components/TerminalEffects';
+import { NEON_COLORS } from '../styles/cyberpunkColors';
+
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 /**
  * CARD INTERPRETATION SCREEN WITH MCQ INTEGRATION
@@ -169,18 +171,25 @@ const CardInterpretationScreen = ({ route, navigation }) => {
   const cardName = `${cardData.name}${currentCard.reversed ? ' (Reversed)' : ''}`;
 
   return (
-    <LinearGradient
-      colors={['#1a0033', '#330066', '#4d0099']}
-      style={styles.container}
-    >
-      <SafeAreaView style={styles.safeArea}>
+    <View style={styles.container}>
+      {/* Matrix rain background */}
+      <View style={StyleSheet.absoluteFill}>
+        <MatrixRain width={SCREEN_WIDTH} height={SCREEN_HEIGHT} speed={30} />
+      </View>
+      <ScanLines />
+
+      <View style={styles.safeArea}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.cardNumber}>
-            Card {currentCardIndex + 1} of {cards.length}
-          </Text>
-          <Text style={styles.cardName}>{cardName}</Text>
-          <Text style={styles.position}>{currentCard.positionMeaning || currentCard.position}</Text>
+          <LPMUDText style={styles.cardNumber}>
+            $HIY$CARD {currentCardIndex + 1} / {cards.length}$NOR$
+          </LPMUDText>
+          <NeonText color={NEON_COLORS.hiCyan} style={styles.cardName}>
+            {cardName}
+          </NeonText>
+          <NeonText color={NEON_COLORS.dimCyan} style={styles.position}>
+            {currentCard.positionMeaning || currentCard.position}
+          </NeonText>
         </View>
 
         {/* Progress bar */}
@@ -217,14 +226,14 @@ const CardInterpretationScreen = ({ route, navigation }) => {
             onPress={handlePreviousCard}
             disabled={currentCardIndex === 0 || isGeneratingSynthesis}
           >
-            <Text
+            <LPMUDText
               style={[
                 styles.navButtonText,
                 currentCardIndex === 0 && styles.navButtonTextDisabled,
               ]}
             >
-              ← Previous
-            </Text>
+              {currentCardIndex === 0 ? '$DIM$← Previous$NOR$' : '$HIC$← Previous$NOR$'}
+            </LPMUDText>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -232,18 +241,18 @@ const CardInterpretationScreen = ({ route, navigation }) => {
             onPress={handleNextCard}
             disabled={isGeneratingSynthesis}
           >
-            <Text style={styles.nextButtonText}>
+            <LPMUDText style={styles.nextButtonText}>
               {isGeneratingSynthesis ? (
-                'Generating Synthesis...'
+                '$DIM$Generating Synthesis...$NOR$'
               ) : currentCardIndex === cards.length - 1 ? (
-                'View Synthesis →'
+                '$HIG$[ VIEW SYNTHESIS → ]$NOR$'
               ) : (
-                'Next Card →'
+                '$HIC$Next Card →$NOR$'
               )}
-            </Text>
+            </LPMUDText>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </View>
 
       {/* MCQ Modal */}
       <MCQModal
@@ -255,7 +264,7 @@ const CardInterpretationScreen = ({ route, navigation }) => {
         onComplete={handleMCQComplete}
         onSkip={handleMCQSkip}
       />
-    </LinearGradient>
+    </View>
   );
 };
 
@@ -342,6 +351,7 @@ export const CardWithMCQFlow = ({ card, interpretation, mcqQuestions, onComplete
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#000000',
   },
   safeArea: {
     flex: 1,

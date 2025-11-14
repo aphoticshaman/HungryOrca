@@ -299,65 +299,72 @@ const MBTITestScreen = ({ navigation, route }) => {
         >
           <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
-              <Text style={styles.modalTitle}>⚠️ Less Accurate Readings</Text>
+              <LPMUDText style={styles.modalTitle}>
+                $HIR$⚠️ LESS ACCURATE READINGS$NOR$
+              </LPMUDText>
 
-              <Text style={styles.modalText}>
+              <NeonText color={NEON_COLORS.hiWhite} style={styles.modalText}>
                 Skipping personality profiling means your readings will lack the deep
                 personalization that makes them truly transformative.
-              </Text>
+              </NeonText>
 
-              <Text style={styles.modalText}>
+              <NeonText color={NEON_COLORS.dimCyan} style={styles.modalText}>
                 Without knowing your cognitive patterns, the synthesis will be:
-              </Text>
+              </NeonText>
 
-              <Text style={styles.modalBullet}>• Less accurate to your psychology</Text>
-              <Text style={styles.modalBullet}>• Less unique and personalized</Text>
-              <Text style={styles.modalBullet}>• More generic in tone and guidance</Text>
+              <LPMUDText style={styles.modalBullet}>$HIY$•$NOR$ Less accurate to your psychology</LPMUDText>
+              <LPMUDText style={styles.modalBullet}>$HIY$•$NOR$ Less unique and personalized</LPMUDText>
+              <LPMUDText style={styles.modalBullet}>$HIY$•$NOR$ More generic in tone and guidance</LPMUDText>
 
-              <Text style={styles.modalQuestion}>
+              <NeonText color={NEON_COLORS.dimYellow} style={styles.modalQuestion}>
                 Are you sure you want to proceed with Vibe Mode?
-              </Text>
+              </NeonText>
 
               <View style={styles.modalButtons}>
                 <TouchableOpacity
                   style={[styles.modalButton, styles.modalButtonNo]}
                   onPress={handleSkipCancel}
                 >
-                  <Text style={styles.modalButtonTextNo}>
-                    No, Complete My Profile
-                  </Text>
+                  <LPMUDText style={styles.modalButtonTextNo}>
+                    $HIG$[ NO, COMPLETE MY PROFILE ]$NOR$
+                  </LPMUDText>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                   style={[styles.modalButton, styles.modalButtonYes]}
                   onPress={handleSkipConfirm}
                 >
-                  <Text style={styles.modalButtonTextYes}>
-                    Yes, Proceed Anyway
-                  </Text>
+                  <LPMUDText style={styles.modalButtonTextYes}>
+                    $DIM$Yes, Proceed Anyway$NOR$
+                  </LPMUDText>
                 </TouchableOpacity>
               </View>
             </View>
           </View>
         </Modal>
-      </LinearGradient>
+      </View>
     );
   }
 
   return (
-    <LinearGradient
-      colors={['#1a0033', '#330066', '#4d0099']}
-      style={styles.container}
-    >
-      <SafeAreaView style={styles.safeArea}>
+    <View style={styles.container}>
+      {/* Matrix rain background */}
+      <View style={StyleSheet.absoluteFill}>
+        <MatrixRain width={SCREEN_WIDTH} height={SCREEN_HEIGHT} speed={30} />
+      </View>
+      <ScanLines />
+
+      <View style={styles.safeArea}>
         <View style={styles.header}>
           <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-            <Text style={styles.backButtonText}>← Back</Text>
+            <LPMUDText style={styles.backButtonText}>
+              $HIC${'←'} BACK$NOR$
+            </LPMUDText>
           </TouchableOpacity>
 
-          <Text style={styles.progressText}>
-            Question {currentQuestionIndex + 1} of {MBTI_QUESTIONS.length}
-          </Text>
+          <LPMUDText style={styles.progressText}>
+            $HIY$QUESTION {currentQuestionIndex + 1} / {MBTI_QUESTIONS.length}$NOR$
+          </LPMUDText>
         </View>
 
         <View style={styles.progressBarContainer}>
@@ -365,9 +372,13 @@ const MBTITestScreen = ({ navigation, route }) => {
         </View>
 
         <ScrollView contentContainerStyle={styles.questionScrollContent}>
-          <Text style={styles.dimensionLabel}>{currentQuestion.dimension}</Text>
+          <LPMUDText style={styles.dimensionLabel}>
+            $HIM${currentQuestion.dimension}$NOR$
+          </LPMUDText>
 
-          <Text style={styles.questionText}>{currentQuestion.question}</Text>
+          <NeonText color={NEON_COLORS.hiWhite} style={styles.questionText}>
+            {currentQuestion.question}
+          </NeonText>
 
           <View style={styles.optionsContainer}>
             {currentQuestion.options.map((option, index) => (
@@ -377,19 +388,22 @@ const MBTITestScreen = ({ navigation, route }) => {
                 onPress={() => handleAnswer(index)}
                 activeOpacity={0.8}
               >
-                <Text style={styles.optionText}>{option.text}</Text>
+                <LPMUDText style={styles.optionText}>
+                  $NOR${option.text}$NOR$
+                </LPMUDText>
               </TouchableOpacity>
             ))}
           </View>
         </ScrollView>
-      </SafeAreaView>
-    </LinearGradient>
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#000000',
   },
   safeArea: {
     flex: 1,
