@@ -25,6 +25,7 @@ import { getMBTIInterpretationGuidelines } from './mbtiTest';
 import { generateQuantumNarrative } from './quantumNarrativeEngine';
 import { generateQuantumSeed } from './quantumRNG';
 import { BalancedWisdomIntegration, getModerationWisdom } from './balancedWisdom';
+import { getChineseZodiac, getSpiritualSynthesisMessage, getSpiritualGrowthInsight } from './chineseZodiac';
 
 /**
  * Generate comprehensive synthesis
@@ -70,6 +71,13 @@ export async function generateMegaSynthesis(readingData) {
     );
     const timeEnergy = getTimeOfDayEnergy();
 
+    // Calculate Chinese zodiac from birth year
+    const birthYear = userProfile?.birthday
+      ? new Date(userProfile.birthday).getFullYear()
+      : new Date().getFullYear() - 25;
+    const chineseZodiac = getChineseZodiac(birthYear);
+    console.log('🐉 Chinese Zodiac:', chineseZodiac.fullSign);
+
     // 3. GET MBTI INTERPRETATION GUIDELINES (with safety checks)
     console.log('🔍 Step 3: Getting MBTI guidelines...');
     const mbtiGuidelines = getMBTIInterpretationGuidelines(userProfile?.mbtiType || 'INFP');
@@ -92,6 +100,7 @@ export async function generateMegaSynthesis(readingData) {
       mcqAnalysis,
       astroContext,
       timeEnergy,
+      chineseZodiac,
       mbtiGuidelines,
       synthesisGuidance,
       narrative,
@@ -124,6 +133,7 @@ function buildSynthesis(context) {
       mcqAnalysis,
       astroContext,
       timeEnergy,
+      chineseZodiac,
       mbtiGuidelines,
       synthesisGuidance,
       narrative,
@@ -174,6 +184,17 @@ function buildSynthesis(context) {
     synthesis += `${timeEnergy.advice}\n\n`;
   } else {
     synthesis += `\n\n`;
+  }
+
+  // Chinese zodiac integration
+  if (chineseZodiac) {
+    synthesis += `Born in the year of the ${chineseZodiac.fullSign}, you carry the ${chineseZodiac.traits.archetype} archetype. `;
+    if (chineseZodiac.traits.wisdom) {
+      synthesis += `${chineseZodiac.traits.wisdom} `;
+    }
+    if (chineseZodiac.elementInfluence?.lesson) {
+      synthesis += `Your ${chineseZodiac.element} element adds this layer: ${chineseZodiac.elementInfluence.lesson}\n\n`;
+    }
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -277,6 +298,20 @@ function buildSynthesis(context) {
   // Active transits
   if (astroContext.currentTransits) {
     synthesis += integrateTransits(astroContext.currentTransits, cards, readingType, narrative);
+  }
+
+  // Spiritual synthesis - emphasizing that all traditions contain partial truths
+  if (chineseZodiac && astroContext?.sunSign) {
+    const spiritualMessage = getSpiritualSynthesisMessage(chineseZodiac, astroContext.sunSign);
+    if (spiritualMessage) {
+      synthesis += `\n${spiritualMessage}\n\n`;
+    }
+
+    // Add spiritual growth insight
+    const growthInsight = getSpiritualGrowthInsight(chineseZodiac);
+    if (growthInsight) {
+      synthesis += `${growthInsight}\n\n`;
+    }
   }
 
   // Moderation wisdom (Middle Way principles)
