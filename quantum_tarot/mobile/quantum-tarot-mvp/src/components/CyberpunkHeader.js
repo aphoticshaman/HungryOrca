@@ -25,9 +25,13 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
       <View style={styles.content}>
         {/* Main title with wave animation and rainbow colors */}
         <WaveText
-          text="LunatIQ Tarot"
+          text="LunatIQ"
           style={styles.mainTitle}
         />
+        {/* Solid Tarot subtitle - no animation */}
+        <NeonText color={NEON_COLORS.hiCyan} style={styles.tarotSubtitle}>
+          Tarot
+        </NeonText>
       </View>
     </View>
   );
@@ -195,6 +199,14 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 20,
     letterSpacing: 4,
+  },
+  tarotSubtitle: {
+    fontSize: 32,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 8,
+    letterSpacing: 6,
   },
   compactContainer: {
     width: '100%',
