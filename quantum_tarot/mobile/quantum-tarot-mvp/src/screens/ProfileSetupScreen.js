@@ -2,7 +2,7 @@
  * PROFILE SETUP SCREEN - Name and birthday entry
  */
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity, TextInput, Dimensions } from 'react-native';
 import { NeonText, LPMUDText, MatrixRain } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
@@ -49,8 +49,22 @@ export default function ProfileSetupScreen({ navigation }) {
   const [zodiacSign, setZodiacSign] = useState(null);
   const [error, setError] = useState('');
 
+  // Input refs for auto-advance
+  const nameInputRef = useRef(null);
+  const monthInputRef = useRef(null);
+  const dayInputRef = useRef(null);
+  const yearInputRef = useRef(null);
+
+  // Auto-focus name input on mount
+  useEffect(() => {
+    // Small delay to ensure component is fully mounted
+    setTimeout(() => {
+      nameInputRef.current?.focus();
+    }, 100);
+  }, []);
+
   // Auto-calculate zodiac sign
-  React.useEffect(() => {
+  useEffect(() => {
     if (month && day) {
       const m = parseInt(month);
       const d = parseInt(day);
@@ -61,6 +75,55 @@ export default function ProfileSetupScreen({ navigation }) {
       }
     }
   }, [month, day]);
+
+  // Handle month input with auto-advance
+  const handleMonthChange = (text) => {
+    // Only allow digits
+    const cleaned = text.replace(/\D/g, '');
+
+    if (cleaned.length <= 2) {
+      setMonth(cleaned);
+      setError('');
+
+      // Auto-advance to day when month is complete (2 digits entered)
+      if (cleaned.length === 2) {
+        const monthNum = parseInt(cleaned);
+        if (monthNum >= 1 && monthNum <= 12) {
+          dayInputRef.current?.focus();
+        }
+      }
+    }
+  };
+
+  // Handle day input with auto-advance
+  const handleDayChange = (text) => {
+    // Only allow digits
+    const cleaned = text.replace(/\D/g, '');
+
+    if (cleaned.length <= 2) {
+      setDay(cleaned);
+      setError('');
+
+      // Auto-advance to year when day is complete (2 digits entered)
+      if (cleaned.length === 2) {
+        const dayNum = parseInt(cleaned);
+        if (dayNum >= 1 && dayNum <= 31) {
+          yearInputRef.current?.focus();
+        }
+      }
+    }
+  };
+
+  // Handle year input
+  const handleYearChange = (text) => {
+    // Only allow digits
+    const cleaned = text.replace(/\D/g, '');
+
+    if (cleaned.length <= 4) {
+      setYear(cleaned);
+      setError('');
+    }
+  };
 
   const handleContinue = () => {
     // Validate
@@ -118,12 +181,16 @@ export default function ProfileSetupScreen({ navigation }) {
             $HIY${'>'} PROFILE NAME$NOR$
           </LPMUDText>
           <TextInput
+            ref={nameInputRef}
             style={styles.nameInput}
             value={name}
             onChangeText={setName}
             placeholder="Enter name"
             placeholderTextColor={NEON_COLORS.dimCyan}
             maxLength={20}
+            returnKeyType="next"
+            onSubmitEditing={() => monthInputRef.current?.focus()}
+            blurOnSubmit={false}
           />
         </View>
 
@@ -138,9 +205,10 @@ export default function ProfileSetupScreen({ navigation }) {
                 MM
               </NeonText>
               <TextInput
+                ref={monthInputRef}
                 style={styles.input}
                 value={month}
-                onChangeText={setMonth}
+                onChangeText={handleMonthChange}
                 keyboardType="number-pad"
                 maxLength={2}
                 placeholder="MM"
@@ -153,9 +221,10 @@ export default function ProfileSetupScreen({ navigation }) {
                 DD
               </NeonText>
               <TextInput
+                ref={dayInputRef}
                 style={styles.input}
                 value={day}
-                onChangeText={setDay}
+                onChangeText={handleDayChange}
                 keyboardType="number-pad"
                 maxLength={2}
                 placeholder="DD"
@@ -168,9 +237,10 @@ export default function ProfileSetupScreen({ navigation }) {
                 YYYY
               </NeonText>
               <TextInput
+                ref={yearInputRef}
                 style={styles.input}
                 value={year}
-                onChangeText={setYear}
+                onChangeText={handleYearChange}
                 keyboardType="number-pad"
                 maxLength={4}
                 placeholder="YYYY"
