@@ -92,7 +92,8 @@ export async function generateMegaSynthesis(readingData) {
     userProfile,
     intention,
     readingType,
-    spreadType
+    spreadType,
+    quantumSeed
   });
 
   return synthesis;
@@ -114,7 +115,8 @@ function buildSynthesis(context) {
     userProfile,
     intention,
     readingType,
-    spreadType
+    spreadType,
+    quantumSeed
   } = context;
 
   let synthesis = '';
