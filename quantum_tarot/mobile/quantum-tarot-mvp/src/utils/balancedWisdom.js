@@ -157,14 +157,14 @@ export const BALANCED_PILLARS = {
 export const MODERATION_WISDOM = [
   'All things in moderation—even moderation itself.',
   'The middle way between extremes is where wisdom lives.',
-  'Balance is not standing still. It's the dynamic dance between opposites.',
+  'Balance is not standing still. It\'s the dynamic dance between opposites.',
   'Too much of anything—even a good thing—becomes its opposite.',
   'Avoid the extremes. Walk the middle path.',
   'Neither excess nor deprivation. The sweet spot is in between.',
-  'Moderation is not mediocrity. It's mastery.',
+  'Moderation is not mediocrity. It\'s mastery.',
   'The wise person knows when enough is enough.',
   'Extremism in any direction creates suffering.',
-  'Find the balance point. That's where transformation happens.',
+  'Find the balance point. That\'s where transformation happens.',
 ];
 
 /**
