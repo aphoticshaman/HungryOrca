@@ -2268,6 +2268,374 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "The king who only sees facts misses half the kingdom.", source: "Unknown" },
     ]
   },
+
+  // ═══════════════════════════════════════════════════════════
+  // MINOR ARCANA - PENTACLES (Earth: Material, Body, Resources)
+  // ═══════════════════════════════════════════════════════════
+
+  64: { // Ace of Pentacles
+    name: 'Ace of Pentacles',
+    upright: [
+      { text: "A generous person will prosper; whoever refreshes others will be refreshed.", source: "Proverbs 11:25 (Bible)" },
+      { text: "Opportunity is missed by most people because it is dressed in overalls and looks like work.", source: "Thomas Edison" },
+      { text: "Do not save what is left after spending, but spend what is left after saving.", source: "Warren Buffett" },
+      { text: "An investment in knowledge pays the best interest.", source: "Benjamin Franklin" },
+      { text: "The best time to plant a tree was 20 years ago. The second best time is now.", source: "Chinese Proverb" },
+      { text: "Money is a terrible master but an excellent servant.", source: "P.T. Barnum" },
+      { text: "New opportunity. Material beginning. The universe is handing you a coin.", source: "Unknown" },
+      { text: "Seed money, seed opportunity. Plant it wisely.", source: "Unknown" },
+      { text: "Practical magic: turn intention into income.", source: "Unknown" },
+      { text: "The pentacle appears. Manifest or squander.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Opportunity knocked. You were counting your excuses.", source: "Unknown" },
+      { text: "Greed is fear wearing a gold watch.", source: "Unknown" },
+      { text: "The offer is real but your readiness is not.", source: "Unknown" },
+      { text: "Material gain without spiritual foundation is just expensive emptiness.", source: "Unknown" },
+      { text: "You want the harvest without planting the seed.", source: "Unknown" },
+      { text: "Short-term thinking is long-term poverty.", source: "Unknown" },
+      { text: "The pentacle is there. You're looking the other way.", source: "Unknown" },
+      { text: "Abundance delayed by fear of success.", source: "Unknown" },
+    ]
+  },
+
+  65: { // Two of Pentacles
+    name: 'Two of Pentacles',
+    upright: [
+      { text: "No one can serve two masters.", source: "Matthew 6:24 (Bible)" },
+      { text: "Life is like riding a bicycle. To keep your balance, you must keep moving.", source: "Albert Einstein" },
+      { text: "You can do anything, but not everything.", source: "David Allen" },
+      { text: "Balance is not something you find, it's something you create.", source: "Jana Kingsford" },
+      { text: "Time management is life management.", source: "Robin Sharma" },
+      { text: "Juggling priorities like a circus act. Don't drop the balls.", source: "Unknown" },
+      { text: "Flexibility is surviving. Rigidity is breaking.", source: "Unknown" },
+      { text: "Two pentacles, infinite motion. This is the dance.", source: "Unknown" },
+      { text: "Work-life balance is a myth. Work-life integration is the goal.", source: "Unknown" },
+      { text: "You're handling it. Barely. But you're handling it.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "You're not juggling. You're dropping.", source: "Unknown" },
+      { text: "Overwhelm is what happens when you say yes to everything.", source: "Unknown" },
+      { text: "The balls are in the air. The ground is coming fast.", source: "Unknown" },
+      { text: "You can't pour from an empty cup and you can't juggle with broken hands.", source: "Unknown" },
+      { text: "Burnout is just bad time management with better PR.", source: "Unknown" },
+      { text: "Saying no is how you protect your yes.", source: "Unknown" },
+      { text: "The pentacles fell. Pick up what matters most.", source: "Unknown" },
+      { text: "Chaos isn't balance. It's just chaos.", source: "Unknown" },
+    ]
+  },
+
+  66: { // Three of Pentacles
+    name: 'Three of Pentacles',
+    upright: [
+      { text: "Two are better than one, because they have a good return for their labor.", source: "Ecclesiastes 4:9 (Bible)" },
+      { text: "Alone we can do so little; together we can do so much.", source: "Helen Keller" },
+      { text: "Talent wins games, but teamwork and intelligence win championships.", source: "Michael Jordan" },
+      { text: "Coming together is a beginning, staying together is progress, and working together is success.", source: "Henry Ford" },
+      { text: "None of us is as smart as all of us.", source: "Ken Blanchard" },
+      { text: "Collaboration, craftsmanship, competence. Building something that lasts.", source: "Unknown" },
+      { text: "Three people, one vision. This is how cathedrals are built.", source: "Unknown" },
+      { text: "Your skill matters. Your team matters more.", source: "Unknown" },
+      { text: "Mastery isn't solitary. It's collaborative.", source: "Unknown" },
+      { text: "Quality work requires multiple perspectives.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Too many cooks or not enough respect for the chef?", source: "Unknown" },
+      { text: "Ego killed more projects than lack of funding.", source: "Unknown" },
+      { text: "You're building alone because you can't collaborate.", source: "Unknown" },
+      { text: "Sloppy work disguised as 'good enough.'", source: "Unknown" },
+      { text: "The team is dysfunctional because the communication is.", source: "Unknown" },
+      { text: "Perfectionism without progress is just stalling.", source: "Unknown" },
+      { text: "You can't build a cathedral if you won't lay bricks.", source: "Unknown" },
+      { text: "Lack of standards will cost you later.", source: "Unknown" },
+    ]
+  },
+
+  67: { // Four of Pentacles
+    name: 'Four of Pentacles',
+    upright: [
+      { text: "For where your treasure is, there your heart will be also.", source: "Matthew 6:21 (Bible)" },
+      { text: "He who is not contented with what he has, would not be contented with what he would like to have.", source: "Socrates" },
+      { text: "Wealth consists not in having great possessions, but in having few wants.", source: "Epictetus" },
+      { text: "Too many people spend money they haven't earned to buy things they don't want to impress people they don't like.", source: "Will Rogers" },
+      { text: "Frugality or fear? Security or stinginess? Know the difference.", source: "Unknown" },
+      { text: "Four pentacles held tight. Protection or prison?", source: "Unknown" },
+      { text: "You can't receive with closed fists.", source: "Unknown" },
+      { text: "Conservation is wise. Hoarding is fear.", source: "Unknown" },
+      { text: "Stability is good. Stagnation is death.", source: "Unknown" },
+      { text: "What you grip too tightly, you crush.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Releasing control or losing control? Be clear.", source: "Unknown" },
+      { text: "Generosity born from abundance vs. recklessness born from denial.", source: "Unknown" },
+      { text: "You loosened the grip. Now what flows in?", source: "Unknown" },
+      { text: "Material attachment is suffering with a price tag.", source: "Unknown" },
+      { text: "The pentacles you're clinging to are worthless if unused.", source: "Unknown" },
+      { text: "Financial irresponsibility disguised as abundance mindset.", source: "Unknown" },
+      { text: "You can't buy your way out of emotional poverty.", source: "Unknown" },
+      { text: "Generosity without boundaries is just people-pleasing with receipts.", source: "Unknown" },
+    ]
+  },
+
+  68: { // Five of Pentacles
+    name: 'Five of Pentacles',
+    upright: [
+      { text: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.", source: "Psalm 34:18 (Bible)" },
+      { text: "Rock bottom became the solid foundation on which I rebuilt my life.", source: "J.K. Rowling" },
+      { text: "It is not the man who has too little, but the man who craves more, that is poor.", source: "Seneca" },
+      { text: "In the middle of difficulty lies opportunity.", source: "Albert Einstein" },
+      { text: "Hardship often prepares ordinary people for an extraordinary destiny.", source: "C.S. Lewis" },
+      { text: "Poverty, struggle, exclusion. The church has a lit window. Will you knock?", source: "Unknown" },
+      { text: "Financial hardship. Spiritual opportunity. Choose your focus.", source: "Unknown" },
+      { text: "You're not alone even when you feel abandoned.", source: "Unknown" },
+      { text: "Rock bottom teaches what the mountaintop never could.", source: "Unknown" },
+      { text: "Material loss doesn't equal spiritual poverty unless you let it.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "The storm is passing. You're still standing.", source: "Unknown" },
+      { text: "Recovery isn't instant but it's happening.", source: "Unknown" },
+      { text: "You walked past the lit window. Go back and knock.", source: "Unknown" },
+      { text: "Asking for help is strength disguised as vulnerability.", source: "Unknown" },
+      { text: "Financial recovery precedes spiritual complacency if you're not careful.", source: "Unknown" },
+      { text: "You survived the lean times. Don't forget the lessons.", source: "Unknown" },
+      { text: "Improvement doesn't mean arrival. Keep climbing.", source: "Unknown" },
+      { text: "The worst is over. The work isn't.", source: "Unknown" },
+    ]
+  },
+
+  69: { // Six of Pentacles
+    name: 'Six of Pentacles',
+    upright: [
+      { text: "Give, and it will be given to you.", source: "Luke 6:38 (Bible)" },
+      { text: "We make a living by what we get, but we make a life by what we give.", source: "Winston Churchill" },
+      { text: "The best way to find yourself is to lose yourself in the service of others.", source: "Mahatma Gandhi" },
+      { text: "No one has ever become poor by giving.", source: "Anne Frank" },
+      { text: "Generosity is giving more than you can, and pride is taking less than you need.", source: "Khalil Gibran" },
+      { text: "Charity with strings attached is just investment with bad marketing.", source: "Unknown" },
+      { text: "Give freely or don't give at all.", source: "Unknown" },
+      { text: "The scales of justice. The hand of charity. Balance both.", source: "Unknown" },
+      { text: "You have enough to share. That's the test.", source: "Unknown" },
+      { text: "Receiving with grace is as important as giving it.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Strings attached to every gift. That's manipulation, not generosity.", source: "Unknown" },
+      { text: "You can't buy loyalty with charity.", source: "Unknown" },
+      { text: "One-sided giving breeds resentment on both sides.", source: "Unknown" },
+      { text: "Power dynamics disguised as philanthropy.", source: "Unknown" },
+      { text: "You're giving from guilt, not love. They can tell.", source: "Unknown" },
+      { text: "Taking advantage of generosity is spiritual theft.", source: "Unknown" },
+      { text: "The scales are unbalanced. Someone's getting exploited.", source: "Unknown" },
+      { text: "Charity begins at home. You forgot your home.", source: "Unknown" },
+    ]
+  },
+
+  70: { // Seven of Pentacles
+    name: 'Seven of Pentacles',
+    upright: [
+      { text: "Do not be deceived: God cannot be mocked. A man reaps what he sows.", source: "Galatians 6:7 (Bible)" },
+      { text: "Patience is bitter, but its fruit is sweet.", source: "Aristotle" },
+      { text: "The two most powerful warriors are patience and time.", source: "Leo Tolstoy" },
+      { text: "A year from now you may wish you had started today.", source: "Karen Lamb" },
+      { text: "Good things come to those who wait, but better things come to those who work.", source: "Unknown" },
+      { text: "You planted. You watered. Now you wait. This is the hard part.", source: "Unknown" },
+      { text: "Seven pentacles on the vine. Not ripe yet. Trust the process.", source: "Unknown" },
+      { text: "Progress is invisible until it's not.", source: "Unknown" },
+      { text: "Reassessment isn't quitting. It's strategic pause.", source: "Unknown" },
+      { text: "The harvest comes to those who tend the garden.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Impatience is pulling up the seeds to check if they're growing.", source: "Unknown" },
+      { text: "You want the harvest without the wait. Nature doesn't work that way.", source: "Unknown" },
+      { text: "Abandoning the garden right before harvest season.", source: "Unknown" },
+      { text: "Short-term thinking kills long-term gains.", source: "Unknown" },
+      { text: "Effort without strategy is just expensive flailing.", source: "Unknown" },
+      { text: "You're working hard on the wrong garden.", source: "Unknown" },
+      { text: "Sunk cost fallacy: watering dead plants.", source: "Unknown" },
+      { text: "Sometimes the bravest thing is admitting this crop won't grow.", source: "Unknown" },
+    ]
+  },
+
+  71: { // Eight of Pentacles
+    name: 'Eight of Pentacles',
+    upright: [
+      { text: "Whatever your hand finds to do, do it with all your might.", source: "Ecclesiastes 9:10 (Bible)" },
+      { text: "Quality is not an act, it is a habit.", source: "Aristotle" },
+      { text: "The expert in anything was once a beginner.", source: "Helen Hayes" },
+      { text: "I fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times.", source: "Bruce Lee" },
+      { text: "Mastery is not a destination. It's a way of traveling.", source: "Unknown" },
+      { text: "Eight pentacles. Eight hours. One craft. This is devotion.", source: "Unknown" },
+      { text: "Show up, do the work, repeat. That's mastery.", source: "Unknown" },
+      { text: "Skill is patience applied to practice.", source: "Unknown" },
+      { text: "Apprenticeship is humility in action.", source: "Unknown" },
+      { text: "You're not a master yet. You're becoming one. That's better.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Half-assing your craft is full-assing your failure.", source: "Unknown" },
+      { text: "Perfectionism that prevents completion is just fear.", source: "Unknown" },
+      { text: "You're practicing the wrong thing and wondering why you're not improving.", source: "Unknown" },
+      { text: "Repetition without reflection is just busywork.", source: "Unknown" },
+      { text: "Shortcuts today become dead ends tomorrow.", source: "Unknown" },
+      { text: "Boredom with the basics means you haven't mastered them.", source: "Unknown" },
+      { text: "The work is beneath you? Then you're beneath the mastery.", source: "Unknown" },
+      { text: "Apprenticeship requires humility. You have pride.", source: "Unknown" },
+    ]
+  },
+
+  72: { // Nine of Pentacles
+    name: 'Nine of Pentacles',
+    upright: [
+      { text: "She is worth far more than rubies.", source: "Proverbs 31:10 (Bible)" },
+      { text: "I never dreamed about success. I worked for it.", source: "Estée Lauder" },
+      { text: "The question isn't who is going to let me; it's who is going to stop me.", source: "Ayn Rand" },
+      { text: "I am not lucky. You know what I am? I am smart, I am talented, I take advantage of the opportunities that come my way.", source: "Shonda Rhimes" },
+      { text: "A woman with a voice is, by definition, a strong woman.", source: "Melinda Gates" },
+      { text: "Self-made, self-sufficient, self-possessed. This is earned abundance.", source: "Unknown" },
+      { text: "Nine pentacles. One garden. Your empire.", source: "Unknown" },
+      { text: "Independence is expensive. You paid the price.", source: "Unknown" },
+      { text: "Luxury earned tastes different than luxury given.", source: "Unknown" },
+      { text: "You did this alone. That's both the victory and the cost.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Success without fulfillment is expensive emptiness.", source: "Unknown" },
+      { text: "You have everything and enjoy nothing.", source: "Unknown" },
+      { text: "Material abundance, emotional poverty.", source: "Unknown" },
+      { text: "The garden is perfect. The gardener is lonely.", source: "Unknown" },
+      { text: "Independence became isolation when you stopped letting people in.", source: "Unknown" },
+      { text: "You can afford everything except vulnerability.", source: "Unknown" },
+      { text: "Self-sufficiency is strength until it's a cage.", source: "Unknown" },
+      { text: "The walls that protect your success are blocking your joy.", source: "Unknown" },
+    ]
+  },
+
+  73: { // Ten of Pentacles
+    name: 'Ten of Pentacles',
+    upright: [
+      { text: "A good man leaves an inheritance for his children's children.", source: "Proverbs 13:22 (Bible)" },
+      { text: "The greatest legacy one can pass on to one's children is not money or things, but a legacy of character and faith.", source: "Billy Graham" },
+      { text: "Wealth is the ability to fully experience life.", source: "Henry David Thoreau" },
+      { text: "Family is not an important thing. It's everything.", source: "Michael J. Fox" },
+      { text: "The goal of wealth is freedom, not things.", source: "Unknown" },
+      { text: "Ten pentacles. Three generations. Legacy built.", source: "Unknown" },
+      { text: "This is what you work for: security for those you love.", source: "Unknown" },
+      { text: "Generational wealth isn't just money. It's wisdom passed down.", source: "Unknown" },
+      { text: "The family that builds together, lasts together.", source: "Unknown" },
+      { text: "Material security meets emotional abundance. This is arrival.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Family money, family drama. Some inheritances cost more than they're worth.", source: "Unknown" },
+      { text: "Generational wealth, generational trauma. Heal both or pass on both.", source: "Unknown" },
+      { text: "Legacy built on shaky foundations will crumble spectacularly.", source: "Unknown" },
+      { text: "You can't buy family harmony.", source: "Unknown" },
+      { text: "Material security without emotional safety is just a gilded cage.", source: "Unknown" },
+      { text: "The inheritance is cursed by the strings attached.", source: "Unknown" },
+      { text: "Tradition without evolution is stagnation with history.", source: "Unknown" },
+      { text: "Financial legacy, emotional bankruptcy.", source: "Unknown" },
+    ]
+  },
+
+  74: { // Page of Pentacles
+    name: 'Page of Pentacles',
+    upright: [
+      { text: "The plans of the diligent lead to profit.", source: "Proverbs 21:5 (Bible)" },
+      { text: "A journey of a thousand miles begins with a single step.", source: "Lao Tzu" },
+      { text: "Do not despise these small beginnings.", source: "Zechariah 4:10 (Bible)" },
+      { text: "Education is the most powerful weapon which you can use to change the world.", source: "Nelson Mandela" },
+      { text: "An investment in knowledge pays the best interest.", source: "Benjamin Franklin" },
+      { text: "Student energy. Apprentice mindset. Beginner's luck.", source: "Unknown" },
+      { text: "The pentacle is small. The potential is vast.", source: "Unknown" },
+      { text: "Learn before you earn. Master before you monetize.", source: "Unknown" },
+      { text: "Practical dreaming: vision meets action plan.", source: "Unknown" },
+      { text: "Every master was once a disaster. You're right on schedule.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "All study, no application. Knowledge without action is trivia.", source: "Unknown" },
+      { text: "You're planning to plan to start. Just start.", source: "Unknown" },
+      { text: "Unrealistic goals without practical steps.", source: "Unknown" },
+      { text: "Short attention span meets shiny object syndrome.", source: "Unknown" },
+      { text: "You want the diploma without attending class.", source: "Unknown" },
+      { text: "Lazy dreaming disguised as strategic planning.", source: "Unknown" },
+      { text: "The opportunity is real. Your commitment is not.", source: "Unknown" },
+      { text: "Irresponsibility with resources you didn't earn.", source: "Unknown" },
+    ]
+  },
+
+  75: { // Knight of Pentacles
+    name: 'Knight of Pentacles',
+    upright: [
+      { text: "Steady plodding brings prosperity.", source: "Proverbs 21:5 (Bible)" },
+      { text: "Slow and steady wins the race.", source: "Aesop" },
+      { text: "It does not matter how slowly you go as long as you do not stop.", source: "Confucius" },
+      { text: "The man who moves a mountain begins by carrying away small stones.", source: "Confucius" },
+      { text: "Discipline is choosing between what you want now and what you want most.", source: "Abraham Lincoln" },
+      { text: "Reliable, methodical, unstoppable. Tortoise energy.", source: "Unknown" },
+      { text: "You're not flashy. You're effective. That's better.", source: "Unknown" },
+      { text: "Consistency beats intensity every single time.", source: "Unknown" },
+      { text: "The boring work that everyone skips? That's your edge.", source: "Unknown" },
+      { text: "Slow progress is still progress. Trust the process.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Stubbornness isn't the same as persistence.", source: "Unknown" },
+      { text: "You're so methodical you're missing opportunities.", source: "Unknown" },
+      { text: "Perfectionism disguised as thoroughness.", source: "Unknown" },
+      { text: "The careful planner who never launches.", source: "Unknown" },
+      { text: "Slow and steady loses when the race changed courses.", source: "Unknown" },
+      { text: "Workaholic isn't a personality trait. It's avoidance.", source: "Unknown" },
+      { text: "You're so busy being reliable you forgot to be alive.", source: "Unknown" },
+      { text: "The routine became the prison.", source: "Unknown" },
+    ]
+  },
+
+  76: { // Queen of Pentacles
+    name: 'Queen of Pentacles',
+    upright: [
+      { text: "She watches over the affairs of her household and does not eat the bread of idleness.", source: "Proverbs 31:27 (Bible)" },
+      { text: "A mother's love is patient and forgiving when all others are forsaking.", source: "Helen Rice" },
+      { text: "The hand that rocks the cradle rules the world.", source: "William Ross Wallace" },
+      { text: "Behind every successful woman is herself.", source: "Unknown" },
+      { text: "Nurturer, provider, grounded queen of the material world.", source: "Unknown" },
+      { text: "She built an empire while raising one too.", source: "Unknown" },
+      { text: "Practical magic: turning a house into a home, a budget into abundance.", source: "Unknown" },
+      { text: "Comfort without softness. Wealth without waste.", source: "Unknown" },
+      { text: "The queen who feeds everyone else first but never goes hungry.", source: "Unknown" },
+      { text: "Motherhood and mastery aren't mutually exclusive.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Smothering disguised as nurturing.", source: "Unknown" },
+      { text: "You can't buy love or delegate healing.", source: "Unknown" },
+      { text: "Material provision without emotional presence.", source: "Unknown" },
+      { text: "The queen who outsourced her throne.", source: "Unknown" },
+      { text: "Neglecting yourself while nurturing everyone else.", source: "Unknown" },
+      { text: "Codependency with a Pinterest aesthetic.", source: "Unknown" },
+      { text: "You're so busy being needed you forgot to be whole.", source: "Unknown" },
+      { text: "The garden is dying because the gardener is.", source: "Unknown" },
+    ]
+  },
+
+  77: { // King of Pentacles
+    name: 'King of Pentacles',
+    upright: [
+      { text: "The Lord makes poor and makes rich; he brings low and he exalts.", source: "1 Samuel 2:7 (Bible)" },
+      { text: "It is not the employer who pays the wages. Employers only handle the money. It is the customer who pays the wages.", source: "Henry Ford" },
+      { text: "A business that makes nothing but money is a poor business.", source: "Henry Ford" },
+      { text: "Price is what you pay. Value is what you get.", source: "Warren Buffett" },
+      { text: "The real measure of your wealth is how much you'd be worth if you lost all your money.", source: "Unknown" },
+      { text: "Empire built. Legacy secured. Kingdom ruled with wisdom.", source: "Unknown" },
+      { text: "The king of earth understands: wealth is built, not won.", source: "Unknown" },
+      { text: "Provider, protector, patriarch of prosperity.", source: "Unknown" },
+      { text: "You built this with your hands. That's real power.", source: "Unknown" },
+      { text: "Material mastery meets spiritual grounding. This is sovereignty.", source: "Unknown" },
+    ],
+    reversed: [
+      { text: "Greed is poverty disguised as ambition.", source: "Unknown" },
+      { text: "You built an empire on sand and called it legacy.", source: "Unknown" },
+      { text: "Material success, moral bankruptcy.", source: "Unknown" },
+      { text: "The king who hoards dies alone with his gold.", source: "Unknown" },
+      { text: "Corruption is what happens when profit becomes purpose.", source: "Unknown" },
+      { text: "You can't buy respect, integrity, or a clear conscience.", source: "Unknown" },
+      { text: "Workaholic king, absent father.", source: "Unknown" },
+      { text: "The throne is heavy when built on exploitation.", source: "Unknown" },
+    ]
+  },
 };
 
 /**
