@@ -10,17 +10,24 @@
  * - Balanced Wisdom (Middle Way)
  */
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
   SafeAreaView,
+  TextInput,
+  Alert,
+  Modal,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import CyberpunkHeader from '../components/CyberpunkHeader';
 import { NeonText, LPMUDText } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
+
+const READINGS_KEY = '@lunatiq_saved_readings';
+const MAX_READINGS = 20;
 
 export default function SynthesisScreen({ route, navigation }) {
   const {
@@ -28,19 +35,91 @@ export default function SynthesisScreen({ route, navigation }) {
     cards,
     intention,
     readingType,
-    spreadType
+    spreadType,
+    readingId, // If viewing existing reading
+    readingName, // If viewing existing reading
   } = route.params || {};
 
   const scrollViewRef = useRef(null);
+  const [showSaveDialog, setShowSaveDialog] = useState(false);
+  const [saveName, setSaveName] = useState('');
+  const [isSaved, setIsSaved] = useState(!!readingId);
 
   const handleFinish = () => {
-    // Navigate back to welcome screen
-    navigation.navigate('Welcome');
+    if (!isSaved && !showSaveDialog) {
+      // Prompt to save before leaving
+      Alert.alert(
+        'Save Reading?',
+        'Would you like to save this reading for later?',
+        [
+          { text: 'Discard', onPress: () => navigation.navigate('Welcome'), style: 'destructive' },
+          { text: 'Save', onPress: () => setShowSaveDialog(true) },
+        ]
+      );
+    } else {
+      navigation.navigate('Welcome');
+    }
   };
 
-  const handleSaveReading = async () => {
-    // TODO: Implement reading save to AsyncStorage
-    console.log('Save reading functionality to be implemented');
+  const handleSaveReading = () => {
+    if (!isSaved) {
+      // Generate default name
+      const defaultName = `${readingType || 'General'} Reading - ${new Date().toLocaleDateString()}`;
+      setSaveName(defaultName);
+      setShowSaveDialog(true);
+    }
+  };
+
+  const saveReadingToStorage = async () => {
+    try {
+      // Load existing readings
+      const data = await AsyncStorage.getItem(READINGS_KEY);
+      let readings = data ? JSON.parse(data) : [];
+
+      // Create reading object
+      const reading = {
+        id: readingId || `reading_${Date.now()}`,
+        name: saveName.trim() || `Reading ${new Date().toLocaleDateString()}`,
+        synthesis,
+        cards,
+        intention,
+        readingType,
+        spreadType,
+        timestamp: new Date().toISOString(),
+      };
+
+      // If updating existing
+      if (readingId) {
+        readings = readings.map(r => r.id === readingId ? reading : r);
+      } else {
+        // Add new reading
+        readings.unshift(reading); // Add to beginning
+
+        // Limit to MAX_READINGS
+        if (readings.length > MAX_READINGS) {
+          readings = readings.slice(0, MAX_READINGS);
+          Alert.alert(
+            'Storage Limit',
+            `Only the ${MAX_READINGS} most recent readings are kept. The oldest reading was removed.`
+          );
+        }
+      }
+
+      await AsyncStorage.setItem(READINGS_KEY, JSON.stringify(readings));
+      console.log('Reading saved successfully:', reading.name);
+
+      setShowSaveDialog(false);
+      setIsSaved(true);
+
+      Alert.alert(
+        'Saved!',
+        `"${reading.name}" has been saved to your reading history.`,
+        [{ text: 'OK' }]
+      );
+    } catch (error) {
+      console.error('Error saving reading:', error);
+      Alert.alert('Error', 'Failed to save reading. Please try again.');
+    }
   };
 
   return (
@@ -104,6 +183,52 @@ export default function SynthesisScreen({ route, navigation }) {
             </LPMUDText>
           </TouchableOpacity>
         </View>
+
+        {/* Save Dialog Modal */}
+        <Modal
+          visible={showSaveDialog}
+          transparent={true}
+          animationType="fade"
+          onRequestClose={() => setShowSaveDialog(false)}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContent}>
+              <LPMUDText style={styles.modalTitle}>
+                $HIC$SAVE READING$NOR$
+              </LPMUDText>
+              <NeonText color={NEON_COLORS.dimCyan} style={styles.modalSubtitle}>
+                Give your reading a name:
+              </NeonText>
+              <TextInput
+                style={styles.modalInput}
+                value={saveName}
+                onChangeText={setSaveName}
+                placeholder={`${readingType || 'General'} Reading - ${new Date().toLocaleDateString()}`}
+                placeholderTextColor={NEON_COLORS.dimCyan}
+                maxLength={50}
+                autoFocus
+              />
+              <View style={styles.modalButtons}>
+                <TouchableOpacity
+                  onPress={() => setShowSaveDialog(false)}
+                  style={styles.modalCancelButton}
+                >
+                  <LPMUDText style={styles.modalCancelText}>
+                    $HIR$CANCEL$NOR$
+                  </LPMUDText>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={saveReadingToStorage}
+                  style={styles.modalSaveButton}
+                >
+                  <LPMUDText style={styles.modalSaveText}>
+                    $HIG$SAVE$NOR$
+                  </LPMUDText>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </SafeAreaView>
     </View>
   );
@@ -217,5 +342,73 @@ const styles = StyleSheet.create({
     fontFamily: 'monospace',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  modalContent: {
+    width: '100%',
+    maxWidth: 400,
+    backgroundColor: '#000000',
+    borderWidth: 2,
+    borderColor: NEON_COLORS.hiCyan,
+    padding: 24,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  modalSubtitle: {
+    fontSize: 12,
+    fontFamily: 'monospace',
+    textAlign: 'center',
+    marginBottom: 16,
+  },
+  modalInput: {
+    borderWidth: 2,
+    borderColor: NEON_COLORS.hiCyan,
+    backgroundColor: 'rgba(0, 255, 255, 0.1)',
+    padding: 12,
+    fontSize: 14,
+    fontFamily: 'monospace',
+    color: NEON_COLORS.hiWhite,
+    marginBottom: 20,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  modalCancelButton: {
+    flex: 1,
+    padding: 12,
+    borderWidth: 2,
+    borderColor: NEON_COLORS.dimRed,
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+    alignItems: 'center',
+  },
+  modalCancelText: {
+    fontSize: 14,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+  },
+  modalSaveButton: {
+    flex: 1,
+    padding: 12,
+    borderWidth: 2,
+    borderColor: NEON_COLORS.hiGreen,
+    backgroundColor: 'rgba(0, 255, 0, 0.1)',
+    alignItems: 'center',
+  },
+  modalSaveText: {
+    fontSize: 14,
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
   },
 });

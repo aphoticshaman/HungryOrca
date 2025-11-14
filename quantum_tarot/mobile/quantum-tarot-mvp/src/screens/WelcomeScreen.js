@@ -13,10 +13,12 @@ const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 const PROFILES_KEY = '@lunatiq_profiles';
 const ACTIVE_PROFILE_KEY = '@lunatiq_active_profile';
+const READINGS_KEY = '@lunatiq_saved_readings';
 
 export default function WelcomeScreen({ navigation }) {
   const [activeProfile, setActiveProfile] = useState(null);
   const [profiles, setProfiles] = useState([]);
+  const [savedReadingsCount, setSavedReadingsCount] = useState(0);
 
   useEffect(() => {
     loadProfiles();
@@ -44,6 +46,13 @@ export default function WelcomeScreen({ navigation }) {
           setActiveProfile(active);
         }
       }
+
+      // Load saved readings count
+      const readingsData = await AsyncStorage.getItem(READINGS_KEY);
+      if (readingsData) {
+        const readings = JSON.parse(readingsData);
+        setSavedReadingsCount(readings.length);
+      }
     } catch (error) {
       console.error('Error loading profiles:', error);
     }
@@ -69,6 +78,10 @@ export default function WelcomeScreen({ navigation }) {
 
   const handleChooseProfile = () => {
     navigation.navigate('ProfileSelect', { profiles });
+  };
+
+  const handleViewReadings = () => {
+    navigation.navigate('ReadingHistory');
   };
 
   return (
@@ -122,6 +135,22 @@ export default function WelcomeScreen({ navigation }) {
               style={styles.menuButtonSubtext}
             >
               {'>'} {profiles.length === 0 ? 'No profiles yet' : `${profiles.length} profile(s) available`}
+            </NeonText>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={handleViewReadings}
+            style={[styles.menuButton, savedReadingsCount === 0 && styles.menuButtonDisabled]}
+            disabled={savedReadingsCount === 0}
+          >
+            <LPMUDText style={styles.menuButtonText}>
+              $HIG${'[ '} $HIW$PAST READINGS$NOR$ $HIG${' ]'}$NOR$
+            </LPMUDText>
+            <NeonText
+              color={savedReadingsCount === 0 ? NEON_COLORS.dimRed : NEON_COLORS.dimGreen}
+              style={styles.menuButtonSubtext}
+            >
+              {'>'} {savedReadingsCount === 0 ? 'No saved readings' : `${savedReadingsCount} saved reading(s)`}
             </NeonText>
           </TouchableOpacity>
         </View>
