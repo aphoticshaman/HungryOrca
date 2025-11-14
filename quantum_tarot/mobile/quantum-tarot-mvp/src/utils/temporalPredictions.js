@@ -237,11 +237,12 @@ function constructTimingStatement(timeframe, anchor, card, quantumSeed) {
   const fuzzy = fuzzyModifiers[modifierIdx];
 
   if (timeframe.unit === 'season' && timeframe.season) {
-    const seasonCapitalized = timeframe.season.charAt(0).toUpperCase() + timeframe.season.slice(1);
+    const season = timeframe.season || 'spring'; // Fallback
+    const seasonCapitalized = season.charAt(0).toUpperCase() + season.slice(1);
     templates.push(
-      `Watch for movement by ${fuzzy}${timeframe.season}, or when synchronicity signals you.`,
+      `Watch for movement by ${fuzzy}${season}, or when synchronicity signals you.`,
       `${seasonCapitalized} brings the shift this card promises—though it may begin before you notice.`,
-      `Before ${fuzzy}${timeframe.season} ends, you'll see this manifest, unless resistance delays it.`
+      `Before ${fuzzy}${season} ends, you'll see this manifest, unless resistance delays it.`
     );
   } else if (anchor) {
     templates.push(
@@ -251,13 +252,13 @@ function constructTimingStatement(timeframe, anchor, card, quantumSeed) {
       `${anchor.description} is your rough marker. Count ${fuzzy}${timeframe.value || ''} ${timeframe.unit || 'time'} from now, but trust your gut over the calendar.`
     );
   } else if (timeframe.value) {
-    const valueStr = timeframe.value.toString();
-    const valueCapitalized = valueStr.charAt(0).toUpperCase() + valueStr.slice(1);
+    const valueStr = (timeframe.value || '').toString();
+    const valueCapitalized = valueStr ? (valueStr.charAt(0).toUpperCase() + valueStr.slice(1)) : '';
     templates.push(
       `Give this ${fuzzy}${valueStr} ${timeframe.unit || 'time'}. Could be shorter if you're ready, longer if resistance shows up.`,
       `Within ${fuzzy}${valueStr} ${timeframe.unit || 'time'}, you'll likely know—unless you're avoiding the answer.`,
       `The energy shifts in ${fuzzy}${valueStr} ${timeframe.unit || 'time'}. Mark it, but don't be rigid about it.`,
-      `${valueCapitalized} ${timeframe.unit || 'time'}, ${fuzzy}. That's your window, but synchronicity may speed it up.`
+      valueCapitalized ? `${valueCapitalized} ${timeframe.unit || 'time'}, ${fuzzy}. That's your window, but synchronicity may speed it up.` : `${fuzzy}That's your window, but synchronicity may speed it up.`
     );
   }
 

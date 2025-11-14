@@ -185,9 +185,10 @@ export function generateSensoryDetails(userProfile, cards, quantumSeed) {
     'hummingbird', 'hawk', 'fox', 'bear', 'cat', 'dog'
   ];
   const animalIdx = Math.floor((quantumSeed * 0.555) * animals.length);
+  const animal = animals[animalIdx] || 'owl'; // Fallback to owl if undefined
   details.push({
     type: 'animal',
-    text: `${animals[animalIdx].charAt(0).toUpperCase() + animals[animalIdx].slice(1)} medicine is with you. Look up its spiritual meaning—it's your totem for this chapter.`
+    text: `${animal.charAt(0).toUpperCase() + animal.slice(1)} medicine is with you. Look up its spiritual meaning—it's your totem for this chapter.`
   });
 
   // Time of day significance
