@@ -1902,6 +1902,36 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Wisdom without warmth is just cold intelligence.", source: "Balance Missing" },
     ]
   },
+
+  // ═══════════════════════════════════════════════════════════
+  // MINOR ARCANA - SWORDS (Air: Mind, Truth, Clarity, Conflict)
+  // ═══════════════════════════════════════════════════════════
+
+  50: { // Ace of Swords
+    name: 'Ace of Swords',
+    upright: [
+      { text: "And you will know the truth, and the truth will set you free.", source: "John 8:32 (Bible)" },
+      { text: "The truth is rarely pure and never simple.", source: "Oscar Wilde" },
+      { text: "The unexamined life is not worth living.", source: "Socrates" },
+      { text: "I think, therefore I am.", source: "René Descartes" },
+      { text: "Above all, don't lie to yourself.", source: "Fyodor Dostoevsky" },
+      { text: "The pen is mightier than the sword.", source: "Edward Bulwer-Lytton" },
+      { text: "Mental clarity is the greatest gift you can give yourself.", source: "Wisdom Truth" },
+      { text: "The sword of truth cuts both ways. Are you ready?", source: "Reality Check" },
+      { text: "Breakthrough moment. The fog lifts. See clearly now.", source: "Clarity Arrival" },
+      { text: "Your mind is sharp. Use it wisely.", source: "Intellectual Power" },
+    ],
+    reversed: [
+      { text: "Confusion masquerading as complexity.", source: "Overthinking" },
+      { text: "Mental fog you're calling strategic thinking.", source: "Clarity Lack" },
+      { text: "The truth you're avoiding is the breakthrough you need.", source: "Avoidance Cost" },
+      { text: "Brutal honesty without compassion is just cruelty.", source: "Weaponized Truth" },
+      { text: "Your thoughts are weapons turned on yourself.", source: "Self-Attack" },
+      { text: "Clarity delayed by fear of what you'll see.", source: "Resistance Block" },
+      { text: "The sword is there. You're just not picking it up.", source: "Power Refusal" },
+      { text: "Analysis paralysis dressed as wisdom.", source: "Stagnation Pattern" },
+    ]
+  },
 };
 
 /**
