@@ -134,7 +134,7 @@ export default function IntentionScreen({ route, navigation }) {
             placeholderTextColor={NEON_COLORS.dimCyan}
             multiline
             numberOfLines={4}
-            maxLength={200}
+            maxLength={1000}
           />
 
           {/* 5W+H Validation Feedback */}
@@ -172,7 +172,7 @@ export default function IntentionScreen({ route, navigation }) {
           )}
 
           <NeonText color={NEON_COLORS.dimCyan} style={styles.charCount}>
-            {intention.length} / 200
+            {intention.length} / 1000
           </NeonText>
         </View>
 

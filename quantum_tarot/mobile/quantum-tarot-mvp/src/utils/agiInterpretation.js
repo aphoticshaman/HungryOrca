@@ -5,6 +5,7 @@
 
 import { CARD_DATABASE } from '../data/cardDatabase';
 import { getAstrologicalContext } from './astrology';
+import { getDiverseInterpretation } from './diverseWisdom';
 
 /**
  * Generate interpretation for a single card
@@ -18,14 +19,21 @@ export function interpretCard(card, intention, readingType, context = {}) {
   const cardData = CARD_DATABASE[card.cardIndex] || CARD_DATABASE[0];
   const { reversed, position } = card;
 
+  // Enrich context with intention and readingType for diverse wisdom
+  const enrichedContext = {
+    ...context,
+    intention,
+    readingType
+  };
+
   // LAYER 1: ARCHETYPAL - Universal symbolic meaning
   const archetypal = generateArchetypalLayer(cardData, reversed, position);
 
   // LAYER 2: CONTEXTUAL - Adapted to reading type and intention
   const contextual = generateContextualLayer(cardData, reversed, position, readingType, intention);
 
-  // LAYER 3: PSYCHOLOGICAL - Shadow work and deeper insights
-  const psychological = generatePsychologicalLayer(cardData, reversed, position, context);
+  // LAYER 3: PSYCHOLOGICAL - Shadow work and deeper insights (NOW WITH DIVERSE WISDOM!)
+  const psychological = generatePsychologicalLayer(cardData, reversed, position, enrichedContext);
 
   // LAYER 4: PRACTICAL - Actionable guidance
   const practical = generatePracticalLayer(cardData, reversed, position, readingType, intention);
@@ -97,12 +105,23 @@ function generateContextualLayer(cardData, reversed, position, readingType, inte
  * LAYER 3: PSYCHOLOGICAL - Deep patterns and shadow work
  */
 function generatePsychologicalLayer(cardData, reversed, position, context) {
+  // Get diverse wisdom insights (MBTI, attachment, love languages, etc.)
+  const diverseWisdom = getDiverseInterpretation(
+    cardData,
+    reversed,
+    position,
+    context.intention || '',
+    context.readingType || 'general',
+    context
+  );
+
   return {
     shadow_work: cardData.shadow_work || 'Explore what this card reveals about hidden aspects of yourself.',
     integration_path: cardData.integration || 'Acknowledge and integrate this energy consciously.',
     emotional_resonance: analyzeEmotionalResonance(cardData, reversed),
     zodiac_connection: analyzeZodiacConnection(cardData, context.zodiacSign),
-    growth_opportunity: `This card invites you to ${reversed ? 'address resistance or blocks' : 'embrace and embody'} the energy it represents.`
+    growth_opportunity: `This card invites you to ${reversed ? 'address resistance or blocks' : 'embrace and embody'} the energy it represents.`,
+    diverse_wisdom: diverseWisdom // NEW: Rich multi-framework insights
   };
 }
 
