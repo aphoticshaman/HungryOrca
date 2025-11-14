@@ -122,7 +122,7 @@ const MBTITestScreen = ({ navigation, route }) => {
     }
   };
 
-  const handleAnswer = (optionIndex) => {
+  const handleAnswer = async (optionIndex) => {
     const newAnswers = [
       ...answers,
       {
