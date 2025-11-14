@@ -40,18 +40,95 @@ class EnhancedThemeExtractor:
             "future_oriented": lambda pos: pos[2] > 0.3,  # Future-looking
         }
 
-        # Card-specific semantic signatures (from cardDatabase)
+        # Card-specific semantic signatures (all 78 cards)
         self.card_signatures = {
-            0: {"curiosity", "new_beginnings", "leap_of_faith"},  # The Fool
-            1: {"manifestation", "willpower", "action"},  # The Magician
-            13: {"transformation", "endings", "rebirth"},  # Death
-            15: {"shadow_patterns", "addiction", "materialism"},  # The Devil
-            16: {"sudden_disruption", "tower_moment", "revelation"},  # The Tower
-            17: {"hope", "healing", "renewal"},  # The Star
-            27: {"passion", "adventure", "impulsiveness"},  # Knight of Wands
-            40: {"emotional_fulfillment", "family_joy", "harmony"},  # 10 of Cups
-            54: {"heartbreak", "sorrow", "painful_truth"},  # 3 of Swords
-            64: {"material_mastery", "wealth", "stability"},  # King of Pentacles
+            # Major Arcana (0-21)
+            0: {"curiosity", "new_beginnings", "leap_of_faith", "innocence"},
+            1: {"manifestation", "willpower", "action", "mastery"},
+            2: {"intuition", "mystery", "hidden_knowledge", "divine_feminine"},
+            3: {"abundance", "nurturing", "fertility", "nature"},
+            4: {"authority", "structure", "leadership", "stability"},
+            5: {"tradition", "institutions", "conformity", "spiritual_wisdom"},
+            6: {"choice", "love", "union", "alignment"},
+            7: {"triumph", "determination", "willpower", "victory"},
+            8: {"courage", "inner_strength", "compassion", "patience"},
+            9: {"solitude", "introspection", "wisdom", "withdrawal"},
+            10: {"fate", "cycles", "turning_point", "destiny"},
+            11: {"fairness", "truth", "law", "balance"},
+            12: {"surrender", "letting_go", "new_perspective", "sacrifice"},
+            13: {"transformation", "endings", "rebirth", "transition"},
+            14: {"balance", "moderation", "alchemy", "integration"},
+            15: {"shadow_patterns", "addiction", "materialism", "bondage"},
+            16: {"sudden_disruption", "tower_moment", "revelation", "chaos"},
+            17: {"hope", "healing", "renewal", "inspiration"},
+            18: {"illusion", "subconscious", "fear", "uncertainty"},
+            19: {"joy", "success", "vitality", "clarity"},
+            20: {"awakening", "reckoning", "absolution", "renewal"},
+            21: {"completion", "integration", "wholeness", "achievement"},
+
+            # Wands (Fire - Action, Passion, Creativity) 22-35
+            22: {"inspiration", "potential", "creativity", "new_ventures"},
+            23: {"planning", "future_vision", "progress", "discovery"},
+            24: {"expansion", "foresight", "leadership", "collaboration"},
+            25: {"celebration", "harmony", "homecoming", "community"},
+            26: {"competition", "conflict", "tension", "struggle"},
+            27: {"victory", "recognition", "progress", "success"},  # 6 Wands
+            28: {"defensiveness", "perseverance", "challenge", "courage"},
+            29: {"swift_action", "movement", "progress", "momentum"},
+            30: {"burden", "responsibility", "perseverance", "overwhelm"},
+            31: {"burnout", "burden", "responsibility", "completion_struggle"},
+            32: {"enthusiasm", "adventure", "exploration", "curiosity"},
+            33: {"passion", "adventure", "impulsiveness", "rush"},  # Knight Wands
+            34: {"confidence", "independence", "determination", "charisma"},
+            35: {"leadership", "vision", "entrepreneurship", "boldness"},
+
+            # Cups (Water - Emotion, Relationships, Intuition) 36-49
+            36: {"love", "new_relationship", "emotional_beginning", "compassion"},
+            37: {"partnership", "unity", "connection", "mutual_respect"},
+            38: {"celebration", "friendship", "community", "joy"},
+            39: {"apathy", "contemplation", "reevaluation", "discontent"},
+            40: {"grief", "loss", "disappointment", "regret"},  # 5 Cups
+            41: {"nostalgia", "reunion", "innocence", "childhood"},
+            42: {"illusion", "fantasy", "choices", "wishful_thinking"},
+            43: {"moving_on", "transition", "leaving_behind", "journey"},
+            44: {"contentment", "satisfaction", "wishes_fulfilled", "happiness"},
+            45: {"emotional_fulfillment", "family_joy", "harmony", "love"},  # 10 Cups
+            46: {"sensitivity", "intuition", "dreamer", "emotional_messages"},
+            47: {"romance", "charm", "imagination", "idealism"},  # Knight Cups
+            48: {"compassion", "empathy", "nurturing", "intuitive"},
+            49: {"emotional_maturity", "balance", "diplomacy", "caring"},
+
+            # Swords (Air - Intellect, Conflict, Truth) 50-63
+            50: {"clarity", "breakthrough", "truth", "mental_clarity"},
+            51: {"difficult_choice", "stalemate", "avoidance", "blocked"},
+            52: {"heartbreak", "sorrow", "painful_truth", "grief"},  # 3 Swords
+            53: {"rest", "recovery", "contemplation", "respite"},
+            54: {"defeat", "loss", "conflict", "betrayal"},  # 5 Swords
+            55: {"transition", "moving_forward", "recovery", "travel"},
+            56: {"deception", "strategy", "sneakiness", "mental_game"},
+            57: {"restriction", "isolation", "imprisonment", "helplessness"},
+            58: {"anxiety", "worry", "nightmares", "fear"},
+            59: {"rock_bottom", "endings", "painful_completion", "betrayal"},
+            60: {"curiosity", "mental_energy", "vigilance", "ideas"},
+            61: {"action", "impulsiveness", "haste", "determination"},  # Knight Swords
+            62: {"independence", "clear_thinking", "directness", "perception"},
+            63: {"authority", "intellectual_power", "truth", "clarity"},
+
+            # Pentacles (Earth - Material, Work, Practicality) 64-77
+            64: {"opportunity", "manifestation", "new_financial_beginning", "prosperity"},
+            65: {"balance", "adaptability", "juggling", "time_management"},
+            66: {"teamwork", "learning", "collaboration", "skill_building"},
+            67: {"security", "control", "possessiveness", "saving"},
+            68: {"hardship", "loss", "isolation", "poverty"},  # 5 Pentacles
+            69: {"generosity", "charity", "sharing", "balance"},
+            70: {"patience", "perseverance", "investment", "long_term_vision"},
+            71: {"mastery", "skill", "dedication", "craftsmanship"},
+            72: {"self_sufficiency", "luxury", "independence", "refinement"},
+            73: {"legacy", "inheritance", "family", "wealth"},
+            74: {"ambition", "diligence", "study", "manifestation"},
+            75: {"reliability", "hard_work", "routine", "patience"},  # Knight Pentacles
+            76: {"nurturing", "practical", "abundance", "security"},
+            77: {"material_mastery", "wealth", "stability", "success"},  # King Pentacles
         }
 
     def extract_micro_themes(self, cards: List[Card]) -> Set[str]:
