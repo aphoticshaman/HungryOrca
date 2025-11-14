@@ -2699,7 +2699,12 @@ export function getCardQuotes(cardIndex, quantumSeed, reversed = false, count = 
 
   if (!cardQuotes) return [];
 
-  const quoteArray = reversed ? cardQuotes.reversed : cardQuotes.upright;
+  const quoteObject = reversed ? cardQuotes.reversed : cardQuotes.upright;
+
+  if (!quoteObject) return [];
+
+  // Flatten all category arrays into one array
+  const quoteArray = Object.values(quoteObject).flat();
 
   if (!quoteArray || quoteArray.length === 0) return [];
 

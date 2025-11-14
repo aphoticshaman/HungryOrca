@@ -703,15 +703,15 @@ function buildSynthesis(context) {
     console.error('❌ SYNTHESIS GENERATION ERROR:', error);
     console.error('Error stack:', error.stack);
     console.error('Error context:', {
-      hasCards: !!readingData?.cards,
-      cardCount: readingData?.cards?.length,
-      hasMCQ: !!readingData?.mcqAnswers,
-      hasProfile: !!readingData?.userProfile
+      hasCards: !!context?.cards,
+      cardCount: context?.cards?.length,
+      hasMCQ: !!context?.mcqAnswers,
+      hasProfile: !!context?.userProfile
     });
 
     // Graceful degradation: Return a basic but functional synthesis
     try {
-      const { cards = [], userProfile = {}, intention = 'Personal growth' } = readingData;
+      const { cards = [], userProfile = {}, intention = 'Personal growth' } = context;
       const fallbackQuotes = [];
 
       // Try to get at least a few quotes from the cards
