@@ -7,6 +7,7 @@ import { View, StyleSheet, Dimensions, Platform } from 'react-native';
 import { MorphText, MatrixRain, NeonText, LPMUDText } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
 import { performReading } from '../utils/quantumRNG';
+import { interpretCard } from '../utils/agiInterpretation';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -16,6 +17,48 @@ const MONOSPACE_FONT = Platform.select({
   android: 'monospace',
   default: 'Courier New',
 });
+
+/**
+ * Format interpretation object into readable text for encrypted reveal
+ */
+function formatInterpretation(interpretation) {
+  const { cardData, layers, position, reversed } = interpretation;
+
+  let text = '';
+
+  // Card header
+  text += `${cardData.name}${reversed ? ' (Reversed)' : ''}\n`;
+  text += `Position: ${position}\n`;
+  text += `Element: ${layers.archetypal.element || 'Spirit'}\n\n`;
+
+  // Archetypal layer
+  text += `━━ ARCHETYPAL MEANING ━━\n`;
+  text += `${layers.archetypal.core_meaning}\n\n`;
+
+  // Contextual layer
+  text += `━━ IN YOUR SITUATION ━━\n`;
+  text += `${layers.contextual.position_significance}\n\n`;
+  text += `${layers.contextual.intention_alignment}\n\n`;
+
+  // Psychological layer
+  text += `━━ DEEPER INSIGHT ━━\n`;
+  text += `Shadow Work: ${layers.psychological.shadow_work}\n\n`;
+  text += `Integration: ${layers.psychological.integration_path}\n\n`;
+
+  // Practical layer
+  text += `━━ ACTION STEPS ━━\n`;
+  layers.practical.action_steps.forEach((step, i) => {
+    text += `${i + 1}. ${step}\n`;
+  });
+  text += `\nFocus: ${layers.practical.what_to_focus_on}\n\n`;
+
+  // Synthesis
+  text += `━━ KEY MESSAGE ━━\n`;
+  text += `${layers.synthesis.core_message}\n\n`;
+  text += `${layers.synthesis.next_steps}`;
+
+  return text;
+}
 
 // 31 Pro-tips inspired by CBT, DBT, Army MRT, and psychology
 const PRO_TIPS = [
@@ -53,7 +96,7 @@ const PRO_TIPS = [
 ];
 
 export default function CardDrawingScreen({ route, navigation }) {
-  const { spreadType, intention, readingType, zodiacSign, birthdate } = route.params;
+  const { spreadType, intention, readingType, zodiacSign, birthdate, userProfile } = route.params;
   const [phase, setPhase] = useState('initializing'); // initializing, shuffling, drawing, complete
   const [statusLines, setStatusLines] = useState([]);
   const [cardCount, setCardCount] = useState(0);
@@ -143,22 +186,39 @@ export default function CardDrawingScreen({ route, navigation }) {
         '',
         'All cards drawn! ✓',
         '',
-        'Preparing your interpretation...',
-        'Loading insights...',
+        'Generating interpretations...',
+        'Quantum processing...',
         '',
         'Thank you for your patience!',
         'You\'re going to love your reading!',
       ]);
-      await sleep(1500);
+      await sleep(1000);
 
-      // Navigate to reading
-      navigation.replace('Reading', {
+      // Generate individual card interpretations
+      const interpretations = cards.map((card, index) => {
+        const interpretation = interpretCard(
+          card,
+          intention,
+          readingType,
+          { zodiacSign, birthdate, userProfile }
+        );
+
+        // Convert interpretation to readable text format
+        return formatInterpretation(interpretation);
+      });
+
+      await sleep(500);
+
+      // Navigate to card interpretation screen (card-by-card with MCQs)
+      navigation.replace('CardInterpretation', {
         cards,
+        interpretations,
         spreadType,
         intention,
         readingType,
         zodiacSign,
         birthdate,
+        userProfile: userProfile || { zodiacSign, birthdate },
         quantumSeed,
         timestamp
       });

@@ -9,33 +9,42 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import EncryptedTextReveal from '../components/EncryptedTextReveal';
+import MCQModal from '../components/MCQModal';
 import { CARD_DATABASE } from '../data/cardDatabase';
 import { generateQuantumSeed } from '../utils/quantumRNG';
+import { generatePostCardQuestions } from '../utils/postCardQuestions';
+import { generateMegaSynthesis } from '../utils/megaSynthesisEngine';
 
 /**
- * CARD INTERPRETATION SCREEN
+ * CARD INTERPRETATION SCREEN WITH MCQ INTEGRATION
  *
- * Displays individual card interpretations with:
- * - Encrypted text reveal animation (Matrix-style decryption)
- * - Auto-scroll to top when moving to next card
- * - Quantum seed-based pseudo-random encryption
- * - Preserves formatting, punctuation, line breaks
- *
- * Animation sequence per card:
- * 1. Fade out (1s)
- * 2. Black screen (0.5s)
- * 3. Fade in to encrypted text (0.5s)
- * 4. Decrypt/unscramble (2s)
- * 5. User reads → clicks "Next Card"
- * 6. Scroll to top → repeat for next card
+ * Flow per card:
+ * 1. Show encrypted reveal animation (7.5s sacred ritual)
+ * 2. After reveal complete → auto-show MCQ modal (1-3 questions)
+ * 3. User answers MCQs → modal closes
+ * 4. User clicks "Next Card" → repeat
+ * 5. After all cards + MCQs → generate mega synthesis → navigate to synthesis screen
  */
 
 const CardInterpretationScreen = ({ route, navigation }) => {
-  const { cards, interpretations } = route.params || {};
+  const {
+    cards,
+    interpretations,
+    spreadType,
+    intention,
+    readingType,
+    zodiacSign,
+    birthdate,
+    userProfile // Full profile with MBTI, personality, etc.
+  } = route.params || {};
 
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [revealTrigger, setRevealTrigger] = useState(false);
   const [quantumSeed, setQuantumSeed] = useState(generateQuantumSeed());
+  const [showMCQModal, setShowMCQModal] = useState(false);
+  const [currentMCQs, setCurrentMCQs] = useState([]);
+  const [allMCQAnswers, setAllMCQAnswers] = useState([]);
+  const [isGeneratingSynthesis, setIsGeneratingSynthesis] = useState(false);
 
   const scrollViewRef = useRef(null);
 
@@ -59,18 +68,97 @@ const CardInterpretationScreen = ({ route, navigation }) => {
     }, 50);
   }, [currentCardIndex]);
 
-  const handleNextCard = () => {
+  // After encrypted reveal completes, show MCQ modal
+  const handleRevealComplete = () => {
+    console.log('Reveal complete for card', currentCardIndex + 1);
+
+    // Generate MCQ questions for this card
+    const questions = generatePostCardQuestions(
+      cards[currentCardIndex],
+      intention,
+      readingType,
+      currentCardIndex + 1, // Card number (1-indexed)
+      cards.length,
+      allMCQAnswers
+    );
+
+    setCurrentMCQs(questions);
+
+    // Show MCQ modal after a brief pause (1 second)
+    setTimeout(() => {
+      setShowMCQModal(true);
+    }, 1000);
+  };
+
+  // User completes MCQs for current card
+  const handleMCQComplete = (answers) => {
+    // Store answers with card context
+    const answersWithContext = answers.map(answer => ({
+      ...answer,
+      cardIndex: currentCardIndex,
+      cardName: CARD_DATABASE[cards[currentCardIndex].cardIndex].name,
+      position: cards[currentCardIndex].position
+    }));
+
+    setAllMCQAnswers([...allMCQAnswers, ...answersWithContext]);
+    setShowMCQModal(false);
+  };
+
+  // User skips MCQs for current card
+  const handleMCQSkip = () => {
+    setShowMCQModal(false);
+  };
+
+  const handleNextCard = async () => {
     if (currentCardIndex < cards.length - 1) {
+      // Move to next card
       setCurrentCardIndex(currentCardIndex + 1);
     } else {
-      // All cards viewed - navigate to synthesis
-      navigation.navigate('Synthesis');
+      // All cards + MCQs complete - generate mega synthesis
+      await generateAndNavigateToSynthesis();
     }
   };
 
   const handlePreviousCard = () => {
     if (currentCardIndex > 0) {
       setCurrentCardIndex(currentCardIndex - 1);
+    }
+  };
+
+  const generateAndNavigateToSynthesis = async () => {
+    setIsGeneratingSynthesis(true);
+
+    try {
+      // Generate mega synthesis with all context
+      const synthesis = await generateMegaSynthesis({
+        cards,
+        mcqAnswers: allMCQAnswers,
+        userProfile: userProfile || { zodiacSign, birthdate },
+        intention,
+        readingType,
+        spreadType
+      });
+
+      // Navigate to synthesis display screen
+      navigation.navigate('Synthesis', {
+        synthesis,
+        cards,
+        intention,
+        readingType,
+        spreadType
+      });
+    } catch (error) {
+      console.error('Synthesis generation error:', error);
+      // Fall back to simple synthesis screen
+      navigation.navigate('Synthesis', {
+        synthesis: 'Error generating synthesis. Please try again.',
+        cards,
+        intention,
+        readingType,
+        spreadType
+      });
+    } finally {
+      setIsGeneratingSynthesis(false);
     }
   };
 
@@ -115,7 +203,7 @@ const CardInterpretationScreen = ({ route, navigation }) => {
           <EncryptedTextReveal
             trigger={revealTrigger}
             quantumSeed={quantumSeed}
-            onComplete={() => console.log('Reveal complete for card', currentCardIndex + 1)}
+            onComplete={handleRevealComplete}
             style={styles.interpretationContainer}
           >
             {currentInterpretation}
@@ -127,7 +215,7 @@ const CardInterpretationScreen = ({ route, navigation }) => {
           <TouchableOpacity
             style={[styles.navButton, currentCardIndex === 0 && styles.navButtonDisabled]}
             onPress={handlePreviousCard}
-            disabled={currentCardIndex === 0}
+            disabled={currentCardIndex === 0 || isGeneratingSynthesis}
           >
             <Text
               style={[
@@ -139,13 +227,34 @@ const CardInterpretationScreen = ({ route, navigation }) => {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.nextButton} onPress={handleNextCard}>
+          <TouchableOpacity
+            style={styles.nextButton}
+            onPress={handleNextCard}
+            disabled={isGeneratingSynthesis}
+          >
             <Text style={styles.nextButtonText}>
-              {currentCardIndex === cards.length - 1 ? 'View Synthesis →' : 'Next Card →'}
+              {isGeneratingSynthesis ? (
+                'Generating Synthesis...'
+              ) : currentCardIndex === cards.length - 1 ? (
+                'View Synthesis →'
+              ) : (
+                'Next Card →'
+              )}
             </Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
+
+      {/* MCQ Modal */}
+      <MCQModal
+        visible={showMCQModal}
+        questions={currentMCQs}
+        cardName={cardData?.name || 'Card'}
+        cardNumber={currentCardIndex + 1}
+        totalCards={cards.length}
+        onComplete={handleMCQComplete}
+        onSkip={handleMCQSkip}
+      />
     </LinearGradient>
   );
 };
