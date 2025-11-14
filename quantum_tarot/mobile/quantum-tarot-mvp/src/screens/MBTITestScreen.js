@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  SafeAreaView,
   Modal,
-  Pressable,
+  Dimensions,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { MBTI_QUESTIONS, calculateMBTI } from '../utils/mbtiTest';
+import { NeonText, LPMUDText, MatrixRain, ScanLines } from '../components/TerminalEffects';
+import { NEON_COLORS } from '../styles/cyberpunkColors';
+
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 /**
  * MBTI Personality Test Screen
@@ -205,76 +206,89 @@ const MBTITestScreen = ({ navigation, route }) => {
 
   if (showIntro) {
     return (
-      <LinearGradient
-        colors={['#1a0033', '#330066', '#4d0099']}
-        style={styles.container}
-      >
-        <SafeAreaView style={styles.safeArea}>
-          <ScrollView contentContainerStyle={styles.scrollContent}>
-            <Text style={styles.title}>Personality Profile</Text>
+      <View style={styles.container}>
+        {/* Matrix rain background */}
+        <View style={StyleSheet.absoluteFill}>
+          <MatrixRain width={SCREEN_WIDTH} height={SCREEN_HEIGHT} speed={30} />
+        </View>
+        <ScanLines />
 
-            <Text style={styles.subtitle}>
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <View style={styles.header}>
+            <LPMUDText style={styles.title}>
+              $HIC${'>'} PERSONALITY PROFILE$NOR$
+            </LPMUDText>
+          </View>
+
+          <View style={styles.infoBox}>
+            <NeonText color={NEON_COLORS.hiWhite} style={styles.subtitle}>
               Complete this 40-question assessment to receive deeply personalized readings
               that speak your unique psychological language.
-            </Text>
+            </NeonText>
+          </View>
 
-            <View style={styles.benefitsContainer}>
-              <Text style={styles.benefitTitle}>What You'll Get:</Text>
-              <Text style={styles.benefitText}>
-                • Interpretations tailored to your cognitive patterns
-              </Text>
-              <Text style={styles.benefitText}>
-                • Communication style that resonates with how you process information
-              </Text>
-              <Text style={styles.benefitText}>
-                • Guidance that honors your natural strengths and blind spots
-              </Text>
-              <Text style={styles.benefitText}>
-                • Truly unique syntheses (no two readings ever the same)
-              </Text>
+          <View style={styles.benefitsContainer}>
+            <LPMUDText style={styles.benefitTitle}>
+              $HIY$WHAT YOU'LL GET:$NOR$
+            </LPMUDText>
+            <LPMUDText style={styles.benefitText}>
+              $HIG$•$NOR$ Interpretations tailored to your cognitive patterns
+            </LPMUDText>
+            <LPMUDText style={styles.benefitText}>
+              $HIG$•$NOR$ Communication style that resonates with how you process information
+            </LPMUDText>
+            <LPMUDText style={styles.benefitText}>
+              $HIG$•$NOR$ Guidance that honors your natural strengths and blind spots
+            </LPMUDText>
+            <LPMUDText style={styles.benefitText}>
+              $HIG$•$NOR$ Truly unique syntheses (no two readings ever the same)
+            </LPMUDText>
+          </View>
+
+          <View style={styles.estimateContainer}>
+            <NeonText color={NEON_COLORS.dimCyan} style={styles.estimateText}>
+              Estimated time: 8-12 minutes
+            </NeonText>
+          </View>
+
+          {/* Vibe Mode Checkbox */}
+          <TouchableOpacity
+            style={styles.vibeModeContainer}
+            onPress={handleVibeModeToggle}
+            activeOpacity={0.7}
+          >
+            <View style={[styles.checkbox, vibeModeChecked && styles.checkboxChecked]}>
+              {vibeModeChecked && <NeonText color={NEON_COLORS.hiMagenta} style={styles.checkmark}>✓</NeonText>}
             </View>
-
-            <View style={styles.estimateContainer}>
-              <Text style={styles.estimateText}>
-                Estimated time: 8-12 minutes
-              </Text>
+            <View style={styles.vibeModeTextContainer}>
+              <LPMUDText style={styles.vibeModeLabel}>
+                $HIM$VIBE MODE$NOR$
+              </LPMUDText>
+              <NeonText color={NEON_COLORS.dimYellow} style={styles.vibeModeSubtext}>
+                Skip personality test (less accurate readings)
+              </NeonText>
             </View>
+          </TouchableOpacity>
 
-            {/* Vibe Mode Checkbox */}
-            <TouchableOpacity
-              style={styles.vibeModeContainer}
-              onPress={handleVibeModeToggle}
-              activeOpacity={0.7}
-            >
-              <View style={[styles.checkbox, vibeModeChecked && styles.checkboxChecked]}>
-                {vibeModeChecked && <Text style={styles.checkmark}>✓</Text>}
-              </View>
-              <View style={styles.vibeModeTextContainer}>
-                <Text style={styles.vibeModeLabel}>Vibe Mode</Text>
-                <Text style={styles.vibeModeSubtext}>
-                  Skip personality test (less accurate readings)
-                </Text>
-              </View>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.startButton, vibeModeChecked && styles.startButtonDisabled]}
+            onPress={handleStartTest}
+            disabled={vibeModeChecked}
+          >
+            <LPMUDText style={styles.startButtonText}>
+              {vibeModeChecked ? '$DIM$Uncheck Vibe Mode to Start$NOR$' : '$HIG$[ BEGIN ASSESSMENT ]$NOR$'}
+            </LPMUDText>
+          </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.startButton}
-              onPress={handleStartTest}
-              disabled={vibeModeChecked}
-            >
-              <Text style={styles.startButtonText}>
-                {vibeModeChecked ? 'Uncheck Vibe Mode to Start' : 'Begin Assessment'}
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.skipButton}
-              onPress={() => navigation.goBack()}
-            >
-              <Text style={styles.skipButtonText}>Maybe Later</Text>
-            </TouchableOpacity>
-          </ScrollView>
-        </SafeAreaView>
+          <TouchableOpacity
+            style={styles.skipButton}
+            onPress={() => navigation.goBack()}
+          >
+            <LPMUDText style={styles.skipButtonText}>
+              $DIM$Maybe Later$NOR$
+            </LPMUDText>
+          </TouchableOpacity>
+        </ScrollView>
 
         {/* Skip Warning Modal */}
         <Modal
