@@ -30,6 +30,7 @@ import { generateTimingPrediction, generateReadingTimeframe, generatePredictiveM
 import { analyzeCardSynergies, generateSynergySummary } from './cardSynergyMatrix';
 import { weaveColdReadingElements } from './coldReadingEnhancer';
 import { composeNarrativeArc, generateStoryOpener } from './narrativeArcComposer';
+import { extractGeometricThemes, describeGeometricThemes } from './geometricSemanticSpace';
 
 /**
  * Generate comprehensive synthesis
@@ -100,6 +101,11 @@ export async function generateMegaSynthesis(readingData) {
     console.log('🔍 Step 4B: Analyzing card synergies...');
     const cardSynergies = analyzeCardSynergies(cards);
 
+    // 4B2. GEOMETRIC SEMANTIC ANALYSIS (multi-scale theme extraction)
+    console.log('🔍 Step 4B2: Extracting geometric themes...');
+    const geometricAnalysis = extractGeometricThemes(cards);
+    console.log('📐 Geometric themes detected:', geometricAnalysis.themes.length);
+
     // 4C. COMPOSE NARRATIVE ARC (story structure)
     console.log('🔍 Step 4C: Composing narrative arc...');
     const narrativeArc = composeNarrativeArc(cards, mcqAnalysis, readingType, userProfile, quantumSeed);
@@ -127,7 +133,8 @@ export async function generateMegaSynthesis(readingData) {
       quantumSeed,
       cardSynergies,
       narrativeArc,
-      coldReading
+      coldReading,
+      geometricAnalysis // NEW: Multi-scale geometric themes
     });
 
     console.log('✅ Synthesis generated successfully, length:', synthesis?.length);
@@ -163,7 +170,8 @@ function buildSynthesis(context) {
       quantumSeed,
       cardSynergies = [],
       narrativeArc = {},
-      coldReading = {}
+      coldReading = {},
+      geometricAnalysis = null // NEW: Geometric themes from 3D semantic space
     } = context;
 
     console.log('🔨 buildSynthesis starting with:', {
@@ -319,6 +327,14 @@ function buildSynthesis(context) {
   const synergySummary = generateSynergySummary(cardSynergies, quantumSeed * 0.111);
   if (synergySummary) {
     synthesis += synergySummary;
+  }
+
+  // Add GEOMETRIC SEMANTIC ANALYSIS (multi-scale theme extraction)
+  if (geometricAnalysis) {
+    const geometricDescription = describeGeometricThemes(geometricAnalysis);
+    if (geometricDescription) {
+      synthesis += `${geometricDescription}\n\n`;
+    }
   }
 
   // Analyze overall reading patterns
