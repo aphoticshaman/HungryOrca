@@ -252,6 +252,8 @@ export const MatrixRain = React.memo(({ width = 100, height = 200, speed = 50 })
     };
   }, [columnSetup, height]);
 
+  const columnHeight = charsPerColumn * 20;
+
   return (
     <View style={[styles.matrixContainer, { width, height }]} pointerEvents="none">
       {columnSetup.map((col, colIndex) => (
@@ -265,7 +267,8 @@ export const MatrixRain = React.memo(({ width = 100, height = 200, speed = 50 })
                 {
                   translateY: col.animValue.interpolate({
                     inputRange: [0, height],
-                    outputRange: [0, height + (charsPerColumn * 20)],
+                    // START ABOVE SCREEN (-columnHeight), RAIN DOWN TO BOTTOM (height)
+                    outputRange: [-columnHeight, height],
                   }),
                 },
               ],
