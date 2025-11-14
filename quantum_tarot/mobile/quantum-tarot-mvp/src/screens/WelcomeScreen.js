@@ -82,6 +82,13 @@ export default function WelcomeScreen({ navigation }) {
         {/* Animated header */}
         <CyberpunkHeader />
 
+        {/* Tagline - main page only */}
+        <View style={styles.taglineContainer}>
+          <NeonText color={NEON_COLORS.dimCyan} style={styles.tagline}>
+            A cyber tarot deck for tomorrow!
+          </NeonText>
+        </View>
+
         {/* Main menu buttons */}
         <View style={styles.menuContainer}>
           <TouchableOpacity onPress={handleNewReading} style={styles.menuButton}>
@@ -146,9 +153,22 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingBottom: 40,
   },
+  taglineContainer: {
+    alignItems: 'center',
+    marginTop: -10,
+    marginBottom: 20,
+    paddingHorizontal: 30,
+  },
+  tagline: {
+    fontSize: 14,
+    fontFamily: 'monospace',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    letterSpacing: 1,
+  },
   menuContainer: {
     marginHorizontal: 20,
-    marginTop: 40,
+    marginTop: 20,
     gap: 20,
   },
   menuButton: {
