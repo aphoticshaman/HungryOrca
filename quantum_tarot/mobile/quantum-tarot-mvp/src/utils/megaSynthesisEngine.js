@@ -312,8 +312,20 @@ function buildSynthesis(context) {
     (quantumSeed * 0.222) % 1
   );
 
-  synthesis += `\n\n${balancedClosing.moderation}\n\n`;
-  synthesis += `${balancedClosing.pillar.wisdom}\n\n`;
+  console.log('🔍 balancedClosing:', {
+    hasModeration: !!balancedClosing?.moderation,
+    hasPillar: !!balancedClosing?.pillar,
+    pillarWisdom: balancedClosing?.pillar?.wisdom
+  });
+
+  if (balancedClosing?.moderation) {
+    synthesis += `\n\n${balancedClosing.moderation}\n\n`;
+  }
+
+  if (balancedClosing?.pillar?.wisdom) {
+    synthesis += `${balancedClosing.pillar.wisdom}\n\n`;
+  }
+
   synthesis += `${narrative.getClosing()}\n`;
 
   console.log('✅ buildSynthesis completed successfully');
