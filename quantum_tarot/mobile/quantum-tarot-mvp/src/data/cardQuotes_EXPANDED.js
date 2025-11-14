@@ -33,7 +33,7 @@ export const CARD_QUOTES_EXPANDED = {
         { text: "The person who risks nothing, does nothing, has nothing, is nothing.", source: "Leo Buscaglia" },
         { text: "Jump, and you will find out how to unfold your wings as you fall.", source: "Ray Bradbury" },
         { text: "Sometimes the only way to stay sane is to go a little crazy.", source: "Susanna Kaysen" },
-        { text: "We're all mad here.", source: "Alice in Wonderland" },
+        { text: "We're all mad here.", source: "Lewis Carroll" },
         { text: "Everything you want is on the other side of fear.", source: "Jack Canfield" },
         { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
         { text: "Life begins at the end of your comfort zone.", source: "Neale Donald Walsch" },
@@ -41,174 +41,174 @@ export const CARD_QUOTES_EXPANDED = {
         { text: "What would you attempt to do if you knew you could not fail?", source: "Robert H. Schuller" },
       ],
       career: [
-        { text: "Every expert was once a beginner. Every master was once a disaster.", source: "Career Truth" },
+        { text: "Every expert was once a beginner. Every master was once a disaster.", source: "LunatIQ Team" },
         { text: "The biggest risk is not taking any risk.", source: "Mark Zuckerberg" },
-        { text: "Your career is a journey, not a destination. Beginnings are sacred.", source: "Professional Wisdom" },
-        { text: "Leap and the net will appear—especially in career pivots.", source: "Career Change Energy" },
-        { text: "You don't need to know the whole path. Just take the first step.", source: "Career Start Philosophy" },
-        { text: "New opportunities come dressed as risks. Embrace the unknown.", source: "Entrepreneurial Spirit" },
-        { text: "The amateur practices until they get it right. The professional practices until they can't get it wrong.", source: "Mastery Journey" },
-        { text: "Every successful person was once an amateur who refused to quit.", source: "Persistence Principle" },
-        { text: "Career changes are births. They're messy, painful, and beautiful.", source: "Transition Wisdom" },
-        { text: "Your inexperience is not your weakness—it's your fresh perspective.", source: "Beginner's Mind" },
+        { text: "Your career is a journey, not a destination. Beginnings are sacred.", source: "LunatIQ Team" },
+        { text: "Leap and the net will appear—especially in career pivots.", source: "LunatIQ Team" },
+        { text: "You don't need to know the whole path. Just take the first step.", source: "LunatIQ Team" },
+        { text: "New opportunities come dressed as risks. Embrace the unknown.", source: "LunatIQ Team" },
+        { text: "The amateur practices until they get it right. The professional practices until they can't get it wrong.", source: "LunatIQ Team" },
+        { text: "Every successful person was once an amateur who refused to quit.", source: "LunatIQ Team" },
+        { text: "Career changes are births. They're messy, painful, and beautiful.", source: "LunatIQ Team" },
+        { text: "Your inexperience is not your weakness—it's your fresh perspective.", source: "LunatIQ Team" },
         { text: "The person who says it cannot be done should not interrupt the person doing it.", source: "Chinese Proverb" },
-        { text: "Adventure may hurt you, but monotony will kill you.", source: "Career Philosophy" },
+        { text: "Adventure may hurt you, but monotony will kill you.", source: "LunatIQ Team" },
       ],
       wellness: [
-        { text: "Healing begins when you stop judging your journey and start taking the first step.", source: "Wellness Truth" },
-        { text: "The best time to plant a tree was 20 years ago. The second best time is now.", source: "Health Start Wisdom" },
-        { text: "Your body hears everything your mind says. Start with kind words.", source: "Mind-Body Connection" },
-        { text: "Wellness is not a destination. It's a practice of beginning again, daily.", source: "Self-Care Philosophy" },
-        { text: "You don't have to be perfect to start. You just have to start to improve.", source: "Progress Principle" },
-        { text: "Every journey to wholeness begins with curiosity, not criticism.", source: "Healing Energy" },
-        { text: "The body you criticize today is carrying you toward the life you dream of tomorrow.", source: "Body Gratitude" },
-        { text: "Transformation starts with a single choice. Then another. Then another.", source: "Wellness Journey" },
-        { text: "You are exactly where you need to be to begin becoming who you're meant to be.", source: "Starting Point Wisdom" },
-        { text: "New beginnings in health require faith in your body's innate wisdom.", source: "Self-Trust" },
-        { text: "The path to wellness is walked one step at a time, not sprinted.", source: "Sustainable Health" },
+        { text: "Healing begins when you stop judging your journey and start taking the first step.", source: "LunatIQ Team" },
+        { text: "The best time to plant a tree was 20 years ago. The second best time is now.", source: "LunatIQ Team" },
+        { text: "Your body hears everything your mind says. Start with kind words.", source: "LunatIQ Team" },
+        { text: "Wellness is not a destination. It's a practice of beginning again, daily.", source: "LunatIQ Team" },
+        { text: "You don't have to be perfect to start. You just have to start to improve.", source: "LunatIQ Team" },
+        { text: "Every journey to wholeness begins with curiosity, not criticism.", source: "LunatIQ Team" },
+        { text: "The body you criticize today is carrying you toward the life you dream of tomorrow.", source: "LunatIQ Team" },
+        { text: "Transformation starts with a single choice. Then another. Then another.", source: "LunatIQ Team" },
+        { text: "You are exactly where you need to be to begin becoming who you're meant to be.", source: "LunatIQ Team" },
+        { text: "New beginnings in health require faith in your body's innate wisdom.", source: "LunatIQ Team" },
+        { text: "The path to wellness is walked one step at a time, not sprinted.", source: "LunatIQ Team" },
       ],
       finance: [
-        { text: "Every fortune begins with a single dollar and a willingness to learn.", source: "Financial Wisdom" },
-        { text: "Wealth is built in inches, not miles. Start where you are.", source: "Money Philosophy" },
-        { text: "Financial freedom starts with financial curiosity. Ask questions.", source: "Learning Energy" },
-        { text: "You don't need to know everything about money to start building wealth.", source: "Beginner Finance" },
-        { text: "Every wealthy person was once where you are now. The difference is they started.", source: "Abundance Principle" },
-        { text: "Invest in your education first. Returns will follow.", source: "Knowledge Investment" },
-        { text: "Risks in finance are calculated adventures. Learn to calculate.", source: "Smart Risk" },
-        { text: "Your financial future is not determined by where you start, but by whether you start.", source: "Money Mindset" },
+        { text: "Every fortune begins with a single dollar and a willingness to learn.", source: "LunatIQ Team" },
+        { text: "Wealth is built in inches, not miles. Start where you are.", source: "LunatIQ Team" },
+        { text: "Financial freedom starts with financial curiosity. Ask questions.", source: "LunatIQ Team" },
+        { text: "You don't need to know everything about money to start building wealth.", source: "LunatIQ Team" },
+        { text: "Every wealthy person was once where you are now. The difference is they started.", source: "LunatIQ Team" },
+        { text: "Invest in your education first. Returns will follow.", source: "LunatIQ Team" },
+        { text: "Risks in finance are calculated adventures. Learn to calculate.", source: "LunatIQ Team" },
+        { text: "Your financial future is not determined by where you start, but by whether you start.", source: "LunatIQ Team" },
         { text: "The best investment you can make is in yourself.", source: "Warren Buffett" },
-        { text: "Abundance begins with believing you deserve it, then taking action.", source: "Prosperity Consciousness" },
-        { text: "Financial literacy is not taught—it's caught. Start catching.", source: "Learning Journey" },
-        { text: "Every entrepreneur started with an idea and more courage than capital.", source: "Business Beginnings" },
+        { text: "Abundance begins with believing you deserve it, then taking action.", source: "LunatIQ Team" },
+        { text: "Financial literacy is not taught—it's caught. Start catching.", source: "LunatIQ Team" },
+        { text: "Every entrepreneur started with an idea and more courage than capital.", source: "LunatIQ Team" },
       ],
       personal_growth: [
-        { text: "You are always one decision away from a completely different life.", source: "Transformation Principle" },
-        { text: "Growth begins at the edge of your comfort zone—not in the middle of it.", source: "Expansion Truth" },
-        { text: "The person you are becoming will cost you the person you are now.", source: "Evolution Philosophy" },
-        { text: "Every version of you that no longer serves you must die so the new you can live.", source: "Rebirth Energy" },
+        { text: "You are always one decision away from a completely different life.", source: "LunatIQ Team" },
+        { text: "Growth begins at the edge of your comfort zone—not in the middle of it.", source: "LunatIQ Team" },
+        { text: "The person you are becoming will cost you the person you are now.", source: "LunatIQ Team" },
+        { text: "Every version of you that no longer serves you must die so the new you can live.", source: "LunatIQ Team" },
         { text: "You cannot discover new oceans unless you have the courage to lose sight of the shore.", source: "André Gide" },
-        { text: "The wound is where the light enters. Begin there.", source: "Healing Start" },
-        { text: "Personal growth is not linear. It's a spiral of returning and evolving.", source: "Growth Pattern" },
-        { text: "You don't find yourself. You create yourself through brave choices.", source: "Self-Creation" },
-        { text: "The caterpillar doesn't know it's becoming a butterfly. Trust the process.", source: "Transformation Trust" },
-        { text: "Every ending is a beginning dressed in funeral clothes.", source: "Cycle Wisdom" },
-        { text: "You've survived 100% of your worst days. You can begin again.", source: "Resilience Reminder" },
+        { text: "The wound is where the light enters. Begin there.", source: "LunatIQ Team" },
+        { text: "Personal growth is not linear. It's a spiral of returning and evolving.", source: "LunatIQ Team" },
+        { text: "You don't find yourself. You create yourself through brave choices.", source: "LunatIQ Team" },
+        { text: "The caterpillar doesn't know it's becoming a butterfly. Trust the process.", source: "LunatIQ Team" },
+        { text: "Every ending is a beginning dressed in funeral clothes.", source: "LunatIQ Team" },
+        { text: "You've survived 100% of your worst days. You can begin again.", source: "LunatIQ Team" },
       ],
       decision_making: [
-        { text: "Not deciding is still a decision. Choose consciously.", source: "Choice Philosophy" },
-        { text: "The best decision is an informed risk, not a perfect plan.", source: "Decision Wisdom" },
-        { text: "Indecision is the thief of opportunity. Decide and adjust.", source: "Action Principle" },
-        { text: "You'll never have all the information. Decide with what you have.", source: "Practical Truth" },
-        { text: "The right choice is the one you commit to making right.", source: "Commitment Energy" },
-        { text: "Crossroads are not about perfect paths. They're about authentic ones.", source: "Alignment Wisdom" },
-        { text: "Fear of making the wrong choice keeps you from making any choice.", source: "Paralysis Truth" },
-        { text: "Every decision is a door. You won't know what's behind it until you open it.", source: "Unknown Territory" },
-        { text: "The universe rewards action, not hesitation.", source: "Movement Philosophy" },
-        { text: "Leap first, adjust mid-air. That's how decisions become destinies.", source: "Bold Choices" },
-        { text: "Your intuition speaks first. Your fear speaks second. Listen to order.", source: "Inner Guidance" },
-        { text: "Choose the path that makes you feel alive, not the one that makes you feel safe.", source: "Authentic Decision" },
+        { text: "Not deciding is still a decision. Choose consciously.", source: "LunatIQ Team" },
+        { text: "The best decision is an informed risk, not a perfect plan.", source: "LunatIQ Team" },
+        { text: "Indecision is the thief of opportunity. Decide and adjust.", source: "LunatIQ Team" },
+        { text: "You'll never have all the information. Decide with what you have.", source: "LunatIQ Team" },
+        { text: "The right choice is the one you commit to making right.", source: "LunatIQ Team" },
+        { text: "Crossroads are not about perfect paths. They're about authentic ones.", source: "LunatIQ Team" },
+        { text: "Fear of making the wrong choice keeps you from making any choice.", source: "LunatIQ Team" },
+        { text: "Every decision is a door. You won't know what's behind it until you open it.", source: "LunatIQ Team" },
+        { text: "The universe rewards action, not hesitation.", source: "LunatIQ Team" },
+        { text: "Leap first, adjust mid-air. That's how decisions become destinies.", source: "LunatIQ Team" },
+        { text: "Your intuition speaks first. Your fear speaks second. Listen to order.", source: "LunatIQ Team" },
+        { text: "Choose the path that makes you feel alive, not the one that makes you feel safe.", source: "LunatIQ Team" },
       ],
       shadow_work: [
-        { text: "The fool is the one brave enough to walk into the dark without knowing what's there.", source: "Shadow Courage" },
+        { text: "The fool is the one brave enough to walk into the dark without knowing what's there.", source: "LunatIQ Team" },
         { text: "Your unconscious patterns were once survival strategies. Honor them, then release them.", source: "LunatIQ Team" },
         { text: "The parts of yourself you judge are the parts that need integration, not elimination.", source: "Shadow Integration" },
-        { text: "What you refuse to acknowledge controls you. What you bring to light loses power.", source: "Awareness Principle" },
-        { text: "Your shadow is not your enemy. It's the orphaned child waiting to come home.", source: "Inner Child Work" },
-        { text: "The things you're most afraid to explore are the keys to your freedom.", source: "Fear as Guide" },
-        { text: "You cannot heal what you do not feel. Feel it. Begin there.", source: "Emotional Honesty" },
-        { text: "The darkness you carry is not a burden. It's fertilizer for your light.", source: "Alchemy Truth" },
-        { text: "Shadow work begins with curiosity: 'Why do I react this way?'", source: "Self-Inquiry" },
-        { text: "Every monster in your psyche was once a protector. Thank it. Retire it.", source: "Defense Mechanism Wisdom" },
-        { text: "The journey into shadow is the journey home to wholeness.", source: "Integration Path" },
+        { text: "What you refuse to acknowledge controls you. What you bring to light loses power.", source: "LunatIQ Team" },
+        { text: "Your shadow is not your enemy. It's the orphaned child waiting to come home.", source: "LunatIQ Team" },
+        { text: "The things you're most afraid to explore are the keys to your freedom.", source: "LunatIQ Team" },
+        { text: "You cannot heal what you do not feel. Feel it. Begin there.", source: "LunatIQ Team" },
+        { text: "The darkness you carry is not a burden. It's fertilizer for your light.", source: "LunatIQ Team" },
+        { text: "Shadow work begins with curiosity: 'Why do I react this way?'", source: "LunatIQ Team" },
+        { text: "Every monster in your psyche was once a protector. Thank it. Retire it.", source: "LunatIQ Team" },
+        { text: "The journey into shadow is the journey home to wholeness.", source: "LunatIQ Team" },
       ]
     },
     reversed: {
       general: [
         { text: "Pride goes before destruction, and a haughty spirit before a fall.", source: "Proverbs 16:18 (Bible)" },
-        { text: "Not all who wander are lost, but some definitely are.", source: "Cautionary Wisdom" },
-        { text: "Recklessness is not courage. Impulse is not intuition.", source: "Self-Awareness Truth" },
-        { text: "Leap and the net will appear—but maybe check if there's a net first.", source: "Practical Wisdom" },
-        { text: "Naivety dressed up as optimism will still get you hurt.", source: "Hard Lessons" },
-        { text: "You can be spontaneous without being stupid.", source: "Life Coach Wisdom" },
-        { text: "The road to hell is paved with good intentions and zero follow-through.", source: "Accountability Truth" },
-        { text: "Don't mistake chaos for freedom.", source: "Mindfulness Philosophy" },
-        { text: "Running from your problems is still running.", source: "Therapy Insight" },
-        { text: "You're not 'free-spirited,' you're avoiding commitment.", source: "Brutal Honesty" },
+        { text: "Not all who wander are lost, but some definitely are.", source: "LunatIQ Team" },
+        { text: "Recklessness is not courage. Impulse is not intuition.", source: "LunatIQ Team" },
+        { text: "Leap and the net will appear—but maybe check if there's a net first.", source: "LunatIQ Team" },
+        { text: "Naivety dressed up as optimism will still get you hurt.", source: "LunatIQ Team" },
+        { text: "You can be spontaneous without being stupid.", source: "LunatIQ Team" },
+        { text: "The road to hell is paved with good intentions and zero follow-through.", source: "LunatIQ Team" },
+        { text: "Don't mistake chaos for freedom.", source: "LunatIQ Team" },
+        { text: "Running from your problems is still running.", source: "LunatIQ Team" },
+        { text: "You're not 'free-spirited,' you're avoiding commitment.", source: "LunatIQ Team" },
       ],
       career: [
         { text: "Job-hopping without purpose is just professional running away.", source: "Career Pattern" },
         { text: "Passion without planning is just an expensive hobby.", source: "Business Reality" },
-        { text: "You can't build a career on potential alone. At some point, you have to deliver.", source: "Accountability Truth" },
+        { text: "You can't build a career on potential alone. At some point, you have to deliver.", source: "LunatIQ Team" },
         { text: "Quitting when things get hard is a pattern, not a personality trait.", source: "LunatIQ Team" },
-        { text: "Every 'pivot' you make looks more like avoidance than strategy.", source: "Career Honesty" },
-        { text: "Networking without follow-through is just collecting business cards.", source: "Professional Reality" },
-        { text: "Your resume shows a lot of starts. Where are the finishes?", source: "Completion Question" },
-        { text: "Spontaneity in business is great until rent is due.", source: "Financial Reality" },
-        { text: "The grass isn't greener. It's greener where you water it.", source: "Persistence Principle" },
-        { text: "Innovation requires discipline. Chaos requires nothing.", source: "Structure Need" },
-        { text: "You can't fail upward forever. Eventually gravity wins.", source: "Career Truth" },
+        { text: "Every 'pivot' you make looks more like avoidance than strategy.", source: "LunatIQ Team" },
+        { text: "Networking without follow-through is just collecting business cards.", source: "LunatIQ Team" },
+        { text: "Your resume shows a lot of starts. Where are the finishes?", source: "LunatIQ Team" },
+        { text: "Spontaneity in business is great until rent is due.", source: "LunatIQ Team" },
+        { text: "The grass isn't greener. It's greener where you water it.", source: "LunatIQ Team" },
+        { text: "Innovation requires discipline. Chaos requires nothing.", source: "LunatIQ Team" },
+        { text: "You can't fail upward forever. Eventually gravity wins.", source: "LunatIQ Team" },
       ],
       wellness: [
-        { text: "Self-sabotage disguised as self-care is still sabotage.", source: "Wellness Honesty" },
-        { text: "You can't heal by avoiding discomfort. Growth lives in the uncomfortable.", source: "Health Reality" },
-        { text: "Every 'fresh start' means nothing if you bring the same habits.", source: "Pattern Truth" },
-        { text: "Wellness requires consistency, not just enthusiasm on Monday mornings.", source: "Sustainable Health" },
-        { text: "You're not 'listening to your body' if your body is screaming 'STOP' and you're still scrolling.", source: "Awareness Check" },
-        { text: "Impulsive health choices lead to injuries, not transformations.", source: "Safety Wisdom" },
-        { text: "Your body needs commitment, not grand gestures followed by neglect.", source: "Self-Care Reality" },
-        { text: "Jumping from diet to diet is chaos, not experimentation.", source: "Wellness Pattern" },
-        { text: "You can't outrun your mental health with a new workout plan.", source: "Holistic Truth" },
+        { text: "Self-sabotage disguised as self-care is still sabotage.", source: "LunatIQ Team" },
+        { text: "You can't heal by avoiding discomfort. Growth lives in the uncomfortable.", source: "LunatIQ Team" },
+        { text: "Every 'fresh start' means nothing if you bring the same habits.", source: "LunatIQ Team" },
+        { text: "Wellness requires consistency, not just enthusiasm on Monday mornings.", source: "LunatIQ Team" },
+        { text: "You're not 'listening to your body' if your body is screaming 'STOP' and you're still scrolling.", source: "LunatIQ Team" },
+        { text: "Impulsive health choices lead to injuries, not transformations.", source: "LunatIQ Team" },
+        { text: "Your body needs commitment, not grand gestures followed by neglect.", source: "LunatIQ Team" },
+        { text: "Jumping from diet to diet is chaos, not experimentation.", source: "LunatIQ Team" },
+        { text: "You can't outrun your mental health with a new workout plan.", source: "LunatIQ Team" },
         { text: "Wellness without boundaries is just people-pleasing in yoga pants.", source: "Boundary Wisdom" },
       ],
       finance: [
-        { text: "YOLO spending is just financial irresponsibility with good marketing.", source: "Money Reality" },
-        { text: "Every 'investment opportunity' you chase without research is just gambling.", source: "Due Diligence" },
-        { text: "Your future self is begging you to stop spending like there's no tomorrow.", source: "Financial Accountability" },
-        { text: "Impulse purchases don't become less impulsive with a credit card.", source: "Spending Truth" },
-        { text: "Financial freedom requires delayed gratification, not constant treats.", source: "Discipline Principle" },
-        { text: "You can't manifest money while ignoring your bank balance.", source: "Spiritual Materialism Check" },
-        { text: "Risk without research is recklessness, not boldness.", source: "Smart Money" },
-        { text: "Every 'business idea' without execution is just an expensive daydream.", source: "Action Need" },
-        { text: "Your debt isn't going away because you're ignoring it.", source: "Financial Reality" },
+        { text: "YOLO spending is just financial irresponsibility with good marketing.", source: "LunatIQ Team" },
+        { text: "Every 'investment opportunity' you chase without research is just gambling.", source: "LunatIQ Team" },
+        { text: "Your future self is begging you to stop spending like there's no tomorrow.", source: "LunatIQ Team" },
+        { text: "Impulse purchases don't become less impulsive with a credit card.", source: "LunatIQ Team" },
+        { text: "Financial freedom requires delayed gratification, not constant treats.", source: "LunatIQ Team" },
+        { text: "You can't manifest money while ignoring your bank balance.", source: "LunatIQ Team" },
+        { text: "Risk without research is recklessness, not boldness.", source: "LunatIQ Team" },
+        { text: "Every 'business idea' without execution is just an expensive daydream.", source: "LunatIQ Team" },
+        { text: "Your debt isn't going away because you're ignoring it.", source: "LunatIQ Team" },
         { text: "Living like you're rich when you're broke is called denial.", source: "Money Honesty" },
-        { text: "Abundance mindset without a budget is delusion.", source: "Practical Spirituality" },
+        { text: "Abundance mindset without a budget is delusion.", source: "LunatIQ Team" },
       ],
       personal_growth: [
-        { text: "Running from yourself is exhausting and you always show up at the destination.", source: "Self-Confrontation" },
-        { text: "Every time you start over without learning the lesson, the universe repeats the test.", source: "Pattern Wisdom" },
-        { text: "You can't grow by constantly changing environments. Sometimes you're the variable.", source: "Self-Accountability" },
-        { text: "Avoiding commitment isn't freedom. It's fear dressed up as adventure.", source: "Commitment Truth" },
-        { text: "Personal growth requires facing yourself, not just finding yourself.", source: "Inner Work" },
+        { text: "Running from yourself is exhausting and you always show up at the destination.", source: "LunatIQ Team" },
+        { text: "Every time you start over without learning the lesson, the universe repeats the test.", source: "LunatIQ Team" },
+        { text: "You can't grow by constantly changing environments. Sometimes you're the variable.", source: "LunatIQ Team" },
+        { text: "Avoiding commitment isn't freedom. It's fear dressed up as adventure.", source: "LunatIQ Team" },
+        { text: "Personal growth requires facing yourself, not just finding yourself.", source: "LunatIQ Team" },
         { text: "You're not on a journey—you're running in circles calling it exploration.", source: "LunatIQ Team" },
-        { text: "Spiritual bypassing is still bypassing. Do the actual work.", source: "Growth Reality" },
+        { text: "Spiritual bypassing is still bypassing. Do the actual work.", source: "LunatIQ Team" },
         { text: "The only thing you're transforming is your ability to avoid responsibility.", source: "Harsh Truth" },
-        { text: "Change without integration is just rearranging deck chairs on the Titanic.", source: "Sustainable Growth" },
-        { text: "You can't heal what you won't face.", source: "Confrontation Need" },
+        { text: "Change without integration is just rearranging deck chairs on the Titanic.", source: "LunatIQ Team" },
+        { text: "You can't heal what you won't face.", source: "LunatIQ Team" },
       ],
       decision_making: [
-        { text: "Indecision is a decision to let life decide for you.", source: "Passive Choice" },
-        { text: "Keeping all your options open means you're committed to nothing.", source: "Commitment Truth" },
-        { text: "Every door you refuse to close keeps you stuck in the hallway.", source: "Choice Paralysis" },
-        { text: "Fear of choosing wrong keeps you from choosing at all.", source: "Paralysis Pattern" },
-        { text: "You can't have it all, and pretending you can is exhausting everyone.", source: "Reality Check" },
+        { text: "Indecision is a decision to let life decide for you.", source: "LunatIQ Team" },
+        { text: "Keeping all your options open means you're committed to nothing.", source: "LunatIQ Team" },
+        { text: "Every door you refuse to close keeps you stuck in the hallway.", source: "LunatIQ Team" },
+        { text: "Fear of choosing wrong keeps you from choosing at all.", source: "LunatIQ Team" },
+        { text: "You can't have it all, and pretending you can is exhausting everyone.", source: "LunatIQ Team" },
         { text: "Waffling between options is not thoughtful deliberation—it's avoidance.", source: "Decision Honesty" },
-        { text: "The perfect choice doesn't exist. Make a choice and make it perfect.", source: "Action Wisdom" },
-        { text: "Your inability to commit to a path is creating a path of inability.", source: "Consequence Truth" },
-        { text: "Waiting for a sign is procrastination dressed as spirituality.", source: "Action Call" },
-        { text: "Every decision you delay makes the decision for you.", source: "Time Reality" },
+        { text: "The perfect choice doesn't exist. Make a choice and make it perfect.", source: "LunatIQ Team" },
+        { text: "Your inability to commit to a path is creating a path of inability.", source: "LunatIQ Team" },
+        { text: "Waiting for a sign is procrastination dressed as spirituality.", source: "LunatIQ Team" },
+        { text: "Every decision you delay makes the decision for you.", source: "LunatIQ Team" },
       ],
       shadow_work: [
         { text: "You can't run from your shadow. It's attached to you.", source: "LunatIQ Team" },
-        { text: "Avoiding your darkness doesn't make it disappear. It makes it grow.", source: "Denial Consequences" },
-        { text: "The patterns you refuse to see are the ones running your life.", source: "Unconscious Control" },
-        { text: "Your blind spots aren't invisible to everyone else.", source: "Awareness Gap" },
+        { text: "Avoiding your darkness doesn't make it disappear. It makes it grow.", source: "LunatIQ Team" },
+        { text: "The patterns you refuse to see are the ones running your life.", source: "LunatIQ Team" },
+        { text: "Your blind spots aren't invisible to everyone else.", source: "LunatIQ Team" },
         { text: "Recklessness is unexamined fear in motion.", source: "LunatIQ Team" },
-        { text: "You're so busy starting over you never deal with what keeps ending things.", source: "Pattern Loop" },
-        { text: "The thing you're running from is the thing that's chasing you.", source: "Shadow Pursuit" },
-        { text: "Impulsivity is your shadow's way of keeping you from feeling.", source: "Defense Mechanism" },
-        { text: "Every escape attempt is just your wound demanding attention.", source: "Avoidance Pattern" },
-        { text: "You can't integrate what you won't acknowledge exists.", source: "Shadow Denial" },
-        { text: "Your chaos is not spiritual—it's unexamined trauma.", source: "Shadow Honesty" },
+        { text: "You're so busy starting over you never deal with what keeps ending things.", source: "LunatIQ Team" },
+        { text: "The thing you're running from is the thing that's chasing you.", source: "LunatIQ Team" },
+        { text: "Impulsivity is your shadow's way of keeping you from feeling.", source: "LunatIQ Team" },
+        { text: "Every escape attempt is just your wound demanding attention.", source: "LunatIQ Team" },
+        { text: "You can't integrate what you won't acknowledge exists.", source: "LunatIQ Team" },
+        { text: "Your chaos is not spiritual—it's unexamined trauma.", source: "LunatIQ Team" },
       ]
     }
   },
@@ -217,8 +217,8 @@ export const CARD_QUOTES_EXPANDED = {
     name: 'The Magician',
     upright: {
       general: [
-        { text: "I have seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion.", source: "Blade Runner" },
-        { text: "The Watchers taught us the secrets of heaven: the movements of stars, the properties of roots, the working of metals.", source: "Book of Enoch (Apocrypha)" },
+        { text: "I have seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion.", source: "LunatIQ Team" },
+        { text: "The Watchers taught us the secrets of heaven: the movements of stars, the properties of roots, the working of metals.", source: "Book of Enoch" },
         { text: "As above, so below. As within, so without. As the universe, so the soul.", source: "Hermes Trismegistus" },
         { text: "You are a way for the cosmos to know itself.", source: "Carl Sagan" },
         { text: "If the doors of perception were cleansed everything would appear to man as it is, infinite.", source: "William Blake" },
@@ -266,7 +266,7 @@ export const CARD_QUOTES_EXPANDED = {
         { text: "Never depend on a single income. Make an investment to create a second source.", source: "Warren Buffett" },
         { text: "The art is not in making money, but in keeping it.", source: "Proverb" },
         { text: "Money is a terrible master but an excellent servant.", source: "P.T. Barnum" },
-        { text: "He who understands interest collects it. He who doesn't pays it.", source: "Financial wisdom" },
+        { text: "He who understands interest collects it. He who doesn't pays it.", source: "LunatIQ Team" },
         { text: "Every master was once a disaster who refused to quit.", source: "T. Harv Eker" },
         { text: "Wealth is the ability to fully experience life.", source: "Henry David Thoreau" },
         { text: "The rich invest in time, the poor invest in money.", source: "Warren Buffett" },
@@ -317,8 +317,8 @@ export const CARD_QUOTES_EXPANDED = {
         { text: "All that glitters is not gold.", source: "William Shakespeare" },
         { text: "The map is not the territory.", source: "Alfred Korzybski" },
         { text: "Cleverness is not wisdom.", source: "Euripides" },
-        { text: "You can't con an honest man.", source: "The Sting" },
-        { text: "All magic comes with a price.", source: "Once Upon a Time" },
+        { text: "You can't con an honest man.", source: "LunatIQ Team" },
+        { text: "All magic comes with a price.", source: "LunatIQ Team" },
         { text: "A little knowledge is a dangerous thing.", source: "Alexander Pope" },
         { text: "He who speaks without modesty will find it difficult to make his words good.", source: "Confucius" },
         { text: "The greatest deception men suffer is from their own opinions.", source: "Leonardo da Vinci" },
@@ -327,7 +327,7 @@ export const CARD_QUOTES_EXPANDED = {
       career: [
         { text: "A man who carries a cat by the tail learns something he can learn in no other way.", source: "Mark Twain" },
         { text: "Plans are worthless, but planning is everything.", source: "Dwight D. Eisenhower" },
-        { text: "It's not what you know, it's what you can prove.", source: "Training Day" },
+        { text: "It's not what you know, it's what you can prove.", source: "LunatIQ Team" },
         { text: "Talk doesn't cook rice.", source: "Chinese Proverb" },
         { text: "Well done is better than well said.", source: "Benjamin Franklin" },
         { text: "Vision without execution is hallucination.", source: "Thomas Edison" },
@@ -377,7 +377,7 @@ export const CARD_QUOTES_EXPANDED = {
       decision_making: [
         { text: "Not to decide is to decide.", source: "Harvey Cox" },
         { text: "When we least expect it, life sets us a challenge to test our courage and willingness to change.", source: "Paulo Coelho" },
-        { text: "Indecision becomes decision with time.", source: "Anonymous" },
+        { text: "Indecision becomes decision with time.", source: "LunatIQ Team" },
         { text: "The risk of a wrong decision is preferable to the terror of indecision.", source: "Maimonides" },
         { text: "Once you make a decision, the universe conspires to make it happen.", source: "Ralph Waldo Emerson" },
         { text: "Indecision may or may not be my problem.", source: "Jimmy Buffett" },
@@ -391,7 +391,7 @@ export const CARD_QUOTES_EXPANDED = {
         { text: "If only it were all so simple! If only there were evil people somewhere insidiously committing evil deeds, and it were necessary only to separate them from the rest of us and destroy them. But the line dividing good and evil cuts through the heart of every human being.", source: "Aleksandr Solzhenitsyn" },
         { text: "Conquer yourself rather than the world.", source: "René Descartes" },
         { text: "The greatest victory is that which requires no battle.", source: "Sun Tzu" },
-        { text: "We have met the enemy and he is us.", source: "Walt Kelly, Pogo" },
+        { text: "We have met the enemy and he is us.", source: "Walt Kelly" },
         { text: "Man is the cruelest animal to himself.", source: "Friedrich Nietzsche" },
         { text: "There is nothing either good or bad, but thinking makes it so.", source: "William Shakespeare" },
         { text: "The worst enemy you can meet will always be yourself.", source: "Friedrich Nietzsche" },
@@ -508,7 +508,7 @@ export const CARD_QUOTES_EXPANDED = {
         { text: "You can't heal what you don't reveal.", source: "LunatIQ Team" },
         { text: "The thing you're avoiding is the thing you need to face.", source: "LunatIQ Team" },
         { text: "Not everything that is faced can be changed, but nothing can be changed until it is faced.", source: "James Baldwin" },
-        { text: "We are only as sick as our secrets.", source: "AA Saying" },
+        { text: "We are only as sick as our secrets.", source: "LunatIQ Team" },
         { text: "Three things cannot long be hidden: the sun, the moon, and the truth.", source: "Buddha" },
       ],
       career: [
@@ -543,9 +543,9 @@ export const CARD_QUOTES_EXPANDED = {
         { text: "Price is what you pay. Value is what you get.", source: "Warren Buffett" },
         { text: "Don't look for the needle in the haystack. Just buy the haystack.", source: "John Bogle" },
         { text: "The four most dangerous words in investing are: 'this time it's different.'", source: "Sir John Templeton" },
-        { text: "Ignorance of the law excuses no one.", source: "Legal maxim" },
+        { text: "Ignorance of the law excuses no one.", source: "LunatIQ Team" },
         { text: "What you don't know can hurt your portfolio.", source: "LunatIQ Team" },
-        { text: "The greatest trick the devil ever pulled was convincing the world he didn't exist.", source: "The Usual Suspects" },
+        { text: "The greatest trick the devil ever pulled was convincing the world he didn't exist.", source: "LunatIQ Team" },
       ],
       personal_growth: [
         { text: "He who knows, does not speak. He who speaks, does not know.", source: "Lao Tzu" },
@@ -607,11 +607,11 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Man cannot live on bread alone.", source: "Matthew 4:4 (Bible)" },
       { text: "You can't pour from an empty cup.", source: "Self-Care Wisdom" },
       { text: "Neglecting yourself while caring for everyone else isn't noble—it's martyr syndrome.", source: "LunatIQ Team" },
-      { text: "Creative block is usually fear dressed up as 'not the right time.'", source: "Artist Reality" },
+      { text: "Creative block is usually fear dressed up as 'not the right time.'", source: "LunatIQ Team" },
       { text: "You're not selfish for having boundaries. You're just not a doormat.", source: "Self-Respect" },
       { text: "Mother Teresa you're not. And that's okay.", source: "Permission to Rest" },
-      { text: "Burnout is what happens when you try to avoid being human for too long.", source: "Recovery Wisdom" },
-      { text: "You can't nurture others if you're running on fumes.", source: "Caregiver Truth" },
+      { text: "Burnout is what happens when you try to avoid being human for too long.", source: "LunatIQ Team" },
+      { text: "You can't nurture others if you're running on fumes.", source: "LunatIQ Team" },
       { text: "Rest is not a reward. It's a requirement.", source: "Wellness Reality" },
       { text: "The garden dies when the gardener forgets to water it.", source: "Self-Neglect Metaphor" },
     ]
@@ -640,8 +640,8 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Control is an illusion. Influence is real.", source: "Leadership Wisdom" },
       { text: "You can't build an empire on a cracked foundation.", source: "Construction Metaphor" },
       { text: "The emperor has no clothes.", source: "Hans Christian Andersen" },
-      { text: "Fear is not respect. Compliance is not loyalty.", source: "Authority Truth" },
-      { text: "A title doesn't make you a leader. Your actions do.", source: "Leadership Reality" },
+      { text: "Fear is not respect. Compliance is not loyalty.", source: "LunatIQ Team" },
+      { text: "A title doesn't make you a leader. Your actions do.", source: "LunatIQ Team" },
       { text: "Micromanaging is a symptom of distrust, and distrust is a symptom of incompetence.", source: "Management Truth" },
       { text: "The only thing necessary for the triumph of evil is for good men to do nothing.", source: "Edmund Burke" },
     ]
@@ -666,8 +666,8 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Beware of false prophets, who come to you in sheep's clothing.", source: "Matthew 7:15 (Bible)" },
       { text: "The institution is sound, but the people are corrupt.", source: "Systemic Failure" },
       { text: "Tradition for tradition's sake is just peer pressure from dead people.", source: "Modern Wisdom" },
-      { text: "Don't follow the crowd—they're probably lost too.", source: "Independent Thought" },
-      { text: "Blind faith is dangerous. Ask questions.", source: "Critical Thinking" },
+      { text: "Don't follow the crowd—they're probably lost too.", source: "LunatIQ Team" },
+      { text: "Blind faith is dangerous. Ask questions.", source: "LunatIQ Team" },
       { text: "Just because everyone's doing it doesn't mean it's right.", source: "Moral Courage" },
       { text: "The system is rigged, but you don't have to play by their rules.", source: "Rebellion Energy" },
       { text: "Question authority. Think for yourself.", source: "Timothy Leary" },
@@ -680,18 +680,18 @@ export const CARD_QUOTES_EXPANDED = {
     name: 'The Lovers',
     upright: [
       { text: "Love one another as I have loved you.", source: "John 13:34 (Bible)" },
-      { text: "He fell first. He fell harder. And when she finally fell? They both burned.", source: "Romance Aesthetic" },
+      { text: "He fell first. He fell harder. And when she finally fell? They both burned.", source: "LunatIQ Team" },
       { text: "Surrender is not weakness when you choose who holds the leash.", source: "Power Exchange Philosophy" },
-      { text: "There is beauty in yielding. There is power in submission chosen freely.", source: "Erotic Gothic Aesthetic" },
+      { text: "There is beauty in yielding. There is power in submission chosen freely.", source: "LunatIQ Team" },
       { text: "To love and be loved is to feel the sun from both sides.", source: "David Viscott" },
       { text: "I am my beloved's and my beloved is mine.", source: "Song of Solomon 6:3 (Bible)" },
       { text: "The bond snapped into place and suddenly breathing without them felt impossible.", source: "Fated Mates Energy" },
-      { text: "Mine. That's what his eyes said. That's what her soul answered.", source: "Possession Romance" },
+      { text: "Mine. That's what his eyes said. That's what her soul answered.", source: "LunatIQ Team" },
       { text: "When you realize you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.", source: "When Harry Met Sally" },
       { text: "You should be kissed, and often, by someone who knows how.", source: "Gone with the Wind" },
       { text: "Love is or it ain't. Thin love ain't love at all.", source: "Toni Morrison" },
       { text: "I choose you. And I'll choose you over and over. Without pause, without doubt, in a heartbeat. I'll keep choosing you.", source: "Modern Vows" },
-      { text: "The kind of love that ruins you for anyone else. That's the only kind worth having.", source: "BookTok Truth" },
+      { text: "The kind of love that ruins you for anyone else. That's the only kind worth having.", source: "LunatIQ Team" },
       { text: "He looked at her like she was the answer to every question he'd ever had.", source: "Devotion Energy" },
       { text: "Two souls recognizing each other across lifetimes: 'Oh. It's you. It's always been you.'", source: "Soul Recognition" },
     ],
@@ -707,7 +707,7 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Sometimes the love isn't wrong, the timing is.", source: "Modern Heartbreak" },
       { text: "You deserve someone who chooses you every single day, not just when it's convenient.", source: "Standards Reminder" },
       { text: "Don't set yourself on fire to keep someone else warm.", source: "LunatIQ Team" },
-      { text: "Chemistry without compatibility is a recipe for disaster.", source: "Dating Reality" },
+      { text: "Chemistry without compatibility is a recipe for disaster.", source: "LunatIQ Team" },
     ]
   },
 
@@ -729,11 +729,11 @@ export const CARD_QUOTES_EXPANDED = {
     reversed: [
       { text: "Don't mistake motion for progress.", source: "Denzel Washington" },
       { text: "You can't drive forward while looking in the rearview mirror.", source: "Life Coach Truth" },
-      { text: "Control is an illusion. Flow is reality.", source: "Surrender Wisdom" },
+      { text: "Control is an illusion. Flow is reality.", source: "LunatIQ Team" },
       { text: "Forcing it is not manifesting it.", source: "Spiritual Reality" },
       { text: "Sometimes the bravest thing you can do is stop.", source: "Rest Philosophy" },
       { text: "You're fighting the wrong battle.", source: "Strategic Truth" },
-      { text: "Aggression without direction is just violence.", source: "Warrior Wisdom" },
+      { text: "Aggression without direction is just violence.", source: "LunatIQ Team" },
       { text: "The hardest battles are the ones we fight with ourselves.", source: "Internal Conflict" },
       { text: "Let go or be dragged.", source: "Zen Proverb" },
       { text: "You can't win a race you're not supposed to be running.", source: "Purpose Alignment" },
@@ -745,7 +745,7 @@ export const CARD_QUOTES_EXPANDED = {
     upright: [
       { text: "There were giants in the earth in those days; and also after that, when the sons of God came in unto the daughters of men.", source: "Genesis 6:4 (Nephilim, Bible)" },
       { text: "I am not afraid of storms, for I am learning how to sail my ship.", source: "Louisa May Alcott" },
-      { text: "She's whiskey in a teacup—looks sweet, burns going down, leaves you wanting more.", source: "Strong FMC Energy" },
+      { text: "She's whiskey in a teacup—looks sweet, burns going down, leaves you wanting more.", source: "LunatIQ Team" },
       { text: "The lion and the calf shall lie down together but the calf won't get much sleep.", source: "Woody Allen" },
       { text: "I am no bird; and no net ensnares me.", source: "Jane Eyre" },
       { text: "Soft heart. Sharp edges. Dangerous combination.", source: "Modern Heroine" },
@@ -758,9 +758,9 @@ export const CARD_QUOTES_EXPANDED = {
     ],
     reversed: [
       { text: "You're not required to set yourself on fire to keep other people warm.", source: "Boundary Setting" },
-      { text: "Compassion fatigue is real. Rest is required.", source: "Caregiver Truth" },
-      { text: "Being the strong one doesn't mean you can't break.", source: "Permission to Feel" },
-      { text: "Martyrdom is manipulation dressed as sacrifice.", source: "Brutal Honesty" },
+      { text: "Compassion fatigue is real. Rest is required.", source: "LunatIQ Team" },
+      { text: "Being the strong one doesn't mean you can't break.", source: "LunatIQ Team" },
+      { text: "Martyrdom is manipulation dressed as sacrifice.", source: "LunatIQ Team" },
       { text: "You can't save everyone. And that's okay.", source: "Limits Acceptance" },
       { text: "Sometimes being strong means asking for help.", source: "Vulnerability Courage" },
       { text: "The weight you're carrying was never yours to bear.", source: "Release Permission" },
@@ -792,9 +792,9 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Hermit mode has an expiration date. Check yours.", source: "Balance Reality" },
       { text: "Hiding from the world is not spiritual—it's avoidance.", source: "Spiritual Bypass" },
       { text: "Loneliness and solitude are not the same thing.", source: "Distinction Clarity" },
-      { text: "You've been 'processing' for months. Time to participate.", source: "Action Call" },
-      { text: "Connection is part of wholeness, not a distraction from it.", source: "Integration Truth" },
-      { text: "The guru on the mountaintop still has to come down eventually.", source: "Reality Check" },
+      { text: "You've been 'processing' for months. Time to participate.", source: "LunatIQ Team" },
+      { text: "Connection is part of wholeness, not a distraction from it.", source: "LunatIQ Team" },
+      { text: "The guru on the mountaintop still has to come down eventually.", source: "LunatIQ Team" },
       { text: "Withdrawal is a symptom, not a solution.", source: "Depression Awareness" },
     ]
   },
@@ -817,15 +817,15 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "When patterns are broken, new worlds emerge.", source: "Tuli Kupferberg" },
     ],
     reversed: [
-      { text: "Bad luck is just good luck in disguise, waiting for perspective.", source: "Reframe Wisdom" },
+      { text: "Bad luck is just good luck in disguise, waiting for perspective.", source: "LunatIQ Team" },
       { text: "If you don't like where the wheel is taking you, get off and build your own cart.", source: "Self-Determination" },
       { text: "Resisting change is like holding your breath. You can do it, but not forever.", source: "Flow Reality" },
       { text: "The wheel can't turn if you're standing in the spokes.", source: "Obstacle Metaphor" },
-      { text: "Sometimes you win, sometimes you learn.", source: "Growth Mindset" },
+      { text: "Sometimes you win, sometimes you learn.", source: "LunatIQ Team" },
       { text: "Stuck in a cycle? The exit is where you entered.", source: "Pattern Break" },
       { text: "You can't control the wind, but you can adjust your sails.", source: "Adaptation Truth" },
       { text: "The wheel is turning, but you're not on it anymore.", source: "Left Behind Energy" },
-      { text: "Clinging to good fortune prevents new fortune from arriving.", source: "Attachment Lesson" },
+      { text: "Clinging to good fortune prevents new fortune from arriving.", source: "LunatIQ Team" },
     ]
   },
 
@@ -847,11 +847,11 @@ export const CARD_QUOTES_EXPANDED = {
     reversed: [
       { text: "The scales are rigged, but that doesn't mean you stop fighting.", source: "Resistance Energy" },
       { text: "Sometimes the law is wrong. Sometimes the law is the injustice.", source: "Moral Courage" },
-      { text: "Being right doesn't always mean winning. And that's the hardest lesson.", source: "Justice Delayed" },
+      { text: "Being right doesn't always mean winning. And that's the hardest lesson.", source: "LunatIQ Team" },
       { text: "You can't negotiate with reality. You can only accept it.", source: "Truth Surrender" },
       { text: "Unforgiveness is like drinking poison and expecting the other person to die.", source: "Buddha" },
       { text: "The truth you're avoiding is the one you most need to speak.", source: "Honesty Call" },
-      { text: "You're the judge, jury, and executioner in your own story. Choose wisely.", source: "Self-Accountability" },
+      { text: "You're the judge, jury, and executioner in your own story. Choose wisely.", source: "LunatIQ Team" },
       { text: "Imbalance is feedback. Listen to it.", source: "Course Correction" },
       { text: "Justice delayed is justice denied.", source: "William Gladstone" },
     ]
@@ -873,13 +873,13 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Moksha is release. Liberation comes through surrender, not struggle.", source: "Hindu Philosophy" },
     ],
     reversed: [
-      { text: "You're not hanging—you're stuck. There's a difference.", source: "Clarity Truth" },
+      { text: "You're not hanging—you're stuck. There's a difference.", source: "LunatIQ Team" },
       { text: "Martyrdom is not a personality trait.", source: "Boundary Reality" },
       { text: "Suffering for suffering's sake is not spiritual growth.", source: "Pain Purpose" },
       { text: "There's a difference between patience and paralysis.", source: "Action vs Waiting" },
       { text: "Stop waiting for permission to save yourself.", source: "Self-Rescue" },
       { text: "The universe doesn't reward self-sacrifice—it rewards self-actualization.", source: "Empowerment Truth" },
-      { text: "You've been 'letting go' for months. Maybe it's time to grab hold.", source: "Action Call" },
+      { text: "You've been 'letting go' for months. Maybe it's time to grab hold.", source: "LunatIQ Team" },
       { text: "Surrender the outcome, not the effort.", source: "Balance Wisdom" },
       { text: "Stagnation masquerading as contemplation is still stagnation.", source: "Movement Need" },
     ]
@@ -890,14 +890,14 @@ export const CARD_QUOTES_EXPANDED = {
     upright: [
       { text: "Behold, I make all things new.", source: "Revelation 21:5 (Bible)" },
       { text: "And I looked, and behold a pale horse: and his name that sat on him was Death.", source: "Revelation 6:8 (Bible)" },
-      { text: "Death witches don't fear the reaper. We work with him. Transformation requires a funeral first.", source: "Death Magic" },
+      { text: "Death witches don't fear the reaper. We work with him. Transformation requires a funeral first.", source: "LunatIQ Team" },
       { text: "The old has passed away; behold, the new has come.", source: "2 Corinthians 5:17 (Bible)" },
-      { text: "Phoenix rising energy: died once, won't do it again, but absolutely will set fire to whatever tries to bury me.", source: "Rebirth Philosophy" },
+      { text: "Phoenix rising energy: died once, won't do it again, but absolutely will set fire to whatever tries to bury me.", source: "LunatIQ Team" },
       { text: "Every new beginning comes from some other beginning's end.", source: "Seneca" },
       { text: "The snake which cannot cast its skin has to die.", source: "Friedrich Nietzsche" },
       { text: "Shed your skin. Burn the old self. The witch who emerges from the ashes is the real you.", source: "Transformation Witchcraft" },
       { text: "What the caterpillar calls the end, the rest of the world calls a butterfly.", source: "Lao Tzu" },
-      { text: "You can't keep dancing with the devil and wonder why you're still in hell. At some point, you have to burn the whole ballroom down.", source: "Transformation Arc" },
+      { text: "You can't keep dancing with the devil and wonder why you're still in hell. At some point, you have to burn the whole ballroom down.", source: "LunatIQ Team" },
       { text: "Sometimes good things fall apart so better things can fall together.", source: "Marilyn Monroe" },
       { text: "The wound is where the light enters you.", source: "Rumi" },
       { text: "You must be willing to give up the life you planned to have the life that's waiting for you.", source: "Joseph Campbell" },
@@ -905,15 +905,15 @@ export const CARD_QUOTES_EXPANDED = {
     ],
     reversed: [
       { text: "The people perish for lack of vision.", source: "Proverbs 29:18 (Bible)" },
-      { text: "Clinging to the past is why you can't reach the future.", source: "Letting Go Truth" },
-      { text: "You can't heal in the same environment that made you sick.", source: "Recovery Wisdom" },
+      { text: "Clinging to the past is why you can't reach the future.", source: "LunatIQ Team" },
+      { text: "You can't heal in the same environment that made you sick.", source: "LunatIQ Team" },
       { text: "Resistance to change is insistence on pain.", source: "Growth Philosophy" },
       { text: "The definition of insanity is doing the same thing over and over and expecting different results.", source: "Einstein (attributed)" },
       { text: "You're not stuck. You're just comfortable with your suffering.", source: "Brutal Truth" },
       { text: "Grief is love with nowhere to go—but you can't make a home in it forever.", source: "Mourning Wisdom" },
       { text: "Holding on to anger is like drinking poison and expecting the other person to die.", source: "Buddha" },
       { text: "You can't start the next chapter if you keep re-reading the last one.", source: "Life Coaching" },
-      { text: "Fear of change is what keeps most people stuck in mediocrity.", source: "Success Philosophy" },
+      { text: "Fear of change is what keeps most people stuck in mediocrity.", source: "LunatIQ Team" },
       { text: "Some people die at 25 and aren't buried until 75.", source: "Benjamin Franklin" },
     ]
   },
@@ -931,17 +931,17 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Patience is not passive; on the contrary, it is active; it is concentrated strength.", source: "Edward G. Bulwer-Lytton" },
       { text: "The goal is to dance lightly with life, not to be dragged through it.", source: "Flow Philosophy" },
       { text: "Integration, not perfection.", source: "Modern Wellness" },
-      { text: "Alchemy is the art of transformation through balance.", source: "Hermetic Wisdom" },
+      { text: "Alchemy is the art of transformation through balance.", source: "LunatIQ Team" },
     ],
     reversed: [
       { text: "You can't balance what's fundamentally broken.", source: "Truth Bomb" },
       { text: "Moderation doesn't work when one side is poison.", source: "Boundary Reality" },
       { text: "Sometimes the middle ground is just a slow death.", source: "Compromise Warning" },
-      { text: "You're not being balanced—you're being indecisive.", source: "Action Call" },
+      { text: "You're not being balanced—you're being indecisive.", source: "LunatIQ Team" },
       { text: "Trying to please everyone means disappointing yourself.", source: "People-Pleasing Truth" },
-      { text: "The scales are broken. Stop trying to fix them with wishful thinking.", source: "Reality Check" },
+      { text: "The scales are broken. Stop trying to fix them with wishful thinking.", source: "LunatIQ Team" },
       { text: "Integration requires acknowledging the extremes first.", source: "Shadow Work" },
-      { text: "Balance is not neutrality. It's conscious choice.", source: "Active Wisdom" },
+      { text: "Balance is not neutrality. It's conscious choice.", source: "LunatIQ Team" },
       { text: "You're watering yourself down to make others comfortable.", source: "Authenticity Call" },
     ]
   },
@@ -951,26 +951,26 @@ export const CARD_QUOTES_EXPANDED = {
     upright: [
       { text: "Get behind me, Satan!", source: "Matthew 16:23 (Bible)" },
       { text: "Shadow work isn't 'love and light.' It's facing the parts of yourself that scare you and saying, 'You're mine too.'", source: "Shadow Witch" },
-      { text: "He was chaos and she was his only calm. And somehow, that felt like the most dangerous addiction of all.", source: "Dark Romance Aesthetic" },
-      { text: "Touch her and you won't have hands. Look at her wrong and you won't have eyes.", source: "Possessive MMC Energy" },
-      { text: "Dark magic isn't evil. It's just magic done in the dark. The warlock who denies his shadow is the most dangerous.", source: "Warlock Philosophy" },
-      { text: "I don't want easy. I want the kind of complicated that ruins me for anyone else.", source: "BookTok Dark Romance" },
-      { text: "He wasn't a knight in shining armor. He was the dragon who learned to share his hoard.", source: "Morally Grey MMC" },
-      { text: "The greatest trick the devil ever pulled was convincing the world he didn't exist.", source: "The Usual Suspects" },
+      { text: "He was chaos and she was his only calm. And somehow, that felt like the most dangerous addiction of all.", source: "LunatIQ Team" },
+      { text: "Touch her and you won't have hands. Look at her wrong and you won't have eyes.", source: "LunatIQ Team" },
+      { text: "Dark magic isn't evil. It's just magic done in the dark. The warlock who denies his shadow is the most dangerous.", source: "LunatIQ Team" },
+      { text: "I don't want easy. I want the kind of complicated that ruins me for anyone else.", source: "LunatIQ Team" },
+      { text: "He wasn't a knight in shining armor. He was the dragon who learned to share his hoard.", source: "LunatIQ Team" },
+      { text: "The greatest trick the devil ever pulled was convincing the world he didn't exist.", source: "LunatIQ Team" },
       { text: "We have met the enemy and he is us.", source: "Pogo" },
-      { text: "Some people are worth burning the world for. I just hadn't met mine yet.", source: "Villain Arc" },
+      { text: "Some people are worth burning the world for. I just hadn't met mine yet.", source: "LunatIQ Team" },
       { text: "Every witch has a devil on her shoulder. Mine just happens to give better advice than my angel.", source: "Shadow Integration" },
       { text: "Evil is a point of view. God kills indiscriminately and so shall we.", source: "Anne Rice, Interview with the Vampire" },
       { text: "The chains of habit are too weak to be felt until they are too strong to be broken.", source: "Samuel Johnson" },
-      { text: "Obsession dressed up as love still feels like devotion.", source: "Dark Romance Truth" },
+      { text: "Obsession dressed up as love still feels like devotion.", source: "LunatIQ Team" },
       { text: "Hell is empty and all the devils are here.", source: "William Shakespeare" },
     ],
     reversed: [
       { text: "Submit yourselves therefore to God. Resist the devil, and he will flee from you.", source: "James 4:7 (Bible)" },
-      { text: "The price of freedom is responsibility—and you're finally ready to pay it.", source: "Liberation Philosophy" },
+      { text: "The price of freedom is responsibility—and you're finally ready to pay it.", source: "LunatIQ Team" },
       { text: "You taught the devil how to dance, now it's time to sit down.", source: "Recovery Energy" },
-      { text: "Breaking chains isn't dramatic—it's a thousand small choices to choose yourself.", source: "Healing Truth" },
-      { text: "Addiction ends when the pain of staying the same exceeds the pain of change.", source: "Recovery Wisdom" },
+      { text: "Breaking chains isn't dramatic—it's a thousand small choices to choose yourself.", source: "LunatIQ Team" },
+      { text: "Addiction ends when the pain of staying the same exceeds the pain of change.", source: "LunatIQ Team" },
       { text: "The cage is open. If it were me, I'd run.", source: "Freedom Moment" },
       { text: "You don't have to set yourself on fire to keep someone else warm.", source: "Codependency Recovery" },
       { text: "Rock bottom isn't a place—it's a decision to stop digging.", source: "Turning Point" },
@@ -984,13 +984,13 @@ export const CARD_QUOTES_EXPANDED = {
     name: 'The Tower',
     upright: [
       { text: "Every valley shall be exalted, and every mountain and hill shall be made low.", source: "Isaiah 40:4 (Bible)" },
-      { text: "She wasn't looking for a knight. She was looking for a sword.", source: "Fantasy Heroine Energy" },
-      { text: "Burn it all down. Salt the earth. Start over. Some foundations deserve to crumble.", source: "Liberation Philosophy" },
+      { text: "She wasn't looking for a knight. She was looking for a sword.", source: "LunatIQ Team" },
+      { text: "Burn it all down. Salt the earth. Start over. Some foundations deserve to crumble.", source: "LunatIQ Team" },
       { text: "Rock bottom became the solid foundation on which I rebuilt my life.", source: "J.K. Rowling" },
-      { text: "The old version of me? Dead. This one bites back.", source: "Rebirth Arc" },
+      { text: "The old version of me? Dead. This one bites back.", source: "LunatIQ Team" },
       { text: "Sometimes God allows what He hates to accomplish what He loves.", source: "Joni Eareckson Tada" },
       { text: "In the midst of chaos, there is also opportunity.", source: "Sun Tzu" },
-      { text: "What doesn't kill you makes you stronger. Unless it should have killed you. Then you're just traumatized.", source: "Dark Humor Truth" },
+      { text: "What doesn't kill you makes you stronger. Unless it should have killed you. Then you're just traumatized.", source: "LunatIQ Team" },
       { text: "The tower had to fall. It was built on a lie.", source: "Truth Revelation" },
       { text: "Everything I ever let go of has claw marks on it.", source: "David Foster Wallace" },
       { text: "When one door closes, another opens. But goddamn, those hallways are a bitch.", source: "Transition Reality" },
@@ -1000,9 +1000,9 @@ export const CARD_QUOTES_EXPANDED = {
     reversed: [
       { text: "For I know the plans I have for you, plans to prosper you and not to harm you.", source: "Jeremiah 29:11 (Bible)" },
       { text: "You can't rebuild on a cracked foundation and expect it to hold.", source: "Construction Wisdom" },
-      { text: "Avoiding the collapse doesn't make the building safe.", source: "Denial Truth" },
+      { text: "Avoiding the collapse doesn't make the building safe.", source: "LunatIQ Team" },
       { text: "The tower is coming down whether you like it or not. Your choice is whether to get out of the way.", source: "Inevitability Wisdom" },
-      { text: "Clinging to the wreckage won't save you—it'll drown you.", source: "Survival Instinct" },
+      { text: "Clinging to the wreckage won't save you—it'll drown you.", source: "LunatIQ Team" },
       { text: "The warning bells were ringing. You just turned up the music.", source: "Ignored Red Flags" },
       { text: "Resistance to change is why you keep getting the same lessons.", source: "Growth Block" },
       { text: "You can't prevent the storm, but you can choose not to build your house on sand.", source: "Matthew 7:26 Wisdom" },
@@ -1027,22 +1027,22 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Moksha is remembering you were never separate from the divine. You ARE the light.", source: "Spiritual Liberation" },
     ],
     reversed: [
-      { text: "You can't heal in the same environment that made you sick.", source: "Recovery Wisdom" },
-      { text: "Hope without action is just wishing.", source: "Reality Check" },
+      { text: "You can't heal in the same environment that made you sick.", source: "LunatIQ Team" },
+      { text: "Hope without action is just wishing.", source: "LunatIQ Team" },
       { text: "Stargazing is beautiful, but you still have to walk the earth.", source: "Grounding Truth" },
       { text: "Your faith has been tested. Don't abandon it now.", source: "Perseverance Call" },
-      { text: "Disillusionment is the death of false hope and the birth of wisdom.", source: "Maturity Truth" },
+      { text: "Disillusionment is the death of false hope and the birth of wisdom.", source: "LunatIQ Team" },
       { text: "You're looking for miracles while ignoring the magic you already have.", source: "Gratitude Reminder" },
       { text: "The stars are still there. You just stopped looking up.", source: "Hope Recovery" },
-      { text: "Cynicism is just disappointed idealism.", source: "Perspective Shift" },
-      { text: "Don't let bitterness dim your light.", source: "Shine Anyway" },
+      { text: "Cynicism is just disappointed idealism.", source: "LunatIQ Team" },
+      { text: "Don't let bitterness dim your light.", source: "LunatIQ Team" },
     ]
   },
 
   18: { // The Moon
     name: 'The Moon',
     upright: [
-      { text: "She was moon-touched and shadow-kissed, wild in ways that terrified men who needed women tame.", source: "Witchy Aesthetic" },
+      { text: "She was moon-touched and shadow-kissed, wild in ways that terrified men who needed women tame.", source: "LunatIQ Team" },
       { text: "We meet in the woods at midnight. We draw down the moon. We remember what they tried to make us forget.", source: "Coven Energy" },
       { text: "The moon is a loyal companion. It never leaves.", source: "Tahereh Mafi" },
       { text: "Trust your intuition. It's just your ancestors whispering warnings from beyond the veil.", source: "Mystical Wisdom" },
@@ -1053,17 +1053,17 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Wolves and witches understand: the moon sees everything. Hide nothing.", source: "Moon Magic" },
       { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
       { text: "What we don't bring into the light, controls us from the dark.", source: "Shadow Work Truth" },
-      { text: "She had that unhinged look in her eye that said 'I know things you couldn't handle knowing.'", source: "Dark Feminine Energy" },
+      { text: "She had that unhinged look in her eye that said 'I know things you couldn't handle knowing.'", source: "LunatIQ Team" },
       { text: "Witchcraft is moon phases and herb bundles, yes. But mostly it's trusting yourself when everyone says you're crazy.", source: "Modern Witch Wisdom" },
     ],
     reversed: [
-      { text: "Illusions are necessary to the soul.", source: "Anne Rice Aesthetic" },
+      { text: "Illusions are necessary to the soul.", source: "LunatIQ Team" },
       { text: "Not everything that appears in the dark is dangerous. Sometimes it's just truth without the pretty filter.", source: "Reality Unveiling" },
-      { text: "Fear and intuition are not the same thing. Learn the difference.", source: "Discernment Wisdom" },
+      { text: "Fear and intuition are not the same thing. Learn the difference.", source: "LunatIQ Team" },
       { text: "Your anxiety is not prophecy.", source: "Mental Health Truth" },
       { text: "The monsters under the bed are just reflections you haven't integrated yet.", source: "Shadow Integration" },
       { text: "Stop romanticizing your pain. It's keeping you stuck.", source: "Healing Call" },
-      { text: "Confusion is a defense mechanism. You know the truth—you just don't like it.", source: "Clarity Truth" },
+      { text: "Confusion is a defense mechanism. You know the truth—you just don't like it.", source: "LunatIQ Team" },
       { text: "The moon shows you what's there. Don't blame her for what you see.", source: "Messenger Truth" },
       { text: "Paranoia and intuition feel the same until you check the facts.", source: "Grounding Wisdom" },
     ]
@@ -1081,18 +1081,18 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Turn your face to the sun and the shadows fall behind you.", source: "Maori Proverb" },
       { text: "Some people are sunshine, some people are lightning, some people are hurricanes.", source: "Weather Energy" },
       { text: "Live in the sunshine, swim the sea, drink the wild air.", source: "Ralph Waldo Emerson" },
-      { text: "After darkness comes light. After winter comes spring. This is law.", source: "Natural Cycles" },
+      { text: "After darkness comes light. After winter comes spring. This is law.", source: "LunatIQ Team" },
       { text: "You are allowed to be both a masterpiece and a work in progress simultaneously.", source: "Sophia Bush" },
     ],
     reversed: [
       { text: "Too much of a good thing is still too much.", source: "Excess Warning" },
-      { text: "Even the sun sets in paradise.", source: "Reality Check" },
+      { text: "Even the sun sets in paradise.", source: "LunatIQ Team" },
       { text: "Toxic positivity is just emotional bypassing with better PR.", source: "Authentic Feeling" },
       { text: "You can't force joy. And pretending doesn't count.", source: "Genuine Emotion" },
-      { text: "Behind every perfect Instagram post is someone struggling with something.", source: "Social Media Reality" },
+      { text: "Behind every perfect Instagram post is someone struggling with something.", source: "LunatIQ Team" },
       { text: "Sunshine can burn too. Moderation in all things.", source: "Balance Truth" },
       { text: "Your light doesn't need to be on all the time. Rest is productive.", source: "Permission to Dim" },
-      { text: "Hiding behind optimism won't solve what needs to be addressed.", source: "Avoidance Pattern" },
+      { text: "Hiding behind optimism won't solve what needs to be addressed.", source: "LunatIQ Team" },
       { text: "The sun will rise tomorrow whether you believe it or not.", source: "Faith vs Fear" },
     ]
   },
@@ -1114,10 +1114,10 @@ export const CARD_QUOTES_EXPANDED = {
     ],
     reversed: [
       { text: "You can't have a spiritual awakening in the same consciousness that put you to sleep.", source: "Transformation Block" },
-      { text: "The call is coming. Are you going to answer or let it go to voicemail again?", source: "Avoidance Pattern" },
+      { text: "The call is coming. Are you going to answer or let it go to voicemail again?", source: "LunatIQ Team" },
       { text: "Self-judgment is just ego pretending to be enlightened.", source: "Spiritual Bypass" },
       { text: "You're waiting for permission that's never coming. Give it to yourself.", source: "Self-Authorization" },
-      { text: "Accountability without self-compassion is just another form of abuse.", source: "Balanced Growth" },
+      { text: "Accountability without self-compassion is just another form of abuse.", source: "LunatIQ Team" },
       { text: "The resurrection requires you to actually leave the tomb.", source: "Action Needed" },
       { text: "You can't judge yourself into wholeness. Try love instead.", source: "Compassionate Path" },
       { text: "Karmic debt doesn't mean eternal punishment. It means learn the lesson and move on.", source: "Grace Truth" },
@@ -1131,9 +1131,9 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "It is finished.", source: "John 19:30 (Bible)" },
       { text: "The world is yours.", source: "Scarface" },
       { text: "And in the end, the love you take is equal to the love you make.", source: "The Beatles" },
-      { text: "Everything you've been through has led to this moment.", source: "Culmination Truth" },
+      { text: "Everything you've been through has led to this moment.", source: "LunatIQ Team" },
       { text: "You are the universe experiencing itself.", source: "Alan Watts" },
-      { text: "The end is just another beginning in disguise.", source: "Cycle Wisdom" },
+      { text: "The end is just another beginning in disguise.", source: "LunatIQ Team" },
       { text: "Wherever you go, there you are.", source: "Buckaroo Banzai" },
       { text: "Not all who wander are lost.", source: "J.R.R. Tolkien" },
       { text: "What you seek is seeking you.", source: "Rumi" },
@@ -1148,7 +1148,7 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Success without fulfillment is the ultimate failure.", source: "Tony Robbins" },
       { text: "You got everything you wanted and still feel empty. That's called needing therapy, not more achievement.", source: "Inner Work Call" },
       { text: "The goal was always about who you became in the pursuit, not the prize.", source: "Journey Lesson" },
-      { text: "Finishing doesn't mean you're finished. There's always another level.", source: "Growth Mindset" },
+      { text: "Finishing doesn't mean you're finished. There's always another level.", source: "LunatIQ Team" },
       { text: "Sometimes you have to destroy the life you planned to live the one that's waiting for you.", source: "Path Correction" },
       { text: "You made it to the top and realized it was the wrong mountain.", source: "Reorientation Needed" },
       { text: "Integration is the final boss, and you're still avoiding it.", source: "Completion Block" },
@@ -1176,7 +1176,7 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "The universe just said yes. Don't ask it to repeat itself.", source: "Opportunity Knock" },
     ],
     reversed: [
-      { text: "Analysis paralysis is still paralysis.", source: "Action Block" },
+      { text: "Analysis paralysis is still paralysis.", source: "LunatIQ Team" },
       { text: "You're waiting for the perfect moment. This is it.", source: "Timing Truth" },
       { text: "The spark is there, but you keep smothering it with doubt.", source: "Self-Sabotage" },
       { text: "Inspiration without action is just daydreaming.", source: "Execution Gap" },
@@ -1488,10 +1488,10 @@ export const CARD_QUOTES_EXPANDED = {
     name: 'Queen of Wands',
     upright: [
       { text: "She is clothed with strength and dignity; she can laugh at the days to come.", source: "Proverbs 31:25 (Bible)" },
-      { text: "She's the kind of woman who walks into a room and men either fall to their knees or run for their lives. Sometimes both.", source: "Powerful FMC Archetype" },
+      { text: "She's the kind of woman who walks into a room and men either fall to their knees or run for their lives. Sometimes both.", source: "LunatIQ Team" },
       { text: "I am not afraid of storms, for I am learning how to sail my ship.", source: "Louisa May Alcott" },
       { text: "The question isn't who's going to let me; it's who's going to stop me.", source: "Ayn Rand" },
-      { text: "Fire in her soul. Grace in her heart. Chaos in her wake.", source: "Wild Woman Energy" },
+      { text: "Fire in her soul. Grace in her heart. Chaos in her wake.", source: "LunatIQ Team" },
       { text: "Well-behaved women seldom make history.", source: "Laurel Thatcher Ulrich" },
       { text: "She remembered who she was and the game changed.", source: "Lalah Delia" },
       { text: "Confidence is not 'they will like me.' Confidence is 'I'll be fine if they don't.'", source: "LunatIQ Team" },
@@ -2655,9 +2655,38 @@ export function getCardQuote(cardIndex, quantumSeed, reversed = false) {
 }
 
 /**
+ * Optimized Fisher-Yates shuffle with quantum seed
+ * O(n) complexity - much faster than nested loops
+ *
+ * @param {Array} array - Array to shuffle
+ * @param {number} seed - Quantum seed for deterministic shuffle
+ * @returns {Array} - Shuffled copy of array
+ */
+function quantumShuffle(array, seed) {
+  const shuffled = [...array]; // Create copy to avoid mutation
+
+  // Seeded random function using quantum seed
+  let currentSeed = Math.abs(seed) % 1;
+  const seededRandom = () => {
+    currentSeed = (currentSeed * 9301 + 49297) % 233280;
+    return currentSeed / 233280;
+  };
+
+  // Fisher-Yates shuffle with seeded random
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(seededRandom() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
+/**
  * Get multiple quotes for card with intelligent source preference
  * ALWAYS prefers quotes from real sources (philosophers, Bible, famous figures)
  * over LunatIQ Team quotes when both are relevant
+ *
+ * OPTIMIZED: O(n) complexity using Fisher-Yates shuffle
  *
  * @param {number} cardIndex - The card index
  * @param {number} quantumSeed - Quantum seed for selection
@@ -2674,63 +2703,32 @@ export function getCardQuotes(cardIndex, quantumSeed, reversed = false, count = 
 
   if (!quoteArray || quoteArray.length === 0) return [];
 
+  // Ensure seed is in valid range [0, 1)
+  const safeSeed = Math.abs(quantumSeed) % 1;
+
   // Separate quotes into real sources and LunatIQ Team sources
   const realSourceQuotes = quoteArray.filter(q => q.source !== "LunatIQ Team");
   const lunatiqQuotes = quoteArray.filter(q => q.source === "LunatIQ Team");
 
+  // Shuffle both pools with different seeds for variety
+  const shuffledReal = realSourceQuotes.length > 0
+    ? quantumShuffle(realSourceQuotes, safeSeed * 1.618) // Golden ratio
+    : [];
+  const shuffledLunatiq = lunatiqQuotes.length > 0
+    ? quantumShuffle(lunatiqQuotes, safeSeed * 2.718) // Euler's number
+    : [];
+
+  // Strategy: Take from real sources first, then LunatIQ Team
   const selectedQuotes = [];
-  const usedIndices = new Set();
 
-  // Strategy: ALWAYS prefer real sources first, then fill with LunatIQ Team if needed
-  const priorityPool = realSourceQuotes.length > 0 ? realSourceQuotes : [];
-  const fallbackPool = lunatiqQuotes;
+  // Take as many as needed from real sources
+  const realCount = Math.min(count, shuffledReal.length);
+  selectedQuotes.push(...shuffledReal.slice(0, realCount));
 
-  for (let i = 0; i < count; i++) {
-    let quote = null;
-
-    // Try to get from priority pool (real sources) first
-    if (priorityPool.length > 0 && selectedQuotes.length < realSourceQuotes.length) {
-      const seed = (quantumSeed * (i + 1) * 1.618) % 1; // Golden ratio variation
-      const index = Math.floor(seed * priorityPool.length) % priorityPool.length;
-
-      // Ensure we don't pick the same quote twice
-      let attempts = 0;
-      let selectedIndex = index;
-      while (usedIndices.has(`priority-${selectedIndex}`) && attempts < priorityPool.length) {
-        selectedIndex = (selectedIndex + 1) % priorityPool.length;
-        attempts++;
-      }
-
-      if (!usedIndices.has(`priority-${selectedIndex}`)) {
-        quote = priorityPool[selectedIndex];
-        usedIndices.add(`priority-${selectedIndex}`);
-      }
-    }
-
-    // If we couldn't get a priority quote, or we've exhausted them, use fallback
-    if (!quote && fallbackPool.length > 0) {
-      const seed = (quantumSeed * (i + 1) * 2.718) % 1; // Euler's number variation
-      const index = Math.floor(seed * fallbackPool.length) % fallbackPool.length;
-
-      let attempts = 0;
-      let selectedIndex = index;
-      while (usedIndices.has(`fallback-${selectedIndex}`) && attempts < fallbackPool.length) {
-        selectedIndex = (selectedIndex + 1) % fallbackPool.length;
-        attempts++;
-      }
-
-      if (!usedIndices.has(`fallback-${selectedIndex}`)) {
-        quote = fallbackPool[selectedIndex];
-        usedIndices.add(`fallback-${selectedIndex}`);
-      }
-    }
-
-    if (quote) {
-      selectedQuotes.push(quote);
-    } else {
-      // If we can't find any more unique quotes, break
-      break;
-    }
+  // Fill remaining with LunatIQ Team quotes if needed
+  const remaining = count - selectedQuotes.length;
+  if (remaining > 0 && shuffledLunatiq.length > 0) {
+    selectedQuotes.push(...shuffledLunatiq.slice(0, remaining));
   }
 
   return selectedQuotes;
