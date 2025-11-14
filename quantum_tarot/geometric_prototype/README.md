@@ -20,17 +20,32 @@ Cards exist as "fuzzy polygons" with influence radii. Overlaps create emergent m
 - [x] User profile → query vector mapping
 - [x] Theme extraction from geometric configuration
 
+## Phase 2: Visualization ✅
+
+- [x] Interactive 3D Plotly visualization
+- [x] Card positions as sized spheres (size = influence radius)
+- [x] Overlap connections (line thickness = strength)
+- [x] Reading centroid display
+- [x] User query vector overlay
+- [x] Pairwise overlap heatmap
+
 ## Next Phases
 
-- [ ] Phase 2: 3D Visualization (Plotly)
 - [ ] Phase 3: Integration with current synthesis engine
 - [ ] Phase 4: Scale to all 78 cards
 
 ## Usage
 
+**Run semantic space tests:**
 ```bash
 pip install -r requirements.txt
 python semantic_space.py
+```
+
+**Generate interactive visualizations:**
+```bash
+python visualize.py
+# Opens semantic_space_3d.html and overlap_heatmap.html
 ```
 
 ## Sample Output
