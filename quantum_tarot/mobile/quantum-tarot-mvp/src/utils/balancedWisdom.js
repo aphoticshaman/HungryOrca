@@ -90,7 +90,7 @@ export const BALANCED_PILLARS = {
       'Listen more than you defend.',
       'Your words can heal or harm—choose with care.',
       'Silence can be wisdom when speech would wound.',
-      'Say what you mean. Mean what you say. Don't say it mean.',
+      'Say what you mean. Mean what you say. Don\'t say it mean.',
     ],
   },
   INTEGRATED_ACTION: {
