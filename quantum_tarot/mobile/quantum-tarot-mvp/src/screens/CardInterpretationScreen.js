@@ -170,37 +170,26 @@ const CardInterpretationScreen = ({ route, navigation }) => {
   // Check if user has answered questions for THIS card
   const hasAnsweredCurrentCard = allMCQAnswers.some(answer => answer.cardIndex === currentCardIndex);
 
-  // Colorize interpretation text based on card type
+  // Colorize only section headings, not full text
   const getColorizedInterpretation = (text, cardData) => {
     if (!text || !cardData) return text;
 
+    // Color scheme based on card type
     const isMajorArcana = cardData.arcana?.toLowerCase() === 'major';
-
-    // Split into sentences for color rotation
-    const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+    let headingColor = '$HIC$'; // Default cyan
 
     if (isMajorArcana) {
-      // MAJOR ARCANA: Rainbow LPMUD colors cycling through sentences
-      const rainbowColors = ['$HIR$', '$HIY$', '$HIG$', '$HIC$', '$HIB$', '$HIM$', '$HIW$'];
-      return sentences.map((sentence, i) => {
-        const color = rainbowColors[i % rainbowColors.length];
-        return `${color}${sentence.trim()}$NOR$`;
-      }).join(' ');
+      headingColor = '$HIM$'; // Magenta for Major Arcana headings
     } else {
-      // MINOR ARCANA: Element-based color pairs
       const suit = cardData.suit?.toLowerCase();
-      let colorPair = ['$HIW$', '$HIC$']; // Default: White/Cyan
-
-      if (suit === 'wands') colorPair = ['$HIR$', '$HIY$']; // Fire: Red/Yellow
-      else if (suit === 'cups') colorPair = ['$HIB$', '$HIC$']; // Water: Blue/Cyan
-      else if (suit === 'swords') colorPair = ['$HIW$', '$HIC$']; // Air: White/Cyan
-      else if (suit === 'pentacles') colorPair = ['$HIG$', '$HIY$']; // Earth: Green/Yellow
-
-      return sentences.map((sentence, i) => {
-        const color = colorPair[i % colorPair.length];
-        return `${color}${sentence.trim()}$NOR$`;
-      }).join(' ');
+      if (suit === 'wands') headingColor = '$HIY$'; // Yellow for Wands
+      else if (suit === 'cups') headingColor = '$HIB$'; // Blue for Cups
+      else if (suit === 'swords') headingColor = '$HIC$'; // Cyan for Swords
+      else if (suit === 'pentacles') headingColor = '$HIG$'; // Green for Pentacles
     }
+
+    // Colorize ONLY section headings (━━ HEADING ━━) and leave body text white
+    return text.replace(/(━━\s+[^━]+\s+━━)/g, `${headingColor}$1$NOR$`);
   };
 
   const colorizedInterpretation = getColorizedInterpretation(currentInterpretation, cardData);

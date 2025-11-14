@@ -43,29 +43,29 @@ function formatInterpretation(interpretation) {
     text += `Element: ${layers.archetypal?.element || 'Spirit'}\n\n`;
 
     // Archetypal layer
-    text += `━━ ARCHETYPAL MEANING ━━\n`;
-    text += `${layers.archetypal?.core_meaning || 'No meaning available'}\n\n`;
+    text += `━━ ARCHETYPAL MEANING ━━\n\n`;
+    text += `${layers.archetypal?.core_meaning || 'No meaning available'}\n\n\n`;
 
     // Contextual layer
-    text += `━━ IN YOUR SITUATION ━━\n`;
+    text += `━━ IN YOUR SITUATION ━━\n\n`;
     text += `${layers.contextual?.position_significance || 'No context'}\n\n`;
-    text += `${layers.contextual?.intention_alignment || 'No alignment'}\n\n`;
+    text += `${layers.contextual?.intention_alignment || 'No alignment'}\n\n\n`;
 
     // Psychological layer
-    text += `━━ DEEPER INSIGHT ━━\n`;
-    text += `Shadow Work: ${layers.psychological?.shadow_work || 'None'}\n\n`;
-    text += `Integration: ${layers.psychological?.integration_path || 'None'}\n\n`;
+    text += `━━ DEEPER INSIGHT ━━\n\n`;
+    text += `${layers.psychological?.shadow_work || 'None'}\n\n`;
+    text += `${layers.psychological?.integration_path || 'None'}\n\n\n`;
 
     // Practical layer
-    text += `━━ ACTION STEPS ━━\n`;
+    text += `━━ ACTION STEPS ━━\n\n`;
     const steps = layers.practical?.action_steps || [];
     steps.forEach((step, i) => {
       text += `${i + 1}. ${step}\n`;
     });
-    text += `\nFocus: ${layers.practical?.what_to_focus_on || 'General focus'}\n\n`;
+    text += `\n${layers.practical?.what_to_focus_on || 'General focus'}\n\n\n`;
 
     // Synthesis
-    text += `━━ KEY MESSAGE ━━\n`;
+    text += `━━ KEY MESSAGE ━━\n\n`;
     text += `${layers.synthesis?.core_message || 'No message'}\n\n`;
     text += `${layers.synthesis?.next_steps || 'Continue forward'}`;
 
