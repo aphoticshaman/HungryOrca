@@ -141,7 +141,6 @@ export default function CardDrawingScreen({ route, navigation }) {
         'Preparing your reading...',
         '',
         'Thank you for your patience.',
-        'You\'re going to love your reading!',
       ]);
       await sleep(1200);
 
@@ -154,7 +153,6 @@ export default function CardDrawingScreen({ route, navigation }) {
         'Mixing your intention...',
         '',
         'Thank you for your patience.',
-        'You\'re going to love your reading!',
       ]);
       await sleep(1500);
 
@@ -206,7 +204,6 @@ export default function CardDrawingScreen({ route, navigation }) {
         'Quantum processing...',
         '',
         'Thank you for your patience!',
-        'You\'re going to love your reading!',
       ]);
       await sleep(1000);
 
