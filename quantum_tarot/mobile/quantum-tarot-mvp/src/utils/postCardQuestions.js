@@ -62,13 +62,13 @@ function generateResonanceQuestion(cardData, reversed) {
   return {
     id: `resonance_${cardData.id}`,
     type: 'resonance',
-    question: `How strongly does ${cardName}${reversed ? ' (reversed)' : ''} resonate with your current situation?`,
+    question: `${cardName}${reversed ? ' (reversed)' : ''} and your current situation—what's the connection?`,
     options: [
-      { text: 'Extremely strong - this is exactly what I needed to see', value: 5, emotional: 'validated' },
-      { text: 'Strong - it definitely relates to my situation', value: 4, emotional: 'connected' },
-      { text: 'Moderate - I see some relevance', value: 3, emotional: 'curious' },
-      { text: 'Weak - not sure how this applies', value: 2, emotional: 'confused' },
-      { text: 'No resonance - this feels off or wrong', value: 1, emotional: 'disconnected' }
+      { text: 'Direct hit - this is exactly what I needed to see', value: 5, emotional: 'validated' },
+      { text: 'Strong connection - it relates to my situation', value: 4, emotional: 'connected' },
+      { text: 'Some connection - I see partial relevance', value: 3, emotional: 'curious' },
+      { text: 'Weak or unclear connection', value: 2, emotional: 'confused' },
+      { text: 'No connection - this doesn\'t fit', value: 1, emotional: 'disconnected' }
     ]
   };
 }
@@ -107,7 +107,7 @@ function generateAspectQuestion(cardData, reversed, position, readingType) {
   return {
     id: `aspect_${cardData.id}`,
     type: 'aspect',
-    question: `Which aspect of this card feels most relevant to you RIGHT NOW?`,
+    question: `If any part of this card connects—what is it?`,
     options: aspects.slice(0, 4) // Max 4 options
   };
 }
@@ -147,13 +147,13 @@ function generateConfirmationQuestion(cardData, reversed, previousAnswers) {
   return {
     id: `confirmation_${cardData.id}`,
     type: 'confirmation',
-    question: `How does this card relate to the previous card(s) in your reading?`,
+    question: `This card and the previous card(s)—what's the relationship, if any?`,
     options: [
       { text: 'Confirms and amplifies the same message', value: 'amplify', pattern: 'reinforcement' },
       { text: 'Adds a new dimension or perspective', value: 'expand', pattern: 'expansion' },
       { text: 'Contradicts or challenges the previous message', value: 'contradict', pattern: 'tension' },
       { text: 'Shows the next step or progression', value: 'progress', pattern: 'sequence' },
-      { text: 'Unclear - not seeing a connection yet', value: 'unclear', pattern: 'fragmented' }
+      { text: 'No clear connection - they feel separate', value: 'unclear', pattern: 'fragmented' }
     ]
   };
 }
@@ -216,7 +216,7 @@ function generateSituationQuestion(cardData, reversed, intention, readingType) {
   return {
     id: `situation_${cardData.id}`,
     type: 'situation',
-    question: `This card most reminds you of which area of your life?`,
+    question: `Does this card connect to a specific area of your life? If so, which?`,
     options: situations
   };
 }
@@ -251,13 +251,13 @@ function generateTakeawayQuestion(totalCards) {
   return {
     id: 'takeaway_overall',
     type: 'takeaway',
-    question: `Looking at all ${totalCards} cards together, what's your BIGGEST takeaway?`,
+    question: `Looking at all ${totalCards} cards together—what are you noticing?`,
     options: [
       { text: 'I see a clear pattern or message emerging', value: 'pattern', clarity: 'high' },
       { text: 'One specific card really stands out', value: 'single_card', clarity: 'medium-high' },
       { text: 'The cards confirm what I already knew deep down', value: 'confirmation', clarity: 'high' },
       { text: 'I\'m seeing new perspectives I hadn\'t considered', value: 'new_perspective', clarity: 'medium' },
-      { text: 'Still processing - not clear yet', value: 'processing', clarity: 'low' }
+      { text: 'Still processing - nothing clear yet', value: 'processing', clarity: 'low' }
     ]
   };
 }
@@ -301,6 +301,7 @@ function randomInt(min, max) {
 /**
  * Analyze all MCQ answers to extract patterns
  * Used by synthesis engine to personalize narrative
+ * HARDENING #8: Includes crisis detection
  */
 export function analyzeMCQAnswers(allAnswers) {
   const analysis = {
@@ -311,7 +312,12 @@ export function analyzeMCQAnswers(allAnswers) {
     actionReadiness: 'medium',
     patternRecognition: 'unclear',
     synthesisClarity: 'medium',
-    synthesesTone: 'balanced'
+    synthesesTone: 'balanced',
+    crisisSignals: {
+      detected: false,
+      severity: 'none', // none, mild, moderate, severe
+      indicators: []
+    }
   };
 
   let resonanceCount = 0;
@@ -373,6 +379,57 @@ export function analyzeMCQAnswers(allAnswers) {
   analysis.dominantEmotions = emotions;
   analysis.dominantAspects = aspects;
   analysis.finalReadiness = readiness;
+
+  // HARDENING #8: Crisis Detection
+  // Detect patterns that indicate user may be in crisis or vulnerable state
+  const crisisIndicators = [];
+
+  // Check for consistent fear/anxiety/overwhelm emotions
+  const fearEmotions = emotions.filter(e =>
+    e.emotion === 'fear' || e.emotion === 'resistance' || e.energy === 'contracted'
+  );
+  if (fearEmotions.length >= 2) {
+    crisisIndicators.push('repeated_fear');
+  }
+
+  // Check for "overwhelmed" readiness response
+  if (readiness === 'overwhelmed') {
+    crisisIndicators.push('overwhelmed_state');
+  }
+
+  // Check for very low resonance (disconnection from reality/cards)
+  if (analysis.overallResonance <= 1.5) {
+    crisisIndicators.push('severe_disconnection');
+  }
+
+  // Check for multiple blocked/numb emotional states
+  const blockedStates = emotions.filter(e =>
+    e.emotion === 'numb' || e.energy === 'blocked' || e.energy === 'disconnected'
+  );
+  if (blockedStates.length >= 2) {
+    crisisIndicators.push('emotional_shutdown');
+  }
+
+  // Assess severity based on indicators
+  if (crisisIndicators.length >= 3) {
+    analysis.crisisSignals = {
+      detected: true,
+      severity: 'severe',
+      indicators: crisisIndicators
+    };
+  } else if (crisisIndicators.length === 2) {
+    analysis.crisisSignals = {
+      detected: true,
+      severity: 'moderate',
+      indicators: crisisIndicators
+    };
+  } else if (crisisIndicators.length === 1) {
+    analysis.crisisSignals = {
+      detected: true,
+      severity: 'mild',
+      indicators: crisisIndicators
+    };
+  }
 
   return analysis;
 }

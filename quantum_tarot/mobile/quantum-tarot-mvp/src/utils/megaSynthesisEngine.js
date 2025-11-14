@@ -244,6 +244,63 @@ function buildSynthesis(context) {
     synthesis += `${coldReading.intuitiveHook}\n\n`;
   }
 
+  // HARDENING #9: Meta-Skepticism Integration
+  // Acknowledge skepticism and make it part of the reading
+  const skepticismStatements = [
+    'If part of you thinks this is bullshit, notice that reaction. What are you defending against? Sometimes skepticism is wisdom. Sometimes it\'s fear of being seen.',
+    'You might be tempted to dismiss this as confirmation bias. Fair enough. But ask yourself: why does that bother you? What would it mean if this WAS meaningful?',
+    'Tarot works whether you believe in it or not—because it\'s a mirror, not a magic 8-ball. What you see in these cards says more about you than them.',
+    'If you\'re skeptical, good. Blind faith is dangerous. But so is cynicism that protects you from uncomfortable truths.'
+  ];
+  const skepticismIdx = Math.floor((quantumSeed * 0.999) * skepticismStatements.length);
+  if (Math.random() > 0.5) { // 50% of readings get meta-skepticism acknowledgment
+    synthesis += `${skepticismStatements[skepticismIdx]}\n\n`;
+  }
+
+  // HARDENING #10: Decision Empowerment Language
+  // Combat decision avoidance - emphasize agency over passive waiting
+  const empowermentStatements = [
+    'These cards don\'t tell you what WILL happen—they show you what\'s possible if you choose it. The universe doesn\'t decide for you. You decide, and the universe responds.',
+    'Reading tarot isn\'t about predicting a fixed future. It\'s about seeing your options clearly so you can make better choices NOW. Your agency is the point, not a variable.',
+    'Don\'t use this reading as permission to wait. Use it as intel to act. The cards show terrain, but you choose the path. Sitting still IS a choice—just usually the wrong one.',
+    'If you came here hoping the cards would make the decision for you, they won\'t. They\'ll show you what you already know but haven\'t admitted. Then YOU choose.',
+    'The future isn\'t written. These cards show momentum and probability based on your current trajectory. Don\'t like where it\'s headed? Change direction. That power is yours.'
+  ];
+  const empowermentIdx = Math.floor((quantumSeed * 0.888) * empowermentStatements.length);
+  if (Math.random() > 0.4) { // 60% of readings get decision empowerment
+    synthesis += `${empowermentStatements[empowermentIdx]}\n\n`;
+  }
+
+  // HARDENING #8: Crisis Detection & Ethical Redirection
+  // If crisis signals detected, provide supportive resources BEFORE the reading
+  if (mcqAnalysis?.crisisSignals?.detected) {
+    const severity = mcqAnalysis.crisisSignals.severity;
+
+    if (severity === 'severe' || severity === 'moderate') {
+      synthesis += `**A moment of care**: I'm sensing you're carrying a heavy weight right now. `;
+
+      if (severity === 'severe') {
+        synthesis += `Before we continue, I want to acknowledge that tarot can offer perspective, but it's not a substitute for human support when you're in crisis.\n\n`;
+        synthesis += `**If you're in immediate danger or experiencing thoughts of self-harm**:\n`;
+        synthesis += `- **Crisis Text Line**: Text HOME to 741741 (US)\n`;
+        synthesis += `- **National Suicide Prevention Lifeline**: 988 (US)\n`;
+        synthesis += `- **International Association for Suicide Prevention**: https://www.iasp.info/resources/Crisis_Centres/\n\n`;
+        synthesis += `**For non-emergency support**:\n`;
+        synthesis += `- **SAMHSA National Helpline**: 1-800-662-4357 (mental health/substance abuse, 24/7, free, confidential)\n`;
+        synthesis += `- **Therapy directories**: Psychology Today, BetterHelp, OpenPath Collective\n\n`;
+        synthesis += `The cards below may still offer insight, but please—reach out to someone trained to help. You deserve real, human support.\n\n`;
+      } else if (severity === 'moderate') {
+        synthesis += `Tarot can illuminate, but it can't replace therapy, medical care, or trusted relationships. If you're struggling more than usual, consider reaching out:\n\n`;
+        synthesis += `- **SAMHSA National Helpline**: 1-800-662-4357 (free, confidential, 24/7)\n`;
+        synthesis += `- **Crisis Text Line**: Text HOME to 741741\n`;
+        synthesis += `- Find a therapist: Psychology Today directory, OpenPath Collective (affordable options)\n\n`;
+        synthesis += `The reading continues below, but please honor if you need more than cards right now.\n\n`;
+      }
+    } else if (severity === 'mild') {
+      synthesis += `I'm noticing some tension or heaviness in your responses. That's okay—hard seasons happen. If this reading brings up more than you're ready for, it's okay to step away and return when you're in a better place. Self-care isn't selfish.\n\n`;
+    }
+  }
+
   // ═══════════════════════════════════════════════════════════
   // CARD-BY-CARD INTERPRETATION (300-600 words) - WITH NARRATIVE ARC
   // ═══════════════════════════════════════════════════════════
@@ -301,7 +358,7 @@ function buildSynthesis(context) {
       }
     }
 
-    // Main card interpretation
+    // Main card interpretation WITH STRUCTURAL VARIATION (Hardening #1)
     const cardName = `${cardData?.name || 'Unknown Card'}${card.reversed ? ' Reversed' : ''}`;
     const position = card.position || `position ${index + 1}`;
     const positionMeaning = card.positionMeaning || '';
@@ -312,8 +369,37 @@ function buildSynthesis(context) {
       `${primaryKeyword} in the realm of ${positionMeaning || position}`,
       position
     );
+
+    // STRUCTURAL VARIATION: 10+ different ways to introduce card
+    const structureVariations = [
+      // Standard format (20% of time)
+      `**${cardName}** in ${positionMeaning || position}: ${sentence} `,
+
+      // Position-first formats
+      `In ${positionMeaning || position}, **${cardName}** emerges. ${sentence} `,
+      `The ${positionMeaning || position} position holds **${cardName}**. ${sentence} `,
+      `${positionMeaning || position}: Here we find **${cardName}**. ${sentence} `,
+
+      // Card-first, no position header
+      `**${cardName}** speaks to ${positionMeaning || position}. ${sentence} `,
+      `**${cardName}**. ${sentence} This is the energy of ${positionMeaning || position}. `,
+
+      // Direct dive (no header at all)
+      `${sentence} This is **${cardName}** in ${positionMeaning || position}. `,
+      sentence + ` **${cardName}** has appeared in ${positionMeaning || position}. `,
+
+      // Conversational
+      `Let's talk about **${cardName}** in ${positionMeaning || position}. ${sentence} `,
+      `**${cardName}** showed up in ${positionMeaning || position}—and that's significant. ${sentence} `,
+
+      // Mystical/dramatic
+      `The cards reveal **${cardName}** in ${positionMeaning || position}. ${sentence} `,
+      `**${cardName}**. ${positionMeaning || position}. ${sentence} `
+    ];
+
+    const structureIdx = Math.floor((quantumSeed * (index + 1) * 0.789) * structureVariations.length) % structureVariations.length;
     if (sentence) {
-      synthesis += `**${cardName}** in ${positionMeaning || position}: ${sentence} `;
+      synthesis += structureVariations[structureIdx];
     }
 
     // Add TIMING PREDICTION for this card
@@ -814,26 +900,26 @@ function generateActionSteps(cards, mcqAnalysis, synthesisGuidance, readingType,
   );
 
   if (actionLevel === 'high') {
-    text += `You're ready to ${narrative.getWord('act')}. Here's how:\n\n`;
+    text += `You're ready to ${narrative.getWord('act')}. Don't wait for permission—here's how:\n\n`;
     text += `**Guiding principle**: ${actionGuidance.wisdom}\n\n`;
     text += `1. **TODAY**: ${getImmediateAction(cards[0], readingType, narrative)}\n`;
     text += `2. **THIS WEEK**: ${getWeekAction(cards, readingType, narrative)}\n`;
     text += `3. **THIS MONTH**: ${getMonthAction(cards, readingType, narrative)}\n\n`;
-    text += `Remember: sustainable effort beats burnout. Marathon pace, not sprint pace.\n`;
+    text += `Remember: sustainable effort beats burnout. Marathon pace, not sprint pace. But START.\n`;
   } else if (actionLevel === 'low') {
-    text += `You're not ready to ${narrative.getWord('act')} yet. That's okay. Process first:\n\n`;
+    text += `You're not ready to ${narrative.getWord('act')} yet. That's okay—but don't confuse processing with procrastination:\n\n`;
     text += `**Guiding principle**: ${actionGuidance.wisdom}\n\n`;
     text += `1. **Journal**: ${getJournalingPrompt(cards, narrative)}\n`;
     text += `2. **Reflect**: ${getReflectionPrompt(cards, narrative)}\n`;
-    text += `3. **When ready**: ${getEventualAction(cards, readingType, narrative)}\n\n`;
-    text += `Clarity comes before action. Honor where you are.\n`;
+    text += `3. **Then decide**: ${getEventualAction(cards, readingType, narrative)}\n\n`;
+    text += `Clarity comes before action. But set a deadline for your clarity—don't hide there forever.\n`;
   } else {
-    text += `Balance reflection with action:\n\n`;
+    text += `Balance reflection with action—but don't let balance become an excuse for neither:\n\n`;
     text += `**Guiding principle**: ${actionGuidance.wisdom}\n\n`;
     text += `1. **Reflect**: ${getReflectionPrompt(cards, narrative)}\n`;
     text += `2. **Act**: ${getImmediateAction(cards[0], readingType, narrative)}\n`;
     text += `3. **Integrate**: ${getIntegrationAction(cards, narrative)}\n\n`;
-    text += `The middle way: neither rushing ahead nor hiding in analysis paralysis.\n`;
+    text += `The middle way isn't paralysis. It's thoughtful movement. Choose a direction and GO.\n`;
   }
 
   return text;
@@ -846,7 +932,7 @@ function getImmediateAction(card, readingType, narrative) {
 }
 
 function getWeekAction(cards, readingType, narrative) {
-  return `Have the conversation, make the decision, or take the risk these cards are pointing toward.`;
+  return `Have the conversation, make the decision, or take the risk these cards are pointing toward. Stop rehearsing—execute.`;
 }
 
 function getMonthAction(cards, readingType, narrative) {
@@ -863,9 +949,9 @@ function getReflectionPrompt(cards, narrative) {
 
 function getEventualAction(cards, readingType, narrative) {
   const cardData = CARD_DATABASE[cards[cards.length - 1].cardIndex];
-  return `When you're ready, ${narrative.getWord('act')} on ${cardData.keywords?.upright?.[0] || 'the final card'}.`;
+  return `Decide when you'll ${narrative.getWord('act')} on ${cardData.keywords?.upright?.[0] || 'the final card'}. Put it on the calendar. Commit.`;
 }
 
 function getIntegrationAction(cards, narrative) {
-  return `Check back in a week. Notice what shifted. Adjust course as needed.`;
+  return `Check back in a week. Notice what shifted. Don't just observe—course-correct. You're the captain, not a passenger.`;
 }

@@ -220,29 +220,41 @@ function getNextSolarEvent(today) {
 
 /**
  * Construct natural-sounding timing statement
+ * HARDENING #3: Add fuzzy logic to make predictions less falsifiable
  */
 function constructTimingStatement(timeframe, anchor, card, quantumSeed) {
   const templates = [];
 
+  // Fuzzy modifiers to add hedging
+  const fuzzyModifiers = [
+    '', // No modifier (direct)
+    'around ',
+    'approximately ',
+    'roughly ',
+    'give or take a few days, '
+  ];
+  const modifierIdx = Math.floor((quantumSeed * 0.123) * fuzzyModifiers.length);
+  const fuzzy = fuzzyModifiers[modifierIdx];
+
   if (timeframe.unit === 'season') {
     templates.push(
-      `Watch for movement by ${timeframe.season}.`,
-      `${timeframe.season.charAt(0).toUpperCase() + timeframe.season.slice(1)} brings the shift this card promises.`,
-      `Before ${timeframe.season} ends, you'll see this manifest.`
+      `Watch for movement by ${fuzzy}${timeframe.season}, or when synchronicity signals you.`,
+      `${timeframe.season.charAt(0).toUpperCase() + timeframe.season.slice(1)} brings the shift this card promises—though it may begin before you notice.`,
+      `Before ${fuzzy}${timeframe.season} ends, you'll see this manifest, unless resistance delays it.`
     );
   } else if (anchor) {
     templates.push(
-      `Expect this to crystallize within ${timeframe.value} ${timeframe.unit}—specifically around ${anchor.description}.`,
-      `The timeline here is ${timeframe.value} ${timeframe.unit}, with ${anchor.description} marking a turning point.`,
-      `By ${anchor.description}, this will have shifted. We're talking ${timeframe.value} ${timeframe.unit}.`,
-      `${anchor.description} is your marker. Count ${timeframe.value} ${timeframe.unit} from now.`
+      `Expect this to crystallize within ${fuzzy}${timeframe.value} ${timeframe.unit}—${fuzzy}${anchor.description}, or when the sign appears.`,
+      `The timeline here is ${fuzzy}${timeframe.value} ${timeframe.unit}, with ${anchor.description} marking a likely turning point.`,
+      `By ${fuzzy}${anchor.description}, this will have likely shifted. We're talking ${timeframe.value} ${timeframe.unit}, give or take.`,
+      `${anchor.description} is your rough marker. Count ${fuzzy}${timeframe.value} ${timeframe.unit} from now, but trust your gut over the calendar.`
     );
   } else {
     templates.push(
-      `Give this ${timeframe.value} ${timeframe.unit}. Not longer, not shorter.`,
-      `Within ${timeframe.value} ${timeframe.unit}, you'll know.`,
-      `The energy shifts in ${timeframe.value} ${timeframe.unit}. Mark it.`,
-      `${timeframe.value.toString().charAt(0).toUpperCase() + timeframe.value.toString().slice(1)} ${timeframe.unit}. That's your window.`
+      `Give this ${fuzzy}${timeframe.value} ${timeframe.unit}. Could be shorter if you're ready, longer if resistance shows up.`,
+      `Within ${fuzzy}${timeframe.value} ${timeframe.unit}, you'll likely know—unless you're avoiding the answer.`,
+      `The energy shifts in ${fuzzy}${timeframe.value} ${timeframe.unit}. Mark it, but don't be rigid about it.`,
+      `${timeframe.value.toString().charAt(0).toUpperCase() + timeframe.value.toString().slice(1)} ${timeframe.unit}, ${fuzzy}. That's your window, but synchronicity may speed it up.`
     );
   }
 

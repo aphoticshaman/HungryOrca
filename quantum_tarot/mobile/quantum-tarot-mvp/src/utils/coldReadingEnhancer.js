@@ -19,99 +19,101 @@
 /**
  * Generate Barnum statements based on MBTI and astrology
  * (Universally true statements that feel personally targeted)
+ * HARDENING #2: Layered Barnum - Universal + MBTI-specific elaboration
  */
 export function generateBarnumStatements(userProfile, quantumSeed) {
   const { mbtiType, zodiacSign } = userProfile;
 
   const statements = [];
 
-  // MBTI-based Barnum statements
+  // MBTI-based Barnum statements WITH LAYERING
+  // Structure: Universal truth + MBTI-specific elaboration (still broad but feels targeted)
   const mbtiBarnum = {
     // Introverts
     'INFP': [
-      'You have a rich inner world that few people truly understand. Sometimes you wonder if anyone really *sees* you.',
-      'You\'re more idealistic than you let on. Part of you still believes in magic, even if you\'ve been disappointed.',
-      'People think you\'re gentle, but you have a spine of steel when it comes to your values. You just don\'t advertise it.'
+      'You have a rich inner world that few people truly understand. As an INFP, you\'ve tried to translate it through art, writing, or music—but even those feel inadequate to what you\'re actually experiencing.',
+      'You\'re more idealistic than you let on. Part of you still believes in magic, even if you\'ve been disappointed. That\'s not naivete—it\'s your Fi refusing to accept a world without meaning.',
+      'People think you\'re gentle, but you have a spine of steel when it comes to your values. You just don\'t advertise it. When someone crosses your moral line, though—they see a side of you they didn\'t know existed.'
     ],
     'INFJ': [
-      'You see patterns others miss. It\'s both a gift and a burden—you know how things will play out before they do.',
-      'You have at least one relationship where you gave too much and got too little. You\'re still learning boundaries.',
-      'People come to you for advice, but who do YOU go to? You carry more alone than anyone knows.'
+      'You see patterns others miss—not just surface behaviors, but the deeper currents beneath. Your Ni knows how things will play out before they do. It\'s both a gift and a burden, because you can see the train wreck coming but can\\'t always stop it.',
+      'You have at least one relationship where you gave too much and got too little. As an INFJ, you\\'re still learning that boundaries aren\\'t walls—they\\'re the foundation for sustainable love. Your Fe wants to save everyone. Your Ni knows you can\\'t.',
+      'People come to you for advice, but who do YOU go to? You carry more alone than anyone knows. That\\'s the INFJ burden: being everyone\\'s therapist while your own wounds stay unspoken.'
     ],
     'INTP': [
-      'Your mind moves faster than you can articulate. People mistake your silence for agreement when you\'re really five steps ahead.',
-      'You have a collection—physical or mental—of things others would find random but you see the pattern.',
-      'You\'ve been called cold or detached, but you feel deeply. You just process through analysis first.'
+      'Your mind moves faster than you can articulate. People mistake your silence for agreement when you\'re really five steps ahead, running mental simulations they can\\'t see. Ti-Ne means you\\'re playing 4D chess while they\\'re playing checkers.',
+      'You have a collection—physical or mental—of things others would find random but you see the pattern. As an INTP, you\\'re not a hoarder, you\\'re an archivist of connections. Each piece is a node in your mental map.',
+      'You\'ve been called cold or detached, but you feel deeply. You just process through analysis first. Your Ti dissects emotions like a surgeon, not because you don\\'t care—because that\\'s how you understand them.'
     ],
     'INTJ': [
-      'You knew you were different from a young age. Not better, just... operating on a different wavelength.',
-      'You have a vision of how things SHOULD work, and reality\'s inefficiency frustrates you daily.',
-      'People underestimate you until they realize you\'ve been running the long game all along.'
+      'You knew you were different from a young age. Not better, just... operating on a different wavelength. While others were playing, you were analyzing systems and seeing three moves ahead.',
+      'You have a vision of how things SHOULD work, and reality\'s inefficiency frustrates you daily. Your Ni-Te stack means you don\'t just see what\'s broken—you see exactly how to fix it. Getting others to listen is the hard part.',
+      'People underestimate you until they realize you\'ve been running the long game all along. What looks like sudden success to others? You\'ve been building it for years in silence.'
     ],
 
     // Extroverts
     'ENFP': [
-      'You start projects with explosive enthusiasm, then struggle to finish. Your graveyard of "almost" accomplishments haunts you.',
-      'You\'ve been told you\'re "too much"—too loud, too emotional, too intense. But dimming yourself feels like dying.',
-      'You collect people the way others collect stamps. But how many truly know the real you?'
+      'You start projects with explosive enthusiasm, then struggle to finish. Your graveyard of "almost" accomplishments haunts you. That\'s Ne-Fi—you see infinite possibilities, but each new one makes the last one fade. You\'re not flaky, you\'re a serial monogamist with ideas.',
+      'You\'ve been told you\'re "too much"—too loud, too emotional, too intense. But dimming yourself feels like dying. As an ENFP, your authenticity is non-negotiable. You\'d rather be alone than perform a version of yourself that fits their comfort zone.',
+      'You collect people the way others collect stamps. But how many truly know the real you? Your Fi keeps that hidden, even from people who think they\'re close. You show them the fun ENFP. The depth? That\'s invite-only.'
     ],
     'ENFJ': [
-      'You give and give until you\'re empty, then feel guilty for having needs. When does YOUR healing happen?',
-      'You can read a room in seconds. It\'s exhausting being everyone\'s emotional translator.',
-      'You have a wound around not feeling "good enough" despite evidence to the contrary. Who told you that lie?'
+      'You give and give until you\'re empty, then feel guilty for having needs. When does YOUR healing happen? As an ENFJ, your Fe-Ni means you see everyone\'s potential and exhaust yourself trying to midwife it. But who\'s holding space for YOU?',
+      'You can read a room in seconds. It\'s exhausting being everyone\'s emotional translator. You feel the undercurrents, the tension, the unspoken—and your Fe won\'t let you ignore it. So you fix it. Every. Single. Time.',
+      'You have a wound around not feeling "good enough" despite evidence to the contrary. Who told you that lie? ENFJs carry this wound like a birthmark—the fear that love is earned through performance, not given freely.'
     ],
     'ENTP': [
-      'You argue for sport. People think you\'re combative, but you\'re just testing ideas. Still, it\'s cost you relationships.',
-      'Boredom is your kryptonite. You\'d rather fail spectacularly than succeed safely.',
-      'You have unfinished business with someone from your past. It surfaces in quiet moments.'
+      'You argue for sport. People think you\'re combative, but you\'re just testing ideas. Ne-Ti means you\'re not attacking THEM, you\'re stress-testing their logic. They don\'t see the difference. Still, it\'s cost you relationships.',
+      'Boredom is your kryptonite. You\'d rather fail spectacularly than succeed safely. As an ENTP, routine is death. You need novelty, challenge, intellectual stimulation—or you become a chaos agent just to feel alive.',
+      'You have unfinished business with someone from your past. It surfaces in quiet moments. Your Fe is your weakest function, but when it activates? It haunts you. That person represents something you didn\'t say or do when it mattered.'
     ],
     'ENTJ': [
-      'You\'ve been called intimidating. You\'re not trying to be—you just don\'t suffer inefficiency or dishonesty.',
-      'You have a soft side you protect fiercely. Only 1-3 people have ever seen it fully.',
-      'You measure yourself against impossible standards. When\'s the last time you celebrated a win without immediately moving to the next goal?'
+      'You\'ve been called intimidating. You\'re not trying to be—you just don\'t suffer inefficiency or dishonesty. Te-Ni means you see the most direct path to the goal and can\'t understand why people want to take scenic routes through incompetence.',
+      'You have a soft side you protect fiercely. Only 1-3 people have ever seen it fully. As an ENTJ, vulnerability feels like weakness—even though intellectually you know it\'s strength. Your Fi is locked in a vault with one key.',
+      'You measure yourself against impossible standards. When\'s the last time you celebrated a win without immediately moving to the next goal? ENTJs don\'t rest on laurels. You see achievement as baseline, not victory. That drive built your success. It also costs you peace.'
     ],
 
     // Sensors
     'ISFP': [
-      'You express yourself better through action/art than words. People misread your quiet as agreement.',
-      'You have a strong aesthetic sense—your environment deeply affects your mood.',
-      'You\'ve been hurt by someone who took your gentle nature for weakness. You\'re not weak. You\'re selective.'
+      'You express yourself better through action/art than words. People misread your quiet as agreement. Fi-Se means you FEEL intensely but communicate through creation, not conversation. Your art speaks what your mouth can\'t.',
+      'You have a strong aesthetic sense—your environment deeply affects your mood. As an ISFP, beauty isn\'t luxury—it\'s oxygen. Ugly spaces drain you. Harmonious ones restore you. People don\'t get that it\'s not shallow, it\'s survival.',
+      'You\'ve been hurt by someone who took your gentle nature for weakness. You\'re not weak. You\'re selective. ISFPs are steel wrapped in silk. You choose non-confrontation until you don\'t. Then the claws come out.'
     ],
     'ISFJ': [
-      'You remember birthdays, preferences, small details about people. Do they notice what you notice about them?',
-      'You\'ve sacrificed for others in ways they\'ll never fully understand or appreciate.',
-      'You have a memory from childhood that still shapes how you show love today.'
+      'You remember birthdays, preferences, small details about people. Do they notice what you notice about them? Si-Fe means you archive every kindness you give and every slight you receive. You remember who showed up. And who didn\'t.',
+      'You\'ve sacrificed for others in ways they\'ll never fully understand or appreciate. As an ISFJ, you carry the family, the team, the friendship group on your back—quietly, without complaint. Until one day you realize you\'re exhausted and no one even saw the weight.',
+      'You have a memory from childhood that still shapes how you show love today. ISFJs are built on Si-Fe: past experiences create templates for how to care. That memory—good or bad—is your blueprint for connection.'
     ],
     'ISTJ': [
-      'You do what you say you\'ll do. Why doesn\'t everyone? Their lack of follow-through baffles and frustrates you.',
-      'You\'re more sentimental than people think. You have something you\'ve kept for years that others would call "junk."',
-      'You value competence above almost everything. Incompetence feels like disrespect.'
+      'You do what you say you\'ll do. Why doesn\'t everyone? Their lack of follow-through baffles and frustrates you. Si-Te means your word is contract. When others break theirs, it\'s not just annoying—it\'s a moral failure in your book.',
+      'You\'re more sentimental than people think. You have something you\'ve kept for years that others would call "junk." As an ISTJ, Si makes you a curator of meaningful objects. That "junk" is a time capsule, a memory anchor. You know exactly why you kept it.',
+      'You value competence above almost everything. Incompetence feels like disrespect. ISTJs respect those who show up prepared, follow through, and do quality work. Everything else? Noise. If you can\'t do it right, don\'t waste their time.'
     ],
     'ISTP': [
-      'You need freedom more than security. The thought of being trapped—literally or metaphorically—terrifies you.',
-      'You fix things. Machines, problems, people. But who fixes YOU?',
-      'You\'ve walked away from something good because it started feeling like a cage.'
+      'You need freedom more than security. The thought of being trapped—literally or metaphorically—terrifies you. Ti-Se means you need autonomy and sensory stimulation. A stable job in a cubicle? That\'s not safety, that\'s a slow death.',
+      'You fix things. Machines, problems, people. But who fixes YOU? As an ISTP, you\'re the troubleshooter everyone calls. Ti reverse-engineers anything. But emotional breakdowns? Those don\'t have manuals. And you don\'t ask for help.',
+      'You\'ve walked away from something good because it started feeling like a cage. ISTPs value freedom over comfort. The moment a relationship, job, or situation demands too much compromise, you\'re gone. No drama. Just gone.'
     ],
 
     'ESFP': [
-      'You light up rooms, but sometimes wonder who you\'d be without an audience.',
-      'You live for experiences. Your photo gallery is FULL. Your bank account... less so.',
-      'You\'ve been told to "be more serious" or "settle down." Screw that. But also... when?'
+      'You light up rooms, but sometimes wonder who you\'d be without an audience. Se-Fi means you shine in the moment, feeding off energy around you. But in the quiet? There\'s a question: is this performance or authenticity? Both?',
+      'You live for experiences. Your photo gallery is FULL. Your bank account... less so. As an ESFP, Se demands you LIVE—travel, taste, touch, feel. Money is for memories, not hoarding. Retirement planning? That\'s future-you\'s problem.',
+      'You\'ve been told to "be more serious" or "settle down." Screw that. But also... when? ESFPs resist being boxed in. But part of you wonders if perpetual motion is freedom or avoidance. What are you afraid of catching if you stop running?'
     ],
     'ESFJ': [
-      'Harmony matters to you—sometimes too much. You\'ve swallowed your truth to keep peace.',
-      'You know everyone\'s business. It\'s not gossip if you care (right?).',
-      'You judge yourself by how others see you. What would change if you stopped?'
+      'Harmony matters to you—sometimes too much. You\'ve swallowed your truth to keep peace. Fe-Si means you prioritize group cohesion and learned social norms. But whose comfort are you protecting? And at what cost to your own?',
+      'You know everyone\'s business. It\'s not gossip if you care (right?). As an ESFJ, you\'re the social hub—connecting people, tracking details, maintaining relationships. You call it caring. Critics call it meddling. Both are true.',
+      'You judge yourself by how others see you. What would change if you stopped? ESFJs derive value from external validation. Being needed, appreciated, respected—that\'s how you know you matter. But what if you mattered regardless?'
     ],
     'ESTJ': [
-      'You get shit done. But recognition? Often goes to someone more political or charming.',
-      'You value tradition and structure, but even you wonder if some rules are just... stupid.',
-      'You have strong opinions about "the way things should be done." You\'re usually right. Doesn\'t mean people listen.'
+      'You get shit done. But recognition? Often goes to someone more political or charming. Te-Si means you execute flawlessly, follow process, deliver results—and watch someone else get promoted because they schmooze better. It\'s infuriating.',
+      'You value tradition and structure, but even you wonder if some rules are just... stupid. As an ESTJ, you respect proven systems—until they stop working. Then your Te says \"this is inefficient\" and you want to burn it down and rebuild it properly.',
+      'You have strong opinions about "the way things should be done." You\'re usually right. Doesn\'t mean people listen. ESTJs see the obvious solution everyone else ignores. Your Te-Si knows what works. But people don\'t want efficiency. They want comfort.'
     ],
     'ESTP': [
-      'You thrive in crisis. Normal life bores you. This has consequences.',
-      'You have at least one story that starts with "so we probably shouldn\'t have..." but you did anyway.',
-      'You hate being told what to do. Authority is earned, not given. This has created conflict.'
+      'You thrive in crisis. Normal life bores you. This has consequences. Se-Ti means you need adrenaline, risk, immediacy—or you feel dead inside. Stability? That\'s stagnation. But the chaos you create to feel alive? Yeah, consequences.',
+      'You have at least one story that starts with "so we probably shouldn\'t have..." but you did anyway. As an ESTP, rules are suggestions. Ti evaluates risk-reward in real time. Se says \"let\'s find out.\" The stories you tell later? Worth whatever damage you took.',
+      'You hate being told what to do. Authority is earned, not given. This has created conflict. ESTPs respect competence, not titles. If you can\'t back up your authority with skill, you\'re just noise. This attitude? Cost you jobs. But you\'d do it again.'
     ]
   };
 
