@@ -1154,6 +1154,387 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Integration is the final boss, and you're still avoiding it.", source: "Completion Block" },
     ]
   },
+
+  // ═══════════════════════════════════════════════════════════
+  // MINOR ARCANA - WANDS (Fire: Passion, Creativity, Action)
+  // ═══════════════════════════════════════════════════════════
+
+  22: { // Ace of Wands
+    name: 'Ace of Wands',
+    upright: [
+      { text: "In the beginning God created the heaven and the earth.", source: "Genesis 1:1 (Bible)" },
+      { text: "A journey of a thousand miles begins with a single step.", source: "Lao Tzu" },
+      { text: "The secret of getting ahead is getting started.", source: "Mark Twain" },
+      { text: "Every accomplishment starts with the decision to try.", source: "John F. Kennedy" },
+      { text: "You are never too old to set another goal or to dream a new dream.", source: "C.S. Lewis" },
+      { text: "The best time to plant a tree was 20 years ago. The second best time is now.", source: "Chinese Proverb" },
+      { text: "Begin anywhere.", source: "John Cage" },
+      { text: "New beginnings are often disguised as painful endings.", source: "Lao Tzu" },
+      { text: "The divine spark within you is ready to ignite. Will you strike the match?", source: "Creative Fire" },
+      { text: "Fortune favors the bold, and you're holding the wand.", source: "Magical Beginning" },
+      { text: "Your next chapter is blank. Pick up the pen.", source: "Story Start" },
+      { text: "The universe just said yes. Don't ask it to repeat itself.", source: "Opportunity Knock" },
+    ],
+    reversed: [
+      { text: "Analysis paralysis is still paralysis.", source: "Action Block" },
+      { text: "You're waiting for the perfect moment. This is it.", source: "Timing Truth" },
+      { text: "The spark is there, but you keep smothering it with doubt.", source: "Self-Sabotage" },
+      { text: "Inspiration without action is just daydreaming.", source: "Execution Gap" },
+      { text: "You can't edit a blank page. Write something.", source: "Creative Block" },
+      { text: "The wand is in your hand, but you're afraid to wave it.", source: "Fear Hold" },
+      { text: "Procrastination is fear wearing a productivity mask.", source: "Delay Pattern" },
+      { text: "Potential energy is useless until it becomes kinetic.", source: "Physics of Action" },
+      { text: "You're so busy planning the journey you forgot to take the first step.", source: "Planning Trap" },
+      { text: "The fire wants to burn. Stop drowning it in what-ifs.", source: "Doubt Dousing" },
+    ]
+  },
+
+  23: { // Two of Wands
+    name: 'Two of Wands',
+    upright: [
+      { text: "Where there is no vision, the people perish.", source: "Proverbs 29:18 (Bible)" },
+      { text: "The future belongs to those who believe in the beauty of their dreams.", source: "Eleanor Roosevelt" },
+      { text: "Vision without action is merely a dream. Action without vision just passes the time. Vision with action can change the world.", source: "Joel A. Barker" },
+      { text: "The world is a book and those who do not travel read only one page.", source: "Augustine of Hippo" },
+      { text: "You can't connect the dots looking forward; you can only connect them looking backwards.", source: "Steve Jobs" },
+      { text: "The best way to predict the future is to create it.", source: "Peter Drucker" },
+      { text: "One day or day one. You decide.", source: "Paulo Coelho" },
+      { text: "Standing at the crossroads with a map in each hand—choose your empire.", source: "Strategic Vision" },
+      { text: "The world stretches before you. Plant your flag or stay in the castle.", source: "Expansion Choice" },
+      { text: "Dominion requires decisions. You can't rule what you won't claim.", source: "Power Move" },
+      { text: "Your comfort zone is a beautiful place, but nothing grows there.", source: "Growth Truth" },
+    ],
+    reversed: [
+      { text: "Planning is good. Planning forever is procrastination with a vision board.", source: "Action Deficit" },
+      { text: "You've got the map, the compass, and the destination. Still standing there.", source: "Paralysis Pattern" },
+      { text: "Fear of making the wrong choice is making the choice for you.", source: "Decision Avoidance" },
+      { text: "Your dreams need legs. Give them some.", source: "Grounding Required" },
+      { text: "The world's still there. You're just not reaching for it.", source: "Hesitation Hold" },
+      { text: "Overthinking is the art of creating problems that weren't even there.", source: "Mental Loop" },
+      { text: "You can't see the view if you never leave the tower.", source: "Isolation Block" },
+      { text: "Two paths, no progress. Pick one and adjust later.", source: "Choice Necessity" },
+      { text: "The empire won't build itself while you're still sketching blueprints.", source: "Action Gap" },
+    ]
+  },
+
+  24: { // Three of Wands
+    name: 'Three of Wands',
+    upright: [
+      { text: "A ship in harbor is safe, but that is not what ships are built for.", source: "John A. Shedd" },
+      { text: "Go confidently in the direction of your dreams. Live the life you have imagined.", source: "Henry David Thoreau" },
+      { text: "The only impossible journey is the one you never begin.", source: "Tony Robbins" },
+      { text: "Faith is taking the first step even when you don't see the whole staircase.", source: "Martin Luther King Jr." },
+      { text: "Twenty years from now you will be more disappointed by the things you didn't do than by the ones you did.", source: "Mark Twain" },
+      { text: "I have not failed. I've just found 10,000 ways that won't work.", source: "Thomas Edison" },
+      { text: "Your ships are coming in. Can you see them on the horizon?", source: "Manifestation Energy" },
+      { text: "Expansion isn't comfortable. But stagnation is deadly.", source: "Growth Imperative" },
+      { text: "The seeds you planted are growing. Trust the timeline.", source: "Patience Truth" },
+      { text: "Foresight is a superpower. You're seeing what others can't yet.", source: "Vision Gift" },
+      { text: "The view from here is incredible. Keep climbing.", source: "Progress Recognition" },
+    ],
+    reversed: [
+      { text: "You sent out the ships but forgot to check if they had sails.", source: "Preparation Lack" },
+      { text: "Waiting for your ship to come in when you never sent one out.", source: "Passive Hoping" },
+      { text: "The horizon's there. You're just not looking at it.", source: "Vision Loss" },
+      { text: "Return on investment requires actual investment.", source: "Effort Truth" },
+      { text: "Delays aren't denials, but denial of delays is delusion.", source: "Reality Check" },
+      { text: "Your expansion plan needs expansion planning.", source: "Strategy Gap" },
+      { text: "Foresight without follow-through is just wishful thinking.", source: "Action Required" },
+      { text: "The universe is saying 'not yet' and you're hearing 'not ever.'", source: "Timing Misread" },
+      { text: "Playing it too safe is the riskiest move of all.", source: "Safety Paradox" },
+    ]
+  },
+
+  25: { // Four of Wands
+    name: 'Four of Wands',
+    upright: [
+      { text: "Make a joyful noise unto the Lord, all the earth.", source: "Psalm 100:1 (Bible)" },
+      { text: "Rejoice always, pray continually, give thanks in all circumstances.", source: "1 Thessalonians 5:16-18 (Bible)" },
+      { text: "Celebrate what you want to see more of.", source: "Thomas J. Peters" },
+      { text: "Home is where one starts from.", source: "T.S. Eliot" },
+      { text: "Joy is the simplest form of gratitude.", source: "Karl Barth" },
+      { text: "Life is a party. Dress like it.", source: "Audrey Hepburn" },
+      { text: "Happiness is not something you postpone for the future; it is something you design for the present.", source: "Jim Rohn" },
+      { text: "Milestones deserve celebration, not just acknowledgment.", source: "Victory Energy" },
+      { text: "Community is not a luxury. It's a necessity dressed as a party.", source: "Belonging Truth" },
+      { text: "Your foundations are solid. Dance on them.", source: "Stability Celebration" },
+      { text: "Gratitude turns what we have into enough, and enough into a feast.", source: "Abundance Mindset" },
+    ],
+    reversed: [
+      { text: "You built the house but forgot to make it a home.", source: "Soul Lack" },
+      { text: "Celebrating alone when you could be celebrating together.", source: "Isolation Choice" },
+      { text: "Success without celebration is just exhaustion with better furniture.", source: "Joy Deficit" },
+      { text: "Roots are good. Being rootbound is not.", source: "Stagnation Warning" },
+      { text: "The party's happening. You're just not showing up.", source: "Life Avoidance" },
+      { text: "Delayed celebration is often denied celebration.", source: "Timing Truth" },
+      { text: "You can't build community from a place of withdrawal.", source: "Connection Need" },
+      { text: "Stability became stagnation when you stopped inviting growth.", source: "Comfort Trap" },
+      { text: "Foundations are for building on, not hiding in.", source: "Safety Excess" },
+    ]
+  },
+
+  26: { // Five of Wands
+    name: 'Five of Wands',
+    upright: [
+      { text: "Iron sharpens iron, and one man sharpens another.", source: "Proverbs 27:17 (Bible)" },
+      { text: "In the middle of difficulty lies opportunity.", source: "Albert Einstein" },
+      { text: "The gem cannot be polished without friction, nor man perfected without trials.", source: "Chinese Proverb" },
+      { text: "If you want to go fast, go alone. If you want to go far, go together.", source: "African Proverb" },
+      { text: "Conflict is the beginning of consciousness.", source: "M. Esther Harding" },
+      { text: "Competition brings out the best in products and the worst in people.", source: "David Sarnoff" },
+      { text: "Great minds discuss ideas; average minds discuss events; small minds discuss people.", source: "Eleanor Roosevelt" },
+      { text: "The fire of competition forges the strongest blades.", source: "Warrior Philosophy" },
+      { text: "Chaos isn't a pit. It's a ladder.", source: "Game of Thrones wisdom" },
+      { text: "Creative tension builds better solutions than comfortable consensus.", source: "Innovation Truth" },
+      { text: "Not all conflict is combat. Some is collaboration in disguise.", source: "Teamwork Reality" },
+    ],
+    reversed: [
+      { text: "Fighting for the sake of fighting is exhausting and pointless.", source: "Energy Waste" },
+      { text: "You're so busy arguing you forgot what you're arguing about.", source: "Lost Purpose" },
+      { text: "Competition without direction is just noise.", source: "Chaos Without Growth" },
+      { text: "Ego battles never have winners, just casualties.", source: "Pride Cost" },
+      { text: "Drama is addictive, but it's not a strategy.", source: "Conflict Addiction" },
+      { text: "You're bringing a wand to a sword fight—wrong energy entirely.", source: "Mismatched Approach" },
+      { text: "Internal conflict masquerading as external competition.", source: "Shadow Projection" },
+      { text: "Avoiding all conflict creates as many problems as seeking it.", source: "Avoidance Cost" },
+      { text: "The problem isn't the competition. It's that you're competing with yourself.", source: "Self-Sabotage" },
+    ]
+  },
+
+  27: { // Six of Wands
+    name: 'Six of Wands',
+    upright: [
+      { text: "Well done, good and faithful servant.", source: "Matthew 25:21 (Bible)" },
+      { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", source: "Winston Churchill" },
+      { text: "The only place where success comes before work is in the dictionary.", source: "Vidal Sassoon" },
+      { text: "I am the master of my fate, I am the captain of my soul.", source: "William Ernest Henley" },
+      { text: "Victory has a thousand fathers, but defeat is an orphan.", source: "John F. Kennedy" },
+      { text: "Don't watch the clock; do what it does. Keep going.", source: "Sam Levenson" },
+      { text: "The reward of a thing well done is to have done it.", source: "Ralph Waldo Emerson" },
+      { text: "You didn't come this far to only come this far.", source: "Victory Philosophy" },
+      { text: "Public recognition is sweet, but your private triumph was sweeter.", source: "Achievement Truth" },
+      { text: "The crown is heavy, but you earned every ounce of it.", source: "Victory Cost" },
+      { text: "They're not cheering for who you pretended to be. They're cheering for who you became.", source: "Authentic Success" },
+    ],
+    reversed: [
+      { text: "Pride comes before a fall.", source: "Proverbs 16:18 (Bible)" },
+      { text: "You're so busy taking the victory lap you forgot there's another race.", source: "Complacency Warning" },
+      { text: "Imposter syndrome in a crown. Wear it or remove it.", source: "Confidence Issue" },
+      { text: "Needing applause to validate your win means you don't believe in it.", source: "External Validation" },
+      { text: "The spotlight is addictive. Don't confuse it with achievement.", source: "Fame Trap" },
+      { text: "You won the battle but lost sight of the war.", source: "Big Picture Loss" },
+      { text: "False modesty is still vanity in disguise.", source: "Ego Game" },
+      { text: "Success without humility is a house of cards.", source: "Stability Warning" },
+      { text: "The pedestal is lonely. Maybe come down and connect.", source: "Isolation Cost" },
+    ]
+  },
+
+  28: { // Seven of Wands
+    name: 'Seven of Wands',
+    upright: [
+      { text: "If God is for us, who can be against us?", source: "Romans 8:31 (Bible)" },
+      { text: "Stand for something or you will fall for anything.", source: "Malcolm X" },
+      { text: "The price of greatness is responsibility.", source: "Winston Churchill" },
+      { text: "Do not go where the path may lead, go instead where there is no path and leave a trail.", source: "Ralph Waldo Emerson" },
+      { text: "I must not fear. Fear is the mind-killer.", source: "Frank Herbert, Dune" },
+      { text: "They can because they think they can.", source: "Virgil" },
+      { text: "Hold the line. Your ground is sacred.", source: "Warrior Stand" },
+      { text: "Defense isn't weakness. It's strategic strength.", source: "Tactical Truth" },
+      { text: "You're not paranoid if they're actually coming for your spot.", source: "Reality Check" },
+      { text: "The high ground is worth defending.", source: "Position Power" },
+    ],
+    reversed: [
+      { text: "You're defending a position you don't even want anymore.", source: "Stubbornness Cost" },
+      { text: "Paranoia and discernment are not the same thing.", source: "Perception Error" },
+      { text: "Exhaustion from fighting battles that aren't yours to fight.", source: "Energy Misuse" },
+      { text: "Not every hill is worth dying on.", source: "Choice Wisdom" },
+      { text: "You're so busy defending you forgot to build.", source: "Defensive Trap" },
+      { text: "Retreating isn't failing. Sometimes it's strategy.", source: "Tactical Reality" },
+      { text: "Your fortress became your prison.", source: "Safety Paradox" },
+      { text: "Fighting everyone means trusting no one. That's lonely.", source: "Isolation Consequence" },
+    ]
+  },
+
+  29: { // Eight of Wands
+    name: 'Eight of Wands',
+    upright: [
+      { text: "The Lord is not slow in keeping his promise, but patient.", source: "2 Peter 3:9 (Bible)" },
+      { text: "Life is what happens when you're busy making other plans.", source: "John Lennon" },
+      { text: "The world is moving so fast these days that the man who says it can't be done is generally interrupted by someone doing it.", source: "Elbert Hubbard" },
+      { text: "Speed is irrelevant if you are going in the wrong direction.", source: "Mahatma Gandhi" },
+      { text: "Slow is smooth, and smooth is fast.", source: "Navy SEAL saying" },
+      { text: "Everything is energy and that's all there is to it.", source: "Albert Einstein" },
+      { text: "When it rains, it pours. But you ordered the storm.", source: "Momentum Truth" },
+      { text: "Acceleration feels like chaos until you remember you started this.", source: "Speed Perspective" },
+      { text: "Things are moving fast because they're finally moving right.", source: "Alignment Reality" },
+      { text: "The wands are flying. Duck or catch them.", source: "Rapid Change" },
+    ],
+    reversed: [
+      { text: "Hurry up and wait. The universe's favorite joke.", source: "Delay Frustration" },
+      { text: "You're rushing toward a destination that's moving away.", source: "Direction Problem" },
+      { text: "Speed without direction is just expensive wandering.", source: "Momentum Waste" },
+      { text: "Impatience is not the same as readiness.", source: "Timing Truth" },
+      { text: "You wanted fast results. This is the cost of fast.", source: "Speed Consequence" },
+      { text: "Delays you're interpreting as rejection are actually protection.", source: "Divine Timing" },
+      { text: "Everything's happening so fast you forgot to feel it.", source: "Experience Loss" },
+      { text: "Burnout at light speed is still burnout.", source: "Pace Warning" },
+    ]
+  },
+
+  30: { // Nine of Wands
+    name: 'Nine of Wands',
+    upright: [
+      { text: "Blessed is the one who perseveres under trial.", source: "James 1:12 (Bible)" },
+      { text: "It is not the mountain we conquer, but ourselves.", source: "Edmund Hillary" },
+      { text: "Courage is not the absence of fear, but rather the assessment that something else is more important.", source: "Franklin D. Roosevelt" },
+      { text: "Fall seven times, stand up eight.", source: "Japanese Proverb" },
+      { text: "The brick walls are there for a reason. They let us prove how badly we want something.", source: "Randy Pausch" },
+      { text: "When you feel like quitting, remember why you started.", source: "Persistence Wisdom" },
+      { text: "Battle-scarred is still standing.", source: "Resilience Truth" },
+      { text: "You're wounded, not defeated. There's a difference.", source: "Warrior Spirit" },
+      { text: "The last mile is always the hardest, but it's also the most important.", source: "Endurance Philosophy" },
+      { text: "Your scars are receipts of battles you've survived.", source: "Proof of Strength" },
+    ],
+    reversed: [
+      { text: "Paranoia from past battles is sabotaging future victories.", source: "Trauma Block" },
+      { text: "You're so defensive you're attacking ghosts.", source: "Fear Projection" },
+      { text: "Survival mode is not a permanent lifestyle.", source: "Healing Needed" },
+      { text: "The war is over but you're still in the trenches.", source: "Present Avoidance" },
+      { text: "Exhaustion is not a badge of honor.", source: "Rest Truth" },
+      { text: "You can't heal and guard the wound at the same time.", source: "Recovery Paradox" },
+      { text: "Pushing through isn't always strength. Sometimes it's stubbornness.", source: "Wisdom Distinction" },
+      { text: "Burned out fighters don't win wars. They become casualties.", source: "Burnout Warning" },
+    ]
+  },
+
+  31: { // Ten of Wands
+    name: 'Ten of Wands',
+    upright: [
+      { text: "Come to me, all who are weary and burdened, and I will give you rest.", source: "Matthew 11:28 (Bible)" },
+      { text: "You can't pour from an empty cup.", source: "Self-Care Wisdom" },
+      { text: "The only way to do great work is to love what you do, or learn to say no to what you don't.", source: "Work Philosophy" },
+      { text: "Burnout is what happens when you try to avoid being human for too long.", source: "Michael Gungor" },
+      { text: "Success is not in carrying all the wands. It's in knowing which ones to carry.", source: "Priority Truth" },
+      { text: "You're Atlas, but nobody asked you to carry the world.", source: "Burden Reality" },
+      { text: "Responsibility is power. Over-responsibility is martyrdom.", source: "Balance Distinction" },
+      { text: "The finish line is visible. Don't drop the wands now.", source: "Final Push" },
+      { text: "Heavy is the load you chose. Honor that choice by completing it.", source: "Commitment Truth" },
+    ],
+    reversed: [
+      { text: "You're carrying burdens that aren't yours.", source: "Boundary Issue" },
+      { text: "Martyrdom is not a personality trait.", source: "Pattern Recognition" },
+      { text: "Delegation isn't weakness. It's wisdom.", source: "Leadership Truth" },
+      { text: "You can't do everything, and that's not a character flaw.", source: "Human Limitation" },
+      { text: "The wands are crushing you because you won't put them down.", source: "Stubbornness Cost" },
+      { text: "Some of those wands? Not even yours.", source: "Codependency Alert" },
+      { text: "You're too tired to be useful. Rest.", source: "Effectiveness Truth" },
+      { text: "Perfectionism dressed as responsibility is still perfectionism.", source: "Shadow Recognition" },
+    ]
+  },
+
+  32: { // Page of Wands
+    name: 'Page of Wands',
+    upright: [
+      { text: "Let no one despise you for your youth, but set the believers an example.", source: "1 Timothy 4:12 (Bible)" },
+      { text: "Every child is an artist. The problem is how to remain an artist once we grow up.", source: "Pablo Picasso" },
+      { text: "Enthusiasm is the electricity of life.", source: "Gordon Parks" },
+      { text: "The desire to create is one of the deepest yearnings of the human soul.", source: "Dieter F. Uchtdorf" },
+      { text: "Youth is not a time of life, it is a state of mind.", source: "Samuel Ullman" },
+      { text: "Creativity takes courage.", source: "Henri Matisse" },
+      { text: "The spark of curiosity is the beginning of wisdom.", source: "Student Energy" },
+      { text: "Beginner's mind is the fire starter.", source: "Fresh Perspective" },
+      { text: "Messages are arriving. Pay attention.", source: "Communication Flow" },
+      { text: "Your enthusiasm is not naiveté. It's fuel.", source: "Energy Validation" },
+    ],
+    reversed: [
+      { text: "Ideas without execution are just expensive daydreams.", source: "Action Gap" },
+      { text: "You're so afraid of looking stupid you forgot how to learn.", source: "Fear Block" },
+      { text: "Enthusiasm without discipline is chaos.", source: "Structure Need" },
+      { text: "Scattered energy creates scattered results.", source: "Focus Truth" },
+      { text: "You started a hundred fires and finished none.", source: "Completion Issue" },
+      { text: "The message is delayed. Check your reception.", source: "Communication Block" },
+      { text: "Immaturity masquerading as spontaneity.", source: "Growth Need" },
+      { text: "Your potential is impressive. Your follow-through is not.", source: "Execution Reality" },
+    ]
+  },
+
+  33: { // Knight of Wands
+    name: 'Knight of Wands',
+    upright: [
+      { text: "Be strong and courageous. Do not be afraid; do not be discouraged.", source: "Joshua 1:9 (Bible)" },
+      { text: "Fortune favors the bold.", source: "Virgil" },
+      { text: "Life is either a daring adventure or nothing at all.", source: "Helen Keller" },
+      { text: "I can't change the direction of the wind, but I can adjust my sails.", source: "Jimmy Dean" },
+      { text: "Only those who will risk going too far can possibly find out how far one can go.", source: "T.S. Eliot" },
+      { text: "Adventure is worthwhile in itself.", source: "Amelia Earhart" },
+      { text: "Leap and the net will appear.", source: "John Burroughs" },
+      { text: "Passion is energy. Feel the power that comes from focusing on what excites you.", source: "Oprah Winfrey" },
+      { text: "Boldness has genius, power, and magic in it.", source: "Goethe" },
+      { text: "The thrill of the chase is the chase of the thrill.", source: "Adventure Philosophy" },
+    ],
+    reversed: [
+      { text: "Recklessness is not bravery.", source: "Wisdom Distinction" },
+      { text: "You're so busy moving you forgot where you're going.", source: "Direction Loss" },
+      { text: "Passion without purpose is just chaos with better PR.", source: "Intent Need" },
+      { text: "Speed demons crash harder.", source: "Pace Warning" },
+      { text: "Commitment issues dressed as free spirit.", source: "Pattern Recognition" },
+      { text: "Running toward everything means running from something.", source: "Avoidance Truth" },
+      { text: "The eternal adventurer is often the eternal escapist.", source: "Shadow Reality" },
+      { text: "Your energy is impressive. Your impact is questionable.", source: "Effectiveness Gap" },
+    ]
+  },
+
+  34: { // Queen of Wands
+    name: 'Queen of Wands',
+    upright: [
+      { text: "She is clothed with strength and dignity; she can laugh at the days to come.", source: "Proverbs 31:25 (Bible)" },
+      { text: "She's the kind of woman who walks into a room and men either fall to their knees or run for their lives. Sometimes both.", source: "Powerful FMC Archetype" },
+      { text: "I am not afraid of storms, for I am learning how to sail my ship.", source: "Louisa May Alcott" },
+      { text: "The question isn't who's going to let me; it's who's going to stop me.", source: "Ayn Rand" },
+      { text: "Fire in her soul. Grace in her heart. Chaos in her wake.", source: "Wild Woman Energy" },
+      { text: "Well-behaved women seldom make history.", source: "Laurel Thatcher Ulrich" },
+      { text: "She remembered who she was and the game changed.", source: "Lalah Delia" },
+      { text: "Confidence is not 'they will like me.' Confidence is 'I'll be fine if they don't.'", source: "Self-Assurance" },
+      { text: "She's sunshine mixed with a little hurricane.", source: "Dynamic Energy" },
+      { text: "Magnetic, not because she's perfect, but because she's authentic.", source: "Genuine Power" },
+    ],
+    reversed: [
+      { text: "Controlling everyone around you is not leadership.", source: "Power Misuse" },
+      { text: "Your fire is burning the people trying to support you.", source: "Relationship Damage" },
+      { text: "Confidence became arrogance when you stopped listening.", source: "Ego Warning" },
+      { text: "Queen energy without queen responsibility is just tyranny.", source: "Leadership Gap" },
+      { text: "Jealousy is insecurity wearing a crown.", source: "Shadow Trait" },
+      { text: "You can't queen from a place of fear.", source: "Foundation Issue" },
+      { text: "Demanding loyalty while offering none.", source: "Hypocrisy Pattern" },
+      { text: "The throne is shaking because the foundation is ego.", source: "Stability Warning" },
+    ]
+  },
+
+  35: { // King of Wands
+    name: 'King of Wands',
+    upright: [
+      { text: "A good man leaves an inheritance to his children's children.", source: "Proverbs 13:22 (Bible)" },
+      { text: "Leadership is not about being in charge. It's about taking care of those in your charge.", source: "Simon Sinek" },
+      { text: "The task of the leader is to get their people from where they are to where they have not been.", source: "Henry Kissinger" },
+      { text: "A genuine leader is not a searcher for consensus but a molder of consensus.", source: "Martin Luther King Jr." },
+      { text: "Vision without execution is hallucination.", source: "Thomas Edison" },
+      { text: "The greatest leader is not necessarily the one who does the greatest things. He is the one that gets the people to do the greatest things.", source: "Ronald Reagan" },
+      { text: "Leadership is the capacity to translate vision into reality.", source: "Warren Bennis" },
+      { text: "Authority earned through respect, not demanded through fear.", source: "True Power" },
+      { text: "The king who serves his people is never overthrown.", source: "Servant Leadership" },
+      { text: "Mastery is knowing when to lead and when to step back.", source: "Wisdom Truth" },
+    ],
+    reversed: [
+      { text: "Dictators rule. Leaders inspire. Know the difference.", source: "Leadership Distinction" },
+      { text: "You're so busy being in charge you forgot to be effective.", source: "Control Issue" },
+      { text: "Ego on the throne means kingdom in chaos.", source: "Power Corruption" },
+      { text: "Demanding respect is the fastest way to lose it.", source: "Authority Error" },
+      { text: "Tyranny is not strength. It's insecurity with power.", source: "Shadow Recognition" },
+      { text: "The king who won't hear counsel becomes the fool on the throne.", source: "Wisdom Loss" },
+      { text: "You're ruling with fire when your people need warmth.", source: "Leadership Mismatch" },
+      { text: "Vision without compassion creates casualties, not community.", source: "Balance Need" },
+    ]
+  },
 };
 
 /**
