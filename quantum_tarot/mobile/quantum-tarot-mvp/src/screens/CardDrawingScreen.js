@@ -22,42 +22,58 @@ const MONOSPACE_FONT = Platform.select({
  * Format interpretation object into readable text for encrypted reveal
  */
 function formatInterpretation(interpretation) {
+  if (!interpretation) {
+    console.error('formatInterpretation: interpretation is undefined');
+    return 'ERROR: No interpretation generated';
+  }
+
   const { cardData, layers, position, reversed } = interpretation;
 
-  let text = '';
+  if (!cardData || !layers) {
+    console.error('formatInterpretation: Missing cardData or layers', interpretation);
+    return `ERROR: Invalid interpretation structure\n${JSON.stringify(interpretation, null, 2)}`;
+  }
 
-  // Card header
-  text += `${cardData.name}${reversed ? ' (Reversed)' : ''}\n`;
-  text += `Position: ${position}\n`;
-  text += `Element: ${layers.archetypal.element || 'Spirit'}\n\n`;
+  try {
+    let text = '';
 
-  // Archetypal layer
-  text += `━━ ARCHETYPAL MEANING ━━\n`;
-  text += `${layers.archetypal.core_meaning}\n\n`;
+    // Card header
+    text += `${cardData.name || 'Unknown Card'}${reversed ? ' (Reversed)' : ''}\n`;
+    text += `Position: ${position || 'Unknown'}\n`;
+    text += `Element: ${layers.archetypal?.element || 'Spirit'}\n\n`;
 
-  // Contextual layer
-  text += `━━ IN YOUR SITUATION ━━\n`;
-  text += `${layers.contextual.position_significance}\n\n`;
-  text += `${layers.contextual.intention_alignment}\n\n`;
+    // Archetypal layer
+    text += `━━ ARCHETYPAL MEANING ━━\n`;
+    text += `${layers.archetypal?.core_meaning || 'No meaning available'}\n\n`;
 
-  // Psychological layer
-  text += `━━ DEEPER INSIGHT ━━\n`;
-  text += `Shadow Work: ${layers.psychological.shadow_work}\n\n`;
-  text += `Integration: ${layers.psychological.integration_path}\n\n`;
+    // Contextual layer
+    text += `━━ IN YOUR SITUATION ━━\n`;
+    text += `${layers.contextual?.position_significance || 'No context'}\n\n`;
+    text += `${layers.contextual?.intention_alignment || 'No alignment'}\n\n`;
 
-  // Practical layer
-  text += `━━ ACTION STEPS ━━\n`;
-  layers.practical.action_steps.forEach((step, i) => {
-    text += `${i + 1}. ${step}\n`;
-  });
-  text += `\nFocus: ${layers.practical.what_to_focus_on}\n\n`;
+    // Psychological layer
+    text += `━━ DEEPER INSIGHT ━━\n`;
+    text += `Shadow Work: ${layers.psychological?.shadow_work || 'None'}\n\n`;
+    text += `Integration: ${layers.psychological?.integration_path || 'None'}\n\n`;
 
-  // Synthesis
-  text += `━━ KEY MESSAGE ━━\n`;
-  text += `${layers.synthesis.core_message}\n\n`;
-  text += `${layers.synthesis.next_steps}`;
+    // Practical layer
+    text += `━━ ACTION STEPS ━━\n`;
+    const steps = layers.practical?.action_steps || [];
+    steps.forEach((step, i) => {
+      text += `${i + 1}. ${step}\n`;
+    });
+    text += `\nFocus: ${layers.practical?.what_to_focus_on || 'General focus'}\n\n`;
 
-  return text;
+    // Synthesis
+    text += `━━ KEY MESSAGE ━━\n`;
+    text += `${layers.synthesis?.core_message || 'No message'}\n\n`;
+    text += `${layers.synthesis?.next_steps || 'Continue forward'}`;
+
+    return text;
+  } catch (error) {
+    console.error('formatInterpretation error:', error);
+    return `ERROR: Failed to format interpretation\n${error.message}`;
+  }
 }
 
 // 31 Pro-tips inspired by CBT, DBT, Army MRT, and psychology
@@ -195,16 +211,21 @@ export default function CardDrawingScreen({ route, navigation }) {
       await sleep(1000);
 
       // Generate individual card interpretations
+      console.log('🎴 Generating interpretations for', cards.length, 'cards');
       const interpretations = cards.map((card, index) => {
+        console.log(`🎴 Card ${index + 1}:`, card);
         const interpretation = interpretCard(
           card,
           intention,
           readingType,
           { zodiacSign, birthdate, userProfile }
         );
+        console.log(`🎴 Interpretation ${index + 1}:`, interpretation ? 'Generated' : 'UNDEFINED');
 
         // Convert interpretation to readable text format
-        return formatInterpretation(interpretation);
+        const formatted = formatInterpretation(interpretation);
+        console.log(`🎴 Formatted ${index + 1} length:`, formatted?.length);
+        return formatted;
       });
 
       await sleep(500);
