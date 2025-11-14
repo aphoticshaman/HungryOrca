@@ -32,94 +32,117 @@ import { BalancedWisdomIntegration, getModerationWisdom } from './balancedWisdom
  * @returns {String} - 600-1500 word synthesis
  */
 export async function generateMegaSynthesis(readingData) {
-  // Validate input
-  if (!readingData) {
-    console.error('generateMegaSynthesis: readingData is undefined');
-    return 'Error: No reading data provided.';
+  try {
+    // Validate input
+    if (!readingData) {
+      console.error('generateMegaSynthesis: readingData is undefined');
+      return 'Error: No reading data provided.';
+    }
+
+    const {
+      cards = [], // Array of { cardIndex, reversed, position, positionMeaning }
+      mcqAnswers = [], // All MCQ answers from post-card questions
+      userProfile = {}, // { name, birthday, zodiacSign, mbtiType, pronouns }
+      intention = 'Personal growth', // User's stated intention
+      readingType = 'general', // 'career', 'romance', 'wellness', etc.
+      spreadType = 'three_card' // 'celtic_cross', 'three_card', etc.
+    } = readingData;
+
+    console.log('📊 Synthesis input validation:', {
+      hasCards: cards?.length > 0,
+      cardCount: cards?.length,
+      hasMCQAnswers: mcqAnswers?.length > 0,
+      mcqCount: mcqAnswers?.length,
+      hasUserProfile: !!userProfile,
+      mbtiType: userProfile?.mbtiType
+    });
+
+    // 1. ANALYZE MCQ ANSWERS (with safety checks)
+    console.log('🔍 Step 1: Analyzing MCQ answers...');
+    const mcqAnalysis = analyzeMCQAnswers(mcqAnswers || []);
+    const synthesisGuidance = getSynthesisGuidance(mcqAnalysis, userProfile?.mbtiType || 'INFP');
+
+    // 2. GET ASTROLOGICAL CONTEXT (with safety checks)
+    console.log('🔍 Step 2: Getting astrological context...');
+    const astroContext = getFullAstrologicalContext(
+      userProfile?.birthday || '2000-01-01',
+      userProfile?.zodiacSign || 'Aries'
+    );
+    const timeEnergy = getTimeOfDayEnergy();
+
+    // 3. GET MBTI INTERPRETATION GUIDELINES (with safety checks)
+    console.log('🔍 Step 3: Getting MBTI guidelines...');
+    const mbtiGuidelines = getMBTIInterpretationGuidelines(userProfile?.mbtiType || 'INFP');
+
+    // 4. GENERATE QUANTUM NARRATIVE FRAMEWORK
+    console.log('🔍 Step 4: Generating quantum narrative...');
+    const quantumSeed = generateQuantumSeed();
+    const narrative = generateQuantumNarrative(cards, {
+      userProfile,
+      astroContext,
+      mcqAnalysis,
+      readingType
+    }, quantumSeed);
+
+    // 5. BUILD SYNTHESIS
+    console.log('🔍 Step 5: Building synthesis...');
+    const synthesis = buildSynthesis({
+      cards,
+      mcqAnswers,
+      mcqAnalysis,
+      astroContext,
+      timeEnergy,
+      mbtiGuidelines,
+      synthesisGuidance,
+      narrative,
+      userProfile,
+      intention,
+      readingType,
+      spreadType,
+      quantumSeed
+    });
+
+    console.log('✅ Synthesis generated successfully, length:', synthesis?.length);
+    return synthesis;
+  } catch (error) {
+    console.error('❌ generateMegaSynthesis ERROR:', error);
+    console.error('Error stack:', error.stack);
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
+    throw error; // Re-throw so we can see the actual error
   }
-
-  const {
-    cards = [], // Array of { cardIndex, reversed, position, positionMeaning }
-    mcqAnswers = [], // All MCQ answers from post-card questions
-    userProfile = {}, // { name, birthday, zodiacSign, mbtiType, pronouns }
-    intention = 'Personal growth', // User's stated intention
-    readingType = 'general', // 'career', 'romance', 'wellness', etc.
-    spreadType = 'three_card' // 'celtic_cross', 'three_card', etc.
-  } = readingData;
-
-  console.log('📊 Synthesis input validation:', {
-    hasCards: cards?.length > 0,
-    cardCount: cards?.length,
-    hasMCQAnswers: mcqAnswers?.length > 0,
-    mcqCount: mcqAnswers?.length,
-    hasUserProfile: !!userProfile,
-    mbtiType: userProfile?.mbtiType
-  });
-
-  // 1. ANALYZE MCQ ANSWERS (with safety checks)
-  const mcqAnalysis = analyzeMCQAnswers(mcqAnswers || []);
-  const synthesisGuidance = getSynthesisGuidance(mcqAnalysis, userProfile?.mbtiType || 'INFP');
-
-  // 2. GET ASTROLOGICAL CONTEXT (with safety checks)
-  const astroContext = getFullAstrologicalContext(
-    userProfile?.birthday || '2000-01-01',
-    userProfile?.zodiacSign || 'Aries'
-  );
-  const timeEnergy = getTimeOfDayEnergy();
-
-  // 3. GET MBTI INTERPRETATION GUIDELINES (with safety checks)
-  const mbtiGuidelines = getMBTIInterpretationGuidelines(userProfile?.mbtiType || 'INFP');
-
-  // 4. GENERATE QUANTUM NARRATIVE FRAMEWORK
-  const quantumSeed = generateQuantumSeed();
-  const narrative = generateQuantumNarrative(cards, {
-    userProfile,
-    astroContext,
-    mcqAnalysis,
-    readingType
-  }, quantumSeed);
-
-  // 5. BUILD SYNTHESIS
-  const synthesis = buildSynthesis({
-    cards,
-    mcqAnswers,
-    mcqAnalysis,
-    astroContext,
-    timeEnergy,
-    mbtiGuidelines,
-    synthesisGuidance,
-    narrative,
-    userProfile,
-    intention,
-    readingType,
-    spreadType,
-    quantumSeed
-  });
-
-  return synthesis;
 }
 
 /**
  * Build the actual synthesis text
  */
 function buildSynthesis(context) {
-  const {
-    cards,
-    mcqAnswers = [],
-    mcqAnalysis,
-    astroContext,
-    timeEnergy,
-    mbtiGuidelines,
-    synthesisGuidance,
-    narrative,
-    userProfile,
-    intention,
-    readingType,
-    spreadType,
-    quantumSeed
-  } = context;
+  try {
+    const {
+      cards,
+      mcqAnswers = [],
+      mcqAnalysis,
+      astroContext,
+      timeEnergy,
+      mbtiGuidelines,
+      synthesisGuidance,
+      narrative,
+      userProfile,
+      intention,
+      readingType,
+      spreadType,
+      quantumSeed
+    } = context;
 
-  let synthesis = '';
+    console.log('🔨 buildSynthesis starting with:', {
+      cardsCount: cards?.length,
+      mcqAnswersCount: mcqAnswers?.length,
+      hasNarrative: !!narrative,
+      hasUserProfile: !!userProfile,
+      userName: userProfile?.name
+    });
+
+    let synthesis = '';
 
   // ═══════════════════════════════════════════════════════════
   // OPENING (150-250 words)
@@ -293,7 +316,13 @@ function buildSynthesis(context) {
   synthesis += `${balancedClosing.pillar.wisdom}\n\n`;
   synthesis += `${narrative.getClosing()}\n`;
 
+  console.log('✅ buildSynthesis completed successfully');
   return synthesis;
+  } catch (error) {
+    console.error('❌ buildSynthesis ERROR:', error);
+    console.error('Error at:', error.stack);
+    throw error;
+  }
 }
 
 /**
