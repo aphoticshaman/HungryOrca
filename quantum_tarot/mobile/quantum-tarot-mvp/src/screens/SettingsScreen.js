@@ -47,7 +47,7 @@ export default function SettingsScreen({ navigation }) {
               $HIY$REACT NATIVE:$NOR$ 0.81{'\n'}
               $HIY$REACT:$NOR$ 19.1.0{'\n\n'}
 
-              $HIC$AGI ENGINE:$NOR$ LunatiQ v1.0{'\n'}
+              $HIC$AGI ENGINE:$NOR$ LunatIQ Tarot v1.0{'\n'}
               $HIC$MODE:$NOR$ Offline (No cloud){'\n'}
               $HIC$RNG:$NOR$ Quantum hardware
             </LPMUDText>

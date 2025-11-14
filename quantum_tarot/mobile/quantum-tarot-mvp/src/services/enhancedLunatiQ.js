@@ -1,6 +1,6 @@
 /**
  * ENHANCED LUNATIQ ENGINE
- * Integration of Card Database + Query Engine with LunatiQ AGI
+ * Integration of Card Database + Query Engine with LunatIQ Tarot AGI
  *
  * Adds meta-analysis capabilities to interpretation:
  * - Spread-level pattern detection

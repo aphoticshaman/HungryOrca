@@ -28,7 +28,7 @@ $HIY$━━━━━━━━━━━━━━━━━━━━━━━━━
       title: '$HIC$02 | OFFLINE AGI$NOR$',
       content: `$HIY$━━━━━━━━━━━━━━━━━━━━━━━━━━$NOR$
 
-$HIW$LunatiQ Engine$NOR$
+$HIW$LunatIQ Tarot Engine$NOR$
 
 Runs locally on your device.
 No cloud. No API calls.

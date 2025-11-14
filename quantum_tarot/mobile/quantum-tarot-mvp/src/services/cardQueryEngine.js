@@ -8,7 +8,7 @@ import { CARD_DATABASE } from '../data/cardDatabase';
 
 /**
  * Card Query Engine
- * Provides structured queries for the LunatiQ AGI
+ * Provides structured queries for the LunatIQ Tarot AGI
  */
 export class CardQueryEngine {
   constructor(spread) {

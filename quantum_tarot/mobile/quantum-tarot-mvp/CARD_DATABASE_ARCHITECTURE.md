@@ -2,7 +2,7 @@
 ## AGI-Powered Tarot Interpretation System
 
 **Created**: 2025-11-13
-**System**: Enhanced LunatiQ AGI + Queryable Card Knowledge Base
+**System**: Enhanced LunatIQ Tarot AGI + Queryable Card Knowledge Base
 
 ---
 
@@ -22,7 +22,7 @@ This document describes the **card database + AGI query system** that powers sop
    - Meta-analysis (elemental balance, reversal patterns, etc.)
    - Statistical aggregation
 
-3. **Enhanced LunatiQ** (`src/services/enhancedLunatiQ.js`)
+3. **Enhanced LunatIQ Tarot** (`src/services/enhancedLunatiQ.js`)
    - Integrates database with existing AGI agents
    - Spread-level synthesis
    - Advanced pattern recognition
@@ -342,7 +342,7 @@ import { testQueryEngine } from './src/services/cardQueryEngine';
 testQueryEngine();
 ```
 
-### Test Enhanced LunatiQ:
+### Test Enhanced LunatIQ Tarot:
 ```javascript
 import { testEnhancedLunatiQ } from './src/services/enhancedLunatiQ';
 testEnhancedLunatiQ();
@@ -403,7 +403,7 @@ The AGI **reasons about cards**, doesn't just retrieve text. It can answer quest
 
 - [x] Card database schema defined
 - [x] Query engine implemented
-- [x] Enhanced LunatiQ integration
+- [x] Enhanced LunatIQ Tarot integration
 - [x] Flippable card UI component
 - [x] Documentation written
 - [ ] Complete all 78 card entries (~24 hours)

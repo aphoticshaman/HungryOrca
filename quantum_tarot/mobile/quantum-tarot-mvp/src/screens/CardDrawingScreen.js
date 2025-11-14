@@ -77,7 +77,7 @@ export default function CardDrawingScreen({ route, navigation }) {
       // Phase 1: Initializing
       setPhase('initializing');
       setStatusLines([
-        'LunatiQ',
+        'LunatIQ Tarot',
         '',
         'Preparing your reading...',
         '',
@@ -89,7 +89,7 @@ export default function CardDrawingScreen({ route, navigation }) {
       // Phase 2: Shuffling
       setPhase('shuffling');
       setStatusLines([
-        'LunatiQ',
+        'LunatIQ Tarot',
         '',
         'Shuffling the deck...',
         'Mixing your intention...',
@@ -124,7 +124,7 @@ export default function CardDrawingScreen({ route, navigation }) {
         setCardCount(i + 1);
         const messageIndex = Math.min(i, drawMessages.length - 1);
         setStatusLines([
-          'LunatiQ',
+          'LunatIQ Tarot',
           '',
           drawMessages[messageIndex],
           'Position: ' + cards[i].position,
@@ -139,7 +139,7 @@ export default function CardDrawingScreen({ route, navigation }) {
       // Phase 4: Complete
       setPhase('complete');
       setStatusLines([
-        'LunatiQ',
+        'LunatIQ Tarot',
         '',
         'All cards drawn! ✓',
         '',
@@ -166,7 +166,7 @@ export default function CardDrawingScreen({ route, navigation }) {
     } catch (error) {
       console.error('Draw error:', error);
       setStatusLines([
-        'LunatiQ',
+        'LunatIQ Tarot',
         '',
         'ERROR: Drawing failed',
         error.message,

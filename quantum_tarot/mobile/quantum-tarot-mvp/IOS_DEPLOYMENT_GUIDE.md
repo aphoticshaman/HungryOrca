@@ -1,6 +1,6 @@
-# 📱 iOS App Store Deployment Guide - LunatiQ
+# 📱 iOS App Store Deployment Guide - LunatIQ Tarot
 
-Complete guide for building and submitting LunatiQ to the Apple App Store.
+Complete guide for building and submitting LunatIQ Tarot to the Apple App Store.
 
 ## ✅ iOS Compatibility Checklist
 
@@ -92,7 +92,7 @@ eas build --platform ios --profile production --auto-submit
 1. Build completes and uploads to App Store Connect
 2. Apple processes the build (5-10 minutes)
 3. Open TestFlight app on your iPhone
-4. Install LunatiQ
+4. Install LunatIQ Tarot
 5. Test all features!
 
 ### Option 2: Development Build
@@ -115,7 +115,7 @@ Then install using:
 2. Click **"My Apps"** → **"+"** → **"New App"**
 3. Fill in:
    - **Platform:** iOS
-   - **Name:** LunatiQ
+   - **Name:** LunatIQ Tarot
    - **Primary Language:** English (U.S.)
    - **Bundle ID:** `com.aphoticshaman.lunatiq`
    - **SKU:** `lunatiq-001` (unique identifier)
@@ -132,12 +132,12 @@ Then install using:
 ### 4. Prepare App Metadata
 
 #### App Name & Subtitle
-- **Name:** LunatiQ
+- **Name:** LunatIQ Tarot
 - **Subtitle:** Cyberpunk Tarot with AI Interpretation (max 30 characters)
 
 #### Description (4000 character max)
 ```
-Experience tarot like never before with LunatiQ - a cyberpunk-themed tarot reading app powered by advanced AI interpretation.
+Experience tarot like never before with LunatIQ Tarot - a cyberpunk-themed tarot reading app powered by advanced AI interpretation.
 
 FEATURES:
 • 78 complete tarot deck with rich symbolism
@@ -173,7 +173,7 @@ Perfect for:
 - Self-awareness and mindfulness
 - Decision-making support
 
-LunatiQ is not a fortune-telling app - it's a tool for self-reflection, personal growth, and gaining perspective on life's challenges.
+LunatIQ Tarot is not a fortune-telling app - it's a tool for self-reflection, personal growth, and gaining perspective on life's challenges.
 ```
 
 #### Keywords (100 character max, comma-separated)
@@ -190,7 +190,7 @@ You need screenshots for different device sizes:
 **How to capture:**
 1. Run app on iOS simulator
 2. Take screenshots showing:
-   - Home screen with rainbow LunatiQ logo
+   - Home screen with rainbow LunatIQ Tarot logo
    - Card drawing screen with Matrix rain
    - Card spread layout
    - AI interpretation screen
@@ -206,7 +206,7 @@ You need screenshots for different device sizes:
 
 #### Review Notes
 ```
-LunatiQ is a tarot card reading app with AI-powered interpretations.
+LunatIQ Tarot is a tarot card reading app with AI-powered interpretations.
 
 TEST ACCOUNT: No account required
 
@@ -298,7 +298,7 @@ Apple hasn't announced "Xcode 26" or "iOS 26" yet. The requirements you saw like
 ```
 
 ### 2. App Name Already Taken
-**Solution:** Use "LunatiQ - Tarot Reader" or similar variant
+**Solution:** Use "LunatIQ Tarot - Tarot Reader" or similar variant
 
 ### 3. Gambling Concerns
 **Solution:** In review notes, clarify: "This is a self-reflection tool, not gambling or fortune-telling for money"
@@ -408,7 +408,7 @@ npm run ios
 
 ## 🎉 You're Ready!
 
-Your LunatiQ app is fully configured for iOS deployment. The codebase is 100% iOS compatible with:
+Your LunatIQ Tarot app is fully configured for iOS deployment. The codebase is 100% iOS compatible with:
 - ✅ Proper platform-specific code
 - ✅ iOS-native fonts and UI
 - ✅ Safe area handling for notches

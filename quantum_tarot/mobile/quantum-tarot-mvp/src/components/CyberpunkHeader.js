@@ -14,7 +14,7 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
     return (
       <View style={styles.compactContainer}>
         <LPMUDText style={styles.compactTitle}>
-          $HIC$LunatIQ$NOR$
+          $HIC$LunatIQ Tarot$NOR$
         </LPMUDText>
       </View>
     );
@@ -25,7 +25,7 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
       <View style={styles.content}>
         {/* Main title with wave animation and rainbow colors */}
         <WaveText
-          text="LunatIQ"
+          text="LunatIQ Tarot"
           style={styles.mainTitle}
         />
       </View>
