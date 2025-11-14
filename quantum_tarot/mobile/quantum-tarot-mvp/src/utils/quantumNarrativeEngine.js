@@ -15,6 +15,7 @@
  */
 
 import { generateQuantumSeed } from './quantumRNG';
+import { BalancedWisdomIntegration, getModerationWisdom } from './balancedWisdom';
 
 /**
  * Quantum-seeded word variation
@@ -164,7 +165,21 @@ export function quantumSentenceStructure(cardName, meaning, position, quantumSee
 
     // Integration/synthesis
     `${cardName} weaves ${meaning} into the larger tapestry of ${position}, showing how everything connects.`,
-    `In the ecology of your reading, ${cardName} represents ${meaning}—remove it and the whole system shifts.`
+    `In the ecology of your reading, ${cardName} represents ${meaning}—remove it and the whole system shifts.`,
+
+    // Balanced wisdom / Middle Way (disguised Buddhist principles)
+    `${cardName} reminds you: all things in moderation, even ${meaning}.`,
+    `The middle path between extremes is where ${cardName} guides you—${meaning} is neither enemy nor savior.`,
+    `${cardName} asks you to see ${meaning} clearly, without the distortion of fear or wishful thinking.`,
+    `Set your intention around ${meaning} from wisdom, not from wounds. That's what ${cardName} is calling for.`,
+    `${cardName} invites conscious communication about ${meaning}—speak truth without cruelty.`,
+    `Let ${meaning} be the catalyst for integrated action. ${cardName} doesn't want lip service, it wants alignment.`,
+    `${cardName} points to purposeful work: how does ${meaning} serve your integrity or compromise it?`,
+    `Sustainable effort, not burnout. ${cardName} asks: can you approach ${meaning} with marathon pace?`,
+    `Stay present with ${meaning}. ${cardName} won't let you escape into past regrets or future anxieties.`,
+    `${cardName} demands focused attention on ${meaning}. Where you place your focus determines your reality.`,
+    `Balance is not standing still—it's the dynamic dance ${cardName} invites you into with ${meaning}.`,
+    `${meaning} in excess becomes its opposite. ${cardName} shows you where to find equilibrium.`
   ];
 
   // Use quantum seed to pick structure
@@ -296,7 +311,19 @@ export function quantumSynthesisClosing(quantumSeed) {
     'You came to this reading for a reason. Let it change you.',
     'May you have the courage to live what these cards revealed.',
     'The reading is complete. The living has just begun.',
-    'Go forth and be the magic you seek.'
+    'Go forth and be the magic you seek.',
+
+    // Balanced wisdom closings (Middle Way principles)
+    'Walk the middle path. Avoid extremes. Find your center.',
+    'All things in moderation—even the pursuit of these insights.',
+    'Act with integrity. Speak with care. See with clarity. Move with purpose.',
+    'Balance isn't a destination. It's a practice you return to, again and again.',
+    'May you find the sweet spot between effort and ease.',
+    'Neither spiritual bypass nor cynical dismissal. The truth lives between.',
+    'Take what serves. Release what doesn't. Stay present to what is.',
+    'Consistency over intensity. Small aligned steps compound.',
+    'May your actions reflect your values, not your anxieties.',
+    'This is your invitation to show up—fully, honestly, bravely.'
   ];
 
   const index = Math.floor((quantumSeed * closings.length)) % closings.length;

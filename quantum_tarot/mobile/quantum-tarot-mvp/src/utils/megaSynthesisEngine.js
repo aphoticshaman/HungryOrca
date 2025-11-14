@@ -24,6 +24,7 @@ import { getFullAstrologicalContext, getTimeOfDayEnergy } from './advancedAstrol
 import { getMBTIInterpretationGuidelines } from './mbtiTest';
 import { generateQuantumNarrative } from './quantumNarrativeEngine';
 import { generateQuantumSeed } from './quantumRNG';
+import { BalancedWisdomIntegration, getModerationWisdom } from './balancedWisdom';
 
 /**
  * Generate comprehensive synthesis
@@ -151,6 +152,21 @@ function buildSynthesis(context) {
     const quote = getCardQuote(card.cardIndex, context.narrative.sentenceSeeds[index]);
     if (quote) {
       synthesis += `\n\n**"${quote.text}"**  \n—${quote.source}\n\n`;
+
+      // Reference the quote in the interpretation
+      const quoteIntegrations = [
+        `This wisdom speaks directly to ${cardName}'s message. `,
+        `Let that sink in as we explore ${cardName}. `,
+        `Keep those words close as ${cardName} unfolds its meaning. `,
+        `That quote? That's ${cardName} speaking through culture. `,
+        `${cardName} echoes this sentiment: `,
+        `These words capture the essence of ${cardName} perfectly. `,
+        `As ${cardName} reveals itself, remember: `,
+      ];
+      const quoteIntegrationIndex = Math.floor(
+        (context.narrative.sentenceSeeds[index] * quoteIntegrations.length) % quoteIntegrations.length
+      );
+      synthesis += quoteIntegrations[quoteIntegrationIndex];
     }
 
     // Generate quantum-varied sentence
@@ -168,6 +184,18 @@ function buildSynthesis(context) {
 
     // Add elemental/archetypal layer
     synthesis += weaveCardLayers(cardData, card.reversed, narrative);
+
+    // Add balanced wisdom pillar (every 2-3 cards to avoid repetition)
+    if (index % 3 === 0 || cards.length <= 3) {
+      const pillarGuidance = BalancedWisdomIntegration.getCardPillar(
+        card.cardIndex,
+        primaryKeyword,
+        context.narrative.sentenceSeeds[index * 2] || generateQuantumSeed()
+      );
+      if (pillarGuidance) {
+        synthesis += `${pillarGuidance.wisdom} `;
+      }
+    }
 
     synthesis += `\n\n`;
   });
@@ -208,6 +236,12 @@ function buildSynthesis(context) {
     synthesis += integrateTransits(astroContext.currentTransits, cards, readingType, narrative);
   }
 
+  // Moderation wisdom (Middle Way principles)
+  const moderationSeed = (quantumSeed * 0.9876) % 1;
+  const moderationWisdom = getModerationWisdom(moderationSeed);
+  synthesis += `\nA word on balance: ${moderationWisdom} `;
+  synthesis += `The cards aren't asking for perfection or extremism—they're inviting you into the middle way.\n\n`;
+
   // ═══════════════════════════════════════════════════════════
   // MBTI-SPECIFIC GUIDANCE (100-200 words)
   // ═══════════════════════════════════════════════════════════
@@ -226,9 +260,41 @@ function buildSynthesis(context) {
   // CLOSING (50-100 words)
   // ═══════════════════════════════════════════════════════════
 
-  synthesis += `\n\n${narrative.getClosing()}\n`;
+  // Add balanced wisdom closing
+  const dominantElement = getDominantElement(cards);
+  const actionReadiness = mcqAnalysis.actionReadiness || 'medium';
+  const balancedClosing = BalancedWisdomIntegration.getClosing(
+    dominantElement,
+    actionReadiness,
+    (quantumSeed * 0.111) % 1,
+    (quantumSeed * 0.222) % 1
+  );
+
+  synthesis += `\n\n${balancedClosing.moderation}\n\n`;
+  synthesis += `${balancedClosing.pillar.wisdom}\n\n`;
+  synthesis += `${narrative.getClosing()}\n`;
 
   return synthesis;
+}
+
+/**
+ * Get dominant element from reading
+ */
+function getDominantElement(cards) {
+  const elements = { Fire: 0, Water: 0, Air: 0, Earth: 0 };
+
+  cards.forEach(card => {
+    const cardData = CARD_DATABASE[card.cardIndex];
+    if (cardData.element) {
+      elements[cardData.element]++;
+    }
+  });
+
+  const dominant = Object.entries(elements).reduce((a, b) =>
+    elements[a[0]] > elements[b[0]] ? a : b
+  );
+
+  return dominant[0];
 }
 
 /**
@@ -404,28 +470,38 @@ function generateMBTIGuidance(mbtiGuidelines, cards, mcqAnalysis, narrative) {
 }
 
 /**
- * Generate concrete action steps
+ * Generate concrete action steps (with balanced wisdom integration)
  */
 function generateActionSteps(cards, mcqAnalysis, synthesisGuidance, readingType, narrative) {
   let text = '';
 
   const actionLevel = synthesisGuidance.actionLevel;
+  const actionGuidance = BalancedWisdomIntegration.getActionGuidance(
+    actionLevel,
+    generateQuantumSeed()
+  );
 
   if (actionLevel === 'high') {
     text += `You're ready to ${narrative.getWord('act')}. Here's how:\n\n`;
+    text += `**Guiding principle**: ${actionGuidance.wisdom}\n\n`;
     text += `1. **TODAY**: ${getImmediateAction(cards[0], readingType, narrative)}\n`;
     text += `2. **THIS WEEK**: ${getWeekAction(cards, readingType, narrative)}\n`;
-    text += `3. **THIS MONTH**: ${getMonthAction(cards, readingType, narrative)}\n`;
+    text += `3. **THIS MONTH**: ${getMonthAction(cards, readingType, narrative)}\n\n`;
+    text += `Remember: sustainable effort beats burnout. Marathon pace, not sprint pace.\n`;
   } else if (actionLevel === 'low') {
     text += `You're not ready to ${narrative.getWord('act')} yet. That's okay. Process first:\n\n`;
+    text += `**Guiding principle**: ${actionGuidance.wisdom}\n\n`;
     text += `1. **Journal**: ${getJournalingPrompt(cards, narrative)}\n`;
     text += `2. **Reflect**: ${getReflectionPrompt(cards, narrative)}\n`;
-    text += `3. **When ready**: ${getEventualAction(cards, readingType, narrative)}\n`;
+    text += `3. **When ready**: ${getEventualAction(cards, readingType, narrative)}\n\n`;
+    text += `Clarity comes before action. Honor where you are.\n`;
   } else {
     text += `Balance reflection with action:\n\n`;
+    text += `**Guiding principle**: ${actionGuidance.wisdom}\n\n`;
     text += `1. **Reflect**: ${getReflectionPrompt(cards, narrative)}\n`;
     text += `2. **Act**: ${getImmediateAction(cards[0], readingType, narrative)}\n`;
-    text += `3. **Integrate**: ${getIntegrationAction(cards, narrative)}\n`;
+    text += `3. **Integrate**: ${getIntegrationAction(cards, narrative)}\n\n`;
+    text += `The middle way: neither rushing ahead nor hiding in analysis paralysis.\n`;
   }
 
   return text;
