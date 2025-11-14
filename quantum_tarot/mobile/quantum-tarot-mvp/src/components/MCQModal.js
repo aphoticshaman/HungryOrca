@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Modal,
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { NeonText, LPMUDText, ScanLines } from '../components/TerminalEffects';
+import { NEON_COLORS } from '../styles/cyberpunkColors';
 
 /**
  * MCQ MODAL COMPONENT
@@ -98,26 +98,24 @@ const MCQModal = ({
       visible={visible}
       onRequestClose={handleSkip}
     >
-      <LinearGradient
-        colors={['#1a0033', '#330066', '#4d0099']}
-        style={styles.container}
-      >
+      <View style={styles.container}>
+        <ScanLines />
         <SafeAreaView style={styles.safeArea}>
           {/* Header */}
           <View style={styles.header}>
             <View style={styles.headerTop}>
-              <Text style={styles.cardContext}>
-                Card {cardNumber} of {totalCards}: {cardName}
-              </Text>
+              <LPMUDText style={styles.cardContext}>
+                $HIC$Card {cardNumber} of {totalCards}: {cardName}$NOR$
+              </LPMUDText>
               <TouchableOpacity onPress={handleSkip} style={styles.skipButton}>
-                <Text style={styles.skipButtonText}>Skip All</Text>
+                <LPMUDText style={styles.skipButtonText}>$HIY$Skip All$NOR$</LPMUDText>
               </TouchableOpacity>
             </View>
 
             <View style={styles.progressContainer}>
-              <Text style={styles.progressText}>
+              <NeonText color={NEON_COLORS.dimCyan} style={styles.progressText}>
                 Question {currentQuestionIndex + 1} of {questions.length}
-              </Text>
+              </NeonText>
               <View style={styles.progressBarContainer}>
                 <View style={[styles.progressBar, { width: `${progress}%` }]} />
               </View>
@@ -130,11 +128,11 @@ const MCQModal = ({
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.questionContainer}>
-              <Text style={styles.questionType}>{getQuestionTypeLabel(currentQuestion.type)}</Text>
-              <Text style={styles.questionText}>{currentQuestion.question}</Text>
+              <LPMUDText style={styles.questionType}>$HIY${getQuestionTypeLabel(currentQuestion.type)}$NOR$</LPMUDText>
+              <NeonText color={NEON_COLORS.hiWhite} style={styles.questionText}>{currentQuestion.question}</NeonText>
 
               {currentQuestion.subtext && (
-                <Text style={styles.questionSubtext}>{currentQuestion.subtext}</Text>
+                <NeonText color={NEON_COLORS.dimCyan} style={styles.questionSubtext}>{currentQuestion.subtext}</NeonText>
               )}
             </View>
 
@@ -149,13 +147,13 @@ const MCQModal = ({
                   <View style={styles.optionContent}>
                     {currentQuestion.type === 'resonance' && (
                       <View style={styles.scaleIndicator}>
-                        <Text style={styles.scaleNumber}>{index + 1}</Text>
+                        <NeonText color={NEON_COLORS.hiBlack} style={styles.scaleNumber}>{index + 1}</NeonText>
                       </View>
                     )}
-                    <Text style={styles.optionText}>{option.text || option}</Text>
+                    <NeonText color={NEON_COLORS.hiCyan} style={styles.optionText}>{option.text || option}</NeonText>
                   </View>
                   {option.description && (
-                    <Text style={styles.optionDescription}>{option.description}</Text>
+                    <NeonText color={NEON_COLORS.dimCyan} style={styles.optionDescription}>{option.description}</NeonText>
                   )}
                 </TouchableOpacity>
               ))}
@@ -163,23 +161,23 @@ const MCQModal = ({
 
             {currentQuestionIndex > 0 && (
               <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-                <Text style={styles.backButtonText}>← Previous Question</Text>
+                <LPMUDText style={styles.backButtonText}>$HIC$← Previous Question$NOR$</LPMUDText>
               </TouchableOpacity>
             )}
           </ScrollView>
 
           {/* Footer hint */}
           <View style={styles.footer}>
-            <Text style={styles.footerText}>
+            <NeonText color={NEON_COLORS.dimYellow} style={styles.footerText}>
               {isLastQuestion
                 ? 'Last question for this card'
                 : `${questions.length - currentQuestionIndex - 1} more question${
                     questions.length - currentQuestionIndex - 1 === 1 ? '' : 's'
                   }`}
-            </Text>
+            </NeonText>
           </View>
         </SafeAreaView>
-      </LinearGradient>
+      </View>
     </Modal>
   );
 };
@@ -205,6 +203,7 @@ function getQuestionTypeLabel(type) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#000000',
   },
   safeArea: {
     flex: 1,
@@ -213,7 +212,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingTop: 8,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+    borderBottomColor: NEON_COLORS.dimCyan,
   },
   headerTop: {
     flexDirection: 'row',
@@ -223,7 +222,6 @@ const styles = StyleSheet.create({
   },
   cardContext: {
     fontSize: 12,
-    color: '#9966ff',
     fontWeight: 'bold',
     textTransform: 'uppercase',
     letterSpacing: 0.5,
@@ -234,28 +232,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 6,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+    borderColor: NEON_COLORS.hiYellow,
   },
   skipButtonText: {
     fontSize: 12,
-    color: '#ccccff',
   },
   progressContainer: {
     gap: 6,
   },
   progressText: {
     fontSize: 12,
-    color: '#ccccff',
   },
   progressBarContainer: {
     height: 4,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(0, 255, 255, 0.2)',
     borderRadius: 2,
     overflow: 'hidden',
   },
   progressBar: {
     height: '100%',
-    backgroundColor: '#9966ff',
+    backgroundColor: NEON_COLORS.hiCyan,
     borderRadius: 2,
   },
   scrollContent: {
@@ -267,7 +263,6 @@ const styles = StyleSheet.create({
   },
   questionType: {
     fontSize: 11,
-    color: '#9966ff',
     textTransform: 'uppercase',
     letterSpacing: 1,
     marginBottom: 8,
@@ -275,14 +270,12 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: 20,
-    color: '#ffffff',
     lineHeight: 28,
     fontWeight: '500',
     marginBottom: 8,
   },
   questionSubtext: {
     fontSize: 14,
-    color: '#ccccff',
     lineHeight: 20,
     fontStyle: 'italic',
   },
@@ -290,11 +283,11 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   optionButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(0, 255, 255, 0.1)',
     borderRadius: 12,
     padding: 18,
     borderWidth: 2,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
+    borderColor: NEON_COLORS.dimCyan,
   },
   optionContent: {
     flexDirection: 'row',
@@ -305,24 +298,21 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#9966ff',
+    backgroundColor: NEON_COLORS.hiCyan,
     justifyContent: 'center',
     alignItems: 'center',
   },
   scaleNumber: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#ffffff',
   },
   optionText: {
     fontSize: 16,
-    color: '#ffffff',
     lineHeight: 22,
     flex: 1,
   },
   optionDescription: {
     fontSize: 13,
-    color: '#ccccff',
     marginTop: 6,
     lineHeight: 18,
     fontStyle: 'italic',
@@ -334,17 +324,15 @@ const styles = StyleSheet.create({
   },
   backButtonText: {
     fontSize: 14,
-    color: '#ccccff',
   },
   footer: {
     padding: 16,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(255, 255, 255, 0.1)',
+    borderTopColor: NEON_COLORS.dimCyan,
     alignItems: 'center',
   },
   footerText: {
     fontSize: 12,
-    color: '#9966ff',
     fontStyle: 'italic',
   },
 });

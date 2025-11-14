@@ -52,16 +52,6 @@ const CardInterpretationScreen = ({ route, navigation }) => {
     // Scroll to top IMMEDIATELY when card changes
     scrollViewRef.current?.scrollTo({ y: 0, animated: false });
 
-    // Show MCQ modal after brief delay (no animation)
-    setTimeout(() => {
-      handleRevealComplete();
-    }, 1000);
-  }, [currentCardIndex]);
-
-  // After encrypted reveal completes, show MCQ modal
-  const handleRevealComplete = () => {
-    console.log('Reveal complete for card', currentCardIndex + 1);
-
     // Generate MCQ questions for this card
     const questions = generatePostCardQuestions(
       cards[currentCardIndex],
@@ -73,11 +63,11 @@ const CardInterpretationScreen = ({ route, navigation }) => {
     );
 
     setCurrentMCQs(questions);
+  }, [currentCardIndex]);
 
-    // Show MCQ modal after a brief pause (1 second)
-    setTimeout(() => {
-      setShowMCQModal(true);
-    }, 1000);
+  // User manually triggers MCQ modal
+  const handleShowMCQ = () => {
+    setShowMCQModal(true);
   };
 
   // User completes MCQs for current card
@@ -226,6 +216,18 @@ const CardInterpretationScreen = ({ route, navigation }) => {
             </NeonText>
           </View>
         </ScrollView>
+
+        {/* MCQ Trigger Button */}
+        <View style={styles.mcqButtonContainer}>
+          <TouchableOpacity
+            style={styles.mcqButton}
+            onPress={handleShowMCQ}
+          >
+            <LPMUDText style={styles.mcqButtonText}>
+              $HIY$[ ANSWER QUESTIONS ]$NOR$
+            </LPMUDText>
+          </TouchableOpacity>
+        </View>
 
         {/* Navigation buttons */}
         <View style={styles.footer}>
@@ -461,6 +463,23 @@ const styles = StyleSheet.create({
   nextButtonText: {
     fontSize: 16,
     color: '#ffffff',
+    fontWeight: 'bold',
+  },
+  mcqButtonContainer: {
+    padding: 16,
+    paddingTop: 8,
+    paddingBottom: 8,
+  },
+  mcqButton: {
+    padding: 16,
+    borderRadius: 8,
+    backgroundColor: 'rgba(0, 255, 255, 0.1)',
+    borderWidth: 2,
+    borderColor: NEON_COLORS.hiYellow,
+    alignItems: 'center',
+  },
+  mcqButtonText: {
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });
