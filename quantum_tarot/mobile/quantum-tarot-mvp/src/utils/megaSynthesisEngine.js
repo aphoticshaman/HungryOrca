@@ -82,6 +82,7 @@ export async function generateMegaSynthesis(readingData) {
   // 5. BUILD SYNTHESIS
   const synthesis = buildSynthesis({
     cards,
+    mcqAnswers,
     mcqAnalysis,
     astroContext,
     timeEnergy,
@@ -103,6 +104,7 @@ export async function generateMegaSynthesis(readingData) {
 function buildSynthesis(context) {
   const {
     cards,
+    mcqAnswers = [],
     mcqAnalysis,
     astroContext,
     timeEnergy,
