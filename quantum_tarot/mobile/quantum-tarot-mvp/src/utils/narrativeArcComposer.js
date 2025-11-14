@@ -184,8 +184,8 @@ export function generateStoryTransitions(fromCard, toCard, stageChange, quantumS
     'Next,'
   ];
 
-  const idx = Math.floor(quantumSeed * options.length);
-  return options[idx];
+  const idx = Math.floor(quantumSeed * options.length) % options.length;
+  return options[idx] || options[0];
 }
 
 /**
@@ -206,8 +206,8 @@ export function generateClimaxStatement(cards, mcqAnalysis, readingType, quantum
     'The hero always faces this: the moment when going back is impossible but going forward seems insurmountable. You\'re here.'
   ];
 
-  const idx = Math.floor(quantumSeed * templates.length);
-  return `\n\n## THE TURNING POINT\n\n${templates[idx]}\n\n`;
+  const idx = Math.floor(quantumSeed * templates.length) % templates.length;
+  return `\n\n## THE TURNING POINT\n\n${templates[idx] || templates[0]}\n\n`;
 }
 
 /**
@@ -222,8 +222,8 @@ export function generateDenouement(cards, chineseZodiac, mbtiType, quantumSeed) 
     'You asked the cards a question. They gave you a story instead. Because the answer isn\'t information—it\'s transformation.'
   ];
 
-  const idx = Math.floor(quantumSeed * wisdomTemplates.length);
-  return `\n\n## THE STORY'S MORAL\n\n${wisdomTemplates[idx]}\n\n`;
+  const idx = Math.floor(quantumSeed * wisdomTemplates.length) % wisdomTemplates.length;
+  return `\n\n## THE STORY'S MORAL\n\n${wisdomTemplates[idx] || wisdomTemplates[0]}\n\n`;
 }
 
 /**
@@ -270,7 +270,7 @@ export function generateChapterHeadings(cards, quantumSeed) {
     ['Act I: Setup', 'Act II: Complication', 'Act III: Resolution']
   ];
 
-  const styleIdx = Math.floor(quantumSeed * headingStyles.length);
+  const styleIdx = Math.floor(quantumSeed * headingStyles.length) % headingStyles.length;
   const headings = headingStyles[styleIdx] || headingStyles[0]; // Fallback to first style
 
   return cards.map((card, idx) => {
@@ -331,8 +331,8 @@ export function generateStoryOpener(userName, readingType, quantumSeed) {
     `${userName}, buckle up. This reading has a beginning, middle, and end—and you're in the middle.`
   ];
 
-  const idx = Math.floor(quantumSeed * openers.length);
-  return openers[idx];
+  const idx = Math.floor(quantumSeed * openers.length) % openers.length;
+  return openers[idx] || openers[0];
 }
 
 /**

@@ -404,7 +404,8 @@ export function generateSynergySummary(synergies, quantumSeed) {
     'Card combinations reveal what individual interpretations miss:'
   ];
 
-  const intro = intros[Math.floor(quantumSeed * intros.length)];
+  const introIdx = Math.floor(quantumSeed * intros.length) % intros.length;
+  const intro = intros[introIdx] || intros[0];
 
   const insights = synergies.map(s => s.insight).join(' ');
 

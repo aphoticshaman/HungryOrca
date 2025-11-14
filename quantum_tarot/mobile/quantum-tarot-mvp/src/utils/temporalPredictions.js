@@ -74,8 +74,8 @@ function getTimeframe(cardNumber, readingType, quantumSeed) {
   } else {
     // Court cards = seasons
     const seasons = ['spring', 'summer', 'fall', 'winter'];
-    const seasonIndex = Math.floor(quantumSeed * seasons.length);
-    return { value: null, unit: 'season', season: seasons[seasonIndex] };
+    const seasonIndex = Math.floor(quantumSeed * seasons.length) % seasons.length;
+    return { value: null, unit: 'season', season: seasons[seasonIndex] || 'spring' };
   }
 }
 
@@ -262,8 +262,8 @@ function constructTimingStatement(timeframe, anchor, card, quantumSeed) {
     );
   }
 
-  const index = Math.floor(quantumSeed * templates.length);
-  return templates[index];
+  const index = Math.floor(quantumSeed * templates.length) % Math.max(1, templates.length);
+  return templates[index] || '';
 }
 
 /**
@@ -290,8 +290,8 @@ export function generateReadingTimeframe(cards, astroContext, readingType, quant
     );
   }
 
-  const index = Math.floor((quantumSeed * 0.333) * statements.length);
-  return statements[index];
+  const index = Math.floor((quantumSeed * 0.333) * statements.length) % Math.max(1, statements.length);
+  return statements[index] || statements[0];
 }
 
 /**
@@ -321,8 +321,8 @@ export function generatePredictiveMarker(card, readingType, quantumSeed) {
     'something someone says without knowing your situation'
   ];
 
-  const markerIdx = Math.floor(quantumSeed * markers.length);
-  const specificIdx = Math.floor((quantumSeed * 0.888) * specifics.length);
+  const markerIdx = Math.floor(quantumSeed * markers.length) % markers.length;
+  const specificIdx = Math.floor((quantumSeed * 0.888) * specifics.length) % specifics.length;
 
-  return `${markers[markerIdx]} ${specifics[specificIdx]}.`;
+  return `${markers[markerIdx] || markers[0]} ${specifics[specificIdx] || specifics[0]}.`;
 }

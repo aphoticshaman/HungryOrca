@@ -260,9 +260,9 @@ function buildSynthesis(context) {
     'Tarot works whether you believe in it or not—because it\'s a mirror, not a magic 8-ball. What you see in these cards says more about you than them.',
     'If you\'re skeptical, good. Blind faith is dangerous. But so is cynicism that protects you from uncomfortable truths.'
   ];
-  const skepticismIdx = Math.floor((quantumSeed * 0.999) * skepticismStatements.length);
+  const skepticismIdx = Math.floor((quantumSeed * 0.999) * skepticismStatements.length) % skepticismStatements.length;
   if (Math.random() > 0.5) { // 50% of readings get meta-skepticism acknowledgment
-    synthesis += `${skepticismStatements[skepticismIdx]}\n\n`;
+    synthesis += `${skepticismStatements[skepticismIdx] || skepticismStatements[0]}\n\n`;
   }
 
   // HARDENING #10: Decision Empowerment Language
@@ -274,9 +274,9 @@ function buildSynthesis(context) {
     'If you came here hoping the cards would make the decision for you, they won\'t. They\'ll show you what you already know but haven\'t admitted. Then YOU choose.',
     'The future isn\'t written. These cards show momentum and probability based on your current trajectory. Don\'t like where it\'s headed? Change direction. That power is yours.'
   ];
-  const empowermentIdx = Math.floor((quantumSeed * 0.888) * empowermentStatements.length);
+  const empowermentIdx = Math.floor((quantumSeed * 0.888) * empowermentStatements.length) % empowermentStatements.length;
   if (Math.random() > 0.4) { // 60% of readings get decision empowerment
-    synthesis += `${empowermentStatements[empowermentIdx]}\n\n`;
+    synthesis += `${empowermentStatements[empowermentIdx] || empowermentStatements[0]}\n\n`;
   }
 
   // HARDENING #8: Crisis Detection & Ethical Redirection
@@ -320,8 +320,8 @@ function buildSynthesis(context) {
     'Here\'s where we get into the heart of your reading.',
     'Let me walk you through what each card reveals.'
   ];
-  const transitionIdx = Math.floor((quantumSeed * 0.999) * cardTransitions.length);
-  synthesis += `${cardTransitions[transitionIdx]}\n\n`;
+  const transitionIdx = Math.floor((quantumSeed * 0.999) * cardTransitions.length) % cardTransitions.length;
+  synthesis += `${cardTransitions[transitionIdx] || cardTransitions[0]}\n\n`;
 
   // Add CARD SYNERGY ANALYSIS first (shows we read interactions, not just individual cards)
   const synergySummary = generateSynergySummary(cardSynergies, quantumSeed * 0.111);
@@ -467,8 +467,8 @@ function buildSynthesis(context) {
     'The cards you drew aren\'t random. They form a constellation of meaning.',
     'Beyond the surface reading, there are deeper currents at work here.'
   ];
-  const patternTransIdx = Math.floor((quantumSeed * 0.888) * patternTransitions.length);
-  synthesis += `\n\n${patternTransitions[patternTransIdx]}\n\n`;
+  const patternTransIdx = Math.floor((quantumSeed * 0.888) * patternTransitions.length) % patternTransitions.length;
+  synthesis += `\n\n${patternTransitions[patternTransIdx] || patternTransitions[0]}\n\n`;
 
   // Cognitive dissonance detection
   if (mcqAnalysis.overallResonance < 2.5) {
@@ -507,11 +507,11 @@ function buildSynthesis(context) {
     '\n\nNow, about the spiritual territory you\'re crossing.',
     '\n\nThere\'s a meta-level worth addressing here.'
   ];
-  const spiritTransIdx = Math.floor((quantumSeed * 0.777) * spiritualTransitions.length);
+  const spiritTransIdx = Math.floor((quantumSeed * 0.777) * spiritualTransitions.length) % spiritualTransitions.length;
 
   // Spiritual synthesis - emphasizing that all traditions contain partial truths
   if (chineseZodiac && astroContext?.sunSign) {
-    synthesis += spiritualTransitions[spiritTransIdx];
+    synthesis += spiritualTransitions[spiritTransIdx] || spiritualTransitions[0];
 
     const spiritualMessage = getSpiritualSynthesisMessage(chineseZodiac, astroContext.sunSign);
     if (spiritualMessage) {
@@ -572,8 +572,8 @@ function buildSynthesis(context) {
       '\n\n━━ GUIDANCE FROM THE CARDS ━━\n\n',
       '\n\n━━ WORDS TO REMEMBER ━━\n\n'
     ];
-    const wisdomIdx = Math.floor((quantumSeed * 0.3333) % wisdomTransitions.length);
-    synthesis += wisdomTransitions[wisdomIdx];
+    const wisdomIdx = Math.floor(quantumSeed * 0.3333 * wisdomTransitions.length) % wisdomTransitions.length;
+    synthesis += wisdomTransitions[wisdomIdx] || wisdomTransitions[0];
 
     selectedSynthesisQuotes.forEach((quote, idx) => {
       if (quote?.text && quote?.source) {
@@ -598,8 +598,8 @@ function buildSynthesis(context) {
     `\n\nYour ${userProfile?.mbtiType || 'cognitive wiring'} matters here. Here's why.`,
     `\n\nAs a${userProfile?.mbtiType ? 'n' : ''} ${userProfile?.mbtiType || 'person'}, you'll want to pay attention to this.`
   ];
-  const mbtiTransIdx = Math.floor((quantumSeed * 0.666) * mbtiTransitions.length);
-  synthesis += mbtiTransitions[mbtiTransIdx];
+  const mbtiTransIdx = Math.floor((quantumSeed * 0.666) * mbtiTransitions.length) % mbtiTransitions.length;
+  synthesis += mbtiTransitions[mbtiTransIdx] || mbtiTransitions[0];
 
   const mbtiGuidance = generateMBTIGuidance(mbtiGuidelines, cards, mcqAnalysis, narrative);
   if (mbtiGuidance) {
@@ -617,8 +617,8 @@ function buildSynthesis(context) {
     '\n\n## From Insight to Action',
     '\n\n## Making This Real'
   ];
-  const actionTransIdx = Math.floor((quantumSeed * 0.555) * actionTransitions.length);
-  synthesis += `${actionTransitions[actionTransIdx]}\n\n`;
+  const actionTransIdx = Math.floor((quantumSeed * 0.555) * actionTransitions.length) % actionTransitions.length;
+  synthesis += `${actionTransitions[actionTransIdx] || actionTransitions[0]}\n\n`;
 
   const actionSteps = generateActionSteps(cards, mcqAnalysis, synthesisGuidance, readingType, narrative);
   if (actionSteps) {
@@ -635,8 +635,8 @@ function buildSynthesis(context) {
     '\n\n---\n\n',
     '\n\n•••\n\n'
   ];
-  const closingTransIdx = Math.floor((quantumSeed * 0.444) * closingTransitions.length);
-  synthesis += closingTransitions[closingTransIdx];
+  const closingTransIdx = Math.floor((quantumSeed * 0.444) * closingTransitions.length) % closingTransitions.length;
+  synthesis += closingTransitions[closingTransIdx] || closingTransitions[0];
 
   // Add DENOUEMENT (story wisdom)
   if (narrativeArc?.denouement) {

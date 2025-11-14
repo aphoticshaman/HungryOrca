@@ -119,8 +119,9 @@ export function generateBarnumStatements(userProfile, quantumSeed) {
 
   // Get MBTI statements
   const mbtiStatementSet = mbtiBarnum[mbtiType] || mbtiBarnum['INFP'];
-  const mbtiIdx = Math.floor(quantumSeed * mbtiStatementSet.length);
-  statements.push(mbtiStatementSet[mbtiIdx]);
+  const mbtiIdx = Math.floor(quantumSeed * mbtiStatementSet.length) % mbtiStatementSet.length;
+  const selectedStatement = mbtiStatementSet[mbtiIdx] || mbtiStatementSet[0];
+  statements.push(selectedStatement);
 
   // Zodiac-based Barnum statements
   const zodiacBarnum = {
@@ -157,26 +158,30 @@ export function generateSensoryDetails(userProfile, cards, quantumSeed) {
     'emerald green', 'deep purple', 'crimson red', 'midnight blue',
     'silver', 'gold', 'burnt orange', 'pearl white', 'charcoal gray'
   ];
-  const colorIdx = Math.floor(quantumSeed * colors.length);
+  const colorIdx = Math.floor(quantumSeed * colors.length) % colors.length;
+  const selectedColor = colors[colorIdx] || colors[0];
   details.push({
     type: 'color',
-    text: `The color ${colors[colorIdx]} keeps appearing around this situation. Pay attention when you see it.`
+    text: `The color ${selectedColor} keeps appearing around this situation. Pay attention when you see it.`
   });
 
   // Number synchronicity
   const significantNumbers = [3, 7, 11, 12, 22, 33, 44];
-  const numIdx = Math.floor((quantumSeed * 0.777) * significantNumbers.length);
+  const numIdx = Math.floor((quantumSeed * 0.777) * significantNumbers.length) % significantNumbers.length;
+  const selectedNumber = significantNumbers[numIdx] || significantNumbers[0];
   details.push({
     type: 'number',
-    text: `Watch for the number ${significantNumbers[numIdx]}. It will show up as confirmation.`
+    text: `Watch for the number ${selectedNumber}. It will show up as confirmation.`
   });
 
   // Letter/initial (based on zodiac or card)
   const letters = ['J', 'M', 'A', 'R', 'S', 'K', 'L', 'D', 'C'];
-  const letterIdx = Math.floor((quantumSeed * 0.333) * letters.length);
+  const letterIdx = Math.floor((quantumSeed * 0.333) * letters.length) % letters.length;
+  const letter1 = letters[letterIdx] || letters[0];
+  const letter2 = letters[(letterIdx + 1) % letters.length] || letters[1];
   details.push({
     type: 'letter',
-    text: `Someone whose name starts with ${letters[letterIdx]} or ${letters[(letterIdx + 1) % letters.length]} is relevant to this reading. Either helper or lesson.`
+    text: `Someone whose name starts with ${letter1} or ${letter2} is relevant to this reading. Either helper or lesson.`
   });
 
   // Animal symbolism
@@ -199,10 +204,11 @@ export function generateSensoryDetails(userProfile, cards, quantumSeed) {
     { time: 'dusk', meaning: 'liminal transition' },
     { time: 'midnight', meaning: 'shadow work time' }
   ];
-  const timeIdx = Math.floor((quantumSeed * 0.888) * times.length);
+  const timeIdx = Math.floor((quantumSeed * 0.888) * times.length) % times.length;
+  const selectedTime = times[timeIdx] || times[0]; // Fallback to first element
   details.push({
     type: 'time',
-    text: `Pay attention to what comes through at ${times[timeIdx].time}—${times[timeIdx].meaning}.`
+    text: `Pay attention to what comes through at ${selectedTime.time}—${selectedTime.meaning}.`
   });
 
   // Physical sensation
@@ -214,10 +220,11 @@ export function generateSensoryDetails(userProfile, cards, quantumSeed) {
     'butterflies or knots in your stomach (gut knowing)',
     'chills or goosebumps (confirmation from Spirit)'
   ];
-  const sensationIdx = Math.floor((quantumSeed * 0.666) * sensations.length);
+  const sensationIdx = Math.floor((quantumSeed * 0.666) * sensations.length) % sensations.length;
+  const selectedSensation = sensations[sensationIdx] || sensations[0];
   details.push({
     type: 'sensation',
-    text: `You might feel ${sensations[sensationIdx]} when you're on the right path. That's your body's yes.`
+    text: `You might feel ${selectedSensation} when you're on the right path. That's your body's yes.`
   });
 
   return details;
@@ -241,8 +248,8 @@ export function generateIntuitiveHooks(readingType, quantumSeed) {
     'Your sleep is disrupted for a reason. The veil is thin. Your dreams are trying to tell you something. Start journaling them.',
   ];
 
-  const idx = Math.floor(quantumSeed * hooks.length);
-  return hooks[idx];
+  const idx = Math.floor(quantumSeed * hooks.length) % hooks.length;
+  return hooks[idx] || hooks[0];
 }
 
 /**
@@ -261,8 +268,8 @@ export function generateConfirmationPrompts(cards, userProfile, quantumSeed) {
     'You\'ve been thinking about someone from your past more than usual. There\'s a reason. What is it?'
   ];
 
-  const idx = Math.floor(quantumSeed * prompts.length);
-  return prompts[idx];
+  const idx = Math.floor(quantumSeed * prompts.length) % prompts.length;
+  return prompts[idx] || prompts[0];
 }
 
 /**
@@ -281,8 +288,8 @@ export function generateFlatteryWithEdge(mbtiType, quantumSeed) {
     'You\'re more sensitive than you appear. You\'ve built armor. It protected you once. Does it still serve you?'
   ];
 
-  const idx = Math.floor(quantumSeed * statements.length);
-  return statements[idx];
+  const idx = Math.floor(quantumSeed * statements.length) % statements.length;
+  return statements[idx] || statements[0];
 }
 
 /**
