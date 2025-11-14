@@ -36,10 +36,11 @@ export const CARD_QUOTES = {
   2: { // The High Priestess
     name: 'The High Priestess',
     quotes: [
-      { text: "The wound is the place where the Light enters you.", source: "Rumi (Public Domain)" },
+      { text: "She remembered things her soul knew before her body was born. That's the kind of witch you can't burn.", source: "Dark Academia Magic" },
       { text: "Your visions will become clear only when you can look into your own heart.", source: "Carl Jung" },
-      { text: "Listen to the mustn'ts, child. Listen to the don'ts. Listen to the shouldn'ts, the impossibles, the won'ts. Listen to the never haves, then listen close to me... Anything can happen, child. Anything can be.", source: "Shel Silverstein" },
+      { text: "She kept her magic quiet. Not because she was afraid, but because she knew power doesn't need to announce itself.", source: "Mystical Energy" },
       { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+      { text: "Trust the girl with books in her bag and storms in her eyes. She knows things.", source: "Witchy Reader Aesthetic" },
     ]
   },
 
@@ -76,10 +77,11 @@ export const CARD_QUOTES = {
   6: { // The Lovers
     name: 'The Lovers',
     quotes: [
+      { text: "He fell first. He fell harder. And when she finally fell? They both burned.", source: "Enemies to Lovers Trope" },
+      { text: "I wasn't looking for someone to complete me. I was looking for someone who wouldn't run when they saw how whole I already was.", source: "Modern Romance Wisdom" },
       { text: "Love is or it ain't. Thin love ain't love at all.", source: "Toni Morrison, Beloved (Brief quote, fair use)" },
       { text: "We accept the love we think we deserve.", source: "Stephen Chbosky, Perks of Being a Wallflower (Brief quote, fair use)" },
-      { text: "Love all, trust a few, do wrong to none.", source: "William Shakespeare (Public Domain)" },
-      { text: "Two roads diverged in a wood, and I— I took the one less traveled by.", source: "Robert Frost (Public Domain)" },
+      { text: "The kind of love that ruins you for anyone else. That's the only kind worth having.", source: "Romance Reader Philosophy" },
     ]
   },
 
@@ -96,10 +98,11 @@ export const CARD_QUOTES = {
   8: { // Strength
     name: 'Strength',
     quotes: [
+      { text: "She's whiskey in a teacup—looks sweet, burns going down, leaves you wanting more.", source: "Strong FMC Energy" },
       { text: "I am no bird; and no net ensnares me.", source: "Charlotte Brontë, Jane Eyre (Public Domain)" },
-      { text: "You may not control all the events that happen to you, but you can decide not to be reduced by them.", source: "Maya Angelou" },
+      { text: "Soft heart. Sharp edges. Dangerous combination.", source: "Modern Heroine Archetype" },
       { text: "The most common way people give up their power is by thinking they don't have any.", source: "Alice Walker" },
-      { text: "Courage is not the absence of fear, but rather the assessment that something else is more important than fear.", source: "Franklin D. Roosevelt principle" },
+      { text: "She wore her scars like wings—proof she had survived the fall and learned to fly.", source: "Survivor Philosophy" },
     ]
   },
 
@@ -146,10 +149,11 @@ export const CARD_QUOTES = {
   13: { // Death
     name: 'Death',
     quotes: [
+      { text: "You can't keep dancing with the devil and wonder why you're still in hell. At some point, you have to burn the whole ballroom down.", source: "Transformation Arc" },
       { text: "Every new beginning comes from some other beginning's end.", source: "Seneca (Ancient, Public Domain)" },
       { text: "The snake which cannot cast its skin has to die.", source: "Friedrich Nietzsche (Public Domain)" },
+      { text: "Phoenix rising energy: died once, won't do it again, but absolutely will set fire to whatever tries to bury me.", source: "Rebirth Philosophy" },
       { text: "What the caterpillar calls the end, the rest of the world calls a butterfly.", source: "Lao Tzu (Public Domain)" },
-      { text: "To live is to die, to die is to live.", source: "Buddhist Principle (Ancient)" },
     ]
   },
 
@@ -166,19 +170,21 @@ export const CARD_QUOTES = {
   15: { // The Devil
     name: 'The Devil',
     quotes: [
+      { text: "He was chaos and she was his only calm. And somehow, that felt like the most dangerous addiction of all.", source: "Dark Romance Aesthetic" },
+      { text: "I'm not the villain in your story. I'm the warning you didn't heed.", source: "Morally Grey Archetype" },
+      { text: "Touch her and you won't have hands. Look at her wrong and you won't have eyes.", source: "Possessive Love Interest Energy" },
       { text: "The chains of habit are too weak to be felt until they are too strong to be broken.", source: "Samuel Johnson (Public Domain)" },
-      { text: "We have met the enemy and he is us.", source: "Pogo principle" },
-      { text: "Hell is yourself and the only redemption is when a person puts himself aside to feel deeply for another person.", source: "Tennessee Williams" },
-      { text: "The greatest trick the devil ever pulled was convincing the world he didn't exist.", source: "Charles Baudelaire principle (Public Domain)" },
+      { text: "Some people are worth burning the world for. I just hadn't met mine yet.", source: "BookTok Villain Arc" },
     ]
   },
 
   16: { // The Tower
     name: 'The Tower',
     quotes: [
-      { text: "What doesn't kill me makes me stronger.", source: "Friedrich Nietzsche (Public Domain)" },
+      { text: "She wasn't looking for a knight. She was looking for a sword.", source: "Fantasy Heroine Energy" },
+      { text: "Burn it all down. Salt the earth. Start over. Some foundations deserve to crumble.", source: "Liberation Philosophy" },
       { text: "Rock bottom became the solid foundation on which I rebuilt my life.", source: "J.K. Rowling" },
-      { text: "Sometimes good things fall apart so better things can fall together.", source: "Marilyn Monroe" },
+      { text: "The old version of me? Dead. This one bites back.", source: "Rebirth Arc" },
       { text: "In the midst of chaos, there is also opportunity.", source: "Sun Tzu (Ancient, Public Domain)" },
     ]
   },
@@ -196,10 +202,11 @@ export const CARD_QUOTES = {
   18: { // The Moon
     name: 'The Moon',
     quotes: [
-      { text: "Not all who wander are lost.", source: "J.R.R. Tolkien (Brief, fair use)" },
-      { text: "The wound is the place where the Light enters you.", source: "Rumi (Public Domain)" },
+      { text: "She was moon-touched and shadow-kissed, wild in ways that terrified men who needed women tame.", source: "Witchy Aesthetic" },
+      { text: "Trust your intuition. It's just your ancestors whispering warnings from beyond the veil.", source: "Mystical Wisdom" },
       { text: "One does not become enlightened by imagining figures of light, but by making the darkness conscious.", source: "Carl Jung" },
       { text: "In the depth of winter, I finally learned that within me there lay an invincible summer.", source: "Albert Camus" },
+      { text: "The moon doesn't ask permission to pull the tides. Neither should you.", source: "Lunar Energy Philosophy" },
     ]
   },
 
@@ -349,9 +356,10 @@ export const CARD_QUOTES = {
   34: { // Queen of Wands
     name: 'Queen of Wands',
     quotes: [
-      { text: "A woman is like a tea bag—you never know how strong she is until she gets in hot water.", source: "Eleanor Roosevelt" },
+      { text: "She's the kind of woman who walks into a room and men either fall to their knees or run for their lives. Sometimes both.", source: "Powerful FMC Archetype" },
       { text: "I am not afraid of storms, for I am learning how to sail my ship.", source: "Louisa May Alcott (Public Domain)" },
       { text: "The question isn't who's going to let me; it's who's going to stop me.", source: "Ayn Rand" },
+      { text: "Fire in her soul. Grace in her heart. Chaos in her wake.", source: "Wild Woman Energy" },
     ]
   },
 
@@ -381,9 +389,10 @@ export const CARD_QUOTES = {
   37: { // Two of Cups
     name: 'Two of Cups',
     quotes: [
+      { text: "Two souls recognizing each other across lifetimes: 'Oh. It's you. It's always been you.'", source: "Fated Mates Energy" },
       { text: "When you realize you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.", source: "Nora Ephron" },
       { text: "Love is friendship set on fire.", source: "Jeremy Taylor (Ancient)" },
-      { text: "We accept the love we think we deserve.", source: "Stephen Chbosky (Brief, fair use)" },
+      { text: "The bond snapped into place and suddenly breathing without them felt impossible.", source: "Fantasy Romance Trope" },
     ]
   },
 
@@ -522,6 +531,7 @@ export const CARD_QUOTES = {
     quotes: [
       { text: "The heart was made to be broken.", source: "Oscar Wilde (Public Domain)" },
       { text: "What hurts you, blesses you. Darkness is your candle.", source: "Rumi (Public Domain)" },
+      { text: "The worst part? Watching someone become a stranger who once knew every secret corner of your soul.", source: "Heartbreak Philosophy" },
       { text: "There is a crack in everything. That's how the light gets in.", source: "Leonard Cohen" },
     ]
   },
@@ -610,9 +620,10 @@ export const CARD_QUOTES = {
   62: { // Queen of Swords
     name: 'Queen of Swords',
     quotes: [
+      { text: "She had that unhinged look in her eye that said 'I will absolutely destroy you and look fabulous doing it.'", source: "Unhinged FMC Energy" },
       { text: "I am no bird; and no net ensnares me.", source: "Charlotte Brontë, Jane Eyre (Public Domain)" },
       { text: "Honesty is the first chapter in the book of wisdom.", source: "Thomas Jefferson" },
-      { text: "The most courageous act is still to think for yourself. Aloud.", source: "Coco Chanel" },
+      { text: "Knife to throat. Crown on head. That's the vibe.", source: "Fantasy Queen Aesthetic" },
     ]
   },
 
