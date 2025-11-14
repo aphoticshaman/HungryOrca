@@ -186,7 +186,7 @@ function buildSynthesis(context) {
     synthesis += `Before we dive into individual cards, notice this: ${patterns.join(' ')} This sets the stage for everything that follows.\n\n`;
   }
 
-  // Interpret each card with quantum variation
+  // Interpret each card with quantum variation - FOCUS ON MCQ INSIGHTS
   cards.forEach((card, index) => {
     const cardData = CARD_DATABASE[card.cardIndex];
     const keywords = card.reversed ? cardData.keywords?.reversed : cardData.keywords?.upright;
@@ -205,56 +205,38 @@ function buildSynthesis(context) {
     const position = card.position || `position ${index + 1}`;
     const positionMeaning = card.positionMeaning || '';
 
-    // Add pop culture quote hook (quantum-seeded for variety)
-    const sentenceSeed = narrative?.sentenceSeeds?.[index] || Math.random();
-    const quote = getCardQuote(card.cardIndex, sentenceSeed);
-    if (quote?.text && quote?.source) {
-      synthesis += `\n\n**"${quote.text}"**  \n—${quote.source}\n\n`;
-
-      // Reference the quote in the interpretation
-      const quoteIntegrations = [
-        `This wisdom speaks directly to ${cardName}'s message. `,
-        `Let that sink in as we explore ${cardName}. `,
-        `Keep those words close as ${cardName} unfolds its meaning. `,
-        `That quote? That's ${cardName} speaking through culture. `,
-        `${cardName} echoes this sentiment: `,
-        `These words capture the essence of ${cardName} perfectly. `,
-        `As ${cardName} reveals itself, remember: `,
-      ];
-      const quoteIntegrationIndex = Math.floor(
-        (sentenceSeed * quoteIntegrations.length) % quoteIntegrations.length
-      );
-      synthesis += quoteIntegrations[quoteIntegrationIndex];
-    }
-
-    // Generate quantum-varied sentence
+    // Generate context-aware sentence
     const sentence = narrative.getSentence(
       cardName,
       `${primaryKeyword} in the realm of ${positionMeaning || position}`,
       position
     );
     if (sentence) {
-      synthesis += `${sentence} `;
+      synthesis += `**${cardName}** in ${positionMeaning || position}: ${sentence} `;
     }
 
-    // Add depth based on card-specific MCQ answers
-    const cardMCQ = mcqAnswers.find(a => a.cardIndex === index);
-    if (cardMCQ) {
-      synthesis += weaveMCQInsights(cardMCQ, cardData, narrative);
+    // PRIORITIZE MCQ INSIGHTS - This is where the real personalization happens
+    const cardMCQAnswers = mcqAnswers.filter(a => a.cardIndex === index);
+    if (cardMCQAnswers.length > 0) {
+      const mcqInsight = weaveMCQInsights(cardMCQAnswers, cardData, narrative, mcqAnalysis, readingType);
+      if (mcqInsight) {
+        synthesis += mcqInsight;
+      }
+    } else {
+      // If no MCQ, add brief elemental context
+      synthesis += weaveCardLayers(cardData, card.reversed, narrative);
     }
 
-    // Add elemental/archetypal layer
-    synthesis += weaveCardLayers(cardData, card.reversed, narrative);
-
-    // Add balanced wisdom pillar (every 2-3 cards to avoid repetition)
-    if (index % 3 === 0 || cards.length <= 3) {
-      const pillarGuidance = BalancedWisdomIntegration.getCardPillar(
-        card.cardIndex,
-        primaryKeyword,
-        context.narrative.sentenceSeeds[index * 2] || generateQuantumSeed()
-      );
-      if (pillarGuidance) {
-        synthesis += `${pillarGuidance.wisdom} `;
+    // Only add pop culture quote for first card or when MCQ shows high resonance
+    const hasHighResonance = cardMCQAnswers.some(a =>
+      a.questionType === 'resonance' && a.selectedOptionIndex >= 3
+    );
+    const shouldAddQuote = index === 0 || hasHighResonance;
+    if (shouldAddQuote) {
+      const sentenceSeed = narrative?.sentenceSeeds?.[index] || Math.random();
+      const quote = getCardQuote(card.cardIndex, sentenceSeed);
+      if (quote?.text && quote?.source) {
+        synthesis += `\n\n*"${quote.text}"* — ${quote.source}\n\n`;
       }
     }
 
@@ -424,24 +406,66 @@ function analyzeReadingPatterns(cards) {
 }
 
 /**
- * Weave MCQ insights into interpretation
+ * Weave MCQ insights into interpretation - DEEP ANALYSIS
+ * @param {Array} cardMCQAnswers - Array of MCQ answers for this specific card
  */
-function weaveMCQInsights(cardMCQ, cardData, narrative) {
+function weaveMCQInsights(cardMCQAnswers, cardData, narrative, mcqAnalysis, readingType) {
   let text = '';
 
-  if (cardMCQ.resonance && cardMCQ.resonance < 2) {
-    text += `You rated this card's resonance as low. That disconnection? That's data. `;
-    const avoidWord = narrative?.getWord?.('avoid') || 'avoiding';
-    text += `What are you ${avoidWord}ing by not seeing yourself here? `;
-  } else if (cardMCQ.resonance && cardMCQ.resonance >= 4) {
-    const soulWord = narrative?.getWord?.('soul') || 'soul';
-    text += `This card hit hard for you. That visceral reaction is your ${soulWord} recognizing itself. `;
+  if (!cardMCQAnswers || cardMCQAnswers.length === 0) {
+    return text;
   }
 
-  if (cardMCQ.emotion === 'resistance') {
-    text += `Your resistance to this card is the doorway. What you resist persists. `;
-  } else if (cardMCQ.emotion === 'validation') {
-    text += `This card validates what you already knew. Trust that inner knowing. `;
+  // Look for cognitive dissonance patterns in user's ACTUAL responses
+  cardMCQAnswers.forEach(answer => {
+    const questionType = answer.questionType;
+    const selected = answer.selectedOption;
+
+    if (questionType === 'resonance') {
+      const resonanceLevel = answer.selectedOptionIndex + 1; // 1-5 scale
+      if (resonanceLevel <= 2) {
+        text += `You felt disconnect from this card. In ${readingType || 'this area'}, that gap between card and reaction reveals where you might be avoiding something. `;
+      } else if (resonanceLevel >= 4) {
+        text += `This card struck a chord. That visceral response is your psyche signaling: "Pay attention here." `;
+      }
+    }
+
+    if (questionType === 'emotion') {
+      const emotion = typeof selected === 'string' ? selected : selected?.text;
+      if (emotion?.toLowerCase().includes('resist')) {
+        text += `Your resistance to this card's message is the portal. Shadow work begins exactly where discomfort lives. `;
+      } else if (emotion?.toLowerCase().includes('excit') || emotion?.toLowerCase().includes('valid')) {
+        text += `You felt validated by this card. That alignment between inner knowing and external reflection? That's confirmation you're on track. `;
+      } else if (emotion?.toLowerCase().includes('confus')) {
+        text += `The confusion you felt suggests cognitive dissonance between what you think you want and what your deeper self needs. `;
+      }
+    }
+
+    if (questionType === 'action') {
+      const actionText = typeof selected === 'string' ? selected : selected?.text;
+      if (actionText?.toLowerCase().includes('immediate') || actionText?.toLowerCase().includes('ready')) {
+        text += `You're ready to move. That readiness is crucial—don't let overthinking steal your momentum. `;
+      } else if (actionText?.toLowerCase().includes('not ready') || actionText?.toLowerCase().includes('overwhelm')) {
+        text += `You signaled you're not ready to act yet. Honoring that hesitation is wise. Integration takes time. `;
+      }
+    }
+
+    if (questionType === 'situation') {
+      const situationText = typeof selected === 'string' ? selected : selected?.text;
+      // Connect the card to their specific life situation
+      text += `You connected this to ${situationText?.toLowerCase() || 'a specific situation'}. `;
+      text += `The card isn't speaking abstractly—it's addressing this exact dynamic in your life right now. `;
+    }
+  });
+
+  // Add MBTI-specific insight based on mcqAnalysis patterns
+  if (mcqAnalysis?.dominantEmotions?.length > 0) {
+    const blockedEmotions = mcqAnalysis.dominantEmotions.filter(e =>
+      e.energy === 'blocked' || e.energy === 'contracted'
+    );
+    if (blockedEmotions.length > 0) {
+      text += `Your pattern across cards shows emotional contraction. This card is asking you to soften, to let feeling move through you. `;
+    }
   }
 
   return text;
