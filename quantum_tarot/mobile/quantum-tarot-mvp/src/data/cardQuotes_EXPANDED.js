@@ -1,11 +1,21 @@
 /**
- * EXPANDED CARD QUOTE DATABASE - DIVERSE & COMPREHENSIVE
- * 10-15 quotes per card, covering upright AND reversed meanings
+ * EXPANDED CARD QUOTE DATABASE - CONTEXT-AWARE & COMPREHENSIVE
+ * 10-15 quotes per card per context, covering upright AND reversed meanings
  *
  * Sources: Biblical, Historical, Self-Help, BookTok, Movies, Philosophy, Pop Culture
  * Target: People who want to improve their lives while being entertained
  *
- * Format: upright/reversed arrays with 10-15 quotes each
+ * Format: upright/reversed objects with 7 context categories each:
+ *   - general: Universal wisdom for any reading
+ *   - career: Work, vocation, professional path
+ *   - wellness: Health, self-care, mental/physical/spiritual well-being
+ *   - finance: Money, abundance, resources, material security
+ *   - personal_growth: Self-development, transformation, evolution
+ *   - decision_making: Choices, crossroads, discernment
+ *   - shadow_work: Unconscious patterns, hidden truths, integration
+ *
+ * Philosophy: Principle-based wisdom (universal truths, generalizations)
+ *             NOT prescriptive advice (specific step-by-step instructions)
  */
 
 export const CARD_QUOTES_EXPANDED = {
@@ -15,32 +25,192 @@ export const CARD_QUOTES_EXPANDED = {
 
   0: { // The Fool
     name: 'The Fool',
-    upright: [
-      { text: "Blessed are the meek, for they shall inherit the earth.", source: "Matthew 5:5 (Bible)" },
-      { text: "A journey of a thousand miles begins with a single step.", source: "Lao Tzu" },
-      { text: "Do not be too timid and squeamish about your actions. All life is an experiment.", source: "Ralph Waldo Emerson" },
-      { text: "The person who risks nothing, does nothing, has nothing, is nothing.", source: "Leo Buscaglia" },
-      { text: "Jump, and you will find out how to unfold your wings as you fall.", source: "Ray Bradbury" },
-      { text: "Sometimes the only way to stay sane is to go a little crazy.", source: "Susanna Kaysen" },
-      { text: "We're all mad here.", source: "Alice in Wonderland" },
-      { text: "Everything you want is on the other side of fear.", source: "Jack Canfield" },
-      { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
-      { text: "Life begins at the end of your comfort zone.", source: "Neale Donald Walsch" },
-      { text: "Fortune favors the bold.", source: "Virgil" },
-      { text: "What would you attempt to do if you knew you could not fail?", source: "Robert H. Schuller" },
-    ],
-    reversed: [
-      { text: "Pride goes before destruction, and a haughty spirit before a fall.", source: "Proverbs 16:18 (Bible)" },
-      { text: "Not all who wander are lost, but some definitely are.", source: "Cautionary Wisdom" },
-      { text: "Recklessness is not courage. Impulse is not intuition.", source: "Self-Awareness Truth" },
-      { text: "Leap and the net will appear—but maybe check if there's a net first.", source: "Practical Wisdom" },
-      { text: "Naivety dressed up as optimism will still get you hurt.", source: "Hard Lessons" },
-      { text: "You can be spontaneous without being stupid.", source: "Life Coach Wisdom" },
-      { text: "The road to hell is paved with good intentions and zero follow-through.", source: "Accountability Truth" },
-      { text: "Don't mistake chaos for freedom.", source: "Mindfulness Philosophy" },
-      { text: "Running from your problems is still running.", source: "Therapy Insight" },
-      { text: "You're not 'free-spirited,' you're avoiding commitment.", source: "Brutal Honesty" },
-    ]
+    upright: {
+      general: [
+        { text: "Blessed are the meek, for they shall inherit the earth.", source: "Matthew 5:5 (Bible)" },
+        { text: "A journey of a thousand miles begins with a single step.", source: "Lao Tzu" },
+        { text: "Do not be too timid and squeamish about your actions. All life is an experiment.", source: "Ralph Waldo Emerson" },
+        { text: "The person who risks nothing, does nothing, has nothing, is nothing.", source: "Leo Buscaglia" },
+        { text: "Jump, and you will find out how to unfold your wings as you fall.", source: "Ray Bradbury" },
+        { text: "Sometimes the only way to stay sane is to go a little crazy.", source: "Susanna Kaysen" },
+        { text: "We're all mad here.", source: "Alice in Wonderland" },
+        { text: "Everything you want is on the other side of fear.", source: "Jack Canfield" },
+        { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+        { text: "Life begins at the end of your comfort zone.", source: "Neale Donald Walsch" },
+        { text: "Fortune favors the bold.", source: "Virgil" },
+        { text: "What would you attempt to do if you knew you could not fail?", source: "Robert H. Schuller" },
+      ],
+      career: [
+        { text: "Every expert was once a beginner. Every master was once a disaster.", source: "Career Truth" },
+        { text: "The biggest risk is not taking any risk.", source: "Mark Zuckerberg" },
+        { text: "Your career is a journey, not a destination. Beginnings are sacred.", source: "Professional Wisdom" },
+        { text: "Leap and the net will appear—especially in career pivots.", source: "Career Change Energy" },
+        { text: "You don't need to know the whole path. Just take the first step.", source: "Career Start Philosophy" },
+        { text: "New opportunities come dressed as risks. Embrace the unknown.", source: "Entrepreneurial Spirit" },
+        { text: "The amateur practices until they get it right. The professional practices until they can't get it wrong.", source: "Mastery Journey" },
+        { text: "Every successful person was once an amateur who refused to quit.", source: "Persistence Principle" },
+        { text: "Career changes are births. They're messy, painful, and beautiful.", source: "Transition Wisdom" },
+        { text: "Your inexperience is not your weakness—it's your fresh perspective.", source: "Beginner's Mind" },
+        { text: "The person who says it cannot be done should not interrupt the person doing it.", source: "Chinese Proverb" },
+        { text: "Adventure may hurt you, but monotony will kill you.", source: "Career Philosophy" },
+      ],
+      wellness: [
+        { text: "Healing begins when you stop judging your journey and start taking the first step.", source: "Wellness Truth" },
+        { text: "The best time to plant a tree was 20 years ago. The second best time is now.", source: "Health Start Wisdom" },
+        { text: "Your body hears everything your mind says. Start with kind words.", source: "Mind-Body Connection" },
+        { text: "Wellness is not a destination. It's a practice of beginning again, daily.", source: "Self-Care Philosophy" },
+        { text: "You don't have to be perfect to start. You just have to start to improve.", source: "Progress Principle" },
+        { text: "Every journey to wholeness begins with curiosity, not criticism.", source: "Healing Energy" },
+        { text: "The body you criticize today is carrying you toward the life you dream of tomorrow.", source: "Body Gratitude" },
+        { text: "Transformation starts with a single choice. Then another. Then another.", source: "Wellness Journey" },
+        { text: "You are exactly where you need to be to begin becoming who you're meant to be.", source: "Starting Point Wisdom" },
+        { text: "New beginnings in health require faith in your body's innate wisdom.", source: "Self-Trust" },
+        { text: "The path to wellness is walked one step at a time, not sprinted.", source: "Sustainable Health" },
+      ],
+      finance: [
+        { text: "Every fortune begins with a single dollar and a willingness to learn.", source: "Financial Wisdom" },
+        { text: "Wealth is built in inches, not miles. Start where you are.", source: "Money Philosophy" },
+        { text: "Financial freedom starts with financial curiosity. Ask questions.", source: "Learning Energy" },
+        { text: "You don't need to know everything about money to start building wealth.", source: "Beginner Finance" },
+        { text: "Every wealthy person was once where you are now. The difference is they started.", source: "Abundance Principle" },
+        { text: "Invest in your education first. Returns will follow.", source: "Knowledge Investment" },
+        { text: "Risks in finance are calculated adventures. Learn to calculate.", source: "Smart Risk" },
+        { text: "Your financial future is not determined by where you start, but by whether you start.", source: "Money Mindset" },
+        { text: "The best investment you can make is in yourself.", source: "Warren Buffett" },
+        { text: "Abundance begins with believing you deserve it, then taking action.", source: "Prosperity Consciousness" },
+        { text: "Financial literacy is not taught—it's caught. Start catching.", source: "Learning Journey" },
+        { text: "Every entrepreneur started with an idea and more courage than capital.", source: "Business Beginnings" },
+      ],
+      personal_growth: [
+        { text: "You are always one decision away from a completely different life.", source: "Transformation Principle" },
+        { text: "Growth begins at the edge of your comfort zone—not in the middle of it.", source: "Expansion Truth" },
+        { text: "The person you are becoming will cost you the person you are now.", source: "Evolution Philosophy" },
+        { text: "Every version of you that no longer serves you must die so the new you can live.", source: "Rebirth Energy" },
+        { text: "You cannot discover new oceans unless you have the courage to lose sight of the shore.", source: "André Gide" },
+        { text: "The wound is where the light enters. Begin there.", source: "Healing Start" },
+        { text: "Personal growth is not linear. It's a spiral of returning and evolving.", source: "Growth Pattern" },
+        { text: "You don't find yourself. You create yourself through brave choices.", source: "Self-Creation" },
+        { text: "The caterpillar doesn't know it's becoming a butterfly. Trust the process.", source: "Transformation Trust" },
+        { text: "Every ending is a beginning dressed in funeral clothes.", source: "Cycle Wisdom" },
+        { text: "You've survived 100% of your worst days. You can begin again.", source: "Resilience Reminder" },
+      ],
+      decision_making: [
+        { text: "Not deciding is still a decision. Choose consciously.", source: "Choice Philosophy" },
+        { text: "The best decision is an informed risk, not a perfect plan.", source: "Decision Wisdom" },
+        { text: "Indecision is the thief of opportunity. Decide and adjust.", source: "Action Principle" },
+        { text: "You'll never have all the information. Decide with what you have.", source: "Practical Truth" },
+        { text: "The right choice is the one you commit to making right.", source: "Commitment Energy" },
+        { text: "Crossroads are not about perfect paths. They're about authentic ones.", source: "Alignment Wisdom" },
+        { text: "Fear of making the wrong choice keeps you from making any choice.", source: "Paralysis Truth" },
+        { text: "Every decision is a door. You won't know what's behind it until you open it.", source: "Unknown Territory" },
+        { text: "The universe rewards action, not hesitation.", source: "Movement Philosophy" },
+        { text: "Leap first, adjust mid-air. That's how decisions become destinies.", source: "Bold Choices" },
+        { text: "Your intuition speaks first. Your fear speaks second. Listen to order.", source: "Inner Guidance" },
+        { text: "Choose the path that makes you feel alive, not the one that makes you feel safe.", source: "Authentic Decision" },
+      ],
+      shadow_work: [
+        { text: "The fool is the one brave enough to walk into the dark without knowing what's there.", source: "Shadow Courage" },
+        { text: "Your unconscious patterns were once survival strategies. Honor them, then release them.", source: "Pattern Recognition" },
+        { text: "The parts of yourself you judge are the parts that need integration, not elimination.", source: "Shadow Integration" },
+        { text: "What you refuse to acknowledge controls you. What you bring to light loses power.", source: "Awareness Principle" },
+        { text: "Your shadow is not your enemy. It's the orphaned child waiting to come home.", source: "Inner Child Work" },
+        { text: "The things you're most afraid to explore are the keys to your freedom.", source: "Fear as Guide" },
+        { text: "You cannot heal what you do not feel. Feel it. Begin there.", source: "Emotional Honesty" },
+        { text: "The darkness you carry is not a burden. It's fertilizer for your light.", source: "Alchemy Truth" },
+        { text: "Shadow work begins with curiosity: 'Why do I react this way?'", source: "Self-Inquiry" },
+        { text: "Every monster in your psyche was once a protector. Thank it. Retire it.", source: "Defense Mechanism Wisdom" },
+        { text: "The journey into shadow is the journey home to wholeness.", source: "Integration Path" },
+      ]
+    },
+    reversed: {
+      general: [
+        { text: "Pride goes before destruction, and a haughty spirit before a fall.", source: "Proverbs 16:18 (Bible)" },
+        { text: "Not all who wander are lost, but some definitely are.", source: "Cautionary Wisdom" },
+        { text: "Recklessness is not courage. Impulse is not intuition.", source: "Self-Awareness Truth" },
+        { text: "Leap and the net will appear—but maybe check if there's a net first.", source: "Practical Wisdom" },
+        { text: "Naivety dressed up as optimism will still get you hurt.", source: "Hard Lessons" },
+        { text: "You can be spontaneous without being stupid.", source: "Life Coach Wisdom" },
+        { text: "The road to hell is paved with good intentions and zero follow-through.", source: "Accountability Truth" },
+        { text: "Don't mistake chaos for freedom.", source: "Mindfulness Philosophy" },
+        { text: "Running from your problems is still running.", source: "Therapy Insight" },
+        { text: "You're not 'free-spirited,' you're avoiding commitment.", source: "Brutal Honesty" },
+      ],
+      career: [
+        { text: "Job-hopping without purpose is just professional running away.", source: "Career Pattern" },
+        { text: "Passion without planning is just an expensive hobby.", source: "Business Reality" },
+        { text: "You can't build a career on potential alone. At some point, you have to deliver.", source: "Accountability Truth" },
+        { text: "Quitting when things get hard is a pattern, not a personality trait.", source: "Commitment Issue" },
+        { text: "Every 'pivot' you make looks more like avoidance than strategy.", source: "Career Honesty" },
+        { text: "Networking without follow-through is just collecting business cards.", source: "Professional Reality" },
+        { text: "Your resume shows a lot of starts. Where are the finishes?", source: "Completion Question" },
+        { text: "Spontaneity in business is great until rent is due.", source: "Financial Reality" },
+        { text: "The grass isn't greener. It's greener where you water it.", source: "Persistence Principle" },
+        { text: "Innovation requires discipline. Chaos requires nothing.", source: "Structure Need" },
+        { text: "You can't fail upward forever. Eventually gravity wins.", source: "Career Truth" },
+      ],
+      wellness: [
+        { text: "Self-sabotage disguised as self-care is still sabotage.", source: "Wellness Honesty" },
+        { text: "You can't heal by avoiding discomfort. Growth lives in the uncomfortable.", source: "Health Reality" },
+        { text: "Every 'fresh start' means nothing if you bring the same habits.", source: "Pattern Truth" },
+        { text: "Wellness requires consistency, not just enthusiasm on Monday mornings.", source: "Sustainable Health" },
+        { text: "You're not 'listening to your body' if your body is screaming 'STOP' and you're still scrolling.", source: "Awareness Check" },
+        { text: "Impulsive health choices lead to injuries, not transformations.", source: "Safety Wisdom" },
+        { text: "Your body needs commitment, not grand gestures followed by neglect.", source: "Self-Care Reality" },
+        { text: "Jumping from diet to diet is chaos, not experimentation.", source: "Wellness Pattern" },
+        { text: "You can't outrun your mental health with a new workout plan.", source: "Holistic Truth" },
+        { text: "Wellness without boundaries is just people-pleasing in yoga pants.", source: "Boundary Wisdom" },
+      ],
+      finance: [
+        { text: "YOLO spending is just financial irresponsibility with good marketing.", source: "Money Reality" },
+        { text: "Every 'investment opportunity' you chase without research is just gambling.", source: "Due Diligence" },
+        { text: "Your future self is begging you to stop spending like there's no tomorrow.", source: "Financial Accountability" },
+        { text: "Impulse purchases don't become less impulsive with a credit card.", source: "Spending Truth" },
+        { text: "Financial freedom requires delayed gratification, not constant treats.", source: "Discipline Principle" },
+        { text: "You can't manifest money while ignoring your bank balance.", source: "Spiritual Materialism Check" },
+        { text: "Risk without research is recklessness, not boldness.", source: "Smart Money" },
+        { text: "Every 'business idea' without execution is just an expensive daydream.", source: "Action Need" },
+        { text: "Your debt isn't going away because you're ignoring it.", source: "Financial Reality" },
+        { text: "Living like you're rich when you're broke is called denial.", source: "Money Honesty" },
+        { text: "Abundance mindset without a budget is delusion.", source: "Practical Spirituality" },
+      ],
+      personal_growth: [
+        { text: "Running from yourself is exhausting and you always show up at the destination.", source: "Self-Confrontation" },
+        { text: "Every time you start over without learning the lesson, the universe repeats the test.", source: "Pattern Wisdom" },
+        { text: "You can't grow by constantly changing environments. Sometimes you're the variable.", source: "Self-Accountability" },
+        { text: "Avoiding commitment isn't freedom. It's fear dressed up as adventure.", source: "Commitment Truth" },
+        { text: "Personal growth requires facing yourself, not just finding yourself.", source: "Inner Work" },
+        { text: "You're not on a journey—you're running in circles calling it exploration.", source: "Pattern Recognition" },
+        { text: "Spiritual bypassing is still bypassing. Do the actual work.", source: "Growth Reality" },
+        { text: "The only thing you're transforming is your ability to avoid responsibility.", source: "Harsh Truth" },
+        { text: "Change without integration is just rearranging deck chairs on the Titanic.", source: "Sustainable Growth" },
+        { text: "You can't heal what you won't face.", source: "Confrontation Need" },
+      ],
+      decision_making: [
+        { text: "Indecision is a decision to let life decide for you.", source: "Passive Choice" },
+        { text: "Keeping all your options open means you're committed to nothing.", source: "Commitment Truth" },
+        { text: "Every door you refuse to close keeps you stuck in the hallway.", source: "Choice Paralysis" },
+        { text: "Fear of choosing wrong keeps you from choosing at all.", source: "Paralysis Pattern" },
+        { text: "You can't have it all, and pretending you can is exhausting everyone.", source: "Reality Check" },
+        { text: "Waffling between options is not thoughtful deliberation—it's avoidance.", source: "Decision Honesty" },
+        { text: "The perfect choice doesn't exist. Make a choice and make it perfect.", source: "Action Wisdom" },
+        { text: "Your inability to commit to a path is creating a path of inability.", source: "Consequence Truth" },
+        { text: "Waiting for a sign is procrastination dressed as spirituality.", source: "Action Call" },
+        { text: "Every decision you delay makes the decision for you.", source: "Time Reality" },
+      ],
+      shadow_work: [
+        { text: "You can't run from your shadow. It's attached to you.", source: "Shadow Truth" },
+        { text: "Avoiding your darkness doesn't make it disappear. It makes it grow.", source: "Denial Consequences" },
+        { text: "The patterns you refuse to see are the ones running your life.", source: "Unconscious Control" },
+        { text: "Your blind spots aren't invisible to everyone else.", source: "Awareness Gap" },
+        { text: "Recklessness is unexamined fear in motion.", source: "Shadow Recognition" },
+        { text: "You're so busy starting over you never deal with what keeps ending things.", source: "Pattern Loop" },
+        { text: "The thing you're running from is the thing that's chasing you.", source: "Shadow Pursuit" },
+        { text: "Impulsivity is your shadow's way of keeping you from feeling.", source: "Defense Mechanism" },
+        { text: "Every escape attempt is just your wound demanding attention.", source: "Avoidance Pattern" },
+        { text: "You can't integrate what you won't acknowledge exists.", source: "Shadow Denial" },
+        { text: "Your chaos is not spiritual—it's unexamined trauma.", source: "Shadow Honesty" },
+      ]
+    }
   },
 
   1: { // The Magician
