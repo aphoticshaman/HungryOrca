@@ -18,7 +18,7 @@
  */
 
 import { CARD_DATABASE } from '../data/cardDatabase';
-import { getCardQuote, CARD_QUOTES_EXPANDED } from '../data/cardQuotes_EXPANDED';
+import { getCardQuote, getCardQuotes, CARD_QUOTES_EXPANDED } from '../data/cardQuotes_EXPANDED';
 import { analyzeMCQAnswers, getSynthesisGuidance } from './postCardQuestions';
 import { getFullAstrologicalContext, getTimeOfDayEnergy } from './advancedAstrology';
 import { getMBTIInterpretationGuidelines } from './mbtiTest';
@@ -420,17 +420,21 @@ function buildSynthesis(context) {
       synthesis += weaveCardLayers(cardData, card.reversed, narrative);
     }
 
-    // Only add pop culture quote for first card or when MCQ shows high resonance
+    // Add 1-2 contextual quotes per card (more for cards with high MCQ resonance)
     const hasHighResonance = cardMCQAnswers.some(a =>
       a.questionType === 'resonance' && a.selectedOptionIndex >= 3
     );
-    const shouldAddQuote = index === 0 || hasHighResonance;
-    if (shouldAddQuote) {
-      const sentenceSeed = narrative?.sentenceSeeds?.[index] || Math.random();
-      const quote = getCardQuote(card.cardIndex, sentenceSeed);
-      if (quote?.text && quote?.source) {
-        synthesis += `\n\n*"${quote.text}"* — ${quote.source}\n\n`;
-      }
+    const quoteCount = hasHighResonance ? 2 : 1; // 2 quotes for high resonance, 1 otherwise
+    const sentenceSeed = narrative?.sentenceSeeds?.[index] || Math.random();
+
+    // Get quotes with intelligent source preference (real sources over LunatIQ Team)
+    const quotes = getCardQuotes(card.cardIndex, sentenceSeed, card.reversed, quoteCount);
+    if (quotes && quotes.length > 0) {
+      quotes.forEach(quote => {
+        if (quote?.text && quote?.source) {
+          synthesis += `\n\n*"${quote.text}"* — ${quote.source}\n\n`;
+        }
+      });
     }
 
     synthesis += `\n\n`;
@@ -525,6 +529,41 @@ function buildSynthesis(context) {
   if (moderationWisdom) {
     synthesis += `\nA word on balance: ${moderationWisdom} `;
     synthesis += `The cards aren't asking for perfection or extremism—they're inviting you into the middle way.\n\n`;
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // WISDOM & REFLECTION - Synthesis Quotes (3-5 quotes)
+  // ═══════════════════════════════════════════════════════════
+
+  // Gather wisdom from all cards in the reading for deeper reflection
+  const synthesisQuotes = [];
+  cards.forEach((card, idx) => {
+    const quoteSeed = (quantumSeed * (idx + 1) * 1.234) % 1; // Unique seed per card
+    const cardQuotes = getCardQuotes(card.cardIndex, quoteSeed, card.reversed, 1);
+    if (cardQuotes && cardQuotes.length > 0) {
+      synthesisQuotes.push(...cardQuotes);
+    }
+  });
+
+  // Select best 3-5 quotes for synthesis (prefer real sources)
+  const synthesisQuoteCount = Math.min(5, Math.max(3, Math.floor(cards.length * 1.5)));
+  const selectedSynthesisQuotes = synthesisQuotes.slice(0, synthesisQuoteCount);
+
+  if (selectedSynthesisQuotes.length > 0) {
+    const wisdomTransitions = [
+      '\n\n━━ WISDOM TO CARRY FORWARD ━━\n\n',
+      '\n\n━━ REFLECTIONS FOR YOUR PATH ━━\n\n',
+      '\n\n━━ GUIDANCE FROM THE CARDS ━━\n\n',
+      '\n\n━━ WORDS TO REMEMBER ━━\n\n'
+    ];
+    const wisdomIdx = Math.floor((quantumSeed * 0.3333) % wisdomTransitions.length);
+    synthesis += wisdomTransitions[wisdomIdx];
+
+    selectedSynthesisQuotes.forEach((quote, idx) => {
+      if (quote?.text && quote?.source) {
+        synthesis += `${idx + 1}. *"${quote.text}"* — ${quote.source}\n\n`;
+      }
+    });
   }
 
   // Add CONFIRMATION PROMPT (yes/no question for engagement)
@@ -645,9 +684,60 @@ function buildSynthesis(context) {
   console.log('✅ buildSynthesis completed successfully, final length:', synthesis?.length);
   return synthesis;
   } catch (error) {
-    console.error('❌ buildSynthesis ERROR:', error);
-    console.error('Error at:', error.stack);
-    throw error;
+    console.error('❌ SYNTHESIS GENERATION ERROR:', error);
+    console.error('Error stack:', error.stack);
+    console.error('Error context:', {
+      hasCards: !!readingData?.cards,
+      cardCount: readingData?.cards?.length,
+      hasMCQ: !!readingData?.mcqAnswers,
+      hasProfile: !!readingData?.userProfile
+    });
+
+    // Graceful degradation: Return a basic but functional synthesis
+    try {
+      const { cards = [], userProfile = {}, intention = 'Personal growth' } = readingData;
+      const fallbackQuotes = [];
+
+      // Try to get at least a few quotes from the cards
+      cards.forEach((card, idx) => {
+        try {
+          const quote = getCardQuote(card.cardIndex, Math.random(), card.reversed);
+          if (quote) fallbackQuotes.push(quote);
+        } catch (quoteError) {
+          console.warn('Could not get quote for card', card.cardIndex);
+        }
+      });
+
+      let fallback = `# Your Reading\n\n`;
+      fallback += `I encountered a challenge generating the full synthesis, but here's what the cards are saying:\n\n`;
+
+      cards.forEach((card, idx) => {
+        const cardData = CARD_DATABASE[card.cardIndex];
+        if (cardData) {
+          fallback += `**${cardData.name}${card.reversed ? ' (Reversed)' : ''}**\n`;
+          fallback += `${cardData.keywords?.upright?.[0] || 'Transformation'}, `;
+          fallback += `${cardData.keywords?.upright?.[1] || 'Growth'}, `;
+          fallback += `${cardData.keywords?.upright?.[2] || 'Understanding'}.\n\n`;
+        }
+      });
+
+      if (fallbackQuotes.length > 0) {
+        fallback += `\n━━ WISDOM FROM YOUR CARDS ━━\n\n`;
+        fallbackQuotes.slice(0, 3).forEach((quote, idx) => {
+          fallback += `${idx + 1}. *"${quote.text}"* — ${quote.source}\n\n`;
+        });
+      }
+
+      fallback += `\nYour intention: "${intention}"\n\n`;
+      fallback += `The cards suggest focusing on: `;
+      fallback += `${cards.map(c => CARD_DATABASE[c.cardIndex]?.keywords?.upright?.[0]).filter(Boolean).join(', ')}.\n\n`;
+      fallback += `Take time to reflect on how these themes appear in your life right now.`;
+
+      return fallback;
+    } catch (fallbackError) {
+      console.error('❌ EVEN FALLBACK FAILED:', fallbackError);
+      return `# Reading Error\n\nWe encountered an unexpected error generating your reading. Please try again or contact support if this persists.\n\nError: ${error.message}`;
+    }
   }
 }
 
