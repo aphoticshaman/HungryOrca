@@ -459,86 +459,86 @@ function generateActionSteps(cardData, reversed, readingType, intention) {
   const actionMap = {
     career: {
       upright: [
-        `Schedule 1-on-1 with decision-maker this week - pitch idea embodying ${element} energy.`,
-        `Apply to 3 stretch positions that align with ${cardName} themes.`,
-        `Network: reach out to 5 industry contacts, offer value before asking.`,
-        `Delegate/automate tasks misaligned with this card's strengths.`,
-        `Start revenue-generating side project using ${element} element skills.`,
-        `Negotiate raise using market data - schedule meeting within 7 days.`,
-        `Join industry community, attend event, or post thought leadership content.`,
-        `Take course/certification increasing earning potential by 20%+.`
+        `Schedule face time with someone who can say yes - pitch the idea that embodies ${element} energy.`,
+        `Apply for positions that stretch you toward ${cardName} themes - growth lives outside comfort.`,
+        `Network with intention - reach out to people doing what you want to be doing, offer value first.`,
+        `Delegate or eliminate what drains you - protect energy for what leverages this card's strengths.`,
+        `Start building something on the side using ${element} skills - test markets, create options.`,
+        `Negotiate your compensation - come with data, ask with confidence, walk if necessary.`,
+        `Show up where your industry gathers - visibility precedes opportunity.`,
+        `Invest in skills that multiply your value - what can you learn that compounds over time?`
       ],
       reversed: [
-        `Identify 3 workplace blocks to ${cardName} energy - address #1 this week.`,
-        `Practice saying "no" to misaligned projects - set boundary with manager.`,
-        `Update resume highlighting opposite skills to current limitations.`,
-        `Have honest mentor conversation about career plateau or obstacles.`,
-        `Eliminate one toxic work relationship or change team dynamics.`,
-        `Apply to different role/company - explore complete pivot option.`,
-        `Address imposter syndrome: list 10 wins, ask for testimonials.`
+        `Identify what's blocking ${cardName} energy at work - name it, then strategize removing it.`,
+        `Practice declining what misaligns - "no" to wrong things creates space for right ones.`,
+        `Update how you present yourself - highlight strengths that counter current limitations.`,
+        `Have the honest conversation about where you're stuck - mentor, manager, or therapist.`,
+        `Address the toxic dynamic - either transform it or exit it. Staying changes nothing.`,
+        `Explore different roles or industries - sometimes the problem isn't you, it's the container.`,
+        `Combat imposter syndrome with evidence - list your wins, collect testimonials, own your value.`
       ]
     },
     romance: {
       upright: [
-        `Plan ${element}-based date: fire=adventure, water=intimacy, air=deep talk, earth=sensory comfort.`,
-        `Have vulnerable conversation expressing 3 specific needs from this card.`,
-        `Send appreciation messages showing you notice partner's efforts.`,
-        `Try new relationship practice: weekly check-ins, love languages, tantra.`,
-        `Meet someone new in ${element}-aligned setting within 3 days.`,
-        `Create shared ritual: morning coffee dates, Sunday hikes, monthly staycations.`,
-        `Read relationship book together, implement 3 exercises this month.`,
-        `Plan surprise embodying ${cardName} energy - execute within 48 hours.`
+        `Plan a date that embodies ${element} energy: fire=adventure, water=intimacy, air=deep conversation, earth=sensory pleasure.`,
+        `Have the vulnerable conversation - express what you need, not just what you can tolerate.`,
+        `Show appreciation for what you want more of - attention feeds what you name.`,
+        `Introduce a new relationship practice that deepens connection - rituals create intimacy.`,
+        `If single: put yourself in ${element}-aligned spaces where you'd actually want to meet someone.`,
+        `Create shared rituals - consistency builds bond more than grand gestures do.`,
+        `Learn something about love together - read, attend, discuss. Relationships need education.`,
+        `Surprise them with ${cardName} energy - show don't tell how this card speaks through you.`
       ],
       reversed: [
-        `Take 72-hour solo retreat to process blocks without contacting partner/dates.`,
-        `Set one clear boundary around ${cardName} shadow - communicate lovingly.`,
-        `End toxic pattern: breadcrumbing, people-pleasing, unavailability, or love-bombing.`,
-        `Book couples therapy or individual session on attachment wounds.`,
-        `Have "state of union" talk - express resentments, then co-create solutions.`,
-        `Practice opposite action: if you chase, pull back; if you avoid, lean in.`,
-        `Delete apps/unfriend exes creating relationship static or comparison.`
+        `Take solo time to process without your partner's or date's input - clarity comes from within first.`,
+        `Set a boundary around ${cardName} shadow energy - communicate it clearly, then hold it lovingly.`,
+        `End the toxic pattern - the one you know you're in. Name it, then stop participating.`,
+        `Get support for attachment wounds - individual or couples work, whichever opens the path.`,
+        `Have the hard talk about the relationship's actual state - honesty before harmony.`,
+        `Do the opposite of your default - if you chase, step back; if you avoid, move closer.`,
+        `Remove digital distractions from past relationships - what you feed attention grows.`
       ]
     },
     wellness: {
       upright: [
-        `Try ${element} practice: earth=yoga/hiking, air=breathwork, water=swimming, fire=HIIT/dance.`,
-        `Meal prep 7 nutrient-dense meals embodying ${cardName} vitality.`,
-        `Book bodywork: massage, acupuncture, float tank, cryotherapy, or energy healing.`,
-        `Start 21-day challenge: 10k steps, cold showers, meditation, or mobility.`,
-        `Join fitness class/wellness community - attend 3 sessions this week.`,
-        `Optimize sleep: blackout curtains, magnesium, no screens 90min before bed.`,
-        `Track biomarkers: get bloodwork, wearable data, or functional medicine consult.`,
-        `Add supplement/superfood supporting ${element} element vitality.`
+        `Try a ${element} practice: earth=grounded movement, air=breathwork, water=fluid motion, fire=intensity work.`,
+        `Prep nourishment that fuels ${cardName} vitality - whatever that looks like for your body.`,
+        `Book bodywork that addresses what's calling for attention - listen to what needs healing.`,
+        `Start a daily practice that builds over time - consistency matters more than intensity.`,
+        `Join a wellness community that energizes rather than depletes - find your people.`,
+        `Optimize your sleep foundation - environment and ritual matter as much as hours.`,
+        `Track what moves the needle for your health - measurement creates awareness.`,
+        `Support your system with ${element} element wisdom - earth/structure, water/flow, fire/activation, air/clarity.`
       ],
       reversed: [
-        `Complete rest for 48 hours - no productivity, just deep restoration.`,
-        `Eliminate #1 toxic habit: late scrolling, processed food, alcohol, or overwork.`,
-        `Get overdue health screening: bloodwork, dental, vision, or specialist.`,
-        `Address chronic issue: pain, fatigue, sleep, digestion - see new practitioner.`,
-        `Change environment: declutter space, get air purifier, add plants/light.`,
-        `Try opposite wellness modality: if high-intensity, do yin; if sedentary, move.`,
-        `Fast from stimulation: 24hr phone detox, news detox, or dopamine reset.`
+        `Take deep rest without guilt - your body needs restoration, not more productivity.`,
+        `Eliminate what's actively harming you - you know what needs to go.`,
+        `Get the screening or checkup you've been postponing - prevention beats crisis.`,
+        `Address the chronic issue you've been tolerating - seek new eyes on old problems.`,
+        `Change your environment to support health - space affects state more than you think.`,
+        `Try the opposite approach: if you push hard, soften; if you're sedentary, mobilize.`,
+        `Detox from overstimulation - give your system space to recalibrate.`
       ]
     },
     finance: {
       upright: [
-        `Open high-yield savings, automate $200-500/month transfer from checking.`,
-        `Negotiate raise using salary data - aim for 10-20% increase, schedule meeting.`,
-        `Start income stream aligned with ${element} talents - earn first $500 in 30 days.`,
-        `Invest in skill/tool increasing earning potential: course, software, coaching.`,
-        `Review spending, redirect $100-300/month from waste to wealth-building.`,
-        `Diversify income: freelance, consulting, investing, or passive income project.`,
-        `Network with 3 high-earners in your field - learn money strategies.`,
-        `Create value offer: productize skill, raise rates, or upsell existing clients.`
+        `Strengthen your financial foundation - automate whatever savings structure makes sense for your situation.`,
+        `Negotiate your worth using market data - know your value, then advocate for it.`,
+        `Start monetizing a skill aligned with ${element} talents - create value, then capture value.`,
+        `Invest in increasing your earning potential: knowledge, tools, or connections that multiply returns.`,
+        `Audit where money leaks - redirect what doesn't serve into what does.`,
+        `Diversify how abundance flows to you - don't rely on a single income stream.`,
+        `Connect with people who think bigger about money - mindset is contagious.`,
+        `Package what you know into something sellable - your expertise has market value.`
       ],
       reversed: [
-        `Face reality: list all debts, income, expenses - no judgment, just data.`,
-        `Cut one luxury for 60 days, redirect to emergency fund or debt payoff.`,
-        `Sell unused items worth $500+ - create immediate cash flow.`,
-        `Get help: financial advisor, debt counselor, or money mindset coach session.`,
-        `Challenge money story: do opposite action for 14 days, track results.`,
-        `Pause discretionary spending 30 days - save difference, feel abundance.`,
-        `Increase income urgently: gig work, sell service, or monetize hobby ASAP.`
+        `Face the numbers with compassion - you can't change what you won't acknowledge.`,
+        `Cut one expense that doesn't truly enrich your life - redirect that energy.`,
+        `Convert unused assets into liquid opportunity - what are you sitting on?`,
+        `Get objective financial guidance - sometimes you can't see the forest for the trees.`,
+        `Challenge the story you tell yourself about money - is it true, or is it just familiar?`,
+        `Practice scarcity temporarily to remember abundance - constraint clarifies what matters.`,
+        `Increase earning capacity urgently - when the gap is real, bridge it with action.`
       ]
     },
     personal_growth: {
