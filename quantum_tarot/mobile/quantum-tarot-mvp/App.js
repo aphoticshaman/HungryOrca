@@ -13,9 +13,13 @@ import ProfileSelectScreen from './src/screens/ProfileSelectScreen';
 import ReadingTypeScreen from './src/screens/ReadingTypeScreen';
 import BirthdayScreen from './src/screens/BirthdayScreen';
 import PersonalityQuestionsScreen from './src/screens/PersonalityQuestionsScreen';
+import MBTITestScreen from './src/screens/MBTITestScreen';
 import IntentionScreen from './src/screens/IntentionScreen';
 import CardDrawingScreen from './src/screens/CardDrawingScreen';
+import CardInterpretationScreen from './src/screens/CardInterpretationScreen';
 import ReadingScreen from './src/screens/ReadingScreen';
+import SynthesisScreen from './src/screens/SynthesisScreen';
+import ReadingHistoryScreen from './src/screens/ReadingHistoryScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 
 const Stack = createStackNavigator();
@@ -40,11 +44,15 @@ export default function App() {
             <Stack.Screen name="ProfileSetup" component={ProfileSetupScreen} />
             <Stack.Screen name="ProfileSelect" component={ProfileSelectScreen} />
             <Stack.Screen name="PersonalityQuestions" component={PersonalityQuestionsScreen} />
+            <Stack.Screen name="MBTITest" component={MBTITestScreen} />
             <Stack.Screen name="ReadingType" component={ReadingTypeScreen} />
             <Stack.Screen name="Birthday" component={BirthdayScreen} />
             <Stack.Screen name="Intention" component={IntentionScreen} />
             <Stack.Screen name="CardDrawing" component={CardDrawingScreen} />
+            <Stack.Screen name="CardInterpretation" component={CardInterpretationScreen} />
             <Stack.Screen name="Reading" component={ReadingScreen} />
+            <Stack.Screen name="Synthesis" component={SynthesisScreen} />
+            <Stack.Screen name="ReadingHistory" component={ReadingHistoryScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
           </Stack.Navigator>
         </NavigationContainer>

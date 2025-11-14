@@ -13,10 +13,12 @@ const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 const PROFILES_KEY = '@lunatiq_profiles';
 const ACTIVE_PROFILE_KEY = '@lunatiq_active_profile';
+const READINGS_KEY = '@lunatiq_saved_readings';
 
 export default function WelcomeScreen({ navigation }) {
   const [activeProfile, setActiveProfile] = useState(null);
   const [profiles, setProfiles] = useState([]);
+  const [savedReadingsCount, setSavedReadingsCount] = useState(0);
 
   useEffect(() => {
     loadProfiles();
@@ -43,6 +45,13 @@ export default function WelcomeScreen({ navigation }) {
           const active = parsed.find(p => p.id === activeId);
           setActiveProfile(active);
         }
+      }
+
+      // Load saved readings count
+      const readingsData = await AsyncStorage.getItem(READINGS_KEY);
+      if (readingsData) {
+        const readings = JSON.parse(readingsData);
+        setSavedReadingsCount(readings.length);
       }
     } catch (error) {
       console.error('Error loading profiles:', error);
@@ -71,6 +80,10 @@ export default function WelcomeScreen({ navigation }) {
     navigation.navigate('ProfileSelect', { profiles });
   };
 
+  const handleViewReadings = () => {
+    navigation.navigate('ReadingHistory');
+  };
+
   return (
     <View style={styles.container}>
       {/* Matrix rain background */}
@@ -81,6 +94,13 @@ export default function WelcomeScreen({ navigation }) {
       <ScrollView contentContainerStyle={styles.content}>
         {/* Animated header */}
         <CyberpunkHeader />
+
+        {/* Tagline - main page only */}
+        <View style={styles.taglineContainer}>
+          <NeonText color={NEON_COLORS.dimCyan} style={styles.tagline}>
+            A cyber tarot deck for tomorrow!
+          </NeonText>
+        </View>
 
         {/* Main menu buttons */}
         <View style={styles.menuContainer}>
@@ -117,6 +137,22 @@ export default function WelcomeScreen({ navigation }) {
               {'>'} {profiles.length === 0 ? 'No profiles yet' : `${profiles.length} profile(s) available`}
             </NeonText>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={handleViewReadings}
+            style={[styles.menuButton, savedReadingsCount === 0 && styles.menuButtonDisabled]}
+            disabled={savedReadingsCount === 0}
+          >
+            <LPMUDText style={styles.menuButtonText}>
+              $HIG${'[ '} $HIW$PAST READINGS$NOR$ $HIG${' ]'}$NOR$
+            </LPMUDText>
+            <NeonText
+              color={savedReadingsCount === 0 ? NEON_COLORS.dimRed : NEON_COLORS.dimGreen}
+              style={styles.menuButtonSubtext}
+            >
+              {'>'} {savedReadingsCount === 0 ? 'No saved readings' : `${savedReadingsCount} saved reading(s)`}
+            </NeonText>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.spacer} />
@@ -146,9 +182,22 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingBottom: 40,
   },
+  taglineContainer: {
+    alignItems: 'center',
+    marginTop: -10,
+    marginBottom: 20,
+    paddingHorizontal: 30,
+  },
+  tagline: {
+    fontSize: 14,
+    fontFamily: 'monospace',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    letterSpacing: 1,
+  },
   menuContainer: {
     marginHorizontal: 20,
-    marginTop: 40,
+    marginTop: 20,
     gap: 20,
   },
   menuButton: {
