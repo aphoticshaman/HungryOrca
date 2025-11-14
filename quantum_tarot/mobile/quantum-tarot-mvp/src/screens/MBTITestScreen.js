@@ -51,21 +51,61 @@ const MBTITestScreen = ({ navigation, route }) => {
     }
   };
 
-  const handleSkipConfirm = () => {
+  const handleSkipConfirm = async () => {
     // User confirmed they want to skip MBTI test
     setVibeModeChecked(true);
     setShowSkipWarning(false);
 
     // Proceed with basic profile (no MBTI type)
     if (onComplete) {
+      // Callback flow
       onComplete({
         ...userProfile,
         mbtiType: null,
         vibeModeEnabled: true,
       });
+      navigation.goBack();
+    } else {
+      // Direct flow - save profile without MBTI
+      await saveProfileWithoutMBTI();
     }
-    navigation.goBack();
   };
+
+  async function saveProfileWithoutMBTI() {
+    try {
+      const AsyncStorage = require('@react-native-async-storage/async-storage').default;
+      const PROFILES_KEY = '@lunatiq_profiles';
+      const ACTIVE_PROFILE_KEY = '@lunatiq_active_profile';
+
+      // Load existing profiles
+      const profilesData = await AsyncStorage.getItem(PROFILES_KEY);
+      const profiles = profilesData ? JSON.parse(profilesData) : [];
+
+      // Create new profile without MBTI (vibe mode)
+      const newProfile = {
+        id: Date.now().toString(),
+        name: userProfile.profileName,
+        birthdate: userProfile.birthdate,
+        zodiacSign: userProfile.zodiacSign,
+        mbtiType: null,
+        vibeModeEnabled: true,
+        createdAt: new Date().toISOString()
+      };
+
+      // Add to profiles array
+      profiles.push(newProfile);
+      await AsyncStorage.setItem(PROFILES_KEY, JSON.stringify(profiles));
+
+      // Set as active profile
+      await AsyncStorage.setItem(ACTIVE_PROFILE_KEY, newProfile.id);
+
+      // Navigate to Welcome
+      navigation.navigate('Welcome');
+    } catch (error) {
+      console.error('Error saving profile:', error);
+      navigation.navigate('Welcome');
+    }
+  }
 
   const handleSkipCancel = () => {
     // User wants to complete their profile
@@ -100,6 +140,7 @@ const MBTITestScreen = ({ navigation, route }) => {
       const result = calculateMBTI(newAnswers);
 
       if (onComplete) {
+        // Callback flow (when called from another screen)
         onComplete({
           ...userProfile,
           mbtiType: result.type,
@@ -107,10 +148,51 @@ const MBTITestScreen = ({ navigation, route }) => {
           mbtiStrengths: result.strengths,
           vibeModeEnabled: false,
         });
+        navigation.goBack();
+      } else {
+        // Direct flow (from profile setup) - save profile and navigate
+        await saveProfileWithMBTI(result);
       }
-      navigation.goBack();
     }
   };
+
+  async function saveProfileWithMBTI(mbtiResult) {
+    try {
+      const AsyncStorage = require('@react-native-async-storage/async-storage').default;
+      const PROFILES_KEY = '@lunatiq_profiles';
+      const ACTIVE_PROFILE_KEY = '@lunatiq_active_profile';
+
+      // Load existing profiles
+      const profilesData = await AsyncStorage.getItem(PROFILES_KEY);
+      const profiles = profilesData ? JSON.parse(profilesData) : [];
+
+      // Create new profile with MBTI results
+      const newProfile = {
+        id: Date.now().toString(),
+        name: userProfile.profileName,
+        birthdate: userProfile.birthdate,
+        zodiacSign: userProfile.zodiacSign,
+        mbtiType: mbtiResult.type,
+        mbtiScores: mbtiResult.scores,
+        mbtiStrengths: mbtiResult.strengths,
+        vibeModeEnabled: false,
+        createdAt: new Date().toISOString()
+      };
+
+      // Add to profiles array
+      profiles.push(newProfile);
+      await AsyncStorage.setItem(PROFILES_KEY, JSON.stringify(profiles));
+
+      // Set as active profile
+      await AsyncStorage.setItem(ACTIVE_PROFILE_KEY, newProfile.id);
+
+      // Navigate to Welcome
+      navigation.navigate('Welcome');
+    } catch (error) {
+      console.error('Error saving profile:', error);
+      navigation.navigate('Welcome');
+    }
+  }
 
   const handleBack = () => {
     if (currentQuestionIndex > 0) {

@@ -88,11 +88,13 @@ export default function ProfileSetupScreen({ navigation }) {
       return;
     }
 
-    // Go to personality questions
-    navigation.navigate('PersonalityQuestions', {
-      profileName: name.trim(),
-      birthdate: `${year}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`,
-      zodiacSign
+    // Go to MBTI personality test (40 questions)
+    navigation.navigate('MBTITest', {
+      userProfile: {
+        profileName: name.trim(),
+        birthdate: `${year}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`,
+        zodiacSign
+      }
     });
   };
 
