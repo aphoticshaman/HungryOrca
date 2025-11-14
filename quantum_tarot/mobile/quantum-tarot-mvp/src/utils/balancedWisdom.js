@@ -98,9 +98,9 @@ export const BALANCED_PILLARS = {
     essence: 'act in alignment with values',
     phrases: [
       'Let your actions reflect your values, not your anxieties.',
-      'Integrity means doing what's right even when no one's watching.',
+      'Integrity means doing what\'s right even when no one\'s watching.',
       'Small, aligned actions compound into transformation.',
-      'You are what you do, not what you say you'll do.',
+      'You are what you do, not what you say you\'ll do.',
       'Make amends when you miss the mark. Then move forward.',
     ],
   },
