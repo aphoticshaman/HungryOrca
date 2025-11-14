@@ -147,22 +147,34 @@ function buildSynthesis(context) {
   // ═══════════════════════════════════════════════════════════
   // OPENING (150-250 words)
   // ═══════════════════════════════════════════════════════════
-  synthesis += `${narrative.getOpening(readingType, userProfile.name)}\n\n`;
+  const opening = narrative.getOpening(readingType, userProfile?.name || 'Seeker');
+  if (opening) {
+    synthesis += `${opening}\n\n`;
+  }
 
   // Weave in intention
-  synthesis += `You came to this reading seeking clarity on ${intention}. `;
+  synthesis += `You came to this reading seeking clarity on ${intention || 'your path forward'}. `;
 
   // Add astrological/temporal context
-  synthesis += `${narrative.getAstroRef({
-    sunSign: astroContext.sunSign,
-    mbtiType: userProfile.mbtiType,
-    lilith: astroContext.lilith,
-    chiron: astroContext.chiron,
-    moonPhase: astroContext.moonPhase
-  })} `;
+  const astroRef = narrative.getAstroRef({
+    sunSign: astroContext?.sunSign,
+    mbtiType: userProfile?.mbtiType,
+    lilith: astroContext?.lilith,
+    chiron: astroContext?.chiron,
+    moonPhase: astroContext?.moonPhase
+  });
+  if (astroRef) {
+    synthesis += `${astroRef} `;
+  }
 
-  synthesis += `It's ${timeEnergy.period.toLowerCase()}, when ${timeEnergy.energy.toLowerCase()}. `;
-  synthesis += `${timeEnergy.advice}\n\n`;
+  if (timeEnergy?.period && timeEnergy?.energy) {
+    synthesis += `It's ${timeEnergy.period.toLowerCase()}, when ${timeEnergy.energy.toLowerCase()}. `;
+  }
+  if (timeEnergy?.advice) {
+    synthesis += `${timeEnergy.advice}\n\n`;
+  } else {
+    synthesis += `\n\n`;
+  }
 
   // ═══════════════════════════════════════════════════════════
   // CARD-BY-CARD INTERPRETATION (300-600 words)
@@ -182,17 +194,21 @@ function buildSynthesis(context) {
 
     // Add transition (except for first card)
     if (index > 0) {
-      synthesis += `${narrative.getTransition()} `;
+      const transition = narrative.getTransition();
+      if (transition) {
+        synthesis += `${transition} `;
+      }
     }
 
     // Main card interpretation
-    const cardName = `${cardData.name}${card.reversed ? ' Reversed' : ''}`;
+    const cardName = `${cardData?.name || 'Unknown Card'}${card.reversed ? ' Reversed' : ''}`;
     const position = card.position || `position ${index + 1}`;
     const positionMeaning = card.positionMeaning || '';
 
     // Add pop culture quote hook (quantum-seeded for variety)
-    const quote = getCardQuote(card.cardIndex, context.narrative.sentenceSeeds[index]);
-    if (quote) {
+    const sentenceSeed = narrative?.sentenceSeeds?.[index] || Math.random();
+    const quote = getCardQuote(card.cardIndex, sentenceSeed);
+    if (quote?.text && quote?.source) {
       synthesis += `\n\n**"${quote.text}"**  \n—${quote.source}\n\n`;
 
       // Reference the quote in the interpretation
@@ -206,17 +222,20 @@ function buildSynthesis(context) {
         `As ${cardName} reveals itself, remember: `,
       ];
       const quoteIntegrationIndex = Math.floor(
-        (context.narrative.sentenceSeeds[index] * quoteIntegrations.length) % quoteIntegrations.length
+        (sentenceSeed * quoteIntegrations.length) % quoteIntegrations.length
       );
       synthesis += quoteIntegrations[quoteIntegrationIndex];
     }
 
     // Generate quantum-varied sentence
-    synthesis += `${narrative.getSentence(
+    const sentence = narrative.getSentence(
       cardName,
       `${primaryKeyword} in the realm of ${positionMeaning || position}`,
       position
-    )} `;
+    );
+    if (sentence) {
+      synthesis += `${sentence} `;
+    }
 
     // Add depth based on card-specific MCQ answers
     const cardMCQ = mcqAnswers.find(a => a.cardIndex === index);
@@ -281,22 +300,31 @@ function buildSynthesis(context) {
   // Moderation wisdom (Middle Way principles)
   const moderationSeed = (quantumSeed * 0.9876) % 1;
   const moderationWisdom = getModerationWisdom(moderationSeed);
-  synthesis += `\nA word on balance: ${moderationWisdom} `;
-  synthesis += `The cards aren't asking for perfection or extremism—they're inviting you into the middle way.\n\n`;
+  if (moderationWisdom) {
+    synthesis += `\nA word on balance: ${moderationWisdom} `;
+    synthesis += `The cards aren't asking for perfection or extremism—they're inviting you into the middle way.\n\n`;
+  }
 
   // ═══════════════════════════════════════════════════════════
   // MBTI-SPECIFIC GUIDANCE (100-200 words)
   // ═══════════════════════════════════════════════════════════
 
-  synthesis += `\n\nGiven your ${userProfile.mbtiType} personality, here's what to ${narrative.getWord('examine')}:\n\n`;
-  synthesis += generateMBTIGuidance(mbtiGuidelines, cards, mcqAnalysis, narrative);
+  const examineWord = narrative.getWord('examine') || 'consider';
+  synthesis += `\n\nGiven your ${userProfile?.mbtiType || 'personality'}, here's what to ${examineWord}:\n\n`;
+  const mbtiGuidance = generateMBTIGuidance(mbtiGuidelines, cards, mcqAnalysis, narrative);
+  if (mbtiGuidance) {
+    synthesis += mbtiGuidance;
+  }
 
   // ═══════════════════════════════════════════════════════════
   // ACTION STEPS (100-150 words)
   // ═══════════════════════════════════════════════════════════
 
   synthesis += `\n\n## What To Do Now\n\n`;
-  synthesis += generateActionSteps(cards, mcqAnalysis, synthesisGuidance, readingType, narrative);
+  const actionSteps = generateActionSteps(cards, mcqAnalysis, synthesisGuidance, readingType, narrative);
+  if (actionSteps) {
+    synthesis += actionSteps;
+  }
 
   // ═══════════════════════════════════════════════════════════
   // CLOSING (50-100 words)
@@ -326,9 +354,12 @@ function buildSynthesis(context) {
     synthesis += `${balancedClosing.pillar.wisdom}\n\n`;
   }
 
-  synthesis += `${narrative.getClosing()}\n`;
+  const closing = narrative.getClosing();
+  if (closing) {
+    synthesis += `${closing}\n`;
+  }
 
-  console.log('✅ buildSynthesis completed successfully');
+  console.log('✅ buildSynthesis completed successfully, final length:', synthesis?.length);
   return synthesis;
   } catch (error) {
     console.error('❌ buildSynthesis ERROR:', error);
@@ -400,9 +431,11 @@ function weaveMCQInsights(cardMCQ, cardData, narrative) {
 
   if (cardMCQ.resonance && cardMCQ.resonance < 2) {
     text += `You rated this card's resonance as low. That disconnection? That's data. `;
-    text += `What are you ${narrative.getWord('avoid')}ing by not seeing yourself here? `;
+    const avoidWord = narrative?.getWord?.('avoid') || 'avoiding';
+    text += `What are you ${avoidWord}ing by not seeing yourself here? `;
   } else if (cardMCQ.resonance && cardMCQ.resonance >= 4) {
-    text += `This card hit hard for you. That visceral reaction is your ${narrative.getWord('soul')} recognizing itself. `;
+    const soulWord = narrative?.getWord?.('soul') || 'soul';
+    text += `This card hit hard for you. That visceral reaction is your ${soulWord} recognizing itself. `;
   }
 
   if (cardMCQ.emotion === 'resistance') {
