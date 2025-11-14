@@ -10,7 +10,7 @@
  * - Balanced Wisdom (Middle Way)
  */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import {
   View,
   StyleSheet,
@@ -18,11 +18,9 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import EncryptedTextReveal from '../components/EncryptedTextReveal';
 import CyberpunkHeader from '../components/CyberpunkHeader';
 import { NeonText, LPMUDText } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
-import { generateQuantumSeed } from '../utils/quantumRNG';
 
 export default function SynthesisScreen({ route, navigation }) {
   const {
@@ -33,21 +31,7 @@ export default function SynthesisScreen({ route, navigation }) {
     spreadType
   } = route.params || {};
 
-  const [revealTrigger, setRevealTrigger] = useState(false);
-  const [quantumSeed] = useState(generateQuantumSeed());
   const scrollViewRef = useRef(null);
-
-  // Trigger reveal on mount
-  useEffect(() => {
-    // Small delay before starting sacred reveal
-    setTimeout(() => {
-      setRevealTrigger(true);
-    }, 500);
-  }, []);
-
-  const handleRevealComplete = () => {
-    console.log('Synthesis reveal complete');
-  };
 
   const handleFinish = () => {
     // Navigate back to welcome screen
@@ -82,7 +66,7 @@ export default function SynthesisScreen({ route, navigation }) {
           )}
         </View>
 
-        {/* Scrollable synthesis with encrypted reveal */}
+        {/* Scrollable synthesis */}
         <ScrollView
           ref={scrollViewRef}
           style={styles.scrollView}
@@ -90,13 +74,9 @@ export default function SynthesisScreen({ route, navigation }) {
           showsVerticalScrollIndicator={true}
         >
           <View style={styles.synthesisContainer}>
-            <EncryptedTextReveal
-              trigger={revealTrigger}
-              quantumSeed={quantumSeed}
-              onComplete={handleRevealComplete}
-            >
+            <NeonText color={NEON_COLORS.hiWhite} style={styles.synthesisText}>
               {synthesis}
-            </EncryptedTextReveal>
+            </NeonText>
           </View>
 
           {/* Reading metadata */}
@@ -184,6 +164,11 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'rgba(0, 0, 0, 0.95)',
     marginBottom: 20,
+  },
+  synthesisText: {
+    fontSize: 14,
+    lineHeight: 22,
+    fontFamily: 'monospace',
   },
   metadataBox: {
     borderWidth: 1,
