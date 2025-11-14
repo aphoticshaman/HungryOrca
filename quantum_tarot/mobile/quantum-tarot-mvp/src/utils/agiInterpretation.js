@@ -56,11 +56,37 @@ export function interpretCard(card, intention, readingType, context = {}) {
 }
 
 /**
- * LAYER 1: ARCHETYPAL - Universal patterns and symbols
+ * LAYER 1: ARCHETYPAL - Universal patterns and symbols (EXPANDED)
  */
 function generateArchetypalLayer(cardData, reversed, position) {
   const orientation = reversed ? 'reversed' : 'upright';
   const keywords = cardData.keywords?.[orientation] || [];
+  const element = cardData.element || 'Spirit';
+  const symbols = cardData.symbols || [];
+
+  // EXPANDED core meaning with elemental and symbolic context
+  let expandedMeaning = cardData.description || 'A card of transformation and insight.';
+
+  // Add elemental wisdom
+  const elementalWisdom = {
+    fire: 'The fire element speaks to your passion, willpower, and creative force—the spark that ignites action and drives transformation. This is the energy of becoming, of risk-taking, of burning away what no longer serves.',
+    water: 'The water element flows through emotions, intuition, and the subconscious depths. It invites you to feel rather than think, to trust your inner knowing, and to allow yourself to be moved by the currents of your heart.',
+    air: 'The air element brings mental clarity, communication, and truth. It asks you to examine your thoughts, speak your reality, and cut through illusion with the sword of intellect and honest dialogue.',
+    earth: 'The earth element grounds you in the material world—body, resources, tangible results. This is the energy of building, growing, manifesting, and honoring the physical realm as sacred.',
+    spirit: 'Pure spirit energy transcends the elements, speaking to divine connection, fate, and the mysteries beyond the veil. This card calls you to surrender to something larger than yourself.'
+  };
+
+  expandedMeaning += ` ${elementalWisdom[element.toLowerCase()] || elementalWisdom.spirit}`;
+
+  // Add symbol layer depth
+  if (symbols.length > 0) {
+    expandedMeaning += ` Notice the symbols appearing in this card: ${symbols.slice(0, 3).join(', ')}. Each symbol is a gateway to deeper understanding—let them speak to your subconscious and reveal their personal meaning to you.`;
+  }
+
+  // Add reversal context if applicable
+  if (reversed) {
+    expandedMeaning += ` In reversal, this card's energy is inverted, blocked, or internalized. You may be resisting its lesson, experiencing it in shadow form, or needing to address an imbalance before this energy can flow naturally. Reversals aren't "bad"—they're calls to do inner work first.`;
+  }
 
   return {
     name: cardData.name,
@@ -69,31 +95,50 @@ function generateArchetypalLayer(cardData, reversed, position) {
     numerology: cardData.numerology,
     symbols: cardData.symbols || [],
     keywords,
-    core_meaning: cardData.description || 'No description available',
+    core_meaning: expandedMeaning,
     shadow_aspect: reversed ? cardData.shadow_work : null
   };
 }
 
 /**
- * LAYER 2: CONTEXTUAL - Adapted to reading type and intention
+ * LAYER 2: CONTEXTUAL - Adapted to reading type and intention (EXPANDED)
  */
 function generateContextualLayer(cardData, reversed, position, readingType, intention) {
-  // Map reading type to interpretation focus
+  // Map reading type to interpretation focus with EXPANDED depth
   const focusMap = {
-    career: 'professional growth, ambition, work-life balance',
-    romance: 'emotional connection, intimacy, relationship dynamics',
-    wellness: 'physical health, mental wellbeing, energy management',
-    finance: 'resources, abundance mindset, material security',
-    personal_growth: 'self-awareness, transformation, inner wisdom',
-    decision: 'choices, pathways, consequences',
-    general: 'overall life guidance, universal wisdom',
-    shadow_work: 'unconscious patterns, hidden aspects, healing'
+    career: 'your professional path, vocational calling, and how you show up in the world of work',
+    romance: 'matters of the heart, intimate connections, and the dance of vulnerability and desire',
+    wellness: 'your body\'s wisdom, mental health, energetic vitality, and the sacred practice of self-care',
+    finance: 'material abundance, relationship with money, and how you create security in the physical world',
+    personal_growth: 'your evolution as a human being, self-knowledge, and the journey of becoming who you\'re meant to be',
+    decision: 'the crossroads before you, the paths available, and the consequences rippling from your choice',
+    general: 'the overall tapestry of your life, universal wisdom, and guidance from your higher self',
+    shadow_work: 'unconscious patterns, repressed aspects, wounds seeking healing, and the gold hiding in your darkness'
   };
 
   const focus = focusMap[readingType] || focusMap.general;
 
+  // EXPANDED position significance with temporal and energetic context
+  const positionLower = position.toLowerCase();
+  let positionDepth = `In the ${position} position, this card illuminates ${focus}. `;
+
+  // Add position-specific wisdom
+  if (positionLower.includes('past')) {
+    positionDepth += 'This is foundation energy—understanding where you\'ve been helps you navigate where you\'re going. Don\'t dwell here, but honor the lessons this card represents in your history.';
+  } else if (positionLower.includes('present') || positionLower.includes('current')) {
+    positionDepth += 'This is the work of NOW—the most important position in your spread. This energy is active, available, and asking for your conscious engagement in this moment.';
+  } else if (positionLower.includes('future') || positionLower.includes('outcome')) {
+    positionDepth += 'This shows where current patterns are leading. Remember: the future isn\'t fixed. This is a probability based on your current trajectory—change your actions now, change your outcomes later.';
+  } else if (positionLower.includes('challenge') || positionLower.includes('obstacle')) {
+    positionDepth += 'This card reveals what\'s standing in your way. Sometimes the obstacle IS the path—this challenge may be exactly what you need for growth, even if it\'s uncomfortable.';
+  } else if (positionLower.includes('advice') || positionLower.includes('guidance')) {
+    positionDepth += 'This is your cosmic download—direct guidance from the universe about how to navigate your situation. Pay close attention to this card\'s medicine.';
+  } else {
+    positionDepth += 'This position adds crucial context to your overall reading. Consider how this card\'s energy interacts with the others in your spread.';
+  }
+
   return {
-    position_significance: `In the ${position} position, this card speaks to ${focus.toLowerCase()}.`,
+    position_significance: positionDepth,
     intention_alignment: analyzeIntentionAlignment(cardData, intention, reversed),
     reading_type_focus: focus,
     temporal_aspect: analyzeTemporalAspect(position),
@@ -102,7 +147,7 @@ function generateContextualLayer(cardData, reversed, position, readingType, inte
 }
 
 /**
- * LAYER 3: PSYCHOLOGICAL - Deep patterns and shadow work
+ * LAYER 3: PSYCHOLOGICAL - Deep patterns and shadow work (EXPANDED)
  */
 function generatePsychologicalLayer(cardData, reversed, position, context) {
   // Get diverse wisdom insights (MBTI, attachment, love languages, etc.)
@@ -115,41 +160,121 @@ function generatePsychologicalLayer(cardData, reversed, position, context) {
     context
   );
 
+  // EXPANDED shadow work narrative
+  let shadowNarrative = cardData.shadow_work || 'This card asks you to examine what you\'ve been avoiding.';
+  if (reversed) {
+    shadowNarrative += ' In reversal, shadow work becomes ESSENTIAL—you cannot move forward until you face what\'s hiding in the dark. This isn\'t punishment; it\'s invitation. Your shadow holds rejected parts of yourself that need to be reclaimed, not destroyed.';
+  } else {
+    shadowNarrative += ' Even upright, every card has shadow aspects. Notice where you might be overdoing this energy, using it to bypass deeper work, or projecting its opposite onto others.';
+  }
+
+  // EXPANDED integration path
+  let integrationNarrative = cardData.integration || 'Begin by acknowledging this energy exists within you.';
+  integrationNarrative += ' Integration means making the unconscious conscious. Journal about this card. Notice when its themes show up in your life this week. Ask yourself: How am I this card? Where do I resist being this card? What would change if I fully embodied its medicine?';
+
+  // EXPANDED emotional resonance
+  const emotionalDepth = analyzeEmotionalResonance(cardData, reversed);
+  const emotionalNarrative = `Emotionally, this card resonates with ${emotionalDepth}. Pay attention to how you FEEL when you look at this card—your emotional response is data. If you feel resistance, explore it. If you feel relief or excitement, lean into that. Your body knows the truth before your mind catches up.`;
+
+  //  EXPANDED growth opportunity
+  let growthNarrative = `This card invites you to ${reversed ? 'address resistance or blocks' : 'embrace and embody'} the energy it represents. `;
+  if (reversed) {
+    growthNarrative += 'The growth here is IN the difficulty—reversals force you to develop capacities you\'ve been avoiding. Trust that you wouldn\'t be shown this challenge if you weren\'t ready to meet it.';
+  } else {
+    growthNarrative += 'The growth here is in embodiment—you\'re being asked to become this card, not just understand it intellectually. Embody it in your actions, your choices, your way of being in the world.';
+  }
+
   return {
-    shadow_work: cardData.shadow_work || 'Explore what this card reveals about hidden aspects of yourself.',
-    integration_path: cardData.integration || 'Acknowledge and integrate this energy consciously.',
-    emotional_resonance: analyzeEmotionalResonance(cardData, reversed),
+    shadow_work: shadowNarrative,
+    integration_path: integrationNarrative,
+    emotional_resonance: emotionalNarrative,
     zodiac_connection: analyzeZodiacConnection(cardData, context.zodiacSign),
-    growth_opportunity: `This card invites you to ${reversed ? 'address resistance or blocks' : 'embrace and embody'} the energy it represents.`,
-    diverse_wisdom: diverseWisdom // NEW: Rich multi-framework insights
+    growth_opportunity: growthNarrative,
+    diverse_wisdom: diverseWisdom // Rich multi-framework insights (MBTI, attachment, love languages, etc.)
   };
 }
 
 /**
- * LAYER 4: PRACTICAL - Concrete actions and guidance
+ * LAYER 4: PRACTICAL - Concrete actions and guidance (EXPANDED)
  */
 function generatePracticalLayer(cardData, reversed, position, readingType, intention) {
-  const advice = cardData.advice || 'Trust your intuition and move forward mindfully.';
+  const baseAdvice = cardData.advice || 'Trust your intuition and move forward mindfully.';
+  const keywords = reversed ? (cardData.keywords?.reversed || []) : (cardData.keywords?.upright || []);
+
+  // EXPANDED focus guidance
+  const primaryFocus = keywords[0] || 'Present moment awareness';
+  let focusNarrative = `Your primary focus with this card is ${primaryFocus.toLowerCase()}. `;
+  if (reversed) {
+    focusNarrative += `In reversal, focus on WHERE this energy is blocked in your life. Don't try to force it to flow—first understand the blockage. What fear, belief, or pattern is preventing ${primaryFocus.toLowerCase()} from manifesting naturally? Address the root cause, not the symptoms.`;
+  } else {
+    focusNarrative += `This energy is available to you RIGHT NOW. Focus on embodying ${primaryFocus.toLowerCase()} in your daily actions. Make it your mantra this week. Notice where you're already doing this, and where you could do it more. Small, consistent actions compound into transformation.`;
+  }
+
+  // EXPANDED avoidance guidance
+  let avoidanceNarrative = '';
+  if (reversed) {
+    avoidanceNarrative = `Avoid spiritual bypassing—don't pretend everything is fine when this card is showing you a block that needs attention. Avoid staying stuck in the "why" and move into "what now?" Avoid making big decisions from this reversed energy—clear the block first, then decide.`;
+  } else {
+    avoidanceNarrative = `Avoid overidentifying with this energy to the point where it becomes unbalanced. Even positive cards can be overdone. Avoid using this card's medicine to bypass necessary shadow work. Avoid assuming this means everything will be easy—upright cards still require your active participation.`;
+  }
+
+  // EXPANDED practical advice with reality check
+  let expandedAdvice = baseAdvice + ' ';
+  expandedAdvice += 'Remember: tarot gives you the map, but you have to walk the path. These action steps are worthless unless you actually DO them. Pick ONE action from the list above and commit to completing it within 72 hours. Massive action beats perfect planning every time.';
 
   return {
-    action_steps: generateActionSteps(cardData, reversed, readingType, intention), // XYZA: Now passes intention for entity extraction
-    what_to_focus_on: cardData.keywords?.upright?.[0] || 'Present moment awareness',
-    what_to_avoid: reversed ? 'Getting stuck in this pattern' : 'Overextending this energy',
+    action_steps: generateActionSteps(cardData, reversed, readingType, intention), // XYZA: Hyper-personalized based on intention entities
+    what_to_focus_on: focusNarrative,
+    what_to_avoid: avoidanceNarrative,
     timing_guidance: generateTimingGuidance(position),
-    practical_advice: advice
+    practical_advice: expandedAdvice
   };
 }
 
 /**
- * LAYER 5: SYNTHESIS - Integrated multi-layer interpretation
+ * LAYER 5: SYNTHESIS - Integrated multi-layer interpretation (EXPANDED)
  */
 function generateSynthesis(archetypal, contextual, psychological, practical) {
   // Don't repeat the intention - user already typed it and saw it in contextual layer
+
+  // EXPANDED core message - weaving together all layers
+  const primaryKeywords = archetypal.keywords.slice(0, 3).join(', ');
+  let coreSynthesis = `${archetypal.name} brings the energy of ${primaryKeywords} into your life right now. `;
+
+  // Add elemental integration
+  if (archetypal.element) {
+    const elementLower = archetypal.element.toLowerCase();
+    if (elementLower === 'fire') coreSynthesis += 'This fire energy asks you to ACT—to take bold steps and trust your inner spark. ';
+    else if (elementLower === 'water') coreSynthesis += 'This water energy asks you to FEEL—to trust your intuition and honor your emotional truth. ';
+    else if (elementLower === 'air') coreSynthesis += 'This air energy asks you to THINK—to gain clarity, speak truth, and cut through confusion. ';
+    else if (elementLower === 'earth') coreSynthesis += 'This earth energy asks you to BUILD—to take practical steps and create tangible results. ';
+    else coreSynthesis += 'This spiritual energy asks you to SURRENDER—to trust in something larger than yourself. ';
+  }
+
+  coreSynthesis += `${contextual.position_significance.split('.')[0]}. The ${contextual.energy_quality} nature of this card's appearance suggests ${contextual.energy_quality.includes('flowing') ? 'you\'re ready to embody this fully' : 'there\'s inner work to do before external manifestation'}.`;
+
+  // EXPANDED integration - linking psychological and practical
+  let integrationSynthesis = `To integrate this card's medicine: ${psychological.integration_path.split('.')[0]}. `;
+  integrationSynthesis += `${practical.practical_advice.split('.')[0]}. `;
+  integrationSynthesis += 'The gap between insight and transformation is ACTION—knowing is not enough, you must do.';
+
+  // EXPANDED deeper insight - the "so what?"
+  let deeperInsight = psychological.shadow_work.split('.').slice(0, 2).join('. ') + '. ';
+  deeperInsight += 'This is your edge—the place where growth happens. Lean into the discomfort. The treasure you seek is buried in the territory you\'ve been avoiding.';
+
+  // EXPANDED next steps with urgency
+  const firstThreeActions = practical.action_steps.slice(0, 3);
+  let nextStepsSynthesis = 'Your immediate next steps: ';
+  nextStepsSynthesis += `(1) ${firstThreeActions[0] || 'Reflect on this card\'s message'}. `;
+  if (firstThreeActions[1]) nextStepsSynthesis += `(2) ${firstThreeActions[1]}. `;
+  if (firstThreeActions[2]) nextStepsSynthesis += `(3) ${firstThreeActions[2]}. `;
+  nextStepsSynthesis += 'Do not just read this—ACT within 24 hours while the energy is fresh.';
+
   return {
-    core_message: `${archetypal.name} embodies ${archetypal.keywords.slice(0, 3).join(', ')} - ${contextual.position_significance} ${contextual.energy_quality} energy invites ${psychological.growth_opportunity.toLowerCase()}`,
-    integration: `${psychological.integration_path} ${practical.practical_advice}`,
-    deeper_insight: psychological.shadow_work,
-    next_steps: practical.action_steps.join(' Then: ')
+    core_message: coreSynthesis,
+    integration: integrationSynthesis,
+    deeper_insight: deeperInsight,
+    next_steps: nextStepsSynthesis
   };
 }
 
