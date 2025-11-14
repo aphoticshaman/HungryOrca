@@ -1535,6 +1535,373 @@ export const CARD_QUOTES_EXPANDED = {
       { text: "Vision without compassion creates casualties, not community.", source: "Balance Need" },
     ]
   },
+
+  // ═══════════════════════════════════════════════════════════
+  // MINOR ARCANA - CUPS (Water: Emotion, Intuition, Love)
+  // ═══════════════════════════════════════════════════════════
+
+  36: { // Ace of Cups
+    name: 'Ace of Cups',
+    upright: [
+      { text: "A new heart I will give you, and a new spirit I will put within you.", source: "Ezekiel 36:26 (Bible)" },
+      { text: "The heart has its reasons of which reason knows nothing.", source: "Blaise Pascal" },
+      { text: "Love is the only force capable of transforming an enemy into a friend.", source: "Martin Luther King Jr." },
+      { text: "Where there is love there is life.", source: "Mahatma Gandhi" },
+      { text: "The best and most beautiful things in the world cannot be seen or even touched. They must be felt with the heart.", source: "Helen Keller" },
+      { text: "To love and be loved is to feel the sun from both sides.", source: "David Viscott" },
+      { text: "Your cup is overflowing. This is divine timing.", source: "Blessing Recognition" },
+      { text: "New love, new feelings, new capacity to care. Let it in.", source: "Receptivity" },
+      { text: "Emotional availability is the gift you give yourself first.", source: "Self-Love Truth" },
+      { text: "The universe is offering you a cup. Drink.", source: "Divine Offer" },
+    ],
+    reversed: [
+      { text: "You can't fill an overturned cup.", source: "Receptivity Block" },
+      { text: "Emotional unavailability masquerading as independence.", source: "Protection Pattern" },
+      { text: "The cup is there. You're just not reaching for it.", source: "Resistance Truth" },
+      { text: "Love offered, love rejected. What are you protecting?", source: "Defense Question" },
+      { text: "Your heart is closed for maintenance indefinitely.", source: "Shutdown Reality" },
+      { text: "Blocked blessings are still blessings. Just blocked.", source: "Opportunity Loss" },
+      { text: "Emotional constipation: holding in what needs to flow.", source: "Release Needed" },
+      { text: "You're drowning in an empty cup. That's called a void.", source: "Inner Emptiness" },
+    ]
+  },
+
+  37: { // Two of Cups
+    name: 'Two of Cups',
+    upright: [
+      { text: "Two are better than one, because they have a good return for their labor.", source: "Ecclesiastes 4:9 (Bible)" },
+      { text: "Two souls recognizing each other across lifetimes: 'Oh. It's you. It's always been you.'", source: "Fated Mates Energy" },
+      { text: "When you realize you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.", source: "When Harry Met Sally" },
+      { text: "Love is friendship set on fire.", source: "Jeremy Taylor" },
+      { text: "The bond snapped into place and suddenly breathing without them felt impossible.", source: "Fantasy Romance" },
+      { text: "I have found the one whom my soul loves.", source: "Song of Solomon 3:4 (Bible)" },
+      { text: "Whatever our souls are made of, his and mine are the same.", source: "Emily Brontë" },
+      { text: "Partnership is two whole people choosing each other, daily.", source: "Conscious Love" },
+      { text: "Equal exchange, equal energy, equal devotion. That's the alchemy.", source: "Balanced Union" },
+      { text: "You found your person. They found theirs. Same person.", source: "Mutual Recognition" },
+    ],
+    reversed: [
+      { text: "One-sided relationships are just fancy loneliness.", source: "Imbalance Reality" },
+      { text: "You're matching energy that's not matching yours.", source: "Disparity Truth" },
+      { text: "Codependency wearing a soulmate costume.", source: "Pattern Recognition" },
+      { text: "Two cups, one person pouring. Do the math.", source: "Inequity Problem" },
+      { text: "The connection is broken. Are you fixing it or mourning it?", source: "Action Question" },
+      { text: "Forcing a connection that naturally disconnected.", source: "Resistance Issue" },
+      { text: "You can't be their everything. Stop trying.", source: "Boundary Need" },
+      { text: "Miscommunication dressed as deep connection.", source: "Illusion Warning" },
+    ]
+  },
+
+  38: { // Three of Cups
+    name: 'Three of Cups',
+    upright: [
+      { text: "Where two or three gather in my name, there am I with them.", source: "Matthew 18:20 (Bible)" },
+      { text: "Friendship is born at that moment when one person says to another: 'What! You too? I thought I was the only one.'", source: "C.S. Lewis" },
+      { text: "A friend is someone who knows all about you and still loves you.", source: "Elbert Hubbard" },
+      { text: "Alone we can do so little; together we can do so much.", source: "Helen Keller" },
+      { text: "There are friends, there is family, and then there are friends who become family.", source: "Chosen Family" },
+      { text: "Good vibes and even better company.", source: "Squad Energy" },
+      { text: "Celebration is better shared than soloed.", source: "Community Joy" },
+      { text: "Your tribe is out there. This is them.", source: "Belonging Truth" },
+      { text: "Joy multiplied by connection equals this moment.", source: "Social Happiness" },
+      { text: "The coven you've been looking for has been looking for you too.", source: "Group Magic" },
+    ],
+    reversed: [
+      { text: "Fake friends are like shadows: always near you at your brightest moments, but nowhere to be seen at your darkest.", source: "Fair-Weather Pattern" },
+      { text: "The party's over and nobody cleaned up the mess they made in your life.", source: "Aftermath Reality" },
+      { text: "You're the glue holding a group together that doesn't care if you dissolve.", source: "One-Sided Effort" },
+      { text: "Gossip disguised as catching up.", source: "Toxic Communication" },
+      { text: "Third wheel energy in your own life.", source: "Exclusion Feeling" },
+      { text: "Drama triangles aren't sacred geometry.", source: "Conflict Pattern" },
+      { text: "Your absence from the group chat says everything.", source: "Disconnection Truth" },
+      { text: "Celebration without you, but crisis with you? That's not friendship.", source: "Usage Pattern" },
+    ]
+  },
+
+  39: { // Four of Cups
+    name: 'Four of Cups',
+    upright: [
+      { text: "Be still, and know that I am God.", source: "Psalm 46:10 (Bible)" },
+      { text: "We can complain because rose bushes have thorns, or rejoice because thorn bushes have roses.", source: "Abraham Lincoln" },
+      { text: "The grass is greener where you water it.", source: "Neil Barringham" },
+      { text: "He who is not contented with what he has, would not be contented with what he would like to have.", source: "Socrates" },
+      { text: "Sometimes you need to sit in the disappointment to know what you really want.", source: "Discernment Period" },
+      { text: "Contemplation is not laziness. It's preparation.", source: "Stillness Purpose" },
+      { text: "Three cups in front of you, one being offered. All ignored. Why?", source: "Apathy Question" },
+      { text: "Meditation or avoidance? You know which one this is.", source: "Honesty Check" },
+      { text: "Withdrawal to recharge vs. withdrawal to escape. Choose wisely.", source: "Intention Clarity" },
+    ],
+    reversed: [
+      { text: "Missing the forest for the trees, the blessing for the lesson, the gift for the wrapping.", source: "Perspective Loss" },
+      { text: "You're so busy looking for the next thing you're missing this thing.", source: "Present Blindness" },
+      { text: "Apathy isn't peace. It's depression with better PR.", source: "Emotional Numbness" },
+      { text: "The universe is offering you cups and you're mad they're not chalices.", source: "Entitlement Issue" },
+      { text: "Boredom is often unacknowledged grief or anger.", source: "Emotion Denial" },
+      { text: "You're not unimpressed. You're scared of wanting something.", source: "Fear Truth" },
+      { text: "Detachment became disconnection when you stopped feeling anything.", source: "Over-Correction" },
+      { text: "Renewed interest or forced enthusiasm? There's a difference.", source: "Authenticity Check" },
+    ]
+  },
+
+  40: { // Five of Cups
+    name: 'Five of Cups',
+    upright: [
+      { text: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.", source: "Psalm 34:18 (Bible)" },
+      { text: "You can't start the next chapter of your life if you keep re-reading the last one.", source: "Michael McMillan" },
+      { text: "The wound is the place where the Light enters you.", source: "Rumi" },
+      { text: "Crying does not indicate that you are weak. Since birth, it has always been a sign that you are alive.", source: "Charlotte Brontë" },
+      { text: "Grief is love with nowhere to go.", source: "Jamie Anderson" },
+      { text: "Three cups spilled, two still standing. Your focus determines your reality.", source: "Perspective Choice" },
+      { text: "Mourning what was lost is necessary. Ignoring what remains is not.", source: "Balance Truth" },
+      { text: "Disappointment is the gap between expectation and reality. Mind the gap.", source: "Adjustment Needed" },
+      { text: "You're allowed to mourn the version of your life that didn't happen.", source: "Loss Validation" },
+      { text: "The cups you're crying over were already empty.", source: "Illusion Revelation" },
+    ],
+    reversed: [
+      { text: "You've been mourning so long the grief became your identity.", source: "Stuck Pattern" },
+      { text: "Acceptance is not the same as giving up. Learn the difference.", source: "Wisdom Distinction" },
+      { text: "You're ready to turn around. The two cups are still there.", source: "Hope Invitation" },
+      { text: "Forgiveness doesn't mean reconciliation. It means release.", source: "Freedom Path" },
+      { text: "You can't heal and hold the grudge. Pick one.", source: "Choice Reality" },
+      { text: "The loss happened. The suffering is optional at this point.", source: "Continuation Choice" },
+      { text: "Moving on doesn't mean moving past. It means moving forward.", source: "Progress Definition" },
+      { text: "Recovery isn't linear, but you're not even trying to recover.", source: "Effort Truth" },
+    ]
+  },
+
+  41: { // Six of Cups
+    name: 'Six of Cups',
+    upright: [
+      { text: "I will remember the deeds of the Lord; yes, I will remember your miracles of long ago.", source: "Psalm 77:11 (Bible)" },
+      { text: "Memory is the diary we all carry about with us.", source: "Oscar Wilde" },
+      { text: "The past can hurt. But the way I see it, you can either run from it or learn from it.", source: "The Lion King" },
+      { text: "We do not remember days, we remember moments.", source: "Cesare Pavese" },
+      { text: "Nostalgia is a file that removes the rough edges from the good old days.", source: "Doug Larson" },
+      { text: "Childhood is measured out by sounds and smells and sights, before the dark hour of reason grows.", source: "John Betjeman" },
+      { text: "The past is never where you think you left it.", source: "Katherine Anne Porter" },
+      { text: "Nostalgia done right is medicine. Nostalgia done wrong is poison.", source: "Memory Truth" },
+      { text: "Innocence revisited or innocence weaponized? Check your motives.", source: "Nostalgia Check" },
+      { text: "Childlike wonder vs. childish avoidance. Know which one you're choosing.", source: "Maturity Distinction" },
+    ],
+    reversed: [
+      { text: "Living in the past is a sure way to miss the present.", source: "Time Trap" },
+      { text: "Those weren't 'the good old days.' You were just younger and less aware.", source: "Perspective Reality" },
+      { text: "Nostalgia is a liar. Memory is selective. Move forward.", source: "Past Illusion" },
+      { text: "You can't go home again because home was never the place. It was the person you were.", source: "Evolution Truth" },
+      { text: "Romanticizing the past while ignoring its pain is spiritual bypassing.", source: "Honesty Need" },
+      { text: "Childhood trauma dressed as childhood nostalgia.", source: "Shadow Recognition" },
+      { text: "You're stuck in yesterday while tomorrow is waiting.", source: "Time Misalignment" },
+      { text: "The innocence you're grieving? It was survival, not simplicity.", source: "Trauma Clarity" },
+    ]
+  },
+
+  42: { // Seven of Cups
+    name: 'Seven of Cups',
+    upright: [
+      { text: "Where there is no vision, the people perish.", source: "Proverbs 29:18 (Bible)" },
+      { text: "Not all those who wander are lost.", source: "J.R.R. Tolkien" },
+      { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+      { text: "Dreams are necessary to life.", source: "Anaïs Nin" },
+      { text: "Imagination is more important than knowledge.", source: "Albert Einstein" },
+      { text: "All that we see or seem is but a dream within a dream.", source: "Edgar Allan Poe" },
+      { text: "Seven options, seven illusions. Which cup holds what you actually want?", source: "Choice Overload" },
+      { text: "Infinite possibility is paralyzing until you choose one.", source: "Decision Truth" },
+      { text: "Fantasy is fun until it becomes a hiding place from reality.", source: "Escape Warning" },
+      { text: "Daydreaming or strategic visualization? Intent matters.", source: "Purpose Check" },
+    ],
+    reversed: [
+      { text: "Analysis paralysis in a cup shop.", source: "Decision Fatigue" },
+      { text: "So many options, so little action.", source: "Paralysis Reality" },
+      { text: "You're not exploring possibilities. You're avoiding commitment.", source: "Fear Pattern" },
+      { text: "Illusions shattered or illusions released? There's a difference.", source: "Clarity Distinction" },
+      { text: "The cups are all empty. You've been chasing mirages.", source: "Disillusionment" },
+      { text: "Clarity is coming whether you're ready or not.", source: "Reality Arrival" },
+      { text: "You wanted all the options. Now none of them look good. That's clarity.", source: "Truth Moment" },
+      { text: "Overwhelm isn't the problem. Refusing to choose is.", source: "Responsibility Truth" },
+    ]
+  },
+
+  43: { // Eight of Cups
+    name: 'Eight of Cups',
+    upright: [
+      { text: "Get up and go, for this is not your resting place.", source: "Micah 2:10 (Bible)" },
+      { text: "Sometimes letting things go is an act of far greater power than defending or hanging on.", source: "Eckhart Tolle" },
+      { text: "You can't reach what's in front of you until you let go of what's behind you.", source: "Release Philosophy" },
+      { text: "The art of knowing is knowing what to ignore.", source: "Rumi" },
+      { text: "Leaving is not always losing.", source: "Exit Wisdom" },
+      { text: "If it costs you your peace, it's too expensive.", source: "Boundary Truth" },
+      { text: "Walking away is not giving up. It's choosing you.", source: "Self-Preservation" },
+      { text: "Eight cups stacked carefully. Still walking away. That's spiritual maturity.", source: "Wise Departure" },
+      { text: "You can honor what was and still choose what will be.", source: "Both/And Reality" },
+      { text: "The soul knows when it's time to go. Trust that.", source: "Inner Knowing" },
+    ],
+    reversed: [
+      { text: "Running from vs. running toward. You know which one this is.", source: "Motivation Question" },
+      { text: "You're not leaving. You're avoiding.", source: "Escape Pattern" },
+      { text: "Every time it gets hard, you leave. Notice the pattern.", source: "Commitment Issue" },
+      { text: "Fear of commitment or fear of the wrong commitment? Clarify.", source: "Fear Distinction" },
+      { text: "You walked away from eight cups to chase one. Was it worth it?", source: "Choice Consequence" },
+      { text: "Staying is brave sometimes too.", source: "Loyalty Value" },
+      { text: "You keep leaving places you never fully arrived at.", source: "Presence Lack" },
+      { text: "What if the thing you're seeking is in the cups you left behind?", source: "Regret Possibility" },
+    ]
+  },
+
+  44: { // Nine of Cups
+    name: 'Nine of Cups',
+    upright: [
+      { text: "Delight yourself in the Lord, and he will give you the desires of your heart.", source: "Psalm 37:4 (Bible)" },
+      { text: "Gratitude turns what we have into enough.", source: "Aesop" },
+      { text: "Happiness is not something ready made. It comes from your own actions.", source: "Dalai Lama" },
+      { text: "The greatest wealth is to live content with little.", source: "Plato" },
+      { text: "Success is getting what you want. Happiness is wanting what you get.", source: "Dale Carnegie" },
+      { text: "Abundance is not something we acquire. It is something we tune into.", source: "Wayne Dyer" },
+      { text: "Nine cups and a satisfied soul. You did that.", source: "Achievement Recognition" },
+      { text: "The wish granted. The desire fulfilled. Now what?", source: "Manifestation Success" },
+      { text: "Contentment isn't settling. It's arriving.", source: "Satisfaction Truth" },
+      { text: "You got what you asked for. Savor it.", source: "Gratitude Moment" },
+    ],
+    reversed: [
+      { text: "You got everything you wanted and you're still not happy. The problem isn't the cups.", source: "Inner Work Need" },
+      { text: "Smugness is satisfaction's ugly cousin.", source: "Ego Warning" },
+      { text: "Material satisfaction without spiritual fulfillment is just expensive emptiness.", source: "Hollow Victory" },
+      { text: "You're full but not fulfilled. There's a difference.", source: "Depth Missing" },
+      { text: "All those cups and you're still thirsty. What are you really craving?", source: "True Desire" },
+      { text: "Greed disguised as ambition.", source: "Shadow Truth" },
+      { text: "Success without humility is just ego with a trophy case.", source: "Pride Issue" },
+      { text: "You're so focused on more you forgot to enjoy enough.", source: "Present Absence" },
+    ]
+  },
+
+  45: { // Ten of Cups
+    name: 'Ten of Cups',
+    upright: [
+      { text: "As for me and my house, we will serve the Lord.", source: "Joshua 24:15 (Bible)" },
+      { text: "The best thing to hold onto in life is each other.", source: "Audrey Hepburn" },
+      { text: "Happiness is only real when shared.", source: "Jon Krakauer" },
+      { text: "Family is not an important thing. It's everything.", source: "Michael J. Fox" },
+      { text: "In family life, love is the oil that eases friction.", source: "Eva Burrows" },
+      { text: "Other things may change us, but we start and end with family.", source: "Anthony Brandt" },
+      { text: "Emotional fulfillment, relational abundance, heart full. This is wealth.", source: "True Riches" },
+      { text: "Ten cups overflowing. Community, connection, love. You built this.", source: "Legacy Recognition" },
+      { text: "The rainbow after the storm. The family you chose or were chosen by.", source: "Belonging Complete" },
+      { text: "Harmony achieved through work, not luck.", source: "Earned Peace" },
+    ],
+    reversed: [
+      { text: "The perfect family photo hiding the imperfect family reality.", source: "Facade Recognition" },
+      { text: "Dysfunction with a white picket fence is still dysfunction.", source: "Appearance vs. Reality" },
+      { text: "You can't Hallmark your way out of real problems.", source: "Denial Issue" },
+      { text: "Forcing happiness doesn't create it.", source: "Authenticity Need" },
+      { text: "The cups are all there. The connection is not.", source: "Presence Absence" },
+      { text: "Broken family patterns won't heal through pretending.", source: "Work Required" },
+      { text: "Emotional dishonesty in the name of keeping the peace.", source: "Truth Avoidance" },
+      { text: "You have everything but feel nothing. That's called disconnection.", source: "Numbness Reality" },
+    ]
+  },
+
+  46: { // Page of Cups
+    name: 'Page of Cups',
+    upright: [
+      { text: "Out of the mouth of babes and infants, you have established strength.", source: "Psalm 8:2 (Bible)" },
+      { text: "Logic will get you from A to B. Imagination will take you everywhere.", source: "Albert Einstein" },
+      { text: "The future belongs to those who believe in the beauty of their dreams.", source: "Eleanor Roosevelt" },
+      { text: "Every artist was first an amateur.", source: "Ralph Waldo Emerson" },
+      { text: "We don't stop playing because we grow old; we grow old because we stop playing.", source: "George Bernard Shaw" },
+      { text: "Creativity is intelligence having fun.", source: "Albert Einstein" },
+      { text: "The intuitive whisper before the logical shout. Listen.", source: "Inner Voice" },
+      { text: "Emotional honesty without emotional maturity. It's a start.", source: "Growth Beginning" },
+      { text: "Messages from the soul, delivered in curious packaging.", source: "Intuitive Messenger" },
+      { text: "Wonder is wisdom's younger sibling.", source: "Childlike Truth" },
+    ],
+    reversed: [
+      { text: "Emotional immaturity dressed as emotional authenticity.", source: "Development Need" },
+      { text: "You're not being real. You're being reactive.", source: "Impulse vs. Truth" },
+      { text: "Creative block or creative avoidance? Be honest.", source: "Resistance Check" },
+      { text: "Ignoring your intuition because it's inconvenient.", source: "Inner Voice Denial" },
+      { text: "Oversensitivity is not the same as deep feeling.", source: "Emotional Accuracy" },
+      { text: "You're so afraid of looking foolish you forgot how to feel.", source: "Protection Cost" },
+      { text: "The inner child needs healing, not indulgence.", source: "Work vs. Enabling" },
+      { text: "Messages ignored become lessons.", source: "Intuition Warning" },
+    ]
+  },
+
+  47: { // Knight of Cups
+    name: 'Knight of Cups',
+    upright: [
+      { text: "Many waters cannot quench love, neither can floods drown it.", source: "Song of Solomon 8:7 (Bible)" },
+      { text: "Follow your heart, but take your brain with you.", source: "Alfred Adler" },
+      { text: "Romance is the glamour which turns the dust of everyday life into a golden haze.", source: "Elinor Glyn" },
+      { text: "Love looks not with the eyes, but with the mind.", source: "William Shakespeare" },
+      { text: "The heart wants what it wants.", source: "Woody Allen" },
+      { text: "To love is to burn, to be on fire.", source: "Jane Austen" },
+      { text: "The romantic, the dreamer, the pursuer. Idealism in motion.", source: "Quest Energy" },
+      { text: "Offering the cup with genuine intention. Receive it or don't.", source: "Sincere Offer" },
+      { text: "Passion is the compass. Wisdom is the map. You have one.", source: "Guidance Need" },
+      { text: "Chasing the feeling or chasing the person? Clarify.", source: "Motivation Truth" },
+    ],
+    reversed: [
+      { text: "Love bombing disguised as romance.", source: "Manipulation Warning" },
+      { text: "You're not in love with them. You're in love with the idea of them.", source: "Projection Reality" },
+      { text: "Emotional manipulation with flowers.", source: "Toxicity Recognition" },
+      { text: "Grand gestures can't substitute for genuine presence.", source: "Performance vs. Connection" },
+      { text: "Moodiness mistaken for depth.", source: "Immaturity Pattern" },
+      { text: "You're offering cups to people who didn't ask for them.", source: "Boundary Issue" },
+      { text: "Jealousy and possessiveness are not romance.", source: "Love Distortion" },
+      { text: "Fantasy relationship with a real person. They're going to disappoint you.", source: "Expectation Problem" },
+    ]
+  },
+
+  48: { // Queen of Cups
+    name: 'Queen of Cups',
+    upright: [
+      { text: "She opens her mouth with wisdom, and the teaching of kindness is on her tongue.", source: "Proverbs 31:26 (Bible)" },
+      { text: "Compassion is the basis of morality.", source: "Arthur Schopenhauer" },
+      { text: "The most important thing is to try and inspire people so that they can be great in whatever they want to do.", source: "Kobe Bryant" },
+      { text: "When we give cheerfully and accept gratefully, everyone is blessed.", source: "Maya Angelou" },
+      { text: "No one can make you feel inferior without your consent.", source: "Eleanor Roosevelt" },
+      { text: "Empathy is seeing with the eyes of another, listening with the ears of another, and feeling with the heart of another.", source: "Alfred Adler" },
+      { text: "Emotional intelligence meets spiritual maturity.", source: "Wisdom Embodied" },
+      { text: "You feel everything and it doesn't destroy you. That's mastery.", source: "Emotional Sovereignty" },
+      { text: "Intuition backed by experience. Trust that.", source: "Developed Knowing" },
+      { text: "The healer who healed herself first.", source: "Self-Work Done" },
+    ],
+    reversed: [
+      { text: "Emotional manipulation is still manipulation, even when it's gentle.", source: "Covert Control" },
+      { text: "Codependency wearing a crown of compassion.", source: "Pattern Recognition" },
+      { text: "You're so busy feeling everyone else's feelings you forgot your own.", source: "Boundary Loss" },
+      { text: "Martyr complex disguised as empathy.", source: "Shadow Truth" },
+      { text: "Over-giving to avoid receiving.", source: "Control Pattern" },
+      { text: "Your intuition is drowning in everyone else's emotions.", source: "Psychic Overwhelm" },
+      { text: "You can't save everyone. Stop trying.", source: "Savior Release" },
+      { text: "Emotional unavailability hidden behind spiritual bypassing.", source: "Avoidance Tactic" },
+    ]
+  },
+
+  49: { // King of Cups
+    name: 'King of Cups',
+    upright: [
+      { text: "A gentle answer turns away wrath, but a harsh word stirs up anger.", source: "Proverbs 15:1 (Bible)" },
+      { text: "The wise man knows himself to be a fool, but the fool thinks himself to be wise.", source: "William Shakespeare" },
+      { text: "Between stimulus and response there is a space. In that space is our power to choose our response.", source: "Viktor Frankl" },
+      { text: "Mastering others is strength. Mastering yourself is true power.", source: "Lao Tzu" },
+      { text: "The best fighter is never angry.", source: "Lao Tzu" },
+      { text: "In the midst of chaos, there is also opportunity.", source: "Sun Tzu" },
+      { text: "Emotional mastery without emotional suppression. That's the throne.", source: "Balanced Power" },
+      { text: "You feel deeply and respond wisely. That's leadership.", source: "Mature Sovereignty" },
+      { text: "Calm seas aren't made by suppressing storms. They're made by mastering navigation.", source: "Control Truth" },
+      { text: "Diplomacy isn't weakness. It's power under control.", source: "Strategic Wisdom" },
+    ],
+    reversed: [
+      { text: "Emotional suppression wearing a suit of control.", source: "False Mastery" },
+      { text: "You're not calm. You're checked out.", source: "Disconnection Reality" },
+      { text: "Cold mastery is just trauma with a title.", source: "Unhealed Power" },
+      { text: "You can't king from a place of emotional dishonesty.", source: "Authenticity Need" },
+      { text: "Manipulation through emotional withholding.", source: "Control Tactic" },
+      { text: "The storm you're suppressing is leaking out sideways.", source: "Pressure Truth" },
+      { text: "You're so controlled nobody can reach you. Is that really power?", source: "Isolation Cost" },
+      { text: "Wisdom without warmth is just cold intelligence.", source: "Balance Missing" },
+    ]
+  },
 };
 
 /**
