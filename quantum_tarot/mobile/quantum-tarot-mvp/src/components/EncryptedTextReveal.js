@@ -300,13 +300,9 @@ const EncryptedTextReveal = ({
 
   return (
     <Animated.View style={[style, { opacity: fadeAnim }]}>
-      {displayText ? (
-        <Text style={[styles.text, isRevealing && styles.revealingText]}>
-          {displayText}
-        </Text>
-      ) : (
-        children
-      )}
+      <Text style={[styles.text, isRevealing && styles.revealingText]}>
+        {displayText || children}
+      </Text>
     </Animated.View>
   );
 };
