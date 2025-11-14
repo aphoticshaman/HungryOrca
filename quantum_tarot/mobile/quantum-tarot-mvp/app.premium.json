@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "Quantum Tarot - Premium",
+    "slug": "quantum-tarot-premium",
+    "version": "1.0.0",
+    "scheme": "quantumtarotpremium",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aphoticshaman.quantumtarot.premium"
+    },
+    "android": {
+      "package": "com.aphoticshaman.quantumtarot.premium",
+      "permissions": [],
+      "versionCode": 1
+    },
+    "web": {}
+  }
+}
