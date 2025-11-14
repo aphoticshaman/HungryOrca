@@ -26,6 +26,10 @@ import { generateQuantumNarrative } from './quantumNarrativeEngine';
 import { generateQuantumSeed } from './quantumRNG';
 import { BalancedWisdomIntegration, getModerationWisdom } from './balancedWisdom';
 import { getChineseZodiac, getSpiritualSynthesisMessage, getSpiritualGrowthInsight } from './chineseZodiac';
+import { generateTimingPrediction, generateReadingTimeframe, generatePredictiveMarker } from './temporalPredictions';
+import { analyzeCardSynergies, generateSynergySummary } from './cardSynergyMatrix';
+import { weaveColdReadingElements } from './coldReadingEnhancer';
+import { composeNarrativeArc, generateStoryOpener } from './narrativeArcComposer';
 
 /**
  * Generate comprehensive synthesis
@@ -92,6 +96,18 @@ export async function generateMegaSynthesis(readingData) {
       readingType
     }, quantumSeed);
 
+    // 4B. ANALYZE CARD SYNERGIES (card interaction patterns)
+    console.log('🔍 Step 4B: Analyzing card synergies...');
+    const cardSynergies = analyzeCardSynergies(cards);
+
+    // 4C. COMPOSE NARRATIVE ARC (story structure)
+    console.log('🔍 Step 4C: Composing narrative arc...');
+    const narrativeArc = composeNarrativeArc(cards, mcqAnalysis, readingType, userProfile, quantumSeed);
+
+    // 4D. GENERATE COLD READING ELEMENTS (personalization)
+    console.log('🔍 Step 4D: Generating cold reading elements...');
+    const coldReading = weaveColdReadingElements(userProfile, cards, readingType, quantumSeed);
+
     // 5. BUILD SYNTHESIS
     console.log('🔍 Step 5: Building synthesis...');
     const synthesis = buildSynthesis({
@@ -108,7 +124,10 @@ export async function generateMegaSynthesis(readingData) {
       intention,
       readingType,
       spreadType,
-      quantumSeed
+      quantumSeed,
+      cardSynergies,
+      narrativeArc,
+      coldReading
     });
 
     console.log('✅ Synthesis generated successfully, length:', synthesis?.length);
@@ -141,7 +160,10 @@ function buildSynthesis(context) {
       intention,
       readingType,
       spreadType,
-      quantumSeed
+      quantumSeed,
+      cardSynergies = [],
+      narrativeArc = {},
+      coldReading = {}
     } = context;
 
     console.log('🔨 buildSynthesis starting with:', {
@@ -155,15 +177,31 @@ function buildSynthesis(context) {
     let synthesis = '';
 
   // ═══════════════════════════════════════════════════════════
-  // OPENING (150-250 words)
+  // OPENING (150-250 words) - NARRATIVE ARC APPROACH
   // ═══════════════════════════════════════════════════════════
-  const opening = narrative.getOpening(readingType, userProfile?.name || 'Seeker');
+
+  // Use story-based opener if we have narrative arc
+  const opening = narrativeArc?.structure
+    ? generateStoryOpener(userProfile?.name || 'Seeker', readingType, quantumSeed)
+    : narrative.getOpening(readingType, userProfile?.name || 'Seeker');
+
   if (opening) {
     synthesis += `${opening}\n\n`;
   }
 
-  // Weave in intention
+  // Add BARNUM STATEMENT early for personalization hook
+  if (coldReading?.barnum && coldReading.barnum.length > 0) {
+    synthesis += `${coldReading.barnum[0]}\n\n`;
+  }
+
+  // Weave in intention with timeframe prediction
   synthesis += `You came to this reading seeking clarity on ${intention || 'your path forward'}. `;
+
+  // Add reading timeframe (TEMPORAL PREDICTION)
+  const timeframe = generateReadingTimeframe(cards, astroContext, readingType, quantumSeed);
+  if (timeframe) {
+    synthesis += `${timeframe} `;
+  }
 
   // Add astrological/temporal context
   const astroRef = narrative.getAstroRef({
@@ -197,14 +235,31 @@ function buildSynthesis(context) {
     }
   }
 
+  // Add INTUITIVE HOOK for psychic vibe
+  if (coldReading?.intuitiveHook) {
+    synthesis += `${coldReading.intuitiveHook}\n\n`;
+  }
+
   // ═══════════════════════════════════════════════════════════
-  // CARD-BY-CARD INTERPRETATION (300-600 words)
+  // CARD-BY-CARD INTERPRETATION (300-600 words) - WITH NARRATIVE ARC
   // ═══════════════════════════════════════════════════════════
 
-  // Analyze overall reading patterns first
+  // Add CARD SYNERGY ANALYSIS first (shows we read interactions, not just individual cards)
+  const synergySummary = generateSynergySummary(cardSynergies, quantumSeed * 0.111);
+  if (synergySummary) {
+    synthesis += synergySummary;
+  }
+
+  // Analyze overall reading patterns
   const patterns = analyzeReadingPatterns(cards);
   if (patterns.length > 0) {
     synthesis += `Before we dive into individual cards, notice this: ${patterns.join(' ')} This sets the stage for everything that follows.\n\n`;
+  }
+
+  // Add narrative arc climax if we're in a 3+ card reading
+  if (narrativeArc?.climax && cards.length >= 3) {
+    const climaxIndex = Math.floor(cards.length / 2);
+    // We'll add this before the climax card
   }
 
   // Interpret each card with quantum variation - FOCUS ON MCQ INSIGHTS
@@ -212,6 +267,17 @@ function buildSynthesis(context) {
     const cardData = CARD_DATABASE[card.cardIndex];
     const keywords = card.reversed ? cardData.keywords?.reversed : cardData.keywords?.upright;
     const primaryKeyword = keywords?.[0] || 'transformation';
+
+    // Add CHAPTER HEADING for narrative arc
+    if (narrativeArc?.chapterHeadings && narrativeArc.chapterHeadings[index]) {
+      synthesis += `\n## ${narrativeArc.chapterHeadings[index]}\n\n`;
+    }
+
+    // Add CLIMAX marker before middle card
+    const climaxIndex = Math.floor(cards.length / 2);
+    if (index === climaxIndex && narrativeArc?.climax) {
+      synthesis += narrativeArc.climax;
+    }
 
     // Add transition (except for first card)
     if (index > 0) {
@@ -234,6 +300,12 @@ function buildSynthesis(context) {
     );
     if (sentence) {
       synthesis += `**${cardName}** in ${positionMeaning || position}: ${sentence} `;
+    }
+
+    // Add TIMING PREDICTION for this card
+    const timingPrediction = generateTimingPrediction(card, astroContext, readingType, quantumSeed * (index + 1));
+    if (timingPrediction && index < cards.length - 1) {
+      synthesis += `${timingPrediction} `;
     }
 
     // PRIORITIZE MCQ INSIGHTS - This is where the real personalization happens
@@ -314,12 +386,31 @@ function buildSynthesis(context) {
     }
   }
 
+  // Add SENSORY DETAILS for emotional hooks and specificity
+  if (coldReading?.sensory && coldReading.sensory.length > 0) {
+    const sensoryDetail = coldReading.sensory[0]; // Color detail
+    if (sensoryDetail?.text) {
+      synthesis += `${sensoryDetail.text} `;
+    }
+  }
+
+  // Add PREDICTIVE MARKER (what to watch for)
+  const predictiveMarker = generatePredictiveMarker(cards[0], readingType, quantumSeed * 0.444);
+  if (predictiveMarker) {
+    synthesis += `${predictiveMarker}\n\n`;
+  }
+
   // Moderation wisdom (Middle Way principles)
   const moderationSeed = (quantumSeed * 0.9876) % 1;
   const moderationWisdom = getModerationWisdom(moderationSeed);
   if (moderationWisdom) {
     synthesis += `\nA word on balance: ${moderationWisdom} `;
     synthesis += `The cards aren't asking for perfection or extremism—they're inviting you into the middle way.\n\n`;
+  }
+
+  // Add CONFIRMATION PROMPT (yes/no question for engagement)
+  if (coldReading?.confirmationPrompt) {
+    synthesis += `\nQuick check: ${coldReading.confirmationPrompt}\n\n`;
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -344,8 +435,31 @@ function buildSynthesis(context) {
   }
 
   // ═══════════════════════════════════════════════════════════
-  // CLOSING (50-100 words)
+  // CLOSING (50-100 words) - WITH NARRATIVE DENOUEMENT
   // ═══════════════════════════════════════════════════════════
+
+  // Add DENOUEMENT (story wisdom)
+  if (narrativeArc?.denouement) {
+    synthesis += narrativeArc.denouement;
+  }
+
+  // Add more SENSORY DETAILS for memorable specificity
+  if (coldReading?.sensory && coldReading.sensory.length > 1) {
+    const numberDetail = coldReading.sensory.find(d => d.type === 'number');
+    const animalDetail = coldReading.sensory.find(d => d.type === 'animal');
+
+    if (numberDetail?.text) {
+      synthesis += `${numberDetail.text} `;
+    }
+    if (animalDetail?.text) {
+      synthesis += `${animalDetail.text} `;
+    }
+  }
+
+  // Add FLATTERY WITH EDGE (makes user feel seen and called out)
+  if (coldReading?.flattery) {
+    synthesis += `\n\n${coldReading.flattery}\n\n`;
+  }
 
   // Add balanced wisdom closing
   const dominantElement = getDominantElement(cards);
@@ -369,6 +483,11 @@ function buildSynthesis(context) {
 
   if (balancedClosing?.pillar?.wisdom) {
     synthesis += `${balancedClosing.pillar.wisdom}\n\n`;
+  }
+
+  // Add second BARNUM statement for closing hook
+  if (coldReading?.barnum && coldReading.barnum.length > 1) {
+    synthesis += `${coldReading.barnum[1]}\n\n`;
   }
 
   const closing = narrative.getClosing();
