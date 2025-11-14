@@ -18,7 +18,7 @@
  */
 
 import { CARD_DATABASE } from '../data/cardDatabase';
-import { getCardQuote } from '../data/cardQuotes';
+import { getCardQuote, CARD_QUOTES_EXPANDED } from '../data/cardQuotes_EXPANDED';
 import { analyzeMCQAnswers, getSynthesisGuidance } from './postCardQuestions';
 import { getFullAstrologicalContext, getTimeOfDayEnergy } from './advancedAstrology';
 import { getMBTIInterpretationGuidelines } from './mbtiTest';
