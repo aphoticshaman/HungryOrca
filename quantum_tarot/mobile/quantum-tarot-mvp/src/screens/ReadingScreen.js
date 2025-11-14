@@ -167,8 +167,11 @@ export default function ReadingScreen({ route, navigation }) {
           <LPMUDText style={styles.interpretationSection}>
             $HIC$━━ ARCHETYPAL LAYER ━━$NOR${'\n'}
             $NOR${currentInterpretation.layers.archetypal.core_meaning}{'\n\n'}
-            $HIG$UPRIGHT KEYWORDS:$NOR$ {currentInterpretation.cardData.keywords?.upright?.slice(0, 5).join(', ') || 'N/A'}{'\n\n'}
-            $HIR$REVERSED KEYWORDS:$NOR$ {currentInterpretation.cardData.keywords?.reversed?.slice(0, 5).join(', ') || 'N/A'}
+            {currentCard.reversed ? (
+              <>$HIR$REVERSED KEYWORDS:$NOR$ {currentInterpretation.cardData.keywords?.reversed?.slice(0, 5).join(', ') || 'N/A'}</>
+            ) : (
+              <>$HIG$UPRIGHT KEYWORDS:$NOR$ {currentInterpretation.cardData.keywords?.upright?.slice(0, 5).join(', ') || 'N/A'}</>
+            )}
           </LPMUDText>
 
           {/* Layer 2: Contextual */}

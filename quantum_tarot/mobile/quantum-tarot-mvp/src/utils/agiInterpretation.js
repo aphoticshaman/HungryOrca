@@ -144,11 +144,9 @@ function generatePracticalLayer(cardData, reversed, position, readingType, inten
  * LAYER 5: SYNTHESIS - Integrated multi-layer interpretation
  */
 function generateSynthesis(archetypal, contextual, psychological, practical) {
-  // Extract the first sentence from contextual.intention_alignment (which now contains the full intention-aware analysis)
-  const intentionContext = contextual.intention_alignment || '';
-
+  // Don't repeat the intention - user already typed it and saw it in contextual layer
   return {
-    core_message: `${intentionContext} ${archetypal.name} embodies ${archetypal.keywords.slice(0, 3).join(', ')} - ${contextual.position_significance}`,
+    core_message: `${archetypal.name} embodies ${archetypal.keywords.slice(0, 3).join(', ')} - ${contextual.position_significance} ${contextual.energy_quality} energy invites ${psychological.growth_opportunity.toLowerCase()}`,
     integration: `${psychological.integration_path} ${practical.practical_advice}`,
     deeper_insight: psychological.shadow_work,
     next_steps: practical.action_steps.join(' Then: ')
@@ -778,8 +776,8 @@ function analyzeSpreadPatterns(interpretations) {
 function generateSpreadNarrative(interpretations, intention, spreadType, readingType, patterns, entities) {
   const cardNames = interpretations.map(i => i.cardData.name).join(', ');
 
-  // Opening: Reference intention and cards
-  let narrative = `Regarding your question "${intention}" - you drew ${cardNames}. `;
+  // Opening: Cards drawn (no need to repeat the question - they already typed it!)
+  let narrative = `You drew ${cardNames}. `;
 
   // Major Arcana significance
   if (patterns.majorArcanaRatio > 0.5) {
