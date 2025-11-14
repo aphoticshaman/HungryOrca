@@ -109,14 +109,33 @@ const CardInterpretationScreen = ({ route, navigation }) => {
     setIsGeneratingSynthesis(true);
 
     try {
-      // Generate mega synthesis with all context
-      const synthesis = await generateMegaSynthesis({
-        cards,
-        mcqAnswers: allMCQAnswers || [], // Default to empty array if no MCQ answers
-        userProfile: userProfile || { zodiacSign, birthdate },
+      // Build complete userProfile with fallbacks
+      const completeUserProfile = {
+        ...userProfile,
+        zodiacSign: userProfile?.zodiacSign || zodiacSign || 'Aries',
+        birthdate: userProfile?.birthdate || birthdate || '2000-01-01',
+        mbtiType: userProfile?.mbtiType || 'INFP',
+        name: userProfile?.profileName || userProfile?.name || 'Seeker',
+        pronouns: userProfile?.pronouns || 'they/them'
+      };
+
+      console.log('🔮 Generating synthesis with:', {
+        cardCount: cards?.length,
+        mcqCount: allMCQAnswers?.length,
+        hasUserProfile: !!userProfile,
         intention,
         readingType,
         spreadType
+      });
+
+      // Generate mega synthesis with all context
+      const synthesis = await generateMegaSynthesis({
+        cards: cards || [],
+        mcqAnswers: allMCQAnswers || [],
+        userProfile: completeUserProfile,
+        intention: intention || 'Personal growth',
+        readingType: readingType || 'general',
+        spreadType: spreadType || 'three_card'
       });
 
       // Navigate to synthesis display screen

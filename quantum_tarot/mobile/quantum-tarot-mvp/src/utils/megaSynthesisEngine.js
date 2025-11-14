@@ -32,28 +32,43 @@ import { BalancedWisdomIntegration, getModerationWisdom } from './balancedWisdom
  * @returns {String} - 600-1500 word synthesis
  */
 export async function generateMegaSynthesis(readingData) {
+  // Validate input
+  if (!readingData) {
+    console.error('generateMegaSynthesis: readingData is undefined');
+    return 'Error: No reading data provided.';
+  }
+
   const {
-    cards, // Array of { cardIndex, reversed, position, positionMeaning }
-    mcqAnswers, // All MCQ answers from post-card questions
-    userProfile, // { name, birthday, zodiacSign, mbtiType, pronouns }
-    intention, // User's stated intention
-    readingType, // 'career', 'romance', 'wellness', etc.
-    spreadType // 'celtic_cross', 'three_card', etc.
+    cards = [], // Array of { cardIndex, reversed, position, positionMeaning }
+    mcqAnswers = [], // All MCQ answers from post-card questions
+    userProfile = {}, // { name, birthday, zodiacSign, mbtiType, pronouns }
+    intention = 'Personal growth', // User's stated intention
+    readingType = 'general', // 'career', 'romance', 'wellness', etc.
+    spreadType = 'three_card' // 'celtic_cross', 'three_card', etc.
   } = readingData;
 
-  // 1. ANALYZE MCQ ANSWERS
-  const mcqAnalysis = analyzeMCQAnswers(mcqAnswers);
-  const synthesisGuidance = getSynthesisGuidance(mcqAnalysis, userProfile.mbtiType);
+  console.log('📊 Synthesis input validation:', {
+    hasCards: cards?.length > 0,
+    cardCount: cards?.length,
+    hasMCQAnswers: mcqAnswers?.length > 0,
+    mcqCount: mcqAnswers?.length,
+    hasUserProfile: !!userProfile,
+    mbtiType: userProfile?.mbtiType
+  });
 
-  // 2. GET ASTROLOGICAL CONTEXT
+  // 1. ANALYZE MCQ ANSWERS (with safety checks)
+  const mcqAnalysis = analyzeMCQAnswers(mcqAnswers || []);
+  const synthesisGuidance = getSynthesisGuidance(mcqAnalysis, userProfile?.mbtiType || 'INFP');
+
+  // 2. GET ASTROLOGICAL CONTEXT (with safety checks)
   const astroContext = getFullAstrologicalContext(
-    userProfile.birthday,
-    userProfile.zodiacSign
+    userProfile?.birthday || '2000-01-01',
+    userProfile?.zodiacSign || 'Aries'
   );
   const timeEnergy = getTimeOfDayEnergy();
 
-  // 3. GET MBTI INTERPRETATION GUIDELINES
-  const mbtiGuidelines = getMBTIInterpretationGuidelines(userProfile.mbtiType);
+  // 3. GET MBTI INTERPRETATION GUIDELINES (with safety checks)
+  const mbtiGuidelines = getMBTIInterpretationGuidelines(userProfile?.mbtiType || 'INFP');
 
   // 4. GENERATE QUANTUM NARRATIVE FRAMEWORK
   const quantumSeed = generateQuantumSeed();
