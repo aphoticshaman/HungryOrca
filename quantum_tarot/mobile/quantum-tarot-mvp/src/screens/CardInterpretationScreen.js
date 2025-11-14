@@ -50,24 +50,15 @@ const CardInterpretationScreen = ({ route, navigation }) => {
 
   const scrollViewRef = useRef(null);
 
-  // Trigger reveal animation on mount
-  useEffect(() => {
-    setRevealTrigger(true);
-  }, []);
-
-  // Reset and animate when card changes
+  // Show MCQ modal when card changes
   useEffect(() => {
     // Scroll to top IMMEDIATELY when card changes
     scrollViewRef.current?.scrollTo({ y: 0, animated: false });
 
-    // Then trigger reveal animation
-    setQuantumSeed(generateQuantumSeed()); // New seed for new card
-    setRevealTrigger(false); // Reset trigger
-
-    // Small delay to ensure DOM updates, then re-trigger
+    // Show MCQ modal after brief delay (no animation)
     setTimeout(() => {
-      setRevealTrigger(true);
-    }, 50);
+      handleRevealComplete();
+    }, 1000);
   }, [currentCardIndex]);
 
   // After encrypted reveal completes, show MCQ modal
@@ -134,7 +125,7 @@ const CardInterpretationScreen = ({ route, navigation }) => {
       // Generate mega synthesis with all context
       const synthesis = await generateMegaSynthesis({
         cards,
-        mcqAnswers: allMCQAnswers,
+        mcqAnswers: allMCQAnswers || [], // Default to empty array if no MCQ answers
         userProfile: userProfile || { zodiacSign, birthdate },
         intention,
         readingType,
@@ -229,21 +220,18 @@ const CardInterpretationScreen = ({ route, navigation }) => {
           />
         </View>
 
-        {/* Scrollable interpretation with encrypted reveal */}
+        {/* Scrollable interpretation */}
         <ScrollView
           ref={scrollViewRef}
           style={styles.scrollView}
           contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={true}
         >
-          <EncryptedTextReveal
-            trigger={revealTrigger}
-            quantumSeed={quantumSeed}
-            onComplete={handleRevealComplete}
-            style={styles.interpretationContainer}
-          >
-            {currentInterpretation}
-          </EncryptedTextReveal>
+          <View style={styles.interpretationContainer}>
+            <NeonText color={NEON_COLORS.hiWhite} style={styles.interpretationText}>
+              {currentInterpretation}
+            </NeonText>
+          </View>
         </ScrollView>
 
         {/* Navigation buttons */}
@@ -429,7 +417,15 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   interpretationContainer: {
-    // EncryptedTextReveal will apply its own styles
+    padding: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    borderWidth: 1,
+    borderColor: NEON_COLORS.dimCyan,
+  },
+  interpretationText: {
+    fontSize: 14,
+    lineHeight: 22,
+    fontFamily: 'monospace',
   },
   footer: {
     flexDirection: 'row',
