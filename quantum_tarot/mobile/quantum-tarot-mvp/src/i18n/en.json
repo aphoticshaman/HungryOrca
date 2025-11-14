@@ -1,0 +1,133 @@
+{
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "continue": "Continue",
+    "skip": "Skip",
+    "done": "Done",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "ok": "OK"
+  },
+  "welcome": {
+    "title": "Quantum Tarot",
+    "subtitle": "Retro Edition",
+    "tagline": "Where quantum mechanics meets ancient wisdom",
+    "getStarted": "Get Started",
+    "continueReading": "Continue Reading"
+  },
+  "onboarding": {
+    "title": "Welcome to Your Journey",
+    "namePrompt": "What shall I call you?",
+    "namePlaceholder": "Your name",
+    "birthdayPrompt": "When were you born?",
+    "pronounsPrompt": "Your pronouns (optional)",
+    "pronounsPlaceholder": "they/them, she/her, he/him, etc."
+  },
+  "readingType": {
+    "title": "What brings you here today?",
+    "career": "Career & Purpose",
+    "careerDesc": "Work, goals, professional path",
+    "romance": "Love & Relationships",
+    "romanceDesc": "Partnership, connection, intimacy",
+    "wellness": "Health & Wellbeing",
+    "wellnessDesc": "Physical, mental, emotional health",
+    "spiritual": "Spiritual Growth",
+    "spiritualDesc": "Inner development, awakening",
+    "decision": "Decision Making",
+    "decisionDesc": "Choices, crossroads, clarity",
+    "general": "General Guidance",
+    "generalDesc": "Open exploration, life overview",
+    "shadowWork": "Shadow Work",
+    "shadowWorkDesc": "Integration, healing, depth work",
+    "yearAhead": "Year Ahead",
+    "yearAheadDesc": "Annual forecast, themes, patterns"
+  },
+  "personalityQuestions": {
+    "title": "Getting to Know You",
+    "subtitle": "These questions help me speak your language",
+    "progress": "Question {{current}} of {{total}}"
+  },
+  "intention": {
+    "title": "Set Your Intention",
+    "prompt": "What question or focus do you hold?",
+    "placeholder": "Type your question or intention...",
+    "spreadSelection": "Choose Your Spread",
+    "singleCard": "Single Card",
+    "singleCardDesc": "Quick insight, daily guidance",
+    "threeCard": "Past-Present-Future",
+    "threeCardDesc": "Timeline view, progression",
+    "goalProgress": "Goal Progress",
+    "goalProgressDesc": "Starting point → Current → Goal",
+    "decisionAnalysis": "Decision Analysis",
+    "decisionAnalysisDesc": "Compare two paths",
+    "dailyCheckin": "Daily Check-In",
+    "dailyCheckinDesc": "Focus / Avoid / Gift",
+    "relationship": "Relationship Spread",
+    "relationshipDesc": "Connection dynamics",
+    "celticCross": "Celtic Cross",
+    "celticCrossDesc": "Comprehensive 10-card reading"
+  },
+  "cardDrawing": {
+    "title": "Quantum Collapse in Progress",
+    "shuffling": "Shuffling the quantum deck...",
+    "drawing": "Drawing your cards...",
+    "complete": "Reading Complete"
+  },
+  "reading": {
+    "title": "Your Reading",
+    "quantumSeed": "Quantum Signature:",
+    "position": "Position:",
+    "card": "Card:",
+    "upright": "Upright",
+    "reversed": "Reversed",
+    "interpretation": "Interpretation:",
+    "saveReading": "Save Reading",
+    "exportReading": "Export Reading",
+    "newReading": "New Reading"
+  },
+  "settings": {
+    "title": "Settings",
+    "themeSelection": "Color Theme",
+    "matrixGreen": "Matrix Green",
+    "amberTerminal": "Amber Terminal",
+    "cyanCyberpunk": "Cyan Cyberpunk",
+    "vaporwave": "Vaporwave",
+    "classicMono": "Classic Monochrome",
+    "about": "About",
+    "version": "Version",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "clearData": "Clear All Data",
+    "clearDataWarning": "This will delete all your readings and profiles. Are you sure?"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Network error. Please check your connection.",
+    "storage": "Storage error. Please try again.",
+    "dailyLimit": "Daily Limit Reached",
+    "dailyLimitMessage": "You've used your free reading for today! Come back tomorrow or upgrade to Premium for unlimited readings."
+  },
+  "upgrade": {
+    "title": "Upgrade to Premium",
+    "features": "Premium Features:",
+    "unlimitedReadings": "Unlimited readings anytime",
+    "allSpreads": "All spread types",
+    "allReadingTypes": "All reading types",
+    "readingHistory": "Reading history",
+    "exportReadings": "Export readings",
+    "price": "$3.99 one-time",
+    "upgradeNow": "Upgrade Now",
+    "maybeLater": "Maybe Later",
+    "noAds": "No ads, ever",
+    "noSubscription": "No subscription",
+    "premiumLocked": "🔒 Premium Feature"
+  }
+}

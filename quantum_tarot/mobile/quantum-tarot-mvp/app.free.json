@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "Quantum Tarot - Free",
+    "slug": "quantum-tarot-free",
+    "version": "1.0.0",
+    "scheme": "quantumtarotfree",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aphoticshaman.quantumtarot.free"
+    },
+    "android": {
+      "package": "com.aphoticshaman.quantumtarot.free",
+      "permissions": [],
+      "versionCode": 1
+    },
+    "web": {}
+  }
+}
