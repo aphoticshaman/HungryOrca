@@ -194,8 +194,9 @@ function buildSynthesis(context) {
     synthesis += `${coldReading.barnum[0]}\n\n`;
   }
 
-  // Weave in intention with timeframe prediction
-  synthesis += `You came to this reading seeking clarity on ${intention || 'your path forward'}. `;
+  // Weave in intention with timeframe prediction (QUOTED)
+  const quotedIntention = intention ? `"${intention}"` : 'your path forward';
+  synthesis += `You came to this reading seeking clarity on ${quotedIntention}. `;
 
   // Add reading timeframe (TEMPORAL PREDICTION)
   const timeframe = generateReadingTimeframe(cards, astroContext, readingType, quantumSeed);
@@ -203,7 +204,7 @@ function buildSynthesis(context) {
     synthesis += `${timeframe} `;
   }
 
-  // Add astrological/temporal context
+  // Add astrological/temporal context with flow
   const astroRef = narrative.getAstroRef({
     sunSign: astroContext?.sunSign,
     mbtiType: userProfile?.mbtiType,
@@ -215,27 +216,30 @@ function buildSynthesis(context) {
     synthesis += `${astroRef} `;
   }
 
+  // Temporal context
   if (timeEnergy?.period && timeEnergy?.energy) {
     synthesis += `It's ${timeEnergy.period.toLowerCase()}, when ${timeEnergy.energy.toLowerCase()}. `;
   }
   if (timeEnergy?.advice) {
-    synthesis += `${timeEnergy.advice}\n\n`;
-  } else {
-    synthesis += `\n\n`;
+    synthesis += `${timeEnergy.advice}`;
   }
 
-  // Chinese zodiac integration
+  // Paragraph break before zodiac
+  synthesis += `\n\n`;
+
+  // Chinese zodiac integration with smoother flow
   if (chineseZodiac) {
-    synthesis += `Born in the year of the ${chineseZodiac.fullSign}, you carry the ${chineseZodiac.traits.archetype} archetype. `;
+    synthesis += `Born in the year of the ${chineseZodiac.fullSign}, you carry the archetype of ${chineseZodiac.traits.archetype}. `;
     if (chineseZodiac.traits.wisdom) {
       synthesis += `${chineseZodiac.traits.wisdom} `;
     }
     if (chineseZodiac.elementInfluence?.lesson) {
-      synthesis += `Your ${chineseZodiac.element} element adds this layer: ${chineseZodiac.elementInfluence.lesson}\n\n`;
+      synthesis += `Your ${chineseZodiac.element} element adds another dimension: ${chineseZodiac.elementInfluence.lesson}`;
     }
+    synthesis += `\n\n`;
   }
 
-  // Add INTUITIVE HOOK for psychic vibe
+  // Add INTUITIVE HOOK for psychic vibe (with transition)
   if (coldReading?.intuitiveHook) {
     synthesis += `${coldReading.intuitiveHook}\n\n`;
   }
@@ -243,6 +247,16 @@ function buildSynthesis(context) {
   // ═══════════════════════════════════════════════════════════
   // CARD-BY-CARD INTERPRETATION (300-600 words) - WITH NARRATIVE ARC
   // ═══════════════════════════════════════════════════════════
+
+  // Transition to cards section
+  const cardTransitions = [
+    'Now, let\'s look at what the cards themselves are saying.',
+    'The cards laid out before you tell a specific story.',
+    'Here\'s where we get into the heart of your reading.',
+    'Let me walk you through what each card reveals.'
+  ];
+  const transitionIdx = Math.floor((quantumSeed * 0.999) * cardTransitions.length);
+  synthesis += `${cardTransitions[transitionIdx]}\n\n`;
 
   // Add CARD SYNERGY ANALYSIS first (shows we read interactions, not just individual cards)
   const synergySummary = generateSynergySummary(cardSynergies, quantumSeed * 0.111);
@@ -340,7 +354,15 @@ function buildSynthesis(context) {
   // PATTERN SYNTHESIS (200-400 words)
   // ═══════════════════════════════════════════════════════════
 
-  synthesis += `Now let's ${narrative.getWord('examine')} how these cards speak to each other.\n\n`;
+  // Transition to deeper analysis
+  const patternTransitions = [
+    `Now let's ${narrative.getWord('examine')} how these cards speak to each other and what patterns emerge.`,
+    'Individual cards tell part of the story. The spaces between them tell the rest.',
+    'The cards you drew aren\'t random. They form a constellation of meaning.',
+    'Beyond the surface reading, there are deeper currents at work here.'
+  ];
+  const patternTransIdx = Math.floor((quantumSeed * 0.888) * patternTransitions.length);
+  synthesis += `\n\n${patternTransitions[patternTransIdx]}\n\n`;
 
   // Cognitive dissonance detection
   if (mcqAnalysis.overallResonance < 2.5) {
@@ -372,11 +394,22 @@ function buildSynthesis(context) {
     synthesis += integrateTransits(astroContext.currentTransits, cards, readingType, narrative);
   }
 
+  // Transition to spiritual synthesis
+  const spiritualTransitions = [
+    '\n\nThis brings me to something bigger—the spiritual landscape you\'re navigating.',
+    '\n\nLet\'s zoom out to the spiritual framework underpinning all of this.',
+    '\n\nNow, about the spiritual territory you\'re crossing.',
+    '\n\nThere\'s a meta-level worth addressing here.'
+  ];
+  const spiritTransIdx = Math.floor((quantumSeed * 0.777) * spiritualTransitions.length);
+
   // Spiritual synthesis - emphasizing that all traditions contain partial truths
   if (chineseZodiac && astroContext?.sunSign) {
+    synthesis += spiritualTransitions[spiritTransIdx];
+
     const spiritualMessage = getSpiritualSynthesisMessage(chineseZodiac, astroContext.sunSign);
     if (spiritualMessage) {
-      synthesis += `\n${spiritualMessage}\n\n`;
+      synthesis += `\n\n${spiritualMessage}\n\n`;
     }
 
     // Add spiritual growth insight
@@ -417,18 +450,35 @@ function buildSynthesis(context) {
   // MBTI-SPECIFIC GUIDANCE (100-200 words)
   // ═══════════════════════════════════════════════════════════
 
-  const examineWord = narrative.getWord('examine') || 'consider';
-  synthesis += `\n\nGiven your ${userProfile?.mbtiType || 'personality'}, here's what to ${examineWord}:\n\n`;
+  // Transition to personalized guidance
+  const mbtiTransitions = [
+    `\n\nNow, let's talk about how your ${userProfile?.mbtiType || 'personality'} type processes all of this.`,
+    `\n\nGiven your ${userProfile?.mbtiType || 'personality type'}, there are specific things you need to know.`,
+    `\n\nYour ${userProfile?.mbtiType || 'cognitive wiring'} matters here. Here's why.`,
+    `\n\nAs a${userProfile?.mbtiType ? 'n' : ''} ${userProfile?.mbtiType || 'person'}, you'll want to pay attention to this.`
+  ];
+  const mbtiTransIdx = Math.floor((quantumSeed * 0.666) * mbtiTransitions.length);
+  synthesis += mbtiTransitions[mbtiTransIdx];
+
   const mbtiGuidance = generateMBTIGuidance(mbtiGuidelines, cards, mcqAnalysis, narrative);
   if (mbtiGuidance) {
-    synthesis += mbtiGuidance;
+    synthesis += `\n\n${mbtiGuidance}`;
   }
 
   // ═══════════════════════════════════════════════════════════
   // ACTION STEPS (100-150 words)
   // ═══════════════════════════════════════════════════════════
 
-  synthesis += `\n\n## What To Do Now\n\n`;
+  // Transition to actionable steps
+  const actionTransitions = [
+    '\n\n## What To Do Now',
+    '\n\n## Your Next Steps',
+    '\n\n## From Insight to Action',
+    '\n\n## Making This Real'
+  ];
+  const actionTransIdx = Math.floor((quantumSeed * 0.555) * actionTransitions.length);
+  synthesis += `${actionTransitions[actionTransIdx]}\n\n`;
+
   const actionSteps = generateActionSteps(cards, mcqAnalysis, synthesisGuidance, readingType, narrative);
   if (actionSteps) {
     synthesis += actionSteps;
@@ -437,6 +487,15 @@ function buildSynthesis(context) {
   // ═══════════════════════════════════════════════════════════
   // CLOSING (50-100 words) - WITH NARRATIVE DENOUEMENT
   // ═══════════════════════════════════════════════════════════
+
+  // Transition to closing
+  const closingTransitions = [
+    '\n\n* * *\n\n',
+    '\n\n---\n\n',
+    '\n\n•••\n\n'
+  ];
+  const closingTransIdx = Math.floor((quantumSeed * 0.444) * closingTransitions.length);
+  synthesis += closingTransitions[closingTransIdx];
 
   // Add DENOUEMENT (story wisdom)
   if (narrativeArc?.denouement) {
@@ -454,11 +513,12 @@ function buildSynthesis(context) {
     if (animalDetail?.text) {
       synthesis += `${animalDetail.text} `;
     }
+    synthesis += '\n\n';
   }
 
   // Add FLATTERY WITH EDGE (makes user feel seen and called out)
   if (coldReading?.flattery) {
-    synthesis += `\n\n${coldReading.flattery}\n\n`;
+    synthesis += `${coldReading.flattery}\n\n`;
   }
 
   // Add balanced wisdom closing
@@ -478,7 +538,7 @@ function buildSynthesis(context) {
   });
 
   if (balancedClosing?.moderation) {
-    synthesis += `\n\n${balancedClosing.moderation}\n\n`;
+    synthesis += `${balancedClosing.moderation}\n\n`;
   }
 
   if (balancedClosing?.pillar?.wisdom) {
@@ -490,6 +550,7 @@ function buildSynthesis(context) {
     synthesis += `${coldReading.barnum[1]}\n\n`;
   }
 
+  // Final closing statement
   const closing = narrative.getClosing();
   if (closing) {
     synthesis += `${closing}\n`;

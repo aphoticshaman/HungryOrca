@@ -266,7 +266,7 @@ export function generateConfirmationPrompts(cards, userProfile, quantumSeed) {
  * Generate flattery-with-edge statements
  * Make user feel special but also called out
  */
-export function generateFlattery WithEdge(mbtiType, quantumSeed) {
+export function generateFlatteryWithEdge(mbtiType, quantumSeed) {
   const statements = [
     'You\'re more psychic/intuitive than you give yourself credit for. But you rationalize it away instead of trusting it. Why?',
     'You have natural leadership ability, but self-doubt has kept you playing small. Who convinced you that you weren\'t ready?',
