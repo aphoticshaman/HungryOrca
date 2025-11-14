@@ -165,10 +165,37 @@ const CardInterpretationScreen = ({ route, navigation }) => {
   };
 
   const currentCard = cards[currentCardIndex];
-  const currentInterpretation = interpretations[currentCardIndex];
-  const cardData = CARD_DATABASE[currentCard.cardIndex];
+  const currentInterpretation = interpretations?.[currentCardIndex];
+  const cardData = CARD_DATABASE[currentCard?.cardIndex];
 
-  const cardName = `${cardData.name}${currentCard.reversed ? ' (Reversed)' : ''}`;
+  const cardName = cardData ? `${cardData.name}${currentCard.reversed ? ' (Reversed)' : ''}` : 'Card';
+
+  // Debug logging
+  useEffect(() => {
+    console.log('🎴 CardInterpretation Debug:', {
+      currentCardIndex,
+      hasInterpretations: !!interpretations,
+      interpretationsLength: interpretations?.length,
+      currentInterpretation: currentInterpretation ? currentInterpretation.substring(0, 100) + '...' : 'MISSING',
+      hasCardData: !!cardData
+    });
+  }, [currentCardIndex, interpretations, currentInterpretation]);
+
+  // Safety check
+  if (!cards || !interpretations || !currentCard || !cardData) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.safeArea}>
+          <LPMUDText style={styles.errorText}>
+            $HIR$ERROR: Missing card data or interpretations$NOR$
+          </LPMUDText>
+          <NeonText color={NEON_COLORS.dimYellow} style={styles.errorDetails}>
+            Cards: {cards?.length || 0} | Interpretations: {interpretations?.length || 0}
+          </NeonText>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>

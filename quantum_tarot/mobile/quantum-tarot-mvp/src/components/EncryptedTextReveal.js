@@ -28,16 +28,23 @@ const EncryptedTextReveal = ({
   onComplete = () => {},
   style = {},
 }) => {
-  const [displayText, setDisplayText] = useState('');
+  const originalText = typeof children === 'string' ? children : '';
+  const [displayText, setDisplayText] = useState(originalText); // Start with original text visible
   const [isRevealing, setIsRevealing] = useState(false);
   const fadeAnim = useRef(new Animated.Value(1)).current;
-  const originalText = typeof children === 'string' ? children : '';
+
+  // Update displayText when children changes (before animation)
+  useEffect(() => {
+    if (originalText && !isRevealing) {
+      setDisplayText(originalText);
+    }
+  }, [originalText]);
 
   useEffect(() => {
     if (trigger && originalText) {
       startRevealSequence();
     }
-  }, [trigger, originalText]);
+  }, [trigger]);
 
   const startRevealSequence = async () => {
     const seed = quantumSeed || generateQuantumSeed();
