@@ -317,10 +317,10 @@ export function quantumSynthesisClosing(quantumSeed) {
     'Walk the middle path. Avoid extremes. Find your center.',
     'All things in moderation—even the pursuit of these insights.',
     'Act with integrity. Speak with care. See with clarity. Move with purpose.',
-    'Balance isn't a destination. It's a practice you return to, again and again.',
+    'Balance isn\'t a destination. It\'s a practice you return to, again and again.',
     'May you find the sweet spot between effort and ease.',
     'Neither spiritual bypass nor cynical dismissal. The truth lives between.',
-    'Take what serves. Release what doesn't. Stay present to what is.',
+    'Take what serves. Release what doesn\'t. Stay present to what is.',
     'Consistency over intensity. Small aligned steps compound.',
     'May your actions reflect your values, not your anxieties.',
     'This is your invitation to show up—fully, honestly, bravely.'
