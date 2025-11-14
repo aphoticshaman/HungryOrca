@@ -36,14 +36,14 @@ export function generateBarnumStatements(userProfile, quantumSeed) {
       'People think you\'re gentle, but you have a spine of steel when it comes to your values. You just don\'t advertise it. When someone crosses your moral line, though—they see a side of you they didn\'t know existed.'
     ],
     'INFJ': [
-      'You see patterns others miss—not just surface behaviors, but the deeper currents beneath. Your Ni knows how things will play out before they do. It\'s both a gift and a burden, because you can see the train wreck coming but can\\'t always stop it.',
-      'You have at least one relationship where you gave too much and got too little. As an INFJ, you\\'re still learning that boundaries aren\\'t walls—they\\'re the foundation for sustainable love. Your Fe wants to save everyone. Your Ni knows you can\\'t.',
-      'People come to you for advice, but who do YOU go to? You carry more alone than anyone knows. That\\'s the INFJ burden: being everyone\\'s therapist while your own wounds stay unspoken.'
+      'You see patterns others miss—not just surface behaviors, but the deeper currents beneath. Your Ni knows how things will play out before they do. It\'s both a gift and a burden, because you can see the train wreck coming but can\'t always stop it.',
+      'You have at least one relationship where you gave too much and got too little. As an INFJ, you\'re still learning that boundaries aren\'t walls—they\'re the foundation for sustainable love. Your Fe wants to save everyone. Your Ni knows you can\'t.',
+      'People come to you for advice, but who do YOU go to? You carry more alone than anyone knows. That\'s the INFJ burden: being everyone\'s therapist while your own wounds stay unspoken.'
     ],
     'INTP': [
-      'Your mind moves faster than you can articulate. People mistake your silence for agreement when you\'re really five steps ahead, running mental simulations they can\\'t see. Ti-Ne means you\\'re playing 4D chess while they\\'re playing checkers.',
-      'You have a collection—physical or mental—of things others would find random but you see the pattern. As an INTP, you\\'re not a hoarder, you\\'re an archivist of connections. Each piece is a node in your mental map.',
-      'You\'ve been called cold or detached, but you feel deeply. You just process through analysis first. Your Ti dissects emotions like a surgeon, not because you don\\'t care—because that\\'s how you understand them.'
+      'Your mind moves faster than you can articulate. People mistake your silence for agreement when you\'re really five steps ahead, running mental simulations they can\'t see. Ti-Ne means you\'re playing 4D chess while they\'re playing checkers.',
+      'You have a collection—physical or mental—of things others would find random but you see the pattern. As an INTP, you\'re not a hoarder, you\'re an archivist of connections. Each piece is a node in your mental map.',
+      'You\'ve been called cold or detached, but you feel deeply. You just process through analysis first. Your Ti dissects emotions like a surgeon, not because you don\'t care—because that\'s how you understand them.'
     ],
     'INTJ': [
       'You knew you were different from a young age. Not better, just... operating on a different wavelength. While others were playing, you were analyzing systems and seeing three moves ahead.',
