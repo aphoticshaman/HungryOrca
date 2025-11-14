@@ -149,31 +149,31 @@ function analyzeIntentionAlignment(cardData, intention, reversed) {
     ? (cardData.keywords?.reversed || [])
     : (cardData.keywords?.upright || []);
 
-  // Analyze intention context
+  // Analyze intention context - GET STRAIGHT TO THE POINT
   let context = '';
 
   // Detect question type from intention
   if (intentionLower.includes('should i') || intentionLower.includes('can i')) {
     context = reversed
-      ? `Regarding "${intention}" - ${cardData.name} reversed suggests reconsidering or addressing blocks before proceeding. The ${keywords.slice(0, 2).join(' and ')} energy is inverted, indicating obstacles or internal resistance.`
-      : `Regarding "${intention}" - ${cardData.name} upright indicates ${keywords.slice(0, 2).join(' and ')}, suggesting favorable conditions for your question.`;
+      ? `${cardData.name} reversed suggests reconsidering or addressing blocks before proceeding. The ${keywords.slice(0, 2).join(' and ')} energy is inverted, indicating obstacles or internal resistance you need to work through first.`
+      : `${cardData.name} upright indicates ${keywords.slice(0, 2).join(' and ')}, suggesting favorable conditions. The energy supports moving forward, but make sure you're approaching this with intention and awareness.`;
   } else if (intentionLower.includes('how') || intentionLower.includes('what')) {
     context = reversed
-      ? `Your question "${intention}" draws ${cardData.name} reversed, pointing to ${keywords.slice(0, 2).join(', ')}, or a need to examine where energy is blocked or misdirected.`
-      : `Your question "${intention}" draws ${cardData.name} upright, illuminating themes of ${keywords.slice(0, 2).join(', ')}. This card offers guidance on your inquiry.`;
+      ? `${cardData.name} reversed points to ${keywords.slice(0, 2).join(', ')}, or a need to examine where energy is blocked or misdirected. Look for patterns of resistance or self-sabotage that may be operating beneath conscious awareness.`
+      : `${cardData.name} upright illuminates themes of ${keywords.slice(0, 2).join(', ')}. Pay attention to how these energies are showing up in your life right now - they hold the keys to understanding your situation.`;
   } else if (intentionLower.includes('why')) {
     context = reversed
-      ? `Asking "${intention}" - ${cardData.name} reversed suggests the reason involves ${keywords.slice(0, 2).join(' or ')}, inverted or blocked energies that need attention.`
-      : `Asking "${intention}" - ${cardData.name} upright reveals this is about ${keywords.slice(0, 2).join(' and ')}, core themes requiring your awareness.`;
+      ? `${cardData.name} reversed suggests this stems from ${keywords.slice(0, 2).join(' or ')}, inverted or blocked energies. Something is operating in shadow - either internal resistance, fear-based patterns, or misaligned actions.`
+      : `${cardData.name} upright reveals this is fundamentally about ${keywords.slice(0, 2).join(' and ')}. These are the core themes driving the situation - understanding them will help you see the deeper patterns at play.`;
   } else if (intentionLower.includes('when')) {
     context = reversed
-      ? `Your timing question "${intention}" with ${cardData.name} reversed suggests delays or the need to resolve ${keywords.slice(0, 2).join(' and ')} issues first.`
-      : `Your timing question "${intention}" with ${cardData.name} upright indicates movement around ${keywords.slice(0, 2).join(' and ')} - pay attention to these themes.`;
+      ? `${cardData.name} reversed suggests delays or the need to resolve ${keywords.slice(0, 2).join(' and ')} issues first. Timing isn't right yet - there's internal work to do before external movement can happen.`
+      : `${cardData.name} upright indicates movement around ${keywords.slice(0, 2).join(' and ')}. Pay attention to when these themes intensify - that's when opportunities will appear.`;
   } else {
     // General intention
     context = reversed
-      ? `In relation to "${intention}" - ${cardData.name} reversed highlights challenges or inversions in ${keywords.slice(0, 2).join(' and ')}, suggesting areas needing healing or course correction.`
-      : `In relation to "${intention}" - ${cardData.name} upright brings ${keywords.slice(0, 2).join(' and ')} energy directly to bear on your situation.`;
+      ? `${cardData.name} reversed highlights challenges or inversions in ${keywords.slice(0, 2).join(' and ')}. These areas need healing or course correction before you can move forward effectively.`
+      : `${cardData.name} upright brings ${keywords.slice(0, 2).join(' and ')} energy directly into your situation. This is the medicine you need right now - lean into these qualities.`;
   }
 
   return context;

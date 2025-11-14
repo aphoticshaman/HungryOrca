@@ -14,7 +14,7 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
     return (
       <View style={styles.compactContainer}>
         <LPMUDText style={styles.compactTitle}>
-          $HIC$LunatiQ$NOR$
+          $HIC$LunatIQ$NOR$
         </LPMUDText>
       </View>
     );
@@ -25,7 +25,7 @@ export default function CyberpunkHeader({ showMatrixBg = false, compact = false 
       <View style={styles.content}>
         {/* Main title with wave animation and rainbow colors */}
         <WaveText
-          text="LunatiQ"
+          text="LunatIQ"
           style={styles.mainTitle}
         />
       </View>
@@ -172,15 +172,20 @@ const styles = StyleSheet.create({
     paddingVertical: 40,
     paddingHorizontal: 20,
     backgroundColor: '#000000',
+    overflow: 'visible',
   },
   content: {
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'visible',
   },
   waveContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+    marginTop: 12,
     marginBottom: 15,
+    paddingHorizontal: 10,
+    overflow: 'visible',
   },
   mainTitle: {
     fontSize: 48,
