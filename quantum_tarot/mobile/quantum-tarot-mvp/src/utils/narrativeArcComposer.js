@@ -22,6 +22,11 @@
 export function mapCardsToHeroJourney(cards) {
   const journey = [];
 
+  // Safety check
+  if (!cards || !Array.isArray(cards)) {
+    return journey;
+  }
+
   cards.forEach((card, index) => {
     const position = card.position || '';
     const cardData = card; // Simplified for now
@@ -65,6 +70,11 @@ export function mapCardsToHeroJourney(cards) {
  * Generate three-act structure framing
  */
 export function generateThreeActFrame(cards, quantumSeed) {
+  // Safety check
+  if (!cards || !Array.isArray(cards) || cards.length === 0) {
+    return null;
+  }
+
   const acts = {
     act1: {
       title: 'ACT I: THE SETUP',
@@ -91,6 +101,11 @@ export function generateThreeActFrame(cards, quantumSeed) {
  */
 export function generateTensionBeats(cards, mcqAnalysis) {
   const beats = [];
+
+  // Safety check
+  if (!cards || !Array.isArray(cards)) {
+    return beats;
+  }
 
   // Identify conflict indicators
   const hasConflictCard = cards.some(c => {
@@ -235,6 +250,11 @@ export function analyzeDramaticStructure(cards) {
  * Generate chapter headings for cards
  */
 export function generateChapterHeadings(cards, quantumSeed) {
+  // Safety check
+  if (!cards || !Array.isArray(cards) || cards.length === 0) {
+    return [];
+  }
+
   const headingStyles = [
     // Poetic
     ['The World You Knew', 'The Call You Heard', 'The Path You Walk'],
@@ -251,10 +271,10 @@ export function generateChapterHeadings(cards, quantumSeed) {
   ];
 
   const styleIdx = Math.floor(quantumSeed * headingStyles.length);
-  const headings = headingStyles[styleIdx];
+  const headings = headingStyles[styleIdx] || headingStyles[0]; // Fallback to first style
 
   return cards.map((card, idx) => {
-    if (idx < headings.length) {
+    if (headings && idx < headings.length) {
       return headings[idx];
     }
     return `Chapter ${idx + 1}`;
@@ -265,13 +285,33 @@ export function generateChapterHeadings(cards, quantumSeed) {
  * Master function: Compose narrative arc structure
  */
 export function composeNarrativeArc(cards, mcqAnalysis, readingType, userProfile, quantumSeed) {
+  // Safety check
+  if (!cards || !Array.isArray(cards) || cards.length === 0) {
+    return {
+      structure: null,
+      journey: [],
+      acts: null,
+      tensionBeats: [],
+      climax: null,
+      denouement: '',
+      chapterHeadings: []
+    };
+  }
+
+  // Ensure userProfile has defaults
+  const safeUserProfile = {
+    chineseZodiac: userProfile?.chineseZodiac || 'Dragon',
+    mbtiType: userProfile?.mbtiType || 'INFP',
+    ...userProfile
+  };
+
   const arc = {
     structure: analyzeDramaticStructure(cards),
     journey: mapCardsToHeroJourney(cards),
     acts: cards.length >= 3 ? generateThreeActFrame(cards, quantumSeed) : null,
     tensionBeats: generateTensionBeats(cards, mcqAnalysis),
     climax: cards.length >= 3 ? generateClimaxStatement(cards, mcqAnalysis, readingType, quantumSeed) : null,
-    denouement: generateDenouement(cards, userProfile.chineseZodiac, userProfile.mbtiType, quantumSeed * 0.999),
+    denouement: generateDenouement(cards, safeUserProfile.chineseZodiac, safeUserProfile.mbtiType, quantumSeed * 0.999),
     chapterHeadings: generateChapterHeadings(cards, quantumSeed * 0.777)
   };
 

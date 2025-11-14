@@ -320,6 +320,11 @@ export function analyzeMCQAnswers(allAnswers) {
     }
   };
 
+  // Safety check: if no answers provided, return default analysis
+  if (!allAnswers || !Array.isArray(allAnswers) || allAnswers.length === 0) {
+    return analysis;
+  }
+
   let resonanceCount = 0;
   let resonanceSum = 0;
   const emotions = [];

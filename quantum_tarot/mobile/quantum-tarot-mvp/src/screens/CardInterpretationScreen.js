@@ -167,6 +167,44 @@ const CardInterpretationScreen = ({ route, navigation }) => {
 
   const cardName = cardData ? `${cardData.name}${currentCard.reversed ? ' (Reversed)' : ''}` : 'Card';
 
+  // Check if user has answered questions for THIS card
+  const hasAnsweredCurrentCard = allMCQAnswers.some(answer => answer.cardIndex === currentCardIndex);
+
+  // Colorize interpretation text based on card type
+  const getColorizedInterpretation = (text, cardData) => {
+    if (!text || !cardData) return text;
+
+    const isMajorArcana = cardData.arcana?.toLowerCase() === 'major';
+
+    // Split into sentences for color rotation
+    const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+
+    if (isMajorArcana) {
+      // MAJOR ARCANA: Rainbow LPMUD colors cycling through sentences
+      const rainbowColors = ['$HIR$', '$HIY$', '$HIG$', '$HIC$', '$HIB$', '$HIM$', '$HIW$'];
+      return sentences.map((sentence, i) => {
+        const color = rainbowColors[i % rainbowColors.length];
+        return `${color}${sentence.trim()}$NOR$`;
+      }).join(' ');
+    } else {
+      // MINOR ARCANA: Element-based color pairs
+      const suit = cardData.suit?.toLowerCase();
+      let colorPair = ['$HIW$', '$HIC$']; // Default: White/Cyan
+
+      if (suit === 'wands') colorPair = ['$HIR$', '$HIY$']; // Fire: Red/Yellow
+      else if (suit === 'cups') colorPair = ['$HIB$', '$HIC$']; // Water: Blue/Cyan
+      else if (suit === 'swords') colorPair = ['$HIW$', '$HIC$']; // Air: White/Cyan
+      else if (suit === 'pentacles') colorPair = ['$HIG$', '$HIY$']; // Earth: Green/Yellow
+
+      return sentences.map((sentence, i) => {
+        const color = colorPair[i % colorPair.length];
+        return `${color}${sentence.trim()}$NOR$`;
+      }).join(' ');
+    }
+  };
+
+  const colorizedInterpretation = getColorizedInterpretation(currentInterpretation, cardData);
+
   // Debug logging
   useEffect(() => {
     console.log('🎴 CardInterpretation Debug:', {
@@ -230,20 +268,26 @@ const CardInterpretationScreen = ({ route, navigation }) => {
           showsVerticalScrollIndicator={true}
         >
           <View style={styles.interpretationContainer}>
-            <NeonText color={NEON_COLORS.hiWhite} style={styles.interpretationText}>
-              {currentInterpretation}
-            </NeonText>
+            <LPMUDText style={styles.interpretationText}>
+              {colorizedInterpretation}
+            </LPMUDText>
           </View>
         </ScrollView>
 
         {/* MCQ Trigger Button */}
         <View style={styles.mcqButtonContainer}>
           <TouchableOpacity
-            style={styles.mcqButton}
+            style={[
+              styles.mcqButton,
+              hasAnsweredCurrentCard && styles.mcqButtonAnswered
+            ]}
             onPress={handleShowMCQ}
           >
             <LPMUDText style={styles.mcqButtonText}>
-              $HIY$[ ANSWER QUESTIONS ]$NOR$
+              {hasAnsweredCurrentCard
+                ? '$HIG$[ ✓ ANSWERED (tap to change) ]$NOR$'
+                : '$HIY$[ ANSWER QUESTIONS ]$NOR$'
+              }
             </LPMUDText>
           </TouchableOpacity>
         </View>
@@ -492,6 +536,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: NEON_COLORS.hiYellow,
     alignItems: 'center',
+  },
+  mcqButtonAnswered: {
+    borderColor: NEON_COLORS.hiGreen,
+    backgroundColor: 'rgba(0, 255, 0, 0.1)',
   },
   mcqButtonText: {
     fontSize: 16,
