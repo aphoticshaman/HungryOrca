@@ -59,20 +59,51 @@ export default function IntentionScreen({ route, navigation }) {
   const [spreadType, setSpreadType] = useState('three_card');
   const [error, setError] = useState('');
   const [validation, setValidation] = useState(null);
+  const [vibeMode, setVibeMode] = useState(false); // NEW: "Vibe with me!" mode
 
   const selectedSpread = SPREAD_TYPES.find(s => s.id === spreadType);
 
-  // Validate intention on change
+  // Validate intention on change (skip if vibe mode)
   useEffect(() => {
+    if (vibeMode) {
+      setValidation(null);
+      return;
+    }
     if (intention.trim().length > 0) {
       const result = validateIntention(intention);
       setValidation(result);
     } else {
       setValidation(null);
     }
-  }, [intention]);
+  }, [intention, vibeMode]);
 
   const handleContinue = () => {
+    // Vibe mode: use generic intention based on reading type
+    if (vibeMode) {
+      const genericIntentions = {
+        career: 'What guidance do I need for my career right now?',
+        romance: 'What do I need to know about my love life?',
+        wellness: 'What should I focus on for my wellbeing?',
+        finance: 'What guidance do I need about my finances?',
+        personal_growth: 'What do I need for my personal growth?',
+        decision: 'What do I need to know to make the right decision?',
+        general: 'What guidance does the universe have for me today?',
+        shadow_work: 'What shadow work do I need to address?'
+      };
+
+      const genericIntention = genericIntentions[readingType] || genericIntentions.general;
+
+      navigation.navigate('CardDrawing', {
+        readingType,
+        zodiacSign,
+        birthdate,
+        intention: genericIntention,
+        spreadType
+      });
+      return;
+    }
+
+    // Normal validation flow
     if (!intention.trim()) {
       setError('Intention required');
       return;
@@ -124,18 +155,45 @@ export default function IntentionScreen({ route, navigation }) {
           </LPMUDText>
 
           <TextInput
-            style={styles.textInput}
+            style={[
+              styles.textInput,
+              vibeMode && styles.textInputDisabled
+            ]}
             value={intention}
             onChangeText={(text) => {
               setIntention(text);
               setError('');
             }}
-            placeholder="What guidance do you seek?"
-            placeholderTextColor={NEON_COLORS.dimCyan}
+            placeholder={vibeMode ? "Vibe mode enabled - no question needed!" : "What guidance do you seek?"}
+            placeholderTextColor={vibeMode ? NEON_COLORS.dimMagenta : NEON_COLORS.dimCyan}
             multiline
             numberOfLines={4}
             maxLength={1000}
+            editable={!vibeMode}
           />
+
+          {/* Vibe Mode Checkbox */}
+          <TouchableOpacity
+            style={styles.vibeModeRow}
+            onPress={() => {
+              setVibeMode(!vibeMode);
+              setError('');
+            }}
+          >
+            <View style={[
+              styles.checkbox,
+              vibeMode && styles.checkboxChecked
+            ]}>
+              {vibeMode && (
+                <NeonText color={NEON_COLORS.hiMagenta} style={styles.checkmark}>
+                  ✓
+                </NeonText>
+              )}
+            </View>
+            <LPMUDText style={styles.vibeModeLabel}>
+              {vibeMode ? '$HIM$' : '$DIM$'}[ ] Vibe with me!$NOR$ {vibeMode ? '(Question skipped)' : '(Skip the question)'}
+            </LPMUDText>
+          </TouchableOpacity>
 
           {/* 5W+H Validation Feedback */}
           {validation && (
@@ -425,5 +483,40 @@ const styles = StyleSheet.create({
   },
   spacer: {
     height: 40,
+  },
+  textInputDisabled: {
+    opacity: 0.5,
+    backgroundColor: '#0a000a',
+  },
+  vibeModeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 12,
+    paddingVertical: 8,
+  },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderWidth: 2,
+    borderColor: NEON_COLORS.dimMagenta,
+    backgroundColor: '#000000',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  checkboxChecked: {
+    borderColor: NEON_COLORS.hiMagenta,
+    backgroundColor: '#1a001a',
+  },
+  checkmark: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 20,
+  },
+  vibeModeLabel: {
+    fontSize: 12,
+    fontFamily: 'monospace',
+    lineHeight: 16,
+    flex: 1,
   },
 });

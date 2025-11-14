@@ -2,7 +2,7 @@
  * BIRTHDAY SCREEN - Enter birthday, show astro sign
  */
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 import { NeonText, LPMUDText, ScanLines } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
@@ -47,13 +47,61 @@ export default function BirthdayScreen({ route, navigation }) {
   const [zodiacSign, setZodiacSign] = useState(null);
   const [error, setError] = useState('');
 
+  // Refs for auto-advancing inputs
+  const dayInputRef = useRef(null);
+  const yearInputRef = useRef(null);
+
+  // Auto-advance handlers
+  const handleMonthChange = (text) => {
+    setMonth(text);
+    setError('');
+    // Auto-advance to day when month is 2 digits
+    if (text.length === 2) {
+      dayInputRef.current?.focus();
+    }
+  };
+
+  const handleDayChange = (text) => {
+    setDay(text);
+    setError('');
+    // Auto-advance to year when day is 2 digits
+    if (text.length === 2) {
+      yearInputRef.current?.focus();
+    }
+  };
+
+  const handleYearChange = (text) => {
+    setYear(text);
+    setError('');
+    // Auto-validate when year is 4 digits
+    if (text.length === 4 && month.length === 2 && day.length === 2) {
+      // Small delay to allow the input to render, then validate with current values
+      setTimeout(() => {
+        const m = parseInt(month);
+        const d = parseInt(day);
+        const y = parseInt(text); // Use the text parameter since state may not be updated yet
+
+        // Validate
+        if (!m || !d || !y || m < 1 || m > 12 || d < 1 || d > 31 || y < 1900 || y > 2025) {
+          setError('Invalid date');
+          return;
+        }
+
+        // Calculate sign
+        const sign = getZodiacSign(m, d);
+        setZodiacSign(sign);
+        setError('');
+      }, 100);
+    }
+  };
+
   const handleValidate = () => {
     const m = parseInt(month);
     const d = parseInt(day);
     const y = parseInt(year);
 
     // Validate
-    if (!m || !d || !y || m < 1 || m > 12 || d < 1 || d > 31 || y < 1900 || y > 2024) {
+    if (!m || !d || !y || m < 1 || m > 12 || d < 1 || d > 31 || y < 1900 || y > 2025) {
       setError('Invalid date');
       return;
     }
@@ -95,11 +143,12 @@ export default function BirthdayScreen({ route, navigation }) {
               <TextInput
                 style={styles.input}
                 value={month}
-                onChangeText={setMonth}
+                onChangeText={handleMonthChange}
                 keyboardType="number-pad"
                 maxLength={2}
                 placeholder="MM"
                 placeholderTextColor={NEON_COLORS.dimCyan}
+                returnKeyType="next"
               />
             </View>
 
@@ -108,13 +157,15 @@ export default function BirthdayScreen({ route, navigation }) {
                 DAY (1-31)
               </NeonText>
               <TextInput
+                ref={dayInputRef}
                 style={styles.input}
                 value={day}
-                onChangeText={setDay}
+                onChangeText={handleDayChange}
                 keyboardType="number-pad"
                 maxLength={2}
                 placeholder="DD"
                 placeholderTextColor={NEON_COLORS.dimCyan}
+                returnKeyType="next"
               />
             </View>
 
@@ -123,13 +174,15 @@ export default function BirthdayScreen({ route, navigation }) {
                 YEAR
               </NeonText>
               <TextInput
+                ref={yearInputRef}
                 style={styles.input}
                 value={year}
-                onChangeText={setYear}
+                onChangeText={handleYearChange}
                 keyboardType="number-pad"
                 maxLength={4}
                 placeholder="YYYY"
                 placeholderTextColor={NEON_COLORS.dimCyan}
+                returnKeyType="done"
               />
             </View>
           </View>
