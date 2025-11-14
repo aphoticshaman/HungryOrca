@@ -1,22 +1,29 @@
 /**
  * LUNATIQ AGI ENGINE - Multi-layer tarot interpretation
  * Offline AGI that adapts to personality profile + astrological context
+ *
+ * XYZA-1 ENHANCED: Now includes temporal memory layer for personalization
  */
 
 import { CARD_DATABASE } from '../data/cardDatabase';
 import { getAstrologicalContext } from './astrology';
+import { getUserMemory, getCardMemoryContext, adaptActionsToMemory } from './userMemory';
 
 /**
  * Generate interpretation for a single card
  * @param {Object} card - Card data { cardIndex, reversed, position }
  * @param {string} intention - User's intention
  * @param {string} readingType - Type of reading
- * @param {Object} context - Additional context (zodiacSign, birthdate, etc.)
+ * @param {Object} context - Additional context (zodiacSign, birthdate, userMemory, etc.)
  * @returns {Object} - Interpretation layers
  */
-export function interpretCard(card, intention, readingType, context = {}) {
+export async function interpretCard(card, intention, readingType, context = {}) {
   const cardData = CARD_DATABASE[card.cardIndex] || CARD_DATABASE[0];
   const { reversed, position } = card;
+
+  // XYZA-1: Get memory context for this card (if not already provided)
+  const memoryContext = context.userMemory || await getUserMemory();
+  const cardMemory = await getCardMemoryContext(card.cardIndex, intention);
 
   // LAYER 1: ARCHETYPAL - Universal symbolic meaning
   const archetypal = generateArchetypalLayer(cardData, reversed, position);
@@ -24,14 +31,14 @@ export function interpretCard(card, intention, readingType, context = {}) {
   // LAYER 2: CONTEXTUAL - Adapted to reading type and intention
   const contextual = generateContextualLayer(cardData, reversed, position, readingType, intention);
 
-  // LAYER 3: PSYCHOLOGICAL - Shadow work and deeper insights
-  const psychological = generatePsychologicalLayer(cardData, reversed, position, context);
+  // LAYER 3: PSYCHOLOGICAL - Shadow work and deeper insights (MEMORY-ENHANCED)
+  const psychological = generatePsychologicalLayer(cardData, reversed, position, context, memoryContext, cardMemory);
 
-  // LAYER 4: PRACTICAL - Actionable guidance
-  const practical = generatePracticalLayer(cardData, reversed, position, readingType, intention);
+  // LAYER 4: PRACTICAL - Actionable guidance (MEMORY-ENHANCED)
+  const practical = await generatePracticalLayer(cardData, reversed, position, readingType, intention, memoryContext);
 
-  // LAYER 5: SYNTHESIS - Integrated interpretation
-  const synthesis = generateSynthesis(archetypal, contextual, psychological, practical);
+  // LAYER 5: SYNTHESIS - Integrated interpretation (MEMORY-ENHANCED)
+  const synthesis = generateSynthesis(archetypal, contextual, psychological, practical, memoryContext);
 
   return {
     cardData,
@@ -43,7 +50,12 @@ export function interpretCard(card, intention, readingType, context = {}) {
       psychological,
       practical,
       synthesis
-    }
+    },
+    memoryContext: memoryContext.hasHistory ? {
+      readingCount: memoryContext.readingCount,
+      completionRate: memoryContext.completionRate,
+      followThroughStyle: memoryContext.followThroughStyle
+    } : null
   };
 }
 
@@ -95,25 +107,51 @@ function generateContextualLayer(cardData, reversed, position, readingType, inte
 
 /**
  * LAYER 3: PSYCHOLOGICAL - Deep patterns and shadow work
+ * XYZA-1 ENHANCED: Now includes memory-aware pattern recognition
  */
-function generatePsychologicalLayer(cardData, reversed, position, context) {
-  return {
+function generatePsychologicalLayer(cardData, reversed, position, context, memoryContext, cardMemory) {
+  const base = {
     shadow_work: cardData.shadow_work || 'Explore what this card reveals about hidden aspects of yourself.',
     integration_path: cardData.integration || 'Acknowledge and integrate this energy consciously.',
     emotional_resonance: analyzeEmotionalResonance(cardData, reversed),
     zodiac_connection: analyzeZodiacConnection(cardData, context.zodiacSign),
     growth_opportunity: `This card invites you to ${reversed ? 'address resistance or blocks' : 'embrace and embody'} the energy it represents.`
   };
+
+  // XYZA-1: Add memory-aware insights if user has history
+  if (memoryContext && memoryContext.hasHistory && memoryContext.readingCount >= 3) {
+    // Reference recurring themes if applicable
+    if (memoryContext.commonIntentionTypes && memoryContext.commonIntentionTypes.length > 0) {
+      const topTheme = memoryContext.commonIntentionTypes[0];
+      base.pattern_recognition = `I notice ${topTheme.theme} is a recurring theme across your ${topTheme.count} readings on this topic. This card addresses that persistent question.`;
+    }
+
+    // Add card-specific memory if available
+    if (cardMemory && cardMemory.hasPatternMatch) {
+      base.temporal_insight = cardMemory.message;
+    }
+  }
+
+  return base;
 }
 
 /**
  * LAYER 4: PRACTICAL - Concrete actions and guidance
+ * XYZA-1 ENHANCED: Actions adapted to user's follow-through history
  */
-function generatePracticalLayer(cardData, reversed, position, readingType, intention) {
+async function generatePracticalLayer(cardData, reversed, position, readingType, intention, memoryContext) {
   const advice = cardData.advice || 'Trust your intuition and move forward mindfully.';
 
+  // Generate base actions with entity extraction
+  let actionSteps = generateActionSteps(cardData, reversed, readingType, intention);
+
+  // XYZA-1: Adapt actions based on user's completion history
+  if (memoryContext && memoryContext.hasHistory) {
+    actionSteps = await adaptActionsToMemory(actionSteps, readingType);
+  }
+
   return {
-    action_steps: generateActionSteps(cardData, reversed, readingType, intention), // XYZA: Now passes intention for entity extraction
+    action_steps: actionSteps,
     what_to_focus_on: cardData.keywords?.upright?.[0] || 'Present moment awareness',
     what_to_avoid: reversed ? 'Getting stuck in this pattern' : 'Overextending this energy',
     timing_guidance: generateTimingGuidance(position),
@@ -123,17 +161,30 @@ function generatePracticalLayer(cardData, reversed, position, readingType, inten
 
 /**
  * LAYER 5: SYNTHESIS - Integrated multi-layer interpretation
+ * XYZA-1 ENHANCED: Includes personalized greeting based on user memory
  */
-function generateSynthesis(archetypal, contextual, psychological, practical) {
+function generateSynthesis(archetypal, contextual, psychological, practical, memoryContext) {
   // Extract the first sentence from contextual.intention_alignment (which now contains the full intention-aware analysis)
   const intentionContext = contextual.intention_alignment || '';
 
-  return {
+  const baseSynthesis = {
     core_message: `${intentionContext} ${archetypal.name} embodies ${archetypal.keywords.slice(0, 3).join(', ')} - ${contextual.position_significance}`,
     integration: `${psychological.integration_path} ${practical.practical_advice}`,
     deeper_insight: psychological.shadow_work,
     next_steps: practical.action_steps.join(' Then: ')
   };
+
+  // XYZA-1: Add personalized greeting for users with history
+  if (memoryContext && memoryContext.hasHistory && memoryContext.personalizedGreeting) {
+    baseSynthesis.memory_greeting = memoryContext.personalizedGreeting;
+  }
+
+  // XYZA-1: Add pattern recognition if available
+  if (psychological.pattern_recognition) {
+    baseSynthesis.pattern_insight = psychological.pattern_recognition;
+  }
+
+  return baseSynthesis;
 }
 
 // Helper functions
@@ -565,20 +616,28 @@ function generateTimingGuidance(position) {
  * @param {string} intention - User's intention
  * @param {Object} context - Reading context (zodiacSign, birthdate, readingType, etc.)
  * @returns {Object} - Full interpretation with astrological data
+ *
+ * XYZA-1 ENHANCED: Now async to support memory layer
  */
-export function interpretReading(cards, spreadType, intention, context = {}) {
+export async function interpretReading(cards, spreadType, intention, context = {}) {
+  // XYZA-1: Load user memory ONCE for the entire reading (performance optimization)
+  const userMemory = await getUserMemory();
+
   // Get comprehensive astrological context
   const astroContext = getAstrologicalContext({
     birthdate: context.birthdate,
     zodiacSign: context.zodiacSign
   });
 
-  // Interpret each card with full context
-  const interpretations = cards.map(card =>
-    interpretCard(card, intention, context.readingType || 'general', {
-      ...context,
-      astrology: astroContext
-    })
+  // Interpret each card with full context (including memory)
+  const interpretations = await Promise.all(
+    cards.map(card =>
+      interpretCard(card, intention, context.readingType || 'general', {
+        ...context,
+        astrology: astroContext,
+        userMemory // Pass memory to avoid re-fetching for each card
+      })
+    )
   );
 
   // Generate spread synthesis (big picture analysis)
@@ -595,7 +654,14 @@ export function interpretReading(cards, spreadType, intention, context = {}) {
     spreadType,
     intention,
     summary: generateReadingSummary(interpretations, astroContext),
-    spreadSummary // NEW: Big picture synthesis across all cards
+    spreadSummary, // Big picture synthesis across all cards
+    userMemory: userMemory.hasHistory ? { // XYZA-1: Include memory greeting for first card
+      readingCount: userMemory.readingCount,
+      completionRate: userMemory.completionRate,
+      followThroughStyle: userMemory.followThroughStyle,
+      personalizedGreeting: userMemory.personalizedGreeting,
+      daysSinceLastReading: userMemory.daysSinceLastReading
+    } : null
   };
 }
 

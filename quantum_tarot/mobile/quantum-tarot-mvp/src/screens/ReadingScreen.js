@@ -17,22 +17,26 @@ export default function ReadingScreen({ route, navigation }) {
   const [actionStatus, setActionStatus] = useState({}); // XYZA Cycle 2: Track action completion per card
 
   useEffect(() => {
-    // Generate AGI interpretation
-    const fullReading = interpretReading(cards, spreadType, intention, {
-      readingType,
-      zodiacSign,
-      birthdate
-    });
-    setReading(fullReading);
+    // Generate AGI interpretation (XYZA-1: Now async for memory layer)
+    async function generateInterpretation() {
+      const fullReading = await interpretReading(cards, spreadType, intention, {
+        readingType,
+        zodiacSign,
+        birthdate
+      });
+      setReading(fullReading);
 
-    // XYZA Cycle 2: Initialize action tracking for this reading
-    const allActions = fullReading.interpretations.flatMap((interp, cardIdx) =>
-      interp.layers.practical.action_steps.map(step => `Card ${cardIdx + 1}: ${step}`)
-    );
-    initializeReading(quantumSeed, intention, spreadType, allActions);
+      // XYZA Cycle 2: Initialize action tracking for this reading
+      const allActions = fullReading.interpretations.flatMap((interp, cardIdx) =>
+        interp.layers.practical.action_steps.map(step => `Card ${cardIdx + 1}: ${step}`)
+      );
+      await initializeReading(quantumSeed, intention, spreadType, allActions);
 
-    // Load existing action status
-    loadActionStatus();
+      // Load existing action status
+      await loadActionStatus();
+    }
+
+    generateInterpretation();
   }, []);
 
   async function loadActionStatus() {
@@ -114,6 +118,19 @@ export default function ReadingScreen({ route, navigation }) {
           </NeonText>
         </View>
 
+        {/* XYZA-1: Memory Greeting (shown on first card only if user has history) */}
+        {currentCardIndex === 0 && reading.userMemory && (
+          <View style={styles.memoryBox}>
+            <LPMUDText style={styles.memoryText}>
+              $HIM${'>'} TEMPORAL MEMORY LAYER$NOR${'\n'}
+              $HIG$[READING #{reading.userMemory.readingCount}]$NOR$ |
+              $HIC$[{reading.userMemory.followThroughStyle?.toUpperCase().replace('-', ' ')}]$NOR$ |
+              $HIY$[{Math.round(reading.userMemory.completionRate)}% COMPLETION]$NOR${'\n\n'}
+              $NOR${reading.userMemory.personalizedGreeting}
+            </LPMUDText>
+          </View>
+        )}
+
         {/* Astrological Context Banner */}
         <View style={styles.astroBox}>
           <LPMUDText style={styles.astroText}>
@@ -178,9 +195,15 @@ export default function ReadingScreen({ route, navigation }) {
             {currentInterpretation.layers.contextual.intention_alignment}
           </LPMUDText>
 
-          {/* Layer 3: Psychological */}
+          {/* Layer 3: Psychological (XYZA-1: Now includes memory-aware pattern recognition) */}
           <LPMUDText style={styles.interpretationSection}>
             $HIC$━━ PSYCHOLOGICAL LAYER ━━$NOR${'\n'}
+            {currentInterpretation.layers.psychological.pattern_recognition && (
+              `$HIY$Pattern Recognition:$NOR$ ${currentInterpretation.layers.psychological.pattern_recognition}{'\n\n'}`
+            )}
+            {currentInterpretation.layers.psychological.temporal_insight && (
+              `$HIG$Temporal Insight:$NOR$ ${currentInterpretation.layers.psychological.temporal_insight}{'\n\n'}`
+            )}
             $HIM$Shadow Work:$NOR$ {currentInterpretation.layers.psychological.shadow_work}{'\n\n'}
             $HIM$Integration:$NOR$ {currentInterpretation.layers.psychological.integration_path}
           </LPMUDText>
@@ -384,6 +407,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#0a000a',
   },
   astroText: {
+    fontSize: 10,
+    fontFamily: 'monospace',
+    lineHeight: 15,
+  },
+  memoryBox: {
+    borderWidth: 2,
+    borderColor: NEON_COLORS.hiGreen,
+    padding: 12,
+    marginBottom: 15,
+    backgroundColor: '#001a00',
+  },
+  memoryText: {
     fontSize: 10,
     fontFamily: 'monospace',
     lineHeight: 15,
