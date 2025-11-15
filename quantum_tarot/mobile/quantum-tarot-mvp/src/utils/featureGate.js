@@ -229,27 +229,24 @@ export class FeatureGate {
 
   static getPremiumFeatures() {
     return [
-      'Unlimited readings',
-      'All 9 spread types',
+      'Remove ALL ads',
+      'All 9 spread types (Celtic Cross, Horseshoe, etc.)',
+      'Save reading history',
+      'Share & export readings',
       'All 8 reading types',
-      'Reading history with search',
-      'Export readings',
       'Advanced meta-analysis',
-      'Celtic Cross spread',
-      'Year Ahead reading',
-      'No ads, ever'
+      'One-time payment, yours forever'
     ];
   }
 
   static getFreeFeatures() {
     return [
-      '1 reading per day',
-      '2 spread types',
+      'Unlimited readings (with ads)',
+      'Single card & 3-card spreads',
       '3 reading types',
       'Quantum randomness',
       'Offline operation',
-      'Card symbolism',
-      'No ads, no tracking'
+      'Card symbolism'
     ];
   }
 }

@@ -12,16 +12,16 @@ export const APP_CONFIG = {
 
   features: {
     // Reading limits
-    dailyReadingLimit: 1,
-    unlimitedReadings: false,
+    dailyReadingLimit: null, // UNLIMITED with ads!
+    unlimitedReadings: true, // Yes, unlimited - we make money from ads
 
-    // Spreads (3 cards or fewer)
+    // Spreads (3 cards or fewer ONLY)
     allSpreadTypes: false,
     availableSpreads: [
       'single_card',
       'three_card'
     ],
-    maxCardsPerSpread: 3, // Hard limit for free users
+    maxCardsPerSpread: 3, // Hard limit - bigger spreads are premium
 
     // Reading types
     allReadingTypes: false,
@@ -59,13 +59,13 @@ export const APP_CONFIG = {
 
   monetization: {
     upgradePrompt: true,
-    upgradeUrl: 'https://play.google.com/store/apps/details?id=com.aphoticshaman.quantumtarot.premium',
+    upgradeUrl: 'https://apps.apple.com/app/YOUR-APP-ID', // TODO: Update with actual App Store URL
     upgradePrice: '$3.99',
-    upgradeMessage: 'Upgrade to Premium for unlimited readings and all features!',
+    upgradeMessage: 'Upgrade to Premium: Remove ads, unlock all spreads, save & share readings!',
   },
 
   branding: {
-    tagline: 'One Free Reading Daily',
+    tagline: 'Unlimited Readings • Ad-Supported',
     accent: 'Free Edition'
   }
 };

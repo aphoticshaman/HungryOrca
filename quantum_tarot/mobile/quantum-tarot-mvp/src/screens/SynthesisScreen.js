@@ -153,7 +153,7 @@ export default function SynthesisScreen({ route, navigation }) {
 
     Alert.alert(
       `🔒 Premium Feature`,
-      `${featureName} is only available in the Premium version.\n\nUpgrade to Premium for ${price} to unlock:\n\n• Unlimited readings\n• Save reading history\n• Share & export readings\n• All spread types\n• Advanced interpretations\n• No ads, ever`,
+      `${featureName} is only available in the Premium version.\n\nUpgrade to Premium for ${price} (one-time) to unlock:\n\n• Remove ALL ads\n• All spread types (Celtic Cross, Horseshoe, etc.)\n• Save reading history\n• Share & export readings\n• Advanced interpretations`,
       [
         { text: 'Maybe Later', style: 'cancel' },
         {
