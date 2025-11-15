@@ -188,8 +188,8 @@ const CardInterpretationScreen = ({ route, navigation }) => {
       else if (suit === 'pentacles') headingColor = '$HIG$'; // Green for Pentacles
     }
 
-    // Colorize ONLY section headings (━━ HEADING ━━) and leave body text white
-    return text.replace(/(━━\s+[^━]+\s+━━)/g, `${headingColor}$1$NOR$`);
+    // Colorize ONLY section headings (== HEADING ==) and leave body text white
+    return text.replace(/(==\s+[^=]+\s+==)/g, `${headingColor}$1$NOR$`);
   };
 
   const colorizedInterpretation = getColorizedInterpretation(currentInterpretation, cardData);
