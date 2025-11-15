@@ -49,7 +49,7 @@
             "flipper": false
           },
           "android": {
-            "compileSdkVersion": 34,
+            "compileSdkVersion": 36,
             "targetSdkVersion": 34,
             "minSdkVersion": 24
           }
