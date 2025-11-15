@@ -147,6 +147,14 @@ export class FeatureGate {
     return APP_CONFIG.features.exportReadings;
   }
 
+  static canShareReading() {
+    return APP_CONFIG.features.exportReadings; // Same as export
+  }
+
+  static canSaveReading() {
+    return APP_CONFIG.features.saveReadings;
+  }
+
   static hasAdvancedInterpretations() {
     return APP_CONFIG.features.advancedInterpretations;
   }

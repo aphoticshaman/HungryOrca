@@ -35,8 +35,8 @@ export const APP_CONFIG = {
     themeSelection: true,
     readingHistory: false, // BLOCKED - Premium only
     saveReadings: false, // BLOCKED - Premium only
+    exportReadings: false, // BLOCKED - Premium only (copy/share)
     advancedInterpretations: false,
-    exportReadings: false,
     metaAnalysis: false,
     cardFlip: true, // Can flip to see symbolism
     quantumSignature: true
