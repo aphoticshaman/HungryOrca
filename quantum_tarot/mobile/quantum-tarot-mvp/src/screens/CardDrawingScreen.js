@@ -59,10 +59,13 @@ function formatInterpretation(interpretation) {
     // Practical layer
     text += `━━ ACTION STEPS ━━\n\n`;
     const steps = layers.practical?.action_steps || [];
-    steps.forEach((step, i) => {
-      text += `${i + 1}. ${step}\n`;
-    });
-    text += `\n${layers.practical?.what_to_focus_on || 'General focus'}\n\n\n`;
+    if (steps.length > 0) {
+      steps.forEach((step, i) => {
+        text += `${i + 1}. ${step}\n`;
+      });
+      text += `\n`;
+    }
+    text += `${layers.practical?.what_to_focus_on || 'General focus'}\n\n\n`;
 
     // Synthesis
     text += `━━ KEY MESSAGE ━━\n\n`;
