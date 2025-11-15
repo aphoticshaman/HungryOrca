@@ -13,6 +13,7 @@ import { generatePostCardQuestions } from '../utils/postCardQuestions';
 import { generateMegaSynthesis } from '../utils/megaSynthesisEngine';
 import { NeonText, LPMUDText, ScanLines } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
+import AdManager from '../utils/AdManager';
 
 /**
  * CARD INTERPRETATION SCREEN WITH MCQ INTEGRATION
@@ -91,6 +92,9 @@ const CardInterpretationScreen = ({ route, navigation }) => {
 
   const handleNextCard = async () => {
     if (currentCardIndex < cards.length - 1) {
+      // Show ad after card interpretation (free version only)
+      await AdManager.showAdAfterCard();
+
       // Move to next card
       setCurrentCardIndex(currentCardIndex + 1);
     } else {
@@ -107,6 +111,9 @@ const CardInterpretationScreen = ({ route, navigation }) => {
 
   const generateAndNavigateToSynthesis = async () => {
     setIsGeneratingSynthesis(true);
+
+    // Show ad before synthesis (free version only)
+    await AdManager.showAdBeforeSynthesis();
 
     try {
       // Build complete userProfile with fallbacks

@@ -54,6 +54,14 @@
             "minSdkVersion": 21
           }
         }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
+          "iosAppId": "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
+          "userTrackingPermission": "This app shows personalized ads to support free unlimited readings."
+        }
       ]
     ],
     "extra": {

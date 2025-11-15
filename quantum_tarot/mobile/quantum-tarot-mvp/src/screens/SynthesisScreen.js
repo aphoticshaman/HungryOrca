@@ -21,10 +21,10 @@ import {
   Alert,
   Modal,
   Share,
-  Clipboard,
   Linking,
   Platform,
 } from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CyberpunkHeader from '../components/CyberpunkHeader';
 import { NeonText, LPMUDText } from '../components/TerminalEffects';

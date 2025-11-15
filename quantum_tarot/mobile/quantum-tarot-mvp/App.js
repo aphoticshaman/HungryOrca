@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { ErrorBoundary } from './src/components/ErrorBoundary';
+import AdManager from './src/utils/AdManager';
 
 // Screens
 import WelcomeScreen from './src/screens/WelcomeScreen';
@@ -25,6 +26,12 @@ import SettingsScreen from './src/screens/SettingsScreen';
 const Stack = createStackNavigator();
 
 export default function App() {
+  // Initialize AdMob on app startup
+  useEffect(() => {
+    console.log('[App] Initializing AdManager...');
+    AdManager.initialize();
+  }, []);
+
   return (
     <ErrorBoundary>
       <ThemeProvider>
