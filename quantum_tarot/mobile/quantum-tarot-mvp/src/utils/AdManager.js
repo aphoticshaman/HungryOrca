@@ -1,24 +1,33 @@
 /**
- * AD MANAGER - STUB
- * AdMob removed for now - can add back later
- * All methods are no-ops
+ * AD MANAGER - LEGACY STUB
+ * Now redirects to UpgradePromptManager for polite upgrade prompts
+ * No ads - just gentle reminders to support indie development
  */
+
+import UpgradePromptManager from './UpgradePromptManager';
+import InAppPurchaseManager from './InAppPurchaseManager';
 
 class AdManager {
   async initialize() {
-    console.log('[AdManager] Ads disabled - stub mode');
+    console.log('[AdManager] Legacy stub - using UpgradePromptManager instead');
   }
 
   async showAdAfterCard() {
-    // No-op
+    // Show polite upgrade prompt instead of ad
+    await UpgradePromptManager.showAfterCardPrompt(() => {
+      InAppPurchaseManager.purchasePremium();
+    });
   }
 
   async showAdBeforeSynthesis() {
-    // No-op
+    // Show polite upgrade prompt instead of ad
+    await UpgradePromptManager.showBeforeSynthesisPrompt(() => {
+      InAppPurchaseManager.purchasePremium();
+    });
   }
 
   isEnabled() {
-    return false;
+    return false; // Ads are disabled
   }
 }
 

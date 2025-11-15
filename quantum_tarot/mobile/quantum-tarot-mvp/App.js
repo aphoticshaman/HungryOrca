@@ -4,7 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { ErrorBoundary } from './src/components/ErrorBoundary';
-import AdManager from './src/utils/AdManager';
+import InAppPurchaseManager from './src/utils/InAppPurchaseManager';
+import UpgradePromptManager from './src/utils/UpgradePromptManager';
 
 // Screens
 import WelcomeScreen from './src/screens/WelcomeScreen';
@@ -26,10 +27,17 @@ import SettingsScreen from './src/screens/SettingsScreen';
 const Stack = createStackNavigator();
 
 export default function App() {
-  // Initialize AdMob on app startup
+  // Initialize IAP and Upgrade Prompts on app startup
   useEffect(() => {
-    console.log('[App] Initializing AdManager...');
-    AdManager.initialize();
+    console.log('[App] Initializing In-App Purchases and Upgrade Prompts...');
+    InAppPurchaseManager.initialize();
+    InAppPurchaseManager.setupPurchaseListener();
+    UpgradePromptManager.initialize();
+
+    // Cleanup on unmount
+    return () => {
+      InAppPurchaseManager.cleanup();
+    };
   }, []);
 
   return (

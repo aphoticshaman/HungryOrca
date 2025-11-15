@@ -38,6 +38,8 @@ import CyberpunkHeader from '../components/CyberpunkHeader';
 import { NeonText, LPMUDText } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
 import { FeatureGate } from '../utils/featureGate';
+import UpgradePromptManager from '../utils/UpgradePromptManager';
+import InAppPurchaseManager from '../utils/InAppPurchaseManager';
 
 const READINGS_KEY = '@lunatiq_saved_readings';
 const MAX_READINGS = 20;
@@ -161,26 +163,10 @@ export default function SynthesisScreen({ route, navigation }) {
   };
 
   const showUpgradePrompt = (featureName) => {
-    const price = FeatureGate.getUpgradePrice();
-    const upgradeUrl = FeatureGate.getUpgradeUrl();
-
-    Alert.alert(
-      `🔒 Premium Feature`,
-      `${featureName} is only available in the Premium version.\n\nUpgrade to Premium for ${price} (one-time) to unlock:\n\n• Remove ALL ads\n• All spread types (Celtic Cross, Horseshoe, etc.)\n• Save reading history\n• Share & export readings\n• Advanced interpretations`,
-      [
-        { text: 'Maybe Later', style: 'cancel' },
-        {
-          text: `Upgrade for ${price}`,
-          onPress: () => {
-            if (upgradeUrl) {
-              Linking.openURL(upgradeUrl);
-            } else {
-              Alert.alert('Coming Soon', 'Premium upgrade will be available soon!');
-            }
-          },
-        },
-      ]
-    );
+    UpgradePromptManager.showFeatureLockedPrompt(featureName, () => {
+      // User tapped upgrade - trigger in-app purchase
+      InAppPurchaseManager.purchasePremium();
+    });
   };
 
   const saveReadingToStorage = async () => {

@@ -12,8 +12,8 @@ export const APP_CONFIG = {
 
   features: {
     // Reading limits
-    dailyReadingLimit: null, // UNLIMITED with ads!
-    unlimitedReadings: true, // Yes, unlimited - we make money from ads
+    dailyReadingLimit: null, // UNLIMITED!
+    unlimitedReadings: true, // Yes, unlimited readings
 
     // Spreads (3 cards or fewer ONLY)
     allSpreadTypes: false,
@@ -42,30 +42,28 @@ export const APP_CONFIG = {
     quantumSignature: true
   },
 
-  // Ads configuration
-  ads: {
-    enabled: true,
-    interstitialAfterCard: true, // Show ad between cards
-    interstitialBeforeSynthesis: true, // Show ad before synthesis
-    admobAppId: 'ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX', // TODO: Replace with your AdMob App ID
-    admobInterstitialId: 'ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX', // TODO: Replace with your AdMob Interstitial ID
+  // No ads - just polite upgrade prompts
+  prompts: {
+    showUpgradePrompts: true, // Show polite prompts to support development
+    afterCardReading: true, // Prompt after card (occasionally)
+    beforeSynthesis: true, // Prompt before synthesis (occasionally)
   },
 
   ui: {
     showPremiumBadges: true, // Show 🔒 on locked features
     showUpgradeButton: true, // Show upgrade button in settings
-    upgradePromptFrequency: 'on_limit', // When to show upgrade prompt
+    upgradePromptFrequency: 'polite', // Polite, rotating messages
   },
 
   monetization: {
     upgradePrompt: true,
-    upgradeUrl: 'https://apps.apple.com/app/YOUR-APP-ID', // TODO: Update with actual App Store URL
+    inAppPurchaseProductId: 'com.aphoticshaman.lunatiq.premium', // IAP Product ID
     upgradePrice: '$3.99',
-    upgradeMessage: 'Upgrade to Premium: Remove ads, unlock all spreads, save & share readings!',
+    upgradeMessage: 'Support indie development! Unlock all features for $3.99 (one-time payment)',
   },
 
   branding: {
-    tagline: 'Unlimited Readings • Ad-Supported',
+    tagline: 'Unlimited Readings • Support Indie Development',
     accent: 'Free Edition'
   }
 };
