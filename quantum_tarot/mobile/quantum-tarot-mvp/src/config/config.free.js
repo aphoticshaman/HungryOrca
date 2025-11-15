@@ -15,12 +15,13 @@ export const APP_CONFIG = {
     dailyReadingLimit: 1,
     unlimitedReadings: false,
 
-    // Spreads
+    // Spreads (3 cards or fewer)
     allSpreadTypes: false,
     availableSpreads: [
       'single_card',
       'three_card'
     ],
+    maxCardsPerSpread: 3, // Hard limit for free users
 
     // Reading types
     allReadingTypes: false,
@@ -32,12 +33,22 @@ export const APP_CONFIG = {
 
     // Features
     themeSelection: true,
-    readingHistory: false,
+    readingHistory: false, // BLOCKED - Premium only
+    saveReadings: false, // BLOCKED - Premium only
     advancedInterpretations: false,
     exportReadings: false,
     metaAnalysis: false,
     cardFlip: true, // Can flip to see symbolism
     quantumSignature: true
+  },
+
+  // Ads configuration
+  ads: {
+    enabled: true,
+    interstitialAfterCard: true, // Show ad between cards
+    interstitialBeforeSynthesis: true, // Show ad before synthesis
+    admobAppId: 'ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX', // TODO: Replace with your AdMob App ID
+    admobInterstitialId: 'ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX', // TODO: Replace with your AdMob Interstitial ID
   },
 
   ui: {

@@ -28,6 +28,7 @@ export const APP_CONFIG = {
       'celtic_cross',
       'horseshoe'
     ],
+    maxCardsPerSpread: null, // No limit
 
     // Reading types (ALL)
     allReadingTypes: true,
@@ -45,11 +46,21 @@ export const APP_CONFIG = {
     // Features (ALL ENABLED)
     themeSelection: true,
     readingHistory: true,
+    saveReadings: true, // ENABLED
     advancedInterpretations: true,
     exportReadings: true,
     metaAnalysis: true,
     cardFlip: true,
     quantumSignature: true
+  },
+
+  // Ads configuration
+  ads: {
+    enabled: false, // No ads for premium
+    interstitialAfterCard: false,
+    interstitialBeforeSynthesis: false,
+    admobAppId: null,
+    admobInterstitialId: null,
   },
 
   ui: {
