@@ -55,9 +55,7 @@
       ]
     ],
     "extra": {
-      "eas": {
-        "projectId": "YOUR_PROJECT_ID_HERE"
-      }
+      "eas": {}
     }
   }
 }
