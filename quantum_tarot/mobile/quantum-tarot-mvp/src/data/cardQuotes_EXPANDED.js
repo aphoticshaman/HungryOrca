@@ -1,0 +1,2740 @@
+/**
+ * EXPANDED CARD QUOTE DATABASE - CONTEXT-AWARE & COMPREHENSIVE
+ * 10-15 quotes per card per context, covering upright AND reversed meanings
+ *
+ * Sources: Biblical, Historical, Self-Help, BookTok, Movies, Philosophy, Pop Culture
+ * Target: People who want to improve their lives while being entertained
+ *
+ * Format: upright/reversed objects with 7 context categories each:
+ *   - general: Universal wisdom for any reading
+ *   - career: Work, vocation, professional path
+ *   - wellness: Health, self-care, mental/physical/spiritual well-being
+ *   - finance: Money, abundance, resources, material security
+ *   - personal_growth: Self-development, transformation, evolution
+ *   - decision_making: Choices, crossroads, discernment
+ *   - shadow_work: Unconscious patterns, hidden truths, integration
+ *
+ * Philosophy: Principle-based wisdom (universal truths, generalizations)
+ *             NOT prescriptive advice (specific step-by-step instructions)
+ */
+
+export const CARD_QUOTES_EXPANDED = {
+  // ═══════════════════════════════════════════════════════════
+  // MAJOR ARCANA - ALL 22 CARDS
+  // ═══════════════════════════════════════════════════════════
+
+  0: { // The Fool
+    name: 'The Fool',
+    upright: {
+      general: [
+        { text: "Blessed are the meek, for they shall inherit the earth.", source: "Matthew 5:5 (Bible)" },
+        { text: "A journey of a thousand miles begins with a single step.", source: "Lao Tzu" },
+        { text: "Do not be too timid and squeamish about your actions. All life is an experiment.", source: "Ralph Waldo Emerson" },
+        { text: "The person who risks nothing, does nothing, has nothing, is nothing.", source: "Leo Buscaglia" },
+        { text: "Jump, and you will find out how to unfold your wings as you fall.", source: "Ray Bradbury" },
+        { text: "Sometimes the only way to stay sane is to go a little crazy.", source: "Susanna Kaysen" },
+        { text: "We're all mad here.", source: "Lewis Carroll" },
+        { text: "Everything you want is on the other side of fear.", source: "Jack Canfield" },
+        { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+        { text: "Life begins at the end of your comfort zone.", source: "Neale Donald Walsch" },
+        { text: "Fortune favors the bold.", source: "Virgil" },
+        { text: "What would you attempt to do if you knew you could not fail?", source: "Robert H. Schuller" },
+      ],
+      career: [
+        { text: "Every expert was once a beginner. Every master was once a disaster.", source: "LunatIQ Team" },
+        { text: "The biggest risk is not taking any risk.", source: "Mark Zuckerberg" },
+        { text: "Your career is a journey, not a destination. Beginnings are sacred.", source: "LunatIQ Team" },
+        { text: "Leap and the net will appear—especially in career pivots.", source: "LunatIQ Team" },
+        { text: "You don't need to know the whole path. Just take the first step.", source: "LunatIQ Team" },
+        { text: "New opportunities come dressed as risks. Embrace the unknown.", source: "LunatIQ Team" },
+        { text: "The amateur practices until they get it right. The professional practices until they can't get it wrong.", source: "LunatIQ Team" },
+        { text: "Every successful person was once an amateur who refused to quit.", source: "LunatIQ Team" },
+        { text: "Career changes are births. They're messy, painful, and beautiful.", source: "LunatIQ Team" },
+        { text: "Your inexperience is not your weakness—it's your fresh perspective.", source: "LunatIQ Team" },
+        { text: "The person who says it cannot be done should not interrupt the person doing it.", source: "Chinese Proverb" },
+        { text: "Adventure may hurt you, but monotony will kill you.", source: "LunatIQ Team" },
+      ],
+      wellness: [
+        { text: "Healing begins when you stop judging your journey and start taking the first step.", source: "LunatIQ Team" },
+        { text: "The best time to plant a tree was 20 years ago. The second best time is now.", source: "LunatIQ Team" },
+        { text: "Your body hears everything your mind says. Start with kind words.", source: "LunatIQ Team" },
+        { text: "Wellness is not a destination. It's a practice of beginning again, daily.", source: "LunatIQ Team" },
+        { text: "You don't have to be perfect to start. You just have to start to improve.", source: "LunatIQ Team" },
+        { text: "Every journey to wholeness begins with curiosity, not criticism.", source: "LunatIQ Team" },
+        { text: "The body you criticize today is carrying you toward the life you dream of tomorrow.", source: "LunatIQ Team" },
+        { text: "Transformation starts with a single choice. Then another. Then another.", source: "LunatIQ Team" },
+        { text: "You are exactly where you need to be to begin becoming who you're meant to be.", source: "LunatIQ Team" },
+        { text: "New beginnings in health require faith in your body's innate wisdom.", source: "LunatIQ Team" },
+        { text: "The path to wellness is walked one step at a time, not sprinted.", source: "LunatIQ Team" },
+      ],
+      finance: [
+        { text: "Every fortune begins with a single dollar and a willingness to learn.", source: "LunatIQ Team" },
+        { text: "Wealth is built in inches, not miles. Start where you are.", source: "LunatIQ Team" },
+        { text: "Financial freedom starts with financial curiosity. Ask questions.", source: "LunatIQ Team" },
+        { text: "You don't need to know everything about money to start building wealth.", source: "LunatIQ Team" },
+        { text: "Every wealthy person was once where you are now. The difference is they started.", source: "LunatIQ Team" },
+        { text: "Invest in your education first. Returns will follow.", source: "LunatIQ Team" },
+        { text: "Risks in finance are calculated adventures. Learn to calculate.", source: "LunatIQ Team" },
+        { text: "Your financial future is not determined by where you start, but by whether you start.", source: "LunatIQ Team" },
+        { text: "The best investment you can make is in yourself.", source: "Warren Buffett" },
+        { text: "Abundance begins with believing you deserve it, then taking action.", source: "LunatIQ Team" },
+        { text: "Financial literacy is not taught—it's caught. Start catching.", source: "LunatIQ Team" },
+        { text: "Every entrepreneur started with an idea and more courage than capital.", source: "LunatIQ Team" },
+      ],
+      personal_growth: [
+        { text: "You are always one decision away from a completely different life.", source: "LunatIQ Team" },
+        { text: "Growth begins at the edge of your comfort zone—not in the middle of it.", source: "LunatIQ Team" },
+        { text: "The person you are becoming will cost you the person you are now.", source: "LunatIQ Team" },
+        { text: "Every version of you that no longer serves you must die so the new you can live.", source: "LunatIQ Team" },
+        { text: "You cannot discover new oceans unless you have the courage to lose sight of the shore.", source: "André Gide" },
+        { text: "The wound is where the light enters. Begin there.", source: "LunatIQ Team" },
+        { text: "Personal growth is not linear. It's a spiral of returning and evolving.", source: "LunatIQ Team" },
+        { text: "You don't find yourself. You create yourself through brave choices.", source: "LunatIQ Team" },
+        { text: "The caterpillar doesn't know it's becoming a butterfly. Trust the process.", source: "LunatIQ Team" },
+        { text: "Every ending is a beginning dressed in funeral clothes.", source: "LunatIQ Team" },
+        { text: "You've survived 100% of your worst days. You can begin again.", source: "LunatIQ Team" },
+      ],
+      decision_making: [
+        { text: "Not deciding is still a decision. Choose consciously.", source: "LunatIQ Team" },
+        { text: "The best decision is an informed risk, not a perfect plan.", source: "LunatIQ Team" },
+        { text: "Indecision is the thief of opportunity. Decide and adjust.", source: "LunatIQ Team" },
+        { text: "You'll never have all the information. Decide with what you have.", source: "LunatIQ Team" },
+        { text: "The right choice is the one you commit to making right.", source: "LunatIQ Team" },
+        { text: "Crossroads are not about perfect paths. They're about authentic ones.", source: "LunatIQ Team" },
+        { text: "Fear of making the wrong choice keeps you from making any choice.", source: "LunatIQ Team" },
+        { text: "Every decision is a door. You won't know what's behind it until you open it.", source: "LunatIQ Team" },
+        { text: "The universe rewards action, not hesitation.", source: "LunatIQ Team" },
+        { text: "Leap first, adjust mid-air. That's how decisions become destinies.", source: "LunatIQ Team" },
+        { text: "Your intuition speaks first. Your fear speaks second. Listen to order.", source: "LunatIQ Team" },
+        { text: "Choose the path that makes you feel alive, not the one that makes you feel safe.", source: "LunatIQ Team" },
+      ],
+      shadow_work: [
+        { text: "The fool is the one brave enough to walk into the dark without knowing what's there.", source: "LunatIQ Team" },
+        { text: "Your unconscious patterns were once survival strategies. Honor them, then release them.", source: "LunatIQ Team" },
+        { text: "The parts of yourself you judge are the parts that need integration, not elimination.", source: "Shadow Integration" },
+        { text: "What you refuse to acknowledge controls you. What you bring to light loses power.", source: "LunatIQ Team" },
+        { text: "Your shadow is not your enemy. It's the orphaned child waiting to come home.", source: "LunatIQ Team" },
+        { text: "The things you're most afraid to explore are the keys to your freedom.", source: "LunatIQ Team" },
+        { text: "You cannot heal what you do not feel. Feel it. Begin there.", source: "LunatIQ Team" },
+        { text: "The darkness you carry is not a burden. It's fertilizer for your light.", source: "LunatIQ Team" },
+        { text: "Shadow work begins with curiosity: 'Why do I react this way?'", source: "LunatIQ Team" },
+        { text: "Every monster in your psyche was once a protector. Thank it. Retire it.", source: "LunatIQ Team" },
+        { text: "The journey into shadow is the journey home to wholeness.", source: "LunatIQ Team" },
+      ]
+    },
+    reversed: {
+      general: [
+        { text: "Pride goes before destruction, and a haughty spirit before a fall.", source: "Proverbs 16:18 (Bible)" },
+        { text: "Not all who wander are lost, but some definitely are.", source: "LunatIQ Team" },
+        { text: "Recklessness is not courage. Impulse is not intuition.", source: "LunatIQ Team" },
+        { text: "Leap and the net will appear—but maybe check if there's a net first.", source: "LunatIQ Team" },
+        { text: "Naivety dressed up as optimism will still get you hurt.", source: "LunatIQ Team" },
+        { text: "You can be spontaneous without being stupid.", source: "LunatIQ Team" },
+        { text: "The road to hell is paved with good intentions and zero follow-through.", source: "LunatIQ Team" },
+        { text: "Don't mistake chaos for freedom.", source: "LunatIQ Team" },
+        { text: "Running from your problems is still running.", source: "LunatIQ Team" },
+        { text: "You're not 'free-spirited,' you're avoiding commitment.", source: "LunatIQ Team" },
+      ],
+      career: [
+        { text: "Job-hopping without purpose is just professional running away.", source: "Career Pattern" },
+        { text: "Passion without planning is just an expensive hobby.", source: "Business Reality" },
+        { text: "You can't build a career on potential alone. At some point, you have to deliver.", source: "LunatIQ Team" },
+        { text: "Quitting when things get hard is a pattern, not a personality trait.", source: "LunatIQ Team" },
+        { text: "Every 'pivot' you make looks more like avoidance than strategy.", source: "LunatIQ Team" },
+        { text: "Networking without follow-through is just collecting business cards.", source: "LunatIQ Team" },
+        { text: "Your resume shows a lot of starts. Where are the finishes?", source: "LunatIQ Team" },
+        { text: "Spontaneity in business is great until rent is due.", source: "LunatIQ Team" },
+        { text: "The grass isn't greener. It's greener where you water it.", source: "LunatIQ Team" },
+        { text: "Innovation requires discipline. Chaos requires nothing.", source: "LunatIQ Team" },
+        { text: "You can't fail upward forever. Eventually gravity wins.", source: "LunatIQ Team" },
+      ],
+      wellness: [
+        { text: "Self-sabotage disguised as self-care is still sabotage.", source: "LunatIQ Team" },
+        { text: "You can't heal by avoiding discomfort. Growth lives in the uncomfortable.", source: "LunatIQ Team" },
+        { text: "Every 'fresh start' means nothing if you bring the same habits.", source: "LunatIQ Team" },
+        { text: "Wellness requires consistency, not just enthusiasm on Monday mornings.", source: "LunatIQ Team" },
+        { text: "You're not 'listening to your body' if your body is screaming 'STOP' and you're still scrolling.", source: "LunatIQ Team" },
+        { text: "Impulsive health choices lead to injuries, not transformations.", source: "LunatIQ Team" },
+        { text: "Your body needs commitment, not grand gestures followed by neglect.", source: "LunatIQ Team" },
+        { text: "Jumping from diet to diet is chaos, not experimentation.", source: "LunatIQ Team" },
+        { text: "You can't outrun your mental health with a new workout plan.", source: "LunatIQ Team" },
+        { text: "Wellness without boundaries is just people-pleasing in yoga pants.", source: "Boundary Wisdom" },
+      ],
+      finance: [
+        { text: "YOLO spending is just financial irresponsibility with good marketing.", source: "LunatIQ Team" },
+        { text: "Every 'investment opportunity' you chase without research is just gambling.", source: "LunatIQ Team" },
+        { text: "Your future self is begging you to stop spending like there's no tomorrow.", source: "LunatIQ Team" },
+        { text: "Impulse purchases don't become less impulsive with a credit card.", source: "LunatIQ Team" },
+        { text: "Financial freedom requires delayed gratification, not constant treats.", source: "LunatIQ Team" },
+        { text: "You can't manifest money while ignoring your bank balance.", source: "LunatIQ Team" },
+        { text: "Risk without research is recklessness, not boldness.", source: "LunatIQ Team" },
+        { text: "Every 'business idea' without execution is just an expensive daydream.", source: "LunatIQ Team" },
+        { text: "Your debt isn't going away because you're ignoring it.", source: "LunatIQ Team" },
+        { text: "Living like you're rich when you're broke is called denial.", source: "Money Honesty" },
+        { text: "Abundance mindset without a budget is delusion.", source: "LunatIQ Team" },
+      ],
+      personal_growth: [
+        { text: "Running from yourself is exhausting and you always show up at the destination.", source: "LunatIQ Team" },
+        { text: "Every time you start over without learning the lesson, the universe repeats the test.", source: "LunatIQ Team" },
+        { text: "You can't grow by constantly changing environments. Sometimes you're the variable.", source: "LunatIQ Team" },
+        { text: "Avoiding commitment isn't freedom. It's fear dressed up as adventure.", source: "LunatIQ Team" },
+        { text: "Personal growth requires facing yourself, not just finding yourself.", source: "LunatIQ Team" },
+        { text: "You're not on a journey—you're running in circles calling it exploration.", source: "LunatIQ Team" },
+        { text: "Spiritual bypassing is still bypassing. Do the actual work.", source: "LunatIQ Team" },
+        { text: "The only thing you're transforming is your ability to avoid responsibility.", source: "Harsh Truth" },
+        { text: "Change without integration is just rearranging deck chairs on the Titanic.", source: "LunatIQ Team" },
+        { text: "You can't heal what you won't face.", source: "LunatIQ Team" },
+      ],
+      decision_making: [
+        { text: "Indecision is a decision to let life decide for you.", source: "LunatIQ Team" },
+        { text: "Keeping all your options open means you're committed to nothing.", source: "LunatIQ Team" },
+        { text: "Every door you refuse to close keeps you stuck in the hallway.", source: "LunatIQ Team" },
+        { text: "Fear of choosing wrong keeps you from choosing at all.", source: "LunatIQ Team" },
+        { text: "You can't have it all, and pretending you can is exhausting everyone.", source: "LunatIQ Team" },
+        { text: "Waffling between options is not thoughtful deliberation—it's avoidance.", source: "Decision Honesty" },
+        { text: "The perfect choice doesn't exist. Make a choice and make it perfect.", source: "LunatIQ Team" },
+        { text: "Your inability to commit to a path is creating a path of inability.", source: "LunatIQ Team" },
+        { text: "Waiting for a sign is procrastination dressed as spirituality.", source: "LunatIQ Team" },
+        { text: "Every decision you delay makes the decision for you.", source: "LunatIQ Team" },
+      ],
+      shadow_work: [
+        { text: "You can't run from your shadow. It's attached to you.", source: "LunatIQ Team" },
+        { text: "Avoiding your darkness doesn't make it disappear. It makes it grow.", source: "LunatIQ Team" },
+        { text: "The patterns you refuse to see are the ones running your life.", source: "LunatIQ Team" },
+        { text: "Your blind spots aren't invisible to everyone else.", source: "LunatIQ Team" },
+        { text: "Recklessness is unexamined fear in motion.", source: "LunatIQ Team" },
+        { text: "You're so busy starting over you never deal with what keeps ending things.", source: "LunatIQ Team" },
+        { text: "The thing you're running from is the thing that's chasing you.", source: "LunatIQ Team" },
+        { text: "Impulsivity is your shadow's way of keeping you from feeling.", source: "LunatIQ Team" },
+        { text: "Every escape attempt is just your wound demanding attention.", source: "LunatIQ Team" },
+        { text: "You can't integrate what you won't acknowledge exists.", source: "LunatIQ Team" },
+        { text: "Your chaos is not spiritual—it's unexamined trauma.", source: "LunatIQ Team" },
+      ]
+    }
+  },
+
+  1: { // The Magician
+    name: 'The Magician',
+    upright: {
+      general: [
+        { text: "I have seen things you people wouldn't believe. Attack ships on fire off the shoulder of Orion.", source: "LunatIQ Team" },
+        { text: "The Watchers taught us the secrets of heaven: the movements of stars, the properties of roots, the working of metals.", source: "Book of Enoch" },
+        { text: "As above, so below. As within, so without. As the universe, so the soul.", source: "Hermes Trismegistus" },
+        { text: "You are a way for the cosmos to know itself.", source: "Carl Sagan" },
+        { text: "If the doors of perception were cleansed everything would appear to man as it is, infinite.", source: "William Blake" },
+        { text: "Science is magic that works.", source: "Kurt Vonnegut" },
+        { text: "The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.", source: "Albert Camus" },
+        { text: "Reality is that which, when you stop believing in it, doesn't go away.", source: "Philip K. Dick" },
+        { text: "I am the master of my fate, I am the captain of my soul.", source: "William Ernest Henley, Invictus" },
+        { text: "The Kingdom of Heaven is within you.", source: "Luke 17:21 (Bible)" },
+        { text: "Any sufficiently advanced technology is indistinguishable from magic.", source: "Arthur C. Clarke" },
+        { text: "The universe is not outside of you. Look inside yourself; everything that you want, you already are.", source: "Rumi" },
+      ],
+      career: [
+        { text: "Knowledge is power.", source: "Francis Bacon" },
+        { text: "The best way to predict the future is to invent it.", source: "Alan Kay" },
+        { text: "I never dreamed about success. I worked for it.", source: "Estée Lauder" },
+        { text: "Don't wait for opportunity. Create it.", source: "George Bernard Shaw" },
+        { text: "The expert in anything was once a beginner who mastered the basics.", source: "Attributed to various" },
+        { text: "Skill comes from consistent action. Mastery comes from dedicated practice.", source: "Ancient wisdom" },
+        { text: "The will to win, the desire to succeed, the urge to reach your full potential—these are the keys.", source: "Confucius" },
+        { text: "Innovation distinguishes between a leader and a follower.", source: "Steve Jobs" },
+        { text: "The mind is everything. What you think you become.", source: "Buddha" },
+        { text: "Genius is one percent inspiration and ninety-nine percent perspiration.", source: "Thomas Edison" },
+        { text: "I have been impressed with the urgency of doing. Knowing is not enough; we must apply.", source: "Leonardo da Vinci" },
+        { text: "Whatever the mind can conceive and believe, it can achieve.", source: "Napoleon Hill" },
+      ],
+      wellness: [
+        { text: "The body achieves what the mind believes.", source: "Napoleon Hill" },
+        { text: "Health is the greatest gift, contentment the greatest wealth.", source: "Buddha" },
+        { text: "The natural healing force within each of us is the greatest force in getting well.", source: "Hippocrates" },
+        { text: "To keep the body in good health is a duty, otherwise we shall not be able to keep our mind strong and clear.", source: "Buddha" },
+        { text: "The greatest wealth is health.", source: "Virgil" },
+        { text: "Know thyself.", source: "Socrates" },
+        { text: "Healing is a matter of time, but it is sometimes also a matter of opportunity.", source: "Hippocrates" },
+        { text: "Your body hears everything your mind says. Stay positive.", source: "Naomi Judd" },
+        { text: "He who has health, has hope; and he who has hope, has everything.", source: "Thomas Carlyle" },
+        { text: "The first wealth is health.", source: "Ralph Waldo Emerson" },
+        { text: "Take care of your body. It's the only place you have to live.", source: "Jim Rohn" },
+      ],
+      finance: [
+        { text: "An investment in knowledge pays the best interest.", source: "Benjamin Franklin" },
+        { text: "The four most dangerous words in investing are: 'this time it's different.'", source: "Sir John Templeton" },
+        { text: "Risk comes from not knowing what you're doing.", source: "Warren Buffett" },
+        { text: "Fortune favors the prepared mind.", source: "Louis Pasteur" },
+        { text: "Wealth consists not in having great possessions, but in having few wants.", source: "Epictetus" },
+        { text: "Never depend on a single income. Make an investment to create a second source.", source: "Warren Buffett" },
+        { text: "The art is not in making money, but in keeping it.", source: "Proverb" },
+        { text: "Money is a terrible master but an excellent servant.", source: "P.T. Barnum" },
+        { text: "He who understands interest collects it. He who doesn't pays it.", source: "LunatIQ Team" },
+        { text: "Every master was once a disaster who refused to quit.", source: "T. Harv Eker" },
+        { text: "Wealth is the ability to fully experience life.", source: "Henry David Thoreau" },
+        { text: "The rich invest in time, the poor invest in money.", source: "Warren Buffett" },
+      ],
+      personal_growth: [
+        { text: "Knowing yourself is the beginning of all wisdom.", source: "Aristotle" },
+        { text: "What lies behind us and what lies before us are tiny matters compared to what lies within us.", source: "Ralph Waldo Emerson" },
+        { text: "The only impossible journey is the one you never begin.", source: "Tony Robbins" },
+        { text: "Be yourself; everyone else is already taken.", source: "Oscar Wilde" },
+        { text: "He who knows others is wise; he who knows himself is enlightened.", source: "Lao Tzu" },
+        { text: "The privilege of a lifetime is to become who you truly are.", source: "Carl Jung" },
+        { text: "Mastering others is strength. Mastering yourself is true power.", source: "Lao Tzu" },
+        { text: "We are what we repeatedly do. Excellence, then, is not an act but a habit.", source: "Aristotle" },
+        { text: "The unexamined life is not worth living.", source: "Socrates" },
+        { text: "Until you make the unconscious conscious, it will direct your life and you will call it fate.", source: "Carl Jung" },
+        { text: "Your vision will become clear only when you look into your heart.", source: "Carl Jung" },
+      ],
+      decision_making: [
+        { text: "In any moment of decision, the best thing you can do is the right thing, the next best thing is the wrong thing, and the worst thing you can do is nothing.", source: "Theodore Roosevelt" },
+        { text: "The power of accurate observation is commonly called cynicism by those who have not got it.", source: "George Bernard Shaw" },
+        { text: "Logic will get you from A to B. Imagination will take you everywhere.", source: "Albert Einstein" },
+        { text: "Intuition is a very powerful thing, more powerful than intellect.", source: "Steve Jobs" },
+        { text: "Trust your instincts. Intuition doesn't lie.", source: "Oprah Winfrey" },
+        { text: "Between stimulus and response there is a space. In that space is our power to choose.", source: "Viktor Frankl" },
+        { text: "The greatest weapon against stress is our ability to choose one thought over another.", source: "William James" },
+        { text: "You have power over your mind—not outside events. Realize this, and you will find strength.", source: "Marcus Aurelius" },
+        { text: "Whenever you see a successful business, someone once made a courageous decision.", source: "Peter Drucker" },
+        { text: "The key is not to prioritize what's on your schedule, but to schedule your priorities.", source: "Stephen Covey" },
+        { text: "Discernment is not knowing the difference between right and wrong. It's knowing the difference between right and almost right.", source: "Charles Spurgeon" },
+      ],
+      shadow_work: [
+        { text: "Everyone carries a shadow, and the less it is embodied in the individual's conscious life, the blacker and denser it is.", source: "Carl Jung" },
+        { text: "One does not become enlightened by imagining figures of light, but by making the darkness conscious.", source: "Carl Jung" },
+        { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+        { text: "Your wound is probably not your fault, but your healing is your responsibility.", source: "Denice Frohman" },
+        { text: "We can easily forgive a child who is afraid of the dark; the real tragedy of life is when men are afraid of the light.", source: "Plato" },
+        { text: "There is no coming to consciousness without pain.", source: "Carl Jung" },
+        { text: "The shadow is a moral problem that challenges the whole ego-personality.", source: "Carl Jung" },
+        { text: "Everything that irritates us about others can lead us to an understanding of ourselves.", source: "Carl Jung" },
+        { text: "To confront a person with their shadow is to show them their own light.", source: "Carl Jung" },
+        { text: "The brighter the light, the darker the shadow.", source: "Carl Jung" },
+        { text: "Knowing your own darkness is the best method for dealing with the darknesses of other people.", source: "Carl Jung" },
+      ]
+    },
+    reversed: {
+      general: [
+        { text: "Pride goeth before destruction, and a haughty spirit before a fall.", source: "Proverbs 16:18 (Bible)" },
+        { text: "All that glitters is not gold.", source: "William Shakespeare" },
+        { text: "The map is not the territory.", source: "Alfred Korzybski" },
+        { text: "Cleverness is not wisdom.", source: "Euripides" },
+        { text: "You can't con an honest man.", source: "LunatIQ Team" },
+        { text: "All magic comes with a price.", source: "LunatIQ Team" },
+        { text: "A little knowledge is a dangerous thing.", source: "Alexander Pope" },
+        { text: "He who speaks without modesty will find it difficult to make his words good.", source: "Confucius" },
+        { text: "The greatest deception men suffer is from their own opinions.", source: "Leonardo da Vinci" },
+        { text: "It is easier to perceive error than to find truth, for the former lies on the surface and is easily seen, while the latter lies in the depth, where few are willing to search for it.", source: "Johann Wolfgang von Goethe" },
+      ],
+      career: [
+        { text: "A man who carries a cat by the tail learns something he can learn in no other way.", source: "Mark Twain" },
+        { text: "Plans are worthless, but planning is everything.", source: "Dwight D. Eisenhower" },
+        { text: "It's not what you know, it's what you can prove.", source: "LunatIQ Team" },
+        { text: "Talk doesn't cook rice.", source: "Chinese Proverb" },
+        { text: "Well done is better than well said.", source: "Benjamin Franklin" },
+        { text: "Vision without execution is hallucination.", source: "Thomas Edison" },
+        { text: "He who begins too much accomplishes little.", source: "German Proverb" },
+        { text: "There is nothing so useless as doing efficiently that which should not be done at all.", source: "Peter Drucker" },
+        { text: "The fox knows many things, but the hedgehog knows one big thing.", source: "Archilochus" },
+        { text: "Jack of all trades, master of none.", source: "Proverb" },
+        { text: "An ounce of action is worth a ton of theory.", source: "Ralph Waldo Emerson" },
+      ],
+      wellness: [
+        { text: "The wise man should consider that health is the greatest of human blessings. Let food be your medicine.", source: "Hippocrates" },
+        { text: "It is health that is real wealth and not pieces of gold and silver.", source: "Mahatma Gandhi" },
+        { text: "A man too busy to take care of his health is like a mechanic too busy to take care of his tools.", source: "Spanish Proverb" },
+        { text: "Sickness is the vengeance of nature for the violation of her laws.", source: "Charles Simmons" },
+        { text: "He who has health has hope, and he who has hope has everything, but first he must stop ignoring his body.", source: "Arabian Proverb" },
+        { text: "The doctor of the future will give no medicine, but will instruct his patient in care of the human frame, in diet, and in the cause and prevention of disease.", source: "Thomas Edison" },
+        { text: "Every human being is the author of his own health or disease.", source: "Buddha" },
+        { text: "Those who think they have no time for bodily exercise will sooner or later have to find time for illness.", source: "Edward Stanley" },
+        { text: "A man is as old as his arteries.", source: "Thomas Sydenham" },
+        { text: "Prevention is better than cure.", source: "Desiderius Erasmus" },
+      ],
+      finance: [
+        { text: "A fool and his money are soon parted.", source: "Proverb" },
+        { text: "Beware of little expenses; a small leak will sink a great ship.", source: "Benjamin Franklin" },
+        { text: "If you buy things you do not need, soon you will have to sell things you need.", source: "Warren Buffett" },
+        { text: "Annual income twenty pounds, annual expenditure nineteen nineteen and six, result happiness. Annual income twenty pounds, annual expenditure twenty pounds ought and six, result misery.", source: "Charles Dickens" },
+        { text: "It's not how much money you make, but how much money you keep, how hard it works for you, and how many generations you keep it for.", source: "Robert Kiyosaki" },
+        { text: "Never spend your money before you have earned it.", source: "Thomas Jefferson" },
+        { text: "Debt is the slavery of the free.", source: "Publilius Syrus" },
+        { text: "He who buys what he does not need steals from himself.", source: "Swedish Proverb" },
+        { text: "The stock market is filled with individuals who know the price of everything, but the value of nothing.", source: "Philip Fisher" },
+        { text: "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price.", source: "Warren Buffett" },
+        { text: "Every time you borrow money, you're robbing your future self.", source: "Nathan W. Morris" },
+      ],
+      personal_growth: [
+        { text: "He who knows, does not speak. He who speaks, does not know.", source: "Lao Tzu" },
+        { text: "The obstacle is the path.", source: "Zen Proverb" },
+        { text: "We cannot solve our problems with the same thinking we used when we created them.", source: "Albert Einstein" },
+        { text: "The definition of insanity is doing the same thing over and over again and expecting different results.", source: "Attributed to Einstein" },
+        { text: "What we think, we become.", source: "Buddha" },
+        { text: "Man is not worried by real problems so much as by his imagined anxieties about real problems.", source: "Epictetus" },
+        { text: "If you do not change direction, you may end up where you are heading.", source: "Lao Tzu" },
+        { text: "The fool doth think he is wise, but the wise man knows himself to be a fool.", source: "William Shakespeare" },
+        { text: "No man ever steps in the same river twice, for it's not the same river and he's not the same man.", source: "Heraclitus" },
+        { text: "To know what you know and what you do not know, that is true knowledge.", source: "Confucius" },
+      ],
+      decision_making: [
+        { text: "Not to decide is to decide.", source: "Harvey Cox" },
+        { text: "When we least expect it, life sets us a challenge to test our courage and willingness to change.", source: "Paulo Coelho" },
+        { text: "Indecision becomes decision with time.", source: "LunatIQ Team" },
+        { text: "The risk of a wrong decision is preferable to the terror of indecision.", source: "Maimonides" },
+        { text: "Once you make a decision, the universe conspires to make it happen.", source: "Ralph Waldo Emerson" },
+        { text: "Indecision may or may not be my problem.", source: "Jimmy Buffett" },
+        { text: "You cannot make progress without making decisions.", source: "Jim Rohn" },
+        { text: "Some people, however long their experience or strong their intellect, are temperamentally incapable of reaching firm decisions.", source: "James Callaghan" },
+        { text: "He who hesitates is lost.", source: "Joseph Addison" },
+        { text: "Nothing is more difficult, and therefore more precious, than to be able to decide.", source: "Napoleon Bonaparte" },
+      ],
+      shadow_work: [
+        { text: "The first principle is that you must not fool yourself—and you are the easiest person to fool.", source: "Richard Feynman" },
+        { text: "If only it were all so simple! If only there were evil people somewhere insidiously committing evil deeds, and it were necessary only to separate them from the rest of us and destroy them. But the line dividing good and evil cuts through the heart of every human being.", source: "Aleksandr Solzhenitsyn" },
+        { text: "Conquer yourself rather than the world.", source: "René Descartes" },
+        { text: "The greatest victory is that which requires no battle.", source: "Sun Tzu" },
+        { text: "We have met the enemy and he is us.", source: "Walt Kelly" },
+        { text: "Man is the cruelest animal to himself.", source: "Friedrich Nietzsche" },
+        { text: "There is nothing either good or bad, but thinking makes it so.", source: "William Shakespeare" },
+        { text: "The worst enemy you can meet will always be yourself.", source: "Friedrich Nietzsche" },
+        { text: "He that is jealous is not in love.", source: "St. Augustine" },
+        { text: "Your visions will become clear only when you can look into your own heart. Who looks outside, dreams; who looks inside, awakes.", source: "Carl Jung" },
+        { text: "Man must cease attributing his problems to his environment, and learn again to exercise his will—his personal responsibility.", source: "Albert Schweitzer" },
+      ]
+    }
+  },
+
+  2: { // The High Priestess
+    name: 'The High Priestess',
+    upright: {
+      general: [
+        { text: "Be still and know that I am God.", source: "Psalm 46:10 (Bible)" },
+        { text: "She kept her magic quiet. Not because she was afraid, but because she knew power doesn't need to announce itself.", source: "LunatIQ Team" },
+        { text: "The psychedelic experience is a journey to new realms of consciousness.", source: "Timothy Leary" },
+        { text: "In the depth of winter, I finally learned that within me there lay an invincible summer.", source: "Albert Camus" },
+        { text: "Not all those who wander are lost.", source: "J.R.R. Tolkien" },
+        { text: "The quieter you become, the more you can hear.", source: "Ram Dass" },
+        { text: "There is no reality except the one contained within us.", source: "Hermann Hesse" },
+        { text: "The cure for pain is in the pain.", source: "Rumi" },
+        { text: "Your visions will become clear only when you can look into your own heart.", source: "Carl Jung" },
+        { text: "The most beautiful experience we can have is the mysterious.", source: "Albert Einstein" },
+        { text: "Silence is a source of great strength.", source: "Lao Tzu" },
+        { text: "Listen to the wind, it talks. Listen to the silence, it speaks. Listen to your heart, it knows.", source: "Native American Proverb" },
+      ],
+      career: [
+        { text: "Knowledge speaks, but wisdom listens.", source: "Jimi Hendrix" },
+        { text: "It is what we know already that often prevents us from learning.", source: "Claude Bernard" },
+        { text: "The wise man doesn't give the right answers, he poses the right questions.", source: "Claude Lévi-Strauss" },
+        { text: "In the beginner's mind there are many possibilities, in the expert's mind there are few.", source: "Shunryu Suzuki" },
+        { text: "Trust your hunches. They're usually based on facts filed away just below the conscious level.", source: "Joyce Brothers" },
+        { text: "The art of being wise is the art of knowing what to overlook.", source: "William James" },
+        { text: "Talent wins games, but teamwork and intelligence win championships.", source: "Michael Jordan" },
+        { text: "The secret of getting ahead is getting started.", source: "Mark Twain" },
+        { text: "It's not always about being the loudest voice in the room. Sometimes the most powerful presence is silence.", source: "LunatIQ Team" },
+        { text: "Study the past if you would define the future.", source: "Confucius" },
+        { text: "Strategic thinking is about asking the right questions, not having all the answers.", source: "LunatIQ Team" },
+      ],
+      wellness: [
+        { text: "Your calm mind is the ultimate weapon against your challenges.", source: "Bryant McGill" },
+        { text: "Within you is the stillness and the sanctuary to which you can retreat at any time.", source: "Hermann Hesse" },
+        { text: "The quieter the mind, the more powerful, the worthier, the deeper, the more telling and more perfect the prayer.", source: "Meister Eckhart" },
+        { text: "In stillness, the world is restored.", source: "Lao Tzu" },
+        { text: "Meditation is the tongue of the soul and the language of our spirit.", source: "Jeremy Taylor" },
+        { text: "Your inner knowing is your only true compass.", source: "Joy Page" },
+        { text: "The privilege of a lifetime is to become who you truly are.", source: "Carl Jung" },
+        { text: "Intuition is a spiritual faculty and does not explain, but simply points the way.", source: "Florence Scovel Shinn" },
+        { text: "The body benefits from movement, and the mind benefits from stillness.", source: "Sakyong Mipham" },
+        { text: "Go inside and listen to your body, because your body will never lie to you.", source: "Don Miguel Ruiz" },
+        { text: "Almost everything will work again if you unplug it for a few minutes, including you.", source: "Anne Lamott" },
+      ],
+      finance: [
+        { text: "It's not whether you're right or wrong that's important, but how much money you make when you're right and how much you lose when you're wrong.", source: "George Soros" },
+        { text: "The stock market is filled with individuals who know the price of everything, but the value of nothing.", source: "Philip Fisher" },
+        { text: "Time is more valuable than money. You can get more money, but you cannot get more time.", source: "Jim Rohn" },
+        { text: "Don't tell me what you value. Show me your budget, and I'll tell you what you value.", source: "Joe Biden" },
+        { text: "Patience is the key to wealth. Trees that grow slowly bear the best fruit.", source: "Molière" },
+        { text: "Know what you own, and know why you own it.", source: "Peter Lynch" },
+        { text: "In investing, what is comfortable is rarely profitable.", source: "Robert Arnott" },
+        { text: "The individual investor should act consistently as an investor and not as a speculator.", source: "Ben Graham" },
+        { text: "Watch, wait, and act only when the time is right. The market rewards patience.", source: "LunatIQ Team" },
+        { text: "It's not about timing the market, it's about time in the market.", source: "Ken Fisher" },
+        { text: "Compound interest is the eighth wonder of the world.", source: "Albert Einstein" },
+      ],
+      personal_growth: [
+        { text: "Knowing yourself is the beginning of all wisdom.", source: "Aristotle" },
+        { text: "The privilege of a lifetime is to become who you truly are.", source: "Carl Jung" },
+        { text: "He who looks outside, dreams. He who looks inside, awakens.", source: "Carl Jung" },
+        { text: "The journey into self-love and self-acceptance must begin with self-examination.", source: "Bryant H. McGill" },
+        { text: "Your task is not to seek for love, but merely to seek and find all the barriers within yourself that you have built against it.", source: "Rumi" },
+        { text: "Turn your wounds into wisdom.", source: "Oprah Winfrey" },
+        { text: "The unexamined life is not worth living.", source: "Socrates" },
+        { text: "There is a voice that doesn't use words. Listen.", source: "Rumi" },
+        { text: "What lies behind us and what lies before us are tiny matters compared to what lies within us.", source: "Ralph Waldo Emerson" },
+        { text: "Wisdom comes from experience. Experience is often a result of lack of wisdom.", source: "Terry Pratchett" },
+        { text: "The soul always knows what to do to heal itself. The challenge is to silence the mind.", source: "Caroline Myss" },
+      ],
+      decision_making: [
+        { text: "Listen to your intuition. It will tell you everything you need to know.", source: "Anthony J. D'Angelo" },
+        { text: "Intuition is seeing with the soul.", source: "Dean Koontz" },
+        { text: "The only real valuable thing is intuition.", source: "Albert Einstein" },
+        { text: "Trust yourself. You know more than you think you do.", source: "Dr. Benjamin Spock" },
+        { text: "Intuition will tell the thinking mind where to look next.", source: "Jonas Salk" },
+        { text: "Your time is limited, so don't waste it living someone else's life.", source: "Steve Jobs" },
+        { text: "The more you trust your intuition, the more empowered you become.", source: "LunatIQ Team" },
+        { text: "Sometimes the heart sees what is invisible to the eye.", source: "H. Jackson Brown Jr." },
+        { text: "Follow your instincts. That's where true wisdom manifests itself.", source: "Oprah Winfrey" },
+        { text: "Doubt everything. Find your own light.", source: "Buddha" },
+        { text: "The answers you seek never come when the mind is busy, they come when the mind is still.", source: "LunatIQ Team" },
+      ],
+      shadow_work: [
+        { text: "Everything that irritates us about others can lead us to an understanding of ourselves.", source: "Carl Jung" },
+        { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+        { text: "One does not become enlightened by imagining figures of light, but by making the darkness conscious.", source: "Carl Jung" },
+        { text: "Until you make the unconscious conscious, it will direct your life and you will call it fate.", source: "Carl Jung" },
+        { text: "Your visions will become clear only when you can look into your own heart. Who looks outside, dreams; who looks inside, awakes.", source: "Carl Jung" },
+        { text: "We can easily forgive a child who is afraid of the dark; the real tragedy of life is when men are afraid of the light.", source: "Plato" },
+        { text: "The deeper that sorrow carves into your being, the more joy you can contain.", source: "Kahlil Gibran" },
+        { text: "What you seek is seeking you.", source: "Rumi" },
+        { text: "Your sacred space is where you can find yourself again and again.", source: "Joseph Campbell" },
+        { text: "We carry inside us the wonders we seek outside us.", source: "Rumi" },
+        { text: "The wound is the place where the Light enters you.", source: "Rumi" },
+      ]
+    },
+    reversed: {
+      general: [
+        { text: "My people are destroyed for lack of knowledge.", source: "Hosea 4:6 (Bible)" },
+        { text: "Secrets, secrets are no fun. Secrets, secrets hurt someone.", source: "LunatIQ Team" },
+        { text: "What you don't know can hurt you.", source: "LunatIQ Team" },
+        { text: "Ignoring your intuition is expensive.", source: "LunatIQ Team" },
+        { text: "Silence isn't always golden—sometimes it's just yellow.", source: "LunatIQ Team" },
+        { text: "You can't heal what you don't reveal.", source: "LunatIQ Team" },
+        { text: "The thing you're avoiding is the thing you need to face.", source: "LunatIQ Team" },
+        { text: "Not everything that is faced can be changed, but nothing can be changed until it is faced.", source: "James Baldwin" },
+        { text: "We are only as sick as our secrets.", source: "LunatIQ Team" },
+        { text: "Three things cannot long be hidden: the sun, the moon, and the truth.", source: "Buddha" },
+      ],
+      career: [
+        { text: "Pride goes before destruction, and a haughty spirit before a fall.", source: "Proverbs 16:18 (Bible)" },
+        { text: "It ain't what you don't know that gets you into trouble. It's what you know for sure that just ain't so.", source: "Mark Twain" },
+        { text: "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge.", source: "Stephen Hawking" },
+        { text: "A closed mind is a dying mind.", source: "Edna Ferber" },
+        { text: "In the land of the blind, the one-eyed man is king.", source: "Desiderius Erasmus" },
+        { text: "You don't know what you don't know.", source: "LunatIQ Team" },
+        { text: "Willful blindness is refusing to know what could be known.", source: "Margaret Heffernan" },
+        { text: "Nothing is more dangerous than an idea when it is the only one you have.", source: "Émile Chartier" },
+        { text: "The problem is not that there are problems. The problem is expecting otherwise.", source: "Theodore Rubin" },
+        { text: "When the student is ready, the teacher will appear. When the student is not ready, the lessons repeat.", source: "LunatIQ Team" },
+      ],
+      wellness: [
+        { text: "The body keeps the score.", source: "Bessel van der Kolk" },
+        { text: "You can't heal in the same environment where you got sick.", source: "LunatIQ Team" },
+        { text: "Denial is not just a river in Egypt.", source: "Mark Twain" },
+        { text: "Your body whispers before it screams.", source: "LunatIQ Team" },
+        { text: "Suppression leads to depression. Expression leads to joy.", source: "LunatIQ Team" },
+        { text: "Unexpressed emotions will never die. They are buried alive and will come forth later in uglier ways.", source: "Sigmund Freud" },
+        { text: "The mind is a wonderful servant, but a terrible master.", source: "Robin Sharma" },
+        { text: "Those who do not move, do not notice their chains.", source: "Rosa Luxemburg" },
+        { text: "A man too busy to take care of his health is like a mechanic too busy to take care of his tools.", source: "Spanish Proverb" },
+        { text: "Pain is inevitable. Suffering is optional.", source: "Haruki Murakami" },
+      ],
+      finance: [
+        { text: "It's not what you earn, it's what you learn.", source: "Warren Buffett" },
+        { text: "The most expensive thing in the world is trust. It can take years to earn and just a matter of seconds to lose.", source: "LunatIQ Team" },
+        { text: "Never test the depth of the water with both feet.", source: "Warren Buffett" },
+        { text: "In God we trust. All others must bring data.", source: "W. Edwards Deming" },
+        { text: "Price is what you pay. Value is what you get.", source: "Warren Buffett" },
+        { text: "Don't look for the needle in the haystack. Just buy the haystack.", source: "John Bogle" },
+        { text: "The four most dangerous words in investing are: 'this time it's different.'", source: "Sir John Templeton" },
+        { text: "Ignorance of the law excuses no one.", source: "LunatIQ Team" },
+        { text: "What you don't know can hurt your portfolio.", source: "LunatIQ Team" },
+        { text: "The greatest trick the devil ever pulled was convincing the world he didn't exist.", source: "LunatIQ Team" },
+      ],
+      personal_growth: [
+        { text: "He who knows, does not speak. He who speaks, does not know.", source: "Lao Tzu" },
+        { text: "Ignorance is bliss only until reality hits.", source: "LunatIQ Team" },
+        { text: "We don't see things as they are, we see them as we are.", source: "Anaïs Nin" },
+        { text: "The eye sees only what the mind is prepared to comprehend.", source: "Robertson Davies" },
+        { text: "It is the mark of an educated mind to be able to entertain a thought without accepting it.", source: "Aristotle" },
+        { text: "Your assumptions are your windows on the world. Scrub them off every once in a while, or the light won't come in.", source: "Isaac Asimov" },
+        { text: "The hardest thing to see is what is in front of your eyes.", source: "Johann Wolfgang von Goethe" },
+        { text: "We are more often treacherous through weakness than through calculation.", source: "François de La Rochefoucauld" },
+        { text: "People don't want to hear the truth because they don't want their illusions destroyed.", source: "Friedrich Nietzsche" },
+        { text: "Self-deception is the easiest deception.", source: "LunatIQ Team" },
+      ],
+      decision_making: [
+        { text: "Not to know is bad; not to wish to know is worse.", source: "African Proverb" },
+        { text: "In the absence of data, we will always make up stories.", source: "Brené Brown" },
+        { text: "The only thing more expensive than education is ignorance.", source: "Benjamin Franklin" },
+        { text: "You can't make decisions based on fear and the possibility of what might happen.", source: "Michelle Obama" },
+        { text: "A wise man makes his own decisions; an ignorant man follows public opinion.", source: "Chinese Proverb" },
+        { text: "Indecision is often worse than wrong action.", source: "Henry Ford" },
+        { text: "The worst decision is indecision.", source: "LunatIQ Team" },
+        { text: "Delay is the deadliest form of denial.", source: "C. Northcote Parkinson" },
+        { text: "Sometimes we make decisions because it seems to be the only path visible at the moment.", source: "LunatIQ Team" },
+        { text: "You don't need more information. You need to act on what you already know.", source: "LunatIQ Team" },
+      ],
+      shadow_work: [
+        { text: "What you resist persists.", source: "Carl Jung" },
+        { text: "The first principle is that you must not fool yourself—and you are the easiest person to fool.", source: "Richard Feynman" },
+        { text: "People will do anything, no matter how absurd, to avoid facing their own souls.", source: "Carl Jung" },
+        { text: "The truth will set you free, but first it will piss you off.", source: "Gloria Steinem" },
+        { text: "Your wound is probably not your fault, but your healing is your responsibility.", source: "LunatIQ Team" },
+        { text: "We can't heal what we refuse to feel.", source: "LunatIQ Team" },
+        { text: "The thing you avoid becomes your prison.", source: "LunatIQ Team" },
+        { text: "Denial is the worst addiction. Because with it, the person doesn't think they have a problem.", source: "LunatIQ Team" },
+        { text: "What you don't know about yourself will hurt you.", source: "LunatIQ Team" },
+        { text: "The shadow is where the gold is buried.", source: "Robert Bly" },
+      ]
+    }
+  },
+
+  3: { // The Empress
+    name: 'The Empress',
+    upright: [
+      { text: "I praise you, for I am fearfully and wonderfully made.", source: "Psalm 139:14 (Bible)" },
+      { text: "She is clothed with strength and dignity, and she laughs without fear of the future.", source: "Proverbs 31:25 (Bible)" },
+      { text: "Green witches know: you don't need a fancy altar. The earth IS the altar.", source: "Earth Magic" },
+      { text: "Nature does not hurry, yet everything is accomplished.", source: "Lao Tzu" },
+      { text: "The earth laughs in flowers.", source: "Ralph Waldo Emerson" },
+      { text: "Plant seeds with intention. Water them with belief. Harvest with gratitude. That's the whole spell.", source: "Garden Witch" },
+      { text: "She was a wildflower in a world of roses, and that was her power.", source: "Atticus" },
+      { text: "You are not a drop in the ocean. You are the entire ocean in a drop.", source: "Rumi" },
+      { text: "Luxury is in each detail.", source: "Hubert de Givenchy" },
+      { text: "Kitchen witches, garden witches, hedge witches—we all know the same secret: magic is everywhere when you pay attention.", source: "Practical Witchcraft" },
+      { text: "She remembered who she was and the game changed.", source: "Lalah Delia" },
+      { text: "The future belongs to those who believe in the beauty of their dreams.", source: "Eleanor Roosevelt" },
+      { text: "Let everything happen to you: beauty and terror. Just keep going. No feeling is final.", source: "Rainer Maria Rilke" },
+    ],
+    reversed: [
+      { text: "Man cannot live on bread alone.", source: "Matthew 4:4 (Bible)" },
+      { text: "You can't pour from an empty cup.", source: "Self-Care Wisdom" },
+      { text: "Neglecting yourself while caring for everyone else isn't noble—it's martyr syndrome.", source: "LunatIQ Team" },
+      { text: "Creative block is usually fear dressed up as 'not the right time.'", source: "LunatIQ Team" },
+      { text: "You're not selfish for having boundaries. You're just not a doormat.", source: "Self-Respect" },
+      { text: "Mother Teresa you're not. And that's okay.", source: "Permission to Rest" },
+      { text: "Burnout is what happens when you try to avoid being human for too long.", source: "LunatIQ Team" },
+      { text: "You can't nurture others if you're running on fumes.", source: "LunatIQ Team" },
+      { text: "Rest is not a reward. It's a requirement.", source: "Wellness Reality" },
+      { text: "The garden dies when the gardener forgets to water it.", source: "Self-Neglect Metaphor" },
+    ]
+  },
+
+  4: { // The Emperor
+    name: 'The Emperor',
+    upright: [
+      { text: "This is Sparta!", source: "300" },
+      { text: "Tonight we dine in hell!", source: "300" },
+      { text: "Give respect and honor to all to whom it is due.", source: "Romans 13:7 (Bible)" },
+      { text: "The buck stops here.", source: "Harry S. Truman" },
+      { text: "I never saw a wild thing sorry for itself.", source: "D.H. Lawrence" },
+      { text: "A leader is one who knows the way, goes the way, and shows the way.", source: "John C. Maxwell" },
+      { text: "In this world, you're either the butcher or the cattle.", source: "Mad Max" },
+      { text: "Discipline is choosing between what you want now and what you want most.", source: "Abraham Lincoln" },
+      { text: "Structure creates freedom.", source: "Jocko Willink" },
+      { text: "You will never have a greater or lesser dominion than that over yourself.", source: "Leonardo da Vinci" },
+      { text: "The price of greatness is responsibility.", source: "Winston Churchill" },
+      { text: "Power is not given to you. You have to take it.", source: "Beyoncé" },
+    ],
+    reversed: [
+      { text: "Absolute power corrupts absolutely.", source: "Lord Acton" },
+      { text: "Any man who must say 'I am the king' is no true king.", source: "Game of Thrones" },
+      { text: "Tyranny is the deliberate removal of nuance.", source: "Albert Maysles" },
+      { text: "Control is an illusion. Influence is real.", source: "Leadership Wisdom" },
+      { text: "You can't build an empire on a cracked foundation.", source: "Construction Metaphor" },
+      { text: "The emperor has no clothes.", source: "Hans Christian Andersen" },
+      { text: "Fear is not respect. Compliance is not loyalty.", source: "LunatIQ Team" },
+      { text: "A title doesn't make you a leader. Your actions do.", source: "LunatIQ Team" },
+      { text: "Micromanaging is a symptom of distrust, and distrust is a symptom of incompetence.", source: "Management Truth" },
+      { text: "The only thing necessary for the triumph of evil is for good men to do nothing.", source: "Edmund Burke" },
+    ]
+  },
+
+  5: { // The Hierophant
+    name: 'The Hierophant',
+    upright: [
+      { text: "Iron sharpens iron, and one man sharpens another.", source: "Proverbs 27:17 (Bible)" },
+      { text: "When the student is ready, the teacher will appear.", source: "Buddhist Proverb" },
+      { text: "Tradition is not the worship of ashes, but the preservation of fire.", source: "Gustav Mahler" },
+      { text: "We stand on the shoulders of giants.", source: "Isaac Newton" },
+      { text: "The teacher who is indeed wise does not bid you to enter the house of his wisdom but rather leads you to the threshold of your mind.", source: "Kahlil Gibran" },
+      { text: "Education is the most powerful weapon which you can use to change the world.", source: "Nelson Mandela" },
+      { text: "Real knowledge is to know the extent of one's ignorance.", source: "Confucius" },
+      { text: "In learning you will teach, and in teaching you will learn.", source: "Phil Collins" },
+      { text: "The beautiful thing about learning is that no one can take it away from you.", source: "B.B. King" },
+      { text: "Study the past if you would define the future.", source: "Confucius" },
+      { text: "Wisdom is not a product of schooling but of the lifelong attempt to acquire it.", source: "Albert Einstein" },
+    ],
+    reversed: [
+      { text: "Beware of false prophets, who come to you in sheep's clothing.", source: "Matthew 7:15 (Bible)" },
+      { text: "The institution is sound, but the people are corrupt.", source: "Systemic Failure" },
+      { text: "Tradition for tradition's sake is just peer pressure from dead people.", source: "Modern Wisdom" },
+      { text: "Don't follow the crowd—they're probably lost too.", source: "LunatIQ Team" },
+      { text: "Blind faith is dangerous. Ask questions.", source: "LunatIQ Team" },
+      { text: "Just because everyone's doing it doesn't mean it's right.", source: "Moral Courage" },
+      { text: "The system is rigged, but you don't have to play by their rules.", source: "Rebellion Energy" },
+      { text: "Question authority. Think for yourself.", source: "Timothy Leary" },
+      { text: "Conformity is the jailer of freedom and the enemy of growth.", source: "JFK" },
+      { text: "We've always done it this way' is the enemy of progress.", source: "Innovation Truth" },
+    ]
+  },
+
+  6: { // The Lovers
+    name: 'The Lovers',
+    upright: [
+      { text: "Love one another as I have loved you.", source: "John 13:34 (Bible)" },
+      { text: "He fell first. He fell harder. And when she finally fell? They both burned.", source: "LunatIQ Team" },
+      { text: "Surrender is not weakness when you choose who holds the leash.", source: "Power Exchange Philosophy" },
+      { text: "There is beauty in yielding. There is power in submission chosen freely.", source: "LunatIQ Team" },
+      { text: "To love and be loved is to feel the sun from both sides.", source: "David Viscott" },
+      { text: "I am my beloved's and my beloved is mine.", source: "Song of Solomon 6:3 (Bible)" },
+      { text: "The bond snapped into place and suddenly breathing without them felt impossible.", source: "Fated Mates Energy" },
+      { text: "Mine. That's what his eyes said. That's what her soul answered.", source: "LunatIQ Team" },
+      { text: "When you realize you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.", source: "When Harry Met Sally" },
+      { text: "You should be kissed, and often, by someone who knows how.", source: "Gone with the Wind" },
+      { text: "Love is or it ain't. Thin love ain't love at all.", source: "Toni Morrison" },
+      { text: "I choose you. And I'll choose you over and over. Without pause, without doubt, in a heartbeat. I'll keep choosing you.", source: "Modern Vows" },
+      { text: "The kind of love that ruins you for anyone else. That's the only kind worth having.", source: "LunatIQ Team" },
+      { text: "He looked at her like she was the answer to every question he'd ever had.", source: "Devotion Energy" },
+      { text: "Two souls recognizing each other across lifetimes: 'Oh. It's you. It's always been you.'", source: "Soul Recognition" },
+    ],
+    reversed: [
+      { text: "Do not be unequally yoked with unbelievers.", source: "2 Corinthians 6:14 (Bible)" },
+      { text: "We accept the love we think we deserve.", source: "Perks of Being a Wallflower" },
+      { text: "Loving someone who doesn't love you back is like hugging a cactus. The tighter you hold on, the more it hurts.", source: "Unrequited Love Truth" },
+      { text: "You can't save people, you can only love them.", source: "Anaïs Nin" },
+      { text: "The worst distance between two people is misunderstanding.", source: "Communication Wisdom" },
+      { text: "Staying in a relationship for fear of being alone is emotional bankruptcy.", source: "Self-Worth Philosophy" },
+      { text: "Red flags look like flags when you're wearing rose-colored glasses.", source: "BoJack Horseman Wisdom" },
+      { text: "Love without respect is dangerous. Respect without love is cold. You need both.", source: "Relationship Truth" },
+      { text: "Sometimes the love isn't wrong, the timing is.", source: "Modern Heartbreak" },
+      { text: "You deserve someone who chooses you every single day, not just when it's convenient.", source: "Standards Reminder" },
+      { text: "Don't set yourself on fire to keep someone else warm.", source: "LunatIQ Team" },
+      { text: "Chemistry without compatibility is a recipe for disaster.", source: "LunatIQ Team" },
+    ]
+  },
+
+  7: { // The Chariot
+    name: 'The Chariot',
+    upright: [
+      { text: "I must not fear. Fear is the mind-killer.", source: "Dune" },
+      { text: "What matters most is how well you walk through the fire.", source: "Charles Bukowski" },
+      { text: "Witness me!", source: "Mad Max: Fury Road" },
+      { text: "It is not the mountain we conquer, but ourselves.", source: "Edmund Hillary" },
+      { text: "The only way out is through.", source: "Robert Frost" },
+      { text: "Do not pray for easy lives. Pray to be stronger men.", source: "JFK" },
+      { text: "Victory has a hundred fathers, but defeat is an orphan.", source: "JFK" },
+      { text: "I can do this all day.", source: "Captain America" },
+      { text: "The impediment to action advances action. What stands in the way becomes the way.", source: "Marcus Aurelius" },
+      { text: "If you're going through hell, keep going.", source: "Winston Churchill" },
+      { text: "Control what you can. Confront what you cannot.", source: "Stoic Wisdom" },
+    ],
+    reversed: [
+      { text: "Don't mistake motion for progress.", source: "Denzel Washington" },
+      { text: "You can't drive forward while looking in the rearview mirror.", source: "Life Coach Truth" },
+      { text: "Control is an illusion. Flow is reality.", source: "LunatIQ Team" },
+      { text: "Forcing it is not manifesting it.", source: "Spiritual Reality" },
+      { text: "Sometimes the bravest thing you can do is stop.", source: "Rest Philosophy" },
+      { text: "You're fighting the wrong battle.", source: "Strategic Truth" },
+      { text: "Aggression without direction is just violence.", source: "LunatIQ Team" },
+      { text: "The hardest battles are the ones we fight with ourselves.", source: "Internal Conflict" },
+      { text: "Let go or be dragged.", source: "Zen Proverb" },
+      { text: "You can't win a race you're not supposed to be running.", source: "Purpose Alignment" },
+    ]
+  },
+
+  8: { // Strength
+    name: 'Strength',
+    upright: [
+      { text: "There were giants in the earth in those days; and also after that, when the sons of God came in unto the daughters of men.", source: "Genesis 6:4 (Nephilim, Bible)" },
+      { text: "I am not afraid of storms, for I am learning how to sail my ship.", source: "Louisa May Alcott" },
+      { text: "She's whiskey in a teacup—looks sweet, burns going down, leaves you wanting more.", source: "LunatIQ Team" },
+      { text: "The lion and the calf shall lie down together but the calf won't get much sleep.", source: "Woody Allen" },
+      { text: "I am no bird; and no net ensnares me.", source: "Jane Eyre" },
+      { text: "Soft heart. Sharp edges. Dangerous combination.", source: "Modern Heroine" },
+      { text: "The most common way people give up their power is by thinking they don't have any.", source: "Alice Walker" },
+      { text: "Do not mistake my kindness for weakness.", source: "Al Capone" },
+      { text: "She wore her scars like wings—proof she had survived the fall and learned to fly.", source: "Survivor Energy" },
+      { text: "Speak softly and carry a big stick.", source: "Theodore Roosevelt" },
+      { text: "True strength is keeping everything together when everyone expects you to fall apart.", source: "Resilience Truth" },
+      { text: "I have not failed. I've just found 10,000 ways that won't work.", source: "Thomas Edison" },
+    ],
+    reversed: [
+      { text: "You're not required to set yourself on fire to keep other people warm.", source: "Boundary Setting" },
+      { text: "Compassion fatigue is real. Rest is required.", source: "LunatIQ Team" },
+      { text: "Being the strong one doesn't mean you can't break.", source: "LunatIQ Team" },
+      { text: "Martyrdom is manipulation dressed as sacrifice.", source: "LunatIQ Team" },
+      { text: "You can't save everyone. And that's okay.", source: "Limits Acceptance" },
+      { text: "Sometimes being strong means asking for help.", source: "Vulnerability Courage" },
+      { text: "The weight you're carrying was never yours to bear.", source: "Release Permission" },
+      { text: "Tired of being the strong friend? Say so.", source: "Communication Reality" },
+      { text: "You're allowed to be both a masterpiece and a work in progress.", source: "Self-Compassion" },
+    ]
+  },
+
+  9: { // The Hermit
+    name: 'The Hermit',
+    upright: [
+      { text: "For in much wisdom is much grief, and he that increaseth knowledge increaseth sorrow.", source: "Ecclesiastes 1:18 (Bible)" },
+      { text: "The solitary witch learns to trust their own counsel. No coven can give you what silence teaches.", source: "Solitary Practice" },
+      { text: "Knowing yourself is the beginning of all wisdom.", source: "Aristotle" },
+      { text: "I went to the woods because I wished to live deliberately.", source: "Thoreau" },
+      { text: "The warlock in the tower, the witch in the woods—we seek the same thing: truth without witnesses.", source: "Hermit Witch" },
+      { text: "In solitude, the mind gains strength and learns to lean upon itself.", source: "Laurence Sterne" },
+      { text: "Silence is not empty. It is full of answers.", source: "Meditation Wisdom" },
+      { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+      { text: "Sometimes the strongest magic happens when you close the grimoire and just listen.", source: "Intuitive Witchcraft" },
+      { text: "Solitude is where I place my chaos to rest and awaken my inner peace.", source: "Nikki Rowe" },
+      { text: "Turn off your mind, relax, and float downstream.", source: "The Beatles" },
+      { text: "Moksha comes through knowing thyself completely.", source: "Vedic Wisdom" },
+      { text: "The quieter you become, the more you can hear.", source: "Ram Dass" },
+    ],
+    reversed: [
+      { text: "Isolation is not the same as introspection.", source: "Mental Health Truth" },
+      { text: "You can't find yourself in a cave you refuse to leave.", source: "Stuck Pattern" },
+      { text: "Hermit mode has an expiration date. Check yours.", source: "Balance Reality" },
+      { text: "Hiding from the world is not spiritual—it's avoidance.", source: "Spiritual Bypass" },
+      { text: "Loneliness and solitude are not the same thing.", source: "Distinction Clarity" },
+      { text: "You've been 'processing' for months. Time to participate.", source: "LunatIQ Team" },
+      { text: "Connection is part of wholeness, not a distraction from it.", source: "LunatIQ Team" },
+      { text: "The guru on the mountaintop still has to come down eventually.", source: "LunatIQ Team" },
+      { text: "Withdrawal is a symptom, not a solution.", source: "Depression Awareness" },
+    ]
+  },
+
+  10: { // Wheel of Fortune
+    name: 'Wheel of Fortune',
+    upright: [
+      { text: "To everything there is a season, and a time to every purpose under heaven.", source: "Ecclesiastes 3:1 (Bible)" },
+      { text: "What has been will be again, what has been done will be done again; there is nothing new under the sun.", source: "Ecclesiastes 1:9 (Bible)" },
+      { text: "This too shall pass.", source: "Persian Proverb" },
+      { text: "The wheel weaves as the wheel wills.", source: "Wheel of Time" },
+      { text: "Luck is what happens when preparation meets opportunity.", source: "Seneca" },
+      { text: "Fortune favors the prepared mind.", source: "Louis Pasteur" },
+      { text: "The universe is under no obligation to make sense to you.", source: "Neil deGrasse Tyson" },
+      { text: "What goes around comes around. Karma's only a bitch if you are.", source: "Cosmic Justice" },
+      { text: "Fate whispers to the warrior, 'You cannot withstand the storm.' The warrior whispers back, 'I am the storm.'", source: "Warrior Philosophy" },
+      { text: "Accept what is, let go of what was, have faith in what will be.", source: "Sonia Ricotti" },
+      { text: "Life is like riding a bicycle. To keep your balance, you must keep moving.", source: "Albert Einstein" },
+      { text: "The only constant in life is change.", source: "Heraclitus" },
+      { text: "When patterns are broken, new worlds emerge.", source: "Tuli Kupferberg" },
+    ],
+    reversed: [
+      { text: "Bad luck is just good luck in disguise, waiting for perspective.", source: "LunatIQ Team" },
+      { text: "If you don't like where the wheel is taking you, get off and build your own cart.", source: "Self-Determination" },
+      { text: "Resisting change is like holding your breath. You can do it, but not forever.", source: "Flow Reality" },
+      { text: "The wheel can't turn if you're standing in the spokes.", source: "Obstacle Metaphor" },
+      { text: "Sometimes you win, sometimes you learn.", source: "LunatIQ Team" },
+      { text: "Stuck in a cycle? The exit is where you entered.", source: "Pattern Break" },
+      { text: "You can't control the wind, but you can adjust your sails.", source: "Adaptation Truth" },
+      { text: "The wheel is turning, but you're not on it anymore.", source: "Left Behind Energy" },
+      { text: "Clinging to good fortune prevents new fortune from arriving.", source: "LunatIQ Team" },
+    ]
+  },
+
+  11: { // Justice
+    name: 'Justice',
+    upright: [
+      { text: "Justice will not be served until those who are unaffected are as outraged as those who are.", source: "Benjamin Franklin" },
+      { text: "The truth will set you free. But first, it will piss you off.", source: "Gloria Steinem" },
+      { text: "You reap what you sow.", source: "Galatians 6:7 (Bible)" },
+      { text: "The arc of the moral universe is long, but it bends toward justice.", source: "MLK Jr." },
+      { text: "An eye for an eye will make the whole world blind.", source: "Gandhi" },
+      { text: "Integrity is doing the right thing, even when no one is watching.", source: "C.S. Lewis" },
+      { text: "Injustice anywhere is a threat to justice everywhere.", source: "MLK Jr." },
+      { text: "The only thing necessary for the triumph of evil is for good men to do nothing.", source: "Edmund Burke" },
+      { text: "Truth is like the sun. You can shut it out for a time, but it ain't going away.", source: "Elvis Presley" },
+      { text: "Karma has no menu. You get served what you deserve.", source: "Cosmic Truth" },
+      { text: "The universe doesn't owe you fairness—it owes you accuracy.", source: "Consequences Reality" },
+    ],
+    reversed: [
+      { text: "The scales are rigged, but that doesn't mean you stop fighting.", source: "Resistance Energy" },
+      { text: "Sometimes the law is wrong. Sometimes the law is the injustice.", source: "Moral Courage" },
+      { text: "Being right doesn't always mean winning. And that's the hardest lesson.", source: "LunatIQ Team" },
+      { text: "You can't negotiate with reality. You can only accept it.", source: "Truth Surrender" },
+      { text: "Unforgiveness is like drinking poison and expecting the other person to die.", source: "Buddha" },
+      { text: "The truth you're avoiding is the one you most need to speak.", source: "Honesty Call" },
+      { text: "You're the judge, jury, and executioner in your own story. Choose wisely.", source: "LunatIQ Team" },
+      { text: "Imbalance is feedback. Listen to it.", source: "Course Correction" },
+      { text: "Justice delayed is justice denied.", source: "William Gladstone" },
+    ]
+  },
+
+  12: { // The Hanged Man
+    name: 'The Hanged Man',
+    upright: [
+      { text: "Turn on, tune in, drop out.", source: "Timothy Leary" },
+      { text: "Let go or be dragged.", source: "Zen Proverb" },
+      { text: "Sometimes you have to lose yourself to find yourself.", source: "Spiritual Paradox" },
+      { text: "The wound is the place where the Light enters you.", source: "Rumi" },
+      { text: "In letting go, we receive.", source: "St. Francis of Assisi" },
+      { text: "Surrender is not giving up. It's giving over.", source: "Faith Distinction" },
+      { text: "What if I fall? Oh, but my darling, what if you fly?", source: "Erin Hanson" },
+      { text: "Not until we are lost do we begin to understand ourselves.", source: "Thoreau" },
+      { text: "The obstacle is the path.", source: "Zen Teaching" },
+      { text: "Sometimes the most productive thing you can do is relax.", source: "Mark Black" },
+      { text: "Moksha is release. Liberation comes through surrender, not struggle.", source: "Hindu Philosophy" },
+    ],
+    reversed: [
+      { text: "You're not hanging—you're stuck. There's a difference.", source: "LunatIQ Team" },
+      { text: "Martyrdom is not a personality trait.", source: "Boundary Reality" },
+      { text: "Suffering for suffering's sake is not spiritual growth.", source: "Pain Purpose" },
+      { text: "There's a difference between patience and paralysis.", source: "Action vs Waiting" },
+      { text: "Stop waiting for permission to save yourself.", source: "Self-Rescue" },
+      { text: "The universe doesn't reward self-sacrifice—it rewards self-actualization.", source: "Empowerment Truth" },
+      { text: "You've been 'letting go' for months. Maybe it's time to grab hold.", source: "LunatIQ Team" },
+      { text: "Surrender the outcome, not the effort.", source: "Balance Wisdom" },
+      { text: "Stagnation masquerading as contemplation is still stagnation.", source: "Movement Need" },
+    ]
+  },
+
+  13: { // Death
+    name: 'Death',
+    upright: [
+      { text: "Behold, I make all things new.", source: "Revelation 21:5 (Bible)" },
+      { text: "And I looked, and behold a pale horse: and his name that sat on him was Death.", source: "Revelation 6:8 (Bible)" },
+      { text: "Death witches don't fear the reaper. We work with him. Transformation requires a funeral first.", source: "LunatIQ Team" },
+      { text: "The old has passed away; behold, the new has come.", source: "2 Corinthians 5:17 (Bible)" },
+      { text: "Phoenix rising energy: died once, won't do it again, but absolutely will set fire to whatever tries to bury me.", source: "LunatIQ Team" },
+      { text: "Every new beginning comes from some other beginning's end.", source: "Seneca" },
+      { text: "The snake which cannot cast its skin has to die.", source: "Friedrich Nietzsche" },
+      { text: "Shed your skin. Burn the old self. The witch who emerges from the ashes is the real you.", source: "Transformation Witchcraft" },
+      { text: "What the caterpillar calls the end, the rest of the world calls a butterfly.", source: "Lao Tzu" },
+      { text: "You can't keep dancing with the devil and wonder why you're still in hell. At some point, you have to burn the whole ballroom down.", source: "LunatIQ Team" },
+      { text: "Sometimes good things fall apart so better things can fall together.", source: "Marilyn Monroe" },
+      { text: "The wound is where the light enters you.", source: "Rumi" },
+      { text: "You must be willing to give up the life you planned to have the life that's waiting for you.", source: "Joseph Campbell" },
+      { text: "For everything there is a season: a time to be born and a time to die.", source: "Ecclesiastes 3:2 (Bible)" },
+    ],
+    reversed: [
+      { text: "The people perish for lack of vision.", source: "Proverbs 29:18 (Bible)" },
+      { text: "Clinging to the past is why you can't reach the future.", source: "LunatIQ Team" },
+      { text: "You can't heal in the same environment that made you sick.", source: "LunatIQ Team" },
+      { text: "Resistance to change is insistence on pain.", source: "Growth Philosophy" },
+      { text: "The definition of insanity is doing the same thing over and over and expecting different results.", source: "Einstein (attributed)" },
+      { text: "You're not stuck. You're just comfortable with your suffering.", source: "Brutal Truth" },
+      { text: "Grief is love with nowhere to go—but you can't make a home in it forever.", source: "Mourning Wisdom" },
+      { text: "Holding on to anger is like drinking poison and expecting the other person to die.", source: "Buddha" },
+      { text: "You can't start the next chapter if you keep re-reading the last one.", source: "Life Coaching" },
+      { text: "Fear of change is what keeps most people stuck in mediocrity.", source: "LunatIQ Team" },
+      { text: "Some people die at 25 and aren't buried until 75.", source: "Benjamin Franklin" },
+    ]
+  },
+
+  14: { // Temperance
+    name: 'Temperance',
+    upright: [
+      { text: "Balance is not something you find, it's something you create.", source: "Jana Kingsford" },
+      { text: "The middle way is the best way.", source: "Buddha" },
+      { text: "In all things, balance.", source: "Ancient Principle" },
+      { text: "Moderation in all things, including moderation.", source: "Oscar Wilde" },
+      { text: "The cure for anything is salt water: sweat, tears, or the sea.", source: "Isak Dinesen" },
+      { text: "Water does not resist. Water flows.", source: "Margaret Atwood" },
+      { text: "Be like water making its way through cracks.", source: "Bruce Lee" },
+      { text: "Patience is not passive; on the contrary, it is active; it is concentrated strength.", source: "Edward G. Bulwer-Lytton" },
+      { text: "The goal is to dance lightly with life, not to be dragged through it.", source: "Flow Philosophy" },
+      { text: "Integration, not perfection.", source: "Modern Wellness" },
+      { text: "Alchemy is the art of transformation through balance.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You can't balance what's fundamentally broken.", source: "Truth Bomb" },
+      { text: "Moderation doesn't work when one side is poison.", source: "Boundary Reality" },
+      { text: "Sometimes the middle ground is just a slow death.", source: "Compromise Warning" },
+      { text: "You're not being balanced—you're being indecisive.", source: "LunatIQ Team" },
+      { text: "Trying to please everyone means disappointing yourself.", source: "People-Pleasing Truth" },
+      { text: "The scales are broken. Stop trying to fix them with wishful thinking.", source: "LunatIQ Team" },
+      { text: "Integration requires acknowledging the extremes first.", source: "Shadow Work" },
+      { text: "Balance is not neutrality. It's conscious choice.", source: "LunatIQ Team" },
+      { text: "You're watering yourself down to make others comfortable.", source: "Authenticity Call" },
+    ]
+  },
+
+  15: { // The Devil
+    name: 'The Devil',
+    upright: [
+      { text: "Get behind me, Satan!", source: "Matthew 16:23 (Bible)" },
+      { text: "Shadow work isn't 'love and light.' It's facing the parts of yourself that scare you and saying, 'You're mine too.'", source: "Shadow Witch" },
+      { text: "He was chaos and she was his only calm. And somehow, that felt like the most dangerous addiction of all.", source: "LunatIQ Team" },
+      { text: "Touch her and you won't have hands. Look at her wrong and you won't have eyes.", source: "LunatIQ Team" },
+      { text: "Dark magic isn't evil. It's just magic done in the dark. The warlock who denies his shadow is the most dangerous.", source: "LunatIQ Team" },
+      { text: "I don't want easy. I want the kind of complicated that ruins me for anyone else.", source: "LunatIQ Team" },
+      { text: "He wasn't a knight in shining armor. He was the dragon who learned to share his hoard.", source: "LunatIQ Team" },
+      { text: "The greatest trick the devil ever pulled was convincing the world he didn't exist.", source: "LunatIQ Team" },
+      { text: "We have met the enemy and he is us.", source: "Pogo" },
+      { text: "Some people are worth burning the world for. I just hadn't met mine yet.", source: "LunatIQ Team" },
+      { text: "Every witch has a devil on her shoulder. Mine just happens to give better advice than my angel.", source: "Shadow Integration" },
+      { text: "Evil is a point of view. God kills indiscriminately and so shall we.", source: "Anne Rice, Interview with the Vampire" },
+      { text: "The chains of habit are too weak to be felt until they are too strong to be broken.", source: "Samuel Johnson" },
+      { text: "Obsession dressed up as love still feels like devotion.", source: "LunatIQ Team" },
+      { text: "Hell is empty and all the devils are here.", source: "William Shakespeare" },
+    ],
+    reversed: [
+      { text: "Submit yourselves therefore to God. Resist the devil, and he will flee from you.", source: "James 4:7 (Bible)" },
+      { text: "The price of freedom is responsibility—and you're finally ready to pay it.", source: "LunatIQ Team" },
+      { text: "You taught the devil how to dance, now it's time to sit down.", source: "Recovery Energy" },
+      { text: "Breaking chains isn't dramatic—it's a thousand small choices to choose yourself.", source: "LunatIQ Team" },
+      { text: "Addiction ends when the pain of staying the same exceeds the pain of change.", source: "LunatIQ Team" },
+      { text: "The cage is open. If it were me, I'd run.", source: "Freedom Moment" },
+      { text: "You don't have to set yourself on fire to keep someone else warm.", source: "Codependency Recovery" },
+      { text: "Rock bottom isn't a place—it's a decision to stop digging.", source: "Turning Point" },
+      { text: "The first step is admitting you have a problem. The second is not going back to it.", source: "12-Step Wisdom" },
+      { text: "Freedom is what you do with what's been done to you.", source: "Jean-Paul Sartre" },
+      { text: "You've been loyal to your trauma long enough. Time to be loyal to your healing.", source: "Therapy Wisdom" },
+    ]
+  },
+
+  16: { // The Tower
+    name: 'The Tower',
+    upright: [
+      { text: "Every valley shall be exalted, and every mountain and hill shall be made low.", source: "Isaiah 40:4 (Bible)" },
+      { text: "She wasn't looking for a knight. She was looking for a sword.", source: "LunatIQ Team" },
+      { text: "Burn it all down. Salt the earth. Start over. Some foundations deserve to crumble.", source: "LunatIQ Team" },
+      { text: "Rock bottom became the solid foundation on which I rebuilt my life.", source: "J.K. Rowling" },
+      { text: "The old version of me? Dead. This one bites back.", source: "LunatIQ Team" },
+      { text: "Sometimes God allows what He hates to accomplish what He loves.", source: "Joni Eareckson Tada" },
+      { text: "In the midst of chaos, there is also opportunity.", source: "Sun Tzu" },
+      { text: "What doesn't kill you makes you stronger. Unless it should have killed you. Then you're just traumatized.", source: "LunatIQ Team" },
+      { text: "The tower had to fall. It was built on a lie.", source: "Truth Revelation" },
+      { text: "Everything I ever let go of has claw marks on it.", source: "David Foster Wallace" },
+      { text: "When one door closes, another opens. But goddamn, those hallways are a bitch.", source: "Transition Reality" },
+      { text: "She was a phoenix, long before she knew what that meant.", source: "Survivor Energy" },
+      { text: "I am the monster you created.", source: "Frankenstein Energy" },
+    ],
+    reversed: [
+      { text: "For I know the plans I have for you, plans to prosper you and not to harm you.", source: "Jeremiah 29:11 (Bible)" },
+      { text: "You can't rebuild on a cracked foundation and expect it to hold.", source: "Construction Wisdom" },
+      { text: "Avoiding the collapse doesn't make the building safe.", source: "LunatIQ Team" },
+      { text: "The tower is coming down whether you like it or not. Your choice is whether to get out of the way.", source: "Inevitability Wisdom" },
+      { text: "Clinging to the wreckage won't save you—it'll drown you.", source: "LunatIQ Team" },
+      { text: "The warning bells were ringing. You just turned up the music.", source: "Ignored Red Flags" },
+      { text: "Resistance to change is why you keep getting the same lessons.", source: "Growth Block" },
+      { text: "You can't prevent the storm, but you can choose not to build your house on sand.", source: "Matthew 7:26 Wisdom" },
+      { text: "Fear of falling kept you trapped in a burning building.", source: "LunatIQ Team" },
+      { text: "The catastrophe you're avoiding is less painful than the life you're choosing.", source: "Comfort Zone Truth" },
+    ]
+  },
+
+  17: { // The Star
+    name: 'The Star',
+    upright: [
+      { text: "Hope is the thing with feathers that perches in the soul.", source: "Emily Dickinson" },
+      { text: "When you wish upon a star, your dreams come true.", source: "Pinocchio" },
+      { text: "We are all in the gutter, but some of us are looking at the stars.", source: "Oscar Wilde" },
+      { text: "Keep your eyes on the stars and your feet on the ground.", source: "Theodore Roosevelt" },
+      { text: "Shoot for the moon. Even if you miss, you'll land among the stars.", source: "Norman Vincent Peale" },
+      { text: "The nitrogen in our DNA, the calcium in our teeth, the iron in our blood—we are all made of star stuff.", source: "Carl Sagan" },
+      { text: "It is often in the darkest skies that we see the brightest stars.", source: "Richard Evans" },
+      { text: "You are not a drop in the ocean. You are the entire ocean in a drop.", source: "Rumi" },
+      { text: "The universe is not outside of you. Look inside yourself; everything that you want, you already are.", source: "Rumi" },
+      { text: "Every atom in your body came from a star that exploded. You are stardust.", source: "Lawrence Krauss" },
+      { text: "Moksha is remembering you were never separate from the divine. You ARE the light.", source: "Spiritual Liberation" },
+    ],
+    reversed: [
+      { text: "You can't heal in the same environment that made you sick.", source: "LunatIQ Team" },
+      { text: "Hope without action is just wishing.", source: "LunatIQ Team" },
+      { text: "Stargazing is beautiful, but you still have to walk the earth.", source: "Grounding Truth" },
+      { text: "Your faith has been tested. Don't abandon it now.", source: "Perseverance Call" },
+      { text: "Disillusionment is the death of false hope and the birth of wisdom.", source: "LunatIQ Team" },
+      { text: "You're looking for miracles while ignoring the magic you already have.", source: "Gratitude Reminder" },
+      { text: "The stars are still there. You just stopped looking up.", source: "Hope Recovery" },
+      { text: "Cynicism is just disappointed idealism.", source: "LunatIQ Team" },
+      { text: "Don't let bitterness dim your light.", source: "LunatIQ Team" },
+    ]
+  },
+
+  18: { // The Moon
+    name: 'The Moon',
+    upright: [
+      { text: "She was moon-touched and shadow-kissed, wild in ways that terrified men who needed women tame.", source: "LunatIQ Team" },
+      { text: "We meet in the woods at midnight. We draw down the moon. We remember what they tried to make us forget.", source: "Coven Energy" },
+      { text: "The moon is a loyal companion. It never leaves.", source: "Tahereh Mafi" },
+      { text: "Trust your intuition. It's just your ancestors whispering warnings from beyond the veil.", source: "Mystical Wisdom" },
+      { text: "Every witch has a shadow self. Mine just happens to be better at magic than I am.", source: "Shadow Witch" },
+      { text: "One does not become enlightened by imagining figures of light, but by making the darkness conscious.", source: "Carl Jung" },
+      { text: "Scry the water under moonlight. The answers come when you stop asking with words.", source: "Divination Practice" },
+      { text: "The moon doesn't ask permission to pull the tides. Neither should you.", source: "Lunar Energy" },
+      { text: "Wolves and witches understand: the moon sees everything. Hide nothing.", source: "Moon Magic" },
+      { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+      { text: "What we don't bring into the light, controls us from the dark.", source: "Shadow Work Truth" },
+      { text: "She had that unhinged look in her eye that said 'I know things you couldn't handle knowing.'", source: "LunatIQ Team" },
+      { text: "Witchcraft is moon phases and herb bundles, yes. But mostly it's trusting yourself when everyone says you're crazy.", source: "Modern Witch Wisdom" },
+    ],
+    reversed: [
+      { text: "Illusions are necessary to the soul.", source: "LunatIQ Team" },
+      { text: "Not everything that appears in the dark is dangerous. Sometimes it's just truth without the pretty filter.", source: "Reality Unveiling" },
+      { text: "Fear and intuition are not the same thing. Learn the difference.", source: "LunatIQ Team" },
+      { text: "Your anxiety is not prophecy.", source: "Mental Health Truth" },
+      { text: "The monsters under the bed are just reflections you haven't integrated yet.", source: "Shadow Integration" },
+      { text: "Stop romanticizing your pain. It's keeping you stuck.", source: "Healing Call" },
+      { text: "Confusion is a defense mechanism. You know the truth—you just don't like it.", source: "LunatIQ Team" },
+      { text: "The moon shows you what's there. Don't blame her for what you see.", source: "Messenger Truth" },
+      { text: "Paranoia and intuition feel the same until you check the facts.", source: "Grounding Wisdom" },
+    ]
+  },
+
+  19: { // The Sun
+    name: 'The Sun',
+    upright: [
+      { text: "Joy is the simplest form of gratitude.", source: "Karl Barth" },
+      { text: "There is a crack in everything. That's how the light gets in.", source: "Leonard Cohen" },
+      { text: "Keep your face always toward the sunshine—and shadows will fall behind you.", source: "Walt Whitman" },
+      { text: "The sun does not abandon the moon to darkness.", source: "Brian A. McBride" },
+      { text: "What sunshine is to flowers, smiles are to humanity.", source: "Joseph Addison" },
+      { text: "The sun himself is weak when he first rises, and gathers strength and courage as the day gets on.", source: "Charles Dickens" },
+      { text: "Turn your face to the sun and the shadows fall behind you.", source: "Maori Proverb" },
+      { text: "Some people are sunshine, some people are lightning, some people are hurricanes.", source: "Weather Energy" },
+      { text: "Live in the sunshine, swim the sea, drink the wild air.", source: "Ralph Waldo Emerson" },
+      { text: "After darkness comes light. After winter comes spring. This is law.", source: "LunatIQ Team" },
+      { text: "You are allowed to be both a masterpiece and a work in progress simultaneously.", source: "Sophia Bush" },
+    ],
+    reversed: [
+      { text: "Too much of a good thing is still too much.", source: "Excess Warning" },
+      { text: "Even the sun sets in paradise.", source: "LunatIQ Team" },
+      { text: "Toxic positivity is just emotional bypassing with better PR.", source: "Authentic Feeling" },
+      { text: "You can't force joy. And pretending doesn't count.", source: "Genuine Emotion" },
+      { text: "Behind every perfect Instagram post is someone struggling with something.", source: "LunatIQ Team" },
+      { text: "Sunshine can burn too. Moderation in all things.", source: "Balance Truth" },
+      { text: "Your light doesn't need to be on all the time. Rest is productive.", source: "Permission to Dim" },
+      { text: "Hiding behind optimism won't solve what needs to be addressed.", source: "LunatIQ Team" },
+      { text: "The sun will rise tomorrow whether you believe it or not.", source: "Faith vs Fear" },
+    ]
+  },
+
+  20: { // Judgement
+    name: 'Judgement',
+    upright: [
+      { text: "Rise from the ashes.", source: "Phoenix Wisdom" },
+      { text: "Then I saw a new heaven and a new earth, for the first heaven and the first earth had passed away.", source: "Revelation 21:1 (Bible)" },
+      { text: "The time is fulfilled, and the kingdom of God is at hand; repent and believe in the gospel.", source: "Mark 1:15 (Bible)" },
+      { text: "We shall not cease from exploration, and the end of all our exploring will be to arrive where we started and know the place for the first time.", source: "T.S. Eliot" },
+      { text: "Until we have seen someone's darkness, we don't really know who they are. Until we have forgiven someone's darkness, we don't really know what love is.", source: "Marianne Williamson" },
+      { text: "There is no coming to consciousness without pain.", source: "Carl Jung" },
+      { text: "The wound is where the light enters you.", source: "Rumi" },
+      { text: "Resurrection is not just for Easter. It's for every moment you choose to rise again.", source: "Renewal Philosophy" },
+      { text: "You are not defined by your past. You are prepared by it.", source: "Joel Osteen" },
+      { text: "The final stage before liberation: the reckoning. Moksha demands honesty.", source: "Spiritual Accounting" },
+      { text: "Become who you are.", source: "Nietzsche" },
+    ],
+    reversed: [
+      { text: "You can't have a spiritual awakening in the same consciousness that put you to sleep.", source: "Transformation Block" },
+      { text: "The call is coming. Are you going to answer or let it go to voicemail again?", source: "LunatIQ Team" },
+      { text: "Self-judgment is just ego pretending to be enlightened.", source: "Spiritual Bypass" },
+      { text: "You're waiting for permission that's never coming. Give it to yourself.", source: "Self-Authorization" },
+      { text: "Accountability without self-compassion is just another form of abuse.", source: "LunatIQ Team" },
+      { text: "The resurrection requires you to actually leave the tomb.", source: "Action Needed" },
+      { text: "You can't judge yourself into wholeness. Try love instead.", source: "Compassionate Path" },
+      { text: "Karmic debt doesn't mean eternal punishment. It means learn the lesson and move on.", source: "Grace Truth" },
+      { text: "The past is calling. Stop answering.", source: "Forward Focus" },
+    ]
+  },
+
+  21: { // The World
+    name: 'The World',
+    upright: [
+      { text: "It is finished.", source: "John 19:30 (Bible)" },
+      { text: "The world is yours.", source: "Scarface" },
+      { text: "And in the end, the love you take is equal to the love you make.", source: "The Beatles" },
+      { text: "Everything you've been through has led to this moment.", source: "LunatIQ Team" },
+      { text: "You are the universe experiencing itself.", source: "Alan Watts" },
+      { text: "The end is just another beginning in disguise.", source: "LunatIQ Team" },
+      { text: "Wherever you go, there you are.", source: "Buckaroo Banzai" },
+      { text: "Not all who wander are lost.", source: "J.R.R. Tolkien" },
+      { text: "What you seek is seeking you.", source: "Rumi" },
+      { text: "The journey of a thousand miles ends with a single step too.", source: "Completion Wisdom" },
+      { text: "Moksha achieved: you are free. Now what will you do with your liberation?", source: "Freedom Question" },
+      { text: "To have arrived is to have already left.", source: "Eternal Journey" },
+    ],
+    reversed: [
+      { text: "So close, yet so far.", source: "Almost Truth" },
+      { text: "The last mile is the hardest.", source: "Endurance Test" },
+      { text: "You've climbed the mountain but refuse to enjoy the view.", source: "Sabotage Pattern" },
+      { text: "Success without fulfillment is the ultimate failure.", source: "Tony Robbins" },
+      { text: "You got everything you wanted and still feel empty. That's called needing therapy, not more achievement.", source: "Inner Work Call" },
+      { text: "The goal was always about who you became in the pursuit, not the prize.", source: "Journey Lesson" },
+      { text: "Finishing doesn't mean you're finished. There's always another level.", source: "LunatIQ Team" },
+      { text: "Sometimes you have to destroy the life you planned to live the one that's waiting for you.", source: "Path Correction" },
+      { text: "You made it to the top and realized it was the wrong mountain.", source: "Reorientation Needed" },
+      { text: "Integration is the final boss, and you're still avoiding it.", source: "Completion Block" },
+    ]
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // MINOR ARCANA - WANDS (Fire: Passion, Creativity, Action)
+  // ═══════════════════════════════════════════════════════════
+
+  22: { // Ace of Wands
+    name: 'Ace of Wands',
+    upright: [
+      { text: "In the beginning God created the heaven and the earth.", source: "Genesis 1:1 (Bible)" },
+      { text: "A journey of a thousand miles begins with a single step.", source: "Lao Tzu" },
+      { text: "The secret of getting ahead is getting started.", source: "Mark Twain" },
+      { text: "Every accomplishment starts with the decision to try.", source: "John F. Kennedy" },
+      { text: "You are never too old to set another goal or to dream a new dream.", source: "C.S. Lewis" },
+      { text: "The best time to plant a tree was 20 years ago. The second best time is now.", source: "Chinese Proverb" },
+      { text: "Begin anywhere.", source: "John Cage" },
+      { text: "New beginnings are often disguised as painful endings.", source: "Lao Tzu" },
+      { text: "The divine spark within you is ready to ignite. Will you strike the match?", source: "Creative Fire" },
+      { text: "Fortune favors the bold, and you're holding the wand.", source: "Magical Beginning" },
+      { text: "Your next chapter is blank. Pick up the pen.", source: "Story Start" },
+      { text: "The universe just said yes. Don't ask it to repeat itself.", source: "Opportunity Knock" },
+    ],
+    reversed: [
+      { text: "Analysis paralysis is still paralysis.", source: "LunatIQ Team" },
+      { text: "You're waiting for the perfect moment. This is it.", source: "Timing Truth" },
+      { text: "The spark is there, but you keep smothering it with doubt.", source: "Self-Sabotage" },
+      { text: "Inspiration without action is just daydreaming.", source: "Execution Gap" },
+      { text: "You can't edit a blank page. Write something.", source: "Creative Block" },
+      { text: "The wand is in your hand, but you're afraid to wave it.", source: "Fear Hold" },
+      { text: "Procrastination is fear wearing a productivity mask.", source: "Delay Pattern" },
+      { text: "Potential energy is useless until it becomes kinetic.", source: "Physics of Action" },
+      { text: "You're so busy planning the journey you forgot to take the first step.", source: "Planning Trap" },
+      { text: "The fire wants to burn. Stop drowning it in what-ifs.", source: "Doubt Dousing" },
+    ]
+  },
+
+  23: { // Two of Wands
+    name: 'Two of Wands',
+    upright: [
+      { text: "Where there is no vision, the people perish.", source: "Proverbs 29:18 (Bible)" },
+      { text: "The future belongs to those who believe in the beauty of their dreams.", source: "Eleanor Roosevelt" },
+      { text: "Vision without action is merely a dream. Action without vision just passes the time. Vision with action can change the world.", source: "Joel A. Barker" },
+      { text: "The world is a book and those who do not travel read only one page.", source: "Augustine of Hippo" },
+      { text: "You can't connect the dots looking forward; you can only connect them looking backwards.", source: "Steve Jobs" },
+      { text: "The best way to predict the future is to create it.", source: "Peter Drucker" },
+      { text: "One day or day one. You decide.", source: "Paulo Coelho" },
+      { text: "Standing at the crossroads with a map in each hand—choose your empire.", source: "LunatIQ Team" },
+      { text: "The world stretches before you. Plant your flag or stay in the castle.", source: "LunatIQ Team" },
+      { text: "Dominion requires decisions. You can't rule what you won't claim.", source: "LunatIQ Team" },
+      { text: "Your comfort zone is a beautiful place, but nothing grows there.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Planning is good. Planning forever is procrastination with a vision board.", source: "LunatIQ Team" },
+      { text: "You've got the map, the compass, and the destination. Still standing there.", source: "LunatIQ Team" },
+      { text: "Fear of making the wrong choice is making the choice for you.", source: "LunatIQ Team" },
+      { text: "Your dreams need legs. Give them some.", source: "LunatIQ Team" },
+      { text: "The world's still there. You're just not reaching for it.", source: "LunatIQ Team" },
+      { text: "Overthinking is the art of creating problems that weren't even there.", source: "LunatIQ Team" },
+      { text: "You can't see the view if you never leave the tower.", source: "LunatIQ Team" },
+      { text: "Two paths, no progress. Pick one and adjust later.", source: "LunatIQ Team" },
+      { text: "The empire won't build itself while you're still sketching blueprints.", source: "LunatIQ Team" },
+    ]
+  },
+
+  24: { // Three of Wands
+    name: 'Three of Wands',
+    upright: [
+      { text: "A ship in harbor is safe, but that is not what ships are built for.", source: "John A. Shedd" },
+      { text: "Go confidently in the direction of your dreams. Live the life you have imagined.", source: "Henry David Thoreau" },
+      { text: "The only impossible journey is the one you never begin.", source: "Tony Robbins" },
+      { text: "Faith is taking the first step even when you don't see the whole staircase.", source: "Martin Luther King Jr." },
+      { text: "Twenty years from now you will be more disappointed by the things you didn't do than by the ones you did.", source: "Mark Twain" },
+      { text: "I have not failed. I've just found 10,000 ways that won't work.", source: "Thomas Edison" },
+      { text: "Your ships are coming in. Can you see them on the horizon?", source: "LunatIQ Team" },
+      { text: "Expansion isn't comfortable. But stagnation is deadly.", source: "LunatIQ Team" },
+      { text: "The seeds you planted are growing. Trust the timeline.", source: "LunatIQ Team" },
+      { text: "Foresight is a superpower. You're seeing what others can't yet.", source: "LunatIQ Team" },
+      { text: "The view from here is incredible. Keep climbing.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You sent out the ships but forgot to check if they had sails.", source: "LunatIQ Team" },
+      { text: "Waiting for your ship to come in when you never sent one out.", source: "LunatIQ Team" },
+      { text: "The horizon's there. You're just not looking at it.", source: "LunatIQ Team" },
+      { text: "Return on investment requires actual investment.", source: "LunatIQ Team" },
+      { text: "Delays aren't denials, but denial of delays is delusion.", source: "LunatIQ Team" },
+      { text: "Your expansion plan needs expansion planning.", source: "LunatIQ Team" },
+      { text: "Foresight without follow-through is just wishful thinking.", source: "LunatIQ Team" },
+      { text: "The universe is saying 'not yet' and you're hearing 'not ever.'", source: "LunatIQ Team" },
+      { text: "Playing it too safe is the riskiest move of all.", source: "LunatIQ Team" },
+    ]
+  },
+
+  25: { // Four of Wands
+    name: 'Four of Wands',
+    upright: [
+      { text: "Make a joyful noise unto the Lord, all the earth.", source: "Psalm 100:1 (Bible)" },
+      { text: "Rejoice always, pray continually, give thanks in all circumstances.", source: "1 Thessalonians 5:16-18 (Bible)" },
+      { text: "Celebrate what you want to see more of.", source: "Thomas J. Peters" },
+      { text: "Home is where one starts from.", source: "T.S. Eliot" },
+      { text: "Joy is the simplest form of gratitude.", source: "Karl Barth" },
+      { text: "Life is a party. Dress like it.", source: "Audrey Hepburn" },
+      { text: "Happiness is not something you postpone for the future; it is something you design for the present.", source: "Jim Rohn" },
+      { text: "Milestones deserve celebration, not just acknowledgment.", source: "LunatIQ Team" },
+      { text: "Community is not a luxury. It's a necessity dressed as a party.", source: "LunatIQ Team" },
+      { text: "Your foundations are solid. Dance on them.", source: "LunatIQ Team" },
+      { text: "Gratitude turns what we have into enough, and enough into a feast.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You built the house but forgot to make it a home.", source: "LunatIQ Team" },
+      { text: "Celebrating alone when you could be celebrating together.", source: "LunatIQ Team" },
+      { text: "Success without celebration is just exhaustion with better furniture.", source: "LunatIQ Team" },
+      { text: "Roots are good. Being rootbound is not.", source: "LunatIQ Team" },
+      { text: "The party's happening. You're just not showing up.", source: "LunatIQ Team" },
+      { text: "Delayed celebration is often denied celebration.", source: "LunatIQ Team" },
+      { text: "You can't build community from a place of withdrawal.", source: "LunatIQ Team" },
+      { text: "Stability became stagnation when you stopped inviting growth.", source: "LunatIQ Team" },
+      { text: "Foundations are for building on, not hiding in.", source: "LunatIQ Team" },
+    ]
+  },
+
+  26: { // Five of Wands
+    name: 'Five of Wands',
+    upright: [
+      { text: "Iron sharpens iron, and one man sharpens another.", source: "Proverbs 27:17 (Bible)" },
+      { text: "In the middle of difficulty lies opportunity.", source: "Albert Einstein" },
+      { text: "The gem cannot be polished without friction, nor man perfected without trials.", source: "Chinese Proverb" },
+      { text: "If you want to go fast, go alone. If you want to go far, go together.", source: "African Proverb" },
+      { text: "Conflict is the beginning of consciousness.", source: "M. Esther Harding" },
+      { text: "Competition brings out the best in products and the worst in people.", source: "David Sarnoff" },
+      { text: "Great minds discuss ideas; average minds discuss events; small minds discuss people.", source: "Eleanor Roosevelt" },
+      { text: "The fire of competition forges the strongest blades.", source: "LunatIQ Team" },
+      { text: "Chaos isn't a pit. It's a ladder.", source: "Game of Thrones wisdom" },
+      { text: "Creative tension builds better solutions than comfortable consensus.", source: "LunatIQ Team" },
+      { text: "Not all conflict is combat. Some is collaboration in disguise.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Fighting for the sake of fighting is exhausting and pointless.", source: "LunatIQ Team" },
+      { text: "You're so busy arguing you forgot what you're arguing about.", source: "LunatIQ Team" },
+      { text: "Competition without direction is just noise.", source: "LunatIQ Team" },
+      { text: "Ego battles never have winners, just casualties.", source: "LunatIQ Team" },
+      { text: "Drama is addictive, but it's not a strategy.", source: "LunatIQ Team" },
+      { text: "You're bringing a wand to a sword fight—wrong energy entirely.", source: "LunatIQ Team" },
+      { text: "Internal conflict masquerading as external competition.", source: "LunatIQ Team" },
+      { text: "Avoiding all conflict creates as many problems as seeking it.", source: "LunatIQ Team" },
+      { text: "The problem isn't the competition. It's that you're competing with yourself.", source: "LunatIQ Team" },
+    ]
+  },
+
+  27: { // Six of Wands
+    name: 'Six of Wands',
+    upright: [
+      { text: "Well done, good and faithful servant.", source: "Matthew 25:21 (Bible)" },
+      { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", source: "Winston Churchill" },
+      { text: "The only place where success comes before work is in the dictionary.", source: "Vidal Sassoon" },
+      { text: "I am the master of my fate, I am the captain of my soul.", source: "William Ernest Henley" },
+      { text: "Victory has a thousand fathers, but defeat is an orphan.", source: "John F. Kennedy" },
+      { text: "Don't watch the clock; do what it does. Keep going.", source: "Sam Levenson" },
+      { text: "The reward of a thing well done is to have done it.", source: "Ralph Waldo Emerson" },
+      { text: "You didn't come this far to only come this far.", source: "LunatIQ Team" },
+      { text: "Public recognition is sweet, but your private triumph was sweeter.", source: "LunatIQ Team" },
+      { text: "The crown is heavy, but you earned every ounce of it.", source: "LunatIQ Team" },
+      { text: "They're not cheering for who you pretended to be. They're cheering for who you became.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Pride comes before a fall.", source: "Proverbs 16:18 (Bible)" },
+      { text: "You're so busy taking the victory lap you forgot there's another race.", source: "LunatIQ Team" },
+      { text: "Imposter syndrome in a crown. Wear it or remove it.", source: "LunatIQ Team" },
+      { text: "Needing applause to validate your win means you don't believe in it.", source: "LunatIQ Team" },
+      { text: "The spotlight is addictive. Don't confuse it with achievement.", source: "LunatIQ Team" },
+      { text: "You won the battle but lost sight of the war.", source: "LunatIQ Team" },
+      { text: "False modesty is still vanity in disguise.", source: "LunatIQ Team" },
+      { text: "Success without humility is a house of cards.", source: "LunatIQ Team" },
+      { text: "The pedestal is lonely. Maybe come down and connect.", source: "LunatIQ Team" },
+    ]
+  },
+
+  28: { // Seven of Wands
+    name: 'Seven of Wands',
+    upright: [
+      { text: "If God is for us, who can be against us?", source: "Romans 8:31 (Bible)" },
+      { text: "Stand for something or you will fall for anything.", source: "Malcolm X" },
+      { text: "The price of greatness is responsibility.", source: "Winston Churchill" },
+      { text: "Do not go where the path may lead, go instead where there is no path and leave a trail.", source: "Ralph Waldo Emerson" },
+      { text: "I must not fear. Fear is the mind-killer.", source: "Frank Herbert, Dune" },
+      { text: "They can because they think they can.", source: "Virgil" },
+      { text: "Hold the line. Your ground is sacred.", source: "LunatIQ Team" },
+      { text: "Defense isn't weakness. It's strategic strength.", source: "LunatIQ Team" },
+      { text: "You're not paranoid if they're actually coming for your spot.", source: "LunatIQ Team" },
+      { text: "The high ground is worth defending.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You're defending a position you don't even want anymore.", source: "LunatIQ Team" },
+      { text: "Paranoia and discernment are not the same thing.", source: "LunatIQ Team" },
+      { text: "Exhaustion from fighting battles that aren't yours to fight.", source: "LunatIQ Team" },
+      { text: "Not every hill is worth dying on.", source: "LunatIQ Team" },
+      { text: "You're so busy defending you forgot to build.", source: "LunatIQ Team" },
+      { text: "Retreating isn't failing. Sometimes it's strategy.", source: "LunatIQ Team" },
+      { text: "Your fortress became your prison.", source: "LunatIQ Team" },
+      { text: "Fighting everyone means trusting no one. That's lonely.", source: "LunatIQ Team" },
+    ]
+  },
+
+  29: { // Eight of Wands
+    name: 'Eight of Wands',
+    upright: [
+      { text: "The Lord is not slow in keeping his promise, but patient.", source: "2 Peter 3:9 (Bible)" },
+      { text: "Life is what happens when you're busy making other plans.", source: "John Lennon" },
+      { text: "The world is moving so fast these days that the man who says it can't be done is generally interrupted by someone doing it.", source: "Elbert Hubbard" },
+      { text: "Speed is irrelevant if you are going in the wrong direction.", source: "Mahatma Gandhi" },
+      { text: "Slow is smooth, and smooth is fast.", source: "Navy SEAL saying" },
+      { text: "Everything is energy and that's all there is to it.", source: "Albert Einstein" },
+      { text: "When it rains, it pours. But you ordered the storm.", source: "LunatIQ Team" },
+      { text: "Acceleration feels like chaos until you remember you started this.", source: "LunatIQ Team" },
+      { text: "Things are moving fast because they're finally moving right.", source: "LunatIQ Team" },
+      { text: "The wands are flying. Duck or catch them.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Hurry up and wait. The universe's favorite joke.", source: "LunatIQ Team" },
+      { text: "You're rushing toward a destination that's moving away.", source: "LunatIQ Team" },
+      { text: "Speed without direction is just expensive wandering.", source: "LunatIQ Team" },
+      { text: "Impatience is not the same as readiness.", source: "LunatIQ Team" },
+      { text: "You wanted fast results. This is the cost of fast.", source: "LunatIQ Team" },
+      { text: "Delays you're interpreting as rejection are actually protection.", source: "LunatIQ Team" },
+      { text: "Everything's happening so fast you forgot to feel it.", source: "LunatIQ Team" },
+      { text: "Burnout at light speed is still burnout.", source: "LunatIQ Team" },
+    ]
+  },
+
+  30: { // Nine of Wands
+    name: 'Nine of Wands',
+    upright: [
+      { text: "Blessed is the one who perseveres under trial.", source: "James 1:12 (Bible)" },
+      { text: "It is not the mountain we conquer, but ourselves.", source: "Edmund Hillary" },
+      { text: "Courage is not the absence of fear, but rather the assessment that something else is more important.", source: "Franklin D. Roosevelt" },
+      { text: "Fall seven times, stand up eight.", source: "Japanese Proverb" },
+      { text: "The brick walls are there for a reason. They let us prove how badly we want something.", source: "Randy Pausch" },
+      { text: "When you feel like quitting, remember why you started.", source: "LunatIQ Team" },
+      { text: "Battle-scarred is still standing.", source: "LunatIQ Team" },
+      { text: "You're wounded, not defeated. There's a difference.", source: "LunatIQ Team" },
+      { text: "The last mile is always the hardest, but it's also the most important.", source: "LunatIQ Team" },
+      { text: "Your scars are receipts of battles you've survived.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Paranoia from past battles is sabotaging future victories.", source: "LunatIQ Team" },
+      { text: "You're so defensive you're attacking ghosts.", source: "LunatIQ Team" },
+      { text: "Survival mode is not a permanent lifestyle.", source: "LunatIQ Team" },
+      { text: "The war is over but you're still in the trenches.", source: "LunatIQ Team" },
+      { text: "Exhaustion is not a badge of honor.", source: "LunatIQ Team" },
+      { text: "You can't heal and guard the wound at the same time.", source: "LunatIQ Team" },
+      { text: "Pushing through isn't always strength. Sometimes it's stubbornness.", source: "LunatIQ Team" },
+      { text: "Burned out fighters don't win wars. They become casualties.", source: "LunatIQ Team" },
+    ]
+  },
+
+  31: { // Ten of Wands
+    name: 'Ten of Wands',
+    upright: [
+      { text: "Come to me, all who are weary and burdened, and I will give you rest.", source: "Matthew 11:28 (Bible)" },
+      { text: "You can't pour from an empty cup.", source: "LunatIQ Team" },
+      { text: "The only way to do great work is to love what you do, or learn to say no to what you don't.", source: "LunatIQ Team" },
+      { text: "Burnout is what happens when you try to avoid being human for too long.", source: "Michael Gungor" },
+      { text: "Success is not in carrying all the wands. It's in knowing which ones to carry.", source: "LunatIQ Team" },
+      { text: "You're Atlas, but nobody asked you to carry the world.", source: "LunatIQ Team" },
+      { text: "Responsibility is power. Over-responsibility is martyrdom.", source: "LunatIQ Team" },
+      { text: "The finish line is visible. Don't drop the wands now.", source: "LunatIQ Team" },
+      { text: "Heavy is the load you chose. Honor that choice by completing it.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You're carrying burdens that aren't yours.", source: "LunatIQ Team" },
+      { text: "Martyrdom is not a personality trait.", source: "LunatIQ Team" },
+      { text: "Delegation isn't weakness. It's wisdom.", source: "LunatIQ Team" },
+      { text: "You can't do everything, and that's not a character flaw.", source: "LunatIQ Team" },
+      { text: "The wands are crushing you because you won't put them down.", source: "LunatIQ Team" },
+      { text: "Some of those wands? Not even yours.", source: "LunatIQ Team" },
+      { text: "You're too tired to be useful. Rest.", source: "LunatIQ Team" },
+      { text: "Perfectionism dressed as responsibility is still perfectionism.", source: "LunatIQ Team" },
+    ]
+  },
+
+  32: { // Page of Wands
+    name: 'Page of Wands',
+    upright: [
+      { text: "Let no one despise you for your youth, but set the believers an example.", source: "1 Timothy 4:12 (Bible)" },
+      { text: "Every child is an artist. The problem is how to remain an artist once we grow up.", source: "Pablo Picasso" },
+      { text: "Enthusiasm is the electricity of life.", source: "Gordon Parks" },
+      { text: "The desire to create is one of the deepest yearnings of the human soul.", source: "Dieter F. Uchtdorf" },
+      { text: "Youth is not a time of life, it is a state of mind.", source: "Samuel Ullman" },
+      { text: "Creativity takes courage.", source: "Henri Matisse" },
+      { text: "The spark of curiosity is the beginning of wisdom.", source: "LunatIQ Team" },
+      { text: "Beginner's mind is the fire starter.", source: "LunatIQ Team" },
+      { text: "Messages are arriving. Pay attention.", source: "LunatIQ Team" },
+      { text: "Your enthusiasm is not naiveté. It's fuel.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Ideas without execution are just expensive daydreams.", source: "LunatIQ Team" },
+      { text: "You're so afraid of looking stupid you forgot how to learn.", source: "LunatIQ Team" },
+      { text: "Enthusiasm without discipline is chaos.", source: "LunatIQ Team" },
+      { text: "Scattered energy creates scattered results.", source: "LunatIQ Team" },
+      { text: "You started a hundred fires and finished none.", source: "LunatIQ Team" },
+      { text: "The message is delayed. Check your reception.", source: "LunatIQ Team" },
+      { text: "Immaturity masquerading as spontaneity.", source: "LunatIQ Team" },
+      { text: "Your potential is impressive. Your follow-through is not.", source: "LunatIQ Team" },
+    ]
+  },
+
+  33: { // Knight of Wands
+    name: 'Knight of Wands',
+    upright: [
+      { text: "Be strong and courageous. Do not be afraid; do not be discouraged.", source: "Joshua 1:9 (Bible)" },
+      { text: "Fortune favors the bold.", source: "Virgil" },
+      { text: "Life is either a daring adventure or nothing at all.", source: "Helen Keller" },
+      { text: "I can't change the direction of the wind, but I can adjust my sails.", source: "Jimmy Dean" },
+      { text: "Only those who will risk going too far can possibly find out how far one can go.", source: "T.S. Eliot" },
+      { text: "Adventure is worthwhile in itself.", source: "Amelia Earhart" },
+      { text: "Leap and the net will appear.", source: "John Burroughs" },
+      { text: "Passion is energy. Feel the power that comes from focusing on what excites you.", source: "Oprah Winfrey" },
+      { text: "Boldness has genius, power, and magic in it.", source: "Goethe" },
+      { text: "The thrill of the chase is the chase of the thrill.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Recklessness is not bravery.", source: "LunatIQ Team" },
+      { text: "You're so busy moving you forgot where you're going.", source: "LunatIQ Team" },
+      { text: "Passion without purpose is just chaos with better PR.", source: "LunatIQ Team" },
+      { text: "Speed demons crash harder.", source: "LunatIQ Team" },
+      { text: "Commitment issues dressed as free spirit.", source: "LunatIQ Team" },
+      { text: "Running toward everything means running from something.", source: "LunatIQ Team" },
+      { text: "The eternal adventurer is often the eternal escapist.", source: "LunatIQ Team" },
+      { text: "Your energy is impressive. Your impact is questionable.", source: "LunatIQ Team" },
+    ]
+  },
+
+  34: { // Queen of Wands
+    name: 'Queen of Wands',
+    upright: [
+      { text: "She is clothed with strength and dignity; she can laugh at the days to come.", source: "Proverbs 31:25 (Bible)" },
+      { text: "She's the kind of woman who walks into a room and men either fall to their knees or run for their lives. Sometimes both.", source: "LunatIQ Team" },
+      { text: "I am not afraid of storms, for I am learning how to sail my ship.", source: "Louisa May Alcott" },
+      { text: "The question isn't who's going to let me; it's who's going to stop me.", source: "Ayn Rand" },
+      { text: "Fire in her soul. Grace in her heart. Chaos in her wake.", source: "LunatIQ Team" },
+      { text: "Well-behaved women seldom make history.", source: "Laurel Thatcher Ulrich" },
+      { text: "She remembered who she was and the game changed.", source: "Lalah Delia" },
+      { text: "Confidence is not 'they will like me.' Confidence is 'I'll be fine if they don't.'", source: "LunatIQ Team" },
+      { text: "She's sunshine mixed with a little hurricane.", source: "LunatIQ Team" },
+      { text: "Magnetic, not because she's perfect, but because she's authentic.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Controlling everyone around you is not leadership.", source: "LunatIQ Team" },
+      { text: "Your fire is burning the people trying to support you.", source: "LunatIQ Team" },
+      { text: "Confidence became arrogance when you stopped listening.", source: "LunatIQ Team" },
+      { text: "Queen energy without queen responsibility is just tyranny.", source: "LunatIQ Team" },
+      { text: "Jealousy is insecurity wearing a crown.", source: "LunatIQ Team" },
+      { text: "You can't queen from a place of fear.", source: "LunatIQ Team" },
+      { text: "Demanding loyalty while offering none.", source: "LunatIQ Team" },
+      { text: "The throne is shaking because the foundation is ego.", source: "LunatIQ Team" },
+    ]
+  },
+
+  35: { // King of Wands
+    name: 'King of Wands',
+    upright: [
+      { text: "A good man leaves an inheritance to his children's children.", source: "Proverbs 13:22 (Bible)" },
+      { text: "Leadership is not about being in charge. It's about taking care of those in your charge.", source: "Simon Sinek" },
+      { text: "The task of the leader is to get their people from where they are to where they have not been.", source: "Henry Kissinger" },
+      { text: "A genuine leader is not a searcher for consensus but a molder of consensus.", source: "Martin Luther King Jr." },
+      { text: "Vision without execution is hallucination.", source: "Thomas Edison" },
+      { text: "The greatest leader is not necessarily the one who does the greatest things. He is the one that gets the people to do the greatest things.", source: "Ronald Reagan" },
+      { text: "Leadership is the capacity to translate vision into reality.", source: "Warren Bennis" },
+      { text: "Authority earned through respect, not demanded through fear.", source: "LunatIQ Team" },
+      { text: "The king who serves his people is never overthrown.", source: "LunatIQ Team" },
+      { text: "Mastery is knowing when to lead and when to step back.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Dictators rule. Leaders inspire. Know the difference.", source: "LunatIQ Team" },
+      { text: "You're so busy being in charge you forgot to be effective.", source: "LunatIQ Team" },
+      { text: "Ego on the throne means kingdom in chaos.", source: "LunatIQ Team" },
+      { text: "Demanding respect is the fastest way to lose it.", source: "LunatIQ Team" },
+      { text: "Tyranny is not strength. It's insecurity with power.", source: "LunatIQ Team" },
+      { text: "The king who won't hear counsel becomes the fool on the throne.", source: "LunatIQ Team" },
+      { text: "You're ruling with fire when your people need warmth.", source: "LunatIQ Team" },
+      { text: "Vision without compassion creates casualties, not community.", source: "LunatIQ Team" },
+    ]
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // MINOR ARCANA - CUPS (Water: Emotion, Intuition, Love)
+  // ═══════════════════════════════════════════════════════════
+
+  36: { // Ace of Cups
+    name: 'Ace of Cups',
+    upright: [
+      { text: "A new heart I will give you, and a new spirit I will put within you.", source: "Ezekiel 36:26 (Bible)" },
+      { text: "The heart has its reasons of which reason knows nothing.", source: "Blaise Pascal" },
+      { text: "Love is the only force capable of transforming an enemy into a friend.", source: "Martin Luther King Jr." },
+      { text: "Where there is love there is life.", source: "Mahatma Gandhi" },
+      { text: "The best and most beautiful things in the world cannot be seen or even touched. They must be felt with the heart.", source: "Helen Keller" },
+      { text: "To love and be loved is to feel the sun from both sides.", source: "David Viscott" },
+      { text: "Your cup is overflowing. This is divine timing.", source: "LunatIQ Team" },
+      { text: "New love, new feelings, new capacity to care. Let it in.", source: "LunatIQ Team" },
+      { text: "Emotional availability is the gift you give yourself first.", source: "LunatIQ Team" },
+      { text: "The universe is offering you a cup. Drink.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You can't fill an overturned cup.", source: "LunatIQ Team" },
+      { text: "Emotional unavailability masquerading as independence.", source: "LunatIQ Team" },
+      { text: "The cup is there. You're just not reaching for it.", source: "LunatIQ Team" },
+      { text: "Love offered, love rejected. What are you protecting?", source: "LunatIQ Team" },
+      { text: "Your heart is closed for maintenance indefinitely.", source: "LunatIQ Team" },
+      { text: "Blocked blessings are still blessings. Just blocked.", source: "LunatIQ Team" },
+      { text: "Emotional constipation: holding in what needs to flow.", source: "LunatIQ Team" },
+      { text: "You're drowning in an empty cup. That's called a void.", source: "LunatIQ Team" },
+    ]
+  },
+
+  37: { // Two of Cups
+    name: 'Two of Cups',
+    upright: [
+      { text: "Two are better than one, because they have a good return for their labor.", source: "Ecclesiastes 4:9 (Bible)" },
+      { text: "Two souls recognizing each other across lifetimes: 'Oh. It's you. It's always been you.'", source: "LunatIQ Team" },
+      { text: "When you realize you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.", source: "When Harry Met Sally" },
+      { text: "Love is friendship set on fire.", source: "Jeremy Taylor" },
+      { text: "The bond snapped into place and suddenly breathing without them felt impossible.", source: "LunatIQ Team" },
+      { text: "I have found the one whom my soul loves.", source: "Song of Solomon 3:4 (Bible)" },
+      { text: "Whatever our souls are made of, his and mine are the same.", source: "Emily Brontë" },
+      { text: "Partnership is two whole people choosing each other, daily.", source: "LunatIQ Team" },
+      { text: "Equal exchange, equal energy, equal devotion. That's the alchemy.", source: "LunatIQ Team" },
+      { text: "You found your person. They found theirs. Same person.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "One-sided relationships are just fancy loneliness.", source: "LunatIQ Team" },
+      { text: "You're matching energy that's not matching yours.", source: "LunatIQ Team" },
+      { text: "Codependency wearing a soulmate costume.", source: "LunatIQ Team" },
+      { text: "Two cups, one person pouring. Do the math.", source: "LunatIQ Team" },
+      { text: "The connection is broken. Are you fixing it or mourning it?", source: "LunatIQ Team" },
+      { text: "Forcing a connection that naturally disconnected.", source: "LunatIQ Team" },
+      { text: "You can't be their everything. Stop trying.", source: "LunatIQ Team" },
+      { text: "Miscommunication dressed as deep connection.", source: "LunatIQ Team" },
+    ]
+  },
+
+  38: { // Three of Cups
+    name: 'Three of Cups',
+    upright: [
+      { text: "Where two or three gather in my name, there am I with them.", source: "Matthew 18:20 (Bible)" },
+      { text: "Friendship is born at that moment when one person says to another: 'What! You too? I thought I was the only one.'", source: "C.S. Lewis" },
+      { text: "A friend is someone who knows all about you and still loves you.", source: "Elbert Hubbard" },
+      { text: "Alone we can do so little; together we can do so much.", source: "Helen Keller" },
+      { text: "There are friends, there is family, and then there are friends who become family.", source: "LunatIQ Team" },
+      { text: "Good vibes and even better company.", source: "LunatIQ Team" },
+      { text: "Celebration is better shared than soloed.", source: "LunatIQ Team" },
+      { text: "Your tribe is out there. This is them.", source: "LunatIQ Team" },
+      { text: "Joy multiplied by connection equals this moment.", source: "LunatIQ Team" },
+      { text: "The coven you've been looking for has been looking for you too.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Fake friends are like shadows: always near you at your brightest moments, but nowhere to be seen at your darkest.", source: "LunatIQ Team" },
+      { text: "The party's over and nobody cleaned up the mess they made in your life.", source: "LunatIQ Team" },
+      { text: "You're the glue holding a group together that doesn't care if you dissolve.", source: "LunatIQ Team" },
+      { text: "Gossip disguised as catching up.", source: "LunatIQ Team" },
+      { text: "Third wheel energy in your own life.", source: "LunatIQ Team" },
+      { text: "Drama triangles aren't sacred geometry.", source: "LunatIQ Team" },
+      { text: "Your absence from the group chat says everything.", source: "LunatIQ Team" },
+      { text: "Celebration without you, but crisis with you? That's not friendship.", source: "LunatIQ Team" },
+    ]
+  },
+
+  39: { // Four of Cups
+    name: 'Four of Cups',
+    upright: [
+      { text: "Be still, and know that I am God.", source: "Psalm 46:10 (Bible)" },
+      { text: "We can complain because rose bushes have thorns, or rejoice because thorn bushes have roses.", source: "Abraham Lincoln" },
+      { text: "The grass is greener where you water it.", source: "Neil Barringham" },
+      { text: "He who is not contented with what he has, would not be contented with what he would like to have.", source: "Socrates" },
+      { text: "Sometimes you need to sit in the disappointment to know what you really want.", source: "LunatIQ Team" },
+      { text: "Contemplation is not laziness. It's preparation.", source: "LunatIQ Team" },
+      { text: "Three cups in front of you, one being offered. All ignored. Why?", source: "LunatIQ Team" },
+      { text: "Meditation or avoidance? You know which one this is.", source: "LunatIQ Team" },
+      { text: "Withdrawal to recharge vs. withdrawal to escape. Choose wisely.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Missing the forest for the trees, the blessing for the lesson, the gift for the wrapping.", source: "LunatIQ Team" },
+      { text: "You're so busy looking for the next thing you're missing this thing.", source: "LunatIQ Team" },
+      { text: "Apathy isn't peace. It's depression with better PR.", source: "LunatIQ Team" },
+      { text: "The universe is offering you cups and you're mad they're not chalices.", source: "LunatIQ Team" },
+      { text: "Boredom is often unacknowledged grief or anger.", source: "LunatIQ Team" },
+      { text: "You're not unimpressed. You're scared of wanting something.", source: "LunatIQ Team" },
+      { text: "Detachment became disconnection when you stopped feeling anything.", source: "LunatIQ Team" },
+      { text: "Renewed interest or forced enthusiasm? There's a difference.", source: "LunatIQ Team" },
+    ]
+  },
+
+  40: { // Five of Cups
+    name: 'Five of Cups',
+    upright: [
+      { text: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.", source: "Psalm 34:18 (Bible)" },
+      { text: "You can't start the next chapter of your life if you keep re-reading the last one.", source: "Michael McMillan" },
+      { text: "The wound is the place where the Light enters you.", source: "Rumi" },
+      { text: "Crying does not indicate that you are weak. Since birth, it has always been a sign that you are alive.", source: "Charlotte Brontë" },
+      { text: "Grief is love with nowhere to go.", source: "Jamie Anderson" },
+      { text: "Three cups spilled, two still standing. Your focus determines your reality.", source: "LunatIQ Team" },
+      { text: "Mourning what was lost is necessary. Ignoring what remains is not.", source: "LunatIQ Team" },
+      { text: "Disappointment is the gap between expectation and reality. Mind the gap.", source: "LunatIQ Team" },
+      { text: "You're allowed to mourn the version of your life that didn't happen.", source: "LunatIQ Team" },
+      { text: "The cups you're crying over were already empty.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You've been mourning so long the grief became your identity.", source: "LunatIQ Team" },
+      { text: "Acceptance is not the same as giving up. Learn the difference.", source: "LunatIQ Team" },
+      { text: "You're ready to turn around. The two cups are still there.", source: "LunatIQ Team" },
+      { text: "Forgiveness doesn't mean reconciliation. It means release.", source: "LunatIQ Team" },
+      { text: "You can't heal and hold the grudge. Pick one.", source: "LunatIQ Team" },
+      { text: "The loss happened. The suffering is optional at this point.", source: "LunatIQ Team" },
+      { text: "Moving on doesn't mean moving past. It means moving forward.", source: "LunatIQ Team" },
+      { text: "Recovery isn't linear, but you're not even trying to recover.", source: "LunatIQ Team" },
+    ]
+  },
+
+  41: { // Six of Cups
+    name: 'Six of Cups',
+    upright: [
+      { text: "I will remember the deeds of the Lord; yes, I will remember your miracles of long ago.", source: "Psalm 77:11 (Bible)" },
+      { text: "Memory is the diary we all carry about with us.", source: "Oscar Wilde" },
+      { text: "The past can hurt. But the way I see it, you can either run from it or learn from it.", source: "The Lion King" },
+      { text: "We do not remember days, we remember moments.", source: "Cesare Pavese" },
+      { text: "Nostalgia is a file that removes the rough edges from the good old days.", source: "Doug Larson" },
+      { text: "Childhood is measured out by sounds and smells and sights, before the dark hour of reason grows.", source: "John Betjeman" },
+      { text: "The past is never where you think you left it.", source: "Katherine Anne Porter" },
+      { text: "Nostalgia done right is medicine. Nostalgia done wrong is poison.", source: "LunatIQ Team" },
+      { text: "Innocence revisited or innocence weaponized? Check your motives.", source: "LunatIQ Team" },
+      { text: "Childlike wonder vs. childish avoidance. Know which one you're choosing.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Living in the past is a sure way to miss the present.", source: "LunatIQ Team" },
+      { text: "Those weren't 'the good old days.' You were just younger and less aware.", source: "LunatIQ Team" },
+      { text: "Nostalgia is a liar. Memory is selective. Move forward.", source: "LunatIQ Team" },
+      { text: "You can't go home again because home was never the place. It was the person you were.", source: "LunatIQ Team" },
+      { text: "Romanticizing the past while ignoring its pain is spiritual bypassing.", source: "LunatIQ Team" },
+      { text: "Childhood trauma dressed as childhood nostalgia.", source: "LunatIQ Team" },
+      { text: "You're stuck in yesterday while tomorrow is waiting.", source: "LunatIQ Team" },
+      { text: "The innocence you're grieving? It was survival, not simplicity.", source: "LunatIQ Team" },
+    ]
+  },
+
+  42: { // Seven of Cups
+    name: 'Seven of Cups',
+    upright: [
+      { text: "Where there is no vision, the people perish.", source: "Proverbs 29:18 (Bible)" },
+      { text: "Not all those who wander are lost.", source: "J.R.R. Tolkien" },
+      { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+      { text: "Dreams are necessary to life.", source: "Anaïs Nin" },
+      { text: "Imagination is more important than knowledge.", source: "Albert Einstein" },
+      { text: "All that we see or seem is but a dream within a dream.", source: "Edgar Allan Poe" },
+      { text: "Seven options, seven illusions. Which cup holds what you actually want?", source: "LunatIQ Team" },
+      { text: "Infinite possibility is paralyzing until you choose one.", source: "LunatIQ Team" },
+      { text: "Fantasy is fun until it becomes a hiding place from reality.", source: "LunatIQ Team" },
+      { text: "Daydreaming or strategic visualization? Intent matters.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Analysis paralysis in a cup shop.", source: "LunatIQ Team" },
+      { text: "So many options, so little action.", source: "LunatIQ Team" },
+      { text: "You're not exploring possibilities. You're avoiding commitment.", source: "LunatIQ Team" },
+      { text: "Illusions shattered or illusions released? There's a difference.", source: "LunatIQ Team" },
+      { text: "The cups are all empty. You've been chasing mirages.", source: "LunatIQ Team" },
+      { text: "Clarity is coming whether you're ready or not.", source: "LunatIQ Team" },
+      { text: "You wanted all the options. Now none of them look good. That's clarity.", source: "LunatIQ Team" },
+      { text: "Overwhelm isn't the problem. Refusing to choose is.", source: "LunatIQ Team" },
+    ]
+  },
+
+  43: { // Eight of Cups
+    name: 'Eight of Cups',
+    upright: [
+      { text: "Get up and go, for this is not your resting place.", source: "Micah 2:10 (Bible)" },
+      { text: "Sometimes letting things go is an act of far greater power than defending or hanging on.", source: "Eckhart Tolle" },
+      { text: "You can't reach what's in front of you until you let go of what's behind you.", source: "LunatIQ Team" },
+      { text: "The art of knowing is knowing what to ignore.", source: "Rumi" },
+      { text: "Leaving is not always losing.", source: "LunatIQ Team" },
+      { text: "If it costs you your peace, it's too expensive.", source: "LunatIQ Team" },
+      { text: "Walking away is not giving up. It's choosing you.", source: "LunatIQ Team" },
+      { text: "Eight cups stacked carefully. Still walking away. That's spiritual maturity.", source: "LunatIQ Team" },
+      { text: "You can honor what was and still choose what will be.", source: "LunatIQ Team" },
+      { text: "The soul knows when it's time to go. Trust that.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Running from vs. running toward. You know which one this is.", source: "LunatIQ Team" },
+      { text: "You're not leaving. You're avoiding.", source: "LunatIQ Team" },
+      { text: "Every time it gets hard, you leave. Notice the pattern.", source: "LunatIQ Team" },
+      { text: "Fear of commitment or fear of the wrong commitment? Clarify.", source: "LunatIQ Team" },
+      { text: "You walked away from eight cups to chase one. Was it worth it?", source: "LunatIQ Team" },
+      { text: "Staying is brave sometimes too.", source: "LunatIQ Team" },
+      { text: "You keep leaving places you never fully arrived at.", source: "LunatIQ Team" },
+      { text: "What if the thing you're seeking is in the cups you left behind?", source: "LunatIQ Team" },
+    ]
+  },
+
+  44: { // Nine of Cups
+    name: 'Nine of Cups',
+    upright: [
+      { text: "Delight yourself in the Lord, and he will give you the desires of your heart.", source: "Psalm 37:4 (Bible)" },
+      { text: "Gratitude turns what we have into enough.", source: "Aesop" },
+      { text: "Happiness is not something ready made. It comes from your own actions.", source: "Dalai Lama" },
+      { text: "The greatest wealth is to live content with little.", source: "Plato" },
+      { text: "Success is getting what you want. Happiness is wanting what you get.", source: "Dale Carnegie" },
+      { text: "Abundance is not something we acquire. It is something we tune into.", source: "Wayne Dyer" },
+      { text: "Nine cups and a satisfied soul. You did that.", source: "LunatIQ Team" },
+      { text: "The wish granted. The desire fulfilled. Now what?", source: "LunatIQ Team" },
+      { text: "Contentment isn't settling. It's arriving.", source: "LunatIQ Team" },
+      { text: "You got what you asked for. Savor it.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You got everything you wanted and you're still not happy. The problem isn't the cups.", source: "LunatIQ Team" },
+      { text: "Smugness is satisfaction's ugly cousin.", source: "LunatIQ Team" },
+      { text: "Material satisfaction without spiritual fulfillment is just expensive emptiness.", source: "LunatIQ Team" },
+      { text: "You're full but not fulfilled. There's a difference.", source: "LunatIQ Team" },
+      { text: "All those cups and you're still thirsty. What are you really craving?", source: "LunatIQ Team" },
+      { text: "Greed disguised as ambition.", source: "LunatIQ Team" },
+      { text: "Success without humility is just ego with a trophy case.", source: "LunatIQ Team" },
+      { text: "You're so focused on more you forgot to enjoy enough.", source: "LunatIQ Team" },
+    ]
+  },
+
+  45: { // Ten of Cups
+    name: 'Ten of Cups',
+    upright: [
+      { text: "As for me and my house, we will serve the Lord.", source: "Joshua 24:15 (Bible)" },
+      { text: "The best thing to hold onto in life is each other.", source: "Audrey Hepburn" },
+      { text: "Happiness is only real when shared.", source: "Jon Krakauer" },
+      { text: "Family is not an important thing. It's everything.", source: "Michael J. Fox" },
+      { text: "In family life, love is the oil that eases friction.", source: "Eva Burrows" },
+      { text: "Other things may change us, but we start and end with family.", source: "Anthony Brandt" },
+      { text: "Emotional fulfillment, relational abundance, heart full. This is wealth.", source: "LunatIQ Team" },
+      { text: "Ten cups overflowing. Community, connection, love. You built this.", source: "LunatIQ Team" },
+      { text: "The rainbow after the storm. The family you chose or were chosen by.", source: "LunatIQ Team" },
+      { text: "Harmony achieved through work, not luck.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "The perfect family photo hiding the imperfect family reality.", source: "LunatIQ Team" },
+      { text: "Dysfunction with a white picket fence is still dysfunction.", source: "LunatIQ Team" },
+      { text: "You can't Hallmark your way out of real problems.", source: "LunatIQ Team" },
+      { text: "Forcing happiness doesn't create it.", source: "LunatIQ Team" },
+      { text: "The cups are all there. The connection is not.", source: "Presence Absence" },
+      { text: "Broken family patterns won't heal through pretending.", source: "LunatIQ Team" },
+      { text: "Emotional dishonesty in the name of keeping the peace.", source: "LunatIQ Team" },
+      { text: "You have everything but feel nothing. That's called disconnection.", source: "LunatIQ Team" },
+    ]
+  },
+
+  46: { // Page of Cups
+    name: 'Page of Cups',
+    upright: [
+      { text: "Out of the mouth of babes and infants, you have established strength.", source: "Psalm 8:2 (Bible)" },
+      { text: "Logic will get you from A to B. Imagination will take you everywhere.", source: "Albert Einstein" },
+      { text: "The future belongs to those who believe in the beauty of their dreams.", source: "Eleanor Roosevelt" },
+      { text: "Every artist was first an amateur.", source: "Ralph Waldo Emerson" },
+      { text: "We don't stop playing because we grow old; we grow old because we stop playing.", source: "George Bernard Shaw" },
+      { text: "Creativity is intelligence having fun.", source: "Albert Einstein" },
+      { text: "The intuitive whisper before the logical shout. Listen.", source: "LunatIQ Team" },
+      { text: "Emotional honesty without emotional maturity. It's a start.", source: "LunatIQ Team" },
+      { text: "Messages from the soul, delivered in curious packaging.", source: "LunatIQ Team" },
+      { text: "Wonder is wisdom's younger sibling.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Emotional immaturity dressed as emotional authenticity.", source: "LunatIQ Team" },
+      { text: "You're not being real. You're being reactive.", source: "LunatIQ Team" },
+      { text: "Creative block or creative avoidance? Be honest.", source: "LunatIQ Team" },
+      { text: "Ignoring your intuition because it's inconvenient.", source: "LunatIQ Team" },
+      { text: "Oversensitivity is not the same as deep feeling.", source: "LunatIQ Team" },
+      { text: "You're so afraid of looking foolish you forgot how to feel.", source: "LunatIQ Team" },
+      { text: "The inner child needs healing, not indulgence.", source: "LunatIQ Team" },
+      { text: "Messages ignored become lessons.", source: "LunatIQ Team" },
+    ]
+  },
+
+  47: { // Knight of Cups
+    name: 'Knight of Cups',
+    upright: [
+      { text: "Many waters cannot quench love, neither can floods drown it.", source: "Song of Solomon 8:7 (Bible)" },
+      { text: "Follow your heart, but take your brain with you.", source: "Alfred Adler" },
+      { text: "Romance is the glamour which turns the dust of everyday life into a golden haze.", source: "Elinor Glyn" },
+      { text: "Love looks not with the eyes, but with the mind.", source: "William Shakespeare" },
+      { text: "The heart wants what it wants.", source: "Woody Allen" },
+      { text: "To love is to burn, to be on fire.", source: "Jane Austen" },
+      { text: "The romantic, the dreamer, the pursuer. Idealism in motion.", source: "LunatIQ Team" },
+      { text: "Offering the cup with genuine intention. Receive it or don't.", source: "LunatIQ Team" },
+      { text: "Passion is the compass. Wisdom is the map. You have one.", source: "LunatIQ Team" },
+      { text: "Chasing the feeling or chasing the person? Clarify.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Love bombing disguised as romance.", source: "LunatIQ Team" },
+      { text: "You're not in love with them. You're in love with the idea of them.", source: "LunatIQ Team" },
+      { text: "Emotional manipulation with flowers.", source: "LunatIQ Team" },
+      { text: "Grand gestures can't substitute for genuine presence.", source: "LunatIQ Team" },
+      { text: "Moodiness mistaken for depth.", source: "LunatIQ Team" },
+      { text: "You're offering cups to people who didn't ask for them.", source: "LunatIQ Team" },
+      { text: "Jealousy and possessiveness are not romance.", source: "LunatIQ Team" },
+      { text: "Fantasy relationship with a real person. They're going to disappoint you.", source: "LunatIQ Team" },
+    ]
+  },
+
+  48: { // Queen of Cups
+    name: 'Queen of Cups',
+    upright: [
+      { text: "She opens her mouth with wisdom, and the teaching of kindness is on her tongue.", source: "Proverbs 31:26 (Bible)" },
+      { text: "Compassion is the basis of morality.", source: "Arthur Schopenhauer" },
+      { text: "The most important thing is to try and inspire people so that they can be great in whatever they want to do.", source: "Kobe Bryant" },
+      { text: "When we give cheerfully and accept gratefully, everyone is blessed.", source: "Maya Angelou" },
+      { text: "No one can make you feel inferior without your consent.", source: "Eleanor Roosevelt" },
+      { text: "Empathy is seeing with the eyes of another, listening with the ears of another, and feeling with the heart of another.", source: "Alfred Adler" },
+      { text: "Emotional intelligence meets spiritual maturity.", source: "LunatIQ Team" },
+      { text: "You feel everything and it doesn't destroy you. That's mastery.", source: "LunatIQ Team" },
+      { text: "Intuition backed by experience. Trust that.", source: "LunatIQ Team" },
+      { text: "The healer who healed herself first.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Emotional manipulation is still manipulation, even when it's gentle.", source: "LunatIQ Team" },
+      { text: "Codependency wearing a crown of compassion.", source: "LunatIQ Team" },
+      { text: "You're so busy feeling everyone else's feelings you forgot your own.", source: "LunatIQ Team" },
+      { text: "Martyr complex disguised as empathy.", source: "LunatIQ Team" },
+      { text: "Over-giving to avoid receiving.", source: "LunatIQ Team" },
+      { text: "Your intuition is drowning in everyone else's emotions.", source: "LunatIQ Team" },
+      { text: "You can't save everyone. Stop trying.", source: "LunatIQ Team" },
+      { text: "Emotional unavailability hidden behind spiritual bypassing.", source: "LunatIQ Team" },
+    ]
+  },
+
+  49: { // King of Cups
+    name: 'King of Cups',
+    upright: [
+      { text: "A gentle answer turns away wrath, but a harsh word stirs up anger.", source: "Proverbs 15:1 (Bible)" },
+      { text: "The wise man knows himself to be a fool, but the fool thinks himself to be wise.", source: "William Shakespeare" },
+      { text: "Between stimulus and response there is a space. In that space is our power to choose our response.", source: "Viktor Frankl" },
+      { text: "Mastering others is strength. Mastering yourself is true power.", source: "Lao Tzu" },
+      { text: "The best fighter is never angry.", source: "Lao Tzu" },
+      { text: "In the midst of chaos, there is also opportunity.", source: "Sun Tzu" },
+      { text: "Emotional mastery without emotional suppression. That's the throne.", source: "LunatIQ Team" },
+      { text: "You feel deeply and respond wisely. That's leadership.", source: "LunatIQ Team" },
+      { text: "Calm seas aren't made by suppressing storms. They're made by mastering navigation.", source: "LunatIQ Team" },
+      { text: "Diplomacy isn't weakness. It's power under control.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Emotional suppression wearing a suit of control.", source: "LunatIQ Team" },
+      { text: "You're not calm. You're checked out.", source: "LunatIQ Team" },
+      { text: "Cold mastery is just trauma with a title.", source: "LunatIQ Team" },
+      { text: "You can't king from a place of emotional dishonesty.", source: "LunatIQ Team" },
+      { text: "Manipulation through emotional withholding.", source: "LunatIQ Team" },
+      { text: "The storm you're suppressing is leaking out sideways.", source: "LunatIQ Team" },
+      { text: "You're so controlled nobody can reach you. Is that really power?", source: "LunatIQ Team" },
+      { text: "Wisdom without warmth is just cold intelligence.", source: "LunatIQ Team" },
+    ]
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // MINOR ARCANA - SWORDS (Air: Mind, Truth, Clarity, Conflict)
+  // ═══════════════════════════════════════════════════════════
+
+  50: { // Ace of Swords
+    name: 'Ace of Swords',
+    upright: [
+      { text: "And you will know the truth, and the truth will set you free.", source: "John 8:32 (Bible)" },
+      { text: "The truth is rarely pure and never simple.", source: "Oscar Wilde" },
+      { text: "The unexamined life is not worth living.", source: "Socrates" },
+      { text: "I think, therefore I am.", source: "René Descartes" },
+      { text: "Above all, don't lie to yourself.", source: "Fyodor Dostoevsky" },
+      { text: "The pen is mightier than the sword.", source: "Edward Bulwer-Lytton" },
+      { text: "Mental clarity is the greatest gift you can give yourself.", source: "LunatIQ Team" },
+      { text: "The sword of truth cuts both ways. Are you ready?", source: "LunatIQ Team" },
+      { text: "Breakthrough moment. The fog lifts. See clearly now.", source: "LunatIQ Team" },
+      { text: "Your mind is sharp. Use it wisely.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Confusion masquerading as complexity.", source: "LunatIQ Team" },
+      { text: "Mental fog you're calling strategic thinking.", source: "LunatIQ Team" },
+      { text: "The truth you're avoiding is the breakthrough you need.", source: "LunatIQ Team" },
+      { text: "Brutal honesty without compassion is just cruelty.", source: "LunatIQ Team" },
+      { text: "Your thoughts are weapons turned on yourself.", source: "LunatIQ Team" },
+      { text: "Clarity delayed by fear of what you'll see.", source: "LunatIQ Team" },
+      { text: "The sword is there. You're just not picking it up.", source: "LunatIQ Team" },
+      { text: "Analysis paralysis dressed as wisdom.", source: "LunatIQ Team" },
+    ]
+  },
+
+  51: { // Two of Swords
+    name: 'Two of Swords',
+    upright: [
+      { text: "Choose you this day whom you will serve.", source: "Joshua 24:15 (Bible)" },
+      { text: "In any moment of decision, the best thing you can do is the right thing. The worst thing you can do is nothing.", source: "Theodore Roosevelt" },
+      { text: "Not deciding is a decision.", source: "LunatIQ Team" },
+      { text: "Between two evils, I always pick the one I never tried before.", source: "Mae West" },
+      { text: "The only way out is through.", source: "Robert Frost" },
+      { text: "You can't cross the sea merely by standing and staring at the water.", source: "Rabindranath Tagore" },
+      { text: "Stalemate. Blindfold on. Choose or be chosen for.", source: "LunatIQ Team" },
+      { text: "Avoidance is a decision with consequences you didn't choose.", source: "LunatIQ Team" },
+      { text: "Both options suck. Pick the suck you can live with.", source: "LunatIQ Team" },
+      { text: "The swords are balanced. Your values will tip the scale.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Decision made. Blindfold off. Now live with it.", source: "LunatIQ Team" },
+      { text: "You've been avoiding this choice so long the universe made it for you.", source: "LunatIQ Team" },
+      { text: "Analysis paralysis just became analysis death spiral.", source: "LunatIQ Team" },
+      { text: "The fence you're sitting on? It's collapsing.", source: "LunatIQ Team" },
+      { text: "Indecision is still deciding to let life happen to you.", source: "LunatIQ Team" },
+      { text: "Both swords have fallen. Pick one up or walk away bleeding.", source: "LunatIQ Team" },
+      { text: "You removed the blindfold but closed your eyes.", source: "LunatIQ Team" },
+      { text: "Clarity arrived. You chose confusion anyway.", source: "LunatIQ Team" },
+    ]
+  },
+
+  52: { // Three of Swords
+    name: 'Three of Swords',
+    upright: [
+      { text: "The Lord is close to the brokenhearted.", source: "Psalm 34:18 (Bible)" },
+      { text: "The wound is the place where the Light enters you.", source: "Rumi" },
+      { text: "Grief is love with nowhere to go.", source: "Jamie Anderson" },
+      { text: "The heart was made to be broken.", source: "Oscar Wilde" },
+      { text: "What doesn't kill you makes you stronger.", source: "Friedrich Nietzsche" },
+      { text: "You can't heal what you don't acknowledge.", source: "LunatIQ Team" },
+      { text: "Three swords. One heart. The pain is real. So is the healing.", source: "LunatIQ Team" },
+      { text: "Betrayal, loss, sorrow. Name it. Feel it. Release it.", source: "LunatIQ Team" },
+      { text: "This isn't happening TO you. It's happening FOR you.", source: "LunatIQ Team" },
+      { text: "The swords will be removed. Scars will remain. Both are holy.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Pulling the swords out or pushing them deeper? Choose healing.", source: "LunatIQ Team" },
+      { text: "You've been heartbroken so long it became your identity.", source: "LunatIQ Team" },
+      { text: "Forgiveness is the sword you remove from your own heart.", source: "LunatIQ Team" },
+      { text: "The wound healed but you keep reopening it.", source: "LunatIQ Team" },
+      { text: "Grief has an expiration date. You passed it.", source: "LunatIQ Team" },
+      { text: "Using your heartbreak as a shield against new love.", source: "LunatIQ Team" },
+      { text: "The swords are out. The wound is closing. Let it.", source: "LunatIQ Team" },
+      { text: "You survived. Now stop living like you're still dying.", source: "LunatIQ Team" },
+    ]
+  },
+
+  53: { // Four of Swords
+    name: 'Four of Swords',
+    upright: [
+      { text: "Be still, and know that I am God.", source: "Psalm 46:10 (Bible)" },
+      { text: "Rest is not idleness.", source: "John Lubbock" },
+      { text: "Almost everything will work again if you unplug it for a few minutes, including you.", source: "Anne Lamott" },
+      { text: "Sometimes the most productive thing you can do is relax.", source: "Mark Black" },
+      { text: "You don't have to see the whole staircase, just take the first step.", source: "Martin Luther King Jr." },
+      { text: "Burnout is not a badge of honor.", source: "LunatIQ Team" },
+      { text: "Strategic retreat. Tactical rest. Necessary pause.", source: "LunatIQ Team" },
+      { text: "The swords are laid down. Your body is saying stop. Listen.", source: "LunatIQ Team" },
+      { text: "Meditation or collapse. Choose one.", source: "LunatIQ Team" },
+      { text: "You're not lazy. You're recovering. There's a difference.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Rested or restless? There's your answer.", source: "LunatIQ Team" },
+      { text: "You can't sleep your way out of problems that require action.", source: "LunatIQ Team" },
+      { text: "Stagnation dressed as meditation.", source: "LunatIQ Team" },
+      { text: "The break is over. Pick up your swords.", source: "LunatIQ Team" },
+      { text: "Hiding from life and calling it self-care.", source: "LunatIQ Team" },
+      { text: "Rest became avoidance became depression.", source: "LunatIQ Team" },
+      { text: "You're recharged. Now reenter.", source: "LunatIQ Team" },
+      { text: "Emerging from the tomb. Resurrection energy activated.", source: "LunatIQ Team" },
+    ]
+  },
+
+  54: { // Five of Swords
+    name: 'Five of Swords',
+    upright: [
+      { text: "Do not be overcome by evil, but overcome evil with good.", source: "Romans 12:21 (Bible)" },
+      { text: "Never wrestle with pigs. You both get dirty and the pig likes it.", source: "George Bernard Shaw" },
+      { text: "The best revenge is massive success.", source: "Frank Sinatra" },
+      { text: "In a battle, the most dangerous fighter is the one with nothing to lose.", source: "LunatIQ Team" },
+      { text: "Winning isn't everything, but wanting to win is.", source: "Vince Lombardi" },
+      { text: "Pick your battles. Not every hill is worth dying on.", source: "LunatIQ Team" },
+      { text: "Hollow victory. You won but lost yourself in the process.", source: "LunatIQ Team" },
+      { text: "Defeat with honor beats victory with shame.", source: "LunatIQ Team" },
+      { text: "You got what you wanted. Was the cost worth it?", source: "LunatIQ Team" },
+      { text: "Conflict, defeat, betrayal. Someone's walking away wounded.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Walking away from a fight you'd win but that would destroy you.", source: "LunatIQ Team" },
+      { text: "Apologizing doesn't mean you were wrong. It means peace matters more than pride.", source: "LunatIQ Team" },
+      { text: "You're releasing the swords. That's strength, not weakness.", source: "LunatIQ Team" },
+      { text: "Revenge fantasies are poison you drink hoping they'll die.", source: "LunatIQ Team" },
+      { text: "The battle is over. Stop fighting ghosts.", source: "LunatIQ Team" },
+      { text: "Forgiveness is the sword you stop stabbing yourself with.", source: "LunatIQ Team" },
+      { text: "You lost the battle but won your integrity back.", source: "LunatIQ Team" },
+      { text: "Sometimes the bravest thing is admitting you were wrong.", source: "LunatIQ Team" },
+    ]
+  },
+
+  55: { // Six of Swords
+    name: 'Six of Swords',
+    upright: [
+      { text: "Forget the former things; do not dwell on the past.", source: "Isaiah 43:18 (Bible)" },
+      { text: "You can't start the next chapter if you keep re-reading the last one.", source: "LunatIQ Team" },
+      { text: "The only way out is through.", source: "LunatIQ Team" },
+      { text: "Not all who wander are lost.", source: "J.R.R. Tolkien" },
+      { text: "Change is hard at first, messy in the middle, and gorgeous at the end.", source: "Robin Sharma" },
+      { text: "Sometimes you have to leave to find out where you belong.", source: "LunatIQ Team" },
+      { text: "Transition. Moving from rough waters to calm. Trust the ferryman.", source: "LunatIQ Team" },
+      { text: "Six swords in the boat. Painful truths you're carrying to calmer shores.", source: "LunatIQ Team" },
+      { text: "You're not running away. You're moving toward.", source: "LunatIQ Team" },
+      { text: "The past is in the boat. The future is across the water. Keep rowing.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You're circling the same water hoping for different shores.", source: "LunatIQ Team" },
+      { text: "Can't move forward while dragging the past behind you.", source: "LunatIQ Team" },
+      { text: "Resistance to necessary change is prolonging unnecessary pain.", source: "LunatIQ Team" },
+      { text: "The boat is ready. You won't get in.", source: "LunatIQ Team" },
+      { text: "Running from vs. running toward. Clarify your direction.", source: "LunatIQ Team" },
+      { text: "You keep unpacking on the boat instead of reaching shore.", source: "LunatIQ Team" },
+      { text: "Geographical cure for a spiritual problem.", source: "LunatIQ Team" },
+      { text: "The journey requires leaving. You're still waving goodbye.", source: "LunatIQ Team" },
+    ]
+  },
+
+  56: { // Seven of Swords
+    name: 'Seven of Swords',
+    upright: [
+      { text: "No one can serve two masters.", source: "Matthew 6:24 (Bible)" },
+      { text: "The liar's punishment is not in the least that he is not believed, but that he cannot believe anyone else.", source: "George Bernard Shaw" },
+      { text: "Strategy without tactics is the slowest route to victory. Tactics without strategy is the noise before defeat.", source: "Sun Tzu" },
+      { text: "The first principle is that you must not fool yourself—and you are the easiest person to fool.", source: "Richard Feynman" },
+      { text: "Keep your friends close and your enemies closer.", source: "Sun Tzu" },
+      { text: "Deception, strategy, or self-preservation? Know which one this is.", source: "LunatIQ Team" },
+      { text: "Seven swords. Five in hand, two left behind. What are you stealing?", source: "LunatIQ Team" },
+      { text: "Sneaking away only works if you're running toward something worth having.", source: "LunatIQ Team" },
+      { text: "Cunning is intelligence applied to survival.", source: "LunatIQ Team" },
+      { text: "Sometimes you have to play the game to change the rules.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "The mask slipped. The con collapsed. The truth is out.", source: "LunatIQ Team" },
+      { text: "You got caught. Now what?", source: "LunatIQ Team" },
+      { text: "Conscience is the wound. Honesty is the cure.", source: "LunatIQ Team" },
+      { text: "The only person you're really fooling is yourself.", source: "LunatIQ Team" },
+      { text: "Secrets kept become lies lived.", source: "LunatIQ Team" },
+      { text: "You can't outrun your own shadow.", source: "LunatIQ Team" },
+      { text: "Coming clean or getting cleaned out? Choose quickly.", source: "LunatIQ Team" },
+      { text: "The swords you stole are cutting you from the inside.", source: "LunatIQ Team" },
+    ]
+  },
+
+  57: { // Eight of Swords
+    name: 'Eight of Swords',
+    upright: [
+      { text: "The truth will set you free, but first it will make you miserable.", source: "James A. Garfield" },
+      { text: "The only thing we have to fear is fear itself.", source: "Franklin D. Roosevelt" },
+      { text: "Man is free at the moment he wishes to be.", source: "Voltaire" },
+      { text: "The mind is its own place, and in itself can make a heaven of hell, a hell of heaven.", source: "John Milton" },
+      { text: "You are not stuck. You're just committed to patterns that no longer serve you.", source: "LunatIQ Team" },
+      { text: "Eight swords surround you. None are touching you. The prison is mental.", source: "LunatIQ Team" },
+      { text: "Blindfolded, bound, surrounded. Remove the blindfold first.", source: "LunatIQ Team" },
+      { text: "Victim or volunteer? Be honest.", source: "LunatIQ Team" },
+      { text: "The swords are in your mind. Walk through them.", source: "LunatIQ Team" },
+      { text: "Paralyzed by overthinking disguised as careful planning.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Blindfold removed. Ropes loosened. Swords? Still there but no longer binding.", source: "LunatIQ Team" },
+      { text: "Liberation is a choice you make, not a gift you receive.", source: "LunatIQ Team" },
+      { text: "You've been free this whole time. You just needed permission to believe it.", source: "LunatIQ Team" },
+      { text: "The prison door was never locked.", source: "LunatIQ Team" },
+      { text: "Self-imposed limitations are still self-imposed.", source: "LunatIQ Team" },
+      { text: "You're choosing to stay stuck. That's different than being stuck.", source: "LunatIQ Team" },
+      { text: "First step toward freedom: admitting you built the cage.", source: "LunatIQ Team" },
+      { text: "The swords parted. You're still standing there.", source: "LunatIQ Team" },
+    ]
+  },
+
+  58: { // Nine of Swords
+    name: 'Nine of Swords',
+    upright: [
+      { text: "Cast all your anxiety on him because he cares for you.", source: "1 Peter 5:7 (Bible)" },
+      { text: "We suffer more often in imagination than in reality.", source: "Seneca" },
+      { text: "Worry is interest paid on trouble before it comes due.", source: "William Ralph Inge" },
+      { text: "Anxiety does not empty tomorrow of its sorrows, but only empties today of its strength.", source: "Charles Spurgeon" },
+      { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell" },
+      { text: "3 AM thoughts have no legislative power.", source: "LunatIQ Team" },
+      { text: "Nine swords hanging over you. Your mind put them there.", source: "LunatIQ Team" },
+      { text: "Nightmares, anxiety, catastrophic thinking. Name it for what it is.", source: "LunatIQ Team" },
+      { text: "The things you're worried about? Most won't happen. The rest you'll handle.", source: "LunatIQ Team" },
+      { text: "Your mind is writing horror stories about a future that doesn't exist yet.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "The worst is over. Your mind doesn't know that yet.", source: "LunatIQ Team" },
+      { text: "Recovery from anxiety is learning to trust reality over imagination.", source: "LunatIQ Team" },
+      { text: "The swords are lowering. Let them fall.", source: "LunatIQ Team" },
+      { text: "You survived what you thought would destroy you. Now what?", source: "LunatIQ Team" },
+      { text: "Healing isn't linear but it's happening.", source: "LunatIQ Team" },
+      { text: "The nightmares are losing power. Keep going.", source: "LunatIQ Team" },
+      { text: "Asking for help isn't weakness. It's wisdom.", source: "LunatIQ Team" },
+      { text: "Your nervous system is recalibrating. Be patient with the process.", source: "LunatIQ Team" },
+    ]
+  },
+
+  59: { // Ten of Swords
+    name: 'Ten of Swords',
+    upright: [
+      { text: "He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul.", source: "Psalm 23:2-3 (Bible)" },
+      { text: "Rock bottom became the solid foundation on which I rebuilt my life.", source: "J.K. Rowling" },
+      { text: "What doesn't kill you makes you stronger.", source: "Friedrich Nietzsche" },
+      { text: "The wound is where the light enters you.", source: "Rumi" },
+      { text: "Sometimes good things fall apart so better things can fall together.", source: "Marilyn Monroe" },
+      { text: "Ten swords in the back. You're not dead. You're transformed.", source: "LunatIQ Team" },
+      { text: "Rock bottom has a solid foundation. Build from here.", source: "LunatIQ Team" },
+      { text: "The only way from here is up.", source: "LunatIQ Team" },
+      { text: "This is the end. Which means it's also the beginning.", source: "LunatIQ Team" },
+      { text: "Backstabbed, betrayed, defeated. The swords will be removed. You will rise.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "The swords are being pulled out. This is the healing that hurts.", source: "LunatIQ Team" },
+      { text: "Recovery, resurrection, rising from the ashes.", source: "LunatIQ Team" },
+      { text: "You're not dead. You're being reborn.", source: "LunatIQ Team" },
+      { text: "The worst is behind you. Stop replaying it.", source: "LunatIQ Team" },
+      { text: "Getting up after being knocked down is the ultimate power move.", source: "LunatIQ Team" },
+      { text: "You've hit bottom and pushed off. Now swim.", source: "LunatIQ Team" },
+      { text: "The phoenix burns before it rises. You're in the burn.", source: "LunatIQ Team" },
+      { text: "This isn't the end of your story. It's the end of a chapter.", source: "LunatIQ Team" },
+    ]
+  },
+
+  60: { // Page of Swords
+    name: 'Page of Swords',
+    upright: [
+      { text: "The beginning of wisdom is the definition of terms.", source: "Socrates" },
+      { text: "A little knowledge is a dangerous thing.", source: "Alexander Pope" },
+      { text: "Curiosity is lying in wait for every secret.", source: "Ralph Waldo Emerson" },
+      { text: "The important thing is not to stop questioning.", source: "Albert Einstein" },
+      { text: "I have no special talents. I am only passionately curious.", source: "Albert Einstein" },
+      { text: "Sharp mind, sharper tongue. Use both wisely.", source: "LunatIQ Team" },
+      { text: "Intellectual curiosity meets youthful energy. Don't mistake it for wisdom.", source: "LunatIQ Team" },
+      { text: "You have the sword. You haven't mastered it yet.", source: "LunatIQ Team" },
+      { text: "Questions are more powerful than answers right now.", source: "LunatIQ Team" },
+      { text: "Truth-seeking or trouble-making? Sometimes both.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Clever doesn't mean wise. Smart doesn't mean kind.", source: "LunatIQ Team" },
+      { text: "Your words are cutting people you didn't mean to hurt.", source: "LunatIQ Team" },
+      { text: "Information without integration is just noise.", source: "LunatIQ Team" },
+      { text: "You're arguing to win, not to understand.", source: "LunatIQ Team" },
+      { text: "Gossip disguised as intel-gathering.", source: "LunatIQ Team" },
+      { text: "The sword is in your hand but you're waving it recklessly.", source: "LunatIQ Team" },
+      { text: "Intellectual arrogance is still arrogance.", source: "LunatIQ Team" },
+      { text: "Being right and being insufferable are not the same achievement.", source: "LunatIQ Team" },
+    ]
+  },
+
+  61: { // Knight of Swords
+    name: 'Knight of Swords',
+    upright: [
+      { text: "The race is not to the swift or the battle to the strong.", source: "Ecclesiastes 9:11 (Bible)" },
+      { text: "Fortune favors the bold.", source: "Virgil" },
+      { text: "Action is the foundational key to all success.", source: "Pablo Picasso" },
+      { text: "He who hesitates is lost.", source: "LunatIQ Team" },
+      { text: "Charge ahead, sword raised, mind clear. This is warrior energy.", source: "LunatIQ Team" },
+      { text: "Direct action. No hesitation. Truth delivered at speed.", source: "LunatIQ Team" },
+      { text: "You're the cavalry. Act like it.", source: "LunatIQ Team" },
+      { text: "Decisive, assertive, possibly reckless. Time will tell.", source: "LunatIQ Team" },
+      { text: "The fastest route from A to B is a straight line of brutal honesty.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Charging ahead without checking if you're on the right path.", source: "LunatIQ Team" },
+      { text: "Aggression disguised as assertiveness.", source: "LunatIQ Team" },
+      { text: "You're moving fast but going nowhere productive.", source: "LunatIQ Team" },
+      { text: "The sword needs direction, not just velocity.", source: "LunatIQ Team" },
+      { text: "Haste makes waste. You're making a lot of waste.", source: "LunatIQ Team" },
+      { text: "Brutal honesty without compassion is just brutality.", source: "LunatIQ Team" },
+      { text: "Your impatience is creating more problems than your speed solves.", source: "LunatIQ Team" },
+      { text: "Slow down or crash. Choose one.", source: "LunatIQ Team" },
+    ]
+  },
+
+  62: { // Queen of Swords
+    name: 'Queen of Swords',
+    upright: [
+      { text: "Speak the truth, even if your voice shakes.", source: "Maggie Kuhn" },
+      { text: "I don't like that man. I must get to know him better.", source: "Abraham Lincoln" },
+      { text: "The truth is like a lion. You don't have to defend it. Let it loose. It will defend itself.", source: "Augustine of Hippo" },
+      { text: "Honesty is the first chapter in the book of wisdom.", source: "Thomas Jefferson" },
+      { text: "Clear-eyed, sharp-minded, soft-hearted beneath the armor.", source: "LunatIQ Team" },
+      { text: "You've been through it. The sword is wisdom earned, not given.", source: "LunatIQ Team" },
+      { text: "Boundaries without apology. Truth without cruelty.", source: "LunatIQ Team" },
+      { text: "She who survived alone learned to throne alone.", source: "LunatIQ Team" },
+      { text: "Your clarity is your crown. Your honesty is your scepter.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Coldness masquerading as clarity.", source: "LunatIQ Team" },
+      { text: "You're protecting yourself right into isolation.", source: "LunatIQ Team" },
+      { text: "Bitterness isn't wisdom. It's unhealed pain with a degree.", source: "LunatIQ Team" },
+      { text: "The walls you built for protection became your prison.", source: "LunatIQ Team" },
+      { text: "You can be right and still be alone.", source: "LunatIQ Team" },
+      { text: "Intellectual superiority is a lonely throne.", source: "LunatIQ Team" },
+      { text: "Your sword cuts so well you forgot how to embrace.", source: "LunatIQ Team" },
+      { text: "Wounded healer who never healed her own wounds.", source: "LunatIQ Team" },
+    ]
+  },
+
+  63: { // King of Swords
+    name: 'King of Swords',
+    upright: [
+      { text: "By justice a king gives a country stability.", source: "Proverbs 29:4 (Bible)" },
+      { text: "In matters of truth and justice, there is no difference between large and small problems.", source: "Albert Einstein" },
+      { text: "The measure of intelligence is the ability to change.", source: "Albert Einstein" },
+      { text: "Logic will get you from A to B. Imagination will take you everywhere.", source: "Albert Einstein" },
+      { text: "Thinking is difficult, that's why most people judge.", source: "Carl Jung" },
+      { text: "Master of mind, architect of truth, wielder of ultimate clarity.", source: "LunatIQ Team" },
+      { text: "Fair, just, objective. The sword rules with logic, not emotion.", source: "LunatIQ Team" },
+      { text: "Authority earned through competence, respect through consistency.", source: "LunatIQ Team" },
+      { text: "You don't need to be liked. You need to be respected.", source: "LunatIQ Team" },
+      { text: "The king of air rules with reason. Emotion is acknowledged, not in charge.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Tyranny is logic without compassion.", source: "LunatIQ Team" },
+      { text: "You're so rational you forgot to be human.", source: "LunatIQ Team" },
+      { text: "Cold justice without mercy is just revenge with paperwork.", source: "LunatIQ Team" },
+      { text: "The sword without the heart is just a weapon.", source: "LunatIQ Team" },
+      { text: "Manipulation dressed as wisdom.", source: "LunatIQ Team" },
+      { text: "You can't logic your way out of an emotional problem.", source: "LunatIQ Team" },
+      { text: "Intellectual bullying is still bullying.", source: "LunatIQ Team" },
+      { text: "The king who only sees facts misses half the kingdom.", source: "LunatIQ Team" },
+    ]
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // MINOR ARCANA - PENTACLES (Earth: Material, Body, Resources)
+  // ═══════════════════════════════════════════════════════════
+
+  64: { // Ace of Pentacles
+    name: 'Ace of Pentacles',
+    upright: [
+      { text: "A generous person will prosper; whoever refreshes others will be refreshed.", source: "Proverbs 11:25 (Bible)" },
+      { text: "Opportunity is missed by most people because it is dressed in overalls and looks like work.", source: "Thomas Edison" },
+      { text: "Do not save what is left after spending, but spend what is left after saving.", source: "Warren Buffett" },
+      { text: "An investment in knowledge pays the best interest.", source: "Benjamin Franklin" },
+      { text: "The best time to plant a tree was 20 years ago. The second best time is now.", source: "Chinese Proverb" },
+      { text: "Money is a terrible master but an excellent servant.", source: "P.T. Barnum" },
+      { text: "New opportunity. Material beginning. The universe is handing you a coin.", source: "LunatIQ Team" },
+      { text: "Seed money, seed opportunity. Plant it wisely.", source: "LunatIQ Team" },
+      { text: "Practical magic: turn intention into income.", source: "LunatIQ Team" },
+      { text: "The pentacle appears. Manifest or squander.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Opportunity knocked. You were counting your excuses.", source: "LunatIQ Team" },
+      { text: "Greed is fear wearing a gold watch.", source: "LunatIQ Team" },
+      { text: "The offer is real but your readiness is not.", source: "LunatIQ Team" },
+      { text: "Material gain without spiritual foundation is just expensive emptiness.", source: "LunatIQ Team" },
+      { text: "You want the harvest without planting the seed.", source: "LunatIQ Team" },
+      { text: "Short-term thinking is long-term poverty.", source: "LunatIQ Team" },
+      { text: "The pentacle is there. You're looking the other way.", source: "LunatIQ Team" },
+      { text: "Abundance delayed by fear of success.", source: "LunatIQ Team" },
+    ]
+  },
+
+  65: { // Two of Pentacles
+    name: 'Two of Pentacles',
+    upright: [
+      { text: "No one can serve two masters.", source: "Matthew 6:24 (Bible)" },
+      { text: "Life is like riding a bicycle. To keep your balance, you must keep moving.", source: "Albert Einstein" },
+      { text: "You can do anything, but not everything.", source: "David Allen" },
+      { text: "Balance is not something you find, it's something you create.", source: "Jana Kingsford" },
+      { text: "Time management is life management.", source: "Robin Sharma" },
+      { text: "Juggling priorities like a circus act. Don't drop the balls.", source: "LunatIQ Team" },
+      { text: "Flexibility is surviving. Rigidity is breaking.", source: "LunatIQ Team" },
+      { text: "Two pentacles, infinite motion. This is the dance.", source: "LunatIQ Team" },
+      { text: "Work-life balance is a myth. Work-life integration is the goal.", source: "LunatIQ Team" },
+      { text: "You're handling it. Barely. But you're handling it.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "You're not juggling. You're dropping.", source: "LunatIQ Team" },
+      { text: "Overwhelm is what happens when you say yes to everything.", source: "LunatIQ Team" },
+      { text: "The balls are in the air. The ground is coming fast.", source: "LunatIQ Team" },
+      { text: "You can't pour from an empty cup and you can't juggle with broken hands.", source: "LunatIQ Team" },
+      { text: "Burnout is just bad time management with better PR.", source: "LunatIQ Team" },
+      { text: "Saying no is how you protect your yes.", source: "LunatIQ Team" },
+      { text: "The pentacles fell. Pick up what matters most.", source: "LunatIQ Team" },
+      { text: "Chaos isn't balance. It's just chaos.", source: "LunatIQ Team" },
+    ]
+  },
+
+  66: { // Three of Pentacles
+    name: 'Three of Pentacles',
+    upright: [
+      { text: "Two are better than one, because they have a good return for their labor.", source: "Ecclesiastes 4:9 (Bible)" },
+      { text: "Alone we can do so little; together we can do so much.", source: "Helen Keller" },
+      { text: "Talent wins games, but teamwork and intelligence win championships.", source: "Michael Jordan" },
+      { text: "Coming together is a beginning, staying together is progress, and working together is success.", source: "Henry Ford" },
+      { text: "None of us is as smart as all of us.", source: "Ken Blanchard" },
+      { text: "Collaboration, craftsmanship, competence. Building something that lasts.", source: "LunatIQ Team" },
+      { text: "Three people, one vision. This is how cathedrals are built.", source: "LunatIQ Team" },
+      { text: "Your skill matters. Your team matters more.", source: "LunatIQ Team" },
+      { text: "Mastery isn't solitary. It's collaborative.", source: "LunatIQ Team" },
+      { text: "Quality work requires multiple perspectives.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Too many cooks or not enough respect for the chef?", source: "LunatIQ Team" },
+      { text: "Ego killed more projects than lack of funding.", source: "LunatIQ Team" },
+      { text: "You're building alone because you can't collaborate.", source: "LunatIQ Team" },
+      { text: "Sloppy work disguised as 'good enough.'", source: "LunatIQ Team" },
+      { text: "The team is dysfunctional because the communication is.", source: "LunatIQ Team" },
+      { text: "Perfectionism without progress is just stalling.", source: "LunatIQ Team" },
+      { text: "You can't build a cathedral if you won't lay bricks.", source: "LunatIQ Team" },
+      { text: "Lack of standards will cost you later.", source: "LunatIQ Team" },
+    ]
+  },
+
+  67: { // Four of Pentacles
+    name: 'Four of Pentacles',
+    upright: [
+      { text: "For where your treasure is, there your heart will be also.", source: "Matthew 6:21 (Bible)" },
+      { text: "He who is not contented with what he has, would not be contented with what he would like to have.", source: "Socrates" },
+      { text: "Wealth consists not in having great possessions, but in having few wants.", source: "Epictetus" },
+      { text: "Too many people spend money they haven't earned to buy things they don't want to impress people they don't like.", source: "Will Rogers" },
+      { text: "Frugality or fear? Security or stinginess? Know the difference.", source: "LunatIQ Team" },
+      { text: "Four pentacles held tight. Protection or prison?", source: "LunatIQ Team" },
+      { text: "You can't receive with closed fists.", source: "LunatIQ Team" },
+      { text: "Conservation is wise. Hoarding is fear.", source: "LunatIQ Team" },
+      { text: "Stability is good. Stagnation is death.", source: "LunatIQ Team" },
+      { text: "What you grip too tightly, you crush.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Releasing control or losing control? Be clear.", source: "LunatIQ Team" },
+      { text: "Generosity born from abundance vs. recklessness born from denial.", source: "LunatIQ Team" },
+      { text: "You loosened the grip. Now what flows in?", source: "LunatIQ Team" },
+      { text: "Material attachment is suffering with a price tag.", source: "LunatIQ Team" },
+      { text: "The pentacles you're clinging to are worthless if unused.", source: "LunatIQ Team" },
+      { text: "Financial irresponsibility disguised as abundance mindset.", source: "LunatIQ Team" },
+      { text: "You can't buy your way out of emotional poverty.", source: "LunatIQ Team" },
+      { text: "Generosity without boundaries is just people-pleasing with receipts.", source: "LunatIQ Team" },
+    ]
+  },
+
+  68: { // Five of Pentacles
+    name: 'Five of Pentacles',
+    upright: [
+      { text: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.", source: "Psalm 34:18 (Bible)" },
+      { text: "Rock bottom became the solid foundation on which I rebuilt my life.", source: "J.K. Rowling" },
+      { text: "It is not the man who has too little, but the man who craves more, that is poor.", source: "Seneca" },
+      { text: "In the middle of difficulty lies opportunity.", source: "Albert Einstein" },
+      { text: "Hardship often prepares ordinary people for an extraordinary destiny.", source: "C.S. Lewis" },
+      { text: "Poverty, struggle, exclusion. The church has a lit window. Will you knock?", source: "LunatIQ Team" },
+      { text: "Financial hardship. Spiritual opportunity. Choose your focus.", source: "LunatIQ Team" },
+      { text: "You're not alone even when you feel abandoned.", source: "LunatIQ Team" },
+      { text: "Rock bottom teaches what the mountaintop never could.", source: "LunatIQ Team" },
+      { text: "Material loss doesn't equal spiritual poverty unless you let it.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "The storm is passing. You're still standing.", source: "LunatIQ Team" },
+      { text: "Recovery isn't instant but it's happening.", source: "LunatIQ Team" },
+      { text: "You walked past the lit window. Go back and knock.", source: "LunatIQ Team" },
+      { text: "Asking for help is strength disguised as vulnerability.", source: "LunatIQ Team" },
+      { text: "Financial recovery precedes spiritual complacency if you're not careful.", source: "LunatIQ Team" },
+      { text: "You survived the lean times. Don't forget the lessons.", source: "LunatIQ Team" },
+      { text: "Improvement doesn't mean arrival. Keep climbing.", source: "LunatIQ Team" },
+      { text: "The worst is over. The work isn't.", source: "LunatIQ Team" },
+    ]
+  },
+
+  69: { // Six of Pentacles
+    name: 'Six of Pentacles',
+    upright: [
+      { text: "Give, and it will be given to you.", source: "Luke 6:38 (Bible)" },
+      { text: "We make a living by what we get, but we make a life by what we give.", source: "Winston Churchill" },
+      { text: "The best way to find yourself is to lose yourself in the service of others.", source: "Mahatma Gandhi" },
+      { text: "No one has ever become poor by giving.", source: "Anne Frank" },
+      { text: "Generosity is giving more than you can, and pride is taking less than you need.", source: "Khalil Gibran" },
+      { text: "Charity with strings attached is just investment with bad marketing.", source: "LunatIQ Team" },
+      { text: "Give freely or don't give at all.", source: "LunatIQ Team" },
+      { text: "The scales of justice. The hand of charity. Balance both.", source: "LunatIQ Team" },
+      { text: "You have enough to share. That's the test.", source: "LunatIQ Team" },
+      { text: "Receiving with grace is as important as giving it.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Strings attached to every gift. That's manipulation, not generosity.", source: "LunatIQ Team" },
+      { text: "You can't buy loyalty with charity.", source: "LunatIQ Team" },
+      { text: "One-sided giving breeds resentment on both sides.", source: "LunatIQ Team" },
+      { text: "Power dynamics disguised as philanthropy.", source: "LunatIQ Team" },
+      { text: "You're giving from guilt, not love. They can tell.", source: "LunatIQ Team" },
+      { text: "Taking advantage of generosity is spiritual theft.", source: "LunatIQ Team" },
+      { text: "The scales are unbalanced. Someone's getting exploited.", source: "LunatIQ Team" },
+      { text: "Charity begins at home. You forgot your home.", source: "LunatIQ Team" },
+    ]
+  },
+
+  70: { // Seven of Pentacles
+    name: 'Seven of Pentacles',
+    upright: [
+      { text: "Do not be deceived: God cannot be mocked. A man reaps what he sows.", source: "Galatians 6:7 (Bible)" },
+      { text: "Patience is bitter, but its fruit is sweet.", source: "Aristotle" },
+      { text: "The two most powerful warriors are patience and time.", source: "Leo Tolstoy" },
+      { text: "A year from now you may wish you had started today.", source: "Karen Lamb" },
+      { text: "Good things come to those who wait, but better things come to those who work.", source: "LunatIQ Team" },
+      { text: "You planted. You watered. Now you wait. This is the hard part.", source: "LunatIQ Team" },
+      { text: "Seven pentacles on the vine. Not ripe yet. Trust the process.", source: "LunatIQ Team" },
+      { text: "Progress is invisible until it's not.", source: "LunatIQ Team" },
+      { text: "Reassessment isn't quitting. It's strategic pause.", source: "LunatIQ Team" },
+      { text: "The harvest comes to those who tend the garden.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Impatience is pulling up the seeds to check if they're growing.", source: "LunatIQ Team" },
+      { text: "You want the harvest without the wait. Nature doesn't work that way.", source: "LunatIQ Team" },
+      { text: "Abandoning the garden right before harvest season.", source: "LunatIQ Team" },
+      { text: "Short-term thinking kills long-term gains.", source: "LunatIQ Team" },
+      { text: "Effort without strategy is just expensive flailing.", source: "LunatIQ Team" },
+      { text: "You're working hard on the wrong garden.", source: "LunatIQ Team" },
+      { text: "Sunk cost fallacy: watering dead plants.", source: "LunatIQ Team" },
+      { text: "Sometimes the bravest thing is admitting this crop won't grow.", source: "LunatIQ Team" },
+    ]
+  },
+
+  71: { // Eight of Pentacles
+    name: 'Eight of Pentacles',
+    upright: [
+      { text: "Whatever your hand finds to do, do it with all your might.", source: "Ecclesiastes 9:10 (Bible)" },
+      { text: "Quality is not an act, it is a habit.", source: "Aristotle" },
+      { text: "The expert in anything was once a beginner.", source: "Helen Hayes" },
+      { text: "I fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times.", source: "Bruce Lee" },
+      { text: "Mastery is not a destination. It's a way of traveling.", source: "LunatIQ Team" },
+      { text: "Eight pentacles. Eight hours. One craft. This is devotion.", source: "LunatIQ Team" },
+      { text: "Show up, do the work, repeat. That's mastery.", source: "LunatIQ Team" },
+      { text: "Skill is patience applied to practice.", source: "LunatIQ Team" },
+      { text: "Apprenticeship is humility in action.", source: "LunatIQ Team" },
+      { text: "You're not a master yet. You're becoming one. That's better.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Half-assing your craft is full-assing your failure.", source: "LunatIQ Team" },
+      { text: "Perfectionism that prevents completion is just fear.", source: "LunatIQ Team" },
+      { text: "You're practicing the wrong thing and wondering why you're not improving.", source: "LunatIQ Team" },
+      { text: "Repetition without reflection is just busywork.", source: "LunatIQ Team" },
+      { text: "Shortcuts today become dead ends tomorrow.", source: "LunatIQ Team" },
+      { text: "Boredom with the basics means you haven't mastered them.", source: "LunatIQ Team" },
+      { text: "The work is beneath you? Then you're beneath the mastery.", source: "LunatIQ Team" },
+      { text: "Apprenticeship requires humility. You have pride.", source: "LunatIQ Team" },
+    ]
+  },
+
+  72: { // Nine of Pentacles
+    name: 'Nine of Pentacles',
+    upright: [
+      { text: "She is worth far more than rubies.", source: "Proverbs 31:10 (Bible)" },
+      { text: "I never dreamed about success. I worked for it.", source: "Estée Lauder" },
+      { text: "The question isn't who is going to let me; it's who is going to stop me.", source: "Ayn Rand" },
+      { text: "I am not lucky. You know what I am? I am smart, I am talented, I take advantage of the opportunities that come my way.", source: "Shonda Rhimes" },
+      { text: "A woman with a voice is, by definition, a strong woman.", source: "Melinda Gates" },
+      { text: "Self-made, self-sufficient, self-possessed. This is earned abundance.", source: "LunatIQ Team" },
+      { text: "Nine pentacles. One garden. Your empire.", source: "LunatIQ Team" },
+      { text: "Independence is expensive. You paid the price.", source: "LunatIQ Team" },
+      { text: "Luxury earned tastes different than luxury given.", source: "LunatIQ Team" },
+      { text: "You did this alone. That's both the victory and the cost.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Success without fulfillment is expensive emptiness.", source: "LunatIQ Team" },
+      { text: "You have everything and enjoy nothing.", source: "LunatIQ Team" },
+      { text: "Material abundance, emotional poverty.", source: "LunatIQ Team" },
+      { text: "The garden is perfect. The gardener is lonely.", source: "LunatIQ Team" },
+      { text: "Independence became isolation when you stopped letting people in.", source: "LunatIQ Team" },
+      { text: "You can afford everything except vulnerability.", source: "LunatIQ Team" },
+      { text: "Self-sufficiency is strength until it's a cage.", source: "LunatIQ Team" },
+      { text: "The walls that protect your success are blocking your joy.", source: "LunatIQ Team" },
+    ]
+  },
+
+  73: { // Ten of Pentacles
+    name: 'Ten of Pentacles',
+    upright: [
+      { text: "A good man leaves an inheritance for his children's children.", source: "Proverbs 13:22 (Bible)" },
+      { text: "The greatest legacy one can pass on to one's children is not money or things, but a legacy of character and faith.", source: "Billy Graham" },
+      { text: "Wealth is the ability to fully experience life.", source: "Henry David Thoreau" },
+      { text: "Family is not an important thing. It's everything.", source: "Michael J. Fox" },
+      { text: "The goal of wealth is freedom, not things.", source: "LunatIQ Team" },
+      { text: "Ten pentacles. Three generations. Legacy built.", source: "LunatIQ Team" },
+      { text: "This is what you work for: security for those you love.", source: "LunatIQ Team" },
+      { text: "Generational wealth isn't just money. It's wisdom passed down.", source: "LunatIQ Team" },
+      { text: "The family that builds together, lasts together.", source: "LunatIQ Team" },
+      { text: "Material security meets emotional abundance. This is arrival.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Family money, family drama. Some inheritances cost more than they're worth.", source: "LunatIQ Team" },
+      { text: "Generational wealth, generational trauma. Heal both or pass on both.", source: "LunatIQ Team" },
+      { text: "Legacy built on shaky foundations will crumble spectacularly.", source: "LunatIQ Team" },
+      { text: "You can't buy family harmony.", source: "LunatIQ Team" },
+      { text: "Material security without emotional safety is just a gilded cage.", source: "LunatIQ Team" },
+      { text: "The inheritance is cursed by the strings attached.", source: "LunatIQ Team" },
+      { text: "Tradition without evolution is stagnation with history.", source: "LunatIQ Team" },
+      { text: "Financial legacy, emotional bankruptcy.", source: "LunatIQ Team" },
+    ]
+  },
+
+  74: { // Page of Pentacles
+    name: 'Page of Pentacles',
+    upright: [
+      { text: "The plans of the diligent lead to profit.", source: "Proverbs 21:5 (Bible)" },
+      { text: "A journey of a thousand miles begins with a single step.", source: "Lao Tzu" },
+      { text: "Do not despise these small beginnings.", source: "Zechariah 4:10 (Bible)" },
+      { text: "Education is the most powerful weapon which you can use to change the world.", source: "Nelson Mandela" },
+      { text: "An investment in knowledge pays the best interest.", source: "Benjamin Franklin" },
+      { text: "Student energy. Apprentice mindset. Beginner's luck.", source: "LunatIQ Team" },
+      { text: "The pentacle is small. The potential is vast.", source: "LunatIQ Team" },
+      { text: "Learn before you earn. Master before you monetize.", source: "LunatIQ Team" },
+      { text: "Practical dreaming: vision meets action plan.", source: "LunatIQ Team" },
+      { text: "Every master was once a disaster. You're right on schedule.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "All study, no application. Knowledge without action is trivia.", source: "LunatIQ Team" },
+      { text: "You're planning to plan to start. Just start.", source: "LunatIQ Team" },
+      { text: "Unrealistic goals without practical steps.", source: "LunatIQ Team" },
+      { text: "Short attention span meets shiny object syndrome.", source: "LunatIQ Team" },
+      { text: "You want the diploma without attending class.", source: "LunatIQ Team" },
+      { text: "Lazy dreaming disguised as strategic planning.", source: "LunatIQ Team" },
+      { text: "The opportunity is real. Your commitment is not.", source: "LunatIQ Team" },
+      { text: "Irresponsibility with resources you didn't earn.", source: "LunatIQ Team" },
+    ]
+  },
+
+  75: { // Knight of Pentacles
+    name: 'Knight of Pentacles',
+    upright: [
+      { text: "Steady plodding brings prosperity.", source: "Proverbs 21:5 (Bible)" },
+      { text: "Slow and steady wins the race.", source: "Aesop" },
+      { text: "It does not matter how slowly you go as long as you do not stop.", source: "Confucius" },
+      { text: "The man who moves a mountain begins by carrying away small stones.", source: "Confucius" },
+      { text: "Discipline is choosing between what you want now and what you want most.", source: "Abraham Lincoln" },
+      { text: "Reliable, methodical, unstoppable. Tortoise energy.", source: "LunatIQ Team" },
+      { text: "You're not flashy. You're effective. That's better.", source: "LunatIQ Team" },
+      { text: "Consistency beats intensity every single time.", source: "LunatIQ Team" },
+      { text: "The boring work that everyone skips? That's your edge.", source: "LunatIQ Team" },
+      { text: "Slow progress is still progress. Trust the process.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Stubbornness isn't the same as persistence.", source: "LunatIQ Team" },
+      { text: "You're so methodical you're missing opportunities.", source: "LunatIQ Team" },
+      { text: "Perfectionism disguised as thoroughness.", source: "LunatIQ Team" },
+      { text: "The careful planner who never launches.", source: "LunatIQ Team" },
+      { text: "Slow and steady loses when the race changed courses.", source: "LunatIQ Team" },
+      { text: "Workaholic isn't a personality trait. It's avoidance.", source: "LunatIQ Team" },
+      { text: "You're so busy being reliable you forgot to be alive.", source: "LunatIQ Team" },
+      { text: "The routine became the prison.", source: "LunatIQ Team" },
+    ]
+  },
+
+  76: { // Queen of Pentacles
+    name: 'Queen of Pentacles',
+    upright: [
+      { text: "She watches over the affairs of her household and does not eat the bread of idleness.", source: "Proverbs 31:27 (Bible)" },
+      { text: "A mother's love is patient and forgiving when all others are forsaking.", source: "Helen Rice" },
+      { text: "The hand that rocks the cradle rules the world.", source: "William Ross Wallace" },
+      { text: "Behind every successful woman is herself.", source: "LunatIQ Team" },
+      { text: "Nurturer, provider, grounded queen of the material world.", source: "LunatIQ Team" },
+      { text: "She built an empire while raising one too.", source: "LunatIQ Team" },
+      { text: "Practical magic: turning a house into a home, a budget into abundance.", source: "LunatIQ Team" },
+      { text: "Comfort without softness. Wealth without waste.", source: "LunatIQ Team" },
+      { text: "The queen who feeds everyone else first but never goes hungry.", source: "LunatIQ Team" },
+      { text: "Motherhood and mastery aren't mutually exclusive.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Smothering disguised as nurturing.", source: "LunatIQ Team" },
+      { text: "You can't buy love or delegate healing.", source: "LunatIQ Team" },
+      { text: "Material provision without emotional presence.", source: "LunatIQ Team" },
+      { text: "The queen who outsourced her throne.", source: "LunatIQ Team" },
+      { text: "Neglecting yourself while nurturing everyone else.", source: "LunatIQ Team" },
+      { text: "Codependency with a Pinterest aesthetic.", source: "LunatIQ Team" },
+      { text: "You're so busy being needed you forgot to be whole.", source: "LunatIQ Team" },
+      { text: "The garden is dying because the gardener is.", source: "LunatIQ Team" },
+    ]
+  },
+
+  77: { // King of Pentacles
+    name: 'King of Pentacles',
+    upright: [
+      { text: "The Lord makes poor and makes rich; he brings low and he exalts.", source: "1 Samuel 2:7 (Bible)" },
+      { text: "It is not the employer who pays the wages. Employers only handle the money. It is the customer who pays the wages.", source: "Henry Ford" },
+      { text: "A business that makes nothing but money is a poor business.", source: "Henry Ford" },
+      { text: "Price is what you pay. Value is what you get.", source: "Warren Buffett" },
+      { text: "The real measure of your wealth is how much you'd be worth if you lost all your money.", source: "LunatIQ Team" },
+      { text: "Empire built. Legacy secured. Kingdom ruled with wisdom.", source: "LunatIQ Team" },
+      { text: "The king of earth understands: wealth is built, not won.", source: "LunatIQ Team" },
+      { text: "Provider, protector, patriarch of prosperity.", source: "LunatIQ Team" },
+      { text: "You built this with your hands. That's real power.", source: "LunatIQ Team" },
+      { text: "Material mastery meets spiritual grounding. This is sovereignty.", source: "LunatIQ Team" },
+    ],
+    reversed: [
+      { text: "Greed is poverty disguised as ambition.", source: "LunatIQ Team" },
+      { text: "You built an empire on sand and called it legacy.", source: "LunatIQ Team" },
+      { text: "Material success, moral bankruptcy.", source: "LunatIQ Team" },
+      { text: "The king who hoards dies alone with his gold.", source: "LunatIQ Team" },
+      { text: "Corruption is what happens when profit becomes purpose.", source: "LunatIQ Team" },
+      { text: "You can't buy respect, integrity, or a clear conscience.", source: "LunatIQ Team" },
+      { text: "Workaholic king, absent father.", source: "LunatIQ Team" },
+      { text: "The throne is heavy when built on exploitation.", source: "LunatIQ Team" },
+    ]
+  },
+};
+
+/**
+ * Get quote for card (updated to support upright/reversed)
+ */
+export function getCardQuote(cardIndex, quantumSeed, reversed = false) {
+  const cardQuotes = CARD_QUOTES_EXPANDED[cardIndex];
+
+  if (!cardQuotes) return null;
+
+  const quoteArray = reversed ? cardQuotes.reversed : cardQuotes.upright;
+
+  if (!quoteArray || quoteArray.length === 0) return null;
+
+  const index = Math.floor((quantumSeed * quoteArray.length)) % quoteArray.length;
+  return quoteArray[index];
+}
+
+/**
+ * Optimized Fisher-Yates shuffle with quantum seed
+ * O(n) complexity - much faster than nested loops
+ *
+ * @param {Array} array - Array to shuffle
+ * @param {number} seed - Quantum seed for deterministic shuffle
+ * @returns {Array} - Shuffled copy of array
+ */
+function quantumShuffle(array, seed) {
+  const shuffled = [...array]; // Create copy to avoid mutation
+
+  // Seeded random function using quantum seed
+  let currentSeed = Math.abs(seed) % 1;
+  const seededRandom = () => {
+    currentSeed = (currentSeed * 9301 + 49297) % 233280;
+    return currentSeed / 233280;
+  };
+
+  // Fisher-Yates shuffle with seeded random
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(seededRandom() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
+/**
+ * Get multiple quotes for card with intelligent source preference
+ * ALWAYS prefers quotes from real sources (philosophers, Bible, famous figures)
+ * over LunatIQ Team quotes when both are relevant
+ *
+ * OPTIMIZED: O(n) complexity using Fisher-Yates shuffle
+ *
+ * @param {number} cardIndex - The card index
+ * @param {number} quantumSeed - Quantum seed for selection
+ * @param {boolean} reversed - Whether card is reversed
+ * @param {number} count - How many quotes to return (1-3 for cards, 3-7 for synthesis)
+ * @returns {Array} - Array of quote objects {text, source}
+ */
+export function getCardQuotes(cardIndex, quantumSeed, reversed = false, count = 1) {
+  const cardQuotes = CARD_QUOTES_EXPANDED[cardIndex];
+
+  if (!cardQuotes) return [];
+
+  const quoteObject = reversed ? cardQuotes.reversed : cardQuotes.upright;
+
+  if (!quoteObject) return [];
+
+  // Flatten all category arrays into one array
+  const quoteArray = Object.values(quoteObject).flat();
+
+  if (!quoteArray || quoteArray.length === 0) return [];
+
+  // Ensure seed is in valid range [0, 1)
+  const safeSeed = Math.abs(quantumSeed) % 1;
+
+  // Separate quotes into real sources and LunatIQ Team sources
+  const realSourceQuotes = quoteArray.filter(q => q.source !== "LunatIQ Team");
+  const lunatiqQuotes = quoteArray.filter(q => q.source === "LunatIQ Team");
+
+  // Shuffle both pools with different seeds for variety
+  const shuffledReal = realSourceQuotes.length > 0
+    ? quantumShuffle(realSourceQuotes, safeSeed * 1.618) // Golden ratio
+    : [];
+  const shuffledLunatiq = lunatiqQuotes.length > 0
+    ? quantumShuffle(lunatiqQuotes, safeSeed * 2.718) // Euler's number
+    : [];
+
+  // Strategy: Take from real sources first, then LunatIQ Team
+  const selectedQuotes = [];
+
+  // Take as many as needed from real sources
+  const realCount = Math.min(count, shuffledReal.length);
+  selectedQuotes.push(...shuffledReal.slice(0, realCount));
+
+  // Fill remaining with LunatIQ Team quotes if needed
+  const remaining = count - selectedQuotes.length;
+  if (remaining > 0 && shuffledLunatiq.length > 0) {
+    selectedQuotes.push(...shuffledLunatiq.slice(0, remaining));
+  }
+
+  return selectedQuotes;
+}

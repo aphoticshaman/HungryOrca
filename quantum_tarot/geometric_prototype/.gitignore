@@ -1,0 +1,10 @@
+# Generated visualizations
+*.html
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
