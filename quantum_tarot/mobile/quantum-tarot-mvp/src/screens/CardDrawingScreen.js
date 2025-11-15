@@ -225,6 +225,7 @@ export default function CardDrawingScreen({ route, navigation }) {
         // Convert interpretation to readable text format
         const formatted = formatInterpretation(interpretation);
         console.log(`🎴 Formatted ${index + 1} length:`, formatted?.length);
+        console.log(`🎴 Formatted ${index + 1} FULL TEXT:`, formatted);
         return formatted;
       });
 
