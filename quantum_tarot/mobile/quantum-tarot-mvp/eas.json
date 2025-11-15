@@ -12,6 +12,10 @@
     },
     "preview": {
       "distribution": "internal",
+      "node": "22.11.0",
+      "env": {
+        "NODE_ENV": "production"
+      },
       "ios": {
         "simulator": false,
         "buildConfiguration": "Release"
