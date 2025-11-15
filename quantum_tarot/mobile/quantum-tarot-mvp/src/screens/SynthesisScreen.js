@@ -24,8 +24,16 @@ import {
   Linking,
   Platform,
 } from 'react-native';
-import Clipboard from '@react-native-clipboard/clipboard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// Graceful clipboard fallback for Expo Go
+let Clipboard;
+try {
+  Clipboard = require('@react-native-clipboard/clipboard').default;
+} catch (e) {
+  console.warn('[SynthesisScreen] Clipboard module not available in Expo Go');
+  Clipboard = null;
+}
 import CyberpunkHeader from '../components/CyberpunkHeader';
 import { NeonText, LPMUDText } from '../components/TerminalEffects';
 import { NEON_COLORS } from '../styles/cyberpunkColors';
@@ -110,6 +118,11 @@ export default function SynthesisScreen({ route, navigation }) {
     // Check permission
     if (!FeatureGate.canShareReading()) {
       showUpgradePrompt('Copy Readings');
+      return;
+    }
+
+    if (!Clipboard) {
+      Alert.alert('Copy Not Available', 'Clipboard is not available in Expo Go. Use the Share button instead, or test in a production build.');
       return;
     }
 
